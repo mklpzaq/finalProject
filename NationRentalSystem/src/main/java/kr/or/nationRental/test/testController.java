@@ -7,5 +7,5 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class testController {
 	private static final Logger logger = LoggerFactory.getLogger(testController.class);
-	
+	 
 }
