@@ -1,4 +1,4 @@
-package kr.or.nationRental.controller;
+package kr.or.nationRental.home.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

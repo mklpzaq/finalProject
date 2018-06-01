@@ -28,7 +28,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<context:component-scan base-package="kr.or.nationRental.controller" />
+	<context:component-scan base-package="kr.or.nationRental.home.controller" />
 
 	
 	<bean id="multipartResolver"
