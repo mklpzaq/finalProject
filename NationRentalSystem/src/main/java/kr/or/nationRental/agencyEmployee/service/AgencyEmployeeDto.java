@@ -9,6 +9,7 @@ public class AgencyEmployeeDto {
 	private String agencyEmployeePhone; //직원 전화번호
 	private String agencyEmployeeEmail; //직원 이메일
 	private String agencyEmployeeDateJoin; //직원 가입일자
+	
 	public String getAgencyEmployeeId() {
 		return agencyEmployeeId;
 	}

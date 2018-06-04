@@ -21,7 +21,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class=""><a href="${pageContext.request.contextPath}/goSignUp">회원가입</a></li>
-						<li class="active"><a href="#">로그인</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 					</ul>
 				</div>
 			</div>
