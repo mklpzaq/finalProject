@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-
+ 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
     <!-- mybatis를 사용하여 db에접속하여 쿼리를 보내는 주체인 SqlSessionTemplate빈 생성-->
@@ -28,7 +28,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<context:component-scan base-package="kr.or.nationRental.home.controller" />
+	<context:component-scan base-package="kr.or.nationRental" />
 
 	
 	<bean id="multipartResolver"

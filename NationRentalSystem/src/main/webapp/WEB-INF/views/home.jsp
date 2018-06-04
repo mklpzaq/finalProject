@@ -16,7 +16,8 @@
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
-				
+					
+					<a href="${pageContext.request.contextPath}/insertAdmin">insertAdmin</a>
 				
 					<div class="text-center">
 						<h1>국가 통합 대여/예약 시스템</h1>
