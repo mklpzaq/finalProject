@@ -20,7 +20,7 @@
 						<li class=""><a href="#">쇼핑하기</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class=""><a href="#">회원가입</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/goSignUp">회원가입</a></li>
 						<li class="active"><a href="#">로그인</a></li>
 					</ul>
 				</div>

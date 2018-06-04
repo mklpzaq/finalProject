@@ -10,6 +10,6 @@ public class SignUpController {
 	@RequestMapping(value="/goSignUp", method=RequestMethod.GET)
 	public String goSignUp() {
 		
-		return "/signUp";
+		return "/signUp/signUp";
 	}
 }

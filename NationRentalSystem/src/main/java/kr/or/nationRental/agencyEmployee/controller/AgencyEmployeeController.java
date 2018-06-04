@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AgencyEmployeeController {
-	@RequestMapping(value="/insertEmployee", method=RequestMethod.GET)
+	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.GET)
 	public String insertEmployee() {
 			
 		return "";
