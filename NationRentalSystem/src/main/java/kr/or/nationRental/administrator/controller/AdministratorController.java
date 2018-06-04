@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdministratorController {
   
 
-	@RequestMapping(value="/insertAdmin", method=RequestMethod.GET)
-	public String insertAdmin() {
+	@RequestMapping(value="/insertAdminstrator", method=RequestMethod.GET)
+	public String insertAdminstrator() {
 			
-		return "/test";
+		return "";
 	}
 }
