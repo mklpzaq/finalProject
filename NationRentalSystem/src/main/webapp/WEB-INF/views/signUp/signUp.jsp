@@ -20,7 +20,7 @@
 				
 				
 					<a href="${pageContext.request.contextPath}/insertCitizen">시민 회원가입</a> | 
-					<a href="${pageContext.request.contextPath}/insertAdminstrator">관리자 회원가입</a> | 
+					<a href="${pageContext.request.contextPath}/insertAdminForm">관리자 회원가입</a> | 
 					<a href="${pageContext.request.contextPath}/insertFunctionary">공무원 회원가입</a> | 
 					<a href="${pageContext.request.contextPath}/insertAgencyEmployee">직원 회원가입</a>
 				
