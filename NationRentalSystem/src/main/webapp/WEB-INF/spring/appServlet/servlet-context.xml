@@ -38,9 +38,9 @@
 	<!-- connection pool 생성 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/nrs"/>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/mklpzaq"/>
 		<property name="username" value="root"/>
-		<property name="password" value="0000"/>
+		<property name="password" value="java0000"/>
 	</bean>
 	
 	<!-- connection가진 tx기능을 spring에게 위임 -->

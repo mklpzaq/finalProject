@@ -14,9 +14,23 @@ public class FunctionaryController {
 		return "/functionary/insertFunctionaryForm";
 	}
 	
+	@RequestMapping(value="/idcehck", method=RequestMethod.GET)
+	public String idcehck() {
+			
+		return "/functionary/insertFunctionaryForm";
+	}
+	
 	@RequestMapping(value="/insertFunctionary", method=RequestMethod.POST)
-	public String insertFunctionary(@RequestParam(value="") String id) {
+	public String insertFunctionary(@RequestParam(value="id") String id
+									,@RequestParam(value="Password1") String Password1
+									,@RequestParam(value="adminagencyCode") String adminagencyCode
+									,@RequestParam(value="functionaryNum") String functionaryNum
+									,@RequestParam(value="functionaryName") String functionaryName
+									,@RequestParam(value="functionaryPhone") String functionaryPhone
+									,@RequestParam(value="functionaryEmail") String functionaryEmail) {
 			
 		return "redirect:/";
 	}
+	
+	
 }
