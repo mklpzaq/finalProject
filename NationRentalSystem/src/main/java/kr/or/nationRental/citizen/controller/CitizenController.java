@@ -10,6 +10,6 @@ public class CitizenController {
 	@RequestMapping(value="/insertCitizen", method=RequestMethod.GET)
 	public String insertCitizen() {
 			
-		return "";
+		return "citizen/insertCitizenForm";
 	}
 }
