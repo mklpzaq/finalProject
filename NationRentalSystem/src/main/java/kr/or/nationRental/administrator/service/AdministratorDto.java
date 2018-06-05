@@ -1,7 +1,7 @@
 package kr.or.nationRental.administrator.service;
 import java.sql.Date;
 
-public class Administrator {
+public class AdministratorDto {
 	private String adminId;  //관리자 ID
 	private String adminPw; //관리자 PW
 	private int functionaryNum; //공무원번호

@@ -11,11 +11,10 @@ public class AdministratorService {
 	private AdministratorDao administratorDao;
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorService.class);
 	
-	//관리자 가입
-	public int insertAdmin(Administrator administrator) {	
-		logger.info("insertAdminForm --- Serveice");
-		int row = administratorDao.insertAdmin(administrator);
-		return row;
+	//관리자 등록
+	public int insertAdministrator(AdministratorDto administratorDto) {	
+		logger.info("---insertAdministrator");
+		return administratorDao.insertAdministrator(administratorDto);
 	}
 
 }

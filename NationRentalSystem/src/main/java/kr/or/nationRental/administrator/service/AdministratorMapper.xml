@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.administrator.service.AdministratorMapper">
+	
+	<!-- 회원입력 -->
+	<insert id="insertAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
+			>
+		INSERT INTO administrator(
+			administrator_id
+			, administrator_pw
+			, administrator_name
+			, functionary_num
+			, administrator_phone	
+		) VALUES (
+			#{adminId}
+			, #{adminPw}
+			, #{adminName}
+			, #{functionaryNum}
+			, #{adminPhone}	
+		)		
+	</insert>
+	
+</mapper>

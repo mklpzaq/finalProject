@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>관리자 가입</title>
+		<title>관리자 등록</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
@@ -57,6 +57,24 @@
 		</script> -->
 	</head>
 	<body>
+	<body>
+		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-2" style="padding:15px;">
+					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
+				</div>
+				<div class="col-sm-8">
+				<!-- Begin Content -->
+					
+				<div class="text-center">
+					<h1>관리자 등록</h1>
+					<h2>Nation Integrated Reserve and Rental System</h2>
+				</div>
+				
+	
+	
+	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-3"></div>
@@ -64,15 +82,8 @@
 					<!-- Begin Content -->
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<div class="row">
-									<div class="col-sm-3"></div>
-									<div class="col-sm-6 text-center">
-										<h3>관리자 가입</h3>
-									</div>
-									<div class="col-sm-3"></div>
-								</div>
 								<hr/>
-								<form id="insertMemberForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdminForm" method="post">
+								<form id="insertAdministrator" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdministrator" method="post">
 									<div class="form-group">
 										<label for="adminId" class="col-sm-2 control-label">ID</label>
 										<div class="col-sm-10">
@@ -84,17 +95,23 @@
 									<div class="form-group">
 										<label for="adminPw" class="col-sm-2 control-label">PW</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" name="adminPw" id="adminPw" placeholder="PW를 입력해주세요.">
+											<input type="password" class="form-control" name="adminPw" id="adminPw" placeholder="PW를 입력해주세요.">
 											<span id="pwIcon"></span>
 											<span id="pwHelper"></span>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="adminPwCheck" class="col-sm-2 control-label">PWCheck</label>
+										<label for="adminPwCheck" class="col-sm-2 control-label">PW확인</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" id="adminPwCheck" placeholder="PW를 다시 입력해주세요.">
+											<input type="password" class="form-control" id="adminPwCheck" placeholder="PW를 다시 입력해주세요.">
 											<span id="pwCheckIcon"></span>
 											<span id="pwCheckHelper"></span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="adminName" class="col-sm-2 control-label">이름</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="adminName" placeholder="이름을 입력해주세요.">
 										</div>
 									</div>
 									<div class="form-group">
@@ -109,14 +126,10 @@
 											<input type="text" class="form-control" id="adminPhone" placeholder="전화번호를 입력해주세요.">
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="adminName" class="col-sm-2 control-label">이름</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="adminName" placeholder="이름을 입력해주세요.">
-										</div>
+									<br>
 									<div class="form-group">
 										<div class="col-sm-12">
-											<button id="insertButton" type="button" class="btn btn-default">관리자 가입</button>
+											<button id="insertButton" type="button" class="btn btn-default">등록하기</button>
 										</div>
 									</div>
 								</form>
