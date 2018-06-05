@@ -18,7 +18,7 @@ public class FunctionaryDao {
 	
 	public int insertFunctionary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryDao - insertFunctionary : " + functionaryDto.toString());
-		
-		return sqlSession.insert(NS+"insertFunctionary", functionaryDto);
+		int row = sqlSession.insert(NS+"insertFunctionary", functionaryDto);
+		return row;
 	}
 }
