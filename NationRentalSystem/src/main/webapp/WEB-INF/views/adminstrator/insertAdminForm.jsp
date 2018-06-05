@@ -57,7 +57,6 @@
 		</script> -->
 	</head>
 	<body>
-	<body>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
 			<div class="row">
@@ -65,7 +64,6 @@
 					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
 				</div>
 				<div class="col-sm-8">
-					<!-- Begin Content -->
 					<div class="text-center">
 						<h1>관리자 등록</h1>
 						<h2>Nation Integrated Reserve and Rental System</h2>
@@ -133,7 +131,6 @@
 							</div>
 							<div class="col-sm-2"></div>
 						</div>
-					<!-- End Content -->
 					</div>
 				</div>
 			</div>

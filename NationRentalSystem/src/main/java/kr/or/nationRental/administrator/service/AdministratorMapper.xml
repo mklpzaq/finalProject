@@ -13,13 +13,15 @@
 			, administrator_pw
 			, administrator_name
 			, functionary_num
-			, administrator_phone	
+			, administrator_phone
+			, administrator_date_join	
 		) VALUES (
 			#{adminId}
 			, #{adminPw}
 			, #{adminName}
 			, #{functionaryNum}
 			, #{adminPhone}	
+			, now()
 		)		
 	</insert>
 	
