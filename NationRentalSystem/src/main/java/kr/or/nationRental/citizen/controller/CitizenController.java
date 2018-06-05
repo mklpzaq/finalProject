@@ -24,7 +24,7 @@ public class CitizenController {
 								,CitizenDto citizenDto
 								,Model model) {
 		 
-		int row = CitizenService.addCitizen(citizenDto);
+		//int row = CitizenService.addCitizen(citizenDto);
 		   
 		return "ddf"; 
 	}
