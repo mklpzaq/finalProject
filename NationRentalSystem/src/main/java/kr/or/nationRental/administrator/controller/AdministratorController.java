@@ -29,6 +29,9 @@ public class AdministratorController {
 	@RequestMapping(value="/insertAdministrator", method=RequestMethod.POST)
 	public String insertAdministrator(AdministratorDto administratordDto) {
 		logger.info("---insertAdministrator POST");
+		
+		
+		
 		administratorService.insertAdministrator(administratordDto);
 		return "redirect:/getAdminList";
 	}

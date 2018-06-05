@@ -20,7 +20,9 @@ public class AdministratorDao {
 	//입력변수로 Administrator 클래스 데이터 타입을 받는다.
 	public int insertAdministrator(AdministratorDto administratorDto) {
 		logger.info("---insertAdmin");
+		logger.info("★★★★★★★★★★★★★★★★★★★★1");
 		int row = sqlsession.insert(NS+"insertAdministrator", administratorDto);
+		logger.info("★★★★★★★★★★★★★★★★★★★★2");
 		return row;
 	}
 }	

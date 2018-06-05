@@ -65,82 +65,78 @@
 					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
 				</div>
 				<div class="col-sm-8">
-				<!-- Begin Content -->
-					
-				<div class="text-center">
-					<h1>관리자 등록</h1>
-					<h2>Nation Integrated Reserve and Rental System</h2>
-				</div>
-				
-	
-	
-	
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-6">
 					<!-- Begin Content -->
-						<div class="panel panel-default">
-							<div class="panel-body text-center">
-								<hr/>
-								<form id="insertAdministrator" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdministrator" method="post">
-									<div class="form-group">
-										<label for="adminId" class="col-sm-2 control-label">ID</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" name="adminId" id="adminId" placeholder="ID를 입력해주세요.">
-											<span id="idIcon"></span>
-											<span id="idHelper"></span>
+					<div class="text-center">
+						<h1>관리자 등록</h1>
+						<h2>Nation Integrated Reserve and Rental System</h2>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-2"></div>
+							<div class="col-sm-8">
+								<!-- Begin Content -->
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<form id="insertAdministrator" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdministrator" method="post">
+												<div class="form-group">
+													<label for="adminId" class="col-sm-3 control-label">ID</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="adminId" id="adminId" placeholder="ID를 입력해주세요.">
+														<span id="idIcon"></span>
+														<span id="idHelper"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="adminPw" class="col-sm-3 control-label">PW</label>
+													<div class="col-sm-9">
+														<input type="password" class="form-control" name="adminPw" id="adminPw" placeholder="PW를 입력해주세요.">
+														<span id="pwIcon"></span>
+														<span id="pwHelper"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="adminPwCheck" class="col-sm-3 control-label">PW확인</label>
+													<div class="col-sm-9">
+														<input type="password" class="form-control" id="adminPwCheck" placeholder="PW를 다시 입력해주세요.">
+														<span id="pwCheckIcon"></span>
+														<span id="pwCheckHelper"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="adminName" class="col-sm-3 control-label">이름</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" id="adminName" placeholder="이름을 입력해주세요.">
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="functionaryNum" class="col-sm-3 control-label">공무원번호</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" id="functionaryNum" placeholder="공무원번호를 입력해주세요.">
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="adminPhone" class="col-sm-3 control-label">전화번호</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" id="adminPhone" placeholder="전화번호를 입력해주세요.">
+													</div>
+												</div>
+												<br>
+												<div class="form-group">
+													<div class="col-sm-12">
+														<button type="submit" id="insertButton" class="btn btn-default">등록하기</button>
+													</div>
+												</div>
+											</form>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="adminPw" class="col-sm-2 control-label">PW</label>
-										<div class="col-sm-10">
-											<input type="password" class="form-control" name="adminPw" id="adminPw" placeholder="PW를 입력해주세요.">
-											<span id="pwIcon"></span>
-											<span id="pwHelper"></span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="adminPwCheck" class="col-sm-2 control-label">PW확인</label>
-										<div class="col-sm-10">
-											<input type="password" class="form-control" id="adminPwCheck" placeholder="PW를 다시 입력해주세요.">
-											<span id="pwCheckIcon"></span>
-											<span id="pwCheckHelper"></span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="adminName" class="col-sm-2 control-label">이름</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="adminName" placeholder="이름을 입력해주세요.">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="functionaryNum" class="col-sm-2 control-label">공무원번호</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="functionaryNum" placeholder="공무원번호를 입력해주세요.">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="adminPhone" class="col-sm-2 control-label">전화번호</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="adminPhone" placeholder="전화번호를 입력해주세요.">
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<div class="col-sm-12">
-											<button id="insertButton" type="button" class="btn btn-default">등록하기</button>
-										</div>
-									</div>
-								</form>
+								<!-- End Content -->
 							</div>
+							<div class="col-sm-2"></div>
 						</div>
 					<!-- End Content -->
+					</div>
 				</div>
-				<div class="col-sm-3"></div>
-			<!-- End row -->
 			</div>
-		<!-- End container-fluid -->
 		</div>
 	</body>
 </html>
