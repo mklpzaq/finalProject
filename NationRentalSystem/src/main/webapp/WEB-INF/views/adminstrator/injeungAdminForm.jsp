@@ -27,9 +27,9 @@
 								<div class="panel-body">
 									<form class="form-horizontal" action="${pageContext.request.contextPath}/injeungAdministrator" method="post">
 										<div class="form-group">
-											<label for="injeungNum" class="col-sm-3 control-label">인증번호</label>
+											<label for="adminInjeungNum" class="col-sm-3 control-label">인증번호</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" name="injeungNum" id="injeungNum" placeholder="인증번호를 입력하세요.">
+												<input type="text" class="form-control" name="adminInjeungNum" id="adminInjeungNum" placeholder="인증번호를 입력하세요.">
 											</div>
 										</div>
 										<div class="text-center">

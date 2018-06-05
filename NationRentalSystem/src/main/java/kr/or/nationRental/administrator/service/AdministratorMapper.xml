@@ -7,22 +7,21 @@
 	
 	<!-- 회원입력 -->
 	<insert id="insertAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
-			>
-		INSERT INTO administrator(
-			administrator_id
+	
+		INSERT INTO administrator
+			(administrator_id
 			, administrator_pw
-			, administrator_name
 			, functionary_num
 			, administrator_phone
-			, administrator_date_join	
-		) VALUES (
-			#{adminId}
+			, administrator_name
+			, administrator_date_join)	
+		VALUES
+			(#{adminId}
 			, #{adminPw}
-			, #{adminName}
 			, #{functionaryNum}
-			, #{adminPhone}	
-			, now()
-		)		
+			, #{adminPhone}
+			, #{adminName}	
+			, NOW())		
 	</insert>
 	
 </mapper>

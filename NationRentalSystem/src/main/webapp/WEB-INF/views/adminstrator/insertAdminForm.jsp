@@ -95,7 +95,7 @@
 												<div class="form-group">
 													<label for="adminPwCheck" class="col-sm-3 control-label">PW확인</label>
 													<div class="col-sm-9">
-														<input type="password" class="form-control" id="adminPwCheck" placeholder="PW를 다시 입력해주세요.">
+														<input type="password" class="form-control" name="adminPwCheck" id="adminPwCheck" placeholder="PW를 다시 입력해주세요.">
 														<span id="pwCheckIcon"></span>
 														<span id="pwCheckHelper"></span>
 													</div>
@@ -103,19 +103,19 @@
 												<div class="form-group">
 													<label for="adminName" class="col-sm-3 control-label">이름</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" id="adminName" placeholder="이름을 입력해주세요.">
+														<input type="text" class="form-control" name="adminName" id="adminName" placeholder="이름을 입력해주세요.">
 													</div>
 												</div>
 												<div class="form-group">
 													<label for="functionaryNum" class="col-sm-3 control-label">공무원번호</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" id="functionaryNum" placeholder="공무원번호를 입력해주세요.">
+														<input type="text" class="form-control" name="functionaryNum" id="functionaryNum" placeholder="공무원번호를 입력해주세요.">
 													</div>
 												</div>
 												<div class="form-group">
 													<label for="adminPhone" class="col-sm-3 control-label">전화번호</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" id="adminPhone" placeholder="전화번호를 입력해주세요.">
+														<input type="text" class="form-control" name="adminPhone" id="adminPhone" placeholder="전화번호를 입력해주세요.">
 													</div>
 												</div>
 												<br>

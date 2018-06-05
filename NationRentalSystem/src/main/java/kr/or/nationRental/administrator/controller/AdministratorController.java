@@ -20,6 +20,8 @@ import kr.or.nationRental.administrator.service.InjeungService;
 public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
+	
+	@Autowired
 	private InjeungService injeungService;
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorController.class);
 	
@@ -33,37 +35,22 @@ public class AdministratorController {
 	//관리자 인증 POST 이후 관리자 등록 화면으로 이동
 	@RequestMapping(value = "/injeungAdministrator", method = RequestMethod.POST)
 	public String injeungAdministrator(InjeungDto injeungDto, Model model, HttpSession session) {
-		injeungDto = injeungService.selectInjeung(injeungDto);
-		if (injeungDto == null) {
-			model.addAttribute("injeungDto", injeungDto);
+		logger.info("---injeungAdministrator POST");
+		InjeungDto injeung = injeungService.selectInjeung(injeungDto);
+		if (injeung == null) {
+			model.addAttribute("injeungNum", injeungDto);
 			return "adminstrator/injeungAdminForm";
 		}
-		session.setAttribute("injeung", injeungDto);
-		return "redirect:/insertAdminForm";	
-	}
+		session.setAttribute("injeung", injeung);
+		return "adminstrator/insertAdminForm";	
+	}	
 	
-	
-	
-	
-	
-/*	
-	//관리자등록 GET
-	//insertAdminForm.jsp를 포워드방식으로 호출한다.
-	@RequestMapping(value="/insertAdministrator", method=RequestMethod.GET)
-	public String insertAdministrator() {
-		logger.info("---insertAdministrator GET");
-		return "adminstrator/insertAdminForm";
-	}
-	*/
 	//관리자등록 POST
 	@RequestMapping(value="/insertAdministrator", method=RequestMethod.POST)
 	public String insertAdministrator(AdministratorDto administratordDto) {
 		logger.info("---insertAdministrator POST");
-		
-		
-		
 		administratorService.insertAdministrator(administratordDto);
-		return "redirect:/getAdminList";
+		return "redirect:/home";
 	}
 	
 }
