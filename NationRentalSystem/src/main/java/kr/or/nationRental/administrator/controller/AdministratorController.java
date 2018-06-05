@@ -22,8 +22,8 @@ import kr.or.nationRental.administrator.service.InjeungService;
 public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
-	@Autowired
-	private AdministratorDto administratorDto;
+	/*@Autowired
+	private AdministratorDto administratorDto;*/
 	
 	@Autowired
 	private InjeungService injeungService;
