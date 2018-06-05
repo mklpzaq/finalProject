@@ -26,10 +26,29 @@
 						id: "checkId",
 						title: "8자 이상을 입력해주세요 ",
 						text: "8자 이상을 입력해주세요"
-					}));
-				}	
-			
+					}));					
+				}else if($("#CitizenID").val().length >= 12) {
+					$("#CitizenId").hide();
+				}			
 			});
+			
+			 $('#checkbtn').on('click', function(){
+		            $.ajax({
+		                type: 'POST',
+		                url: '/mate/checkSignup',
+		                data: {
+		                    "id" : $('#id').val()
+		                },
+		                success: function(data){
+		                    if($.trim(data) == 0){
+		                        $('#checkMsg').html('<p style="color:blue">사용가능</p>');
+		                    }
+		                    else{
+		                        $('#checkMsg').html('<p style="color:red">사용불가능</p>');
+		                    }
+		                }
+		            });    //end ajax    
+		        });    //end on	
 			
 		});
 		
@@ -44,6 +63,8 @@
 				<label for="CitizenID" class="col-sm-2 control-label">회원ID</label>
 		    <div class="col-sm-10">
 		    	<input type="text" class="form-control" id="CitizenID" placeholder="회원ID">
+		    	  <button type="submit" id="checkbtn" class="btn btn-default">중복확인</button>
+		    	  <div id="checkMsg"></div>		    	 
 		    	<div id ="CitizenId"></div>		    	
 		    </div>
 		</div>
