@@ -20,6 +20,7 @@
 	<!-- Application Loggers -->
 	<logger name="kr.or.nationRental">
 		<level value="debug" />
+		<appender-ref ref="consoleTwo"/>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

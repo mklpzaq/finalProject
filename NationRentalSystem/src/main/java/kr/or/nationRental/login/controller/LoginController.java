@@ -17,7 +17,7 @@ import kr.or.nationRental.login.service.MemberDto;
 public class LoginController {
 	@Autowired
 	private LoginService loginService;
-	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String getLogin() {
@@ -31,8 +31,9 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String getLogin(MemberDto memberDto) {
 		logger.debug("POST getLogin LoginController");
+		logger.debug(memberDto.toString());
 		
-		
+		loginService.login(memberDto);
 		
 		return "";
 	}

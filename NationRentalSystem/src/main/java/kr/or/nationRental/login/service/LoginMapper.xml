@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.login.service.LoginMapper">
+	
+	
+	<select id="loginCheck"
+			parameterType="kr.or.nationRental.login.service.MemberDto.java"
+			resultType="Integer">
+			
+		INSERT INTO administrator(
+			administrator_id
+			, administrator_pw
+			, administrator_name
+			, functionary_num
+			, administrator_phone	
+		) VALUES (
+			#{adminId}
+			, #{adminPw}
+			, #{adminName}
+			, #{functionaryNum}
+			, #{adminPhone}	
+		)		
+	</select>
+	
+</mapper>
