@@ -19,6 +19,20 @@
 			6.필수정보 입력 데이터는 아이디 비밀번호 주민번호 주소 이름 핸드폰번호 이다.					
 		*/
 		
+		$(document).ready(function(){
+			$("#CitizenID").keyup(function(){
+				if($("#CitizenID").val().length <= 8) {
+					$("#CitizenId").append($("<p/>",{
+						id: "checkId",
+						title: "8자 이상을 입력해주세요 ",
+						text: "8자 이상을 입력해주세요"
+					}));
+				}	
+			
+			});
+			
+		});
+		
 	</script>
 
 </head>
@@ -30,6 +44,7 @@
 				<label for="CitizenID" class="col-sm-2 control-label">회원ID</label>
 		    <div class="col-sm-10">
 		    	<input type="text" class="form-control" id="CitizenID" placeholder="회원ID">
+		    	<div id ="CitizenId"></div>		    	
 		    </div>
 		</div>
 		<div class="form-group">
@@ -81,9 +96,38 @@
 					  <option>4</option>
 					  <option>5</option>
 				</select>
+			</div>
+		</div>		
+			
+		<div class="form-group">
+			<label for="sigungu" class="col-sm-2 control-label">읍면동코드</label>
 			<div class="col-sm-10">
+				<select class="form-control">
+					  <option>1</option>
+					  <option>2</option>
+					  <option>3</option>
+					  <option>4</option>
+					  <option>5</option>
+				</select>
+			</div>
 		</div>
-	
+		
+		<div class="form-group">
+				<label for="Address" class="col-sm-2 control-label">회원 주소</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" id="inputEmail3" placeholder="Address">
+		    </div>
+		</div>
+		
+		<div class="form-group">
+				<label for="CitizenPhone" class="col-sm-2 control-label">휴대전화번호</label>
+		    <div class="col-sm-10">
+		    	<input type="text" class="form-control" id="CitizenPhone" placeholder="CitizenPhone">
+		    </div>
+		</div>		
+		
+		<button type="button" class="btn btn-primary btn-lg btn-block" id="InsertCitizen">회원가입</button>
+		
 	</form>
 
 
