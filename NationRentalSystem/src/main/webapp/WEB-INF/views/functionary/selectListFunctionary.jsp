@@ -26,6 +26,29 @@
 						<P>The time on the server is ${serverTime}.</P>
 					</div>
 					
+					<div class="row">
+						<div class="col-md-4">
+							<strong>${currentPage} / ${lastPage} Page</strong><br/>
+							<strong>searchSelect : </strong><span id="monitorSearchSelect">${searchSelect}</span><br/>
+							<strong>searchWord : </strong><span id="monitorSearchWord">${searchWord}</span><br/>						
+						</div>
+						<div class="col-md-4">
+							<h3>Article List</h3>
+						</div>
+						<div class="col-md-4">
+							<select id="selectPagePerRow" name="selectPagePerRow">
+								<option value="5"<c:if test="${pagePerRow == 5}">selected</c:if>>5</option>
+								<option value="10"<c:if test="${pagePerRow == 10}">selected</c:if>>10</option>
+								<option value="15"<c:if test="${pagePerRow == 15}">selected</c:if>>15</option>
+								<option value="20"<c:if test="${pagePerRow == 20}">selected</c:if>>20</option>
+								<option value="30"<c:if test="${pagePerRow == 30}">selected</c:if>>30</option>
+								<option value="40"<c:if test="${pagePerRow == 40}">selected</c:if>>40</option>
+								<option value="50"<c:if test="${pagePerRow == 50}">selected</c:if>>50</option>
+							</select>개씩 보기
+							
+						</div>
+					</div>
+					
 					<table class="table table-striped">
 								<thead>
 									<tr>
@@ -48,6 +71,88 @@
 										</c:forEach>									
 								</tbody>
 							</table>
+							
+							<nav>
+								<ul class="pagination">
+									<li>
+										<a href="${pageContext.request.contextPath}/getArticleList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage > 1}">
+												<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="${pageContext.request.contextPath}/getArticleList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<c:choose>
+										<c:when test="${lastPage > beginPageNumForCurrentPage + 4}">
+											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage < lastPage}">
+												<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+							
+							<%-- <div>
+								<form action="<%=request.getContextPath()%>/resumeList" method="get">
+										<select id="searchOption" name="searchOption" onclick="changehtml();">											
+										<option value="all" <c:if test="${searchOption == 'all'}">selected</c:if>>전체검색</option>
+										<option value="resume_title" <c:if test="${searchOption == '"resume_title"'}">selected</c:if>>이력서 제목</option>
+										<option value="resume_content"  <c:if test="${searchOption == 'resume_content'}">selected</c:if>>이력서 내용</option>												
+									</select>
+									<!-- <dr id="keyword"></dr> -->
+									<input id="keyword" name="keyword" value="${keyword}">
+									<input type="submit" value="검색버튼" >
+								</form>
+							</div> --%>
 											
 				</div>
 			</div>

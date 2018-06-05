@@ -2,6 +2,8 @@ package kr.or.nationRental.functionary.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,12 @@ public class FunctionaryController {
 	}
 	
 	@RequestMapping(value="/selectListFunctionary", method=RequestMethod.GET)
-	public String selectListFunctionary(Model model) {
+	public String selectListFunctionary(Model model
+										,HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchSelect", defaultValue="articleId") String searchSelect
+										,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		
 		List<FunctionaryDto> functionaryDtoList = functionaryService.selectListFunctionary();
 		model.addAttribute("functionaryDtoList", functionaryDtoList);
