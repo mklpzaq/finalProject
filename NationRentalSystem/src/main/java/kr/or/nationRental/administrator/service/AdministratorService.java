@@ -1,15 +1,11 @@
 package kr.or.nationRental.administrator.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Service
 public class AdministratorService {
@@ -25,7 +21,19 @@ public class AdministratorService {
 	
 	//관리자 계정 목록
 	public List<AdministratorDto> selectListAdministrator() {
-		
 		return administratorDao.selectListAdministrator();
+	}
+	
+	//관리자 정보 수정화면 불러오기
+	public AdministratorDto updateAdministratorForm(AdministratorDto administratorDto)  {	
+		logger.info("updateAdministratorForm");
+		return administratorDao.updateAdministratorForm(administratorDto); 
+	}
+	
+	//관리자 정보 수정하기
+	public int updateAdministrator(AdministratorDto administratorDto)  {	
+		logger.info("updateCategory");
+		return administratorDao.updateAdministrator(administratorDto);
+	 
 	}
 }

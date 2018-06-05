@@ -7,15 +7,15 @@
 	
 	<!-- 관리자 등록 -->
 	<insert id="insertAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
-		INSERT INTO administrator
-			(administrator_id
+		INSERT INTO administrator (
+			administrator_id
 			, administrator_pw
 			, functionary_num
 			, administrator_phone
 			, administrator_name
-			, administrator_date_join)	
-		VALUES
-			(#{adminId}
+			, administrator_date_join
+		)VALUES (
+			#{adminId}
 			, #{adminPw}
 			, #{functionaryNum}
 			, #{adminPhone}
@@ -34,5 +34,35 @@
 			, administrator_date_join as adminDateJoin
 		FROM administrator	
 	</select>
+	
+	<!--관리자 정보 수정 불러오기 -->
+	<select id="updateAdministratorForm" parameterType="kr.or.nationRental.administrator.service.AdministratorDto" resultType="kr.or.nationRental.administrator.service.AdministratorDto">
+		select 
+			administrator_id as adminId
+			, administrator_pw as adminPw
+			, functionary_num as functionaryNum
+			, administrator_phone as adminPhone
+			, administrator_name as adminName
+		from administrator
+		where 
+			administrator_id = #{adminId}
+			, functionary_num = #{functionaryNum}
+			, administrator_name = #{adminName}
+	</select>
+	
+	<!-- 관리자 정보수정하기 -->
+	<update id="updateAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
+		UPDATE administrator
+			SET
+			administrator_id as adminId
+			, administrator_pw as adminPw
+			, functionary_num as functionaryNum
+			, administrator_phone as adminPhone
+			, administrator_name as adminName
+		WHERE 
+			administrator_id = #{adminId}
+			, functionary_num = #{functionaryNum}
+			, administrator_name = #{adminName}
+	</update>	
 	
 </mapper>

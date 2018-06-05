@@ -1,15 +1,12 @@
 package kr.or.nationRental.administrator.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Repository
 public class AdministratorDao {
@@ -33,5 +30,16 @@ public class AdministratorDao {
 	public List<AdministratorDto> selectListAdministrator() {
 		return sqlSession.selectList(NS+"selectListAdministrator");
 	}
+	
+	//관리자 정보 수정화면 불러오기
+	public AdministratorDto updateAdministratorForm(AdministratorDto administratorDto){
+		return sqlSession.selectOne(NS+"updateAdministratorForm", administratorDto);
+	}
+	
+	//관리자 정보 수정하기
+	public int updateAdministrator(AdministratorDto administratorDto) { 
+		return sqlSession.update(NS+"updateAdministrator", administratorDto);
+	}
+	
 	
 }	

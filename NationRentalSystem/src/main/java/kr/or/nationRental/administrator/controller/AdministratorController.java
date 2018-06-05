@@ -1,7 +1,6 @@
 package kr.or.nationRental.administrator.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,19 +11,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.administrator.service.AdministratorService;
 import kr.or.nationRental.administrator.service.InjeungDto;
 import kr.or.nationRental.administrator.service.InjeungService;
-import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 
 @Controller
 public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
+	@Autowired
+	private AdministratorDto administratorDto;
 	
 	@Autowired
 	private InjeungService injeungService;
@@ -55,7 +54,7 @@ public class AdministratorController {
 	public String insertAdministrator(AdministratorDto administratordDto) {
 		logger.info("---insertAdministrator POST");
 		administratorService.insertAdministrator(administratordDto);
-		return "redirect:/selectListAdministrator";
+		return "redirect:/selectListAdministrator";  // 나중엔 관리자 메인페이지로 이동시키자.
 	}
 	
 	//관리자 계정 목록
@@ -66,4 +65,22 @@ public class AdministratorController {
 		return "adminstrator/selectListAdmin";
 	}
 	
+	//관리자 정보 수정화면 불러오기 GET
+	//계획 : 내정보수정 버튼을 누르면 수정하기 버튼이 있는 화면으로 이동시킨다.
+	@RequestMapping(value = "/updateAdministrator", method = RequestMethod.GET)
+	public String updateAdministrator(AdministratorDto administratorDto, Model model) {
+		logger.info("---updateAdministrator GET" + administratorDto);
+		AdministratorDto administratorUpdate = administratorService.updateAdministratorForm(administratorDto);		
+		model.addAttribute("administratorUpdate", administratorUpdate);
+		return "adminstrator/updateAdministratorForm";  
+	}  
+	
+	//관리자 정보 수정하기 POST
+	//계획 : 수정이 완료되면  수정하기 버튼이 있는 화면으로 이동시킨다.
+	@RequestMapping(value = "/updateAdministrator", method = RequestMethod.POST)
+	public String updateAdministrator(AdministratorDto administratorDto) {
+		logger.info("---updateAdministrator POST" + administratorDto);
+		int row = administratorService.updateAdministrator(administratorDto);
+		return "redirect:/selectListAdministrator";  // 나중에 경로 바꾸기
+	} 
 }
