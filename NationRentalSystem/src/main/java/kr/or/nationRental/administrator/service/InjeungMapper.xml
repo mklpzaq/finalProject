@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="kr.or.nationRental.administrator.service.InjeungMapper">
-
+	
+	<!-- 관리자 인증 -->
 	<select id="selectInjeung"
 			parameterType="kr.or.nationRental.administrator.service.InjeungDto"
 			resultType="kr.or.nationRental.administrator.service.InjeungDto">

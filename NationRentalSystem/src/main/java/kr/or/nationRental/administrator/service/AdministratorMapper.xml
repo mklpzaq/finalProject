@@ -5,9 +5,8 @@
  
 <mapper namespace="kr.or.nationRental.administrator.service.AdministratorMapper">
 	
-	<!-- 회원입력 -->
+	<!-- 관리자 등록 -->
 	<insert id="insertAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
-	
 		INSERT INTO administrator
 			(administrator_id
 			, administrator_pw
@@ -23,5 +22,17 @@
 			, #{adminName}	
 			, NOW())		
 	</insert>
+	
+	<!-- 관리자 계정 목록 -->
+	<select id="selectListAdministrator" resultType="kr.or.nationRental.administrator.service.AdministratorDto">
+		SELECT
+			administrator_id as adminId
+			, administrator_pw as adminPw
+			, functionary_num as functionaryNum
+			, administrator_phone as adminPhone
+			, administrator_name as adminName
+			, administrator_date_join as adminDateJoin
+		FROM administrator	
+	</select>
 	
 </mapper>
