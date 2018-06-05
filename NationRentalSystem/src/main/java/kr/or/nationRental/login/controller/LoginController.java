@@ -30,7 +30,7 @@ public class LoginController {
 	 *  */
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String getLogin(MemberDto memberDto) {
-		
+		logger.debug("POST getLogin LoginController");
 		
 		
 		
