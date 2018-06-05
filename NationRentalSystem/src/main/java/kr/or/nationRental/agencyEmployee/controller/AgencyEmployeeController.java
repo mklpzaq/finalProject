@@ -20,12 +20,12 @@ public class AgencyEmployeeController {
 	
 	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.GET)
 	public String insertEmployee() {
-		return "/employee/insertEmployeeForm";
+		return "/agencyEmployee/insertAgencyEmployeeForm";
 	}
 	
 	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.POST)
 	public String insertEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		
-		return "/employee/insertEmployeeForm";
+		return "redirect:/";
 	}
 }

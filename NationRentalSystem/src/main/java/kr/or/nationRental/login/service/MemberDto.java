@@ -1,6 +1,6 @@
 package kr.or.nationRental.login.service;
 
-public class LoginDto {
+public class MemberDto {
 	private String memberId;
 	private String memberPw;
 	private String memberLevel;

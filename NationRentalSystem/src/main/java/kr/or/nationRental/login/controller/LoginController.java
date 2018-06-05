@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.nationRental.agencyEmployee.controller.AgencyEmployeeController;
 import kr.or.nationRental.login.service.LoginService;
+import kr.or.nationRental.login.service.MemberDto;
 
 @Controller
 public class LoginController {
@@ -18,12 +20,38 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String insertAgencyEmployee() {
-		/*
-		 * 시민, 관리자, 직원, 공무원 가입되어있는 상태에서 진행
-		 * */
+	public String getLogin() {
+		return "login/loginForm";
+	}
+	
+	/* 
+	 * 회원(citizen, agencyEmployee, Adminstrator, Functionary를 Member로 정의한다.)에 공통된
+	 * ID, PW정보를 MemberDto로 넘겨받는다.
+	 *  */
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String getLogin(MemberDto memberDto) {
 		
 		
-		return "redirect:/";
+		
+		
+		return "";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

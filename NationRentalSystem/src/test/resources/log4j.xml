@@ -10,31 +10,38 @@
 		</layout>
 	</appender>
 	
+	<appender name="consoleTwo" class="org.apache.log4j.ConsoleAppender">
+		<param name="TargetTwo" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="=============================\n\n===> %-5p: %c - %m%n\n=============================\n" />
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="kr.or.nationRental">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="info" />
+		<level value="debug" />
 	</logger>	
 	
 	<logger name="org.springframework.beans">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	
