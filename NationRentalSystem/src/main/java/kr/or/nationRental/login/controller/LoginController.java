@@ -1,6 +1,8 @@
 package kr.or.nationRental.login.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +31,14 @@ public class LoginController {
 	 * ID, PW정보를 MemberDto로 넘겨받는다.
 	 *  */
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String getLogin(MemberDto memberDto) {
+	public String getLogin(MemberDto memberDto
+							,HttpSession session) {
 		logger.debug("POST getLogin LoginController");
 		logger.debug(memberDto.toString());
 		
-		loginService.login(memberDto);
+		loginService.login(memberDto, session);
 		
-		return "";
+		return "redirect:/";
 	}
 }
 

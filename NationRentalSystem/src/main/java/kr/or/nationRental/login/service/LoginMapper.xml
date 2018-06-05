@@ -4,25 +4,109 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="kr.or.nationRental.login.service.LoginMapper">
+
+	<select id="loginCheckAdministrator"
+			parameterType="kr.or.nationRental.login.service.MemberDto">
+		SELECT
+			*
+		FROM
+			administrator
+		WHERE
+			administrator_id = #{memberId} and administrator_pw = #{memberPw}
+			
+	</select>
 	
+	<select id="selectOneAdministratorById"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="kr.or.nationRental.login.service.MemberDto">
+		SELECT
+			administrator_id AS memberId
+			,administrator_pw AS memberPw
+			,administrator_name AS memberName
+			,administrator_phone AS memberPhone
+		FROM
+			administrator
+		WHERE
+			administrator_id = #{memberId} and administrator_pw = #{memberPw}
+	</select>
 	
-	<select id="loginCheck"
-			parameterType="kr.or.nationRental.login.service.MemberDto.java"
+	<select id="loginCheckCitizen"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
+		SELECT
+			*
+		FROM
+			citizen
+		WHERE
+			citizen_id = ${memberId} and citizen_pw = #{memberPw}	
+	</select>
+	
+	<select id="selectOneCitizenById"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="kr.or.nationRental.login.service.MemberDto">
+		SELECT
+			citizen_id AS memberId
+			,citizen_pw AS memberPw
+			,citizen_name AS memberName
+			,citizen_phone AS memberPhone
+		FROM
+			citizen
+		WHERE
+			citizen_id = #{memberId} and citizen_pw = #{memberPw}
+	</select>
+	
+	<select id="loginCheckAgencyEmployee"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
 			resultType="Integer">
 			
-		INSERT INTO administrator(
-			administrator_id
-			, administrator_pw
-			, administrator_name
-			, functionary_num
-			, administrator_phone	
-		) VALUES (
-			#{adminId}
-			, #{adminPw}
-			, #{adminName}
-			, #{functionaryNum}
-			, #{adminPhone}	
-		)		
+		SELECT
+			*
+		FROM
+			agency_employee
+		WHERE
+			agency_employee_id = ${memberId} and agency_employee_pw = #{memberPw}	
 	</select>
+	
+	<select id="selectOneAgencyEmployeeById"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="kr.or.nationRental.login.service.MemberDto">
+		SELECT
+			agency_employee_id AS memberId
+			,agency_employee_pw AS memberPw
+			,agency_employee_name AS memberName
+			,agency_employee_phone AS memberPhone
+		FROM
+			agency_employee
+		WHERE
+			agency_employee_id = #{memberId} and agency_employee_pw = #{memberPw}
+	</select>
+	
+	<select id="loginCheckFunctionary"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
+			
+		SELECT
+			*
+		FROM
+			functionary
+		WHERE
+			functionary_id = ${memberId} and functionary_pw = #{memberPw}
+	</select>
+	
+	<select id="selectOneFunctionaryById"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="kr.or.nationRental.login.service.MemberDto">
+		SELECT
+			functionary_id AS memberId
+			,functionary_pw AS memberPw
+			,functionary_name AS memberName
+			,functionary_phone AS memberPhone
+		FROM
+			functionary
+		WHERE
+			functionary_id = #{memberId} and functionary_pw = #{memberPw}
+	</select>
+	
+	
 	
 </mapper>
