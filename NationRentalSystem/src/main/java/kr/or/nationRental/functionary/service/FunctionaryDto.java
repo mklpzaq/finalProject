@@ -1,7 +1,7 @@
 package kr.or.nationRental.functionary.service;
 import java.sql.Date;
 
-public class Functionary {
+public class FunctionaryDto {
 	private String functionaryId; //공무원가입 아이디
 	private int adminagencyCode; //공무원등록 행정구역코드
 	private String adminagencyName; //공무원등록 행정구역명

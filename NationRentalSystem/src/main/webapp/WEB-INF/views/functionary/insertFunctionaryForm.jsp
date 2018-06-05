@@ -37,68 +37,68 @@
 				  var funtionaryForm = true;
 					  
 		          //아이디 입력여부 검사
-		          if ($("#id").val() == "") {
+		          if ($("#functionaryId").val() == "") {
 		              alert("아이디를 입력하지 않았습니다.");
-		              $("#id").focus();		               
+		              $("#functionaryId").focus();		               
 		              funtionaryForm = false;
 		              return
 		          }
 		          
-		          if ($("#id").val().indexOf(" ") > 0) {
+		          if ($("#functionaryId").val().indexOf(" ") > 0) {
 		              alert("아이디에 공백이 들어갈 수 없습니다.");
-		              $("#id").focus();
-		              $("#id").select();
+		              $("#functionaryId").focus();
+		              $("#functionaryId").select();
 		              funtionaryForm = false;
 		              return
 		          }
 		          
-		          for (i = 0; i < $("#id").val().length; i++) {    
-		              ch = $("#id").val().charAt(i) //지정한 인덱스에 해당하는 문자열의 값을 리턴
+		          for (i = 0; i < $("#functionaryId").val().length; i++) {    
+		              ch = $("#functionaryId").val().charAt(i) //지정한 인덱스에 해당하는 문자열의 값을 리턴
 		              if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
 		                  alert("아이디는 대소문자, 숫자만 입력가능합니다."); 	//!(ch >= '0' && ch <= '9') ch가 0~9사이에 있으면 거짓 없으면 참
-		                  $("#id").val().focus();					//!(ch >= 'a' && ch <= 'z') ch가 a~z사이에 있으면 거짓 없으면 참
-		                  $("#id").val().select();					//!(ch >= 'A' && ch <= 'Z') ch가 A~Z사이에 있으면 거짓 없으면 참
+		                  $("#functionaryId").val().focus();					//!(ch >= 'a' && ch <= 'z') ch가 a~z사이에 있으면 거짓 없으면 참
+		                  $("#functionaryId").val().select();					//!(ch >= 'A' && ch <= 'Z') ch가 A~Z사이에 있으면 거짓 없으면 참
 		                  funtionaryForm = false;
 			              return								//참참참이면 alert("아이디는 대소문자, 숫자만 입력가능합니다.")	실행
 		              }												//하나라도 거짓이면 즉, 안에 조건이 참이면 no실행
 				  }
 		          
-		          if ($("#id").val().length<8 || $("#id").val().length>16) {
+		          if ($("#functionaryId").val().length<8 || $("#functionaryId").val().length>16) {
 		              alert("아이디를 8~16자까지 입력해주세요.");
-		              $("#id").focus();
-		              $("#id").val().select();
+		              $("#functionaryId").focus();
+		              $("#functionaryId").val().select();
 		              funtionaryForm = false;
 		              return
 		          }
 		          
-		          if ($("#Password1").val() == $("#id").val()) {
+		          if ($("#functionaryPw").val() == $("#functionaryId").val()) {
 		              alert("아이디와 비밀번호가 같습니다.");
-		              $("#Password1").focus();
+		              $("#functionaryPw").focus();
 		              funtionaryForm = false;
 		              return
 		          }
 		          
-		          if ($("#Password1").val() == "") {
+		          if ($("#functionaryPw").val() == "") {
 		              alert("비밀번호를 입력하지 않았습니다.");
-		              $("#Password1").focus();
+		              $("#functionaryPw").focus();
 		              funtionaryForm = false;
 		              return
 		          }
 		          
 		          //비밀번호 길이 체크(4~8자 까지 허용)
-		          if ($("#Password1").val().length<4 || $("#Password1").val().length>12) {
+		          if ($("#functionaryPw").val().length<4 || $("#functionaryPw").val().length>12) {
 		              alert("비밀번호를 4~12자까지 입력해주세요.");
-		              $("#Password1").focus();
-		              $("#Password1").select();
+		              $("#functionaryPw").focus();
+		              $("#functionaryPw").select();
 		              funtionaryForm = false;
 		              return
 		          }
 		   
 		          //비밀번호와 비밀번호 확인 일치여부 체크
-		          if ($("#Password1").val() != $("#Password2").val()) {
+		          if ($("#functionaryPw").val() != $("#functionaryPw2").val()) {
 		              alert("비밀번호가 일치하지 않습니다");
-		              $("#Password1") = ""
-		              $("#Password1").focus();
+		              $("#functionaryPw") = ""
+		              $("#functionaryPw").focus();
 		              funtionaryForm = false;
 		              return
 		          }
@@ -209,20 +209,20 @@
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">아이디</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="id" placeholder="아이디">							
+							<input type="text" class="form-control" id="functionaryId" name="functionaryId" placeholder="아이디">							
 						</div>
 						<div><button class="form-control" id="idcheck" value="아이디체크"></button></div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="Password1" placeholder="비밀번호">
+							<input type="password" class="form-control" id="functionaryPw" name="functionaryPw" placeholder="비밀번호">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="Password2" placeholder="비밀번호 확인">
+							<input type="password" class="form-control" id="functionaryPw2" name="functionaryPw2" placeholder="비밀번호 확인">
 						</div>
 					</div>
 					<div class="form-group">
