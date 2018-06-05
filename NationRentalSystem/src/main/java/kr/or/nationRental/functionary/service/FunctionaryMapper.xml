@@ -26,5 +26,18 @@
 					,NOW())
 		
 	</insert>
+	
+	<select id="selectListFunctionary" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+		SELECT
+				functionary_id as functionaryId
+				,adminagency_code as adminagencyCode
+				,functionary_num as functionaryNum
+				,functionary_pw as functionaryPw
+				,functionary_name as functionaryName
+				,functionary_phone as functionaryPhone
+				,functionary_email as functionaryEmail
+				,functionary_date_join as functionaryDateJoin
+			FROM functionary	
+	</select>
 </mapper>
 	

@@ -228,31 +228,31 @@
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">행정기관명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="adminagencyCode" placeholder="행정기관명">
+							<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="행정기관명">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">공무원번호</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="functionaryNum" placeholder="공무원번호">
+							<input type="text" class="form-control" id="functionaryNum" name="functionaryNum" placeholder="공무원번호">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">이름</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="functionaryName" placeholder="이름">
+							<input type="text" class="form-control" id="functionaryName" name="functionaryName" placeholder="이름">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">연락처</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="functionaryPhone" placeholder="연락처">
+							<input type="text" class="form-control" id="functionaryPhone" name="functionaryPhone" placeholder="연락처">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">이메일</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="functionaryEmail" placeholder="이메일">
+							<input type="email" class="form-control" id="functionaryEmail" name="functionaryEmail" placeholder="이메일">
 						</div>
 					</div>
 				
@@ -267,7 +267,7 @@
 					</div> -->
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" id="btn" class="btn btn-default">Sign in</button>
+							<button type="button" id="btn" class="btn btn-default">Sign in</button>
 						</div>
 					</div>
 				</form>
