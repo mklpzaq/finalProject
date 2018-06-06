@@ -10,7 +10,7 @@
 	</head>
 	<body>
 	
-		<div style="background-color:#E4F7BA;" class="container-fluid">
+		<div style="padding:0 0 15px 0;" class="container-fluid">
 			<div class="row">
 				<div class="col-sm-1"> </div>
 				<div class="col-sm-10">

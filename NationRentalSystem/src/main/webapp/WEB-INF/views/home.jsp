@@ -8,8 +8,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<jsp:include page="./module/top/mainHeader.jsp"/>
 		<jsp:include page="./module/top/navbar.jsp"/>
+		<jsp:include page="./module/top/mainHeader.jsp"/>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">

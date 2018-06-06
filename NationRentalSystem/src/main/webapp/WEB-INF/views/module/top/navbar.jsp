@@ -6,19 +6,23 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<title>navbar</title>
+		<script>
+			$(document).ready(function(){
+				$('#navbarDiv').height($('#navbar').height());
+				
+			});
+		</script>
 	</head>
 	<body>
-		
-		
-		
-		<!-- navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 50px만큼 가려지는것 해결하기 위해 div에 50px를 추가하였다. -->
-		<!-- <div style="height:50px;"></div> -->
+		<!-- navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 navbar height만큼 가려지는것 해결하기 위해 div에 navbar height만큼의 높이를 추가한다. -->
+		<div id="navbarDiv"></div>
 		<!--  navbar-fixed-top -->
-		<nav style="background-color:#005EAA;" class="navbar navbar navbar-default">
+		<nav id="navbar" style="background-color:#005EAA; margin:0;" class="navbar navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-2"> </div>
-					<div class="col-sm-8">
+					<!-- <div class="col-sm-2"> </div> -->
+					<div class="col-sm-12">
 						<!-- Begin Content -->
 			
 						<div class="navbar-header">
@@ -30,9 +34,10 @@
 									<!-- <span class="sr-only">(current)</span> -->
 									<a style="color:#FFFFFF" href="#">대여/예약</a>
 								</li>
-								<li class="">
-									<a style="color:#FFFFFF" href="#">게시판</a>
-								</li>
+								<li><a style="color:#FFFFFF" href="#">게시판</a></li>
+								<li><a style="color:#FFFFFF" href="#">통계</a></li>
+								<li><a style="color:#FFFFFF" href="#">시설정기점검 조회</a></li>
+								<li><a style="color:#FFFFFF" href="#">기부리스트 조회</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li>
@@ -66,28 +71,91 @@
 								</c:choose>
 							</ul>
 						</div>
-						<hr style="margin:0 0 5px 0;"/>
-						
-						<!-- 권한별 메뉴 -->
-						<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-							<ul class="nav navbar-nav">
-								<!-- 관리자 메뉴 -->
-								<li class="">
-									<!-- <span class="sr-only">(current)</span> -->
-									<a style="color:#FFFFFF" href="#">관리자 회원관리</a>
-								</li>
-								<li><a style="color:#FFFFFF" href="#">행정구역 등록</a></li>
-								<li><a style="color:#FFFFFF" href="#">지자체 기관 등록</a></li>
-								<li><a style="color:#FFFFFF" href="#">시설/물품 카테고리 등록</a></li>
-								<li><a style="color:#FFFFFF" href="#">업종분류코드 등록</a></li>
-								<li><a style="color:#FFFFFF" href="#">시민계정 조회</a></li>
-							</ul>
+					
+						<!-- Begin 권한별 메뉴 -->
+						<c:choose>
+							<c:when test="${member.memberLevel == '관리자'}">
+								<hr style="margin:0 0 5px 0;"/>
+								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+									<ul class="nav navbar-nav">
+										<!-- 관리자 메뉴 -->
+										<li><a style="color:#FFFFFF" href="#">관리자 회원관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">행정구역 등록</a></li>
+										<li><a style="color:#FFFFFF" href="#">지자체 기관 등록</a></li>
+										<li><a style="color:#FFFFFF" href="#">시설/물품 카테고리 등록</a></li>
+										<li><a style="color:#FFFFFF" href="#">업종분류코드 등록</a></li>
+										<li><a style="color:#FFFFFF" href="#">시민계정 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>
+										<li><a style="color:#FFFFFF" href="#">연회비/패키지</a></li>
+										<li><a style="color:#FFFFFF" href="#">상벌관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">대여금지 설정</a></li>
+									</ul>
+								</div>
+							</c:when>
+							<c:when test="${member.memberLevel == '공무원'}">
+								<hr style="margin:0 0 5px 0;"/>
+								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+									<ul class="nav navbar-nav">
+										<li><a style="color:#FFFFFF" href="#">공무원 회원관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
+										<li><a style="color:#FFFFFF" href="#">대행업체 관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">대행업체 직원조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">기부관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">물품/시설 관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
+										<li><a style="color:#FFFFFF" href="#">시민 결제/취소 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">물품 반납</a></li>
+										<li><a style="color:#FFFFFF" href="#">통합 AS 의뢰</a></li>
+										<li><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
+										<li><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li>
+										<li><a style="color:#FFFFFF" href="#">연회비/패키지 등록</a></li>
+										<li><a style="color:#FFFFFF" href="#">상벌관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">대여금지</a></li>
+									</ul>
+								</div>
+							</c:when>
+							<c:when test="${member.memberLevel == '직원'}">
+								<hr style="margin:0 0 5px 0;"/>
+								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+									<ul class="nav navbar-nav">
+										<li><a style="color:#FFFFFF" href="#">직원 회원관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">계약한 지자체 공무원 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">소속업체 낙찰정보 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">미수락 의뢰 리스트</a></li>
+										<li><a style="color:#FFFFFF" href="#">수락 의뢰 리스트</a></li>
+										<li><a style="color:#FFFFFF" href="#">의뢰 처리 현황 작성</a></li>
+										<li><a style="color:#FFFFFF" href="#">의뢰 처리 현황 작성</a></li>
+										<li><a style="color:#FFFFFF" href="#">의뢰 처리 완료 리스트</a></li>
+									</ul>
+								</div>
+							</c:when>
+							<c:when test="${member.memberLevel == '시민'}">
+								<hr style="margin:0 0 5px 0;"/>
+								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+									<ul class="nav navbar-nav">
+										<li><a style="color:#FFFFFF" href="#">시민 회원관리</a></li>
+										<li><a style="color:#FFFFFF" href="#">기부신청 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">대여/예약 취소 </a></li>
+										<li><a style="color:#FFFFFF" href="#">대여/예약 신청/취소 리스트</a></li>
+										<li><a style="color:#FFFFFF" href="#">예약 리스트</a></li>
+										<li><a style="color:#FFFFFF" href="#">대여 리스트</a></li>
+										<li><a style="color:#FFFFFF" href="#">반납 리스트</a></li>
+										<li><a style="color:#FFFFFF" href="#">반납 신청</a></li>
+										<li><a style="color:#FFFFFF" href="#">운송장 정보 확인</a></li>
+										<li><a style="color:#FFFFFF" href="#">연회비/패키지</a></li>
+										<li><a style="color:#FFFFFF" href="#">포인트 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">배상청구 기록 조회</a></li>
+									</ul>
+								</div>
+							</c:when>
 							
-						</div>
+							
+						</c:choose>
+						<!-- End 권한별 메뉴 -->
 			
 						<!-- End Content -->
 					</div>
-					<div class="col-sm-2"></div>
+					<!-- <div class="col-sm-2"></div> -->
 				</div>
 			</div>
 			
