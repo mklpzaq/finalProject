@@ -13,16 +13,18 @@ public class LoginDao {
 	private static final Logger logger = LoggerFactory.getLogger(LoginDao.class);
 	final String NS = "kr.or.nationRental.login.service.LoginMapper.";
 	
-	public int loginCheckAdminstrator(MemberDto memberDto) {
-		logger.debug("loginCheckAdminstrator LoginDao");
+	public int loginCheckAdministrator(MemberDto memberDto) {
+		logger.debug("loginCheckAdministrator LoginDao");
 		int result = sqlSession.selectOne(NS+"loginCheckAdministrator", memberDto);
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★");
+		
 		return result;
 	}
 	
-	public void selectOneAdministratorById(MemberDto memberDto) {
+	public MemberDto selectOneAdministratorById(MemberDto memberDto) {
 		logger.debug("selectOneAdministratorById LoginDao");
-		sqlSession.selectOne(NS+"selectOneAdministratorById", memberDto);
+		memberDto =  sqlSession.selectOne(NS+"selectOneAdministratorById", memberDto);
+		logger.debug(memberDto.toString());
+		return memberDto;
 	}
 	
 	public int loginCheckCitizen(MemberDto memberDto) {
@@ -32,9 +34,11 @@ public class LoginDao {
 		return result;
 	}
 	
-	public void selectOneCitizenById(MemberDto memberDto) {
+	public MemberDto selectOneCitizenById(MemberDto memberDto) {
 		logger.debug("selectOneCitizenById LoginDao");
-		sqlSession.selectOne(NS+"selectOneCitizenById", memberDto);
+		memberDto = sqlSession.selectOne(NS+"selectOneCitizenById", memberDto);
+		logger.debug(memberDto.toString());
+		return memberDto;
 	}
 	
 	public int loginCheckAgencyEmployee(MemberDto memberDto) {
@@ -44,9 +48,11 @@ public class LoginDao {
 		return result;
 	}
 	
-	public void selectOneAgencyEmployeeById(MemberDto memberDto) {
+	public MemberDto selectOneAgencyEmployeeById(MemberDto memberDto) {
 		logger.debug("selectOneAgencyEmployeeById LoginDao");
-		sqlSession.selectOne(NS+"selectOneAgencyEmployeeById", memberDto);
+		memberDto = sqlSession.selectOne(NS+"selectOneAgencyEmployeeById", memberDto);
+		logger.debug(memberDto.toString());
+		return memberDto;
 	}
 	
 	public int loginCheckFunctionary(MemberDto memberDto) {
@@ -56,8 +62,10 @@ public class LoginDao {
 		return result;
 	}
 	
-	public void selectOneFunctionaryById(MemberDto memberDto) {
+	public MemberDto selectOneFunctionaryById(MemberDto memberDto) {
 		logger.debug("selectOneFunctionaryById LoginDao");
-		sqlSession.selectOne(NS+"selectOneFunctionaryById", memberDto);
+		memberDto = sqlSession.selectOne(NS+"selectOneFunctionaryById", memberDto);
+		logger.debug(memberDto.toString());
+		return memberDto;
 	}
 }

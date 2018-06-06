@@ -5,7 +5,7 @@ public class MemberDto {
 	private String memberPw;
 	private String memberLevel;
 	private String memberName;
-	private String memberPhone;
+	private int memberPhone;
 	
 	public String getMemberId() {
 		return memberId;
@@ -31,16 +31,17 @@ public class MemberDto {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberPhone() {
+	public int getMemberPhone() {
 		return memberPhone;
 	}
-	public void setMemberPhone(String memberPhone) {
+	public void setMemberPhone(int memberPhone) {
 		this.memberPhone = memberPhone;
 	}
-	
 	@Override
 	public String toString() {
-		return "LoginDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberLevel=" + memberLevel
+		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberLevel=" + memberLevel
 				+ ", memberName=" + memberName + ", memberPhone=" + memberPhone + "]";
 	}
+	
+	
 }

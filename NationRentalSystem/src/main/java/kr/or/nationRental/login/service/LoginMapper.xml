@@ -6,13 +6,16 @@
 <mapper namespace="kr.or.nationRental.login.service.LoginMapper">
 
 	<select id="loginCheckAdministrator"
-			parameterType="kr.or.nationRental.login.service.MemberDto">
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
 		SELECT
-			*
+			COUNT(*)
 		FROM
 			administrator
 		WHERE
-			administrator_id = #{memberId} and administrator_pw = #{memberPw}
+			administrator_id = #{memberId}
+			AND
+			administrator_pw = #{memberPw}
 			
 	</select>
 	
@@ -27,18 +30,22 @@
 		FROM
 			administrator
 		WHERE
-			administrator_id = #{memberId} and administrator_pw = #{memberPw}
+			administrator_id = #{memberId}
+			AND
+			administrator_pw = #{memberPw}
 	</select>
 	
 	<select id="loginCheckCitizen"
 			parameterType="kr.or.nationRental.login.service.MemberDto"
 			resultType="Integer">
 		SELECT
-			*
+			COUNT(*)
 		FROM
 			citizen
 		WHERE
-			citizen_id = ${memberId} and citizen_pw = #{memberPw}	
+			citizen_id = #{memberId}
+			AND
+			citizen_pw = #{memberPw}	
 	</select>
 	
 	<select id="selectOneCitizenById"
@@ -52,7 +59,9 @@
 		FROM
 			citizen
 		WHERE
-			citizen_id = #{memberId} and citizen_pw = #{memberPw}
+			citizen_id = #{memberId}
+			AND
+			citizen_pw = #{memberPw}
 	</select>
 	
 	<select id="loginCheckAgencyEmployee"
@@ -60,11 +69,13 @@
 			resultType="Integer">
 			
 		SELECT
-			*
+			COUNT(*)
 		FROM
 			agency_employee
 		WHERE
-			agency_employee_id = ${memberId} and agency_employee_pw = #{memberPw}	
+			agency_employee_id = #{memberId}
+			AND
+			agency_employee_pw = #{memberPw}	
 	</select>
 	
 	<select id="selectOneAgencyEmployeeById"
@@ -78,7 +89,9 @@
 		FROM
 			agency_employee
 		WHERE
-			agency_employee_id = #{memberId} and agency_employee_pw = #{memberPw}
+			agency_employee_id = #{memberId}
+			AND
+			agency_employee_pw = #{memberPw}
 	</select>
 	
 	<select id="loginCheckFunctionary"
@@ -86,11 +99,13 @@
 			resultType="Integer">
 			
 		SELECT
-			*
+			COUNT(*)
 		FROM
 			functionary
 		WHERE
-			functionary_id = ${memberId} and functionary_pw = #{memberPw}
+			functionary_id = #{memberId}
+			AND
+			functionary_pw = #{memberPw}
 	</select>
 	
 	<select id="selectOneFunctionaryById"
@@ -104,7 +119,9 @@
 		FROM
 			functionary
 		WHERE
-			functionary_id = #{memberId} and functionary_pw = #{memberPw}
+			functionary_id = #{memberId}
+			AND
+			functionary_pw = #{memberPw}
 	</select>
 	
 	

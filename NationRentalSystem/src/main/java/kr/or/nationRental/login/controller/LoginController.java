@@ -23,6 +23,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String getLogin() {
+		
 		return "login/loginForm";
 	}
 	
@@ -35,11 +36,19 @@ public class LoginController {
 							,HttpSession session) {
 		logger.debug("POST getLogin LoginController");
 		logger.debug(memberDto.toString());
-		
 		loginService.login(memberDto, session);
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String getLogout(HttpSession session) {
+		logger.debug("GET getLogout LoginController");
+		loginService.logout(session);
+		
+		return "redirect:/";
+	}
+	
 }
 
 
