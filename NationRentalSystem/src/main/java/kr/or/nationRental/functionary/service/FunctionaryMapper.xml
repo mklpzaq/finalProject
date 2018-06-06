@@ -25,9 +25,25 @@
 					,#{functionaryEmail} 
 					,NOW())
 		
-	</insert>
+	</insert>	
 	
-	<select id="selectListFunctionary" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+	<select id="totalCountFunctionary"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+		COUNT(*)
+			FROM functionary
+		<!-- <choose>	      
+	        <when test="searchOption == 'all'">    
+	        	and resume like CONCAT('%', '#{keyword}','%')	        	           
+	        </when>
+	        <otherwise>
+	        	and #{searchOption} like CONCAT('%','#{keyword}','%')	             
+	        </otherwise>
+	    </choose> -->
+	</select>
+	
+	<select id="selectListFunctionary" parameterType="java.util.Map"  resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 		SELECT
 				functionary_id as functionaryId
 				,adminagency_code as adminagencyCode
@@ -37,7 +53,21 @@
 				,functionary_phone as functionaryPhone
 				,functionary_email as functionaryEmail
 				,functionary_date_join as functionaryDateJoin
-			FROM functionary	
+			FROM functionary
+			
+		
+			<!-- <choose>	      
+		        <when test="searchOption == 'all'">    
+		        	and resume_title like CONCAT('%', '#{keyword}', '%')
+		        	or resume_content like CONCAT('%', '#{keyword}', '%')       	           
+		        </when>
+		        <otherwise>
+		        	and #{searchOption} like CONCAT('%', '#{keyword}', '%')	             
+		        </otherwise>
+	    	</choose> -->
+		
+		ORDER BY functionary_date_join DESC
+		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
 </mapper>
 	

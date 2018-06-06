@@ -1,6 +1,7 @@
 package kr.or.nationRental.functionary.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,7 +39,7 @@ public class FunctionaryController {
 	
 	@RequestMapping(value="/insertFunctionary", method=RequestMethod.POST)
 	public String insertFunctionary(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryController - insertFunctionary : " + functionaryDto.toString());
+		logger.debug("FunctionaryController - insertFunctionary - functionaryDto : " + functionaryDto.toString());
 		
 		functionaryService.insertFunctionary(functionaryDto);
 		
@@ -50,11 +51,23 @@ public class FunctionaryController {
 										,HttpSession session
 										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-										,@RequestParam(value="searchSelect", defaultValue="articleId") String searchSelect
-										,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
+										,@RequestParam(value="searchOption", defaultValue="articleId") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
+						logger.debug("FunctionaryController - selectListFunctionary - currentPage : " + currentPage);
+						logger.debug("FunctionaryController - selectListFunctionary - pagePerRow  : " + pagePerRow);
+						logger.debug("FunctionaryController - selectListFunctionary - searchSelect  : " + searchOption);
+						logger.debug("FunctionaryController - selectListFunctionary - searchWord  : " + keyword);
+						
+						Map<String, Object> map = functionaryService.selectListFunctionary(currentPage, pagePerRow, searchOption, keyword);
+						model.addAttribute("list", map.get("list"));
+						model.addAttribute("lastPage", map.get("lastPage"));
+						model.addAttribute("currentPage", currentPage);
+						model.addAttribute("startPage", map.get("startPage"));
+						model.addAttribute("endPage", map.get("endPage"));
+						/*model.addAttribute("pagePerRow", pagePerRow);
+						model.addAttribute("searchOption", searchOption);
+						model.addAttribute("keyword", keyword);*/
 		
-		List<FunctionaryDto> functionaryDtoList = functionaryService.selectListFunctionary();
-		model.addAttribute("functionaryDtoList", functionaryDtoList);
 		return "/functionary/selectListFunctionary";
 	}
 }

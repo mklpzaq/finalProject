@@ -90,8 +90,8 @@
 									</div>
 								</div>
 								<hr/>
-								
-								<!-- Begin Search -->
+								<!-- 어렵게 되어있다 -->
+								<%-- <!-- Begin Search -->
 								<div class="row">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
@@ -102,9 +102,8 @@
 													<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-													<li><a href="#">articleId</a></li>
-													<li><a href="#">articleTitle</a></li>
-													<li><a href="#">articleContent</a></li>
+													<li><a href="${pageContext.request.contextPath}/resumeList?">공무원명</a></li>
+													<li><a href="${pageContext.request.contextPath}/resumeList?">행정기관명</a></li>
 												</ul>
 											</div>
 											<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -116,7 +115,7 @@
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
-								<!-- End Search -->
+								<!-- End Search --> --%>
 								
 								<table class="table table-striped">
 									<thead>
@@ -128,7 +127,7 @@
 										</tr>
 									</thead>
 									<tbody>									
-											<c:forEach var="functionaryDto" items="${functionaryDtoList}">
+											<c:forEach var="functionaryDto" items="${list}">
 												<tbody>
 													<tr>
 														<th>${functionaryDto.functionaryName}</th>
