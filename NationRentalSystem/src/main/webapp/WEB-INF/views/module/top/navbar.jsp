@@ -16,6 +16,7 @@
 	</head>
 	<body>
 		<!-- navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 navbar height만큼 가려지는것 해결하기 위해 div에 navbar height만큼의 높이를 추가한다. -->
+		
 		<div id="navbarDiv"></div>
 		<!--  navbar-fixed-top -->
 		<nav id="navbar" style="background-color:#005EAA; margin:0;" class="navbar navbar navbar-default navbar-fixed-top">
@@ -32,7 +33,7 @@
 							<ul class="nav navbar-nav">
 								<li class="">
 									<!-- <span class="sr-only">(current)</span> -->
-									<a style="color:#FFFFFF" href="#">대여/예약</a>
+									<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getGoodsFacilityList">대여 시설/물품</a>
 								</li>
 								<li><a style="color:#FFFFFF" href="#">게시판</a></li>
 								<li><a style="color:#FFFFFF" href="#">통계</a></li>
