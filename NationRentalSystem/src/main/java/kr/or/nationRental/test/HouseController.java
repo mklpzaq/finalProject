@@ -9,17 +9,18 @@ import java.util.Map;
 
 
 
-import org.jsoup.Jsoup;
+/*import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.jsoup.select.Elements;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 
 
@@ -41,7 +42,7 @@ public class HouseController {
 	 @RequestMapping(value = "/zipcode/list", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	    public @ResponseBody String list(@ModelAttribute HouseCodeSearch searchTO) throws Exception {
 	         
-		 	System.out.println("==============================");
+		 /*	System.out.println("==============================");
 	        Map<String, Object> paramMap = new HashMap<String, Object>();
 	         
 	        // 요청 URL 생성
@@ -94,6 +95,8 @@ public class HouseController {
 	        }
 	         
 	        return (new Gson()).toJson(paramMap);
+	        */
+		 	return "";
 	    }
 	 
 	 
