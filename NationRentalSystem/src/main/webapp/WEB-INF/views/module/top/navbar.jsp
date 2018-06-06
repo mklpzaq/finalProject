@@ -27,10 +27,11 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li class="">
-									<a style="color:#FFFFFF" href="#">Link <span class="sr-only">(current)</span></a>
+									<!-- <span class="sr-only">(current)</span> -->
+									<a style="color:#FFFFFF" href="#">대여/예약</a>
 								</li>
 								<li class="">
-									<a style="color:#FFFFFF" href="#">쇼핑하기</a>
+									<a style="color:#FFFFFF" href="#">게시판</a>
 								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
@@ -64,6 +65,24 @@
 									</c:otherwise>
 								</c:choose>
 							</ul>
+						</div>
+						<hr style="margin:0 0 5px 0;"/>
+						
+						<!-- 권한별 메뉴 -->
+						<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+							<ul class="nav navbar-nav">
+								<!-- 관리자 메뉴 -->
+								<li class="">
+									<!-- <span class="sr-only">(current)</span> -->
+									<a style="color:#FFFFFF" href="#">관리자 회원관리</a>
+								</li>
+								<li><a style="color:#FFFFFF" href="#">행정구역 등록</a></li>
+								<li><a style="color:#FFFFFF" href="#">지자체 기관 등록</a></li>
+								<li><a style="color:#FFFFFF" href="#">시설/물품 카테고리 등록</a></li>
+								<li><a style="color:#FFFFFF" href="#">업종분류코드 등록</a></li>
+								<li><a style="color:#FFFFFF" href="#">시민계정 조회</a></li>
+							</ul>
+							
 						</div>
 			
 						<!-- End Content -->

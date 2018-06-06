@@ -18,15 +18,11 @@
 				<div class="col-sm-8">
 				<!-- Begin Content -->
 					
-					<%-- <a href="${pageContext.request.contextPath}/getAddress">getAddress</a> --%>
-				
-					<div class="text-center">
+					<%-- <div class="text-center">
 						<h1>국가 통합 대여/예약 시스템</h1>
 						<h2>Nation Integrated Reserve and Rental System</h2>
 						<P>The time on the server is ${serverTime}.</P>
-					</div>
-					
-					
+					</div> --%>
 
 					<div class="row">
 						<!-- <div class="col-sm-6 col-md-3"> -->
