@@ -27,6 +27,11 @@
 								<c:choose>
 									<c:when test="${member != null}">
 										<strong>${member.memberId} 님 환영합니다. [ ${member.memberLevel} ]</strong>
+										
+											<c:if test="${member.memberLevel eq '공무원'}">
+												<strong><a href="${pageContext.request.contextPath}/selectListFunctionary">공무원 조회</a></strong>										
+											</c:if>	
+											
 									</c:when>
 									<c:otherwise>
 										<strong>손님 환영합니다.</strong>
@@ -36,6 +41,8 @@
 							</div>
 						</li>
 						<li class=""><a href="${pageContext.request.contextPath}/goSignUp">회원가입</a></li>
+							
+						
 						<c:choose>
 							<c:when test="${member != null}">
 								<li class=""><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
@@ -44,6 +51,8 @@
 								<li class="active"><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 							</c:otherwise>
 						</c:choose>
+						
+											
 					</ul>
 				</div>
 			</div>
