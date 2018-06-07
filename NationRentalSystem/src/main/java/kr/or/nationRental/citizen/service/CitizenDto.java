@@ -5,11 +5,9 @@ public class CitizenDto {
 	private String citizenId; //시민ID
 	private String citizenPw; //Pw
 	private String citizenName; //시민명
-	private int citizenJuminNum; //주민번호
-	private int sigunguCode; //시군구코드
-	private String sigunguName; //시군구명
-	private int eupmyeonCode; //읍면동코드
-	private String eupmyeonName; //읍면동명
+	private String citizenJuminNum; //주민번호
+	private int sigunguCode; //시군구코드	
+	private int eupmyeonCode; //읍면동코드	
 	private String citizenAddressSangse; //상세주소
 	private int citizenPhone; //시민 전화번호
 	private String citizenEmail; //시민 이메일
@@ -33,10 +31,10 @@ public class CitizenDto {
 	public void setCitizenName(String citizenName) {
 		this.citizenName = citizenName;
 	}
-	public int getCitizenJuminNum() {
+	public String getCitizenJuminNum() {
 		return citizenJuminNum;
 	}
-	public void setCitizenJuminNum(int citizenJuminNum) {
+	public void setCitizenJuminNum(String citizenJuminNum) {
 		this.citizenJuminNum = citizenJuminNum;
 	}
 	public int getSigunguCode() {
@@ -45,24 +43,12 @@ public class CitizenDto {
 	public void setSigunguCode(int sigunguCode) {
 		this.sigunguCode = sigunguCode;
 	}
-	public String getSigunguName() {
-		return sigunguName;
-	}
-	public void setSigunguName(String sigunguName) {
-		this.sigunguName = sigunguName;
-	}
 	public int getEupmyeonCode() {
 		return eupmyeonCode;
 	}
 	public void setEupmyeonCode(int eupmyeonCode) {
 		this.eupmyeonCode = eupmyeonCode;
-	}
-	public String getEupmyeonName() {
-		return eupmyeonName;
-	}
-	public void setEupmyeonName(String eupmyeonName) {
-		this.eupmyeonName = eupmyeonName;
-	}
+	}	
 	public String getCitizenAddressSangse() {
 		return citizenAddressSangse;
 	}
@@ -91,7 +77,7 @@ public class CitizenDto {
 	public String toString() {
 		return "citizenDto [citizenId=" + citizenId + ", citizenPw=" + citizenPw + ", citizenName=" + citizenName
 				+ ", citizenJuminNum=" + citizenJuminNum + ", sigunguCode=" + sigunguCode + ", sigunguName="
-				+ sigunguName + ", eupmyeonCode=" + eupmyeonCode + ", eupmyeonName=" + eupmyeonName
+				+ ", eupmyeonCode=" + eupmyeonCode + ", eupmyeonName=" 
 				+ ", citizenAddressSangse=" + citizenAddressSangse + ", citizenPhone=" + citizenPhone
 				+ ", citizenEmail=" + citizenEmail + ", citizenDateJoin=" + citizenDateJoin + "]";
 	}

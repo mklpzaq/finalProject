@@ -19,7 +19,7 @@
 			6.필수정보 입력 데이터는 아이디 비밀번호 주민번호 주소 이름 핸드폰번호 이다.					
 		*/
 		
-		$(document).ready(function(){
+		/* $(document).ready(function(){
 			$("#CitizenID").keyup(function(){
 				if($("#CitizenID").val().length <= 8) {
 					$("#CitizenId").append($("<p/>",{
@@ -199,29 +199,39 @@
 		                }
 		            });    //end ajax    
 		        });    //end on	
-			
-		});
+					     
+		}); */
 		
 	</script>
 
 </head>
 
 <body>
+	<div class="container-fluid">
+			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
+			<jsp:include page="/WEB-INF/views/module/top/mainHeader.jsp"/>
+			<div class="row">
+				<div class="col-sm-2" style="padding:15px;">
+					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
+				</div>
+				<div class="col-sm-8">
+				<!-- Begin Content -->
+	
 	<h2> 시민 회원 가입 폼 </h2>
 	<form action="${pageContext.request.contextPath}/insertCitizen" method="post">
 		<div class="form-group">
-				<label for="CitizenID" class="col-sm-2 control-label">회원ID</label>
+				<label for="ID" class="col-sm-2 control-label">회원ID</label>
 		    <div class="col-sm-10">
-		    	<input type="text" class="form-control" id="CitizenID" placeholder="회원ID">
+		    	<input type="text" class="form-control" id="CitizenId" name="CitizenId" placeholder="회원ID">
 		    	  <button type="submit" id="checkbtn" class="btn btn-default">중복확인</button>
-		    	  <div id="checkMsg"></div>		    	 
-		    	<div id ="CitizenId"></div>		    	
+		    	 <!--  <div id="checkMsg"></div>		    	 
+		    	<div id ="CitizenId"></div>	 -->	    	
 		    </div>
 		</div>
 		<div class="form-group">
-				<label for="CitizenPW" class="col-sm-2 control-label">회원PW</label>
+				<label for="PW" class="col-sm-2 control-label">회원PW</label>
 		    <div class="col-sm-10">
-		    	<input type="password" class="form-control" id="CitizenPW" placeholder="회원PW">
+		    	<input type="password" class="form-control" id="CitizenPw" name="citizenPw" placeholder="회원PW">
 		    </div>
 		</div>
 		<div class="form-group">
@@ -231,15 +241,15 @@
 		    </div>
 		</div>
 		<div class="form-group">
-				<label for="CitizenName" class="col-sm-2 control-label">회원이름</label>
+				<label for="Name" class="col-sm-2 control-label">회원이름</label>
 		    <div class="col-sm-10">
-		    	<input type="text" class="form-control" id="CitizenName" placeholder="회원이름">
+		    	<input type="text" class="form-control" id="CitizenName" name="citizenName" placeholder="회원이름">
 		    </div>
 		</div>
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputSuccess5">주민번호 앞자리</label>				  
 				  <div class="col-sm-10">
-				  	<input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
+				  	<input type="text" class="form-control" id="inputSuccess5" name="citizenJuminNum" aria-describedby="inputSuccess5Status">
 				  </div>				
 				  	<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>				  
 			</div>
@@ -253,14 +263,14 @@
 		<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 		    <div class="col-sm-10">
-		    	<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+		    	<input type="email" class="form-control" id="citizenEmail" name="citizenEmail" placeholder="Email">
 		    </div>
 		</div>
 		
 		<div class="form-group">
 			<label for="sigungu" class="col-sm-2 control-label">시군구코드</label>
 			<div class="col-sm-10">
-				<select class="form-control">
+				<select class="form-control" name="sigunguCode">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
@@ -273,7 +283,7 @@
 		<div class="form-group">
 			<label for="sigungu" class="col-sm-2 control-label">읍면동코드</label>
 			<div class="col-sm-10">
-				<select class="form-control">
+				<select class="form-control" name="eupmyeonCode">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
@@ -286,22 +296,27 @@
 		<div class="form-group">
 				<label for="Address" class="col-sm-2 control-label">회원 주소</label>
 		    <div class="col-sm-10">
-		    	<input type="text" class="form-control" id="inputEmail3" placeholder="Address">
+		    	<input type="text" class="form-control" id="citizenAddressSangse" name="citizenAddressSangse" placeholder="Address">
 		    </div>
 		</div>
 		
 		<div class="form-group">
-				<label for="CitizenPhone" class="col-sm-2 control-label">휴대전화번호</label>
+				<label for="Phone" class="col-sm-2 control-label">휴대전화번호</label>
 		    <div class="col-sm-10">
-		    	<input type="text" class="form-control" id="CitizenPhone" placeholder="CitizenPhone">
+		    	<input type="text" class="form-control" id="CitizenPhone" name="citizenPhone" placeholder="CitizenPhone">
 		    </div>
 		</div>		
 		
-		<button type="button" class="btn btn-primary btn-lg btn-block" id="InsertCitizen">회원가입</button>
+		<button type="submit" class="btn btn-primary btn-lg btn-block" id="InsertCitizen" >회원가입</button>
 		
 	</form>
-
-
+	<!-- End Content -->
+			</div>
+				<div class="col-sm-2"></div>
+			</div>
+			
+		</div>
+		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 
 </body>
 </html>

@@ -19,17 +19,15 @@
 				,citizen_phone
 				,citizen_email
 				,citizen_date_join)
-			VALUES (#citizenId
-					,#citizenPw
-					,#citizenName
-					,#citizenJuminNum
-					,#sigunguCode
-					,#sigunguName
-					,#eupmyeonCode
-					,#eupmyeonName
-					,#citizenAddressSangse
-					,#citizenPhone
-					,#citizenEmail
+			VALUES (#{citizenId}
+					,#{citizenPw}
+					,#{citizenName}
+					,#{citizenJuminNum}
+					,#{sigunguCode}					
+					,#{eupmyeonCode}				
+					,#{citizenAddressSangse}
+					,#{citizenPhone}
+					,#{citizenEmail}
 					,now())	
 	</insert>
  
