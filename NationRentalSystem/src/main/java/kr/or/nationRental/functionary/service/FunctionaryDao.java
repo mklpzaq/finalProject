@@ -37,6 +37,6 @@ public class FunctionaryDao {
 	public int totalCountFunctionary(Map<String, Object> map) {
 		//logger.debug("FunctionaryDao - totalCountFunctionary - map : " + map);
 		 
-		return sqlSession.selectOne(NS+"totalCountFunctionary");
+		return sqlSession.selectOne(NS+"totalCountFunctionary", map);
 	}
 }

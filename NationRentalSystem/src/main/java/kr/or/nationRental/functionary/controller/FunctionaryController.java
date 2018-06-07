@@ -51,7 +51,7 @@ public class FunctionaryController {
 										,HttpSession session
 										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-										,@RequestParam(value="searchOption", defaultValue="articleId") String searchOption
+										,@RequestParam(value="searchOption", defaultValue="functionary_name") String searchOption
 										,@RequestParam(value="keyword", defaultValue="") String keyword) {
 						logger.debug("FunctionaryController - selectListFunctionary - currentPage : " + currentPage);
 						logger.debug("FunctionaryController - selectListFunctionary - pagePerRow  : " + pagePerRow);
