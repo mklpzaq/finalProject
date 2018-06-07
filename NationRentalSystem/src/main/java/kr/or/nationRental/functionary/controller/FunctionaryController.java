@@ -75,7 +75,7 @@ public class FunctionaryController {
 		
 	//공무원 기본정보조회
 	@RequestMapping(value="/functionaryBasicInformation", method=RequestMethod.GET)
-	public String functionaryBasicInformation() {
+	public String functionaryBasicInformation(FunctionaryDto functionaryDto) {
 			
 		return "/functionary/functionaryBasicInformation";
 	}
