@@ -1,6 +1,8 @@
 package kr.or.nationRental.citizen.service;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public class CitizenDao {
 
 	@Autowired
-	private SqlSessionTemplate sqlsession;
+	private SqlSessionTemplate sqlSession;
 	
 	final String NS ="kr.or.nationRental.citizen.service.CitizenMapper.";
 	
@@ -20,9 +22,19 @@ public class CitizenDao {
 	public int insertCitizen(CitizenDto citizenDto) {
 		logger.debug("CitizenDao insertCitizen : " + citizenDto.toString());
 		
-		int row = sqlsession.insert(NS+"insertCitizen", citizenDto);
+		int row = sqlSession.insert(NS+"insertCitizen", citizenDto);
 		
 		return row;
 	}
+
+	public List<CitizenDto> getCitizenList(Map<String, Object> map) {
+		return sqlSession.selectList(NS+"getCitizenList", map);
+	}
+
+	public int totalCountCitizen(Map<String, Object> map) {
+		return sqlSession.selectOne(NS+"totalCountCitizen", map);
+	}
+	
+	
 
 }

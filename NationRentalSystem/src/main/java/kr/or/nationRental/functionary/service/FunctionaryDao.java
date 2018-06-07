@@ -11,41 +11,35 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class FunctionaryDao {
-	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
 	final String NS ="kr.or.nationRental.functionary.service.FunctionaryMapper.";
-	
 	private static final Logger logger = LoggerFactory.getLogger(FunctionaryDao.class);
 	
-	public int insertFunctionary(FunctionaryDto functionaryDto) {
-		
+	public int insertFunctionary(FunctionaryDto functionaryDto) {	
 		logger.debug("FunctionaryDao - insertFunctionary - functionaryDto : " + functionaryDto);
-		
-		int row = sqlSession.insert(NS+"insertFunctionary", functionaryDto);
-		
+		int row = sqlSession.insert(NS+"insertFunctionary", functionaryDto);	
 		return row;
 	}
 	
 	public int insertFunctionaryMoveInout(FunctionaryDto functionaryDto) {
-		
 		logger.debug("FunctionaryDao - insertFunctionaryMoveInout - functionaryDto : " + functionaryDto);
-		
 		int row = sqlSession.insert(NS+"insertFunctionaryMoveInout", functionaryDto);
-		
 		return row;
 	}
 	
 	public List<FunctionaryDto> selectListFunctionary(Map<String, Object> map) {
 		logger.debug("FunctionaryDao - selectListFunctionary - map : " + map.toString());
-		
 		return sqlSession.selectList(NS+"selectListFunctionary", map);
 	}
 	
 	public int totalCountFunctionary(Map<String, Object> map) {
 		logger.debug("FunctionaryDao - totalCountFunctionary - map : " + map);
-		 
 		return sqlSession.selectOne(NS+"totalCountFunctionary", map);
+	}
+	
+	public FunctionaryDto functionaryBasicInformation(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - functionaryBasicInformation - functionaryDto : " + functionaryDto);
+		return sqlSession.selectOne(NS+"functionaryBasicInformation", functionaryDto);
 	}
 }

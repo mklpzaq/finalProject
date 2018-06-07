@@ -43,6 +43,13 @@
 							</form>
 						</div>
 					</div>
+					<p>
+						로그인 샘플 :<br/>
+						관리자 : admin / admin<br/>
+						시민 : citizen / citizen<br/>
+						대행업체 직원 : employee / employee<br/>
+						공무원 : functionary / functionary
+					</p>
 		
 				<!-- End Content -->
 				</div>

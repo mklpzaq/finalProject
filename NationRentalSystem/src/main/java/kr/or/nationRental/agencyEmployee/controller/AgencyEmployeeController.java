@@ -23,39 +23,18 @@ public class AgencyEmployeeController {
 		
 		return "agencyEmployee/injeungAgencyemployeeForm";
 	}
-/*		
-	@RequestMapping(value="/injeungAgencyEmployee", method=RequestMethod.POST)
-	public String injeungEmployee(Model model
-								,AgencyEmployeeDto agencyEmployeeDto) {
-		logger.debug("POST injeungEmployee AgencyEmployeeController");
-		logger.debug(agencyEmployeeDto.toString());
-		
-		int result = agencyEmployeeService.injeungAgencyEmployee(agencyEmployeeDto);
-		String returnAddress = "/injeungAgencyEmployee";
-		if(1 == result) {
-			logger.debug("인증성공");
-			model.addAttribute("isInjeung", "인증성공");
-			returnAddress = "agencyEmployee/insertAgencyEmployeeForm";
-		}else {
-			logger.debug("인증실패");
-			model.addAttribute("isInjeung", "인증실패");
-			returnAddress = "redirect:/injeungAgencyEmployee";
-		}
-		
-		
-		 * 리턴 주소 토글 인증완료/인증못할때.
-		 * 
-		
-		return returnAddress;
-	}*/
+
 	
-	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.GET)
+	/*@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.GET)
 	public String insertEmployee() {
 		return "/agencyEmployee/insertAgencyEmployeeForm";
-	}
+	}*/
 	
-	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.POST)
+	@RequestMapping(value="/getInsertAgencyEmployeeForm", method=RequestMethod.POST)
 	public String insertEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("");
+		
+		
 		
 		return "redirect:/";
 	}

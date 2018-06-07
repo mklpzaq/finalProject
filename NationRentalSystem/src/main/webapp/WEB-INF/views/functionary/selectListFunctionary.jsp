@@ -14,11 +14,12 @@
 				var keyword;
 				
 				/* 드롭다운 박스 클릭시 열고 닫고 이벤트 */
+				
 				$('#selectButton').click(function(){
-					if($('#selectButton').parent().hasClass('open')){
-						$('#selectButton').parent().removeClass('open');
+					if($('#selectbox').hasClass('open')){
+						$('#selectbox').removeClass('open');
 					}else{
-						$('#selectButton').parent().addClass('open');
+						$('#selectbox').addClass('open');
 					}
 				});
 				
@@ -97,7 +98,7 @@
 									<div class="col-sm-8">
 										
 										<div class="input-group">
-											<div class="input-group-btn">
+											<div id="selectbox" class="input-group-btn">
 												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
