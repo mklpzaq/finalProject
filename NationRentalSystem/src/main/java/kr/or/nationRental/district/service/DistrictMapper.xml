@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.sidoSigunguEupmyeon.service.DistrictDto">
+
+	<!-- 관리자 계정 목록 -->
+	<select id="selectListDistrict" resultType="kr.or.nationRental.sidoSigunguEupmyeon.service.DistrictDto">
+		SELECT 
+			eupmyeon.eupmyeon_code as eupmyeonCode
+			, sido.sido_name as sidoName
+			, sigungu.sigungu_name as sigunguName
+			, eupmyeon.eupmyeon_name as eupmyeonName
+		FROM 
+			sido
+			, sigungu
+			, eupmyeon 
+		WHERE 
+			sido.sido_code = #{sidoCode} = sigungu.sido_code = #{sidoCode}
+		AND 
+			sigungu.sigungu_code = #{sigunguCode} = eupmyeon.sigungu_code = #{sigunguCode}
+	</select>
+
+</mapper>
