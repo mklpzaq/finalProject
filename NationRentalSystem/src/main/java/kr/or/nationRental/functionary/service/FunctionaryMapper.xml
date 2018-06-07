@@ -7,27 +7,27 @@
 <mapper namespace="kr.or.nationRental.functionary.service.FunctionaryMapper">
 	<insert id="insertFunctionary" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">
 		
-			INSERT INTO functionary
-				(functionary_id 
-				,adminagency_code 
-				,functionary_num
-				,functionary_pw 
-				,functionary_name
-				,functionary_phone
-				,functionary_email 
-				,functionary_date_join)
-			VALUES (#{functionaryId}
-					,#{adminagencyCode}
-					,#{functionaryNum}
-					,#{functionaryPw}
-					,#{functionaryName}
-					,#{functionaryPhone} 
-					,#{functionaryEmail} 
-					,NOW())
+		INSERT INTO functionary
+			(functionary_id 
+			,adminagency_code 
+			,functionary_num
+			,functionary_pw 
+			,functionary_name
+			,functionary_phone
+			,functionary_email 
+			,functionary_date_join)
+		VALUES (#{functionaryId}
+				,#{adminagencyCode}
+				,#{functionaryNum}
+				,#{functionaryPw}
+				,#{functionaryName}
+				,#{functionaryPhone} 
+				,#{functionaryEmail} 
+				,NOW())
 		
 	</insert>
 	
-	<insert id="insertFunctionaryMoveInout">
+	<insert id="insertFunctionaryMoveInout" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">
 		INSERT INTO functionary_move_inout
 			(functionary_move_inout_code
 			,adminagency_code
@@ -87,6 +87,18 @@
 		
 		ORDER BY functionary_date_join DESC
 		LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+	
+	<select id="functionaryBasicInformation" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+			SELECT
+				functionary_id as functionaryId
+				,adminagency_code as adminagencyCode
+				,functionary_name as functionaryName
+				,functionary_phone as functionaryPhone
+				,functionary_email as functionaryEmail
+				,functionary_date_join as functionaryDateJoin
+			FROM functionary
+			where functionary_id = #{functionaryId}		
 	</select>
 </mapper>
 	

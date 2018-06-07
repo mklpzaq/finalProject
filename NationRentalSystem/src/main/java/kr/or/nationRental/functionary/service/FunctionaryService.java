@@ -16,15 +16,14 @@ public class FunctionaryService {
 	@Autowired
 	private FunctionaryDao functionaryDao;
 	
+	
 	private static final Logger logger = LoggerFactory.getLogger(FunctionaryService.class);
 	
 	//트랜잭션 처리가 안되는것 같다
 	@Transactional
 	public void insertFunctionary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryService - insertFunctionary : " + functionaryDto.toString());
-		
 		functionaryDao.insertFunctionary(functionaryDto);
-		
 		functionaryDao.insertFunctionaryMoveInout(functionaryDto);
 	}
 	
@@ -37,17 +36,17 @@ public class FunctionaryService {
 		int beginRow = (currentPage-1)*pagePerRow; 
 
 		Map<String, Object> map = new HashMap<String, Object>();
-			map.put("beginRow", beginRow);
-			map.put("pagePerRow", pagePerRow);
-			map.put("searchOption", searchOption);
-			map.put("keyword", keyword);/*
-			map.put("loginMemberId", loginMemberId);*/
-			List<FunctionaryDto> list = functionaryDao.selectListFunctionary(map);
-			logger.debug("FunctionaryService - selectListFunctionary - list  : " + list.toString());
-			int total = functionaryDao.totalCountFunctionary(map);
-			logger.debug("FunctionaryService - selectListFunctionary - total  : " + total);
-			
+		map.put("beginRow", beginRow);
+		map.put("pagePerRow", pagePerRow);
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);/*
+		map.put("loginMemberId", loginMemberId);*/
 		
+		List<FunctionaryDto> list = functionaryDao.selectListFunctionary(map);
+		logger.debug("FunctionaryService - selectListFunctionary - list  : " + list.toString());
+		int total = functionaryDao.totalCountFunctionary(map);
+		logger.debug("FunctionaryService - selectListFunctionary - total  : " + total);
+			
 		int lastPage = 0;
 		if(total%pagePerRow == 0) {
 			lastPage = total/pagePerRow;
@@ -69,6 +68,14 @@ public class FunctionaryService {
 		returnmap.put("endPage", endPage);
 		
 		return returnmap;
+	}
+	
+	public FunctionaryDto functionaryBasicInformation(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryService - functionaryBasicInformation - functionaryDto : " + functionaryDto.toString());
 		
+		FunctionaryDto returnfunctionaryDto= functionaryDao.functionaryBasicInformation(functionaryDto);
+		logger.debug("FunctionaryService - functionaryBasicInformation - returnfunctionaryDto : " + returnfunctionaryDto.toString());
+		
+		return returnfunctionaryDto;
 	}
 }
