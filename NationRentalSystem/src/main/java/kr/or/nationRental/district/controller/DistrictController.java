@@ -21,12 +21,30 @@ public class DistrictController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DistrictController.class);
 
-	//행정구역 목록 및 등록시작 페이지
-		@RequestMapping(value="/selectListDistrict", method=RequestMethod.GET)
-		public String selectListDistrict(Model model) {
-			List<DistrictDto> districtDtoList = districtService.selectListDistrict();
-			model.addAttribute("districtDtoList", districtDtoList);
-			logger.info("---selectListDistrict" + districtDtoList);
-			return "administrativeDistrict/selectListDistrict";
-		}
+	//행정구역 전체 목록 보기
+	@RequestMapping(value="/selectListDistrict", method=RequestMethod.GET)
+	public String selectListDistrict(Model model) {
+		List<DistrictDto> districtDtoList = districtService.selectListDistrict();
+		model.addAttribute("districtDtoList", districtDtoList);
+		logger.info("---selectListDistrict" + districtDtoList);
+		return "administrativeDistrict/selectListDistrict";
+	}
+		
+	//시도 목록보기
+	@RequestMapping(value="/selectListSido", method=RequestMethod.GET)
+	public String selectListSido(Model model) {
+		List<DistrictDto> sidoList = districtService.selectListSido();
+		model.addAttribute("sidoList", sidoList);
+		logger.info("---selectListSido" + sidoList);
+		return "administrativeDistrict/selectListSido";
+	}
+	
+	//시군구 목록보기
+	@RequestMapping(value="/selectListSigungu", method=RequestMethod.GET)
+	public String selectListSigungu(Model model) {
+		List<DistrictDto> sigunguList = districtService.selectListSigungu();
+		model.addAttribute("sigunguList", sigunguList);
+		logger.info("---selectListSigungu" + sigunguList);
+		return "administrativeDistrict/selectListSigungu";
+	}
 }

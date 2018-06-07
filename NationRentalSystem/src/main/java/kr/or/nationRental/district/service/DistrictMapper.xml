@@ -19,7 +19,7 @@
 		<result property="eupmyeonName" column="eupmyeon_name" />
 	</resultMap>
 
-	<!-- 관리자 계정 목록 -->
+	<!-- 행정구역 전체목록 보기 -->
 	<select id="selectListDistrict" resultMap="selectListDistrict">
 		SELECT 
 			eupmyeon.eupmyeon_code
@@ -32,5 +32,26 @@
 		AND 
 			sigungu.sigungu_code = eupmyeon.sigungu_code
 	</select>
+	
+	<!-- 행정구역 시도 목록 -->
+	<select id="selectListSido" resultType="kr.or.nationRental.district.service.DistrictDto">
+		SELECT
+			sido_code as sidoCode
+			, sido_name as sidoName
+		FROM sido	
+	</select>
 
+	<!-- 행정구역 시군구 목록 -->
+	<select id="selectListSigungu" resultType="kr.or.nationRental.district.service.DistrictDto">
+	SELECT 
+		sigungu.sigungu_code
+		, sido.sido_code
+		, sido.sido_name
+		, sigungu.sigungu_middle_code
+		, sigungu.sigungu_name
+	FROM sido, sigungu 
+	WHERE 
+		sido.sido_code = sigungu.sido_code 	
+	</select>
+	
 </mapper>

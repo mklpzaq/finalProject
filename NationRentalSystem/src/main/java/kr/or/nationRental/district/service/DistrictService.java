@@ -14,9 +14,21 @@ public class DistrictService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DistrictService.class);
 	
-	//행정구역 목록
-		public List<DistrictDto> selectListDistrict() {
-			logger.info("---selectListDistrict");
-			return districtDao.selectListDistrict();
-		}
+	//행정구역 전체 목록 보기
+	public List<DistrictDto> selectListDistrict() {
+		logger.info("---selectListDistrict");
+		return districtDao.selectListDistrict();
+	}
+	
+	//행정구역 시도 목록 보기
+	public List<DistrictDto> selectListSido() {
+		logger.info("---selectListSido");
+		return districtDao.selectListSido();
+	}
+	
+	//행정구역 시군구 목록 보기
+	public List<DistrictDto> selectListSigungu() {
+		logger.info("---selectListSigungu");
+		return districtDao.selectListSigungu();
+	}
 }
