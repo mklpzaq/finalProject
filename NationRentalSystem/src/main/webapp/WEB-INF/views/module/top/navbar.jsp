@@ -99,7 +99,7 @@
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionary">공무원 회원관리</a></li>
-										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/updateFunctionary">내 정보 수정</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/functionaryBasicInformation/?functionaryId=${member.memberId}">내 정보 수정</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 직원조회</a></li>

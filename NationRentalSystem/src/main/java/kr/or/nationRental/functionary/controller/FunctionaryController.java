@@ -72,4 +72,11 @@ public class FunctionaryController {
 		
 		return "/functionary/selectListFunctionary";
 	}
+		
+	//공무원 기본정보조회
+	@RequestMapping(value="/functionaryBasicInformation", method=RequestMethod.GET)
+	public String functionaryBasicInformation() {
+			
+		return "/functionary/functionaryBasicInformation";
+	}
 }
