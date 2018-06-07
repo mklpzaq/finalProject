@@ -82,7 +82,7 @@
 										<!-- 관리자 메뉴 -->
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAdministrator">관리자 회원관리</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/updateAdministrator/?adminId=${member.memberId}">내 정보수정</a></li>
-										<li><a style="color:#FFFFFF" href="#">행정구역 등록</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDistrict">행정구역 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">지자체 기관 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">시설/물품 카테고리 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">업종분류코드 등록</a></li>
@@ -99,7 +99,6 @@
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionary">공무원 회원관리</a></li>
-										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/functionaryBasicInformation/?functionaryId=${member.memberId}">내 기본 정보 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 직원조회</a></li>

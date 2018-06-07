@@ -62,6 +62,7 @@
 				<!-- <value>classpath:cafe/jjdev/ex09/TestMapper.xml</value> -->
 				<value>classpath:kr/or/nationRental/administrator/service/AdministratorMapper.xml</value>
 				<value>classpath:kr/or/nationRental/administrator/service/InjeungMapper.xml</value>
+				<value>classpath:kr/or/nationRental/administrator/service/SidoSigunguEupmyeonMapper.xml</value>
 				<value>classpath:kr/or/nationRental/functionary/service/FunctionaryMapper.xml</value>
 				<value>classpath:kr/or/nationRental/login/service/LoginMapper.xml</value>
 				<value>classpath:kr/or/nationRental/citizen/service/CitizenMapper.xml</value>
