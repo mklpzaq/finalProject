@@ -30,7 +30,7 @@ public class FunctionaryService {
 		logger.debug("FunctionaryService - selectListFunctionary - searchOption  : " + searchOption);
 		logger.debug("FunctionaryService - selectListFunctionary - keyword  : " + keyword);
 		
-		int beginRow = (currentPage-1)*pagePerRow;
+		int beginRow = (currentPage-1)*pagePerRow; 
 
 		Map<String, Object> map = new HashMap<String, Object>();
 			map.put("beginRow", beginRow);
