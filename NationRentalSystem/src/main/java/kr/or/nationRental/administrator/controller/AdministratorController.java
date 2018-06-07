@@ -16,7 +16,6 @@ import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.administrator.service.AdministratorService;
 import kr.or.nationRental.administrator.service.InjeungDto;
 import kr.or.nationRental.administrator.service.InjeungService;
-import kr.or.nationRental.login.service.MemberDto;
 
 
 @Controller
@@ -24,7 +23,6 @@ public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
 	private AdministratorDto administratorDto;
-	private MemberDto memberDto;
 	private InjeungService injeungService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorController.class);

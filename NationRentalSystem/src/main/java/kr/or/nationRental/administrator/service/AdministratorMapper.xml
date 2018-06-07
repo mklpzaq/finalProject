@@ -51,15 +51,15 @@
 
 	<!-- 관리자 정보수정하기 -->
 	<update id="updateAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
-		UPDATE administrator
-			SET
-			administrator_id as adminId
-			, administrator_pw as adminPw
-			, functionary_num as functionaryNum
-			, administrator_phone as adminPhone
-			, administrator_name as adminName
-			, administrator_date_join as adminDateJoin
-		WHERE 
-			administrator_id = #{adminId}
+	UPDATE administrator
+	SET
+		administrator_id = #{adminId}
+		, administrator_pw = #{adminPw}
+		, functionary_num = #{functionaryNum}
+		, administrator_phone = #{adminPhone}
+		, administrator_name =#{adminName}
+	WHERE 
+		administrator_id= #{adminId}
 	</update>	
+
 </mapper>
