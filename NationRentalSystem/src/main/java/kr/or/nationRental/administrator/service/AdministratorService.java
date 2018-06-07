@@ -34,6 +34,10 @@ public class AdministratorService {
 	public int updateAdministrator(AdministratorDto administratorDto)  {	
 		logger.info("updateAdministrator");
 		return administratorDao.updateAdministrator(administratorDto);
-	 
+	}
+	
+	//관리자 권한 삭제
+	public void deleteAdministrator(AdministratorDto adminID) {
+		administratorDao.deleteAdministrator(adminID);
 	}
 }

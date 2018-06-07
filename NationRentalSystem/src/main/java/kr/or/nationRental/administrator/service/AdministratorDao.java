@@ -44,5 +44,11 @@ public class AdministratorDao {
 		return sqlSession.update(NS+"updateAdministrator", administratorDto);
 	}
 	
+	//관리자 권한 삭제
+	public void deleteAdministrator(AdministratorDto adminID) {
+		sqlSession.delete(NS + "deleteAdministrator", adminID);	
+	}
+	
+	
 	
 }	

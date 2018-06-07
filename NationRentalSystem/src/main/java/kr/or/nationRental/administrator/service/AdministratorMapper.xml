@@ -60,6 +60,13 @@
 		, administrator_name =#{adminName}
 	WHERE 
 		administrator_id= #{adminId}
-	</update>	
+	</update>
+	
+	<!-- 관리자 권한 삭제 -->
+	<delete id="deleteAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
+	 DELETE 
+	 	FROM administrator 
+	 	WHERE administrator_id = #{adminId}
+	</delete>	
 
 </mapper>

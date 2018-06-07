@@ -80,5 +80,12 @@ public class AdministratorController {
 		logger.info("---updateAdministrator POST" + administratorDto);
 		int row = administratorService.updateAdministrator(administratorDto);
 		return "redirect:/selectListAdministrator";  // 나중에 경로 바꾸기
-	} 	
+	}
+	
+	//관리자 권한 삭제
+	@RequestMapping(value = "/deleteAdministrator", method= RequestMethod.GET)
+	public String deleteAdministrator(AdministratorDto adminId) {
+		administratorService.deleteAdministrator(adminId);
+		return "redirect:/selectBoardList";
+	}
 }

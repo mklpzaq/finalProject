@@ -4,6 +4,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>관리자 정보수정</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('#deleteButton').click(function(){
+				confirm("정말로 삭제 하시겠습니까?");
+			});
+		});
+		</script>
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
@@ -69,6 +78,7 @@
 												<div class="form-group">
 													<div class="col-sm-12">
 														<button type="submit" id="updateButton" class="btn btn-default">수정하기</button>
+														<button type="button" id="deleteButton" class="btn btn-default" onclick="alert('삭제하시겠습니까?')">삭제하기</button>
 													</div>
 												</div>
 											</form>
