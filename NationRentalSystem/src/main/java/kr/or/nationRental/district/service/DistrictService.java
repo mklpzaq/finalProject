@@ -16,6 +16,7 @@ public class DistrictService {
 	
 	//행정구역 목록
 		public List<DistrictDto> selectListDistrict() {
+			logger.info("---selectListDistrict");
 			return districtDao.selectListDistrict();
 		}
 }

@@ -11,7 +11,6 @@
 	<body>
 		<div class="container-fluid">
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
-			<jsp:include page="/WEB-INF/views/module/top/mainHeader.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
@@ -21,9 +20,9 @@
 					<div class="text-center">
 						<h1>행정구역 등록</h1>
 					</div>
-					<h3><a href="${pageContext.request.contextPath}/insertSido">시도 등록하기</a></h3><br>
-					<h3><a href="${pageContext.request.contextPath}/injeungSigungu">시군구 등록하기</a></h3><br> 
-					<h3><a href="${pageContext.request.contextPath}/insertEupmyeon">읍면동 등록하기</a></h3><br><br><br>
+					<a href="${pageContext.request.contextPath}/insertSido">시도 등록하기</a>/
+					<a href="${pageContext.request.contextPath}/injeungSigungu">시군구 등록하기</a>/
+					<a href="${pageContext.request.contextPath}/insertEupmyeon">읍면동 등록하기</a><br><br><br>
 					
 					<table class="table table-striped">
 						<thead>
@@ -35,13 +34,13 @@
 							</tr>
 						</thead>
 						<tbody>									
-							<c:forEach var="SidoSigunguEupmyeonDto" items="${SidoSigunguEupmyeonDtoList}">
+							<c:forEach var="districtDto" items="${districtDtoList}">
 								<tbody>
 									<tr>
-										<th>${SidoSigunguEupmyeonDto.eupmyeonCode}</th>
-										<th>${SidoSigunguEupmyeonDto.sidoName}</th>
-										<td>${SidoSigunguEupmyeonDto.sigunguName}</td>
-										<td>${SidoSigunguEupmyeonDto.eupmyeonName}</td>																								
+										<th>${districtDto.eupmyeonCode}</th>
+										<th>${districtDto.sidoName}</th>
+										<td>${districtDto.sigunguName}</td>
+										<td>${districtDto.eupmyeonName}</td>																						
 									</tr>
 								</tbody>
 							</c:forEach>	

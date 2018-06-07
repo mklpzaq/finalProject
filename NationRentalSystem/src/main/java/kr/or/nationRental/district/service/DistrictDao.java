@@ -14,7 +14,7 @@ public class DistrictDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	// final : 객체 참조변수를 변경하지 못하게 하는 접근제한자
-	final String NS = "kr.or.nationRental.sidoSigunguEupmyeon.service.SidoSigunguEupmyeonMapper.";
+	final String NS = "kr.or.nationRental.district.service.DistrictMapper.";
 
 	//행정구역 목록
 		public List<DistrictDto> selectListDistrict() {

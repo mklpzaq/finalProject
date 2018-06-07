@@ -25,7 +25,8 @@ public class DistrictController {
 		@RequestMapping(value="/selectListDistrict", method=RequestMethod.GET)
 		public String selectListDistrict(Model model) {
 			List<DistrictDto> districtDtoList = districtService.selectListDistrict();
-			model.addAttribute("sidoSigunguEupmyeonDtoList", districtDtoList);
+			model.addAttribute("districtDtoList", districtDtoList);
+			logger.info("---selectListDistrict" + districtDtoList);
 			return "administrativeDistrict/selectListDistrict";
 		}
 }

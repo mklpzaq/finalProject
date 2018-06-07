@@ -3,23 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="kr.or.nationRental.sidoSigunguEupmyeon.service.DistrictDto">
+<mapper namespace="kr.or.nationRental.district.service.DistrictMapper">
+	
+	<!--
+		selectListDistrict 클래스에 대한 ResultMap
+		property에 명시한 항목들은 클래스의 멤버변수를 의미한다.
+		column에 명시한 항목들은 해당 멤버변수에 저장될 SELECT절의 컬럼이름이 된다.
+	-->
+	<resultMap id="selectListDistrict" type="kr.or.nationRental.district.service.DistrictDto">
+		<result property="sidoCode" column="sido_code" />
+		<result property="sigunguCode" column="sigungu_code" />
+		<result property="eupmyeonCode" column="eupmyeon_code" />
+		<result property="sidoName" column="sido_name" />
+		<result property="sigunguName" column="sigungu_name" />
+		<result property="eupmyeonName" column="eupmyeon_name" />
+	</resultMap>
 
 	<!-- 관리자 계정 목록 -->
-	<select id="selectListDistrict" resultType="kr.or.nationRental.sidoSigunguEupmyeon.service.DistrictDto">
+	<select id="selectListDistrict" resultMap="selectListDistrict">
 		SELECT 
-			eupmyeon.eupmyeon_code as eupmyeonCode
-			, sido.sido_name as sidoName
-			, sigungu.sigungu_name as sigunguName
-			, eupmyeon.eupmyeon_name as eupmyeonName
-		FROM 
-			sido
-			, sigungu
-			, eupmyeon 
+			eupmyeon.eupmyeon_code
+			,sido.sido_name
+			,sigungu.sigungu_name
+			,eupmyeon.eupmyeon_name
+		FROM sido, sigungu, eupmyeon 
 		WHERE 
-			sido.sido_code = #{sidoCode} = sigungu.sido_code = #{sidoCode}
+			sido.sido_code = sigungu.sido_code 
 		AND 
-			sigungu.sigungu_code = #{sigunguCode} = eupmyeon.sigungu_code = #{sigunguCode}
+			sigungu.sigungu_code = eupmyeon.sigungu_code
 	</select>
 
 </mapper>
