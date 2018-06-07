@@ -10,31 +10,46 @@
 	</head>
 	<body>
 		
+		<div class="container-fluid">
+			<jsp:include page="../module/top/navbar.jsp"/>
+			<jsp:include page="../module/top/mainHeader.jsp"/>
+			<div class="row">
+				<div class="col-sm-2" style="padding:15px;">
+					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
+				</div>
+				<div class="col-sm-8">
+					<!-- Begin Content -->
 		
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<h3 class="text-center">대행업체 직원 회원가입</h3>
-				<hr/>
-				<form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">
-					<div class="form-group">
-						<label for="memberId" class="col-sm-3 control-label">회원 ID</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="memberId" id="memberId" placeholder="회원 ID 입력">
+		
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="text-center">대행업체 직원 회원가입</h3>
+							<hr/>
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">
+								<div class="form-group">
+									<label for="memberId" class="col-sm-3 control-label">회원 ID</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="memberId" id="memberId" placeholder="회원 ID 입력">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="memberPw" class="col-sm-3 control-label">회원 PW</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="memberPw" id="memberPw" placeholder="회원 PW 입력">
+									</div>
+								</div>
+								<div class="text-center">
+									<button type="submit" class="btn btn-default">입력 완료</button>
+								</div>
+							</form>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="memberPw" class="col-sm-3 control-label">회원 PW</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="memberPw" id="memberPw" placeholder="회원 PW 입력">
-						</div>
-					</div>
-					<div class="text-center">
-						<button type="submit" class="btn btn-default">입력 완료</button>
-					</div>
-				</form>
+		
+		
+					<!-- End Content -->
+				</div>
+				<div class="col-sm-2"></div>
 			</div>
 		</div>
-		
-		
 	</body>
 </html>

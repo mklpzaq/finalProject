@@ -1,5 +1,24 @@
 package kr.or.nationRental.agencyEmployee.service;
 
-public class AgencyEmployeeDao {
+import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import kr.or.nationRental.login.service.LoginDao;
+import kr.or.nationRental.login.service.MemberDto;
+
+@Service
+public class AgencyEmployeeDao {
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
+	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
+	
+	public int injeungAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		int result = sqlSession.selectOne(NS+"injeungAgencyEmployee", agencyEmployeeDto);
+		
+		return result;
+	}
 }

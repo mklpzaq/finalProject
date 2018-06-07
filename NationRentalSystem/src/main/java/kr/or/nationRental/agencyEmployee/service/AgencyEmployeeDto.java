@@ -3,7 +3,7 @@ package kr.or.nationRental.agencyEmployee.service;
 public class AgencyEmployeeDto {
 	private String agencyEmployeeId; //낙찰된 대행업체 직원 id
 	private String agencyEmployeePw; //직원 패스워드
-	private String agencyCode; //낙찰된 대행업체 인증코드	
+	private int agencyEmployeeInjeungNum; //낙찰된 대행업체 인증코드	
 	private String agencyName; //대행업체명
 	private String agencyEmployeeName; //직원 이름
 	private String agencyEmployeePhone; //직원 전화번호
@@ -22,11 +22,11 @@ public class AgencyEmployeeDto {
 	public void setAgencyEmployeePw(String agencyEmployeePw) {
 		this.agencyEmployeePw = agencyEmployeePw;
 	}
-	public String getAgencyCode() {
-		return agencyCode;
+	public int getAgencyEmployeeInjeungNum() {
+		return agencyEmployeeInjeungNum;
 	}
-	public void setAgencyCode(String agencyCode) {
-		this.agencyCode = agencyCode;
+	public void setAgencyEmployeeInjeungNum(int agencyEmployeeInjeungNum) {
+		this.agencyEmployeeInjeungNum = agencyEmployeeInjeungNum;
 	}
 	public String getAgencyName() {
 		return agencyName;
@@ -60,11 +60,10 @@ public class AgencyEmployeeDto {
 	}
 	@Override
 	public String toString() {
-		return "agencyEmployeeDto [agencyEmployeeId=" + agencyEmployeeId + ", agencyEmployeePw=" + agencyEmployeePw
-				+ ", agencyCode=" + agencyCode + ", agencyName=" + agencyName + ", agencyEmployeeName="
-				+ agencyEmployeeName + ", agencyEmployeePhone=" + agencyEmployeePhone + ", agencyEmployeeEmail="
-				+ agencyEmployeeEmail + ", agencyEmployeeDateJoin=" + agencyEmployeeDateJoin + "]";
+		return "AgencyEmployeeDto [agencyEmployeeId=" + agencyEmployeeId + ", agencyEmployeePw=" + agencyEmployeePw
+				+ ", agencyEmployeeInjeungNum=" + agencyEmployeeInjeungNum + ", agencyName=" + agencyName
+				+ ", agencyEmployeeName=" + agencyEmployeeName + ", agencyEmployeePhone=" + agencyEmployeePhone
+				+ ", agencyEmployeeEmail=" + agencyEmployeeEmail + ", agencyEmployeeDateJoin=" + agencyEmployeeDateJoin
+				+ "]";
 	}
-	
-	
 }
