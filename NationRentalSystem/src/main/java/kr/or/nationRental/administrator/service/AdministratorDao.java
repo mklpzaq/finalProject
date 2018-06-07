@@ -28,16 +28,19 @@ public class AdministratorDao {
 	
 	//관리자 계정 목록
 	public List<AdministratorDto> selectListAdministrator() {
+		logger.info("---selectListAdministrator");
 		return sqlSession.selectList(NS+"selectListAdministrator");
 	}
 	
 	//관리자 정보 수정화면 불러오기
 	public AdministratorDto updateAdministratorForm(AdministratorDto administratorDto){
+		logger.info("---updateAdministratorForm");
 		return sqlSession.selectOne(NS+"updateAdministratorForm", administratorDto);
 	}
 	
 	//관리자 정보 수정하기
 	public int updateAdministrator(AdministratorDto administratorDto) { 
+		logger.info("---updateAdministrator");
 		return sqlSession.update(NS+"updateAdministrator", administratorDto);
 	}
 	

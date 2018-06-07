@@ -32,7 +32,7 @@ public class AdministratorService {
 	
 	//관리자 정보 수정하기
 	public int updateAdministrator(AdministratorDto administratorDto)  {	
-		logger.info("updateCategory");
+		logger.info("updateAdministrator");
 		return administratorDao.updateAdministrator(administratorDto);
 	 
 	}

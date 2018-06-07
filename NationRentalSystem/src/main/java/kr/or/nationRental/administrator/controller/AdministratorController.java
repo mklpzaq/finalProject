@@ -16,17 +16,17 @@ import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.administrator.service.AdministratorService;
 import kr.or.nationRental.administrator.service.InjeungDto;
 import kr.or.nationRental.administrator.service.InjeungService;
+import kr.or.nationRental.login.service.MemberDto;
 
 
 @Controller
 public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
-	/*@Autowired
-	private AdministratorDto administratorDto;*/
-	
-	@Autowired
+	private AdministratorDto administratorDto;
+	private MemberDto memberDto;
 	private InjeungService injeungService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorController.class);
 	
 	//관리자 인증 GET
@@ -51,9 +51,9 @@ public class AdministratorController {
 	
 	//관리자등록 POST
 	@RequestMapping(value="/insertAdministrator", method=RequestMethod.POST)
-	public String insertAdministrator(AdministratorDto administratordDto) {
+	public String insertAdministrator(AdministratorDto administratorDto) {
 		logger.info("---insertAdministrator POST");
-		administratorService.insertAdministrator(administratordDto);
+		administratorService.insertAdministrator(administratorDto);
 		return "redirect:/selectListAdministrator";  // 나중엔 관리자 메인페이지로 이동시키자.
 	}
 	
@@ -82,5 +82,5 @@ public class AdministratorController {
 		logger.info("---updateAdministrator POST" + administratorDto);
 		int row = administratorService.updateAdministrator(administratorDto);
 		return "redirect:/selectListAdministrator";  // 나중에 경로 바꾸기
-	} 
+	} 	
 }

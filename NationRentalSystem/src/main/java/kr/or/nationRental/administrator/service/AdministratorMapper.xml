@@ -43,13 +43,12 @@
 			, functionary_num as functionaryNum
 			, administrator_phone as adminPhone
 			, administrator_name as adminName
+			, administrator_date_join as adminDateJoin
 		from administrator
 		where 
 			administrator_id = #{adminId}
-			, functionary_num = #{functionaryNum}
-			, administrator_name = #{adminName}
 	</select>
-	
+
 	<!-- 관리자 정보수정하기 -->
 	<update id="updateAdministrator" parameterType="kr.or.nationRental.administrator.service.AdministratorDto">
 		UPDATE administrator
@@ -59,10 +58,8 @@
 			, functionary_num as functionaryNum
 			, administrator_phone as adminPhone
 			, administrator_name as adminName
+			, administrator_date_join as adminDateJoin
 		WHERE 
 			administrator_id = #{adminId}
-			, functionary_num = #{functionaryNum}
-			, administrator_name = #{adminName}
 	</update>	
-	
 </mapper>

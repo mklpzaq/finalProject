@@ -23,9 +23,6 @@
 					<a href="${pageContext.request.contextPath}/injeungAdministrator">관리자 등록</a> | 
 					<a href="${pageContext.request.contextPath}/insertFunctionary">공무원 회원가입</a> | 
 					<a href="${pageContext.request.contextPath}/insertAgencyEmployee">직원 회원가입</a>
-					<br>
-					<!-- 작업의 편의성을 위해 임시로 등록함. 임가현 -->
-					<a href="${pageContext.request.contextPath}/selectListAdministrator">관리자목록</a>
 				
 				
 				<!-- End Content -->
