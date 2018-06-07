@@ -30,6 +30,59 @@
 					,#{citizenEmail}
 					,now())	
 	</insert>
+	
+	<select id="getCitizenList"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.citizen.service.CitizenDto">
+			SELECT 
+				citizen_id as citizenId
+				,citizen_pw as citizenPw
+				,citizen_name as citizenName
+				,sigungu_code as sigunguCode
+				,eupmyeon_code as eupmyeonCode
+				,citizen_address_sangse as citizenAddressSangse				
+				,citizen_phone as citizenPhone
+				,citizen_email as citizenEmail
+			FROM
+				citizen
+			<if test="!keyword.equals('')">
+				<choose>
+					<when test="searchOption.equals('citizenId')">
+						WHERE citizen_id = #{searchWord}
+					</when>
+					<when test="searchOption.equals('citizenName')">
+						WHERE citizen_name = #{searchWord}
+					</when>
+					<when test="searchOption.equals('citizenEmail')">
+						WHERE citizen_email = #{searchWord}
+					</when>
+				</choose>
+			</if>
+				ORDER BY citizen_id DESC
+				LIMIT #{beginRow}, #{pagePerRow}	
+	</select>
+	
+	<select id="totalCountCitizen"
+			parameterType="java.util.Map"
+			resultType="Integer">
+			SELECT 
+				COUNT(*)
+			FROM
+				citizen
+			<if test="!keyword.equals('')">
+				<choose>
+					<when test="searchOption.equals('citizenId')">
+						WHERE citizen_id = #{searchWord}
+					</when>
+					<when test="searchOption.equals('citizenName')">
+						WHERE citizen_name = #{searchWord}
+					</when>
+					<when test="searchOption.equals('citizenEmail')">
+						WHERE citizen_email = #{searchWord}
+					</when>
+				</choose>
+			</if>	
+	</select>
  
  
  </mapper>
