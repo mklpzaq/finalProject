@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+ <mapper namespace="kr.or.nationRental.citizen.service.CitizenMapper">
+	<insert id="insertCitizen" 
+			parameterType="kr.or.nationRental.citizen.service.CitizenDto">
+	
+			INSERT INTO citizen
+				(citizen_id
+				,citizen_pw
+				,citizen_name
+				,citizen_jumin_num
+				,sigungu_code
+				,eupmyeon_code
+				,citizen_address_sangse
+				,citizen_phone
+				,citizen_email
+				,citizen_date_join)
+			VALUES (#citizenId
+					,#citizenPw
+					,#citizenName
+					,#citizenJuminNum
+					,#sigunguCode
+					,#sigunguName
+					,#eupmyeonCode
+					,#eupmyeonName
+					,#citizenAddressSangse
+					,#citizenPhone
+					,#citizenEmail
+					,now())	
+	</insert>
+ 
+ 
+ </mapper>
+  
