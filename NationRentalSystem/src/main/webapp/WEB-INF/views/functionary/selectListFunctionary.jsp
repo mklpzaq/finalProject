@@ -27,21 +27,21 @@
 					/* searchButton을 누르면 keyword변수의 값을 get방식으로 getBoardListController로 검색어와 함께 넘길 것이다.
 					*  클릭했을때 선택한 select내용의 값을 #selectButtonText에 넣어준다.
 					*/
-					$('#selectButtonText, #searchOption').text($(this).text());
+					$('#selectButtonText, #moniterSearchOption').text($(this).text());
 					$('#selectButton').parent().removeClass('open');
 				});
 				
 				$('#selectPagePerRow').change(function() {
-					/* searchOption = $('#searchOption').text();
-					keyword = $('#keyword').val(); */
-					$(location).attr('href', './getArticleList?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#searchOption').text() + '&keyword=' + $('#keyword').text());
+					/* searchOption = $('#moniterSearchOption').text();
+					keyword = $('#moniterKeyword').val(); */
+					$(location).attr('href', './selectListFunctionary?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
-					$(location).attr('href', './getArticleList?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
+					$(location).attr('href', './selectListFunctionary?=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
 			});
@@ -63,15 +63,15 @@
 							<h2>Nation Integrated Reserve and Rental System</h2>
 							<P>The time on the server is ${serverTime}.</P>
 						</div>
-					
-					
+						
+						<div><a herf="${pageContext.request.contextPath}/">공무원 회원정보 수정</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
 									<div class="col-md-4">
 										<strong>${currentPage} / ${lastPage} Page</strong><br/>
-										<strong>searchOption : </strong><span id="searchOption">${searchOption}</span><br/>
-										<strong>keyword : </strong><span id="keyword">${keyword}</span><br/>						
+										<strong>searchOption : </strong><span id="moniterSearchOption">${searchOption}</span><br/>
+										<strong>keyword : </strong><span id="moniterKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
 										<h3>Article List</h3>
@@ -102,6 +102,7 @@
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+													<li><a href="#">all</a></li>
 													<li><a href="#">functionary_name</a></li>
 													<li><a href="#">adminagency_code</a></li>
 												</ul>
@@ -130,7 +131,7 @@
 											<c:forEach var="functionaryDto" items="${list}">
 												<tbody>
 													<tr>
-														<th>${functionaryDto.functionaryName}</th>
+														<th><a href="#/${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></th>														
 														<th>${functionaryDto.adminagencyCode}</th>
 														<td>${functionaryDto.functionaryPhone}</td>
 														<td>${functionaryDto.functionaryEmail}</td>																							
@@ -142,45 +143,45 @@
 								<nav>
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}/getArticleList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/getArticleList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<c:choose>
-											<c:when test="${lastPage > beginPageNumForCurrentPage + 4}">
-												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
+											<c:when test="${lastPage > startPage + 4}">
+												<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
-												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
+												<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/getArticleList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -189,19 +190,19 @@
 										<li>
 											<c:choose>
 												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/getArticleList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>

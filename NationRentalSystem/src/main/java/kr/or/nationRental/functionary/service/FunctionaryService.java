@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class FunctionaryService {
@@ -18,10 +18,14 @@ public class FunctionaryService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FunctionaryService.class);
 	
+	//트랜잭션 처리가 안되는것 같다
+	@Transactional
 	public void insertFunctionary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryService - insertFunctionary : " + functionaryDto.toString());
 		
 		functionaryDao.insertFunctionary(functionaryDto);
+		
+		functionaryDao.insertFunctionaryMoveInout(functionaryDto);
 	}
 	
 	public Map<String, Object> selectListFunctionary(int currentPage, int pagePerRow, String searchOption, String keyword) {

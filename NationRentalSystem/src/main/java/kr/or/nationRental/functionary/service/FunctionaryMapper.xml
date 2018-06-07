@@ -25,6 +25,25 @@
 					,#{functionaryEmail} 
 					,NOW())
 		
+	</insert>
+	
+	<insert id="insertFunctionaryMoveInout">
+		INSERT INTO functionary_move_inout
+			(functionary_move_inout_code
+			,adminagency_code
+			,functionary_id
+			,functionary_name
+			,functionary_date_work_start
+			,functionary_date_work_end
+			,functionary_state_work)
+		VALUES (null
+				,#{adminagencyCode}
+				,#{functionaryId}
+				,#{functionaryName}
+				, NOW()
+				, null
+				, '근무중')
+						
 	</insert>	
 	
 	<select id="totalCountFunctionary"
@@ -35,11 +54,11 @@
 			FROM functionary
 			<choose>	      
 		        <when test="searchOption == 'all'">    
-		        	and functionary_name like CONCAT('%', '#{keyword}', '%')
-		        	or adminagency_code like CONCAT('%', '#{keyword}', '%')       	           
+		        	where functionary_name like CONCAT('%', #{keyword}, '%')
+		        	or adminagency_code like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
 		        <otherwise>
-		        	and #{searchOption} like CONCAT('%', '#{keyword}', '%')	             
+		        	where #{searchOption} like CONCAT('%', #{keyword}, '%')	        
 		        </otherwise>
 	    	</choose>
 	</select>
@@ -58,11 +77,11 @@
 					
 			<choose>	      
 		        <when test="searchOption == 'all'">    
-		        	and functionary_name like CONCAT('%', '#{keyword}', '%')
-		        	or adminagency_code like CONCAT('%', '#{keyword}', '%')       	           
+		        	where functionary_name like CONCAT('%', #{keyword}, '%')
+		        	or adminagency_code like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
 		        <otherwise>
-		        	and #{searchOption} like CONCAT('%', '#{keyword}', '%')	             
+		        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
 		        </otherwise>
 	    	</choose>
 		

@@ -28,6 +28,15 @@ public class FunctionaryDao {
 		return row;
 	}
 	
+	public int insertFunctionaryMoveInout(FunctionaryDto functionaryDto) {
+		
+		logger.debug("FunctionaryDao - insertFunctionaryMoveInout - functionaryDto : " + functionaryDto);
+		
+		int row = sqlSession.insert(NS+"insertFunctionaryMoveInout", functionaryDto);
+		
+		return row;
+	}
+	
 	public List<FunctionaryDto> selectListFunctionary(Map<String, Object> map) {
 		logger.debug("FunctionaryDao - selectListFunctionary - map : " + map.toString());
 		
@@ -35,7 +44,7 @@ public class FunctionaryDao {
 	}
 	
 	public int totalCountFunctionary(Map<String, Object> map) {
-		//logger.debug("FunctionaryDao - totalCountFunctionary - map : " + map);
+		logger.debug("FunctionaryDao - totalCountFunctionary - map : " + map);
 		 
 		return sqlSession.selectOne(NS+"totalCountFunctionary", map);
 	}

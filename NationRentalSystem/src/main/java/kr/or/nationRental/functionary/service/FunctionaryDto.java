@@ -5,13 +5,16 @@ public class FunctionaryDto {
 	private String functionaryId; //공무원가입 아이디
 	private int adminagencyCode; //공무원등록 행정구역코드
 	private String adminagencyName; //공무원등록 행정구역명
-	private int functionaryNum; //공무원번호
+	private String functionaryNum; //공무원번호
 	private String functionaryPw; //공무원가입 비밀번호
 	private String functionaryName; //공무원명
 	private int functionaryPhone; //공무원 전화번호
 	private String functionaryEmail; //공무원 이메일
 	private Date functionaryDateJoin; //공무원 가입 날짜
-	
+	private int functionaryMoveInoutCode; //공무원 이력관리 코드
+	private Date functionaryDateWorkStart; //전입날짜
+	private Date functionaryDateWorkEnd; //전출날짜
+	private String functionaryStateWork; //전입전출상태
 	public String getFunctionaryId() {
 		return functionaryId;
 	}
@@ -30,10 +33,10 @@ public class FunctionaryDto {
 	public void setAdminagencyName(String adminagencyName) {
 		this.adminagencyName = adminagencyName;
 	}
-	public int getFunctionaryNum() {
+	public String getFunctionaryNum() {
 		return functionaryNum;
 	}
-	public void setFunctionaryNum(int functionaryNum) {
+	public void setFunctionaryNum(String functionaryNum) {
 		this.functionaryNum = functionaryNum;
 	}
 	public String getFunctionaryPw() {
@@ -66,13 +69,41 @@ public class FunctionaryDto {
 	public void setFunctionaryDateJoin(Date functionaryDateJoin) {
 		this.functionaryDateJoin = functionaryDateJoin;
 	}
+	public int getFunctionaryMoveInoutCode() {
+		return functionaryMoveInoutCode;
+	}
+	public void setFunctionaryMoveInoutCode(int functionaryMoveInoutCode) {
+		this.functionaryMoveInoutCode = functionaryMoveInoutCode;
+	}
+	public Date getFunctionaryDateWorkStart() {
+		return functionaryDateWorkStart;
+	}
+	public void setFunctionaryDateWorkStart(Date functionaryDateWorkStart) {
+		this.functionaryDateWorkStart = functionaryDateWorkStart;
+	}
+	public Date getFunctionaryDateWorkEnd() {
+		return functionaryDateWorkEnd;
+	}
+	public void setFunctionaryDateWorkEnd(Date functionaryDateWorkEnd) {
+		this.functionaryDateWorkEnd = functionaryDateWorkEnd;
+	}
+	public String getFunctionaryStateWork() {
+		return functionaryStateWork;
+	}
+	public void setFunctionaryStateWork(String functionaryStateWork) {
+		this.functionaryStateWork = functionaryStateWork;
+	}
 	@Override
 	public String toString() {
-		return "functionary [functionaryId=" + functionaryId + ", adminagencyCode=" + adminagencyCode
+		return "FunctionaryDto [functionaryId=" + functionaryId + ", adminagencyCode=" + adminagencyCode
 				+ ", adminagencyName=" + adminagencyName + ", functionaryNum=" + functionaryNum + ", functionaryPw="
 				+ functionaryPw + ", functionaryName=" + functionaryName + ", functionaryPhone=" + functionaryPhone
-				+ ", functionaryEmail=" + functionaryEmail + ", functionaryDateJoin=" + functionaryDateJoin + "]";
+				+ ", functionaryEmail=" + functionaryEmail + ", functionaryDateJoin=" + functionaryDateJoin
+				+ ", functionaryMoveInoutCode=" + functionaryMoveInoutCode + ", functionaryDateWorkStart="
+				+ functionaryDateWorkStart + ", functionaryDateWorkEnd=" + functionaryDateWorkEnd
+				+ ", functionaryStateWork=" + functionaryStateWork + "]";
 	}
+	
 	
 	
 }
