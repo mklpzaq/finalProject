@@ -30,7 +30,7 @@
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">낙찰번호</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="agencyCod" name="agencyCod" placeholder="낙찰번호">							
+							<input type="text" class="form-control" id="agencyCod" name="agencyCode" placeholder="낙찰번호">							
 						</div>
 					</div>
 					<div class="form-group">

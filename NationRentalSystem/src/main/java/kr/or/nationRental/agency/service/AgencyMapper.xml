@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="kr.or.nationRental.agency.service.AgencyMapper">
+<mapper namespace="kr.or.nationRental.agency.service.AgencyMapper">
   	<insert id="insertAgency" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">
   		
   		INSERT INTO agency
@@ -14,7 +14,7 @@
 			,agency_businesstype_code
 			,agency_date_registration
 			,agency_date_contract_closed)
-			VALUES (#{agencyCod}
+			VALUES (#{agencyCode}
 					,#{adminagencyCode}
 					,#{functionaryName}
 					,#{agencyName}
@@ -24,4 +24,32 @@
   	
   	</insert>
   
-  </mapper>
+  	<select id="selectListContractAgency" parameterType="Integer" resultType="kr.or.nationRental.agency.service.AgencyDto">
+  		SELECT
+			agency_code as agencyCode
+			,functionary_name as functionaryName
+			,agency_name as agencyName
+			,agency_businesstype_code as agencyBusinesstypeCode
+			,agency_date_registration as agencyDateRegistration
+			FROM agency
+		where adminagency_code = #{adminagencyCode}
+		and agency_date_contract_closed is NULL
+		
+		ORDER BY agency_date_registration DESC
+	</select>
+	
+	<select id="selectListContractClosedAgency" parameterType="Integer" resultType="kr.or.nationRental.agency.service.AgencyDto">
+  		SELECT
+			agency_code as agencyCode
+			,functionary_name as functionaryName
+			,agency_name as agencyName
+			,agency_businesstype_code as agencyBusinesstypeCode
+			,agency_date_registration as agencyDateRegistration
+			,agency_date_contract_closed as agencyDateContractClosed
+			FROM agency
+		where adminagency_code = #{adminagencyCode}
+		and agency_date_contract_closed IS NOT NULL
+		
+		ORDER BY agency_date_registration DESC
+	</select>
+</mapper>

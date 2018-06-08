@@ -102,7 +102,7 @@
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/functionaryBasicInformation/?functionaryId=${member.memberId}">내 정보수정</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAgencyForm">대행업체 등록</a></li>
-										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgency">대행업체 관리</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListContractAgency">대행업체 관리</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">대행업체 직원조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">기부관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품/시설 관리</a></li>

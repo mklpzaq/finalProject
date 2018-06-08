@@ -1,5 +1,7 @@
 package kr.or.nationRental.agency.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,20 @@ public class AgencyDao {
 		int row = sqlSession.insert(NS + "insertAgency", agencyDto);
 		
 		return row;
+	}
+
+	public List<AgencyDto> selectListContractAgency(int adminagencyCode) {
+		logger.debug("AgencyDao - selectListContractAgency - adminagencyCode : " + adminagencyCode);
+		
+		
+		return sqlSession.selectList(NS + "selectListContractAgency", adminagencyCode);
+	}
+	
+	public List<AgencyDto> selectListContractClosedAgency(int adminagencyCode) {
+		logger.debug("AgencyDao - selectListContractClosedAgency - adminagencyCode : " + adminagencyCode);
+		
+		
+		return sqlSession.selectList(NS + "selectListContractClosedAgency", adminagencyCode);
 	}
 
 }

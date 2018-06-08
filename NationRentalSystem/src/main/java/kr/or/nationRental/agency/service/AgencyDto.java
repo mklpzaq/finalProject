@@ -4,18 +4,18 @@ import java.sql.Date;
 
 public class AgencyDto {
 
-	private int agencyCod; //대행업체 낙찰번호
+	private int agencyCode; //대행업체 낙찰번호
 	private int adminagencyCode; //행정기관코드
 	private String functionaryName; //등록 공무원명
 	private String agencyName; //대행업체명
 	private int agencyBusinesstypeCode; //대행업체 업종분류 코드
 	private Date agencyDateRegistration; //대행업체 낙찰등록시기
 	private Date agencyDateContractClosed; //대행업체 계약해지일
-	public int getAgencyCod() {
-		return agencyCod;
+	public int getAgencyCode() {
+		return agencyCode;
 	}
-	public void setAgencyCod(int agencyCod) {
-		this.agencyCod = agencyCod;
+	public void setAgencyCode(int agencyCode) {
+		this.agencyCode = agencyCode;
 	}
 	public int getAdminagencyCode() {
 		return adminagencyCode;
@@ -55,11 +55,13 @@ public class AgencyDto {
 	}
 	@Override
 	public String toString() {
-		return "AgencyDto [agencyCod=" + agencyCod + ", adminagencyCode=" + adminagencyCode + ", functionaryName="
+		return "AgencyDto [agencyCode=" + agencyCode + ", adminagencyCode=" + adminagencyCode + ", functionaryName="
 				+ functionaryName + ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
 				+ ", agencyDateRegistration=" + agencyDateRegistration + ", agencyDateContractClosed="
 				+ agencyDateContractClosed + "]";
 	}
+	
+	
 	
 	
 }
