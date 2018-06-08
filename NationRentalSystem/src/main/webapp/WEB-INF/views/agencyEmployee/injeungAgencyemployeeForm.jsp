@@ -18,7 +18,7 @@
 					    	  if(JSON=='T'){
 								alert('인증성공');
 								/* $(location).attr('href', './insertAgencyEmployee'); */
-								
+								$('#injeungAgencyEmployeeForm').submit();
 					    	  }else{
 								alert('인증실패');
 					    	  }
@@ -42,7 +42,7 @@
 					
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<form id="injeungAgencyEmployeeForm" class="form-horizontal" action="${pageContext.request.contextPath}/getAgencyEmployeeForm" method="post">
+							<form id="injeungAgencyEmployeeForm" class="form-horizontal" action="${pageContext.request.contextPath}/getInsertAgencyEmployeeForm" method="post">
 								<div class="form-group">
 									<label for="agencyEmployeeInjeungNum" class="col-sm-3 control-label">인증번호</label>
 									<div class="col-sm-9">

@@ -25,17 +25,46 @@
 						<div class="panel-body">
 							<h3 class="text-center">대행업체 직원 회원가입</h3>
 							<hr/>
-							<form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/insertAgencyEmployee" method="post">
 								<div class="form-group">
-									<label for="memberId" class="col-sm-3 control-label">회원 ID</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="memberId" id="memberId" placeholder="회원 ID 입력">
+										<input type="hidden" class="form-control" name="agencyEmployeeInjeungNum" value="${agencyInfo.agencyEmployeeInjeungNum}" id="agencyEmployeeInjeungNum">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="memberPw" class="col-sm-3 control-label">회원 PW</label>
+									<label for="agencyName" class="col-sm-3 control-label">대행업체 이름</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="memberPw" id="memberPw" placeholder="회원 PW 입력">
+										<input type="text" class="form-control" name="agencyName" value="${agencyInfo.agencyName}" id="agencyName"  readonly>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyEmployeeId" class="col-sm-3 control-label">직원 아이디</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyEmployeeId" id="agencyEmployeeId" placeholder="직원 ID 입력">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyEmployeePw" class="col-sm-3 control-label">직원 비밀번호</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyEmployeePw" id="agencyEmployeePw" placeholder="직원 PW 입력">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyEmployeeName" class="col-sm-3 control-label">직원 이름</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyEmployeeName" id="agencyEmployeeName" placeholder="직원 이름 입력">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyEmployeePhone" class="col-sm-3 control-label">직원 전화번호</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyEmployeePhone" id="agencyEmployeePhone" placeholder="직원 전화번호 입력">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyEmployeeEmail" class="col-sm-3 control-label">직원 이메일</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyEmployeeEmail" id="agencyEmployeeEmail" placeholder="직원 이메일 입력">
 									</div>
 								</div>
 								<div class="text-center">

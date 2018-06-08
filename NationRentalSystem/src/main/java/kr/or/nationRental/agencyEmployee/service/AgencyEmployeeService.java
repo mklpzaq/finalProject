@@ -11,6 +11,14 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao AgencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("getAgencyNameForInsert AgencyEmployeeService");
+		agencyEmployeeDto = AgencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);
+		logger.debug(agencyEmployeeDto.toString());
+		return agencyEmployeeDto;
+	}
+	
+	
 	public int injeungAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("injeungAgencyEmployee AgencyEmployeeService");
 		return AgencyEmployeeDao.injeungAgencyEmployee(agencyEmployeeDto);

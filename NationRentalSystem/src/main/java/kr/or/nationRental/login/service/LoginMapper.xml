@@ -116,6 +116,7 @@
 			,functionary_pw AS memberPw
 			,functionary_name AS memberName
 			,functionary_phone AS memberPhone
+			,adminagency_code AS adminagencyCode
 		FROM
 			functionary
 		WHERE

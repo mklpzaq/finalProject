@@ -42,6 +42,9 @@ public class LoginService {
 			session.setAttribute("member", memberDto);
 			
 		}else if(1 == loginDao.loginCheckAgencyEmployee(memberDto)) {
+			/*
+			 * 나중에 agencyCode를 세팅해 주어야 한다. JOIN을 통해서 .....
+			 * */
 			logger.debug("대행업체 직원 로그인 성공");
 			memberDto = loginDao.selectOneAgencyEmployeeById(memberDto);
 			memberDto.setMemberLevel("직원");
@@ -50,6 +53,9 @@ public class LoginService {
 			session.setAttribute("member", memberDto);
 	
 		}else if(1 == loginDao.loginCheckFunctionary(memberDto)) {
+			/*
+			 * 공무원의 경우 로그인 정보에 adminagencyCode(행정기관 코드)가 더 추가된다.
+			 * */
 			logger.debug("공무원 로그인 성공");
 			memberDto = loginDao.selectOneFunctionaryById(memberDto);
 			memberDto.setMemberLevel("공무원");

@@ -5,6 +5,18 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 
+	<select id="getAgencyNameForInsert"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		SELECT
+			agency_code AS agencyEmployeeInjeungNum
+			,agency_name AS agencyName
+		FROM
+			agency
+		WHERE
+			agency_code = #{agencyEmployeeInjeungNum}
+	</select>
+
 	<select id="injeungAgencyEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
 			resultType="Integer">
