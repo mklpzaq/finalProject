@@ -83,6 +83,48 @@
 				</choose>
 			</if>	
 	</select>
+	
+	<select id="getOneCitizen"
+			parameterType="kr.or.nationRental.citizen.service.CitizenDto"
+			resultType="kr.or.nationRental.citizen.service.CitizenDto">
+			SELECT
+				citizen_name as citizenName				
+				,citizen_address_sangse as citizenAddressSangse
+				,citizen_phone as citizenPhone
+				,citizen_email as citizenEmail
+			FROM citizen
+			WHERE citizen_id = #{citizenId}				
+	</select>
+	
+	<select id="updateCitizen"
+			parameterType="kr.or.nationRental.citizen.service.CitizenDto"
+			resultType="kr.or.nationRental.citizen.service.CitizenDto">
+			SELECT
+				citizen_id as citizenId
+				,citizen_pw as citizenPw
+				,sigungu_code as sigunguCode
+				,eupmyeon_code as eupmyeonCode
+				,citizen_address_sangse as citizenAddressSangse
+				,citizen_phone as citizenPhone
+				,citizen_email as citizenEmail
+			FROM citizen
+			WHERE citizen_id = #{citizenId}				
+	</select>
+	
+	<select id="updateOneCitizen"
+			parameterType="kr.or.nationRental.citizen.service.CitizenDto">
+			UPDATE
+				citizen
+			SET
+				citizen_pw = #{citizenPw}
+				,sigungu_code = #{sigunguCode}
+				,eupmyeon_code = #{eupmyeonCode}
+				,citizen_address_sangse = #{citizenAddressSangse}
+				,citizen_phone = #{citizenPhone}
+				,citizen_email = #{citizenEmail}
+			WHERE
+				citizen_id = #{citizenId}	
+	</select>
  
  
  </mapper>

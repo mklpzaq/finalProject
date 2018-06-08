@@ -38,7 +38,7 @@ public class CitizenController {
 		logger.debug("CitizenController insertCitizen Post : " + citizenDto.toString()); 
 		citizenService.insertCitizen(citizenDto);
 		   
-		return "redirect:/getCitizenList"; 
+		return "redirect:/joinCongratulation"; 
 	}
 	
 	@RequestMapping(value="/getCitizenList", method=RequestMethod.GET)
@@ -73,18 +73,35 @@ public class CitizenController {
 	}
 	
 	@RequestMapping(value="/selectOneCitizen", method=RequestMethod.GET)
-	public String selectOneCitizen(Model model
-									,HttpSession session
+	public String selectOneCitizen(Model model									
 									,CitizenDto citizenDto) {
-		logger.debug("CitizenController selectOneCitizen : " + session);
-		logger.debug(citizenDto.toString());
-		// citizenDto에서 아이디값이 넘어온다.
+		logger.debug(citizenDto.toString());		
+		
+		CitizenDto OneCitizenDto = citizenService.getOneCitizen(citizenDto);
+		model.addAttribute("OneCitizenDto", OneCitizenDto);
 		
 		
-		citizenDto = citizenService.getOneCitizen(citizenDto);
-		model.addAttribute("citizenDto", citizenDto);
-				
 		return "/citizen/selectOneCitizen";
+	}
+	
+	@RequestMapping(value="/updateOneCitizen", method=RequestMethod.GET)
+	public String updateOneCitizen(Model model
+									,CitizenDto citizenDto) {
+		logger.debug("CitizenController updateOneCitizen - GET : " +citizenDto.toString());
+		
+		CitizenDto updateCitizen = citizenService.updateCitizen(citizenDto);
+		model.addAttribute("updateCitizen", updateCitizen);
+		
+		return "/citizen/updateCitizenForm";
+	}
+	
+	@RequestMapping(value="/updateOneCitizen", method=RequestMethod.POST)
+	public String updateOneCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenController updateOneCitizen - POST : " +citizenDto.toString());
+		
+		int result = citizenService.updateOneCitizen(citizenDto);
+		
+		return "redirect:/selectOneCitizen";
 	}
 	
 	

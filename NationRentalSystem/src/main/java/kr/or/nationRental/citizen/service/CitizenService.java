@@ -69,10 +69,26 @@ public class CitizenService {
 	public CitizenDto getOneCitizen(CitizenDto citizenDto) {
 		logger.debug("CitizenService getOneCitizen : " +citizenDto.toString());
 		
-		citizenDao.getOneCitizen(citizenDto);
+		CitizenDto oneCitizen = citizenDao.getOneCitizen(citizenDto);
 		
-		return null;
+		return oneCitizen;
 	}
+
+	public CitizenDto updateCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenService updateCitizen : " +citizenDto.toString());
+		
+		CitizenDto updateCitizen = citizenDao.updateCitizen(citizenDto);
+		
+		return updateCitizen;
+	}
+
+	public int updateOneCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenService updateOneCitizen : " +citizenDto.toString());
+		
+		return citizenDao.updateOneCitizen(citizenDto);
+	}
+
+	
 	
 
 	

@@ -21,11 +21,41 @@
 				<!-- Begin Content -->
 			
 				<h2> 시민 정보 보기  </h2>
-				
-		
-		
-		
-		
+				<div class="bs-example" data-example-id="striped-table">
+				    <table class="table table-striped">
+					      <thead>
+						        <tr>
+						          <th>#</th>
+						          <th>기본정보</th>						        
+						        </tr>
+						  </thead>
+						  <tbody>
+						        <tr>
+						          <th scope="row">시민명</th>
+						          <td>${OneCitizenDto.citizenName}</td>						         
+						        </tr>						       
+						        <tr>
+						          <th scope="row">시민 상세주소</th>
+						          <td>${OneCitizenDto.citizenAddressSangse}</td>						         
+						        </tr>
+						        <tr>
+						          <th scope="row">시민 전화번호</th>
+						          <td>${OneCitizenDto.citizenPhone}</td>						         
+						        </tr>
+						        <tr>
+						          <th scope="row">시민 이메일</th>
+						          <td>${OneCitizenDto.citizenEmail}</td>						         
+						        </tr>
+						        <tr>
+						          <th scope="row">수정 버튼</th>
+						          <td>
+						          	<a href="${pageContext.request.contextPath}/updateOneCitizen?citizenId=${member.memberId}">수정버튼</a>
+						          </td>						         
+						        </tr>										        
+				      	</tbody>
+				    </table>
+			  </div>
+						
 				<!-- End Content -->
 			</div>
 				<div class="col-sm-2"></div>

@@ -15,7 +15,7 @@ public class CitizenDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	final String NS ="kr.or.nationRental.citizen.service.CitizenMapper.";
+	final String NS ="kr.or.nationRental.citizen.service.CitizenMapper.";	
 	
 	private static final Logger logger = LoggerFactory.getLogger(CitizenDao.class);
 	
@@ -35,11 +35,19 @@ public class CitizenDao {
 		return sqlSession.selectOne(NS+"totalCountCitizen", map);
 	}
 
-	public void getOneCitizen(CitizenDto citizenDto) {
-		
-		
+	public CitizenDto getOneCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenDao getOneCitizen : " + citizenDto.toString());
+		return sqlSession.selectOne(NS+"getOneCitizen", citizenDto);
+	}
+
+	public CitizenDto updateCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenDao updateCitizen : " + citizenDto.toString());
+		return sqlSession.selectOne(NS+"updateCitizen", citizenDto);
 	}
 	
-	
+	public int updateOneCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenDao updateOneCitizen : " + citizenDto.toString());
+		return sqlSession.update(NS+"updateOneCitizen", citizenDto);
+	}
 
 }
