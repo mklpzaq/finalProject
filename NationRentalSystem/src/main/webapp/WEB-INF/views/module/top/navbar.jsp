@@ -122,7 +122,7 @@
 								<hr style="margin:0 0 5px 0;"/>
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
-										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewAgencyEmployeeInfo">회원 정보</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewAgencyEmployeeInfo?agencyEmployeeId=${member.memberId}">회원 정보</a></li>
 										<li><a style="color:#FFFFFF" href="#">계약한 지자체 공무원 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">소속업체 낙찰정보 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">미수락 의뢰 리스트</a></li>
