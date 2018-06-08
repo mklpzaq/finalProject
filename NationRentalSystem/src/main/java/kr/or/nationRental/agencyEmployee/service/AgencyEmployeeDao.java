@@ -16,6 +16,26 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	public int idCheckAdministrator(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckAdministrator AgencyEmployeeDao");
+		return sqlSession.selectOne("idCheckAdministrator", agencyEmployeeDto);
+	}
+	
+	public int idCheckFunctionary(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckFunctionary AgencyEmployeeDao");
+		return sqlSession.selectOne("idCheckFunctionary", agencyEmployeeDto);
+	}
+	
+	public int idCheckAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectOne("idCheckAgencyEmployee", agencyEmployeeDto);
+	}
+	
+	public int idCheckCitizen(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckCitizen AgencyEmployeeDao");
+		return sqlSession.selectOne("idCheckCitizen", agencyEmployeeDto);
+	}
+	
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyNameForInsert AgencyEmployeeDao");
 		agencyEmployeeDto = sqlSession.selectOne(NS+"getAgencyNameForInsert", agencyEmployeeDto);

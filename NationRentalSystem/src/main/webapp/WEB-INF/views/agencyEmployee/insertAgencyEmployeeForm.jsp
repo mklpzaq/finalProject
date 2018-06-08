@@ -7,6 +7,35 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>Insert Agency Employee Form</title>
+		<script>
+			$(document).ready(function(){
+				var isIdCheck = 0;
+				
+				$('#idCheckBtn').click(function(){
+					$.ajax({
+					      type: "POST"
+					      ,url: "/nationRental/idCheck"
+					      ,data: { agencyEmployeeId: $('#agencyEmployeeId').val() }
+					      ,success:function( JSON ) { // result : String, XML, JSON
+					    	  if(JSON=='T'){
+								alert('중복되지 않는 아이디입니다.');
+								/* $(location).attr('href', './insertAgencyEmployee'); */
+								/* $('#injeungAgencyEmployeeForm').submit(); */
+					    	  }else{
+								alert('중복되는 아이디입니다. 다른 아이디를 입력해주세요.');
+					    	  }
+					      }
+					});
+				});
+				
+				$('#insertBtn').click(function(){
+					//다시한번 유효성 검사를 하고 커밋을 시킨다.
+					
+				});
+				
+				
+			});
+		</script>
 	</head>
 	<body>
 		
@@ -40,7 +69,12 @@
 								<div class="form-group">
 									<label for="agencyEmployeeId" class="col-sm-3 control-label">직원 아이디</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyEmployeeId" id="agencyEmployeeId" placeholder="직원 ID 입력">
+										<div class="input-group">
+											<input type="text" class="form-control" name="agencyEmployeeId" id="agencyEmployeeId" placeholder="직원 ID 입력">
+											<span class="input-group-btn">
+												<button id="idCheckBtn" class="btn btn-default" type="button">ID 중복검사</button>
+											</span>
+										</div><!-- /input-group -->
 									</div>
 								</div>
 								<div class="form-group">
@@ -68,12 +102,14 @@
 									</div>
 								</div>
 								<div class="text-center">
-									<button type="submit" class="btn btn-default">입력 완료</button>
+									<button id="insertBtn" type="button" class="btn btn-default">입력 완료</button>
 								</div>
 							</form>
 						</div>
 					</div>
-		
+					
+					
+
 		
 					<!-- End Content -->
 				</div>

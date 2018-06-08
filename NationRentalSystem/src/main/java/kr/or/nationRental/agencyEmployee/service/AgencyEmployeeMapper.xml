@@ -5,6 +5,53 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 
+	<select id="idCheckAdministrator"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			administrator
+		WHERE
+			administrator_id = #{agencyEmployeeId}
+	</select>
+
+	<select id="idCheckFunctionary"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			functionary
+		WHERE
+			functionary_id = #{agencyEmployeeId}
+	</select>
+	
+	<select id="idCheckAgencyEmployee"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			agency_employee
+		WHERE
+			agency_employee_id = #{agencyEmployeeId}
+	</select>
+	
+	<select id="idCheckCitizen"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			citizen
+		WHERE
+			citizen_id = #{agencyEmployeeId}
+	</select>
+
+
+
+
 	<select id="getAgencyNameForInsert"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
 			resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">

@@ -11,16 +11,50 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao AgencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	public String idCheck(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheck AgencyEmployeeService");
+		/*
+		 * Administrator, Functionary, AgencyEmployee, Citizen 테이블을 모두 참조해
+		 * ID 중복이 있는지를 체크한다.
+		 * ID 중복이 발생하였다면, result 변수에 F 가 초기화되고
+		 * ID 중복이 발생하지 아니하였다면, result 변수에 T 가 초기화된다.
+		 * */
+		String result = null;
+		if(agencyEmployeeDto.getAgencyEmployeeId().equals("")) {
+			logger.debug("ID를 아무것도 입력하지 않았을 경우.");
+			result = "F";
+		}else if(1 == AgencyEmployeeDao.idCheckAdministrator(agencyEmployeeDto)) {
+			logger.debug("관리자에서 ID 중복이 발생함");
+			result = "F";
+		}else if(1 == AgencyEmployeeDao.idCheckFunctionary(agencyEmployeeDto)) {
+			logger.debug("공무원에서 ID 중복이 발생함");
+			result = "F";
+		}else if(1 == AgencyEmployeeDao.idCheckAgencyEmployee(agencyEmployeeDto) ) {
+			logger.debug("대행업체 직원에서 ID 중복이 발생함");
+			result = "F";
+		}else if(1 == AgencyEmployeeDao.idCheckCitizen(agencyEmployeeDto)) {
+			logger.debug("시민에서 ID 중복이 발생함");
+			result = "F";
+		}else {
+			logger.debug("ID중복이 발생하지 아니함.");
+			result = "T";
+		}
+
+		return result;
+	}
+	
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyNameForInsert AgencyEmployeeService");
 		agencyEmployeeDto = AgencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);
 		logger.debug(agencyEmployeeDto.toString());
+		
 		return agencyEmployeeDto;
 	}
-	
 	
 	public int injeungAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("injeungAgencyEmployee AgencyEmployeeService");
 		return AgencyEmployeeDao.injeungAgencyEmployee(agencyEmployeeDto);
 	}
+	
+	
 }

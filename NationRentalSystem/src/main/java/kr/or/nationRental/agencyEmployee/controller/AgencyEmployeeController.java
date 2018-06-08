@@ -18,7 +18,7 @@ public class AgencyEmployeeController {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
 	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.POST)
-	public String insertAgencyEmployee() {
+	public String insertAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("POST insertAgencyEmployee AgencyEmployeeController");
 		/*
 		 * 여기부분에 인서트부분을 구현해야 한다.
