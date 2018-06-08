@@ -105,7 +105,6 @@
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
-			
 		</div>
 		<jsp:include page="./module/bottom/bottomContent.jsp"/>
 	
