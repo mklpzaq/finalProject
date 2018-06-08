@@ -83,12 +83,9 @@ public class DistrictController {
 	}
 	
 	//시군구  등록 post호출
-	
 	@RequestMapping(value="/insertSigungu",  method = RequestMethod.POST)
 	public String insertSigungu(DistrictDto districtDto) {
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(districtDto.toString());
-		
 		districtDto.setSigunguCode(districtDto.getSidoCode() + districtDto.getSigunguMiddleCode());		
 		logger.info("insertSigungu");
 		int row = districtService.insertSigungu(districtDto);
