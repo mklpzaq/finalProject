@@ -4,6 +4,8 @@ package kr.or.nationRental.citizen.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,7 @@ public class CitizenController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", searchOption);
 		model.addAttribute("keyword", keyword);
+		
 		logger.debug("list : "+ map.get("list"));
 		logger.debug("lastPage : "+ map.get("lastPage"));
 		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
@@ -69,7 +72,20 @@ public class CitizenController {
 		return "/citizen/selectCitizenList";
 	}
 	
-	
+	@RequestMapping(value="/selectOneCitizen", method=RequestMethod.GET)
+	public String selectOneCitizen(Model model
+									,HttpSession session
+									,CitizenDto citizenDto) {
+		logger.debug("CitizenController selectOneCitizen : " + session);
+		logger.debug(citizenDto.toString());
+		// citizenDto에서 아이디값이 넘어온다.
+		
+		
+		citizenDto = citizenService.getOneCitizen(citizenDto);
+		model.addAttribute("citizenDto", citizenDto);
+				
+		return "/citizen/selectOneCitizen";
+	}
 	
 	
 	

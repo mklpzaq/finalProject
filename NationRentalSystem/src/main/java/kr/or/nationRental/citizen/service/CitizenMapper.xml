@@ -48,13 +48,13 @@
 			<if test="!keyword.equals('')">
 				<choose>
 					<when test="searchOption.equals('citizenId')">
-						WHERE citizen_id = #{searchWord}
+						WHERE citizen_id = #{keyword}
 					</when>
 					<when test="searchOption.equals('citizenName')">
-						WHERE citizen_name = #{searchWord}
+						WHERE citizen_name = #{keyword}
 					</when>
 					<when test="searchOption.equals('citizenEmail')">
-						WHERE citizen_email = #{searchWord}
+						WHERE citizen_email = #{keyword}
 					</when>
 				</choose>
 			</if>
@@ -72,13 +72,13 @@
 			<if test="!keyword.equals('')">
 				<choose>
 					<when test="searchOption.equals('citizenId')">
-						WHERE citizen_id = #{searchWord}
+						WHERE citizen_id = #{keyword}
 					</when>
 					<when test="searchOption.equals('citizenName')">
-						WHERE citizen_name = #{searchWord}
+						WHERE citizen_name = #{keyword}
 					</when>
 					<when test="searchOption.equals('citizenEmail')">
-						WHERE citizen_email = #{searchWord}
+						WHERE citizen_email = #{keyword}
 					</when>
 				</choose>
 			</if>	

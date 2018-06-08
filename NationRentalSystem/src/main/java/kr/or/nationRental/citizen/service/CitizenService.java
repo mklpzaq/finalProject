@@ -64,6 +64,18 @@ public class CitizenService {
 		
 		return returnMap;		
 	}
+
+	
+	public CitizenDto getOneCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenService getOneCitizen : " +citizenDto.toString());
+		
+		citizenDao.getOneCitizen(citizenDto);
+		
+		return null;
+	}
+	
+
+	
 	
 	
 	

@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<title>Select List</title>
-</head>
+
 	<script>
 			$(document).ready(function() {
 				var searchOption;
@@ -27,14 +27,14 @@
 					/* searchButton을 누르면 searchWord변수의 값을 get방식으로 getBoardListController로 검색어와 함께 넘길 것이다.
 					*  클릭했을때 선택한 select내용의 값을 #selectButtonText에 넣어준다.
 					*/
-					$('#selectButtonText, #monitorSearchSelect').text($(this).text());
+					$('#selectButtonText, #moniterSearchOption').text($(this).text());
 					$('#selectButton').parent().removeClass('open');
 				});
 				
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './getCitizenList?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#monitorSearchSelect').text() + '&keyword=' + $('#monitorSearchWord').text());
+					$(location).attr('href', './getCitizenList?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
@@ -46,7 +46,7 @@
 				
 			});
 		</script>
-
+</head>
 <body>
 		<div class="container-fluid">
 				<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
@@ -65,8 +65,8 @@
 								<div class="row">
 									<div class="col-md-4">
 										<strong>${currentPage} / ${lastPage} Page</strong><br/>
-										<strong>searchOption : </strong><span id="searchOption">${searchOption}</span><br/>
-										<strong>keyword : </strong><span id="keyword">${keyword}</span><br/>						
+										<strong>searchOption : </strong><span id="moniterSearchOption">${searchOption}</span><br/>
+										<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
 										<h3>시민회원 List</h3>
@@ -116,14 +116,14 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<td width="20%">citizenId</td>
-											<td width="25%">citizenPw</td>
-											<td width="25%">citizenName</td>
-											<td width="30%">sigunguCode</td>
-											<td width="30%">eupmyeonCode</td>
-											<td width="30%">citizenAddressSangse</td>
-											<td width="30%">citizenPhone</td>
-											<td width="30%">citizenEmail</td>										
+											<td width="20%">시민 아이디</td>
+											<td width="25%">시민 비밀번호</td>
+											<td width="25%">시민이름</td>
+											<td width="30%">시군구코드</td>
+											<td width="30%">읍면동코드</td>
+											<td width="30%">시민주소</td>
+											<td width="30%">시민 핸드폰번호</td>
+											<td width="30%">시민 이메일</td>										
 										</tr>
 									</thead>
 									<tbody>									

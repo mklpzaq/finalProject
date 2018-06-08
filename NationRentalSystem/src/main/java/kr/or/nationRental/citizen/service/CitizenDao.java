@@ -34,6 +34,11 @@ public class CitizenDao {
 	public int totalCountCitizen(Map<String, Object> map) {
 		return sqlSession.selectOne(NS+"totalCountCitizen", map);
 	}
+
+	public void getOneCitizen(CitizenDto citizenDto) {
+		
+		
+	}
 	
 	
 
