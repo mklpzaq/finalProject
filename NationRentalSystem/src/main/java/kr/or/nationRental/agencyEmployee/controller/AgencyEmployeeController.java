@@ -18,13 +18,16 @@ public class AgencyEmployeeController {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
 	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.POST)
-	public String insertAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+	public String insertAgencyEmployee(Model model
+										,AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("POST insertAgencyEmployee AgencyEmployeeController");
+		logger.debug(agencyEmployeeDto.toString());
 		/*
-		 * 여기부분에 인서트부분을 구현해야 한다.
+		 * result 값이 true 일경우에는 insert가 정상적으로 이루어진 경우이다.
+		 * result 값이 false 인 경우에는 insert가 정상적으로 이루어지지 않은 경우이다.
 		 * */
-		
-		return "redirect:/";
+		agencyEmployeeService.insertAgencyEmployee(agencyEmployeeDto);
+		return "redirect:/joinCongratulation";
 	}
 	
 	@RequestMapping(value="/getInsertAgencyEmployeeForm", method=RequestMethod.POST)

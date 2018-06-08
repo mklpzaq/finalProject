@@ -4,12 +4,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AgencyEmployeeService {
 	@Autowired
 	private AgencyEmployeeDao AgencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
+	
+	@Transactional
+	public void insertAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("insertAgencyEmployee AgencyEmployeeService");
+		AgencyEmployeeDao.insertAgencyEmployee(agencyEmployeeDto);
+		AgencyEmployeeDao.insertAgencyNakchalEmployee(agencyEmployeeDto);
+	}
 	
 	public String idCheck(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("idCheck AgencyEmployeeService");
@@ -43,6 +51,9 @@ public class AgencyEmployeeService {
 		return result;
 	}
 	
+	/*
+	 * agencyEmployeeDto에 담겨있는 인증번호를 통해 낙찰된 대행업체의 대행업체명을 가져온다.
+	 * */
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyNameForInsert AgencyEmployeeService");
 		agencyEmployeeDto = AgencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);

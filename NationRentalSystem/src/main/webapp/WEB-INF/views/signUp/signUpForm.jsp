@@ -17,7 +17,8 @@
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
-				
+					<h3>회원가입</h3>
+					<hr/>
 				
 					<a href="${pageContext.request.contextPath}/insertCitizen">시민 회원가입</a> | 
 					<a href="${pageContext.request.contextPath}/injeungAdministrator">관리자 등록</a> | 

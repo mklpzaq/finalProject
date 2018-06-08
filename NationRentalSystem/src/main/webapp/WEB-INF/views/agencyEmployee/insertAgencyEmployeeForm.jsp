@@ -22,7 +22,7 @@
 								/* $(location).attr('href', './insertAgencyEmployee'); */
 								/* $('#injeungAgencyEmployeeForm').submit(); */
 					    	  }else{
-								alert('중복되는 아이디입니다. 다른 아이디를 입력해주세요.');
+								alert('중복된 아이디입니다. 다른 아이디를 입력해주세요.');
 					    	  }
 					      }
 					});
@@ -30,7 +30,18 @@
 				
 				$('#insertBtn').click(function(){
 					//다시한번 유효성 검사를 하고 커밋을 시킨다.
-					
+					$.ajax({
+						type: "POST"
+						,url: "/nationRental/idCheck"
+						,data: { agencyEmployeeId: $('#agencyEmployeeId').val() }
+						,success:function( JSON ) { // result : String, XML, JSON
+							if(JSON=='T'){
+								$('#insertForm').submit();
+							}else{
+								alert('중복되거나 잘못된 아이디입니다. 다른 아이디를 입력해주세요.');
+							}
+						}
+					});
 				});
 				
 				
@@ -54,7 +65,7 @@
 						<div class="panel-body">
 							<h3 class="text-center">대행업체 직원 회원가입</h3>
 							<hr/>
-							<form class="form-horizontal" action="${pageContext.request.contextPath}/insertAgencyEmployee" method="post">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertAgencyEmployee" method="post">
 								<div class="form-group">
 									<div class="col-sm-9">
 										<input type="hidden" class="form-control" name="agencyEmployeeInjeungNum" value="${agencyInfo.agencyEmployeeInjeungNum}" id="agencyEmployeeInjeungNum">

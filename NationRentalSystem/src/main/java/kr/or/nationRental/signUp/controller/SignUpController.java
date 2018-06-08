@@ -9,7 +9,13 @@ public class SignUpController {
 	
 	@RequestMapping(value="/goSignUp", method=RequestMethod.GET)
 	public String goSignUp() {
-		
 		return "signUp/signUpForm";
 	}
+	
+	@RequestMapping(value="/joinCongratulation", method=RequestMethod.GET)
+	public String joinCongratulation() {
+		
+		return "signUp/joinCongratulation";
+	}
+	
 }
