@@ -58,13 +58,10 @@ public class DistrictDto {
 	public void setEupmyeonName(String eupmyeonName) {
 		this.eupmyeonName = eupmyeonName;
 	}
-	
 	@Override
 	public String toString() {
-		return "SidoSigunguEupmyeonDto [sidoCode=" + sidoCode + ", sidoName=" + sidoName + ", sigunguCode="
-				+ sigunguCode + ", sigunguMiddleCode=" + sigunguMiddleCode + ", sigunguName=" + sigunguName
-				+ ", eupmyeonCode=" + eupmyeonCode + ", eupmyeonMiddleCode=" + eupmyeonMiddleCode + ", eupmyeonName="
-				+ eupmyeonName + "]";
+		return "DistrictDto [sidoCode=" + sidoCode + ", sidoName=" + sidoName + ", sigunguCode=" + sigunguCode
+				+ ", sigunguMiddleCode=" + sigunguMiddleCode + ", sigunguName=" + sigunguName + ", eupmyeonCode="
+				+ eupmyeonCode + ", eupmyeonMiddleCode=" + eupmyeonMiddleCode + ", eupmyeonName=" + eupmyeonName + "]";
 	}
-	
 }

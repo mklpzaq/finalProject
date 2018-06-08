@@ -32,27 +32,27 @@ public class DistrictController {
 	//시도 목록보기
 	@RequestMapping(value="/selectListSido", method=RequestMethod.GET)
 	public String selectListSido(Model model) {
-		List<DistrictDto> sidoList = districtService.selectListSido();
-		model.addAttribute("sidoList", sidoList);
-		logger.info("---selectListSido" + sidoList);
+		List<DistrictDto> districtDtoList = districtService.selectListSido();
+		model.addAttribute("districtDtoList", districtDtoList);
+		logger.info("---selectListSido" + districtDtoList);
 		return "administrativeDistrict/selectListSido";
 	}
 	
 	//시군구 목록보기
 	@RequestMapping(value="/selectListSigungu", method=RequestMethod.GET)
 	public String selectListSigungu(Model model) {
-		List<DistrictDto> sigunguList = districtService.selectListSigungu();
-		model.addAttribute("sigunguList", sigunguList);
-		logger.info("---selectListSigungu" + sigunguList);
+		List<DistrictDto> districtDtoList = districtService.selectListSigungu();
+		model.addAttribute("districtDtoList", districtDtoList);
+		logger.info("---selectListSigungu" + districtDtoList);
 		return "administrativeDistrict/selectListSigungu";
 	}
 	
 	//읍면동 목록보기
 	@RequestMapping(value="/selectListEupmyeon", method=RequestMethod.GET)
 	public String selectListEupmyeon(Model model) {
-		List<DistrictDto> eupmyeonList = districtService.selectListEupmyeon();
-		model.addAttribute("eupmyeonList", eupmyeonList);
-		logger.info("---selectListEupmyeon" + eupmyeonList);
+		List<DistrictDto> districtDtoList = districtService.selectListEupmyeon();
+		model.addAttribute("districtDtoList", districtDtoList);
+		logger.info("---selectListEupmyeon" + districtDtoList);
 		return "administrativeDistrict/selectListEupmyeon";
 	}
 	
@@ -66,7 +66,7 @@ public class DistrictController {
 	//시도 등록하기
 	@RequestMapping(value = "/insertSido", method = RequestMethod.POST)
 	public String insertSido(DistrictDto districtDto) {
-		logger.info("categoryInsertForm");
+		logger.info("insertSido");
 		districtService.insertSido(districtDto);
    		return "redirect:/selectListSido";
 	}
@@ -76,15 +76,20 @@ public class DistrictController {
 	@RequestMapping(value = "/insertSigungu", method = RequestMethod.GET)
 	public String insertSigungu(Model model) {
 		logger.info("---insertSigungu");
-		List<DistrictDto> sidoList = districtService.selectListSido();
-		logger.info("---sidoList" + sidoList);
-		model.addAttribute("sidoList", sidoList);
+		List<DistrictDto> districtDtoList = districtService.selectListSido();
+		logger.info("---districtDtoList" + districtDtoList);
+		model.addAttribute("districtDtoList", districtDtoList);
    		return "administrativeDistrict/insertSigungu";
 	}
 	
-	//ItmeController post호출
+	//시군구  등록 post호출
+	
 	@RequestMapping(value="/insertSigungu",  method = RequestMethod.POST)
 	public String insertSigungu(DistrictDto districtDto) {
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(districtDto.toString());
+		
+		districtDto.setSigunguCode(districtDto.getSidoCode() + districtDto.getSigunguMiddleCode());		
 		logger.info("insertSigungu");
 		int row = districtService.insertSigungu(districtDto);
 		return "redirect:/selectListSigungu";

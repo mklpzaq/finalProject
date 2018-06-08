@@ -34,21 +34,15 @@
 								<td width="30%">시군구</td>								
 							</tr>
 						</thead>
-						
-
-
-
-
-						
 						<tbody>									
-							<c:forEach var="sigunguList" items="${sigunguList}">
+							<c:forEach var="districtDtoList" items="${districtDtoList}">
 								<tbody>
 									<tr>
-										<th>${sigunguList.sigunguCode}</th>
-										<th>${sigunguList.sidoCode}</th>
-										<th>${sigunguList.sidoName}</th>
-										<th>${sigunguList.sigunguMiddleCode}</th>
-										<th>${sigunguList.sigunguName}</th>																					
+										<th>${districtDtoList.sigunguCode}</th>
+										<th>${districtDtoList.sidoCode}</th>
+										<th>${districtDtoList.sidoName}</th>
+										<th>${districtDtoList.sigunguMiddleCode}</th>
+										<th>${districtDtoList.sigunguName}</th>																					
 									</tr>
 								</tbody>
 							</c:forEach>	

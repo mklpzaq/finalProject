@@ -37,16 +37,16 @@
 							</tr>
 						</thead>
 						<tbody>									
-							<c:forEach var="eupmyeonList" items="${eupmyeonList}">
+							<c:forEach var="districtDtoList" items="${districtDtoList}">
 								<tbody>
 									<tr>
-										<th>${eupmyeonList.eupmyeonCode}</th>
-										<th>${eupmyeonList.sidoCode}</th>
-										<th>${eupmyeonList.sidoName}</th>
-										<th>${eupmyeonList.sigunguMiddleCode}</th>
-										<th>${eupmyeonList.sigunguName}</th>
-										<th>${eupmyeonList.eupmyeonMiddleCode}</th>
-										<th>${eupmyeonList.eupmyeonName}</th>																					
+										<th>${districtDtoList.sidoCode}${districtDtoList.sigunguMiddleCode}${districtDtoList.eupmyeonMiddleCode}</th>
+										<th>${districtDtoList.sidoCode}</th>
+										<th>${districtDtoList.sidoName}</th>
+										<th>${districtDtoList.sigunguMiddleCode}</th>
+										<th>${districtDtoList.sigunguName}</th>
+										<th>${districtDtoList.eupmyeonMiddleCode}</th>
+										<th>${districtDtoList.eupmyeonName}</th>																					
 									</tr>
 								</tbody>
 							</c:forEach>	

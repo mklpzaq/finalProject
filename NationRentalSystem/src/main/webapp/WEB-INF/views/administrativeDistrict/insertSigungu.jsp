@@ -26,10 +26,10 @@
 									<div class="form-group">
 										<label for="sigunguCode" class="col-sm-3 control-label">시도 선택</label>
 										<div class="col-sm-9">
-											<select id="sidoList" name="districtDto.sidoCode">
+											<select id=districtDtoList name="sidoCode">
 												<option>시도선택</option>
-												<c:forEach var="sidoList" items="${sidoList}">
-													<option value="${sidoList.sidoCode}">${sidoList.sidoName}</option>
+												<c:forEach var="districtDtoList" items="${districtDtoList}">
+													<option value="${districtDtoList.sidoCode}">${districtDtoList.sidoName}</option>
 												</c:forEach>
 											</select>											
 										</div>
@@ -46,7 +46,7 @@
 											<input type="text" class="form-control" name="sigunguName" id="sigunguName" placeholder="시군구 이름을 입력해주세요.">
 										</div>
 									</div>
-									
+			
 									<br>
 									<div class="form-group">
 										<div class="col-sm-12">

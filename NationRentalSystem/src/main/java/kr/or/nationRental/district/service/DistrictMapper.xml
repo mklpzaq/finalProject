@@ -89,17 +89,15 @@
 		INSERT INTO sigungu(
 			sigungu_code
 			, sido_code
-			, sido_name
 			, sigungu_middle_code
 			, sigungu_name
 		) VALUES (
 			#{sigunguCode}
 			, #{sidoCode}
-			, #{sidoName}
 			, #{sigunguMiddleCode}
 			, #{sigunguName}
 		)	
-	
+
 	</insert>
 
 </mapper>

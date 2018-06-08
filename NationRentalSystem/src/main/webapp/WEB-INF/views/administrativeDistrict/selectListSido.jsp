@@ -32,11 +32,11 @@
 							</tr>
 						</thead>
 						<tbody>									
-							<c:forEach var="sidoList" items="${sidoList}">
+							<c:forEach var="districtDtoList" items="${districtDtoList}">
 								<tbody>
 									<tr>
-										<th>${sidoList.sidoCode}</th>
-										<th>${sidoList.sidoName}</th>																					
+										<th>${districtDtoList.sidoCode}</th>
+										<th>${districtDtoList.sidoName}</th>																					
 									</tr>
 								</tbody>
 							</c:forEach>	
