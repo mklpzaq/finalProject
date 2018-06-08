@@ -25,7 +25,7 @@ public class DistrictController {
 	public String selectListDistrict(Model model) {
 		List<DistrictDto> districtDtoList = districtService.selectListDistrict();
 		model.addAttribute("districtDtoList", districtDtoList);
-		logger.info("---selectListDistrict" + districtDtoList);
+		logger.debug("---selectListDistrict" + districtDtoList);
 		return "administrativeDistrict/selectListDistrict";
 	}
 		
@@ -34,7 +34,7 @@ public class DistrictController {
 	public String selectListSido(Model model) {
 		List<DistrictDto> districtDtoList = districtService.selectListSido();
 		model.addAttribute("districtDtoList", districtDtoList);
-		logger.info("---selectListSido" + districtDtoList);
+		logger.debug("---selectListSido" + districtDtoList);
 		return "administrativeDistrict/selectListSido";
 	}
 	
@@ -43,7 +43,7 @@ public class DistrictController {
 	public String selectListSigungu(Model model) {
 		List<DistrictDto> districtDtoList = districtService.selectListSigungu();
 		model.addAttribute("districtDtoList", districtDtoList);
-		logger.info("---selectListSigungu" + districtDtoList);
+		logger.debug("---selectListSigungu" + districtDtoList);
 		return "administrativeDistrict/selectListSigungu";
 	}
 	
@@ -52,21 +52,21 @@ public class DistrictController {
 	public String selectListEupmyeon(Model model) {
 		List<DistrictDto> districtDtoList = districtService.selectListEupmyeon();
 		model.addAttribute("districtDtoList", districtDtoList);
-		logger.info("---selectListEupmyeon" + districtDtoList);
+		logger.debug("---selectListEupmyeon" + districtDtoList);
 		return "administrativeDistrict/selectListEupmyeon";
 	}
 	
 	//시도 등록 폼 불러오기
 	@RequestMapping(value = "/insertSido", method = RequestMethod.GET)
 	public String insertSido() {
-		logger.info("---insertSido");
+		logger.debug("---insertSido");
    		return "administrativeDistrict/insertSido";
 	}
 
 	//시도 등록하기
 	@RequestMapping(value = "/insertSido", method = RequestMethod.POST)
 	public String insertSido(DistrictDto districtDto) {
-		logger.info("insertSido");
+		logger.debug("insertSido");
 		districtService.insertSido(districtDto);
    		return "redirect:/selectListSido";
 	}
@@ -75,9 +75,9 @@ public class DistrictController {
 	//시도 리스트를 가져와야 시군구 리스트와 조인할 수 있다.
 	@RequestMapping(value = "/insertSigungu", method = RequestMethod.GET)
 	public String insertSigungu(Model model) {
-		logger.info("---insertSigungu");
+		logger.debug("---insertSigungu");
 		List<DistrictDto> districtDtoList = districtService.selectListSido();
-		logger.info("---districtDtoList" + districtDtoList);
+		logger.debug("---districtDtoList" + districtDtoList);
 		model.addAttribute("districtDtoList", districtDtoList);
    		return "administrativeDistrict/insertSigungu";
 	}
@@ -87,11 +87,35 @@ public class DistrictController {
 	public String insertSigungu(DistrictDto districtDto) {
 		logger.debug(districtDto.toString());
 		districtDto.setSigunguCode(districtDto.getSidoCode() + districtDto.getSigunguMiddleCode());		
-		logger.info("insertSigungu");
+		logger.debug("insertSigungu");
 		int row = districtService.insertSigungu(districtDto);
 		return "redirect:/selectListSigungu";
 	}
 	
+	//읍면동  등록 불러오기
+		//시도 리스트와 시군구 리스트를  가져와야 시군구 리스트와 조인할 수 있다.
+		@RequestMapping(value = "/insertEupmyeon", method = RequestMethod.GET)
+		public String insertEupmyeon(Model model) {
+			logger.debug("---insertEupmyeon");
+			List<DistrictDto> districtDtoList = districtService.selectListSido(); //시도리스트
+			List<DistrictDto> districtDtoList2 = districtService.selectListSigungu(); //시군구리스트
+			logger.debug("---districtDtoList 시도 리스트" + districtDtoList);
+			logger.debug("---districtDtoList2 시군구 리스트" + districtDtoList2);
+			model.addAttribute("districtDtoList", districtDtoList);
+			model.addAttribute("districtDtoList2", districtDtoList2);
+	   		return "administrativeDistrict/insertEupmyeon";
+		}
+		
+		//읍면동  등록 post호출
+		@RequestMapping(value="/insertEupmyeon",  method = RequestMethod.POST)
+		public String insertEupmyeon(DistrictDto districtDto) {
+			logger.debug(districtDto.toString());
+			districtDto.setEupmyeonCode(districtDto.getSigunguCode() + districtDto.getEupmyeonMiddleCode());
+			logger.debug(districtDto.getEupmyeonCode());
+			logger.debug("insertEupmyeon");
+			int row = districtService.insertEupmyeon(districtDto);
+			return "redirect:/selectListEupmyeon";
+		}
 }
 
 

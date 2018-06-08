@@ -40,7 +40,7 @@
 							<c:forEach var="districtDtoList" items="${districtDtoList}">
 								<tbody>
 									<tr>
-										<th>${districtDtoList.sidoCode}${districtDtoList.sigunguMiddleCode}${districtDtoList.eupmyeonMiddleCode}</th>
+										<th>${districtDtoList.eupmyeonCode}</th>
 										<th>${districtDtoList.sidoCode}</th>
 										<th>${districtDtoList.sidoName}</th>
 										<th>${districtDtoList.sigunguMiddleCode}</th>

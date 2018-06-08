@@ -53,5 +53,13 @@ public class DistrictService {
 		return row;
 	}
 	
+	//읍면동 등록하기
+	public int insertEupmyeon(DistrictDto districtDto) {
+		logger.info("insertEupmyeon");
+		int row = districtDao.insertEupmyeon(districtDto);
+		return row;
+	}
+	
+	
 	
 }

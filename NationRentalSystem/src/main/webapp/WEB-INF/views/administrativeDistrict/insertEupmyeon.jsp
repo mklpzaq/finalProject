@@ -22,7 +22,7 @@
 					</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertSigungu" method="post">
+								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertEupmyeon" method="post">
 									<div class="form-group">
 										<label for="sigunguCode" class="col-sm-3 control-label">시도 선택</label>
 										<div class="col-sm-9">
@@ -37,24 +37,24 @@
 										<div class="form-group">
 										<label for="sigunguCode" class="col-sm-3 control-label">시군구 선택</label>
 										<div class="col-sm-9">
-											<select id=districtDtoList name="sigunguCode">
-												<option>시도선택</option>
-												<c:forEach var="districtDtoList" items="${districtDtoList}">
-													<option value="${districtDtoList.sigunguCode}">${districtDtoList.sigunguName}</option>
+											<select id=districtDtoList2 name="sigunguCode">
+												<option>시군구선택</option>
+												<c:forEach var="districtDtoList2" items="${districtDtoList2}">
+													<option value="${districtDtoList2.sigunguCode}">${districtDtoList2.sigunguName}</option>
 												</c:forEach>
 											</select>											
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="sigunguCode" class="col-sm-3 control-label">소분류 코드</label>
+										<label for="eupmyeonMiddleCode" class="col-sm-3 control-label">소분류 코드</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="sigunguMiddleCode" id="sigunguMiddleCode" placeholder="소분류 코드를 입력해주세요.">
+											<input type="text" class="form-control" name="eupmyeonMiddleCode" id="eupmyeonMiddleCode" placeholder="소분류 코드를 입력해주세요.">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="sigunguName" class="col-sm-3 control-label">시군구 명</label>
+										<label for="sigunguName" class="col-sm-3 control-label">읍면동 명</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="sigunguName" id="sigunguName" placeholder="읍면동 이름을 입력해주세요.">
+											<input type="text" class="form-control" name="eupmyeonName" id="eupmyeonName" placeholder="읍면동 이름을 입력해주세요.">
 										</div>
 									</div>
 			

@@ -97,7 +97,21 @@
 			, #{sigunguMiddleCode}
 			, #{sigunguName}
 		)	
-
+	</insert>
+	
+	<!-- 읍면동 등록 -->
+	<insert id="insertEupmyeon" parameterType="kr.or.nationRental.district.service.DistrictDto">
+	INSERT INTO eupmyeon (
+		eupmyeon_code
+		, sigungu_code
+		, eupmyeon_middle_code
+		, eupmyeon_name
+		) VALUES (
+			#{eupmyeonCode}
+			, #{sigunguCode}
+			, #{eupmyeonMiddleCode}
+			, #{eupmyeonName}
+		)
 	</insert>
 
 </mapper>
