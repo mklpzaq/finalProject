@@ -3,7 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyMapper">
-  
+  <mapper namespace="kr.or.nationRental.agency.service.AgencyMapper">
+  	<insert id="insertAgency" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">
+  		
+  		INSERT INTO agency
+			(agency_code
+			,adminagency_code
+			,functionary_name
+			,agency_name
+			,agency_businesstype_code
+			,agency_date_registration
+			,agency_date_contract_closed)
+			VALUES (#{agencyCod}
+					,#{adminagencyCode}
+					,#{functionaryName}
+					,#{agencyName}
+					,#{agencyBusinesstypeCode}
+					,NOW()
+					,null)
+  	
+  	</insert>
   
   </mapper>
