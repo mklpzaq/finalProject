@@ -101,6 +101,7 @@
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionary">공무원 회원관리</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/functionaryBasicInformation/?functionaryId=${member.memberId}">내 정보수정</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
+										<li><a style="color:#FFFFFF" href="#">대행업체 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 직원조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">기부관리</a></li>

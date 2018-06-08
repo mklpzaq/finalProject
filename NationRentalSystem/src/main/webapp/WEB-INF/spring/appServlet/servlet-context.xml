@@ -67,6 +67,7 @@
 				<value>classpath:kr/or/nationRental/login/service/LoginMapper.xml</value>
 				<value>classpath:kr/or/nationRental/citizen/service/CitizenMapper.xml</value>
 				<value>classpath:kr/or/nationRental/agencyEmployee/service/AgencyEmployeeMapper.xml</value>
+				<value>classpath:kr/or/nationRental/agency/service/AgencyMapper.xml</value>
 			</list>
 		</property>
 	</bean>
