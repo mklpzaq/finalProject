@@ -15,8 +15,7 @@ import kr.or.nationRental.district.service.DistrictService;
 
 @Controller
 public class DistrictController {
-	@Autowired
-	private DistrictService districtService;
+	@Autowired private DistrictService districtService;
 	private DistrictDto districtDto;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DistrictController.class);
@@ -56,6 +55,42 @@ public class DistrictController {
 		logger.info("---selectListEupmyeon" + eupmyeonList);
 		return "administrativeDistrict/selectListEupmyeon";
 	}
+	
+	//시도 등록 폼 불러오기
+	@RequestMapping(value = "/insertSido", method = RequestMethod.GET)
+	public String insertSido() {
+		logger.info("---insertSido");
+   		return "administrativeDistrict/insertSido";
+	}
+
+	//시도 등록하기
+	@RequestMapping(value = "/insertSido", method = RequestMethod.POST)
+	public String insertSido(DistrictDto districtDto) {
+		logger.info("categoryInsertForm");
+		districtService.insertSido(districtDto);
+   		return "redirect:/selectListSido";
+	}
+		
+	//시군구  등록 불러오기
+	//시도 리스트를 가져와야 시군구 리스트와 조인할 수 있다.
+	@RequestMapping(value = "/insertSigungu", method = RequestMethod.GET)
+	public String insertSigungu(Model model) {
+		logger.info("---insertSigungu");
+		List<DistrictDto> sidoList = districtService.selectListSido();
+		logger.info("---sidoList" + sidoList);
+		model.addAttribute("sidoList", sidoList);
+   		return "administrativeDistrict/insertSigungu";
+	}
+	
+	//ItmeController post호출
+	@RequestMapping(value="/insertSigungu",  method = RequestMethod.POST)
+	public String insertSigungu(DistrictDto districtDto) {
+		logger.info("insertSigungu");
+		int row = districtService.insertSigungu(districtDto);
+		return "redirect:/selectListSigungu";
+	}
+	
 }
+
 
 

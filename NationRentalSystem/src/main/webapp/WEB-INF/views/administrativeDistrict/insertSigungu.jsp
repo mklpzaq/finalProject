@@ -11,7 +11,6 @@
 	<body>
 		<div class="container-fluid">
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
-			<jsp:include page="/WEB-INF/views/module/top/mainHeader.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
@@ -23,19 +22,22 @@
 					</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertDistrict" method="post">
+								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertSigungu" method="post">
 									<div class="form-group">
-										<select id="sidoCode" name="sidoDto.sidoCode">
-											<option>시도선택</option>
-											<c:forEach var="sidoDto" items="${list}">
-												<option value="${sidoDto.sidoCode}">${sidoDto.sidoName}</option>
-											</c:forEach>
-										</select>
+										<label for="sigunguCode" class="col-sm-3 control-label">시도 선택</label>
+										<div class="col-sm-9">
+											<select id="sidoList" name="districtDto.sidoCode">
+												<option>시도선택</option>
+												<c:forEach var="sidoList" items="${sidoList}">
+													<option value="${sidoList.sidoCode}">${sidoList.sidoName}</option>
+												</c:forEach>
+											</select>											
+										</div>
 									</div>
 									<div class="form-group">
-										<label for="sigunguCode" class="col-sm-3 control-label">시군구 코드</label>
+										<label for="sigunguCode" class="col-sm-3 control-label">중분류 코드</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="sigunguCode" id="sigunguCode" placeholder="시군구 코드를 입력해주세요.">
+											<input type="text" class="form-control" name="sigunguMiddleCode" id="sigunguMiddleCode" placeholder="중분류 코드를 입력해주세요.">
 										</div>
 									</div>
 									<div class="form-group">

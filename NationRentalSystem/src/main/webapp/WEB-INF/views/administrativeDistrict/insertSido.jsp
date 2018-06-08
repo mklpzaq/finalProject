@@ -10,7 +10,6 @@
 	<body>
 		<div class="container-fluid">
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
-			<jsp:include page="/WEB-INF/views/module/top/mainHeader.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
@@ -22,7 +21,7 @@
 					</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertDistrict" method="post">
+								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertSido" method="post">
 									<div class="form-group">
 										<label for="sidoCode" class="col-sm-3 control-label">시도코드</label>
 										<div class="col-sm-9">

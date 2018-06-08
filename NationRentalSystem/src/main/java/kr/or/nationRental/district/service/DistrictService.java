@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
+
 @Service
 public class DistrictService {
 	@Autowired
@@ -37,4 +39,19 @@ public class DistrictService {
 		logger.info("---selectListEupmyeon");
 		return districtDao.selectListEupmyeon();
 	}
+	
+	//시도 등록하기
+	public int insertSido(DistrictDto districtDto) {
+		logger.info("---insertSido");
+		return districtDao.insertSido(districtDto);
+	}
+	
+	//시군구 등록하기
+	public int insertSigungu(DistrictDto districtDto) {
+		logger.info("insertSigungu");
+		int row = districtDao.insertSigungu(districtDto);
+		return row;
+	}
+	
+	
 }

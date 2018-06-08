@@ -34,6 +34,12 @@
 								<td width="30%">시군구</td>								
 							</tr>
 						</thead>
+						
+
+
+
+
+						
 						<tbody>									
 							<c:forEach var="sigunguList" items="${sigunguList}">
 								<tbody>

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
+
 @Repository
 public class DistrictDao {
 	private static final Logger logger = LoggerFactory.getLogger(DistrictDao.class);
@@ -39,4 +41,19 @@ public class DistrictDao {
 		logger.info("---selectListEupmyeon");
 		return sqlSession.selectList(NS+"selectListEupmyeon");
 	}
+	
+	//시도 등록
+	public int insertSido(DistrictDto districtDto) {
+		logger.info("---insertSido");
+		int row = sqlSession.insert(NS+"insertSido", districtDto);
+		return row;
+	}
+	
+	//시군구 등록
+	public int insertSigungu(DistrictDto districtDto) {
+		logger.info("---insertSigungu");
+		int row = sqlSession.insert(NS+"insertSigungu",districtDto);
+		return row;
+	}
+	
 }

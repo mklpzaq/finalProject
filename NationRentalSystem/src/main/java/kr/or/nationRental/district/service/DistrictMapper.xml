@@ -73,4 +73,33 @@
 		sigungu.sigungu_code = eupmyeon.sigungu_code 
 	</select>
 	
+	<!-- 시도 등록 -->
+	<insert id="insertSido" parameterType="kr.or.nationRental.district.service.DistrictDto">
+	INSERT INTO sido (
+		sido_code
+		, sido_name
+	)VALUES (
+		#{sidoCode}
+		,#{sidoName}
+		)
+	</insert>
+	
+	<!-- 시군구 등록 -->
+		<insert id="insertSigungu" parameterType="kr.or.nationRental.district.service.DistrictDto">
+		INSERT INTO sigungu(
+			sigungu_code
+			, sido_code
+			, sido_name
+			, sigungu_middle_code
+			, sigungu_name
+		) VALUES (
+			#{sigunguCode}
+			, #{sidoCode}
+			, #{sidoName}
+			, #{sigunguMiddleCode}
+			, #{sigunguName}
+		)	
+	
+	</insert>
+
 </mapper>

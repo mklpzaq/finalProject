@@ -22,8 +22,9 @@ import kr.or.nationRental.administrator.service.InjeungService;
 public class AdministratorController {
 	@Autowired
 	private AdministratorService administratorService;
-	private AdministratorDto administratorDto;
+	@Autowired
 	private InjeungService injeungService;
+	private AdministratorDto administratorDto;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorController.class);
 	
@@ -37,7 +38,7 @@ public class AdministratorController {
 	//관리자 인증 POST insertAdminForm.jsp로 이동
 	@RequestMapping(value = "/injeungAdministrator", method = RequestMethod.POST)
 	public String injeungAdministrator(InjeungDto injeungDto, Model model, HttpSession session) {
-		logger.info("---injeungAdministrator POST");
+		logger.info("---injeungAdministrator POST" + injeungDto);
 		InjeungDto injeung = injeungService.selectInjeung(injeungDto);
 		if (injeung == null) {
 			model.addAttribute("injeungNum", injeungDto);
@@ -52,7 +53,7 @@ public class AdministratorController {
 	public String insertAdministrator(AdministratorDto administratorDto) {
 		logger.info("---insertAdministrator POST");
 		administratorService.insertAdministrator(administratorDto);
-		return "redirect:/selectListAdministrator";  // 나중엔 관리자 메인페이지로 이동시키자.
+		return "redirect:/";  // 나중엔 관리자 메인페이지로 이동시키자.
 	}
 	
 	//관리자 계정 목록
