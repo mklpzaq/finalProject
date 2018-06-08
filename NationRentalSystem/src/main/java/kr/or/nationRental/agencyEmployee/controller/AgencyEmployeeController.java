@@ -17,6 +17,16 @@ public class AgencyEmployeeController {
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
+	
+	@RequestMapping(value="/viewAgencyEmployeeInfo", method=RequestMethod.GET)
+	public String viewAgencyEmployeeInfo(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("GET viewAgencyEmployeeInfo AgencyEmployeeController");
+		logger.debug(agencyEmployeeDto.toString());
+		
+		return "agencyEmployee/viewAgencyEmployeeInfo";
+	}
+	
+	
 	@RequestMapping(value="/insertAgencyEmployee", method=RequestMethod.POST)
 	public String insertAgencyEmployee(Model model
 										,AgencyEmployeeDto agencyEmployeeDto) {

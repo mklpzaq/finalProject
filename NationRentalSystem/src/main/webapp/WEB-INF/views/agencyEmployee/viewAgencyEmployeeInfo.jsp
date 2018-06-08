@@ -15,11 +15,11 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="../module/left/leftnavi.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div style="padding:15px;" class="col-sm-8">
 					<!-- Begin Content -->
 					<div class="panel panel-default">
-						<div class="panel-body">
-							<h3>직원 정보</h3>
+						<div class="panel-body text-center">
+							<h3>회원 정보</h3>
 							<hr/>
 							
 							
