@@ -27,8 +27,9 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<td width="20%">시도 코드</td>
-								<td width="80%">시도</td>								
+								<td width="30%">시도 코드</td>
+								<td width="55%">시도</td>	
+								<td width="15%">삭제</td>								
 							</tr>
 						</thead>
 						<tbody>									
@@ -36,7 +37,8 @@
 								<tbody>
 									<tr>
 										<th>${districtDtoList.sidoCode}</th>
-										<th>${districtDtoList.sidoName}</th>																					
+										<th>${districtDtoList.sidoName}</th>
+										<th></th>																					
 									</tr>
 								</tbody>
 							</c:forEach>	

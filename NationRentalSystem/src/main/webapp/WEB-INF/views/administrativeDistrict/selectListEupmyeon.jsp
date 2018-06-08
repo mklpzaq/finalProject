@@ -29,11 +29,12 @@
 							<tr>
 								<td width="10%">읍면동 코드</td>
 								<td width="10%">시도 코드</td>
-								<td width="20%">시도</td>
+								<td width="15%">시도</td>
 								<td width="10%">중분류 코드</td>
-								<td width="20%">시군구</td>
+								<td width="15%">시군구</td>
 								<td width="10%">소분류 코드</td>
-								<td width="20%">읍면동</td>								
+								<td width="15%">읍면동</td>
+								<td width="15%">삭제</td>									
 							</tr>
 						</thead>
 						<tbody>									
@@ -46,7 +47,8 @@
 										<th>${districtDtoList.sigunguMiddleCode}</th>
 										<th>${districtDtoList.sigunguName}</th>
 										<th>${districtDtoList.eupmyeonMiddleCode}</th>
-										<th>${districtDtoList.eupmyeonName}</th>																					
+										<th>${districtDtoList.eupmyeonName}</th>
+										<th></th>																					
 									</tr>
 								</tbody>
 							</c:forEach>	

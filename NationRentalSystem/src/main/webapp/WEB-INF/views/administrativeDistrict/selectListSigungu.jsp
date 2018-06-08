@@ -29,9 +29,10 @@
 							<tr>
 								<td width="15%">시군구 코드</td>
 								<td width="15%">시도 코드</td>
-								<td width="25%">시도</td>
+								<td width="20%">시도</td>
 								<td width="15%">중분류 코드</td>
-								<td width="30%">시군구</td>								
+								<td width="20%">시군구</td>
+								<td width="15%">삭제</td>								
 							</tr>
 						</thead>
 						<tbody>									
@@ -42,7 +43,8 @@
 										<th>${districtDtoList.sidoCode}</th>
 										<th>${districtDtoList.sidoName}</th>
 										<th>${districtDtoList.sigunguMiddleCode}</th>
-										<th>${districtDtoList.sigunguName}</th>																					
+										<th>${districtDtoList.sigunguName}</th>
+										<td><a href="${pageContext.request.contextPath}/deleteAddress?sendNo=${address.addressNo}">삭제</a></td>																					
 									</tr>
 								</tbody>
 							</c:forEach>	
