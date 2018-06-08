@@ -1,6 +1,7 @@
 package kr.or.nationRental.annualfeePakage.service;
 
 import java.sql.Date;
+import java.util.List;
 
 public class AnnualfeePakageDto {
 	private int annualfeePakageCode; //연회비패키지코드
@@ -11,7 +12,7 @@ public class AnnualfeePakageDto {
 	private int annualfeePakageDiscountRate; //연회비/패키지할인률
 	private Date annualfeePakageDateRegistration; //연회비/패키지등록날짜
 	private int annualfeePakageAuthorityCode; //연회비/패키지권한범위코드
-	private int adminagencyCode; //행정기관코드
+	private List<Integer> adminagencyCode; //행정기관코드
 	public int getAnnualfeePakageCode() {
 		return annualfeePakageCode;
 	}
@@ -60,15 +61,15 @@ public class AnnualfeePakageDto {
 	public void setAnnualfeePakageAuthorityCode(int annualfeePakageAuthorityCode) {
 		this.annualfeePakageAuthorityCode = annualfeePakageAuthorityCode;
 	}
-	public int getAdminagencyCode() {
+	public List<Integer> getAdminagencyCode() {
 		return adminagencyCode;
 	}
-	public void setAdminagencyCode(int adminagencyCode) {
+	public void setAdminagencyCode(List<Integer> adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
 	}
 	@Override
 	public String toString() {
-		return "annualfeePakageDto [annualfeePakageCode=" + annualfeePakageCode + ", functionaryId=" + functionaryId
+		return "AnnualfeePakageDto [annualfeePakageCode=" + annualfeePakageCode + ", functionaryId=" + functionaryId
 				+ ", annualfeePakageName=" + annualfeePakageName + ", annualfeePakagePrice=" + annualfeePakagePrice
 				+ ", annualfeePakageTextSangse=" + annualfeePakageTextSangse + ", annualfeePakageDiscountRate="
 				+ annualfeePakageDiscountRate + ", annualfeePakageDateRegistration=" + annualfeePakageDateRegistration

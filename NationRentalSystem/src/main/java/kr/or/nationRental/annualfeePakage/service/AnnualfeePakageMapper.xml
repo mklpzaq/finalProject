@@ -4,5 +4,39 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageMapper">
-  
+  	<insert id="insertAnnualfeePakage" parameterType="kr.or.nationRental.agency.service.AgencyDto">
+  		  
+		<selectKey resultType="int" keyProperty="annualfeePakageCode" order="AFTER">  
+		       SELECT LAST_INSERT_ID()				
+		</selectKey>
+  		 
+  		 INSERT INTO annualfee_pakage
+				(annualfee_pakage_code
+				,functionary_id
+				,annualfee_pakage_name
+				,annualfee_pakage_price
+				,annualfee_pakage_text_sangse
+				,annualfee_pakage_discount_rate
+				,annualfee_pakage_date_registration)
+			VALUES 
+				(NULL
+				,#{functionaryId}
+				,#{annualfeePakageName}
+				,#{annualfeePakagePrice}
+				,#{annualfeePakageTextSangse}
+				,#{annualfeePakageDiscountRate}
+				,NOW())
+			
+  	</insert>
+  	
+  	<insert id="insertAnnualfeePakageAuthority" parameterType="java.util.Map">
+  		INSERT INTO annualfee_pakage_authority
+				(annualfee_pakage_authority_code
+				,annualfee_pakage_code
+				,adminagency_code)
+			VALUES (NULL
+				,#{annualfeePakageCode}
+				,#{adminagencyCode})
+  	
+  	</insert>
   </mapper>
