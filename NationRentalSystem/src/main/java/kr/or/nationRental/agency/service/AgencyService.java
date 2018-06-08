@@ -42,4 +42,11 @@ public class AgencyService {
 			
 		return agencyDto;
 	}
+
+
+	public void updateAgencyContractClosed(AgencyDto agencyDto) {
+		logger.debug("AgencyService - updateAgencyContractClosed - agencyDto : " + agencyDto.toString());
+		agencyDao.updateAgencyContractClosed(agencyDto);
+		
+	}
 }

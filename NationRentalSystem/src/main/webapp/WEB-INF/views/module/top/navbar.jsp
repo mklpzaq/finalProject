@@ -88,7 +88,7 @@
 										<li><a style="color:#FFFFFF" href="#">업종분류코드 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">시민계정 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>
-										<li><a style="color:#FFFFFF" href="#">연회비/패키지</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li>
 										<li><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">대여금지 설정</a></li>
 									</ul>
@@ -103,7 +103,7 @@
 										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAgencyForm">대행업체 등록</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListContractAgency">대행업체 관리</a></li>
-										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">대행업체 직원조회</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/">대행업체 직원조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">기부관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품/시설 관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
@@ -112,7 +112,7 @@
 										<li><a style="color:#FFFFFF" href="#">통합 AS 의뢰</a></li>
 										<li><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li>
-										<li><a style="color:#FFFFFF" href="#">연회비/패키지 등록</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">대여금지</a></li>
 									</ul>

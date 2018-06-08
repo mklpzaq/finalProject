@@ -39,4 +39,10 @@ public class AgencyDao {
 		return sqlSession.selectList(NS + "selectListContractClosedAgency", adminagencyCode);
 	}
 
+	public int updateAgencyContractClosed(AgencyDto agencyDto) {
+		logger.debug("AgencyDao - updateAgencyContractClosed - agencyDto : " + agencyDto.toString());
+		int row = sqlSession.update(NS + "updateAgencyContractClosed", agencyDto);
+		return row;
+	}
+
 }

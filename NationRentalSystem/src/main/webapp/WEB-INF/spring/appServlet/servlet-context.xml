@@ -68,6 +68,7 @@
 				<value>classpath:kr/or/nationRental/citizen/service/CitizenMapper.xml</value>
 				<value>classpath:kr/or/nationRental/agencyEmployee/service/AgencyEmployeeMapper.xml</value>
 				<value>classpath:kr/or/nationRental/agency/service/AgencyMapper.xml</value>
+				<value>classpath:kr/or/nationRental/annualfeePakage/service/AnnualfeePakageMapper.xml</value>
 			</list>
 		</property>
 	</bean>

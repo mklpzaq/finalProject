@@ -94,7 +94,15 @@ public class AgencyController {
 	 * 대행업체 테이블에서 수정처리가 들어가며 계약해지날짜가 생성
 	 * 이후 대행업체 직원이 모두 탈퇴처리가 된다
 	 * 단 탈퇴처리는 다른 패키지의 기능을 끌어올수 있다
+	 * 이 수정처리는 수정폼이 필요가 없기 때문에 select를 할 필요도 없다
 	 * */
+	@RequestMapping(value="/updateAgencyContractClosed", method=RequestMethod.GET)
+	public String updateAgencyContractClosed(AgencyDto agencyDto) {
+		logger.debug("AgencyController - updateAgencyContractClosed - agencyDto : " + agencyDto.toString());
+		agencyService.updateAgencyContractClosed(agencyDto);
+		
+		return "redirect:/selectListContractClosedAgency";
+	}
 	
 	/*계약된 대행업체직원 조회
 	 *계약된 대행업체 조회 선행 후

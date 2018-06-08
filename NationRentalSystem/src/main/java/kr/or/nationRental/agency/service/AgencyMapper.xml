@@ -14,13 +14,13 @@
 			,agency_businesstype_code
 			,agency_date_registration
 			,agency_date_contract_closed)
-			VALUES (#{agencyCode}
-					,#{adminagencyCode}
-					,#{functionaryName}
-					,#{agencyName}
-					,#{agencyBusinesstypeCode}
-					,NOW()
-					,null)
+		VALUES (#{agencyCode}
+			,#{adminagencyCode}
+			,#{functionaryName}
+			,#{agencyName}
+			,#{agencyBusinesstypeCode}
+			,NOW()
+			,null)
   	
   	</insert>
   
@@ -31,9 +31,9 @@
 			,agency_name as agencyName
 			,agency_businesstype_code as agencyBusinesstypeCode
 			,agency_date_registration as agencyDateRegistration
-			FROM agency
-		where adminagency_code = #{adminagencyCode}
-		and agency_date_contract_closed is NULL
+		FROM agency
+			where adminagency_code = #{adminagencyCode}
+			and agency_date_contract_closed is NULL
 		
 		ORDER BY agency_date_registration DESC
 	</select>
@@ -46,10 +46,17 @@
 			,agency_businesstype_code as agencyBusinesstypeCode
 			,agency_date_registration as agencyDateRegistration
 			,agency_date_contract_closed as agencyDateContractClosed
-			FROM agency
-		where adminagency_code = #{adminagencyCode}
-		and agency_date_contract_closed IS NOT NULL
+		FROM agency
+			where adminagency_code = #{adminagencyCode}
+			and agency_date_contract_closed IS NOT NULL
 		
 		ORDER BY agency_date_registration DESC
 	</select>
+	
+	<update id="updateAgencyContractClosed" parameterType="kr.or.nationRental.agency.service.AgencyDto">
+		UPDATE agency
+			SET
+		agency_date_contract_closed=NOW()
+			WHERE agency_code = #{agencyCode}	
+	</update>
 </mapper>

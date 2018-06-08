@@ -21,11 +21,11 @@
 					<!-- Begin Content -->
 						
 						<div class="text-center">
-							<h1>계약된 낙찰업체</h1>
+							<h1>계약해지된 낙찰업체</h1>
 							<h2>Nation Integrated Reserve and Rental System</h2>
 							<P>The time on the server is ${serverTime}.</P>
 						</div>
-							<div><button><a href="${pageContext.request.contextPath}/selectListContractClosedAgency">계약해지된 낙찰업체</a></button></div>										
+							<div><button><a href="${pageContext.request.contextPath}/selectListContractAgency">계약된 낙찰업체</a></button></div>										
 								<table class="table table-striped">
 									<thead>
 										<tr>
@@ -34,7 +34,7 @@
 											<td width="15%">대행업체명</td>
 											<td width="15%">대행업체 업종</td>
 											<td width="20%">대행업체 낙찰시기</td>
-											<td width="20%">대행업체 계약해지</td>								
+											<td width="20%">대행업체 계약해지시기</td>								
 										</tr>
 									</thead>
 									<tbody>									
@@ -46,7 +46,7 @@
 														<td>${AgencyDto.agencyName}</td>
 														<td>${AgencyDto.agencyBusinesstypeCode}</td>
 														<td>${AgencyDto.agencyDateRegistration}</td>
-														<td><a href="${pageContext.request.contextPath}/updateAgencyContractClosed?agencyCode=${AgencyDto.agencyCode}">계약해지</a></td>																						
+														<td>${AgencyDto.agencyDateContractClosed}</td>																						
 													</tr>
 												</tbody>
 											</c:forEach>									
