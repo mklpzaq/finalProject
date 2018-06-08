@@ -89,16 +89,26 @@
 		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
 	
-	<select id="functionaryBasicInformation" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+	<select id="functionaryBasicInformation" parameterType="String" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 			SELECT
 				functionary_id as functionaryId
 				,adminagency_code as adminagencyCode
 				,functionary_name as functionaryName
 				,functionary_phone as functionaryPhone
 				,functionary_email as functionaryEmail
-				,functionary_date_join as functionaryDateJoin
 			FROM functionary
 			where functionary_id = #{functionaryId}		
 	</select>
+	
+	<update id="updateFunctionnary" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">		
+		UPDATE functionary
+				SET
+			functionary_id = #{functionaryId}
+			,adminagency_code = #{adminagencyCode}
+			,functionary_name = #{functionaryName}
+			,functionary_phone = #{functionaryPhone}
+			,functionary_email = #{functionaryEmail}
+		WHERE functionary_id=#{functionaryId}
+	</update>
 </mapper>
 	

@@ -38,8 +38,18 @@ public class FunctionaryDao {
 		return sqlSession.selectOne(NS+"totalCountFunctionary", map);
 	}
 	
-	public FunctionaryDto functionaryBasicInformation(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - functionaryBasicInformation - functionaryDto : " + functionaryDto);
-		return sqlSession.selectOne(NS+"functionaryBasicInformation", functionaryDto);
+	public FunctionaryDto functionaryBasicInformation(String functionaryId) {
+		logger.debug("FunctionaryDao - functionaryBasicInformation - functionaryId : " + functionaryId);
+		return sqlSession.selectOne(NS+"functionaryBasicInformation", functionaryId);
+	}
+	
+	public int updateFunctionnary(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - updateFunctionnary - functionaryDto : " + functionaryDto);
+		return sqlSession.update(NS+"updateFunctionnary", functionaryDto);
+	}
+	
+	public List<FunctionaryDto> selectFunctionaryMoveInout(String fuctionaryId) {
+		logger.debug("FunctionaryDao - selectFunctionaryMoveInout - fuctionaryId : " + fuctionaryId);
+		return sqlSession.selectList(NS+"selectFunctionaryMoveInout", fuctionaryId);
 	}
 }

@@ -70,12 +70,21 @@ public class FunctionaryService {
 		return returnmap;
 	}
 	
-	public FunctionaryDto functionaryBasicInformation(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryService - functionaryBasicInformation - functionaryDto : " + functionaryDto.toString());
+	public FunctionaryDto functionaryBasicInformation(String functionaryId) {
+		logger.debug("FunctionaryService - functionaryBasicInformation - functionaryId : " + functionaryId.toString());
 		
-		FunctionaryDto returnfunctionaryDto= functionaryDao.functionaryBasicInformation(functionaryDto);
+		FunctionaryDto returnfunctionaryDto= functionaryDao.functionaryBasicInformation(functionaryId);
 		logger.debug("FunctionaryService - functionaryBasicInformation - returnfunctionaryDto : " + returnfunctionaryDto.toString());
 		
 		return returnfunctionaryDto;
+	}
+	
+	@Transactional
+	public int updateFunctionnary(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryService - updateFunctionnary - functionaryDto : " + functionaryDto.toString());
+		String fuctionaryId = functionaryDto.getFunctionaryId();
+		functionaryDao.selectFunctionaryMoveInout(fuctionaryId);
+				
+		return functionaryDao.updateFunctionnary(functionaryDto);
 	}
 }
