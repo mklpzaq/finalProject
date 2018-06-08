@@ -47,4 +47,15 @@ public class DistrictController {
 		logger.info("---selectListSigungu" + sigunguList);
 		return "administrativeDistrict/selectListSigungu";
 	}
+	
+	//읍면동 목록보기
+	@RequestMapping(value="/selectListEupmyeon", method=RequestMethod.GET)
+	public String selectListEupmyeon(Model model) {
+		List<DistrictDto> eupmyeonList = districtService.selectListEupmyeon();
+		model.addAttribute("eupmyeonList", eupmyeonList);
+		logger.info("---selectListEupmyeon" + eupmyeonList);
+		return "administrativeDistrict/selectListEupmyeon";
+	}
 }
+
+

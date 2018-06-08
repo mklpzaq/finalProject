@@ -31,4 +31,10 @@ public class DistrictService {
 		logger.info("---selectListSigungu");
 		return districtDao.selectListSigungu();
 	}
+	
+	//행정구역 읍면동 목록 보기
+	public List<DistrictDto> selectListEupmyeon() {
+		logger.info("---selectListEupmyeon");
+		return districtDao.selectListEupmyeon();
+	}
 }

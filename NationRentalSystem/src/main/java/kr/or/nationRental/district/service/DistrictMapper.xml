@@ -16,7 +16,9 @@
 		<result property="eupmyeonCode" column="eupmyeon_code" />
 		<result property="sidoName" column="sido_name" />
 		<result property="sigunguName" column="sigungu_name" />
+		<result property="sigunguMiddleCode" column="sigungu_middle_code" />
 		<result property="eupmyeonName" column="eupmyeon_name" />
+		<result property="eupmyeonMiddleCode" column="eupmyeon_middle_code" />
 	</resultMap>
 
 	<!-- 행정구역 전체목록 보기 -->
@@ -42,7 +44,7 @@
 	</select>
 
 	<!-- 행정구역 시군구 목록 -->
-	<select id="selectListSigungu" resultType="kr.or.nationRental.district.service.DistrictDto">
+	<select id="selectListSigungu" resultMap="selectListDistrict">
 	SELECT 
 		sigungu.sigungu_code
 		, sido.sido_code
@@ -52,6 +54,23 @@
 	FROM sido, sigungu 
 	WHERE 
 		sido.sido_code = sigungu.sido_code 	
+	</select>
+	
+	<!-- 행정구역 읍면동 목록 -->
+	<select id="selectListEupmyeon" resultMap="selectListDistrict">
+		SELECT 
+		eupmyeon.eupmyeon_code
+		, sido.sido_code
+		, sido.sido_name
+		, sigungu.sigungu_middle_code
+		, sigungu.sigungu_name
+		, eupmyeon.eupmyeon_middle_code
+		, eupmyeon.eupmyeon_name
+	FROM sido, sigungu, eupmyeon
+	WHERE 
+		sido.sido_code = sigungu.sido_code
+	AND
+		sigungu.sigungu_code = eupmyeon.sigungu_code 
 	</select>
 	
 </mapper>

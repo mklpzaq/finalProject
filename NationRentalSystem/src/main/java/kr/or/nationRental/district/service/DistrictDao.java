@@ -33,4 +33,10 @@ public class DistrictDao {
 		logger.info("---selectListSigungu");
 		return sqlSession.selectList(NS+"selectListSigungu");
 	}
+	
+	//행정구역 읍면동 목록
+	public List<DistrictDto> selectListEupmyeon() {
+		logger.info("---selectListEupmyeon");
+		return sqlSession.selectList(NS+"selectListEupmyeon");
+	}
 }
