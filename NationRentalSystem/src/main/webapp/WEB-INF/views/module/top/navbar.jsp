@@ -8,16 +8,16 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>navbar</title>
 		<script>
-			$(document).ready(function(){
+			/* $(document).ready(function(){
 				$('#navbarDiv').height($('#navbar').height());
 				
-			});
+			}); */
 		</script>
 	</head>
 	<body>
-		<!-- navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 navbar height만큼 가려지는것 해결하기 위해 div에 navbar height만큼의 높이를 추가한다. -->
-		
+		<!-- navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 navbar height만큼 가려지는것 해결하기 위해 navbarDiv에 navbar height만큼의 높이를 추가한다. script는 아래부분에 위치시켜놓음-->
 		<div id="navbarDiv"></div>
+		
 		<!--  navbar-fixed-top -->
 		<nav id="navbar" style="background-color:#005EAA; margin:0;" class="navbar navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
@@ -164,6 +164,16 @@
 			</div>
 			
 		</nav>
+		<!-- 
+			navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 navbar height만큼 가려지는것 해결하기 위해 div에 navbar height만큼의 높이를 추가한다.
+			script를 헤더에 두지 않은 이유는,
+			헤더에 두어 $(document).ready(function(){ $('#navbarDiv').height($('#navbar').height()); }); 을 쓸 경우,
+			연산속도가 느려져서 F5키를 눌렀을 때, 화면이 위에서 아래로 내려가는(고정된 navbar의 높이를 navbarDiv에 초기화시켜주는) 현상이 눈에 보이므로
+			그 현상을 최소화하기 위해 아래 script를 헤더부분에 배치하지 않고 navbar아래쪽에 위치시켜놓았다.
+		 -->
+		<script>
+			$('#navbarDiv').height($('#navbar').height());
+		</script>
 		
 	</body>
 </html>
