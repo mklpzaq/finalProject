@@ -20,18 +20,8 @@ import kr.or.nationRental.administrator.service.InjeungService;
 
 @Controller
 public class AdministratorController {
-	@Autowired
-	private AdministratorService administratorService;
-	@Autowired
-	private InjeungService injeungService;
-	/*
-	 * 오류원인 : insertAdministrator() 매서드에서 AdministratorDto를 커맨드 객체로 받는데,
-	 * (커맨드 객체를 사용하면 AdministratorDto administratorDto = new AdministratorDto(); 의 코드가 자동으로 이루어진다.)
-	 * 이미 같은 이름의 객체참조변수가 (33번 라인) 생성되어 있어(지금은 주석처리하여 오류 해결함) Spring이 자동으로 new 연산자를 사용하여 객체를 생성하는 그 흐름이 방해가 된다. 
-	 * 그리고 commit하기 전에 RUN AS 를 돌려서 프로그램이 제대로 구동되는지 확인하고 commit을 해야됨. 이 글을 확인하면 지워.
-	 * */
-	//private AdministratorDto administratorDto;
-	
+	@Autowired private AdministratorService administratorService;
+	@Autowired private InjeungService injeungService;
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorController.class);
 	
 	//관리자 인증 GET

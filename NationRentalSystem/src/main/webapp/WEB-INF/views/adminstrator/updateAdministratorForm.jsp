@@ -78,7 +78,7 @@
 												<div class="form-group">
 													<div class="col-sm-12">
 														<button type="submit" id="updateButton" class="btn btn-default">수정하기</button>
-														<button type="submit" id="deleteButton" class="btn btn-default">삭제하기</button>
+														<!-- <button type="submit" id="deleteButton" class="btn btn-default">삭제하기</button> -->
 													</div>
 												</div>
 											</form>

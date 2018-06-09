@@ -15,9 +15,7 @@ import kr.or.nationRental.district.service.DistrictService;
 
 @Controller
 public class DistrictController {
-	@Autowired private DistrictService districtService;
-	private DistrictDto districtDto;
-	
+	@Autowired private DistrictService districtService;	
 	private static final Logger logger = LoggerFactory.getLogger(DistrictController.class);
 
 	//행정구역 전체 목록 보기
