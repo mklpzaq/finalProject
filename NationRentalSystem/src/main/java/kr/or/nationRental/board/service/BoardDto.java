@@ -1,7 +1,7 @@
 package kr.or.nationRental.board.service;
 
 public class BoardDto {
-	private int baordCode;
+	private int boardCode;
 	private int boardCategoryCode;
 	private String memberId;
 	private String boardPw;
@@ -10,11 +10,11 @@ public class BoardDto {
 	private String dateWriteBoard;
 	private int boardHits;
 	
-	public int getBaordCode() {
-		return baordCode;
+	public int getBoardCode() {
+		return boardCode;
 	}
-	public void setBaordCode(int baordCode) {
-		this.baordCode = baordCode;
+	public void setBoardCode(int boardCode) {
+		this.boardCode = boardCode;
 	}
 	public int getBoardCategoryCode() {
 		return boardCategoryCode;
@@ -60,7 +60,7 @@ public class BoardDto {
 	}
 	@Override
 	public String toString() {
-		return "BoardDto [baordCode=" + baordCode + ", boardCategoryCode=" + boardCategoryCode + ", memberId="
+		return "BoardDto [boardCode=" + boardCode + ", boardCategoryCode=" + boardCategoryCode + ", memberId="
 				+ memberId + ", boardPw=" + boardPw + ", boardName=" + boardName + ", textBoardContent="
 				+ textBoardContent + ", dateWriteBoard=" + dateWriteBoard + ", boardHits=" + boardHits + "]";
 	}
