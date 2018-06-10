@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeService;
 import kr.or.nationRental.functionary.service.FunctionaryDto;
 import kr.or.nationRental.functionary.service.FunctionaryService;
 import kr.or.nationRental.login.service.MemberDto;
@@ -23,6 +25,9 @@ public class FunctionaryController {
 	
 	@Autowired 
 	private FunctionaryService functionaryService;
+	
+	@Autowired
+	private AgencyEmployeeService agencyEmployeeService;	
 	
 	private static final Logger logger = LoggerFactory.getLogger(FunctionaryController.class);
 	
@@ -34,6 +39,7 @@ public class FunctionaryController {
 	}
 	
 	//공무원 가입화면에서 입력받은 데이터로 공무원기본정보테이블과 공무원이력관리테이블 두곳에 insert
+	//공무원 가입화면에서 필요한 처리
 	@RequestMapping(value="/insertFunctionary", method=RequestMethod.POST)
 	public String insertFunctionary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryController - insertFunctionary - functionaryDto : " + functionaryDto.toString());
@@ -121,5 +127,20 @@ public class FunctionaryController {
 		functionaryService.updateFunctionnary(functionaryDto);
 		
 		return "redirect:/functionaryBasicInformation";
+	}
+	
+	@RequestMapping(value="/idCheck", method=RequestMethod.GET)
+	public String idCheck(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("POST idCheck AgencyEmployeeRestController");
+		logger.debug(agencyEmployeeDto.toString());
+		/*
+		 * Administrator, Functionary, AgencyEmployee, Citizen 테이블을 모두 참조해
+		 * ID 중복이 있는지를 체크한다.
+		 * ID 중복이 발생하였다면, result 변수에 F 가 초기화되고
+		 * ID 중복이 발생하지 아니하였다면, result 변수에 T 가 초기화된다.
+		 * */
+		String result = agencyEmployeeService.idCheck(agencyEmployeeDto);
+		
+		return result;
 	}
 }

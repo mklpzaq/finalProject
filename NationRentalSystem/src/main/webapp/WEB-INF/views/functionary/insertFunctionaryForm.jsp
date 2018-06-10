@@ -5,25 +5,94 @@
 <html>
 	<head>
 		<title>Home</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>		
 		<script type="text/javascript">
-			$(document).ready(function(){
+		
 				
-				$("#start_ajax").click(function(){
+			$(document).ready(function(){
+			
+				
+				
+				$("#idCheck").click(function(){
 				    $.ajax({
-				        type:"get", //통신타입 get, post
-				        url:"/idcehck",  //요청할 url
-				        data : {name : "홍길동"},  //넘겨줄 값, 파라메터
-				        dataType : "xml",   //받아올 데이터 타입
-				        success: function(xml){  //데이터를 받아오는데 성공하면 이후에 할 행동
-				            console.log(xml);
-				        },
-				        error: function(xhr, status, error) { //데이터를 받아오는데 실패하면 이후에 할 행동
-				            alert(error);
-				        }  
+				        type:"POST", //통신타입 get, post
+				        url:"/nationRental/idCheck",  //요청할 url
+				        data : { agencyEmployeeId : $('#checkId').val() },  //넘겨줄 값, 파라메터
+				        success: function( JSON ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
+					        if(JSON=='T'){
+					        	alert('중복되지 않은 아이디입니다');					        	
+					    	}else{
+								alert('중복된 아이디입니다. 다른 아이디를 입력해주세요.');
+					    	}
+				        }     
 				    });
 				});
+				
+				$("#useId").click(function(){
+					$('#functionaryId').val($("#checkId").val());
+				});
+				
+				$("#adminagencyCheck").click(function(){
+				    $.ajax({
+				        type:"POST", //통신타입 get, post
+				        url:"/nationRental/selectAdminagency",  //요청할 url
+				        data : { adminagencyName : $('#checkAdminagency').val() },  //넘겨줄 값, 파라메터
+				        success: function( list ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
+				        	var list = list;
+				        	var str = '<TR id="tr">';
+				        	$.each(list , function(i){
+				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button id="adminagencyNameList">' + list[i].adminagencyName + '</button></TD><TD>';
+				                str += '</TR>';
+				           });
+				        	$("#adminagencyList").append(str); 
+				        },
+				        error : function(){
+				            alert("error");
+				        }    
+				    });
+				});
+				
+				
+				$('#tr').click(function(){					
+					$('#adminagencyName').val($(this).children().last().val());
+					$('#adminagencyCode').val($(this).children().first().val());
+					jQuery('#adminagencyCheckModal').dialog('close');
+				});
+				
+				
+				/* //리스트 전체에서 특정한 값만 컨트롤하는
+				$("#adminagencyNameList").click(function(){
+					$('#adminagencyName').val($('#adminagencyNameList').val());
+				 	$('#adminagencyCode').val($(this).siblings.val());					
+				});
+				 */
+				 
+				/* $('#adminagencyList').find('TR>TD').bind('click', function () {
+				    $except = $(this);
+				    $('#adminagencyName').val($except.val());
+				}); */
+
+				
+				/* var checkId	 */
+				/* $('#idCheckBtn').click(function(){
+					$.ajax({
+					      type: "POST"
+					      ,url: "/nationRental/idCheck"
+					      ,data: { agencyEmployeeId: $('#agencyEmployeeId').val() }
+					      ,success:function( JSON ) { // result : String, XML, JSON
+					    	  if(JSON=='T'){
+								alert('중복되지 않는 아이디입니다.');
+								 $(location).attr('href', './insertAgencyEmployee'); 
+								 $('#injeungAgencyEmployeeForm').submit(); 
+					    	  }else{
+								alert('중복된 아이디입니다. 다른 아이디를 입력해주세요.');
+					    	  }
+					      }
+					});
+				}); */
 				
 					        
 				
@@ -190,8 +259,8 @@
 	
 	
 	<body>
-		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
+			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>			
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
@@ -209,9 +278,13 @@
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">아이디</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="functionaryId" name="functionaryId" placeholder="아이디">							
+							<input type="text" class="form-control" id="functionaryId" name="functionaryId" placeholder="아이디" readonly="readonly">
+							<!-- Button trigger modal -->
+							<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#idCheckModal">
+							 아이디체크
+							</button>													
 						</div>
-						<div><button class="form-control" id="idcheck" value="아이디체크"></button></div>
+						
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">비밀번호</label>
@@ -225,10 +298,20 @@
 							<input type="password" class="form-control" id="functionaryPw2" name="functionaryPw2" placeholder="비밀번호 확인">
 						</div>
 					</div>
+					<div class="form-group" hidden="hidden">
+						<label for="inputEmail3" class="col-sm-2 control-label">행정기관코드</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="행정기관코드" readonly="readonly">								
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">행정기관명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="행정기관명">
+							<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="행정기관명" readonly="readonly">
+							<!-- Button trigger modal -->
+							<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">
+							 행정기관찾기
+							</button>	
 						</div>
 					</div>
 					<div class="form-group">
@@ -271,7 +354,64 @@
 						</div>
 					</div>
 				</form>
+				
+
 					
+				<!-- Modal -->
+				<div class="modal fade" id="idCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">아이디 체크</h4>
+				      </div>
+				      <div class="modal-body">
+				     	<input type="text" id="checkId">
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal" id="useId">아이디사용</button>
+				        <button type="button" class="btn btn-primary" id="idCheck">아이디체크</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				<!-- Modal -->
+				<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">아이디 체크</h4>
+				      </div>
+				      <div class="modal-body">
+				     	<input type="text" id="checkAdminagency">
+				     	<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
+				      </div>
+				      <div class="modal-footer">
+				      	<table id = "adminagencyList" border = "1"></table>
+				      	<%-- <table class="table table-striped">
+							<thead>
+								<tr hidden="">
+									<td width="50%">행정기관명</td>																		
+								</tr>
+							</thead>
+							<tbody id="callBackAdminagency">									
+									<c:forEach var="functionaryDto" items="${list}">										
+										<tr>
+											<th><a href="#/${functionaryDto.adminagencyCode}">${functionaryDto.adminagencyName}</a></th>											
+										</tr>
+									</c:forEach>									
+							</tbody>
+						</table>	 --%>			        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+					
+					
+				</div>
+				<!--  -->
 			</div>
 		</div>
 	

@@ -52,4 +52,9 @@ public class FunctionaryDao {
 		logger.debug("FunctionaryDao - selectFunctionaryMoveInout - fuctionaryId : " + fuctionaryId);
 		return sqlSession.selectList(NS+"selectFunctionaryMoveInout", fuctionaryId);
 	}
+
+	public List<FunctionaryDto> selectAdminagency(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - selectAdminagency - functionaryDto : " + functionaryDto);
+		return sqlSession.selectList(NS+"selectAdminagency", functionaryDto);		
+	}
 }

@@ -87,4 +87,11 @@ public class FunctionaryService {
 				
 		return functionaryDao.updateFunctionnary(functionaryDto);
 	}
+
+	public List<FunctionaryDto> selectAdminagency(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryService - selectAdminagency - functionaryDto : " + functionaryDto.toString());
+		List<FunctionaryDto> list =  functionaryDao.selectAdminagency(functionaryDto);
+		logger.debug("FunctionaryService - selectAdminagency - list : " + list.toString());
+		return list;
+	}
 }
