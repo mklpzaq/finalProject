@@ -12,6 +12,12 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao AgencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	public AgencyEmployeeDto selectOneAgencyEmployeeForUpdate(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("selectOneAgencyEmployeeForUpdate AgencyEmployeeService");
+		return AgencyEmployeeDao.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+	}
+	
+	
 	@Transactional
 	public void insertAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("insertAgencyEmployee AgencyEmployeeService");

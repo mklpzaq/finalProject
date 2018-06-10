@@ -4,14 +4,19 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class AgencyEmployeeDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
+	
+	public AgencyEmployeeDto selectOneAgencyEmployeeForUpdate(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("selectOneAgencyEmployeeForUpdate AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"selectOneAgencyEmployeeForUpdate", agencyEmployeeDto);
+	}
 	
 	public int insertAgencyNakchalEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("insertAgencyNakchalEmployee AgencyEmployeeDao");

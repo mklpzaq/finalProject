@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Left AgencyEmployee Info</title>
+	</head>
+	<body>
+		<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
+			<button type="button" class="btn btn-default" >회원 정보 수정</button>
+			<button type="button" class="btn btn-default">회원 탈퇴</button>
+		</div>	
+	</body>
 </html>

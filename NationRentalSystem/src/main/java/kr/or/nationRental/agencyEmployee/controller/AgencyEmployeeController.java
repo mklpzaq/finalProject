@@ -22,6 +22,8 @@ public class AgencyEmployeeController {
 	public String viewAgencyEmployeeInfo(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("GET viewAgencyEmployeeInfo AgencyEmployeeController");
 		logger.debug(agencyEmployeeDto.toString());
+		agencyEmployeeService.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		
 		
 		return "agencyEmployee/viewAgencyEmployeeInfo";
 	}

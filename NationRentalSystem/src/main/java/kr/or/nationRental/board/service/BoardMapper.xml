@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.or.nationRental.board.service.BoardMapper">
+  	<select id="selectListBoard"
+  			resultType="kr.or.nationRental.board.service.BoardDto">
+		SELECT
+			board_code AS baordCode
+			,board_category_code AS boardCategoryCode
+			,member_id AS memberId
+			,board_pw AS boardPw
+			,board_name AS boardName
+			,text_board_content AS textBoardContent
+			,date_write_board AS dateWriteBoard
+			,board_hits AS boardHits
+		FROM
+			board
+		
+  	</select>
+
+  </mapper>

@@ -35,7 +35,7 @@
 									<!-- <span class="sr-only">(current)</span> -->
 									<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getGoodsFacilityList">대여 시설/물품</a>
 								</li>
-								<li><a style="color:#FFFFFF" href="#">게시판</a></li>
+								<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListBoard">게시판</a></li>
 								<li><a style="color:#FFFFFF" href="#">통계</a></li>
 								<li><a style="color:#FFFFFF" href="#">시설정기점검 조회</a></li>
 								<li><a style="color:#FFFFFF" href="#">기부리스트 조회</a></li>

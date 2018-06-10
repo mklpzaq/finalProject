@@ -4,6 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
+
+	<select id="selectOneAgencyEmployeeForUpdate"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		<!-- SELECT
+			agency_employee_id AS agencyEmployeeId
+			,agency_employee_pw AS agencyEmployeePw
+			,agency_name AS agencyName
+			,agency_employee_name AS agencyEmployeeName
+			,agency_employee_phone AS agencyEmployeePhone
+			,agency_employee_email AS agencyEmployeeEmail
+			,agency_employee_date_join AS agencyEmployeeDateJoin
+		FROM
+			agency_employee
+		WHERE
+			agency_employee_id = #{agencyEmployeeId} -->
+			
+			
+			
+	</select>
 	
 	<insert id="insertAgencyNakchalEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
@@ -17,7 +36,6 @@
 			#{agencyEmployeeInjeungNum}
 			,#{agencyEmployeeId}
 		)
-		
 	</insert>
 	
 	<insert id="insertAgencyEmployee"
@@ -87,9 +105,6 @@
 		WHERE
 			citizen_id = #{agencyEmployeeId}
 	</select>
-
-
-
 
 	<select id="getAgencyNameForInsert"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
