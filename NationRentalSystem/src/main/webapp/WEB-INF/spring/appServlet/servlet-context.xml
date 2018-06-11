@@ -63,6 +63,7 @@
 				<value>classpath:kr/or/nationRental/administrator/service/AdministratorMapper.xml</value>
 				<value>classpath:kr/or/nationRental/administrator/service/InjeungMapper.xml</value>
 				<value>classpath:kr/or/nationRental/district/service/DistrictMapper.xml</value>
+				<value>classpath:kr/or/nationRental/goodsFacility/service/GoodsFacilityCategoryMapper.xml</value>
 				<value>classpath:kr/or/nationRental/functionary/service/FunctionaryMapper.xml</value>
 				<value>classpath:kr/or/nationRental/login/service/LoginMapper.xml</value>
 				<value>classpath:kr/or/nationRental/citizen/service/CitizenMapper.xml</value>

@@ -84,7 +84,7 @@
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/updateAdministrator/?adminId=${member.memberId}">내 정보수정</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDistrict">행정구역 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">지자체 기관 등록</a></li>
-										<li><a style="color:#FFFFFF" href="#">시설/물품 카테고리 등록</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">시설/물품 카테고리 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">업종분류코드 등록</a></li>
 										<li><a style="color:#FFFFFF" href="#">시민계정 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>
