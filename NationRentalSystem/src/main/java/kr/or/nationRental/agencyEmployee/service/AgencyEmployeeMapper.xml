@@ -32,7 +32,7 @@
 			agency_employee_id = #{agencyEmployeeId}
 	</select>
 
-	<select id="selectOneAgencyEmployeeForUpdate"
+	<select id="selectOneAgencyEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
 			resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
 		SELECT

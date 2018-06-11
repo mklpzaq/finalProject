@@ -48,7 +48,7 @@ public class AgencyEmployeeController {
 										,AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("GET viewAgencyEmployeeInfo AgencyEmployeeController");
 		logger.debug(agencyEmployeeDto.toString());
-		agencyEmployeeDto = agencyEmployeeService.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		agencyEmployeeDto = agencyEmployeeService.selectOneAgencyEmployee(agencyEmployeeDto);
 		logger.debug(agencyEmployeeDto.toString());
 		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
 		return "agencyEmployee/viewAgencyEmployeeInfo";

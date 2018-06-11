@@ -26,9 +26,9 @@ public class AgencyEmployeeDao {
 		return agencyName;
 	}
 	
-	public AgencyEmployeeDto selectOneAgencyEmployeeForUpdate(AgencyEmployeeDto agencyEmployeeDto) {
-		logger.debug("selectOneAgencyEmployeeForUpdate AgencyEmployeeDao");
-		return sqlSession.selectOne(NS+"selectOneAgencyEmployeeForUpdate", agencyEmployeeDto);
+	public AgencyEmployeeDto selectOneAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("selectOneAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"selectOneAgencyEmployee", agencyEmployeeDto);
 	}
 	
 	public int insertAgencyNakchalEmployee(AgencyEmployeeDto agencyEmployeeDto) {

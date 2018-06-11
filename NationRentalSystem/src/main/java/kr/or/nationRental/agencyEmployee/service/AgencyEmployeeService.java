@@ -17,16 +17,17 @@ public class AgencyEmployeeService {
 	public AgencyEmployeeDto updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("updateAgencyEmployee AgencyEmployeeService");
 		agencyEmployeeDao.updateAgencyEmployee(agencyEmployeeDto);
-		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployee(agencyEmployeeDto);
 		agencyEmployeeDto.setAgencyName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
 		logger.debug(agencyEmployeeDto.toString());
 		return agencyEmployeeDto;
 	}
 	
-	public AgencyEmployeeDto selectOneAgencyEmployeeForUpdate(AgencyEmployeeDto agencyEmployeeDto) {
-		logger.debug("selectOneAgencyEmployeeForUpdate AgencyEmployeeService");
-		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+	public AgencyEmployeeDto selectOneAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("selectOneAgencyEmployee AgencyEmployeeService");
+		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployee(agencyEmployeeDto);
 		agencyEmployeeDto.setAgencyName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
+		logger.debug("★★★★★★★★★★★★★★★★★");
 		logger.debug(agencyEmployeeDto.toString());
 		return agencyEmployeeDto;
 	}
