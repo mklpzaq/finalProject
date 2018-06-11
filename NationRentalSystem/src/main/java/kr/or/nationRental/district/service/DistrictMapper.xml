@@ -33,6 +33,7 @@
 			sido.sido_code = sigungu.sido_code 
 		AND 
 			sigungu.sigungu_code = eupmyeon.sigungu_code
+		ORDER BY eupmyeon_code ASC
 	</select>
 	
 	<!-- 행정구역 시도 목록 -->
@@ -40,7 +41,8 @@
 		SELECT
 			sido_code as sidoCode
 			, sido_name as sidoName
-		FROM sido	
+		FROM sido
+		ORDER BY sido_code ASC	
 	</select>
 
 	<!-- 행정구역 시군구 목록 -->
@@ -53,7 +55,8 @@
 		, sigungu.sigungu_name
 	FROM sido, sigungu 
 	WHERE 
-		sido.sido_code = sigungu.sido_code 	
+		sido.sido_code = sigungu.sido_code 
+	ORDER BY sigungu_middle_code ASC	
 	</select>
 	
 	<!-- 행정구역 읍면동 목록 -->
@@ -71,6 +74,7 @@
 		sido.sido_code = sigungu.sido_code
 	AND
 		sigungu.sigungu_code = eupmyeon.sigungu_code 
+	ORDER BY eupmyeon_middle_code ASC
 	</select>
 	
 	<!-- 시도 등록 -->
