@@ -93,6 +93,8 @@
 			SELECT
 				functionary_id as functionaryId
 				,adminagency_code as adminagencyCode
+				,functionary_num as functionaryNum
+				,functionary_pw as functionaryPw
 				,functionary_name as functionaryName
 				,functionary_phone as functionaryPhone
 				,functionary_email as functionaryEmail
@@ -144,5 +146,29 @@
 			FROM functionary 
 			WHERE functionary_id=#{functionaryId}	
 	</delete>
+	
+	<insert id="insertStorageFunctionary" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">
+		
+		INSERT INTO storage_functionary
+			(storage_functionary_id 
+			,adminagency_code 
+			,storage_functionary_num
+			,storage_functionary_pw 
+			,storage_functionary_name
+			,storage_functionary_phone
+			,storage_functionary_email 
+			,storage_functionary_date_join
+			,storage_functionary_date_leave)
+		VALUES (#{functionaryId}
+				,#{adminagencyCode}
+				,#{functionaryNum}
+				,#{functionaryPw}
+				,#{functionaryName}
+				,#{functionaryPhone} 
+				,#{functionaryEmail} 
+				,#{functionaryDateJoin}
+				,NOW())
+	
+	</insert>
 </mapper>
 	

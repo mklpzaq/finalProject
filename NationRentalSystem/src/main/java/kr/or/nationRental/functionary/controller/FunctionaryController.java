@@ -129,13 +129,19 @@ public class FunctionaryController {
 	}
 	
 	
-	
+	/*탈퇴처리에 필요한 기능들
+	 * 공무원 회원 정보 테이블에서 delete 처리
+	 * 1번 공무원 이력관리 테이블에서 가장 최근에 등록한 데이터 수정 처리
+	 * 탈퇴공무원 데이터 1년저장 테이블에 insert 처리
+	 */
 	@RequestMapping(value="/deleteFunctionnary", method=RequestMethod.GET)
-	public String deleteFunctionnary(HttpSession session) {
+	public String deleteFunctionnary(FunctionaryDto functionaryDto
+										,HttpSession session) {
 		MemberDto member = (MemberDto) session.getAttribute("member");
-		String functionaryId = member.getMemberId();
-		logger.debug("FunctionaryController - deleteFunctionnary - functionaryId : " + functionaryId);
-		functionaryService.deleteFunctionnary(functionaryId);
+		functionaryDto.setFunctionaryId(member.getMemberId());    
+		logger.debug("FunctionaryController - deleteFunctionnary - functionaryDto : " + functionaryDto);		
+		
+		functionaryService.deleteFunctionnary(functionaryDto);
 		session.invalidate();
 		return "redirect:/";
 	}

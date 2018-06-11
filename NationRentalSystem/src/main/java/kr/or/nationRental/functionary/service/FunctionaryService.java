@@ -100,9 +100,20 @@ public class FunctionaryService {
 		return list;
 	}
 
-	public void deleteFunctionnary(String functionaryId) {
-		logger.debug("FunctionaryService - deleteFunctionnary - functionaryId : " + functionaryId);
-		functionaryDao.deleteFunctionnary(functionaryId);
+	@Transactional
+	public void deleteFunctionnary(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryService - deleteFunctionnary - functionaryId : " + functionaryDto);
+		String fuctionaryId = functionaryDto.getFunctionaryId();
+		//공무원 이력수정처리를 위한 select
+		FunctionaryDto returnfunctionaryDto = functionaryDao.selectFunctionaryMoveInout(fuctionaryId);
+		//공무원 이력수정처리
+		functionaryDao.updateFuctionaryMoveInout(returnfunctionaryDto);
+		//탈퇴공무원 데이터 1년저장을 위한 select
+		functionaryDto = functionaryDao.functionaryBasicInformation(fuctionaryId);
+		//탈퇴공무원 데이터 1년저장을 위한 insert
+		functionaryDao.insertStorageFunctionary(functionaryDto);
+		//delete 처리		
+		functionaryDao.deleteFunctionnary(functionaryDto);
 		
 	}
 }

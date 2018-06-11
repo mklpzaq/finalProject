@@ -63,8 +63,18 @@ public class FunctionaryDao {
 		sqlSession.update(NS+"updateFuctionaryMoveInout", returnfunctionaryMoveInoutCode);
 	}
 
-	public void deleteFunctionnary(String functionaryId) {
-		logger.debug("FunctionaryDao - deleteFunctionnary - functionaryDto : " + functionaryId);
-		sqlSession.delete(NS+"deleteFunctionnary", functionaryId);
+	public void deleteFunctionnary(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - deleteFunctionnary - functionaryDto : " + functionaryDto);
+		sqlSession.delete(NS+"deleteFunctionnary", functionaryDto);
 	}
+
+	public void insertStorageFunctionary(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - insertStorageFunctionary - functionaryDto : " + functionaryDto);
+		sqlSession.insert(NS+"insertStorageFunctionary", functionaryDto);
+	}
+
+	/*public FunctionaryDto selectForStorageFunctionary(String fuctionaryId) {
+		logger.debug("FunctionaryDao - selectForStorageFunctionary - fuctionaryId : " + fuctionaryId);
+		return sqlSession.selectOne(NS+"selectForStorageFunctionary", fuctionaryId);
+	}*/
 }
