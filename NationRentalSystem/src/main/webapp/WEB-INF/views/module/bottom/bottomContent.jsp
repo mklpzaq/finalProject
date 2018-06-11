@@ -9,11 +9,13 @@
 		<title>bottom</title>
 	</head>
 	<body>
-		<div class="container-fluid" style="background-color:#EAEAEA; padding:20px;">
+	<!-- #FFCD12(노랑) -->
+		<div class="container-fluid" style="padding:20px; background-color:#BDBDBD;">
 			<div class="row">
 				<div class="col-sm-12">
 					제작 : team2<br/>
-					대표번호 : 1234-1234    문의시간 : 09:00~18:00 (월~금)팩스 : 000-000-0000
+					대표번호 : 1234-1234    문의시간 : 09:00~18:00 (월~금)<br/>
+					팩스 : 000-000-0000
 				</div>
 			</div>
 			

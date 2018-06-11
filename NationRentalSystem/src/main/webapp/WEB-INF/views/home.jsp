@@ -9,15 +9,22 @@
 	</head>
 	<body>
 		
-		<div class="container-fluid">
+		<div class="container-fluid" style="height:900px; background:#242424;">
 			<jsp:include page="./module/top/navbar.jsp"/>
-			<jsp:include page="./module/top/mainHeader.jsp"/>
-			<div class="row">
+			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
+			<div class="row" >
 				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
+					<jsp:include page="./module/left/leftnavi.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8" style="height:850px;">
 				<!-- Begin Content -->
+					
+					<div style="margin:15px 0 15px 0;" class="panel panel-default">
+						<div class="panel-body text-center">
+							<h1>국가 통합 대여/예약 시스템</h1>
+							<h2>Nation Integrated Reserve and Rental System</h2>
+						</div>
+					</div>
 					
 					<%-- <div class="text-center">
 						<h1>국가 통합 대여/예약 시스템</h1>
@@ -25,8 +32,8 @@
 						<P>The time on the server is ${serverTime}.</P>
 					</div> --%>
 
-					<div class="row">
-						<!-- <div class="col-sm-6 col-md-3"> -->
+					<!--  <div class="row">
+						
 						<div class="col-sm-3">
 							<div class="thumbnail">
 								<img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkyLjQ1MzEyNSIgeT0iMTAwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjExcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjQyeDIwMDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
@@ -40,11 +47,10 @@
 										◈ 연회비/패키지<br/>
 										◈ 상벌관리
 									</p>
-									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 								</div>
 							</div>
 						</div>
-						<!-- <div class="col-sm-6 col-md-3"> -->
+						
 						<div class="col-sm-3">
 							<div class="thumbnail">
 								<img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkyLjQ1MzEyNSIgeT0iMTAwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjExcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjQyeDIwMDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
@@ -57,7 +63,6 @@
 										◈ 시설/물품 대여/예약<br/>
 										◈ 시설 정기점검
 									</p>
-									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 								</div>
 							</div>
 						</div>
@@ -74,7 +79,6 @@
 										◈ 자유게시판<br/>
 										◈ 위기관리
 									</p>
-									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 								</div>
 							</div>
 						</div>
@@ -93,20 +97,20 @@
 										◈ 시설/물품 카테고리 등록<br/>
 										◈ 대행업체 업종분류코드 등록
 									</p>
-									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					
 					
-				<!-- End Content -->
+					<!-- End Content -->
+					</div>
+					<div class="col-sm-2"></div>
 				</div>
-				<div class="col-sm-2"></div>
 			</div>
-		</div>
-		<jsp:include page="./module/bottom/bottomContent.jsp"/>
+			<jsp:include page="./module/bottom/bottomContent.jsp"/>
+			
 	
 	</body>
 </html>
