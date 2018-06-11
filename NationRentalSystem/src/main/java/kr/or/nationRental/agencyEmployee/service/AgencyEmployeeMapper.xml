@@ -5,9 +5,37 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 
-	<select id="selectOneAgencyEmployeeForUpdate"
+	<update id="updateAgencyEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
-		<!-- SELECT
+		UPDATE
+			agency_employee
+		SET
+			agency_employee_pw = #{agencyEmployeePw}
+			,agency_employee_phone = #{agencyEmployeePhone}
+			,agency_employee_email = #{agencyEmployeeEmail}
+		WHERE
+			agency_employee_id = #{agencyEmployeeId}
+	</update>
+
+	<select id="getAgencyName"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="String">
+		SELECT
+			agen.agency_name
+		FROM
+			agency_nakchal_employee AS nak
+			INNER JOIN
+			agency AS agen
+			ON
+			agen.agency_code = nak.agency_code
+		WHERE
+			agency_employee_id = #{agencyEmployeeId}
+	</select>
+
+	<select id="selectOneAgencyEmployeeForUpdate"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		SELECT
 			agency_employee_id AS agencyEmployeeId
 			,agency_employee_pw AS agencyEmployeePw
 			,agency_name AS agencyName
@@ -18,10 +46,7 @@
 		FROM
 			agency_employee
 		WHERE
-			agency_employee_id = #{agencyEmployeeId} -->
-			
-			
-			
+			agency_employee_id = #{agencyEmployeeId}
 	</select>
 	
 	<insert id="insertAgencyNakchalEmployee"

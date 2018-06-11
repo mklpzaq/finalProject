@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeService;
@@ -17,14 +18,39 @@ public class AgencyEmployeeController {
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
+	/*@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.GET)
+	public String updateAgencyEmployee(Model model
+										,@RequestParam(value="sendNo") int articleId) {
+		logger.debug("updateAgencyEmployee AgencyEmployeeController");
+		logger.debug(agencyEmployeeDto.toString());
+		agencyEmployeeDto = agencyEmployeeService.updateAgencyEmployee(agencyEmployeeDto);
+		logger.debug(agencyEmployeeDto.toString());
+		 업데이트 시킨 후 업데이트된 정보를 회원정보 화면으로 넘긴다. 
+		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
+		return "agencyEmployee/viewAgencyEmployeeInfo";
+	}*/
+	
+	@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.POST)
+	public String updateAgencyEmployee(Model model
+										,AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("updateAgencyEmployee AgencyEmployeeController");
+		logger.debug(agencyEmployeeDto.toString());
+		agencyEmployeeDto = agencyEmployeeService.updateAgencyEmployee(agencyEmployeeDto);
+		logger.debug(agencyEmployeeDto.toString());
+		/* 업데이트 시킨 후 업데이트된 정보를 회원정보 화면으로 넘긴다. */
+		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
+		return "agencyEmployee/viewAgencyEmployeeInfo";
+	}
+	
 	
 	@RequestMapping(value="/viewAgencyEmployeeInfo", method=RequestMethod.GET)
-	public String viewAgencyEmployeeInfo(AgencyEmployeeDto agencyEmployeeDto) {
+	public String viewAgencyEmployeeInfo(Model model
+										,AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("GET viewAgencyEmployeeInfo AgencyEmployeeController");
 		logger.debug(agencyEmployeeDto.toString());
-		agencyEmployeeService.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
-		
-		
+		agencyEmployeeDto = agencyEmployeeService.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		logger.debug(agencyEmployeeDto.toString());
+		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
 		return "agencyEmployee/viewAgencyEmployeeInfo";
 	}
 	

@@ -6,23 +6,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service
 public class AgencyEmployeeService {
 	@Autowired
-	private AgencyEmployeeDao AgencyEmployeeDao;
+	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
+	
+	/* 회원 정보 수정 */
+	public AgencyEmployeeDto updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("updateAgencyEmployee AgencyEmployeeService");
+		agencyEmployeeDao.updateAgencyEmployee(agencyEmployeeDto);
+		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		agencyEmployeeDto.setAgencyName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
+		logger.debug(agencyEmployeeDto.toString());
+		return agencyEmployeeDto;
+	}
 	
 	public AgencyEmployeeDto selectOneAgencyEmployeeForUpdate(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("selectOneAgencyEmployeeForUpdate AgencyEmployeeService");
-		return AgencyEmployeeDao.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployeeForUpdate(agencyEmployeeDto);
+		agencyEmployeeDto.setAgencyName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
+		logger.debug(agencyEmployeeDto.toString());
+		return agencyEmployeeDto;
 	}
-	
 	
 	@Transactional
 	public void insertAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("insertAgencyEmployee AgencyEmployeeService");
-		AgencyEmployeeDao.insertAgencyEmployee(agencyEmployeeDto);
-		AgencyEmployeeDao.insertAgencyNakchalEmployee(agencyEmployeeDto);
+		agencyEmployeeDao.insertAgencyEmployee(agencyEmployeeDto);
+		agencyEmployeeDao.insertAgencyNakchalEmployee(agencyEmployeeDto);
 	}
 	
 	public String idCheck(AgencyEmployeeDto agencyEmployeeDto) {
@@ -37,16 +50,16 @@ public class AgencyEmployeeService {
 		if(agencyEmployeeDto.getAgencyEmployeeId().equals("")) {
 			logger.debug("ID를 아무것도 입력하지 않았을 경우.");
 			result = "F";
-		}else if(1 == AgencyEmployeeDao.idCheckAdministrator(agencyEmployeeDto)) {
+		}else if(1 == agencyEmployeeDao.idCheckAdministrator(agencyEmployeeDto)) {
 			logger.debug("관리자에서 ID 중복이 발생함");
 			result = "F";
-		}else if(1 == AgencyEmployeeDao.idCheckFunctionary(agencyEmployeeDto)) {
+		}else if(1 == agencyEmployeeDao.idCheckFunctionary(agencyEmployeeDto)) {
 			logger.debug("공무원에서 ID 중복이 발생함");
 			result = "F";
-		}else if(1 == AgencyEmployeeDao.idCheckAgencyEmployee(agencyEmployeeDto) ) {
+		}else if(1 == agencyEmployeeDao.idCheckAgencyEmployee(agencyEmployeeDto) ) {
 			logger.debug("대행업체 직원에서 ID 중복이 발생함");
 			result = "F";
-		}else if(1 == AgencyEmployeeDao.idCheckCitizen(agencyEmployeeDto)) {
+		}else if(1 == agencyEmployeeDao.idCheckCitizen(agencyEmployeeDto)) {
 			logger.debug("시민에서 ID 중복이 발생함");
 			result = "F";
 		}else {
@@ -62,7 +75,7 @@ public class AgencyEmployeeService {
 	 * */
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyNameForInsert AgencyEmployeeService");
-		agencyEmployeeDto = AgencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);
+		agencyEmployeeDto = agencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);
 		logger.debug(agencyEmployeeDto.toString());
 		
 		return agencyEmployeeDto;
@@ -70,7 +83,7 @@ public class AgencyEmployeeService {
 	
 	public int injeungAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("injeungAgencyEmployee AgencyEmployeeService");
-		return AgencyEmployeeDao.injeungAgencyEmployee(agencyEmployeeDto);
+		return agencyEmployeeDao.injeungAgencyEmployee(agencyEmployeeDto);
 	}
 	
 	

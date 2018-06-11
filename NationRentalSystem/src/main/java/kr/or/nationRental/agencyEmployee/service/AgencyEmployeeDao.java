@@ -13,6 +13,19 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	public void updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("updateAgencyEmployee AgencyEmployeeDao");
+		sqlSession.update(NS+"updateAgencyEmployee", agencyEmployeeDto);
+	}
+	
+	public String getAgencyName(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("getAgencyName AgencyEmployeeDao");
+		String agencyName = sqlSession.selectOne(NS+"getAgencyName", agencyEmployeeDto);
+		logger.debug("★★★★★★★★★★★★★★★★");
+		logger.debug("agencyName : " + agencyName);
+		return agencyName;
+	}
+	
 	public AgencyEmployeeDto selectOneAgencyEmployeeForUpdate(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("selectOneAgencyEmployeeForUpdate AgencyEmployeeDao");
 		return sqlSession.selectOne(NS+"selectOneAgencyEmployeeForUpdate", agencyEmployeeDto);
@@ -55,6 +68,7 @@ public class AgencyEmployeeDao {
 		return agencyEmployeeDto;
 	}
 	
+	/* 대행업체 인증코드 획득 = 대행업체 낙찰코드 획득 */
 	public int injeungAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("injeungAgencyEmployee AgencyEmployeeDao");
 		int result = sqlSession.selectOne(NS+"injeungAgencyEmployee", agencyEmployeeDto);
