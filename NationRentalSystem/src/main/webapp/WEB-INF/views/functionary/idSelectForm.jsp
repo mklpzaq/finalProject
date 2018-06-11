@@ -36,7 +36,7 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="functionaryName" name="functionaryName" placeholder="가입한 분의 성함을 입력해주십시오" >													
 						</div>						
-					</div>					
+					</div>					 
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">가입시 등록한 이메일</label>
 						<div class="col-sm-10">
