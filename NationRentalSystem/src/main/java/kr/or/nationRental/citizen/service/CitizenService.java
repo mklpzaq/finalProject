@@ -29,7 +29,7 @@ public class CitizenService {
 		
 		Map<String, Object> map = new HashMap<String, Object>();		
 		map.put("districtList", districtList);
-	
+	 
 		return map;
 	}	
 	

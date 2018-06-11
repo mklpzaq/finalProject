@@ -37,7 +37,7 @@ public class CitizenController {
 		model.addAttribute("districtList" , map.get("districtList"));		
 				
 		return "citizen/insertCitizenForm";
-	}
+	} 
 	
 	@RequestMapping(value="/insertCitizen", method=RequestMethod.POST)
 	public String insertCitizen(CitizenDto citizenDto) {

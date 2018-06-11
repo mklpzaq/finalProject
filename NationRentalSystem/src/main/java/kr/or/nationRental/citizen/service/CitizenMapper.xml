@@ -7,7 +7,7 @@
  <mapper namespace="kr.or.nationRental.citizen.service.CitizenMapper">
 	<select id="getdistrict"
 			parameterType="java.util.Map"
-			resultType="kr.or.nationRental.district.service.DistrictDto">
+			resultType="kr.or.nationRental.district.service.DistrictDto"> 
 			
 		SELECT 
 			sido.sido_name as sidoName , sigungu.sigungu_name as sigunguName , eupmyeon.eupmyeon_name as eupmyeonName

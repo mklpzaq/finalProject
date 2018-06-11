@@ -3,7 +3,7 @@ import java.sql.Date;
 
 public class CitizenDto {
 	private String citizenId; //시민ID
-	private String citizenPw; //Pw
+	private String citizenPw; //Pw 
 	private String citizenName; //시민명
 	private String citizenJuminNum; //주민번호
 	private int sigunguCode; //시군구코드	

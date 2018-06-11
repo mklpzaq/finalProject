@@ -24,7 +24,7 @@ public class CitizenDao {
 		
 	public List<DistrictDto> getdistrict() {
 		logger.debug("CitizenDao getdistrict : ");		
-		return sqlSession.selectList(NS+"getdistrict");
+		return sqlSession.selectList(NS+"getdistrict ");
 	}
 	
 	public int insertCitizen(CitizenDto citizenDto) {

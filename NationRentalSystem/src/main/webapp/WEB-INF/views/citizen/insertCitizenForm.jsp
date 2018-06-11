@@ -276,7 +276,7 @@
 				</select>									
 			</div>
 		</div>		
-		<br>	
+	 
 		<div class="form-group">
 			<label for="sigungu" class="col-sm-2 control-label">읍면동</label>
 			<div class="col-sm-10">				
@@ -287,7 +287,7 @@
 				</select>									
 			</div>
 		</div>
-		<br>		
+			
 		<div class="form-group">
 				<label for="Address" class="col-sm-2 control-label">회원 주소</label>
 		    <div class="col-sm-10">
