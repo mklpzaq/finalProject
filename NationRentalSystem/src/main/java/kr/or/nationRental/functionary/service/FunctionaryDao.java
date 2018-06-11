@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.login.service.MemberDto;
+
 @Repository
 public class FunctionaryDao {
 	@Autowired
@@ -71,6 +73,12 @@ public class FunctionaryDao {
 	public void insertStorageFunctionary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryDao - insertStorageFunctionary - functionaryDto : " + functionaryDto);
 		sqlSession.insert(NS+"insertStorageFunctionary", functionaryDto);
+	}
+	
+	//id찾기
+	public void idSelect(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/*public FunctionaryDto selectForStorageFunctionary(String fuctionaryId) {

@@ -147,9 +147,23 @@ public class FunctionaryController {
 	}
 	
 	@RequestMapping(value="/idSelect", method=RequestMethod.GET)
-	public String idSelect(HttpSession session) {
+	public String idSelect() {
 		
 		
-		return "redirect:/";
+		return "/functionary/idSelect";
+	}
+	
+	/*id찾기
+	 *id찾기의 프로세스
+	 *폼에서 가입된 아이디의 이름과 전화번호, 이메일을 넘겨받는다
+	 *넘겨받은 아이디와 이름, 전화번호, 이메일로
+	 */
+	@RequestMapping(value="/idSelect", method=RequestMethod.POST)
+	public String idSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryController - idSelect - memberDto : " + memberDto.toString());	
+		functionaryService.idSelect(memberDto);
+		
+		
+		return "/functionary/idSelect";
 	}
 }

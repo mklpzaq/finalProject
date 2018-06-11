@@ -6,9 +6,9 @@ public class MemberDto {
 	private String memberLevel;
 	private String memberName;
 	private int memberPhone;
+	private String memberEmail;
 	private int adminagencyCode;
 	private int agencyCode;
-	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -39,6 +39,12 @@ public class MemberDto {
 	public void setMemberPhone(int memberPhone) {
 		this.memberPhone = memberPhone;
 	}
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
 	public int getAdminagencyCode() {
 		return adminagencyCode;
 	}
@@ -54,9 +60,10 @@ public class MemberDto {
 	@Override
 	public String toString() {
 		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberLevel=" + memberLevel
-				+ ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", adminagencyCode=" + adminagencyCode
-				+ ", agencyCode=" + agencyCode + "]";
+				+ ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail
+				+ ", adminagencyCode=" + adminagencyCode + ", agencyCode=" + agencyCode + "]";
 	}
+	
 	
 	
 }

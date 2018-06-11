@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.nationRental.login.service.MemberDto;
+
 @Service
 public class FunctionaryService {
 
@@ -116,4 +118,11 @@ public class FunctionaryService {
 		functionaryDao.deleteFunctionnary(functionaryDto);
 		
 	}
+
+	//id찾기
+	public void idSelect(MemberDto memberDto) {
+		functionaryDao.idSelect(memberDto);
+		
+	}
+	
 }
