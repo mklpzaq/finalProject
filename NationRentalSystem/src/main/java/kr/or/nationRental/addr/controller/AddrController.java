@@ -13,6 +13,6 @@ public class AddrController {
 	
 	@RequestMapping(value="/addr", method=RequestMethod.GET)
 	public String addr(){ 
-		return "addr/addr";
+		return "addr/insertAddr";
 	}
 }
