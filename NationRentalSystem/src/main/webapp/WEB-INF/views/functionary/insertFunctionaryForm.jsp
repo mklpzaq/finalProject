@@ -44,26 +44,29 @@
 				        	var list = list;
 				        	var str = '<TR id="tr">';
 				        	$.each(list , function(i){
-				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button id="adminagencyNameList">' + list[i].adminagencyName + '</button></TD><TD>';
+				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button id="adminagencyName">' + list[i].adminagencyName + '</button></TD>';
 				                str += '</TR>';
 				           });
 				        	$("#adminagencyList").append(str); 
 				        },
 				        error : function(){
 				            alert("error");
+				            
 				        }    
 				    });
 				});
 				
+				$('#adminagencyName').click(function(){
+					alert('츄라이');					
+				});
 				
-				$('#tr').click(function(){					
+				/* $('#tr').click(function(){					
 					$('#adminagencyName').val($(this).children().last().val());
 					$('#adminagencyCode').val($(this).children().first().val());
 					jQuery('#adminagencyCheckModal').dialog('close');
-				});
+				}); */
 				
-				
-				/* //리스트 전체에서 특정한 값만 컨트롤하는
+				/*
 				$("#adminagencyNameList").click(function(){
 					$('#adminagencyName').val($('#adminagencyNameList').val());
 				 	$('#adminagencyCode').val($(this).siblings.val());					
@@ -382,14 +385,16 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">아이디 체크</h4>
+				        <h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
 				      </div>
 				      <div class="modal-body">
 				     	<input type="text" id="checkAdminagency">
 				     	<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
 				      </div>
 				      <div class="modal-footer">
-				      	<table id = "adminagencyList" border = "1"></table>
+				      	<table id = "adminagencyList" border = "1">
+				      	
+				      	</table>
 				      	<%-- <table class="table table-striped">
 							<thead>
 								<tr hidden="">

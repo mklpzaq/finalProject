@@ -83,8 +83,13 @@ public class FunctionaryService {
 	public int updateFunctionnary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryService - updateFunctionnary - functionaryDto : " + functionaryDto.toString());
 		String fuctionaryId = functionaryDto.getFunctionaryId();
-		functionaryDao.selectFunctionaryMoveInout(fuctionaryId);
-				
+		FunctionaryDto returnfunctionaryDto = functionaryDao.selectFunctionaryMoveInout(fuctionaryId);
+		logger.debug("FunctionaryService - selectFunctionaryMoveInout - returnfunctionaryDto : " + returnfunctionaryDto.getFunctionaryMoveInoutCode());
+		functionaryDao.updateFuctionaryMoveInout(returnfunctionaryDto);
+		
+		functionaryDao.insertFunctionaryMoveInout(functionaryDto);	
+		logger.debug("FunctionaryService - insertFunctionaryMoveInout - functionaryDto : " + functionaryDto.toString());
+		
 		return functionaryDao.updateFunctionnary(functionaryDto);
 	}
 
@@ -93,5 +98,11 @@ public class FunctionaryService {
 		List<FunctionaryDto> list =  functionaryDao.selectAdminagency(functionaryDto);
 		logger.debug("FunctionaryService - selectAdminagency - list : " + list.toString());
 		return list;
+	}
+
+	public void deleteFunctionnary(String functionaryId) {
+		logger.debug("FunctionaryService - deleteFunctionnary - functionaryId : " + functionaryId);
+		functionaryDao.deleteFunctionnary(functionaryId);
+		
 	}
 }

@@ -48,13 +48,23 @@ public class FunctionaryDao {
 		return sqlSession.update(NS+"updateFunctionnary", functionaryDto);
 	}
 	
-	public List<FunctionaryDto> selectFunctionaryMoveInout(String fuctionaryId) {
-		logger.debug("FunctionaryDao - selectFunctionaryMoveInout - fuctionaryId : " + fuctionaryId);
-		return sqlSession.selectList(NS+"selectFunctionaryMoveInout", fuctionaryId);
-	}
-
 	public List<FunctionaryDto> selectAdminagency(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryDao - selectAdminagency - functionaryDto : " + functionaryDto);
 		return sqlSession.selectList(NS+"selectAdminagency", functionaryDto);		
+	}
+	
+	public FunctionaryDto selectFunctionaryMoveInout(String fuctionaryId) {
+		logger.debug("FunctionaryDao - selectFunctionaryMoveInout - fuctionaryId : " + fuctionaryId);
+		return sqlSession.selectOne(NS+"selectFunctionaryMoveInout", fuctionaryId);
+	}
+
+	public void updateFuctionaryMoveInout(FunctionaryDto returnfunctionaryMoveInoutCode) {
+		logger.debug("FunctionaryDao - updateFuctionaryMoveInout - returnfunctionaryMoveInoutCode : " + returnfunctionaryMoveInoutCode);
+		sqlSession.update(NS+"updateFuctionaryMoveInout", returnfunctionaryMoveInoutCode);
+	}
+
+	public void deleteFunctionnary(String functionaryId) {
+		logger.debug("FunctionaryDao - deleteFunctionnary - functionaryDto : " + functionaryId);
+		sqlSession.delete(NS+"deleteFunctionnary", functionaryId);
 	}
 }

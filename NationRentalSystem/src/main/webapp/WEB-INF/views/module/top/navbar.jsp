@@ -100,6 +100,7 @@
 									<ul class="nav navbar-nav">
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionary">공무원 회원관리</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/functionaryBasicInformation/?functionaryId=${member.memberId}">내 정보수정</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/deleteFunctionnary/?functionaryId=${member.memberId}">회원탈퇴</a></li>
 										<li><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAgencyForm">대행업체 등록</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListContractAgency">대행업체 관리</a></li>

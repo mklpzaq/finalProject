@@ -33,8 +33,8 @@
 			,adminagency_code
 			,functionary_id
 			,functionary_name
-			,functionary_date_work_start
-			,functionary_date_work_end
+			,functionary_date_move_in
+			,functionary_date_move_out
 			,functionary_state_work)
 		VALUES (null
 				,#{adminagencyCode}
@@ -112,6 +112,25 @@
 		WHERE functionary_id=#{functionaryId}
 	</update>
 	
+	<select id="selectFunctionaryMoveInout" parameterType="String" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+		SELECT
+			   functionary_move_inout_code as functionaryMoveInoutCode
+			FROM
+			    functionary_move_inout
+			where functionary_id = #{functionaryId}
+			ORDER BY  
+			    functionary_date_move_in desc
+			    limit 1
+	</select>
+	
+	<update id="updateFuctionaryMoveInout" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto">		
+		UPDATE functionary_move_inout
+				SET
+			functionary_date_move_out = now()
+			,functionary_state_work = '전출'			
+		WHERE functionary_move_inout_code = #{functionaryMoveInoutCode}
+	</update>
+	
 	<select id="selectAdminagency" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 		SELECT
 			adminagency_code as adminagencyCode
@@ -119,5 +138,11 @@
 		FROM adminagency
 		where adminagency_name like CONCAT('%', #{adminagencyName}, '%')	
 	</select>
+	
+	<delete id="deleteFunctionnary" parameterType="String">
+		DELETE 
+			FROM functionary 
+			WHERE functionary_id=#{functionaryId}	
+	</delete>
 </mapper>
 	
