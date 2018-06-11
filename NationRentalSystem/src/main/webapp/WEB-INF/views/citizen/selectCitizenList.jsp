@@ -119,8 +119,8 @@
 											<td width="20%">시민 아이디</td>
 											<td width="25%">시민 비밀번호</td>
 											<td width="25%">시민이름</td>
-											<td width="30%">시군구코드</td>
-											<td width="30%">읍면동코드</td>
+											<td width="30%">시군구이름</td>
+											<td width="30%">읍면동이름</td>
 											<td width="30%">시민주소</td>
 											<td width="30%">시민 핸드폰번호</td>
 											<td width="30%">시민 이메일</td>										

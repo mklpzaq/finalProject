@@ -6,9 +6,9 @@ public class CitizenDto {
 	private String citizenPw; //Pw 
 	private String citizenName; //시민명
 	private String citizenJuminNum; //주민번호
-	private int sigunguCode; //시군구코드	
+	private long sigunguCode; //시군구코드	
 	private String sigunguName;
-	private int eupmyeonCode; //읍면동코드	
+	private long eupmyeonCode; //읍면동코드	
 	private String eupmyeonName;
 	private String citizenAddressSangse; //상세주소
 	private int citizenPhone; //시민 전화번호
@@ -51,13 +51,13 @@ public class CitizenDto {
 	public void setCitizenJuminNum(String citizenJuminNum) {
 		this.citizenJuminNum = citizenJuminNum;
 	}
-	public int getSigunguCode() {
+	public long getSigunguCode() {
 		return sigunguCode;
 	}
 	public void setSigunguCode(int sigunguCode) {
 		this.sigunguCode = sigunguCode;
 	}
-	public int getEupmyeonCode() {
+	public long getEupmyeonCode() {
 		return eupmyeonCode;
 	}
 	public void setEupmyeonCode(int eupmyeonCode) {
