@@ -24,6 +24,8 @@
 					<a href="${pageContext.request.contextPath}/injeungAdministrator">관리자 등록</a> | 
 					<a href="${pageContext.request.contextPath}/insertFunctionary">공무원 회원가입</a> | 
 					<a href="${pageContext.request.contextPath}/goInjeungAgencyEmployee">직원 회원가입</a>
+					<!-- 주소API 연습중 -->
+					<a href="${pageContext.request.contextPath}/addr">주소테스트</a>
 				
 				
 				<!-- End Content -->

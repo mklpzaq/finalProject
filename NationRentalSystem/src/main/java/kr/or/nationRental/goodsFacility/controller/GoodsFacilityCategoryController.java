@@ -108,7 +108,7 @@ public class GoodsFacilityCategoryController {
 	public String insertGoodsFacilityCategoryThree(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
 		logger.debug(goodsFacilityCategoryDto.toString());
 		int row = goodsFacilityCategoryService.insertGoodsFacilityCategoryThree(goodsFacilityCategoryDto);
-		return "redirect:/selectListGoodsFacilityThree";
+		return "redirect:/selectListGoodsFacilityCategoryThree";
 	}
 	
 }

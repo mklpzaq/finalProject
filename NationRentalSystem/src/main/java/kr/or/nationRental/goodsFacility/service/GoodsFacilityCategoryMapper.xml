@@ -32,6 +32,7 @@
 		goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
 	AND
 		goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+	ORDER BY goodsfacility_three_code DESC
 	</select>
 	
 	<!-- 물품시설 1차 카테고리 목록 보기 -->
@@ -40,6 +41,7 @@
 		goodsfacility_one_code
 		, goodsfacility_one_name
 	FROM goodsfacility_one
+	ORDER BY goodsfacility_one_code DESC
 	</select>
 
 	<!-- 물품시설 2차 카테고리 목록 보기 -->
@@ -52,6 +54,7 @@
 	FROM goodsfacility_one, goodsfacility_two
 	WHERE
 		goodsfacility_one.goodsfacility_one_code=goodsfacility_two.goodsfacility_one_code
+	ORDER BY goodsfacility_two_code DESC
 	</select>
 	
 	<!-- 물품시설 3차 카테고리 목록 보기 -->
@@ -68,6 +71,7 @@
 		goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
 	AND
 		goodsfacility_two.goodsfacility_two_code=goodsfacility_three.goodsfacility_two_code
+	ORDER BY goodsfacility_three_code DESC
 	</select>
 	
 	<!-- 1차 카테고리 등록 -->

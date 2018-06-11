@@ -109,7 +109,7 @@ public class DistrictController {
 	public String insertEupmyeon(DistrictDto districtDto) {
 		logger.debug(districtDto.toString());
 		districtDto.setEupmyeonCode(districtDto.getSigunguCode() + districtDto.getEupmyeonMiddleCode());
-		logger.debug(districtDto.getEupmyeonCode());
+		logger.debug("---insertEupmyeonCode" + districtDto.getEupmyeonCode());
 		logger.debug("insertEupmyeon");
 		int row = districtService.insertEupmyeon(districtDto);
 		return "redirect:/selectListEupmyeon";
