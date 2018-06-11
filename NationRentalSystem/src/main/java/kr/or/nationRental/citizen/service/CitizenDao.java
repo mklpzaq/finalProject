@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.district.service.DistrictDto;
+import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
+
 @Repository
 public class CitizenDao {
 
@@ -18,6 +21,11 @@ public class CitizenDao {
 	final String NS ="kr.or.nationRental.citizen.service.CitizenMapper.";	
 	
 	private static final Logger logger = LoggerFactory.getLogger(CitizenDao.class);
+		
+	public List<DistrictDto> getdistrict() {
+		logger.debug("CitizenDao getdistrict : ");		
+		return sqlSession.selectList(NS+"getdistrict");
+	}
 	
 	public int insertCitizen(CitizenDto citizenDto) {
 		logger.debug("CitizenDao insertCitizen : " + citizenDto.toString());
@@ -49,5 +57,7 @@ public class CitizenDao {
 		logger.debug("CitizenDao updateOneCitizen : " + citizenDto.toString());
 		return sqlSession.update(NS+"updateOneCitizen", citizenDto);
 	}
+
+	
 
 }

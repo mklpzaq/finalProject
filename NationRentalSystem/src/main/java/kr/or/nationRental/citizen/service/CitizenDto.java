@@ -7,12 +7,26 @@ public class CitizenDto {
 	private String citizenName; //시민명
 	private String citizenJuminNum; //주민번호
 	private int sigunguCode; //시군구코드	
+	private String sigunguName;
 	private int eupmyeonCode; //읍면동코드	
+	private String eupmyeonName;
 	private String citizenAddressSangse; //상세주소
 	private int citizenPhone; //시민 전화번호
 	private String citizenEmail; //시민 이메일
 	private Date citizenDateJoin; //가입날짜
 	
+	public String getSigunguName() {
+		return sigunguName;
+	}
+	public void setSigunguName(String sigunguName) {
+		this.sigunguName = sigunguName;
+	}
+	public String getEupmyeonName() {
+		return eupmyeonName;
+	}
+	public void setEupmyeonName(String eupmyeonName) {
+		this.eupmyeonName = eupmyeonName;
+	}
 	public String getCitizenId() {
 		return citizenId;
 	}
@@ -75,9 +89,9 @@ public class CitizenDto {
 	}
 	@Override
 	public String toString() {
-		return "citizenDto [citizenId=" + citizenId + ", citizenPw=" + citizenPw + ", citizenName=" + citizenName
+		return "CitizenDto [citizenId=" + citizenId + ", citizenPw=" + citizenPw + ", citizenName=" + citizenName
 				+ ", citizenJuminNum=" + citizenJuminNum + ", sigunguCode=" + sigunguCode + ", sigunguName="
-				+ ", eupmyeonCode=" + eupmyeonCode + ", eupmyeonName=" 
+				+ sigunguName + ", eupmyeonCode=" + eupmyeonCode + ", eupmyeonName=" + eupmyeonName
 				+ ", citizenAddressSangse=" + citizenAddressSangse + ", citizenPhone=" + citizenPhone
 				+ ", citizenEmail=" + citizenEmail + ", citizenDateJoin=" + citizenDateJoin + "]";
 	}

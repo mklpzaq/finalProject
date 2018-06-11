@@ -5,6 +5,28 @@
   
   
  <mapper namespace="kr.or.nationRental.citizen.service.CitizenMapper">
+	<select id="getdistrict"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.district.service.DistrictDto">
+			
+		SELECT 
+			sido.sido_name as sidoName , sigungu.sigungu_name as sigunguName , eupmyeon.eupmyeon_name as eupmyeonName
+		FROM
+			sido
+		INNER JOIN
+			sigungu
+		ON
+			sido.sido_code = sigungu.sido_code
+		
+		INNER JOIN
+			eupmyeon
+		ON
+			sigungu.sigungu_code = eupmyeon.sigungu_code				
+	
+	</select>
+	
+	
+	
 	<insert id="insertCitizen" 
 			parameterType="kr.or.nationRental.citizen.service.CitizenDto">
 	

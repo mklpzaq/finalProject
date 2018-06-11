@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +18,7 @@
 			5.중복된 아이디값은 쓸 수 없다.
 			6.필수정보 입력 데이터는 아이디 비밀번호 주민번호 주소 이름 핸드폰번호 이다.					
 		*/
-		
-		/* $(document).ready(function(){
+		$(document).ready(function(){
 			$("#CitizenID").keyup(function(){
 				if($("#CitizenID").val().length <= 8) {
 					$("#CitizenId").append($("<p/>",{
@@ -200,10 +199,10 @@
 		            });    //end ajax    
 		        });    //end on	
 					     
-		}); */
+		});
 		
 	</script>
-
+ 
 </head>
 
 <body>
@@ -268,31 +267,27 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="sigungu" class="col-sm-2 control-label">시군구코드</label>
-			<div class="col-sm-10">
+			<label for="sigungu" class="col-sm-2 control-label">시군구</label>
+			<div class="col-sm-10">					
 				<select class="form-control" name="sigunguCode">
-					  <option>1</option>
-					  <option>2</option>
-					  <option>3</option>
-					  <option>4</option>
-					  <option>5</option>
-				</select>
+					<c:forEach var="sigungu" items="${districtList}"> 					
+						 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
+					</c:forEach> 
+				</select>									
 			</div>
 		</div>		
-			
+		<br>	
 		<div class="form-group">
-			<label for="sigungu" class="col-sm-2 control-label">읍면동코드</label>
-			<div class="col-sm-10">
+			<label for="sigungu" class="col-sm-2 control-label">읍면동</label>
+			<div class="col-sm-10">				
 				<select class="form-control" name="eupmyeonCode">
-					  <option>1</option>
-					  <option>2</option>
-					  <option>3</option>
-					  <option>4</option>
-					  <option>5</option>
-				</select>
+					<c:forEach var="eupmyeon" items="${districtList}">					
+						<option value="${eupmyeon.eupmyeonName}">${eupmyeon.eupmyeonName}</option>						  					
+					</c:forEach>
+				</select>									
 			</div>
 		</div>
-		
+		<br>		
 		<div class="form-group">
 				<label for="Address" class="col-sm-2 control-label">회원 주소</label>
 		    <div class="col-sm-10">

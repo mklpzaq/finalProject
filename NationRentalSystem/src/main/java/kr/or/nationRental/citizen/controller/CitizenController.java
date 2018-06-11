@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.citizen.service.CitizenService;
+import kr.or.nationRental.district.service.DistrictDto;
+import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 
 
 @Controller
@@ -28,8 +30,12 @@ public class CitizenController {
 	private static final Logger logger = LoggerFactory.getLogger(CitizenController.class);
 	
 	@RequestMapping(value="/insertCitizen", method=RequestMethod.GET)
-	public String insertCitizen() {
-			
+	public String insertCitizen(DistrictDto districDto
+								,Model model) {
+		logger.debug("CitizenController insertCitizen Get : " + "," + districDto.toString()); 
+		Map<String, Object> map = citizenService.selectBoxes(districDto);
+		model.addAttribute("districtList" , map.get("districtList"));		
+				
 		return "citizen/insertCitizenForm";
 	}
 	
