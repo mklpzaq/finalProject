@@ -29,7 +29,7 @@
 							<tr>
 								<td width="30%">시도 코드</td>
 								<td width="55%">시도</td>	
-								<td width="15%">삭제</td>								
+								<!-- <td width="15%">삭제</td> -->								
 							</tr>
 						</thead>
 						<tbody>									
@@ -38,7 +38,7 @@
 									<tr>
 										<th>${districtDtoList.sidoCode}</th>
 										<th>${districtDtoList.sidoName}</th>
-										<th></th>																					
+										<%-- <td><a href="${pageContext.request.contextPath}/deleteSigungu?sigunguCode=${districtDtoList.sigunguCode}">삭제</a></td> --%>																					
 									</tr>
 								</tbody>
 							</c:forEach>	

@@ -21,9 +21,9 @@
 						<h1>물품/시설 카테고리</h1>
 					</div>
 					<!-- 버튼으로 만들고 싶음 -->
-					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityOne">1차 카테고리 보기</a>/
-					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityTwo">2차 카테고리 보기</a>/
-					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityThree">3차 카테고리 보기</a><br><br><br>
+					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne">1차 카테고리 보기</a>/
+					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryTwo">2차 카테고리 보기</a>/
+					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree">3차 카테고리 보기</a><br><br><br>
 					
 					<table class="table table-striped">
 						<thead>
@@ -35,13 +35,13 @@
 							</tr>
 						</thead>
 						<tbody>									
-							<c:forEach var="GoodsFacilityDtoList" items="${GoodsFacilityDtoList}">
+							<c:forEach var="GoodsFacilityCatogoryDtoList" items="${GoodsFacilityCatogoryDtoList}">
 								<tbody>
 									<tr>
-										<th>${GoodsFacilityDtoList.goodsfacilityCode}</th> <!-- 1차+2차+3차 가 나타나게 만들 것 -->
-										<th>${GoodsFacilityDtoList.goodsfacilityOneName}</th>
-										<td>${GoodsFacilityDtoList.goodsfacilityTwoName}</td>
-										<td>${GoodsFacilityDtoList.goodsfacilityThreeName}</td>																						
+										<th>${GoodsFacilityCatogoryDtoList.goodsfacilityCode}</th> <!-- 1차+2차+3차 가 나타나게 만들 것 -->
+										<th>${GoodsFacilityCatogoryDtoList.goodsfacilityOneName}</th>
+										<td>${GoodsFacilityCatogoryDtoList.goodsfacilityTwoName}</td>
+										<td>${GoodsFacilityCatogoryDtoList.goodsfacilityThreeName}</td>																						
 									</tr>
 								</tbody>
 							</c:forEach>	

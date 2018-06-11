@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>물품/시설 카테고리 3차분류</title>
+		<title>물품/시설 카테고리 2차분류</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
@@ -18,43 +18,32 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					<div class="text-center">
-						<h1>물품/시설 카테고리 3차분류</h1>
+						<h1>물품/시설 카테고리 2차분류</h1>
 					</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<form id="insertGoodsFacility" class="form-horizontal" action="${pageContext.request.contextPath}/insertEupmyeon" method="post">
+								<form id="insertGoodsFacilityCategory" class="form-horizontal" action="${pageContext.request.contextPath}/insertGoodsFacilityCategoryTwo" method="post">
 									<div class="form-group">
 										<label for="goodsfacilityOneCode" class="col-sm-3 control-label">1차 카테고리</label>
 										<div class="col-sm-9">
-											<select id=goodsfacilityDtoList name="goodsfacilityOneCode">
-												<option>1차 카테고리 </option>
-												<c:forEach var="id=goodsfacilityDtoList" items="${id=goodsfacilityDtoList}">
-													<option value="${id=goodsfacilityDtoList.goodsfacilityOneCode}">${id=goodsfacilityDtoList.goodsfacilityOneName}</option>
-												</c:forEach>
-											</select>											
-										</div>
-									</div>
-										<div class="form-group">
-										<label for="goodsfacilityTwoCode" class="col-sm-3 control-label">2차 카테고리</label>
-										<div class="col-sm-9">
-											<select id=goodsfacilityDtoList2 name="goodsfacilityTwoCode">
-												<option>2차 카테고리</option>
-												<c:forEach var="goodsfacilityDtoList2" items="${goodsfacilityDtoList2}">
-													<option value="${goodsfacilityDtoList2.goodsfacilityTwoCode}">${goodsfacilityDtoList2.goodsfacilityTwoName}</option>
+											<select id=goodsfacilityCategoryDtoList name="goodsfacilityOneCode">
+												<option>1차 카테고리</option>
+												<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
+													<option value="${goodsFacilityCategoryDtoList.goodsfacilityOneCode}">${goodsFacilityCategoryDtoList.goodsfacilityOneName}</option>
 												</c:forEach>
 											</select>											
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="goodsfacilityThreeCode" class="col-sm-3 control-label">2차 카테고리 코드</label>
+										<label for="goodsfacilityTwoCode" class="col-sm-3 control-label">2차 카테고리 코드</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="goodsfacilityThreeCode" id="goodsfacilityThreeCode" placeholder="소분류 코드를 입력해주세요.">
+											<input type="text" class="form-control" name="goodsfacilityTwoCode" id="goodsfacilityTwoCode" placeholder="중분류 코드를 입력해주세요.">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="goodsfacilityThreeName" class="col-sm-3 control-label">물품/시설  명</label>
+										<label for="goodsfacilityTwoName" class="col-sm-3 control-label">물품/시설 명</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="goodsfacilityThreeName" id="goodsfacilityThreeName" placeholder="물품 또는 시설의 이름을 입력해주세요.">
+											<input type="text" class="form-control" name="goodsfacilityTwoName" id="goodsfacilityTwoName" placeholder="물품 또는 시설의 이름을 입력해주세요.">
 										</div>
 									</div>
 			

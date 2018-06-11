@@ -83,6 +83,6 @@ public class AdministratorController {
 	@RequestMapping(value = "/deleteAdministrator", method= RequestMethod.GET)
 	public String deleteAdministrator(AdministratorDto adminId) {
 		administratorService.deleteAdministrator(adminId);
-		return "redirect:/selectBoardList";
+		return "redirect:/selectListAdministrator";
 	}
 }

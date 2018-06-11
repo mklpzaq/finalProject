@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>2차 카테고리 목록</title>
+		<title>1차 카테고리 목록</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
@@ -18,31 +18,27 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					<div class="text-center">
-						<h1>2차 카테고리 목록</h1>
+						<h1>1차 카테고리 목록</h1>
 					</div>
 					<!-- 버튼으로 만들고 싶음 -->
-					<a href="${pageContext.request.contextPath}/selectListGoodsFacility">물품/시설 카테고리 목록보기</a>/
-					<a href="${pageContext.request.contextPath}/insertGoodsFacilityTwo">카테고리 추가</a><br><br><br>
+					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">전체 카테고리 목록보기</a>/
+					<a href="${pageContext.request.contextPath}/insertGoodsFacilityCategoryOne">카테고리 추가</a><br><br><br>
 					
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<td width="15%">1차 코드</td>
-								<td width="25%">물품/시설</td>
-								<td width="15%">2차 코드</td>
-								<td width="30%">물품/시설</td>
+								<td width="30%">1차 카테고리 코드</td>
+								<td width="55%">물품/시설 명</td>	
 								<td width="15%">삭제</td>								
 							</tr>
 						</thead>
 						<tbody>									
-							<c:forEach var="oodsFacilityDtoList" items="${oodsFacilityDtoList}">
+							<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
 								<tbody>
 									<tr>
-										<th>${oodsFacilityDtoList.goodsfacilityOneCode}</th>
-										<th>${oodsFacilityDtoList.goodsfacilityOneName}</th>
-										<th>${oodsFacilityDtoList.goodsfacilityTwoCode}</th>
-										<th>${oodsFacilityDtoList.goodsfacilityTwoName}</th>
-										<td><a href="${pageContext.request.contextPath}/deleteAddress?sendNo=${address.addressNo}">삭제</a></td>																					
+										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneCode}</th>
+										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneName}</th>
+										<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryOne?goodsfacilityOneCode=${goodsFacilityCategoryDtoList.goodsfacilityOneCode}">삭제</a></th>																					
 									</tr>
 								</tbody>
 							</c:forEach>	

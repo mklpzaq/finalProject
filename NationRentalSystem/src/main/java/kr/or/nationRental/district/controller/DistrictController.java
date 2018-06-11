@@ -104,16 +104,17 @@ public class DistrictController {
 	   		return "administrativeDistrict/insertEupmyeon";
 		}
 		
-		//읍면동  등록 post호출
-		@RequestMapping(value="/insertEupmyeon",  method = RequestMethod.POST)
-		public String insertEupmyeon(DistrictDto districtDto) {
-			logger.debug(districtDto.toString());
-			districtDto.setEupmyeonCode(districtDto.getSigunguCode() + districtDto.getEupmyeonMiddleCode());
-			logger.debug(districtDto.getEupmyeonCode());
-			logger.debug("insertEupmyeon");
-			int row = districtService.insertEupmyeon(districtDto);
-			return "redirect:/selectListEupmyeon";
-		}
+	//읍면동  등록 post호출
+	@RequestMapping(value="/insertEupmyeon",  method = RequestMethod.POST)
+	public String insertEupmyeon(DistrictDto districtDto) {
+		logger.debug(districtDto.toString());
+		districtDto.setEupmyeonCode(districtDto.getSigunguCode() + districtDto.getEupmyeonMiddleCode());
+		logger.debug(districtDto.getEupmyeonCode());
+		logger.debug("insertEupmyeon");
+		int row = districtService.insertEupmyeon(districtDto);
+		return "redirect:/selectListEupmyeon";
+	}
+	
 }
 
 

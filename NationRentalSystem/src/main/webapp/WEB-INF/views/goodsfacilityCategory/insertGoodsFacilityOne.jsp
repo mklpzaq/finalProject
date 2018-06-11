@@ -21,7 +21,7 @@
 					</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<form id="insertGoodsFacility" class="form-horizontal" action="${pageContext.request.contextPath}/insertGoodsFacilityOne" method="post">
+								<form id="insertGoodsFacilityCategory" class="form-horizontal" action="${pageContext.request.contextPath}/insertGoodsFacilityCategoryOne" method="post">
 									<div class="form-group">
 										<label for="goodsfacilityOneCode" class="col-sm-3 control-label">1차 카테고리 코드</label>
 										<div class="col-sm-9">

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryMapper">
+	
+	<!--
+		selectListDistrict 클래스에 대한 ResultMap
+		property에 명시한 항목들은 클래스의 멤버변수를 의미한다.
+		column에 명시한 항목들은 해당 멤버변수에 저장될 SELECT절의 컬럼이름이 된다.
+	-->
+	<resultMap id="selectListGoodsFacility" type="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+		<result property="goodsfacilityOneCode" column="goodsfacility_one_code" />
+		<result property="goodsfacilityOneName" column="goodsfacility_one_name" />
+		<result property="goodsfacilityTwoCode" column="goodsfacility_two_code" />
+		<result property="goodsfacilityTwoName" column="goodsfacility_two_name" />
+		<result property="goodsfacilityThreeCode" column="goodsfacility_three_code" />
+		<result property="goodsfacilityThreeName" column="goodsfacility_three_name" />
+		<result property="goodsfacilityCode" column="goodsfacility_code" />
+	</resultMap>
+
+	<!-- 물품시설 카테고리 전체목록 보기 -->
+	<select id="selectListGoodsFacilityCategory" resultMap="selectListGoodsFacility">
+	SELECT 
+		goodsfacility.goodsfacility_code
+		, goodsfacility_one.goodsfacility_one_name
+		, goodsfacility_two.goodsfacility_two_name
+		, goodsfacility_three.goodsfacility_three_name
+	FROM goodsfacility, goodsfacility_one, goodsfacility_two, goodsfacility_three
+	WHERE
+		goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+	AND
+		goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+	</select>
+	
+	<!-- 물품시설 1차 카테고리 목록 보기 -->
+	<select id="selectListGoodsFacilityCategoryOne" resultMap="selectListGoodsFacility">
+	SELECT
+		goodsfacility_one_code
+		, goodsfacility_one_name
+	FROM goodsfacility_one
+	</select>
+
+	<!-- 물품시설 2차 카테고리 목록 보기 -->
+	<select id="selectListGoodsFacilityCategoryTwo" resultMap="selectListGoodsFacility">
+	SELECT
+		goodsfacility_one.goodsfacility_one_code 
+		, goodsfacility_one.goodsfacility_one_name
+		, goodsfacility_two.goodsfacility_two_code
+		, goodsfacility_two.goodsfacility_two_name
+	FROM goodsfacility_one, goodsfacility_two
+	WHERE
+		goodsfacility_one.goodsfacility_one_code=goodsfacility_two.goodsfacility_one_code
+	</select>
+	
+	<!-- 물품시설 3차 카테고리 목록 보기 -->
+	<select id="selectListGoodsFacilityCategoryThree" resultMap="selectListGoodsFacility">
+	SELECT
+		goodsfacility_one.goodsfacility_one_code
+		, goodsfacility_one.goodsfacility_one_name
+		, goodsfacility_two.goodsfacility_two_code
+		, goodsfacility_two.goodsfacility_two_name
+		, goodsfacility_three.goodsfacility_three_code
+		, goodsfacility_three.goodsfacility_three_name
+	FROM goodsfacility_one, goodsfacility_two, goodsfacility_three
+	WHERE 
+		goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+	AND
+		goodsfacility_two.goodsfacility_two_code=goodsfacility_three.goodsfacility_two_code
+	</select>
+	
+	<!-- 1차 카테고리 등록 -->
+	<insert id="insertGoodsFacilityCategoryOne" parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+	INSERT INTO goodsfacility_one (
+		goodsfacility_one_code
+		, goodsfacility_one_name
+	) VALUES (
+		#{goodsfacilityOneCode}
+		, #{goodsfacilityOneName}
+	)
+	</insert>
+	
+	<!-- 2차 카테고리 등록 -->
+	<insert id="insertGoodsFacilityCategoryTwo" parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+	INSERT INTO goodsfacility_two (
+		goodsfacility_two_code
+		, goodsfacility_one_code
+		, goodsfacility_two_name
+	) VALUES (
+		#{goodsfacilityTwoCode}
+		, #{goodsfacilityOneCode}
+		, #{goodsfacilityTwoName}
+	)
+		</insert>
+	
+	<!-- 3차 카테고리 등록 -->
+	<insert id="insertGoodsFacilityCategoryThree" parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+	INSERT INTO goodsfacility_three (
+		goodsfacility_three_code
+		, goodsfacility_two_code
+		, goodsfacility_three_name
+	) VALUES (
+		#{goodsfacilityThreeCode}
+		, #{goodsfacilityTwoCode}
+		, #{goodsfacilityThreeName}
+	)
+	</insert>
+	
+</mapper>
