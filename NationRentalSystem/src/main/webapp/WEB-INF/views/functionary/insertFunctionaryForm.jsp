@@ -286,8 +286,7 @@
 							<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#idCheckModal">
 							 아이디체크
 							</button>													
-						</div>
-						
+						</div>						
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">비밀번호</label>

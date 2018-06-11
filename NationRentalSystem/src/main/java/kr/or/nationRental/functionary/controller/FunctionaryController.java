@@ -145,4 +145,11 @@ public class FunctionaryController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/idSelect", method=RequestMethod.GET)
+	public String idSelect(HttpSession session) {
+		
+		
+		return "redirect:/";
+	}
 }
