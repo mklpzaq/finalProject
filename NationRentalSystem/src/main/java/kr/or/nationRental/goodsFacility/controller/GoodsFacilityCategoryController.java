@@ -21,10 +21,10 @@ public class GoodsFacilityCategoryController {
 
 	//물품시설 카테고리 전체목록 보기
 	@RequestMapping(value="/selectListGoodsFacilityCategory", method=RequestMethod.GET)
-	public String selectListGoodsFacilityCategory(Model model) {
+	public String selectListGoodsFacilityCategory(Model model, GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
 		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategory();
-		model.addAttribute("GoodsFacilityDtoList", goodsFacilityCategoryDtoList);
-		logger.debug("---GoodsFacilityDtoList" + goodsFacilityCategoryDtoList);
+		model.addAttribute("goodsFacilityCategoryDtoList", goodsFacilityCategoryDtoList);
+		logger.debug("---goodsFacilityCategoryDtoList" + goodsFacilityCategoryDtoList);
 		return "goodsfacilityCategory/selectListGoodsFacility";
 	}
 	
@@ -50,7 +50,7 @@ public class GoodsFacilityCategoryController {
 	@RequestMapping(value="/selectListGoodsFacilityCategoryThree", method=RequestMethod.GET)
 	public String selectListGoodsFacilityCategoryThree(Model model) {
 		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategoryThree();
-		model.addAttribute("GoodsFacilityDtoList", goodsFacilityCategoryDtoList);
+		model.addAttribute("goodsFacilityCategoryDtoList", goodsFacilityCategoryDtoList);
 		logger.debug("---selectListGoodsFacilityCategoryThree" + goodsFacilityCategoryDtoList);
 		return "goodsfacilityCategory/selectListGoodsFacilityThree";
 	}
@@ -67,7 +67,7 @@ public class GoodsFacilityCategoryController {
 	public String insertGoodsFacilityCategoryOne(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
 		logger.debug("insertGoodsFacilityCategoryOne");
 		goodsFacilityCategoryService.insertGoodsFacilityCategoryOne(goodsFacilityCategoryDto);
-   		return "redirect:/selectListGoodsFacilityOne";
+   		return "redirect:/selectListGoodsFacilityCategoryOne";
 	}
 		
 	//2차 카테고리 폼 불러오기
@@ -86,7 +86,7 @@ public class GoodsFacilityCategoryController {
 	public String insertGoodsFacilityCategoryTwo(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
 		logger.debug(goodsFacilityCategoryDto.toString());
 		int row = goodsFacilityCategoryService.insertGoodsFacilityCategoryTwo(goodsFacilityCategoryDto);
-		return "redirect:/selectListGoodsFacilityTwo";
+		return "redirect:/selectListGoodsFacilityCategoryTwo";
 	}
 	
 	//3차 카테고리  등록 불러오기
@@ -106,10 +106,9 @@ public class GoodsFacilityCategoryController {
 	//3차 카테고리  등록 post호출
 	@RequestMapping(value="/insertGoodsFacilityCategoryThree",  method = RequestMethod.POST)
 	public String insertGoodsFacilityCategoryThree(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
-		logger.debug(goodsFacilityCategoryDto.toString());;
-		goodsFacilityCategoryDto.setGoodsfacilityCode(goodsFacilityCategoryDto.getGoodsfacilityOneCode()+goodsFacilityCategoryDto.getGoodsfacilityTwoCode()+goodsFacilityCategoryDto.getGoodsfacilityThreeCode());
-		logger.debug("insertGoodsFacilityCategoryThree");
+		logger.debug(goodsFacilityCategoryDto.toString());
 		int row = goodsFacilityCategoryService.insertGoodsFacilityCategoryThree(goodsFacilityCategoryDto);
 		return "redirect:/selectListGoodsFacilityThree";
 	}
+	
 }

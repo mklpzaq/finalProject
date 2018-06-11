@@ -21,7 +21,7 @@
 						<h1>3차 카테고리 목록</h1>
 					</div>
 					<!-- 버튼으로 만들고 싶음 -->
-					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">물품시설 카테고리 목록보기</a>/
+					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">전체 카테고리 목록보기</a>/
 					<a href="${pageContext.request.contextPath}/insertGoodsFacilityCategoryThree">카테고리 추가</a><br><br><br>
 					
 					<table class="table table-striped">

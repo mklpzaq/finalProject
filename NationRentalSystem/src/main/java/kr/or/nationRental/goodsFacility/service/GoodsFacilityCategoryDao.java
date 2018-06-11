@@ -51,14 +51,14 @@ public class GoodsFacilityCategoryDao {
 	
 	//2차 카테고리 등록
 	public int insertGoodsFacilityCategoryTwo(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
-		logger.info("---insertGoodsFacilityCategoryOne");
+		logger.info("---insertGoodsFacilityCategoryTwo");
 		int row = sqlSession.insert(NS+"insertGoodsFacilityCategoryTwo",goodsFacilityCategoryDto);
 		return row;
 	}
 	
 	//3차 카테고리 등록
 	public int insertGoodsFacilityCategoryThree(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
-		logger.info("---insertGoodsFacilityCategoryOne");
+		logger.info("---insertGoodsFacilityCategoryThree");
 		int row = sqlSession.insert(NS+"insertGoodsFacilityCategoryThree",goodsFacilityCategoryDto);
 		return row;
 	}

@@ -35,13 +35,13 @@
 							</tr>
 						</thead>
 						<tbody>									
-							<c:forEach var="GoodsFacilityCatogoryDtoList" items="${GoodsFacilityCatogoryDtoList}">
+							<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
 								<tbody>
 									<tr>
-										<th>${GoodsFacilityCatogoryDtoList.goodsfacilityCode}</th> <!-- 1차+2차+3차 가 나타나게 만들 것 -->
-										<th>${GoodsFacilityCatogoryDtoList.goodsfacilityOneName}</th>
-										<td>${GoodsFacilityCatogoryDtoList.goodsfacilityTwoName}</td>
-										<td>${GoodsFacilityCatogoryDtoList.goodsfacilityThreeName}</td>																						
+										<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}</th>
+										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneName}</th>
+										<td>${goodsFacilityCategoryDtoList.goodsfacilityTwoName}</td>
+										<td>${goodsFacilityCategoryDtoList.goodsfacilityThreeName}</td>																						
 									</tr>
 								</tbody>
 							</c:forEach>	

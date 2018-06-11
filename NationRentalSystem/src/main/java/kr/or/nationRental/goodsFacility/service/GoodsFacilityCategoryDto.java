@@ -7,7 +7,6 @@ public class GoodsFacilityCategoryDto {
 	private String goodsfacilityTwoName; //goodsfacility_two_name
 	private int goodsfacilityThreeCode; //goodsfacility_three_code
 	private String goodsfacilityThreeName; //goodsfacility_three_name
-	private int goodsfacilityCode; // one+two+three code
 	
 	public int getGoodsfacilityOneCode() {
 		return goodsfacilityOneCode;
@@ -45,20 +44,14 @@ public class GoodsFacilityCategoryDto {
 	public void setGoodsfacilityThreeName(String goodsfacilityThreeName) {
 		this.goodsfacilityThreeName = goodsfacilityThreeName;
 	}
-	public int getGoodsfacilityCode() {
-		return goodsfacilityCode;
-	}
-	public void setGoodsfacilityCode(int goodsfacilityCode) {
-		this.goodsfacilityCode = goodsfacilityCode;
-	}
+
 	
 	@Override
 	public String toString() {
 		return "GoodsFacilityCategoryDto [goodsfacilityOneCode=" + goodsfacilityOneCode + ", goodsfacilityOneName="
 				+ goodsfacilityOneName + ", goodsfacilityTwoCode=" + goodsfacilityTwoCode + ", goodsfacilityTwoName="
 				+ goodsfacilityTwoName + ", goodsfacilityThreeCode=" + goodsfacilityThreeCode
-				+ ", goodsfacilityThreeName=" + goodsfacilityThreeName + ", goodsfacilityCode=" + goodsfacilityCode
-				+ "]";
+				+ ", goodsfacilityThreeName=" + goodsfacilityThreeName	+ "]";
 	}
 	
 	
