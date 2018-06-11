@@ -66,6 +66,12 @@
 									<c:otherwise>
 										<%-- <li style="color:#FFFFFF" class="active"><a href="${pageContext.request.contextPath}/login">로그인</a></li> --%>
 										<li class="">
+											<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/idSelect">id찾기</a>
+										</li>
+										<li class="">
+											<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/pwSelect">pw찾기</a>
+										</li>								
+										<li class="">
 											<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/login">로그인</a>
 										</li>
 									</c:otherwise>
