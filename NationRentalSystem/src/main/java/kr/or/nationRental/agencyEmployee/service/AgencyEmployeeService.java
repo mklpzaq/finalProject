@@ -14,20 +14,15 @@ public class AgencyEmployeeService {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
 	/* 회원 정보 수정 */
-	public AgencyEmployeeDto updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+	public void updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("updateAgencyEmployee AgencyEmployeeService");
 		agencyEmployeeDao.updateAgencyEmployee(agencyEmployeeDto);
-		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployee(agencyEmployeeDto);
-		agencyEmployeeDto.setAgencyName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
-		logger.debug(agencyEmployeeDto.toString());
-		return agencyEmployeeDto;
 	}
 	
 	public AgencyEmployeeDto selectOneAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("selectOneAgencyEmployee AgencyEmployeeService");
 		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployee(agencyEmployeeDto);
 		agencyEmployeeDto.setAgencyName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
-		logger.debug("★★★★★★★★★★★★★★★★★");
 		logger.debug(agencyEmployeeDto.toString());
 		return agencyEmployeeDto;
 	}

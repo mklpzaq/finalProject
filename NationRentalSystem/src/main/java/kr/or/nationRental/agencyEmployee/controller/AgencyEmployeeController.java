@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeService;
@@ -18,30 +19,27 @@ public class AgencyEmployeeController {
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
-	/*@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.GET)
-	public String updateAgencyEmployee(Model model
-										,@RequestParam(value="sendNo") int articleId) {
-		logger.debug("updateAgencyEmployee AgencyEmployeeController");
-		logger.debug(agencyEmployeeDto.toString());
-		agencyEmployeeDto = agencyEmployeeService.updateAgencyEmployee(agencyEmployeeDto);
-		logger.debug(agencyEmployeeDto.toString());
-		 업데이트 시킨 후 업데이트된 정보를 회원정보 화면으로 넘긴다. 
-		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
-		return "agencyEmployee/viewAgencyEmployeeInfo";
-	}*/
-	
-	@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.POST)
+	@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.GET)
 	public String updateAgencyEmployee(Model model
 										,AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("updateAgencyEmployee AgencyEmployeeController");
-		logger.debug(agencyEmployeeDto.toString());
-		agencyEmployeeDto = agencyEmployeeService.updateAgencyEmployee(agencyEmployeeDto);
-		logger.debug(agencyEmployeeDto.toString());
-		/* 업데이트 시킨 후 업데이트된 정보를 회원정보 화면으로 넘긴다. */
+		agencyEmployeeDto = agencyEmployeeService.selectOneAgencyEmployee(agencyEmployeeDto);
+		
+		 /*업데이트 시킨 후 업데이트된 정보를 회원정보 화면으로 넘긴다.*/ 
 		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
-		return "agencyEmployee/viewAgencyEmployeeInfo";
+		return "agencyEmployee/updateAgencyEmployeeForm";
 	}
 	
+	@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.POST)
+	public String updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto
+										,RedirectAttributes redirectAttributes) {
+		logger.debug("updateAgencyEmployee AgencyEmployeeController");
+		logger.debug(agencyEmployeeDto.toString());
+		agencyEmployeeService.updateAgencyEmployee(agencyEmployeeDto);
+		/* spring에서 redirect시 파라메터 값을 넘길때 쓴다. */
+		redirectAttributes.addAttribute("agencyEmployeeId", agencyEmployeeDto.getAgencyEmployeeId());
+		return "redirect:/viewAgencyEmployeeInfo";
+	}
 	
 	@RequestMapping(value="/viewAgencyEmployeeInfo", method=RequestMethod.GET)
 	public String viewAgencyEmployeeInfo(Model model
