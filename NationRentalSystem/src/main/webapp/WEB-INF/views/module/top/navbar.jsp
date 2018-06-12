@@ -92,7 +92,7 @@
 						          <li><a style="color:#FFFFFF" href="#">지자체 기관 등록</a></li>
 						          <li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">시설/물품 카테고리 등록</a></li>
 						          <li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyBusinesstype">업종분류코드 등록</a></li>
-						          <li><a style="color:#FFFFFF" href="#">시민계정 조회</a></li>
+						          <li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getCitizenList">시민계정 조회</a></li>
 						          <li><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>
 						          <li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li>
 						          <li><a style="color:#FFFFFF" href="#">상벌관리</a></li>

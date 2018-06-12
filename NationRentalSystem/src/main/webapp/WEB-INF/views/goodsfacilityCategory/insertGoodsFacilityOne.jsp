@@ -23,12 +23,6 @@
 							<div class="panel-body text-center">
 								<form id="insertGoodsFacilityCategory" class="form-horizontal" action="${pageContext.request.contextPath}/insertGoodsFacilityCategoryOne" method="post">
 									<div class="form-group">
-										<label for="goodsfacilityOneCode" class="col-sm-3 control-label">1차 카테고리 코드</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" name="goodsfacilityOneCode" id="goodsfacilityOneCode" placeholder="코드를 입력해주세요.">
-										</div>
-									</div>
-									<div class="form-group">
 										<label for="goodsfacilityOneName" class="col-sm-3 control-label">물품/시설 명</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="goodsfacilityOneName" id="goodsfacilityOneName" placeholder="물품 또는 시설의 이름을 입력해주세요.">

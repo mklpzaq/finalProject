@@ -1,6 +1,7 @@
 package kr.or.nationRental.goodsFacility.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class GoodsFacilityCategoryDao {
 		logger.info("---selectListGoodsFacilityCategory");
 		return sqlSession.selectList(NS+"selectListGoodsFacilityCategory");
 	}
-	
+		
 	//물품시설 1차 카테고리 목록 보기
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategoryOne() {
 		logger.info("---selectListGoodsFacilityCategoryOne");

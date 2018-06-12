@@ -34,7 +34,7 @@
 		goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
 	ORDER BY goodsfacility_three_code DESC
 	</select>
-	
+
 	<!-- 물품시설 1차 카테고리 목록 보기 -->
 	<select id="selectListGoodsFacilityCategoryOne" resultMap="selectListGoodsFacility">
 	SELECT
@@ -80,7 +80,7 @@
 		goodsfacility_one_code
 		, goodsfacility_one_name
 	) VALUES (
-		#{goodsfacilityOneCode}
+		NULL
 		, #{goodsfacilityOneName}
 	)
 	</insert>
@@ -92,7 +92,7 @@
 		, goodsfacility_one_code
 		, goodsfacility_two_name
 	) VALUES (
-		#{goodsfacilityTwoCode}
+		NULL
 		, #{goodsfacilityOneCode}
 		, #{goodsfacilityTwoName}
 	)
@@ -105,7 +105,7 @@
 		, goodsfacility_two_code
 		, goodsfacility_three_name
 	) VALUES (
-		#{goodsfacilityThreeCode}
+		NULL
 		, #{goodsfacilityTwoCode}
 		, #{goodsfacilityThreeName}
 	)

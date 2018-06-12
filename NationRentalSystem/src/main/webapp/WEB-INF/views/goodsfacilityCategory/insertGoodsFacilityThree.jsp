@@ -46,12 +46,6 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="goodsfacilityThreeCode" class="col-sm-3 control-label">3차 카테고리 코드</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" name="goodsfacilityThreeCode" id="goodsfacilityThreeCode" placeholder="소분류 코드를 입력해주세요.">
-										</div>
-									</div>
-									<div class="form-group">
 										<label for="goodsfacilityThreeName" class="col-sm-3 control-label">물품/시설  명</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="goodsfacilityThreeName" id="goodsfacilityThreeName" placeholder="물품 또는 시설의 이름을 입력해주세요.">

@@ -1,6 +1,8 @@
 package kr.or.nationRental.goodsFacility.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +16,10 @@ import kr.or.nationRental.district.service.DistrictDto;
 public class GoodsFacilityCategoryService {
 	@Autowired GoodsFacilityCategoryDao goodsFacilityCategoryDao;
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityCategoryService.class);
-
-	//행정구역 전체 목록 보기
+	
+	//물품시설 카테고리 전체목록 보기
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory() {
-		logger.info("---selectListGoodsFacilityCategory");
+		logger.debug("---selectListGoodsFacilityCategory");
 		return goodsFacilityCategoryDao.selectListGoodsFacilityCategory();
 	}
 	
