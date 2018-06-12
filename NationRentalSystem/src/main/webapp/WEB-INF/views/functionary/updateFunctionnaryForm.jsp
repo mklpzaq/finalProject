@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
-			<jsp:include page="/WEB-INF/views/module/top/mainHeader.jsp"/>
+			<jsp:include page="../module/top/navbar.jsp"/>
+			<jsp:include page="../module/top/mainHeader.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>

@@ -170,5 +170,82 @@
 				,NOW())
 	
 	</insert>
+	
+	<select id="administratorIdCheck"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			administrator
+			where administrator_name = #{memberName}
+			and administrator_phone = #{memberPhone}			
+	</select>
+	
+	<select id="agencyEmployeeIdCheck"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		from agency_employee
+			where agency_employee_name = #{memberName}
+			and agency_employee_phone = #{memberPhone}					
+	</select>
+	
+	<select id="citizenIdCheck"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		from citizen
+			where citizen_name = #{memberName}
+			and citizen_phone = #{memberPhone}			
+	</select>
+	
+	<select id="functionaryIdCheck"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		from functionary
+			where functionary_name = #{memberName}
+			and functionary_phone = #{memberPhone}				
+	</select>
+	
+	
+	
+	
+	
+	<select id="administratorIdSelect" parameterType="kr.or.nationRental.login.service.MemberDto" resultType="String">
+		SELECT
+			administrator_id as adminId
+			from administrator
+			where administrator_name = #{memberName}
+			and administrator_phone = #{memberPhone}		
+	</select>
+	
+	<select id="agencyEmployeeIdSelect" parameterType="kr.or.nationRental.login.service.MemberDto" resultType="String">
+		SELECT
+			agency_employee_id as agencyEmployeeId
+			from agency_employee
+			where agency_employee_name = #{memberName}
+			and agency_employee_phone = #{memberPhone}		
+	</select>
+	
+	<select id="citizenIdSelect" parameterType="kr.or.nationRental.login.service.MemberDto" resultType="String">
+		SELECT
+			citizen_id as citizenId
+			from citizen
+			where citizen_name = #{memberName}
+			and citizen_phone = #{memberPhone}		
+	</select>
+	
+	<select id="functionaryIdSelect" parameterType="kr.or.nationRental.login.service.MemberDto" resultType="String">
+		SELECT
+			functionary_id as functionaryId
+			from functionary
+			where functionary_name = #{memberName}
+			and functionary_phone = #{memberPhone}		
+	</select>
 </mapper>
 	

@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
+import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.login.service.MemberDto;
 
 @Service
@@ -116,13 +119,80 @@ public class FunctionaryService {
 		functionaryDao.insertStorageFunctionary(functionaryDto);
 		//delete 처리		
 		functionaryDao.deleteFunctionnary(functionaryDto);
-		
+		 
 	}
 
 	//id찾기
-	public void idSelect(MemberDto memberDto) {
-		functionaryDao.idSelect(memberDto);
+	public Map <String, Object> idSelect(MemberDto memberDto) {
+		String adminId = null;
+		String agencyEmployeeId = null;
+		String citizenId = null;
+		String functionaryId = null;
+		Map <String, Object> map = new HashMap<String, Object>();
+		if(functionaryDao.administratorIdCheck(memberDto) == 1) {
+			 adminId = functionaryDao.administratorIdSelect(memberDto);
+			 map.put("adminId", adminId);
+		}
 		
+		if(functionaryDao.agencyEmployeeIdCheck(memberDto) == 1) {
+			 agencyEmployeeId = functionaryDao.agencyEmployeeIdSelect(memberDto);
+			 map.put("agencyEmployeeId", agencyEmployeeId);
+		}
+		
+		if(functionaryDao.citizenIdCheck(memberDto) == 1) {
+			 citizenId = functionaryDao.citizenIdSelect(memberDto);
+			 map.put("citizenId", citizenId);
+		}
+		
+		if(functionaryDao.functionaryIdCheck(memberDto) == 1) {
+			 functionaryId = functionaryDao.functionaryIdSelect(memberDto);
+			 map.put("functionaryId", functionaryId);
+		}
+		
+		
+		
+		
+		
+		
+		
+		/*String adminId = null;
+		String agencyEmployeeId = null;
+		String citizenId = null;
+		String functionaryId = null; 
+		if(administratorDto.getAdminId() != null) {
+			adminId = administratorDto.getAdminId();
+		}
+		
+		if(agencyEmployeeDto.getAgencyEmployeeId() != null) {
+			agencyEmployeeId = agencyEmployeeDto.getAgencyEmployeeId();
+		}
+		if(citizenDto.getCitizenId() != null) {
+			citizenId = citizenDto.getCitizenId();
+		}
+		
+		if(functionaryDto.getFunctionaryId() != null) {
+			functionaryId = functionaryDto.getFunctionaryId();
+		}
+		
+		
+		
+		if(adminId != null) {
+			map.put("adminId", adminId);
+		}
+		
+		if(agencyEmployeeId != null) {
+			map.put("agencyEmployeeId", agencyEmployeeId);
+		}
+		
+		if(citizenId != null) {
+			map.put("citizenId", citizenId);
+		}
+		
+		if(functionaryId != null) {
+			map.put("functionaryId", functionaryId);
+		}*/
+		
+		return map;
 	}
 	
 }

@@ -8,7 +8,7 @@ public class FunctionaryDto {
 	private String functionaryNum; //공무원번호
 	private String functionaryPw; //공무원가입 비밀번호
 	private String functionaryName; //공무원명
-	private int functionaryPhone; //공무원 전화번호
+	private String functionaryPhone; //공무원 전화번호
 	private String functionaryEmail; //공무원 이메일
 	private Date functionaryDateJoin; //공무원 가입 날짜
 	private int functionaryMoveInoutCode; //공무원 이력관리 코드
@@ -51,10 +51,10 @@ public class FunctionaryDto {
 	public void setFunctionaryName(String functionaryName) {
 		this.functionaryName = functionaryName;
 	}
-	public int getFunctionaryPhone() {
+	public String getFunctionaryPhone() {
 		return functionaryPhone;
 	}
-	public void setFunctionaryPhone(int functionaryPhone) {
+	public void setFunctionaryPhone(String functionaryPhone) {
 		this.functionaryPhone = functionaryPhone;
 	}
 	public String getFunctionaryEmail() {
@@ -103,6 +103,7 @@ public class FunctionaryDto {
 				+ functionaryDateWorkStart + ", functionaryDateWorkEnd=" + functionaryDateWorkEnd
 				+ ", functionaryStateWork=" + functionaryStateWork + "]";
 	}
+	
 	
 	
 	

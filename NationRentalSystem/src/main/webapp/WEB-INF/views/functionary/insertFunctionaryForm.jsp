@@ -6,8 +6,7 @@
 	<head>
 		<title>Home</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>		
 		<script type="text/javascript">
 		
@@ -42,12 +41,19 @@
 				        data : { adminagencyName : $('#checkAdminagency').val() },  //넘겨줄 값, 파라메터
 				        success: function( list ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
 				        	var list = list;
-				        	var str = '<TR id="tr">';
+				        	var str = '<TR class="tr">';
 				        	$.each(list , function(i){
-				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button id="adminagencyName">' + list[i].adminagencyName + '</button></TD>';
+				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button type="button" id="modalAdminagencyName" class="modalAdminagencyName">' + list[i].adminagencyName + '</button></TD>';
 				                str += '</TR>';
-				           });
-				        	$("#adminagencyList").append(str); 
+				          	});
+				        	
+				        	$("#adminagencyList").append(str);
+				        	
+				        	$('#adminagencyList').each('click', function(){
+				        		alert('츄라이');
+				        		$('#adminagencyCheckModal').hide();
+				        		
+							});
 				        },
 				        error : function(){
 				            alert("error");
@@ -55,6 +61,9 @@
 				        }    
 				    });
 				});
+				
+				
+				
 				
 				$('#adminagencyName').click(function(){
 					alert('츄라이');					
@@ -262,11 +271,11 @@
 	
 	
 	<body>
-		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
+		<jsp:include page="../module/top/navbar.jsp"/>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
+					<jsp:include page="../module/left/leftnavi.jsp"/>
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->

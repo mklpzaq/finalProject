@@ -5,7 +5,7 @@ public class MemberDto {
 	private String memberPw;
 	private String memberLevel;
 	private String memberName;
-	private int memberPhone;
+	private String memberPhone;
 	private String memberEmail;
 	private int adminagencyCode;
 	private int agencyCode;
@@ -33,10 +33,10 @@ public class MemberDto {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public int getMemberPhone() {
+	public String getMemberPhone() {
 		return memberPhone;
 	}
-	public void setMemberPhone(int memberPhone) {
+	public void setMemberPhone(String memberPhone) {
 		this.memberPhone = memberPhone;
 	}
 	public String getMemberEmail() {
@@ -63,6 +63,7 @@ public class MemberDto {
 				+ ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail
 				+ ", adminagencyCode=" + adminagencyCode + ", agencyCode=" + agencyCode + "]";
 	}
+	
 	
 	
 	

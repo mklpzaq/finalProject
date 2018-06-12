@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
+import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.login.service.MemberDto;
 
 @Repository
@@ -74,12 +77,50 @@ public class FunctionaryDao {
 		logger.debug("FunctionaryDao - insertStorageFunctionary - functionaryDto : " + functionaryDto);
 		sqlSession.insert(NS+"insertStorageFunctionary", functionaryDto);
 	}
-	
-	//id찾기
-	public void idSelect(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		
+
+	//administratorid찾기
+	public String administratorIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - administratorIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"administratorIdSelect", memberDto);
 	}
+	
+	//agencyEmployeeid찾기
+	public String agencyEmployeeIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - agencyEmployeeIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"agencyEmployeeIdSelect", memberDto);
+	}
+	//citizenid찾기
+	public String citizenIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - citizenIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"citizenIdSelect", memberDto);
+	}
+	//functionaryid찾기
+	public String functionaryIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - functionaryIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"functionaryIdSelect", memberDto);
+	}
+
+	public int administratorIdCheck(MemberDto memberDto) {
+		
+		return sqlSession.selectOne(NS+"administratorIdCheck", memberDto);
+	}
+
+	public int agencyEmployeeIdCheck(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+"agencyEmployeeIdCheck", memberDto);
+	}
+
+	public int citizenIdCheck(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+"citizenIdCheck", memberDto);
+	}
+
+	public int functionaryIdCheck(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+"functionaryIdCheck", memberDto);
+	}
+	
+	
 
 	/*public FunctionaryDto selectForStorageFunctionary(String fuctionaryId) {
 		logger.debug("FunctionaryDao - selectForStorageFunctionary - fuctionaryId : " + fuctionaryId);

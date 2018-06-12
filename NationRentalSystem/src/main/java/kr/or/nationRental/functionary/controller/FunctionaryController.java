@@ -159,11 +159,26 @@ public class FunctionaryController {
 	 *넘겨받은 아이디와 이름, 전화번호, 이메일로
 	 */
 	@RequestMapping(value="/idSelect", method=RequestMethod.POST)
-	public String idSelect(MemberDto memberDto) {
+	public String idSelect(MemberDto memberDto
+						,Model model) {
 		logger.debug("FunctionaryController - idSelect - memberDto : " + memberDto.toString());	
-		functionaryService.idSelect(memberDto);
+		Map <String, Object> map = functionaryService.idSelect(memberDto);
 		
 		
-		return "/functionary/idSelect";
+		model.addAttribute("map", map);
+		//logger.debug("FunctionaryController - idSelect - map : " + map.get("administratorDto").);	
+		/*if(map.get("adminId") != null) {
+		model.addAttribute("adminId", map.get("adminId"));
+		}
+		if( map.get("agencyEmployeeId") != null) {
+		model.addAttribute("agencyEmployeeId", map.get("agencyEmployeeId"));
+		}
+		if(map.get("citizenId") != null) {
+		model.addAttribute("citizenId", map.get("citizenId"));
+		}
+		if(map.get("functionaryId") != null) {
+		model.addAttribute("functionaryId", map.get("functionaryId"));
+		}*/
+		return "/functionary/checkId";
 	}
 }

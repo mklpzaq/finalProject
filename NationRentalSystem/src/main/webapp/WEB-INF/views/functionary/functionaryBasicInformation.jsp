@@ -21,8 +21,8 @@
 <body>
 	<!-- navbar가 위쪽에 고정됨에 따라 기존 컨텐츠가 navbar height만큼 가려지는것 해결하기 위해 div에 navbar height만큼의 높이를 추가한다. -->
 		<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
-			<jsp:include page="/WEB-INF/views/module/top/mainHeader.jsp"/>
+			<jsp:include page="../module/top/navbar.jsp"/>
+			<jsp:include page="../module/top/mainHeader.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
