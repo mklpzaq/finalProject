@@ -243,7 +243,8 @@
 								</select>		    		    	
 						    </div>
 						</div>
-												
+								
+						<button type="submit" id="insertGoodsfacility">물품 & 시설 등록</button>						
 						</form>
 					</div>
 				</div>

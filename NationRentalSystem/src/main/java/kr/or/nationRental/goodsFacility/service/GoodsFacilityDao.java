@@ -24,4 +24,11 @@ public class GoodsFacilityDao {
 		return functionaryDto;
 	}
 
+	public int insertGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityDao insertGoodsFacility");
+		
+		int row = sqlSession.insert(NS+"insertGoodsFacility", goodsFacilityDto);
+		return row;				
+	}
+
 }

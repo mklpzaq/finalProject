@@ -277,6 +277,17 @@
 			</div>
 		</div>		
 	 
+	 	<div class="form-group">
+			<label for="sigungu" class="col-sm-2 control-label">시도</label>
+			<div class="col-sm-10">				
+				<select class="form-control" name="eupmyeonCode">
+					<c:forEach var="eupmyeon" items="${districtList}">					
+						<option value="${eupmyeon.eupmyeonName}">${eupmyeon.eupmyeonName}</option>						  					
+					</c:forEach>
+				</select>									
+			</div>
+		</div>
+	 
 		<div class="form-group">
 			<label for="sigungu" class="col-sm-2 control-label">읍면동</label>
 			<div class="col-sm-10">				

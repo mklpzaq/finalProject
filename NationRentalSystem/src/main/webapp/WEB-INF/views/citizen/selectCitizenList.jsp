@@ -120,6 +120,7 @@
 											<td width="25%">시민 비밀번호</td>
 											<td width="25%">시민이름</td>
 											<td width="30%">시군구이름</td>
+											<td width="30%">시도이름</td>
 											<td width="30%">읍면동이름</td>
 											<td width="30%">시민주소</td>
 											<td width="30%">시민 핸드폰번호</td>
@@ -133,8 +134,9 @@
 														<th>${citizenDto.citizenId}</th>
 														<th>${citizenDto.citizenPw}</th>
 														<td>${citizenDto.citizenName}</td>
-														<td>${citizenDto.sigunguCode}</td>
-														<td>${citizenDto.eupmyeonCode}</td>
+														<td>${citizenDto.sigunguName}</td>
+														<td>${citizenDto.sidoName}</td>
+														<td>${citizenDto.eupmyeonName}</td>
 														<td>${citizenDto.citizenAddressSangse}</td>
 														<td>${citizenDto.citizenPhone}</td>
 														<td>${citizenDto.citizenEmail}</td>																							

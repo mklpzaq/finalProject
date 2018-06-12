@@ -35,8 +35,9 @@
 				,citizen_pw
 				,citizen_name
 				,citizen_jumin_num
-				,sigungu_code
-				,eupmyeon_code
+				,sigungu_name
+				,sido_name
+				,eupmyeon_name
 				,citizen_address_sangse
 				,citizen_phone
 				,citizen_email
@@ -45,8 +46,9 @@
 					,#{citizenPw}
 					,#{citizenName}
 					,#{citizenJuminNum}
-					,#{sigunguCode}					
-					,#{eupmyeonCode}				
+					,#{sigunguName}
+					,#{sidoName}					
+					,#{eupmyeonName}				
 					,#{citizenAddressSangse}
 					,#{citizenPhone}
 					,#{citizenEmail}
@@ -60,8 +62,9 @@
 				citizen_id as citizenId
 				,citizen_pw as citizenPw
 				,citizen_name as citizenName
-				,sigungu_code as sigunguCode
-				,eupmyeon_code as eupmyeonCode
+				,sigungu_name as sigunguName
+				,sido_name as sidoName
+				,eupmyeon_name as eupmyeonName
 				,citizen_address_sangse as citizenAddressSangse				
 				,citizen_phone as citizenPhone
 				,citizen_email as citizenEmail

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.nationRental.functionary.service.FunctionaryDto;
+import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityService;
 
 @Controller
@@ -36,5 +37,12 @@ public class GoodsFacilityController {
 		model.addAttribute("functionaryDto", functionaryDto);
 		
 		return "/rentalGoodsFacility/insertGoodsFacilityForm";
+	}
+	
+	@RequestMapping(value="/insertGoodsFacility", method=RequestMethod.POST)
+	public String insertGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("POST insertGoodsFacility GoodsFacilityController : " + goodsFacilityDto.toString());
+		goodsFacilityService.insertGoodsFacility(goodsFacilityDto);
+		return "redirect:/joinCongratulation";
 	}
 }

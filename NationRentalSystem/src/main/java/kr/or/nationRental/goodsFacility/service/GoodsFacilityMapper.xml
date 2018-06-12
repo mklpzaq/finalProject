@@ -16,6 +16,46 @@
   				functionary_id = #{functionaryId}  	
   	</select>
   
-  
+  	<insert id="insertGoodsFacility"
+  			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+  			
+  			INSERT INTO goodsfacility
+  				(goodsfacility_three_code
+  				,goodsfacility_name
+  				,goodsfacility_purchaseprice
+  				,goodsfacility_price_rental
+  				,goodsfacility_text_sangse
+  				,adminagency_code
+  				,sigungu_name
+  				,sido_name
+  				,eupmyeon_name
+  				,goodsfacility_address_sangse
+  				,functionary_id
+  				,goodsfacility_classify_goodsfacility
+  				,goodsfacility_classify_donationpurchase
+  				,goodsfacility_is_extra
+  				,goodsfacility_is_possible_delivery
+  				,goodsfacility_state_afterservice
+  				,goodsfacility_is_possible_rental
+  				,goodsfacility_date_registration)
+  			VALUE (#{goodsfacilityThreeCode}
+  					,#{goodsfacilityName}
+  					,#{goodsfacilityPurchaseprice}
+  					,#{goodsfacilityPriceRental}
+  					,#{goodsfacilityTextSangse}
+  					,#{adminagencyCode}
+  					,#{sigunguName}
+  					,#{sidoName}
+  					,#{eupmyeonName}
+  					,#{goodsfacilityAddressSangse}
+  					,#{functionaryId}
+  					,#{goodsfacilityClassifyGoodsfacility}
+  					,#{goodsfacilityClassifyDonationpurchase}
+  					,#{goodsfacilityIsExtra}
+  					,#{goodsfacilityIsPossibleDelivery}
+  					,#{goodsfacilityStateAfterservice}
+  					,#{goodsfacilityIsPossibleRental}
+  					,now()) 	
+  	</insert>
   
   </mapper>

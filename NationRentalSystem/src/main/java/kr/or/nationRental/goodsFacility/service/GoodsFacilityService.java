@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.or.nationRental.citizen.service.CitizenService;
+
 import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Service
@@ -24,6 +24,13 @@ public class GoodsFacilityService {
 		logger.debug("GoodsFacilityService selectadminagency :");
 		functionaryDto = goodsFacilityDao.selectadminagency(functionaryDto);
 		return functionaryDto;
+	}
+
+	public void insertGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityService insertGoodsFacility :");
+		
+		goodsFacilityDao.insertGoodsFacility(goodsFacilityDto);
+		
 	}
 
 }
