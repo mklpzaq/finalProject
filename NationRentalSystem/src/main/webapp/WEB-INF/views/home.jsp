@@ -8,7 +8,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
-		
+		<div style="position:absolute; z-index:-1; width:100%">
+			<img style="width:1800px;" src="${pageContext.request.contextPath}/resources/image/bgMain.jpg">
+		</div>
 		<div class="container-fluid" style="height:800px;">
 			<jsp:include page="./module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
@@ -17,7 +19,7 @@
 					<jsp:include page="./module/leftHome/leftHome.jsp"/>
 				</div>
 				<div class="col-sm-8">
-				<!-- Begin Content -->
+					<!-- Begin Content -->
 					
 					<div style="margin:15px 0 15px 0;" class="panel panel-default">
 						<div class="panel-body text-center">
@@ -26,14 +28,14 @@
 						</div>
 					</div>
 					
-					<img style="margin:0 auto;" src="${pageContext.request.contextPath}/resources/image/bgMain.jpg">
+					
 					
 					<!-- End Content -->
-					</div>
-					<div class="col-sm-2"></div>
 				</div>
+				<div class="col-sm-2"></div>
 			</div>
-			<jsp:include page="./module/bottom/bottomContent.jsp"/>
+		</div>
+		<jsp:include page="./module/bottom/bottomContent.jsp"/>
 			
 	
 	</body>
