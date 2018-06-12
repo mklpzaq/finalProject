@@ -14,7 +14,7 @@
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="./module/left/leftnavi.jsp"/>
+					<jsp:include page="./module/leftHome/leftHome.jsp"/>
 				</div>
 				<div class="col-sm-8" style="height:850px;">
 				<!-- Begin Content -->
