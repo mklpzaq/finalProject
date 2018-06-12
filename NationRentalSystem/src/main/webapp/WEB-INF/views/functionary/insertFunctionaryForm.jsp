@@ -49,10 +49,10 @@
 				        	
 				        	$("#adminagencyList").append(str);
 				        	
-				        	$('#adminagencyList').each('click', function(){
+				        	$('#modalAdminagencyName').click(function(){
 				        		alert('츄라이');
 				        		$('#adminagencyCheckModal').hide();
-				        		
+				        		$('#adminagencyName').val($(this).text());
 							});
 				        },
 				        error : function(){
@@ -63,11 +63,6 @@
 				});
 				
 				
-				
-				
-				$('#adminagencyName').click(function(){
-					alert('츄라이');					
-				});
 				
 				/* $('#tr').click(function(){					
 					$('#adminagencyName').val($(this).children().last().val());
