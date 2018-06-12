@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.or.nationRental.goodsFacility.service.GoodsFacilityMapper">
+  	<select id="selectadminagency"
+  			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
+  			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+  			
+  			SELECT
+  				adminagency_code as adminagencyCode, functionary_id as functionaryId
+  			FROM
+  				functionary
+  			WHERE 	
+  				functionary_id = #{functionaryId}  	
+  	</select>
+  
+  
+  
+  </mapper>

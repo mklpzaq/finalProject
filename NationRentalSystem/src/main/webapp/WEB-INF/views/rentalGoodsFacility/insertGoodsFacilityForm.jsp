@@ -158,35 +158,23 @@
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">행정 관리 기관코드</label>
 						    <div class="col-sm-10">
-						    	<select class="form-control" name="adminagencyCode">
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
-								</select>		    		    	
+						    	<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" readonly>	    		    	
 						    </div>
 						</div>
 						
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 시군구 코드</label>
 						    <div class="col-sm-10">
-						    	<select class="form-control" name="sigunguName">
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
-								</select>		    		    	
+						    	<input type="text" class="form-control" id="sigunguName" name="sigunguName" readonly>	    		    	
 						    </div>
-						</div>
+						</div>						
 						
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 읍면동 코드</label>
 						    <div class="col-sm-10">
-						    	<select class="form-control" name="eupmyeonName">
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
-								</select>		    		    	
+						    	<input type="text" class="form-control" id="eupmyeonName" name="eupmyeonName" readonly>	    		    	
 						    </div>
-						</div>
+						</div>					
 						
 						<div class="form-group">
 						<label for="goodsfacility" class="col-sm-2 control-label">상세 주소</label>
@@ -202,24 +190,24 @@
 						    </div>
 						</div>	
 						
-						<div class="form-group">
-						<label class="checkbox-inline">시설 & 물품 구분</label>
+						<div class="form-group">						
 						 	<div class="col-sm-10">
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+						 	<label class="checkbox-inline">시설 & 물품 구분</label>
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 시설							
+							</div>							
+						</div>
+						
+						<div class="form-group">						
+						 	<div class="col-sm-10">
+						 	<label class="checkbox-inline">기부 & 구입여부</label>
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 기부
 							</div>
 						</div>
 						
-						<div class="form-group">
-						<label class="checkbox-inline">기부 & 구입여부</label>
+						<div class="form-group">						
 						 	<div class="col-sm-10">
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-							</div>
-						</div>
-						
-						<div class="form-group">
-						<label class="checkbox-inline">예비 대여 상태</label>
-						 	<div class="col-sm-10">
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+						 	<label class="checkbox-inline">예비 & 대여 </label>
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 예비
 							</div>
 						</div>
 						
