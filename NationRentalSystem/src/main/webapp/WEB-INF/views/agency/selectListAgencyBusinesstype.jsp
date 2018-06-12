@@ -13,7 +13,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="/WEB-INF/views/module/leftAgencyBusinesstype/leftAgencyBusinesstypeInfo.jsp"/>
+					<jsp:include page="/WEB-INF/views/module/leftAgencyBusinesstype/leftAgencyBusinesstype.jsp"/>
 				</div>
 				<div class="col-sm-8">
 					<div class="text-center">

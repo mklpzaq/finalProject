@@ -13,17 +13,13 @@
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
+					<jsp:include page="/WEB-INF/views/module/leftGoodsfacilityCategory/leftGoodsfacilityCategoryOneInfo.jsp"/>
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					<div class="text-center">
 						<h1>1차 카테고리 목록</h1>
 					</div>
-					<!-- 버튼으로 만들고 싶음 -->
-					<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">전체 카테고리 목록보기</a>/
-					<a href="${pageContext.request.contextPath}/insertGoodsFacilityCategoryOne">카테고리 추가</a><br><br><br>
-					
 					<table class="table table-striped">
 						<thead>
 							<tr>

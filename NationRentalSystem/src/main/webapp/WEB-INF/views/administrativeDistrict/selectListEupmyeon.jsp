@@ -13,17 +13,13 @@
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
+					<jsp:include page="/WEB-INF/views/module/leftAdministrativeDistrict/leftEupmyeonDistrictInfo.jsp"/>
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					<div class="text-center">
 						<h1>행정구역 읍면동 목록</h1>
 					</div>
-					<!-- 버튼으로 만들고 싶음 -->
-					<a href="${pageContext.request.contextPath}/selectListDistrict">행정구역 전체목록</a>/
-					<a href="${pageContext.request.contextPath}/insertEupmyeon">읍면동 추가</a><br><br><br>
-					
 					<table class="table table-striped">
 						<thead>
 							<tr>
