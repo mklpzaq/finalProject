@@ -20,15 +20,10 @@ public class GoodsFacilityService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityService.class);
 	
-	public Map<String, Object> selectadminagency(FunctionaryDto functionaryDto) {
+	public FunctionaryDto selectadminagency(FunctionaryDto functionaryDto) {
 		logger.debug("GoodsFacilityService selectadminagency :");
-		List<FunctionaryDto> functionaryList = goodsFacilityDao.selectadminagency(functionaryDto);
-		logger.debug("GoodsFacilityService selectadminagency : functionaryList " + functionaryList);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("functionaryList", functionaryList);
-		
-		return map;
+		functionaryDto = goodsFacilityDao.selectadminagency(functionaryDto);
+		return functionaryDto;
 	}
 
 }

@@ -158,7 +158,7 @@
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">행정 관리 기관코드</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" readonly>	    		    	
+						    	<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" value="${functionaryDto.adminagencyCode}" readonly>	    		    	
 						    </div>
 						</div>
 						
@@ -186,7 +186,7 @@
 						<div class="form-group">
 						<label for="goodsfacility" class="col-sm-2 control-label">등록 공무원 ID</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="functionaryId" name="functionaryId" placeholder="등록 공무원 ID">
+						    	<input type="text" class="form-control" id="functionaryId" name="functionaryId" value="${functionaryDto.functionaryId}" readonly>
 						    </div>
 						</div>	
 						

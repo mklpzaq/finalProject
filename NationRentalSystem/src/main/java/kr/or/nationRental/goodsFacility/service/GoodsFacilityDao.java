@@ -18,12 +18,10 @@ public class GoodsFacilityDao {
 	final String NS ="kr.or.nationRental.goodsFacility.service.GoodsFacilityMapper.";	
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityDao.class);
 	
-	public List<FunctionaryDto> selectadminagency(FunctionaryDto functionaryDto) {
-		logger.debug("GoodsFacilityDao selectadminagency :");
-		logger.debug("★★★★★★★★1★★★★★★★★★★★★★★★★");
-		List<FunctionaryDto> list = sqlSession.selectList(NS+"selectadminagency", functionaryDto);
-		logger.debug("★★★★★★★★2★★★★★★★★★★★★★★★★");
-		return list;
+	public FunctionaryDto selectadminagency(FunctionaryDto functionaryDto) {
+		logger.debug("GoodsFacilityDao selectadminagency :" + functionaryDto.toString());		
+		functionaryDto = sqlSession.selectOne(NS+"selectadminagency", functionaryDto);
+		return functionaryDto;
 	}
 
 }

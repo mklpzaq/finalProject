@@ -29,11 +29,11 @@ public class GoodsFacilityController {
 	@RequestMapping(value="/insertGoodsFacility", method=RequestMethod.GET)
 	public String insertGoodsFacility(FunctionaryDto functionaryDto
 										,Model model) {
-		logger.debug("GET insertGoodsFacility GoodsFacilityController");
-		logger.debug("★★★★★★★★functionaryDto★★★★★★★★★★★★★★★★");
+		logger.debug("GET insertGoodsFacility GoodsFacilityController" + functionaryDto.toString());
+			
+		functionaryDto = goodsFacilityService.selectadminagency(functionaryDto);		
 		logger.debug(functionaryDto.toString());
-		Map<String, Object> map = goodsFacilityService.selectadminagency(functionaryDto);		
-		model.addAttribute("functionaryList", map.get("functionaryList"));
+		model.addAttribute("functionaryDto", functionaryDto);
 		
 		return "/rentalGoodsFacility/insertGoodsFacilityForm";
 	}
