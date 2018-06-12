@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		
-		<div class="container-fluid" style="height:900px; background:#242424;">
+		<div class="container-fluid" style="height:900px; background:#FFE08C;">
 			<jsp:include page="./module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
