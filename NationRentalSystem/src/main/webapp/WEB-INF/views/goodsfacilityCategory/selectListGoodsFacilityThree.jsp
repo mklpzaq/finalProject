@@ -46,7 +46,7 @@
 										<th>${goodsFacilityCategoryDtoList.goodsfacilityTwoName}</th>
 										<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}</th>
 										<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeName}</th>
-										<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryThree?goodsfacilitythreeCode=${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}">삭제</a></th>																					
+										<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryThree?goodsfacilityThreeCode=${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}">삭제</a></th>																				
 									</tr>
 								</tbody>
 							</c:forEach>	

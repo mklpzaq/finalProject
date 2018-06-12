@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.district.service.DistrictDto;
 
 @Service
@@ -56,5 +57,21 @@ public class GoodsFacilityCategoryService {
 		logger.info("insertGoodsFacilityCategoryThree");
 			int row = goodsFacilityCategoryDao.insertGoodsFacilityCategoryThree(goodsFacilityCategoryDto);
 			return row;
-		}
+	}
+	
+	//1차 카테고리 삭제
+	public void deleteGoodsFacilityCategoryOne(GoodsFacilityCategoryDto goodsfacilityOneCode) {
+		goodsFacilityCategoryDao.deleteGoodsFacilityCategoryOne(goodsfacilityOneCode);
+	}
+	
+	//2차 카테고리 삭제
+	public void deleteGoodsFacilityCategoryTwo(GoodsFacilityCategoryDto goodsfacilityTwoCode) {
+		goodsFacilityCategoryDao.deleteGoodsFacilityCategoryTwo(goodsfacilityTwoCode);
+	}
+	
+	//3차 카테고리 삭제
+	public void deleteGoodsFacilityCategoryThree(GoodsFacilityCategoryDto goodsfacilityThreeCode) {
+		goodsFacilityCategoryDao.deleteGoodsFacilityCategoryThree(goodsfacilityThreeCode);
+	}
+
 }

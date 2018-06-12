@@ -37,7 +37,7 @@ public class AdministratorService {
 	}
 	
 	//관리자 권한 삭제
-	public void deleteAdministrator(AdministratorDto adminID) {
-		administratorDao.deleteAdministrator(adminID);
+	public void deleteAdministrator(AdministratorDto adminId) {
+		administratorDao.deleteAdministrator(adminId);
 	}
 }

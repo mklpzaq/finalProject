@@ -111,4 +111,25 @@
 	)
 	</insert>
 	
+	<!-- 1차 카테고리 삭제 -->
+	<delete id="deleteGoodsFacilityCategoryOne" parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+	DELETE 
+		FROM goodsfacility_one 
+		WHERE goodsfacility_one_code = #{goodsfacilityOneCode}
+	</delete>
+	
+	<!-- 2차 카테고리 삭제 -->
+	<delete id="deleteGoodsFacilityCategoryTwo" parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+	DELETE 
+		FROM goodsfacility_two 
+		WHERE goodsfacility_two_code = #{goodsfacilityTwoCode}
+	</delete>
+	
+	<!-- 3차 카테고리 삭제 -->
+	<delete id="deleteGoodsFacilityCategoryThree" parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto">
+	DELETE 
+		FROM goodsfacility_three 
+		WHERE goodsfacility_three_code = #{goodsfacilityThreeCode}
+	</delete>
+	
 </mapper>

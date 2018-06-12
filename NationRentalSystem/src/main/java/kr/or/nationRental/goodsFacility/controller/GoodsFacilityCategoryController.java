@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.district.service.DistrictDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryService;
@@ -108,6 +109,27 @@ public class GoodsFacilityCategoryController {
 	public String insertGoodsFacilityCategoryThree(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
 		logger.debug(goodsFacilityCategoryDto.toString());
 		int row = goodsFacilityCategoryService.insertGoodsFacilityCategoryThree(goodsFacilityCategoryDto);
+		return "redirect:/selectListGoodsFacilityCategoryThree";
+	}
+	
+	//1차 카테고리 삭제
+	@RequestMapping(value = "/deleteGoodsFacilityCategoryOne", method= RequestMethod.GET)
+	public String deleteGoodsFacilityCategoryOne(GoodsFacilityCategoryDto goodsfacilityOneCode) {
+		goodsFacilityCategoryService.deleteGoodsFacilityCategoryOne(goodsfacilityOneCode);
+		return "redirect:/selectListGoodsFacilityCategoryOne";
+	}
+	
+	//2차 카테고리 삭제
+	@RequestMapping(value = "/deleteGoodsFacilityCategoryTwo", method= RequestMethod.GET)
+	public String deleteGoodsFacilityCategoryTwo(GoodsFacilityCategoryDto goodsfacilityTwoCode) {
+		goodsFacilityCategoryService.deleteGoodsFacilityCategoryTwo(goodsfacilityTwoCode);
+		return "redirect:/selectListGoodsFacilityCategoryTwo";
+	}
+	
+	//3차 카테고리 삭제
+	@RequestMapping(value = "/deleteGoodsFacilityCategoryThree", method= RequestMethod.GET)
+	public String deleteGoodsFacilityCategoryThree(GoodsFacilityCategoryDto goodsfacilityThreeCode) {
+		goodsFacilityCategoryService.deleteGoodsFacilityCategoryThree(goodsfacilityThreeCode);
 		return "redirect:/selectListGoodsFacilityCategoryThree";
 	}
 	
