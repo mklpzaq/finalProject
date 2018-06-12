@@ -1,5 +1,7 @@
 package kr.or.nationRental.agencyEmployee.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,19 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	/* 회원 탈퇴 */
+	@Transactional
+	public void deleteAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto, HttpSession session) {
+		logger.debug("deleteAgencyEmployee AgencyEmployeeService");
+		int result = agencyEmployeeDao.deleteAgencyEmployee(agencyEmployeeDto);
+		agencyEmployeeDao.deleteAgencyNakchalEmployee(agencyEmployeeDto);
+		if(1 == result) {
+			session.invalidate();
+		}
+	}
+	
 	/* 회원 정보 수정 */
+	@Transactional
 	public void updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("updateAgencyEmployee AgencyEmployeeService");
 		agencyEmployeeDao.updateAgencyEmployee(agencyEmployeeDto);

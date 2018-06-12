@@ -5,6 +5,24 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 
+	<delete id="deleteAgencyNakchalEmployee"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		DELETE 
+	 	FROM
+	 		agency_nakchal_employee
+	 	WHERE
+	 		agency_employee_id = #{agencyEmployeeId}
+	</delete>
+
+	<delete id="deleteAgencyEmployee"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		DELETE 
+	 	FROM
+	 		agency_employee
+	 	WHERE
+	 		agency_employee_id = #{agencyEmployeeId}
+	</delete>
+
 	<update id="updateAgencyEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
 		UPDATE

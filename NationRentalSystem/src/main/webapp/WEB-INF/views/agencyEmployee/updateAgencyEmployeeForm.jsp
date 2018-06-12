@@ -21,7 +21,7 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<!-- agencyEmployeeDto -->
-							<h3 class="text-center">회원 정보</h3>
+							<h3 class="text-center">회원 정보 수정</h3>
 							<hr/>
 							<form id="updateForm" class="form-horizontal" action="${pageContext.request.contextPath}/updateAgencyEmployee" method="post">
 								<div class="form-group">

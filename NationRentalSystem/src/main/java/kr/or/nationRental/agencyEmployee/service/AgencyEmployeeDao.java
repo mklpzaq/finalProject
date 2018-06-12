@@ -13,6 +13,17 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	//deleteAgencyNakchalEmployee
+	public int deleteAgencyNakchalEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("deleteAgencyNakchalEmployee AgencyEmployeeDao");
+		return sqlSession.delete(NS+"deleteAgencyNakchalEmployee", agencyEmployeeDto);
+	}
+	
+	public int deleteAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("deleteAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.delete(NS+"deleteAgencyEmployee", agencyEmployeeDto);
+	}
+	
 	public void updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("updateAgencyEmployee AgencyEmployeeDao");
 		sqlSession.update(NS+"updateAgencyEmployee", agencyEmployeeDto);

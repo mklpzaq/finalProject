@@ -1,5 +1,7 @@
 package kr.or.nationRental.agencyEmployee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,16 @@ public class AgencyEmployeeController {
 	@Autowired
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
+	
+	@RequestMapping(value="/deleteAgencyEmployee", method=RequestMethod.GET)
+	public String updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto
+										,HttpSession session) {
+		logger.debug("deleteAgencyEmployee AgencyEmployeeController");
+		logger.debug(agencyEmployeeDto.toString());
+		agencyEmployeeService.deleteAgencyEmployee(agencyEmployeeDto, session);
+		
+		return "signUp/leaveMember";
+	}
 	
 	@RequestMapping(value="/updateAgencyEmployee", method=RequestMethod.GET)
 	public String updateAgencyEmployee(Model model

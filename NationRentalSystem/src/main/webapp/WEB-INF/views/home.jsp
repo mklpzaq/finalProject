@@ -26,6 +26,7 @@
 						</div>
 					</div>
 					
+					<img style="margin:0 auto;" src="${pageContext.request.contextPath}/resources/image/bgMain.jpg">
 					
 					<!-- End Content -->
 					</div>
