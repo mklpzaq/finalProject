@@ -8,23 +8,23 @@
 		<title>left</title>
 		<script>
 			$(document).ready(function(){
+				$('#homeBtn').click(function(){
+					$(location).attr('href', './');
+				});
 				$('#introduceBtn').click(function(){
 					$(location).attr('href', './viewIntroduce');
 				});
-				/* $('#deleteAgencyEmployeeBtn').click(function(){
-					$(location).attr('href', './deleteAgencyEmployee?agencyEmployeeId=' + $('#memberId').val());
-				}); */
 			});	
 		
 		</script>
 	</head>
 	<body>
 	<!-- #E0FF8B -->
-		<div style="width:100%; height:800px; background-color:white;">
+		<div style="width:100%; height:800px; background-color:#BCE55C;">
 			<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
+				<button id="homeBtn" type="button" class="btn btn-default">Home</button>
 				<button id="introduceBtn"type="button" class="btn btn-default" >프로젝트 소개</button>
 				<!-- <button type="button" class="btn btn-default">Button</button>
-				<button type="button" class="btn btn-default">Button</button>
 				<button type="button" class="btn btn-default">Button</button>
 				<button type="button" class="btn btn-default" >Button</button>
 				<button type="button" class="btn btn-default">Button</button>
