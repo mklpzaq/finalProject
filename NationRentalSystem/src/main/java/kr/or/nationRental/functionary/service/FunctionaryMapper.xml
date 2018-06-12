@@ -133,12 +133,12 @@
 		WHERE functionary_move_inout_code = #{functionaryMoveInoutCode}
 	</update>
 	
-	<select id="selectAdminagency" parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+	<select id="selectAdminagency" parameterType="String" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 		SELECT
 			adminagency_code as adminagencyCode
 			,adminagency_name as adminagencyName			
 		FROM adminagency
-		where adminagency_name like CONCAT('%', #{adminagencyName}, '%')	
+		where adminagency_name like CONCAT('%', #{checkAdminagency}, '%')	
 	</select>
 	
 	<delete id="deleteFunctionnary" parameterType="String">

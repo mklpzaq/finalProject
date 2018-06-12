@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
@@ -26,10 +27,14 @@ public class FunctionaryRestController {
 	private static final Logger logger = LoggerFactory.getLogger(FunctionaryRestController.class);
 		
 	@RequestMapping(value="/selectAdminagency", method=RequestMethod.POST)
-	public List<FunctionaryDto> selectAdminagency(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryRestController - selectAdminagency - functionaryDto : " + functionaryDto.toString());
-			
-		List<FunctionaryDto> list = functionaryService.selectAdminagency(functionaryDto);
+	public List<FunctionaryDto> selectAdminagency(@RequestParam(value="checkAdminagency") String checkAdminagency) {
+		logger.debug("FunctionaryRestController - selectAdminagency - checkAdminagency : " + checkAdminagency);
+		List<FunctionaryDto> list = null;
+		if(checkAdminagency != "") {
+			list = functionaryService.selectAdminagency(checkAdminagency);
+		}else {
+			list = null;
+		}
 		logger.debug("FunctionaryRestController - selectAdminagency - list : " + list.toString());
 		return list;
 	}
@@ -44,9 +49,10 @@ public class FunctionaryRestController {
 		 * ID 중복이 발생하였다면, result 변수에 F 가 초기화되고
 		 * ID 중복이 발생하지 아니하였다면, result 변수에 T 가 초기화된다.
 		 * */
+		
 		String result = agencyEmployeeService.idCheck(agencyEmployeeDto);
 		
 		return result;
 	}
-	
+		
 }

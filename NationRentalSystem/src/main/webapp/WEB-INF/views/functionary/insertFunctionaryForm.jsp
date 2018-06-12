@@ -38,25 +38,31 @@
 				    $.ajax({
 				        type:"POST", //통신타입 get, post
 				        url:"/nationRental/selectAdminagency",  //요청할 url
-				        data : { adminagencyName : $('#checkAdminagency').val() },  //넘겨줄 값, 파라메터
+				        data : { checkAdminagency : $('#checkAdminagency').val() },  //넘겨줄 값, 파라메터
 				        success: function( list ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
 				        	var list = list;
-				        	var str = '<TR class="tr">';
+				        	var str = '';
 				        	$.each(list , function(i){
+				        		str += '<TR class="tr">';
 				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button type="button" id="modalAdminagencyName" class="modalAdminagencyName">' + list[i].adminagencyName + '</button></TD>';
 				                str += '</TR>';
 				          	});
 				        	
 				        	$("#adminagencyList").append(str);
 				        	
-				        	$('#modalAdminagencyName').click(function(){
-				        		alert('츄라이');
+				        	$("#adminagencyCheck").click(function(){
+				        		$(".tr").remove();				        		
+				        	});
+				        	
+				        	$('.tr').click(function(){
+				        		alert('행정기관등록 완료');
 				        		$('#adminagencyCheckModal').hide();
-				        		$('#adminagencyName').val($(this).text());
+				        		$('#adminagencyCode').val($(this).children().first().text());
+				        		$('#adminagencyName').val($(this).children().last().text());
 							});
 				        },
 				        error : function(){
-				            alert("error");
+				            alert("검색어를 입력해주십시오");
 				            
 				        }    
 				    });

@@ -53,9 +53,9 @@ public class FunctionaryDao {
 		return sqlSession.update(NS+"updateFunctionnary", functionaryDto);
 	}
 	
-	public List<FunctionaryDto> selectAdminagency(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - selectAdminagency - functionaryDto : " + functionaryDto);
-		return sqlSession.selectList(NS+"selectAdminagency", functionaryDto);		
+	public List<FunctionaryDto> selectAdminagency(String checkAdminagency) {
+		logger.debug("FunctionaryDao - selectAdminagency - checkAdminagency : " + checkAdminagency);
+		return sqlSession.selectList(NS+"selectAdminagency", checkAdminagency);		
 	}
 	
 	public FunctionaryDto selectFunctionaryMoveInout(String fuctionaryId) {
