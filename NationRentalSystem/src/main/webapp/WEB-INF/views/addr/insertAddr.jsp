@@ -41,17 +41,18 @@
 		                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
 		                }
 		
-		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+		                // 우편번호와 도로명 주소 정보를 해당 필드에 넣는다.
 		                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
-		                document.getElementById('sample6_address').value = fullAddr;
+		                document.getElementById('sample6_address').value = fullAddr; //도로명주소
 		
 		                // 커서를 상세주소 필드로 이동한다.
-		                document.getElementById('sample6_address2').focus();
-		                
-		                //===============테스트
-		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-		                document.getElementById('jibunAddress').value = data.jibunAddress; //지번주소
-		                document.getElementById('sample6_address').value = fullAddr;
+		                document.getElementById('sample6_address2').focus(); //상세주소
+
+		                // 지번주소(구주소) 정보를 해당 필드에 넣는다.
+		                document.getElementById('sido').value = data.sido; //시도
+		                document.getElementById('sigungu').value = data.sigungu; //시군구
+		                document.getElementById('bname').value = data.bname; //읍면동
+		                document.getElementById('sample6_address').value = fullAddr; //상세주소
 		            }
 		        }).open();
 		    }
@@ -84,9 +85,11 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="sample6_address" class="col-sm-4 control-label">지번주소</label>
+									<label for="jibunAddress" class="col-sm-4 control-label">지번주소</label>
 									<div class="col-sm-8">
-										<input type="text" style="float:left" size="40" id="jibunAddress" placeholder="지번주소">
+										<input type="text" style="float:left" size="10" id="sido" placeholder="시도">
+										<input type="text" style="float:left" size="10" id="sigungu" placeholder="시군구">
+										<input type="text" style="float:left" size="10" id="bname" placeholder="읍면동">
 										<input type="text" style="float:left" size="30" id="sample6_address2" placeholder="상세주소">
 									</div>
 								</div>
