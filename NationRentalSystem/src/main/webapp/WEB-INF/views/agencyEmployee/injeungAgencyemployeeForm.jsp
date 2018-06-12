@@ -15,7 +15,7 @@
 					      ,url: "/nationRental/injeungAgencyEmployee"
 					      ,data: { agencyEmployeeInjeungNum: $('#agencyEmployeeInjeungNum').val() }
 					      ,success:function( JSON ) { // result : String, XML, JSON
-					    	  if(JSON=='T'){
+					    	  if(JSON!='null'){
 								alert('인증성공');
 								/* $(location).attr('href', './insertAgencyEmployee'); */
 								$('#injeungAgencyEmployeeForm').submit();

@@ -14,7 +14,6 @@ public class InjeungService {
 	public InjeungDto selectInjeung(InjeungDto injeungDto) {
 		logger.info("---selectInjeung");
 		return InjeungDao.selectInjeung(injeungDto);
-		
 	}
 	
 }

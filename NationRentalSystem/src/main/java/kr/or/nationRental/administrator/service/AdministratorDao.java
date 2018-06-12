@@ -11,10 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AdministratorDao {
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorDao.class);
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	@Autowired private SqlSessionTemplate sqlSession;
 	// final : 객체 참조변수를 변경하지 못하게 하는 접근제한자
-	//final String NS = "kr.or.nationRental.administrator.service.AdministratorMapper.";
 	final String NS = "kr.or.nationRental.administrator.service.AdministratorMapper.";
 	
 

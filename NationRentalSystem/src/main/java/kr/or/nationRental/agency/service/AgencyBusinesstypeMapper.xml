@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.agency.service.AgencyBusinesstypeMapper">
+	
+	<!-- 업종 목록 -->
+	<select id="selectListAgencyBusinesstype" resultType="kr.or.nationRental.agency.service.AgencyBusinesstypeDto">
+		SELECT
+			agency_businesstype_code as agencyBusinesstypeCode
+			, agency_businesstype_name as agencyBusinesstypeName
+		FROM agency_businesstype
+		ORDER BY agency_businesstype_code DESC
+	</select>
+	
+	<!-- 업종 등록 -->
+	<insert id="insertAgencyBusinesstype" parameterType="kr.or.nationRental.agency.service.AgencyBusinesstypeDto">
+		INSERT INTO agency_businesstype (
+			agency_businesstype_code
+			, agency_businesstype_name
+		) VALUES (
+			NULL
+			, #{agencyBusinesstypeName}
+		)	
+	</insert>
+	
+	<!-- 업종 수정 폼 불러오기 -->
+	<select id="updateAgencyBusinesstypeForm" parameterType="kr.or.nationRental.agency.service.AgencyBusinesstypeDto" resultType="kr.or.nationRental.agency.service.AgencyBusinesstypeDto">
+		select 
+			agency_businesstype_code as agencyBusinesstypeCode
+			, agency_businesstype_name as agencyBusinesstypeName
+		from agency_businesstype
+		where 
+			agency_businesstype_code =
+			#{agencyBusinesstypeCode}
+	</select>
+	
+	<!-- 업종 수정 -->
+	<update id="updateAgencyBusinesstype" parameterType="kr.or.nationRental.agency.service.AgencyBusinesstypeDto">
+		UPDATE agency_businesstype
+		SET
+			agency_businesstype_code = #{agencyBusinesstypeCode}
+			, agency_businesstype_name = #{agencyBusinesstypeName}
+		WHERE 
+			agency_businesstype_code = #{agencyBusinesstypeCode}	
+	</update>
+	
+	<!-- 업종 삭제 -->
+	<delete id="deleteAgencyBusinesstype" parameterType="kr.or.nationRental.agency.service.AgencyBusinesstypeDto">
+		DELETE 
+			FROM agency_businesstype 
+		WHERE agency_businesstype_code = #{agencyBusinesstypeCode}	
+	</delete>	
+	
+
+</mapper>

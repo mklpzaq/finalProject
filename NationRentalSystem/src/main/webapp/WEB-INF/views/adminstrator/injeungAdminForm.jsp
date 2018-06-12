@@ -6,6 +6,15 @@
 		<title>관리자 인증페이지</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- <script>
+		$(document).ready(function(){
+		    $("#injeungBtn").click(function(){
+		    	if("#adminInjeungNum" == null){
+		    	alert("인증실패");
+		    	} alert("인증성공");
+		    });
+		});
+		</script> -->
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
@@ -25,7 +34,7 @@
 							<!-- Begin Content -->
 							<div class="panel panel-default">
 								<div class="panel-body">
-									<form class="form-horizontal" action="${pageContext.request.contextPath}/injeungAdministrator" method="post">
+									<form id="adminInjeung" class="form-horizontal" action="${pageContext.request.contextPath}/injeungAdministrator" method="post">
 										<div class="form-group">
 											<label for="adminInjeungNum" class="col-sm-3 control-label">인증번호</label>
 											<div class="col-sm-9">
@@ -33,7 +42,7 @@
 											</div>
 										</div>
 										<div class="text-center">
-											<button type="submit" class="btn btn-default">인증</button>
+											<button type="submit" id="injeungBtn" class="btn btn-default">인증</button>
 										</div>
 									</form>
 								</div>

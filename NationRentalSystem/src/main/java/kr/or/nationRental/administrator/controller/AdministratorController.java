@@ -16,6 +16,7 @@ import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.administrator.service.AdministratorService;
 import kr.or.nationRental.administrator.service.InjeungDto;
 import kr.or.nationRental.administrator.service.InjeungService;
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 
 
 @Controller
@@ -42,7 +43,7 @@ public class AdministratorController {
 		}
 		session.setAttribute("injeung", injeung);
 		return "adminstrator/insertAdminForm";	
-	}	
+	}
 	
 	//관리자등록 POST
 	@RequestMapping(value="/insertAdministrator", method=RequestMethod.POST)

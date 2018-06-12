@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdministratorService {
-	@Autowired
-	private AdministratorDao administratorDao;
+	@Autowired private AdministratorDao administratorDao;
 	private static final Logger logger = LoggerFactory.getLogger(AdministratorService.class);
 	
 	//관리자 등록
