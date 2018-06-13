@@ -135,11 +135,18 @@
 						</div>
 						
 						<div class="form-group">
+							<label for="goodsfacility" class="col-sm-2 control-label">시설 & 물품 파일 업로드</label>
+						    <div class="col-sm-10">
+						    	<input type="file" class="form-control" id="goodsfacilityfile" name="multipartfile">			    	
+						    </div>
+						</div>					
+						
+						<div class="form-group">
 							<label for="goodsfacility" class="col-sm-2 control-label">시설 & 물품 금액</label>
 						    <div class="col-sm-10">
 						    	<input type="text" class="form-control" id="goodsfacilityPurchaseprice" name="goodsfacilityPurchaseprice" placeholder="시설 & 물품 금액">			    	
 						    </div>
-						</div>
+						</div>						
 						
 						<div class="form-group">
 							<label for="goodsfacility" class="col-sm-2 control-label">대여 & 대관료 </label>
@@ -243,8 +250,13 @@
 								</select>		    		    	
 						    </div>
 						</div>
-								
-						<button type="submit" id="insertGoodsfacility">물품 & 시설 등록</button>						
+						
+						<div class="form-group">
+							 <div class="col-sm-10">	
+								<button type="submit" id="insertGoodsfacility">물품 & 시설 등록</button>	
+							</div>
+						</div>
+											
 						</form>
 					</div>
 				</div>

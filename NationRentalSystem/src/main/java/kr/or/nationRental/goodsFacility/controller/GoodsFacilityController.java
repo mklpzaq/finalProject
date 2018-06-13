@@ -1,5 +1,6 @@
 package kr.or.nationRental.goodsFacility.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.nationRental.functionary.service.FunctionaryDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
+import kr.or.nationRental.goodsFacility.service.GoodsFacilityRequest;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityService;
 
 @Controller
@@ -40,9 +43,31 @@ public class GoodsFacilityController {
 	}
 	
 	@RequestMapping(value="/insertGoodsFacility", method=RequestMethod.POST)
-	public String insertGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
-		logger.debug("POST insertGoodsFacility GoodsFacilityController : " + goodsFacilityDto.toString());
-		goodsFacilityService.insertGoodsFacility(goodsFacilityDto);
+	public String insertGoodsFacility(GoodsFacilityRequest goodsFacilityRequest
+										,Model model) {
+		logger.debug("POST insertGoodsFacility GoodsFacilityController : " + goodsFacilityRequest.toString());
+		
+		List<MultipartFile> list = goodsFacilityRequest.getMultipartfile();
+		logger.debug("list : " + list);
+		for(MultipartFile file : list) {
+			String fileType = file.getContentType();			
+			logger.debug("fileType : " + fileType);
+			
+			if(!fileType.equals("image/jpeg") && !fileType.equals("image/jpg") && !fileType.equals("image/png") &&
+				!fileType.equals("image/bmp") && fileType.equals("image/webp")) {
+				
+				logger.debug("fileType : " + fileType);
+				logger.info("이미지 파일이 아닙니다.");
+				model.addAttribute("error", "alert('이미지 파일이 아닙니다.')");
+				model.addAttribute("goodsFacilityRequest", goodsFacilityRequest);
+				
+				
+				return "/rentalGoodsFacility/insertGoodsFacilityForm";
+			}			
+		}
+		
+		
+		
 		return "redirect:/joinCongratulation";
 	}
 }
