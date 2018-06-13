@@ -41,9 +41,11 @@
 					</div>					
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">대행업체 업종분류</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="agencyBusinesstypeCode" name="agencyBusinesstypeCode" placeholder="대행업체 업종분류">
-						</div>
+						<select name="agencyBusinesstypeCode">
+							<c:forEach var="agencyBusinesstypeDto" items="${list}">
+								<option  value="${agencyBusinesstypeDto.agencyBusinesstypeCode}">${agencyBusinesstypeDto.agencyBusinesstypeName}</option>
+							</c:forEach>
+						</select>
 					</div>
 							
 					<div class="form-group">

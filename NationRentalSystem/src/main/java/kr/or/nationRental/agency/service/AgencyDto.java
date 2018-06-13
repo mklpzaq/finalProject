@@ -9,6 +9,7 @@ public class AgencyDto {
 	private String functionaryName; //등록 공무원명
 	private String agencyName; //대행업체명
 	private int agencyBusinesstypeCode; //대행업체 업종분류 코드
+	private String agencyBusinesstypeName; //대행업체 업종명
 	private Date agencyDateRegistration; //대행업체 낙찰등록시기
 	private Date agencyDateContractClosed; //대행업체 계약해지일
 	public int getAgencyCode() {
@@ -41,6 +42,12 @@ public class AgencyDto {
 	public void setAgencyBusinesstypeCode(int agencyBusinesstypeCode) {
 		this.agencyBusinesstypeCode = agencyBusinesstypeCode;
 	}
+	public String getAgencyBusinesstypeName() {
+		return agencyBusinesstypeName;
+	}
+	public void setAgencyBusinesstypeName(String agencyBusinesstypeName) {
+		this.agencyBusinesstypeName = agencyBusinesstypeName;
+	}
 	public Date getAgencyDateRegistration() {
 		return agencyDateRegistration;
 	}
@@ -57,10 +64,9 @@ public class AgencyDto {
 	public String toString() {
 		return "AgencyDto [agencyCode=" + agencyCode + ", adminagencyCode=" + adminagencyCode + ", functionaryName="
 				+ functionaryName + ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
-				+ ", agencyDateRegistration=" + agencyDateRegistration + ", agencyDateContractClosed="
-				+ agencyDateContractClosed + "]";
+				+ ", agencyBusinesstypeName=" + agencyBusinesstypeName + ", agencyDateRegistration="
+				+ agencyDateRegistration + ", agencyDateContractClosed=" + agencyDateContractClosed + "]";
 	}
-	
 	
 	
 	

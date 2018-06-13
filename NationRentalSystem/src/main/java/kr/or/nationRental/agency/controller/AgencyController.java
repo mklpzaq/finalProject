@@ -12,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import kr.or.nationRental.agency.service.AgencyBusinesstypeDto;
+import kr.or.nationRental.agency.service.AgencyBusinesstypeService;
 import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.agency.service.AgencyService;
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 import kr.or.nationRental.login.service.MemberDto;
 
 
@@ -25,12 +27,18 @@ public class AgencyController {
 	@Autowired
 	private AgencyService agencyService;
 	
+	@Autowired
+	private AgencyBusinesstypeService agencyBusinesstypeService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(AgencyController.class);
 	
 	//대행업체 등록 화면으로 이동
 	@RequestMapping(value="/insertAgencyForm", method=RequestMethod.GET)
-	public String insertAgencyForm() {
-			
+	public String insertAgencyForm(Model model) {
+		//등록된 업종리스트를 뽑는다
+		List<AgencyBusinesstypeDto> list = agencyBusinesstypeService.selectListAgencyBusinesstype();
+		model.addAttribute("list", list);
+		
 		return "/agency/insertAgencyForm";
 	}
 	
@@ -92,14 +100,20 @@ public class AgencyController {
 	 * 계약된 대행업체 조회 선행 후
 	 * 계약해지를 클릭하면
 	 * 대행업체 테이블에서 수정처리가 들어가며 계약해지날짜가 생성
-	 * 이후 대행업체 직원이 모두 탈퇴처리가 된다
+	 * 이후 대행업체 직원이 모두 탈퇴처리가 된다	 * 
 	 * 단 탈퇴처리는 다른 패키지의 기능을 끌어올수 있다
 	 * 이 수정처리는 수정폼이 필요가 없기 때문에 select를 할 필요도 없다
+	 * 직원탈퇴처리를 다른 패키지 기능에서 끌어오려 했으나
+	 * 필요 데이터가 일치하지 않아 따로 만들기로함
+	 * 직원탈퇴처리시에는 일단 콘트롤러에 들어온 agencyCode로 낙찰직원 테이블을 select해서 해당되는 데이터를 모두 삭제한 후에
+	 * 만약 agency_employee테이블에 있는 id가 agency_nakchal_employee테이블에 존재 하지 않는 상황이라면 
+	 * agency_employee테이블에 있는 id도 삭제처리하는 것으로 한다
 	 * */
 	@RequestMapping(value="/updateAgencyContractClosed", method=RequestMethod.GET)
 	public String updateAgencyContractClosed(AgencyDto agencyDto) {
 		logger.debug("AgencyController - updateAgencyContractClosed - agencyDto : " + agencyDto.toString());
-		agencyService.updateAgencyContractClosed(agencyDto);
+		agencyService.updateAgencyContractClosed(agencyDto);	
+		
 		
 		return "redirect:/selectListContractClosedAgency";
 	}
@@ -107,7 +121,23 @@ public class AgencyController {
 	/*계약된 대행업체직원 조회
 	 *계약된 대행업체 조회 선행 후
 	 *현재 계약되어있는 대행업체중에 하나를 클릭하면
-	 *해당 대행업체에 소속된 직원들 볼 수 있음
+	 *해당 대행업체에 소속된 직원들 볼 수 있음	 *
 	 *단 해당 대행업체에 소속된 직원조회는 다른 패키지의 기능을 끌어올수 있다
-	 */
+	 *다른 패키지의 기능과 다를것으로 예상되므로 먼저 만들어놓는다
+	 *조회에서 해당 해댕업체 클릭하는것까지는 선행 완료
+	 *클릭히 낙찰된 대행업체 코드가 넘어오는데
+	 *해당 코드로 agency_nakchal_employee테이블을 먼저 select하여 코드에 속해있는 id를 가져온후
+	 *가져온 id로 agency_employee테이브을 select한다
+	 */	
+	@RequestMapping(value="/selectContractAgencyEmployee", method=RequestMethod.GET)
+	public String selectContractAgencyEmployee(AgencyDto agencyDto
+												,Model model) {
+		logger.debug("AgencyController - selectContractAgencyEmployee - agencyDto : " + agencyDto.toString());
+		
+		List<AgencyEmployeeDto> agencyEmployeeDto = agencyService.selectContractAgencyEmployee(agencyDto);		
+		
+		model.addAttribute("agencyEmployeeDto", agencyEmployeeDto);
+		
+		return "/agency/selectContractAgencyEmployee";
+	}
 }

@@ -44,7 +44,7 @@
 														<th>${AgencyDto.agencyCode}</th>														
 														<th>${AgencyDto.functionaryName}</th>
 														<td>${AgencyDto.agencyName}</td>
-														<td>${AgencyDto.agencyBusinesstypeCode}</td>
+														<td>${AgencyDto.agencyBusinesstypeName}</td>
 														<td>${AgencyDto.agencyDateRegistration}</td>
 														<td>${AgencyDto.agencyDateContractClosed}</td>																						
 													</tr>

@@ -26,12 +26,15 @@
   
   	<select id="selectListContractAgency" parameterType="Integer" resultType="kr.or.nationRental.agency.service.AgencyDto">
   		SELECT
-			agency_code as agencyCode
-			,functionary_name as functionaryName
-			,agency_name as agencyName
-			,agency_businesstype_code as agencyBusinesstypeCode
-			,agency_date_registration as agencyDateRegistration
+			agency.agency_code as agencyCode
+			,agency.functionary_name as functionaryName
+			,agency.agency_name as agencyName
+			,agency.agency_businesstype_code as agencyBusinesstypeCode
+			,agency.agency_date_registration as agencyDateRegistration
+			,agency_businesstype.agency_businesstype_name as agencyBusinesstypeName
 		FROM agency
+		INNER join agency_businesstype
+			on agency.agency_businesstype_code = agency_businesstype.agency_businesstype_code
 			where adminagency_code = #{adminagencyCode}
 			and agency_date_contract_closed is NULL
 		
@@ -40,17 +43,19 @@
 	
 	<select id="selectListContractClosedAgency" parameterType="Integer" resultType="kr.or.nationRental.agency.service.AgencyDto">
   		SELECT
-			agency_code as agencyCode
-			,functionary_name as functionaryName
-			,agency_name as agencyName
-			,agency_businesstype_code as agencyBusinesstypeCode
-			,agency_date_registration as agencyDateRegistration
-			,agency_date_contract_closed as agencyDateContractClosed
+			agency.agency_code as agencyCode
+			,agency.functionary_name as functionaryName
+			,agency.agency_name as agencyName
+			,agency.agency_businesstype_code as agencyBusinesstypeCode
+			,agency.agency_date_registration as agencyDateRegistration
+			,agency_businesstype.agency_businesstype_name as agencyBusinesstypeName
 		FROM agency
+		INNER join agency_businesstype
+			on agency.agency_businesstype_code = agency_businesstype.agency_businesstype_code
 			where adminagency_code = #{adminagencyCode}
 			and agency_date_contract_closed IS NOT NULL
 		
-		ORDER BY agency_date_registration DESC
+		ORDER BY agency_date_registration DESC  		
 	</select>
 	
 	<update id="updateAgencyContractClosed" parameterType="kr.or.nationRental.agency.service.AgencyDto">
@@ -59,4 +64,42 @@
 		agency_date_contract_closed=NOW()
 			WHERE agency_code = #{agencyCode}	
 	</update>
+	
+	<delete id="deleteAgencyNakchalEmployee" parameterType="kr.or.nationRental.agency.service.AgencyDto">
+		DELETE 
+			FROM agency_nakchal_employee 
+		WHERE agency_code= #{agencyCode}	
+	</delete>
+	
+	<select id="selectNullAgencyNakchalEmployee" resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		SELECT
+			agency_employee.agency_employee_id as agencyEmployeeId
+		FROM agency_employee
+		left outer JOIN agency_nakchal_employee
+			on agency_employee.agency_employee_id = agency_nakchal_employee.agency_employee_id
+			where agency_nakchal_employee.agency_nakchal_employee_code is null
+	</select>
+	
+	<select id="selectAgencyNakchalEmployeeId" parameterType="kr.or.nationRental.agency.service.AgencyDto" resultType="String">
+		select
+			agency_employee_id as agencyEmployeeId
+		from agency_nakchal_employee
+			where agency_code = #{agencyCode}	
+	</select>
+	
+	
+	<!-- 파라메터 타입으로는 리스트가 못오는것 같다 
+	불가능하다기보다는 기본 파라메터 타입에 그냥 리스트를 쓰는게 안되는것같다
+	좀 더 살펴봐야겠다-->
+	<select id="selectAgencyEmployee2" parameterType="String" resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		select
+			agency_employee_id as agencyEmployeeId
+			,agency_name as agencyName
+			,agency_employee_name as agencyEmployeeName
+			,agency_employee_phone as agencyEmployeePhone
+			,agency_employee_email as agencyEmployeeEmail
+			,agency_employee_date_join as agencyEmployeeDateJoin	
+		from agency_employee
+			where agency_employee_id = #{agencyEmployeeDtoId}	
+	</select>
 </mapper>

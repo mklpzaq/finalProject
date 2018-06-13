@@ -1,5 +1,7 @@
 package kr.or.nationRental.agencyEmployee.service;
 
+import java.sql.Date;
+
 public class AgencyEmployeeDto {
 	private String agencyEmployeeId; //낙찰된 대행업체 직원 id
 	private String agencyEmployeePw; //직원 패스워드
@@ -8,8 +10,7 @@ public class AgencyEmployeeDto {
 	private String agencyEmployeeName; //직원 이름
 	private String agencyEmployeePhone; //직원 전화번호
 	private String agencyEmployeeEmail; //직원 이메일
-	private String agencyEmployeeDateJoin; //직원 가입일자
-	
+	private Date agencyEmployeeDateJoin; //직원 가입일자
 	public String getAgencyEmployeeId() {
 		return agencyEmployeeId;
 	}
@@ -52,10 +53,10 @@ public class AgencyEmployeeDto {
 	public void setAgencyEmployeeEmail(String agencyEmployeeEmail) {
 		this.agencyEmployeeEmail = agencyEmployeeEmail;
 	}
-	public String getAgencyEmployeeDateJoin() {
+	public Date getAgencyEmployeeDateJoin() {
 		return agencyEmployeeDateJoin;
 	}
-	public void setAgencyEmployeeDateJoin(String agencyEmployeeDateJoin) {
+	public void setAgencyEmployeeDateJoin(Date agencyEmployeeDateJoin) {
 		this.agencyEmployeeDateJoin = agencyEmployeeDateJoin;
 	}
 	@Override
@@ -66,4 +67,6 @@ public class AgencyEmployeeDto {
 				+ ", agencyEmployeeEmail=" + agencyEmployeeEmail + ", agencyEmployeeDateJoin=" + agencyEmployeeDateJoin
 				+ "]";
 	}
+	
+	
 }

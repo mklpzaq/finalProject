@@ -8,12 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
+
 
 @Repository
 public class AgencyDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
 	final String NS ="kr.or.nationRental.agency.service.AgencyMapper.";
 	private static final Logger logger = LoggerFactory.getLogger(AgencyDao.class);
 	
@@ -43,6 +46,29 @@ public class AgencyDao {
 		logger.debug("AgencyDao - updateAgencyContractClosed - agencyDto : " + agencyDto.toString());
 		int row = sqlSession.update(NS + "updateAgencyContractClosed", agencyDto);
 		return row;
+	}
+
+	public void deleteAgencyNakchalEmployee(AgencyDto agencyDto) {
+		logger.debug("AgencyDao - deleteAgencyNakchalEmployee - agencyDto : " + agencyDto.toString());
+		
+		sqlSession.delete(NS + "deleteAgencyNakchalEmployee", agencyDto);
+	}
+
+	public List<AgencyEmployeeDto> selectNullAgencyNakchalEmployee() {
+		logger.debug("AgencyDao - selectNullAgencyNakchalEmployee - ");
+		return sqlSession.selectList(NS + "selectNullAgencyNakchalEmployee");
+	}
+
+	public List<String> selectAgencyNakchalEmployeeId(AgencyDto agencyDto) {
+		logger.debug("AgencyDao - selectAgencyNakchalEmployeeId - agencyDto : " + agencyDto.toString());
+		
+		return sqlSession.selectList(NS + "selectAgencyNakchalEmployeeId", agencyDto);
+	}
+
+	public List<AgencyEmployeeDto> selectAgencyEmployee(String agencyEmployeeDtoId) {
+		logger.debug("AgencyDao - selectAgencyEmployee - agencyEmployeeDtoId : " + agencyEmployeeDtoId.toString());
+		
+		return sqlSession.selectList(NS + "selectAgencyEmployee2", agencyEmployeeDtoId);
 	}
 
 }
