@@ -1,13 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>Introduce</title>
+		<script>
+			$(document).ready(function(){
+				$('#goHomeBtn').click(function(){
+					$(location).attr('href', './');
+				});	
+			});
+			
+		</script>
 	</head>
 	<body>
-		<!-- #FFE08C -->
-		<div class="container-fluid" style="height:900px; background:#FFE08C;">
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		
+		<div class="container-fluid" style="height:1500px;">
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
@@ -17,16 +31,14 @@
 				<div class="col-sm-8" style="height:850px; padding:15px">
 				<!-- Begin Content -->
 		
-				<div class="panel panel-default text-center">
+				<div class="panel panel-default">
 					<div class="panel-body">
-						<h3><strong>프로젝트 소개</strong></h3>
+						<h3 class="text-center"><strong>프로젝트 소개</strong></h3>
 						<hr/>
-						<p class="text-left">
-							<strong>프로젝트명 : 국가 통합 대여/예약 시스템 (Nation Integrated Reserve and Rental)</strong>
-						</p>
-						<p class="text-left">
-							<strong>목적 : 각 시도군청 별로 있는 예약하고 대여 할 수있는 모든 물품을 모아서 한곳에서 간편하게 처리하기 위함.</strong>
-						</p>
+						<h3>프로젝트명 : </h3>
+						<h4>국가 통합 대여/예약 시스템 (Nation Integrated Reserve and Rental)</h4>
+						<h3>목적 :</h3>
+						<h4>각 시도군청 별로 있는 예약하고 대여 할 수 있는 모든 물품/시설을 모아서 한곳에서 간편하게 처리하기 위함.</h4>
 					</div>
 				</div>
 				
@@ -67,9 +79,11 @@
 									</div>
 								</div>
 							</div>
+						<!-- </div>
+						<div class="row"> -->
 							<div class="col-sm-3">
 								<div class="thumbnail">
-									<img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkyLjQ1MzEyNSIgeT0iMTAwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjExcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjQyeDIwMDwvdGV4dD48L2c+PC9zdmc+" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+									<img data-src="holder.js/100%x200" alt="100%x200" src="${pageContext.request.contextPath}/resources/image/idPhoto/leeChunLim.jpg" data-holder-rendered="true" style="height: 354px; width: 472px; display: block;">
 									<div class="caption">
 										<h3 style="text-align:center;" id="thumbnail-label">이춘림<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
 										<p>
@@ -106,6 +120,13 @@
 					</div>
 				</div>
 		
+				<div class="panel panel-default">
+					<div class="panel-body text-center">
+						<h3 class="text-center"><strong>홈으로 가기</strong></h3>
+						<hr/>
+						<button id="goHomeBtn" type="button" class="btn btn-primary btn-lg">홈으로</button>
+					</div>
+				</div>
 		
 		
 					
