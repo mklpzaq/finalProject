@@ -22,6 +22,9 @@
 			$('#employeeLoginBtn').click(function(){
 				$('#employeeLoginForm').submit();
 			});
+			$('#homeLogoutBtn').click(function(){
+				$(location).attr('href', './logout');
+			});
 			
 			/* 프로젝트 소개 페이지 이동 버튼 */
 			$('#projectInfoBtn').click(function(){
@@ -79,8 +82,8 @@
 							<button id="citizenLoginBtn" type="button" class="btn btn-primary btn-lg">시민 로그인</button> &nbsp;&nbsp;
 							<button id="functionaryLoginBtn" type="button" class="btn btn-primary btn-lg">공무원 로그인</button> &nbsp;&nbsp;
 							<button id="adminLoginBtn" type="button" class="btn btn-primary btn-lg">관리자 로그인</button> &nbsp;&nbsp;
-							<button id="employeeLoginBtn" type="button" class="btn btn-primary btn-lg">직원 로그인</button>
-							
+							<button id="employeeLoginBtn" type="button" class="btn btn-primary btn-lg">직원 로그인</button> &nbsp;&nbsp;
+							<button id="homeLogoutBtn" type="button" class="btn btn-danger btn-lg">로그아웃</button>
 							<%-- <form style="margin:14px;" class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">
 								<div class="form-group">
 									<label for="memberId" class="col-sm-3 control-label">회원 ID</label>
