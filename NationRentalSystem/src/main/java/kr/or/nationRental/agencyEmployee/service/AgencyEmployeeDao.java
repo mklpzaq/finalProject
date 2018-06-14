@@ -1,5 +1,8 @@
 package kr.or.nationRental.agencyEmployee.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +16,18 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	public int totalCountAgencyEmployee(Map<String, Object> map) {
+		logger.debug("totalCountAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"totalCountAgencyEmployee", map);
+	}
+	
+	/* 소속 직원 리스트  */
+	public List<AgencyEmployeeDto> selectListAgencyEmployee(Map<String, Object> map){
+		logger.debug("selectListAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectList(NS+"selectListAgencyEmployee", map);
+	}
+	
+	/* 소속 대행업체 code */
 	public int getAgencyCode(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyCode AgencyEmployeeDao");
 		return sqlSession.selectOne(NS+"getAgencyCode", agencyEmployeeDto);

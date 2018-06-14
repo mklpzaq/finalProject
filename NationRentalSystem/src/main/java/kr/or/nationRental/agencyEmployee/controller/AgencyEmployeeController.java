@@ -1,5 +1,9 @@
 package kr.or.nationRental.agencyEmployee.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -20,6 +24,44 @@ public class AgencyEmployeeController {
 	@Autowired
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
+	
+	@RequestMapping(value="/selectListAgencyEmployee", method=RequestMethod.GET)
+	public String selectListAgencyEmployee(Model model
+									,HttpSession session
+									,AgencyEmployeeDto agencyEmployeeDto
+									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+									,@RequestParam(value="searchSelect", defaultValue="직원 ID") String searchSelect
+									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
+		logger.debug("GET selectListAgencyEmployee AgencyEmployeeController");
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		logger.debug(agencyEmployeeDto.toString());
+		
+		Map<String, Object> map = agencyEmployeeService.selectListAgencyEmployee(currentPage, pagePerRow, searchSelect, searchWord, agencyEmployeeDto);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchWord", searchWord);
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		/* 파일 저장루트 확인용 */
+		String path = session.getServletContext().getRealPath("/resources/upload/");
+		model.addAttribute("path", path);
+		
+		return "agencyEmployee/selectListAgencyEmployee";
+	}
+	
 	
 	@RequestMapping(value="/deleteAgencyEmployee", method=RequestMethod.GET)
 	public String updateAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto

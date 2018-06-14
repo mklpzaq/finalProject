@@ -4,7 +4,70 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
-	<!-- insertStorageAgencyEmployee -->
+	
+	<select id="totalCountAgencyEmployee"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			agency_employee
+		WHERE
+			agency_name = #{agencyName}
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('직원 ID')">
+					AND agency_employee_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('직원 명')">
+					AND agency_employee_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('직원 전화번호')">
+					AND agency_employee_phone = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('직원 이메일')">
+					AND agency_employee_email = #{searchWord}
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="selectListAgencyEmployee"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		SELECT
+			agency_employee_id AS agencyEmployeeId
+			,agency_employee_pw AS agencyEmployeePw
+			,agency_name AS agencyName
+			,agency_employee_name AS agencyEmployeeName
+			,agency_employee_phone AS agencyEmployeePhone
+			,agency_employee_email AS agencyEmployeeEmail
+			,agency_employee_date_join AS agencyEmployeeDateJoin
+		FROM
+			agency_employee
+		WHERE
+			agency_name = #{agencyName}
+			
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('직원 ID')">
+					AND agency_employee_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('직원 명')">
+					AND agency_employee_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('직원 전화번호')">
+					AND agency_employee_phone = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('직원 이메일')">
+					AND agency_employee_email = #{searchWord}
+				</when>
+			</choose>
+		</if>
+		ORDER BY agency_employee_date_join DESC
+		LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+	
 	<select id="getAgencyCode"
 			resultType="Integer">
 		SELECT
