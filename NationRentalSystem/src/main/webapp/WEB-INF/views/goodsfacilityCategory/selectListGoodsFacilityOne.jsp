@@ -15,36 +15,39 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftGoodsfacilityCategory/leftGoodsfacilityCategoryOneInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
-					<!-- Begin Content -->
-					<div class="text-center">
-						<h1>1차 카테고리 목록</h1>
-					</div>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td width="30%">1차 카테고리 코드</td>
-								<td width="55%">물품/시설 명</td>	
-								<td width="15%">삭제</td>								
-							</tr>
-						</thead>
-						<tbody>									
-							<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
-								<tbody>
-									<tr>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneCode}</th>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneName}</th>
-										<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryOne?goodsfacilityOneCode=${goodsFacilityCategoryDtoList.goodsfacilityOneCode}">삭제</a></th>																					
-									</tr>
+					<div class="col-sm-8"><br>
+						<!-- Begin Content -->
+						<div class="panel panel-default">
+							<div class="panel-body text-center">
+								<div class="text-center">
+									<h1>1차 카테고리 목록</h1>
+								</div>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<td width="30%">1차 카테고리 코드</td>
+											<td width="55%">물품/시설 명</td>	
+											<td width="15%">삭제</td>								
+										</tr>
+									</thead>
+								<tbody>									
+								<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
+										<tbody>
+											<tr>
+												<th>${goodsFacilityCategoryDtoList.goodsfacilityOneCode}</th>
+												<th>${goodsFacilityCategoryDtoList.goodsfacilityOneName}</th>
+												<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryOne?goodsfacilityOneCode=${goodsFacilityCategoryDtoList.goodsfacilityOneCode}">삭제</a></th>																					
+											</tr>
+										</tbody>
+									</c:forEach>	
 								</tbody>
-							</c:forEach>	
-						</tbody>
-					</table>
+							</table>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
 					<!-- End Content -->
 				</div>
-				<div class="col-sm-2"></div>
 			</div>
-			
 		</div>
 		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 	</body>

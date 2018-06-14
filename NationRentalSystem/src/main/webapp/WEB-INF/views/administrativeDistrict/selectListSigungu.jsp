@@ -15,7 +15,7 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftAdministrativeDistrict/leftSigunguDistrictInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
 					<div class="text-center">
 						<h1>행정구역 시군구 목록</h1>

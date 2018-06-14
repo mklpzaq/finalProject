@@ -65,8 +65,7 @@
 				</div>
 				<div class="col-sm-8">
 					<div class="text-center">
-						<h1>관리자 등록</h1>
-						<h2>Nation Integrated Reserve and Rental System</h2>
+						<h2>관리자 등록</h2>
 					</div>
 					<div class="container-fluid">
 						<div class="row">

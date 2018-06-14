@@ -49,5 +49,6 @@
 				</div>
 			</div>
 		</div>
+		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 	</body>
 </html>

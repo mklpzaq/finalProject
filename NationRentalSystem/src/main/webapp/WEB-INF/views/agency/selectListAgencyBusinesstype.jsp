@@ -15,35 +15,40 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftAgencyBusinesstype/leftAgencyBusinesstype.jsp"/>
 				</div>
-				<div class="col-sm-8">
-					<div class="text-center">
-						<h1>대행업체 업종 목록</h1>
-					</div>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td width="20%">업종코드</td>
-								<td width="40%">업종명</td>
-								<td width="20%">수정</td>
-								<td width="20%">삭제</td>									
-							</tr>
-						</thead>
-						<tbody>									
-							<c:forEach var="agencyBusinesstypeDto" items="${agencyBusinesstypeDto}">
-								<tbody>
+				<div class="col-sm-8"><br>
+				<!-- Begin Content -->
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+							<div class="text-center">
+								<h3>대행업체 업종 목록</h3>
+							</div>
+							<table class="table table-striped">
+								<thead>
 									<tr>
-										<th>${agencyBusinesstypeDto.agencyBusinesstypeCode}</th>
-										<th>${agencyBusinesstypeDto.agencyBusinesstypeName}</th>
-										<th><a href="${pageContext.request.contextPath}/updateAgencyBusinesstypeForm?agencyBusinesstypeCode=${agencyBusinesstypeDto.agencyBusinesstypeCode}">수정</a></th>																					
-										<th><a href="${pageContext.request.contextPath}/deleteAgencyBusinesstype?agencyBusinesstypeCode=${agencyBusinesstypeDto.agencyBusinesstypeCode}">삭제</a></th>
+										<td width="20%">업종코드</td>
+										<td width="40%">업종명</td>
+										<td width="20%">수정</td>
+										<td width="20%">삭제</td>									
 									</tr>
+								</thead>
+								<tbody>									
+									<c:forEach var="agencyBusinesstypeDto" items="${agencyBusinesstypeDto}">
+										<tbody>
+											<tr>
+												<th>${agencyBusinesstypeDto.agencyBusinesstypeCode}</th>
+												<th>${agencyBusinesstypeDto.agencyBusinesstypeName}</th>
+												<th><a href="${pageContext.request.contextPath}/updateAgencyBusinesstypeForm?agencyBusinesstypeCode=${agencyBusinesstypeDto.agencyBusinesstypeCode}">수정</a></th>																					
+												<th><a href="${pageContext.request.contextPath}/deleteAgencyBusinesstype?agencyBusinesstypeCode=${agencyBusinesstypeDto.agencyBusinesstypeCode}">삭제</a></th>
+											</tr>
+										</tbody>
+									</c:forEach>									
 								</tbody>
-							</c:forEach>									
-						</tbody>
-					</table>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		</div>	
+		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>	
 	</body>
 </html>

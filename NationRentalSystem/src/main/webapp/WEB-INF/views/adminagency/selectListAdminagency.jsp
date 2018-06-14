@@ -47,8 +47,8 @@
 		</script>
 	</head>
 	<body>
+		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftAdminagency/leftAdminagencyInfo.jsp"/>

@@ -22,8 +22,7 @@
 				</div>
 				<div class="col-sm-8">
 					<div class="text-center">
-						<h1>관리자 정보수정</h1>
-						<h2>Nation Integrated Reserve and Rental System</h2>
+						<h2>관리자 정보수정</h2>
 					</div>
 					<div class="container-fluid">
 						<div class="row">
@@ -90,6 +89,7 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
+		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>	
 	</body>
 </html>

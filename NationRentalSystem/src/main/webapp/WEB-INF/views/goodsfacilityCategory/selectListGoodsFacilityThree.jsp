@@ -15,44 +15,47 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftGoodsfacilityCategory/leftGoodsfacilityCategoryThreeInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
-					<div class="text-center">
-						<h1>3차 카테고리 목록</h1>
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+						<div class="text-center">
+							<h1>3차 카테고리 목록</h1>
+						</div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td width="10%">1차 코드</td>
+									<td width="20%">물품/시설</td>
+										<td width="10%">2차 코드</td>
+									<td width="20%">물품/시설</td>
+									<td width="10%">3차 코드</td>
+									<td width="20%">물품/시설</td>
+									<td width="10%">삭제</td>									
+								</tr>
+							</thead>
+							<tbody>									
+								<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
+									<tbody>
+										<tr>
+											<th>${goodsFacilityCategoryDtoList.goodsfacilityOneCode}</th>
+											<th>${goodsFacilityCategoryDtoList.goodsfacilityOneName}</th>
+											<th>${goodsFacilityCategoryDtoList.goodsfacilityTwoCode}</th>
+											<th>${goodsFacilityCategoryDtoList.goodsfacilityTwoName}</th>
+											<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}</th>
+											<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeName}</th>
+											<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryThree?goodsfacilityThreeCode=${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}">삭제</a></th>																				
+										</tr>
+									</tbody>
+								</c:forEach>	
+							</tbody>
+						</table>		
 					</div>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td width="10%">1차 코드</td>
-								<td width="20%">물품/시설</td>
-								<td width="10%">2차 코드</td>
-								<td width="20%">물품/시설</td>
-								<td width="10%">3차 코드</td>
-								<td width="20%">물품/시설</td>
-								<td width="10%">삭제</td>									
-							</tr>
-						</thead>
-						<tbody>									
-							<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
-								<tbody>
-									<tr>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneCode}</th>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityOneName}</th>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityTwoCode}</th>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityTwoName}</th>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}</th>
-										<th>${goodsFacilityCategoryDtoList.goodsfacilityThreeName}</th>
-										<th><a href="${pageContext.request.contextPath}/deleteGoodsFacilityCategoryThree?goodsfacilityThreeCode=${goodsFacilityCategoryDtoList.goodsfacilityThreeCode}">삭제</a></th>																				
-									</tr>
-								</tbody>
-							</c:forEach>	
-						</tbody>
-					</table>
-					<!-- End Content -->
+					<div class="col-sm-2"></div>
 				</div>
-				<div class="col-sm-2"></div>
+				<!-- End Content -->
 			</div>
-			
+		</div>
 		</div>
 		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 	</body>

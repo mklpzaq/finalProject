@@ -9,42 +9,45 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
+		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftAdministrativeDistrict/leftSidoDistrictInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
-					<div class="text-center">
-						<h1>행정구역 시도 목록</h1>
+					<div class="panel panel-default">	
+						<div class="panel-body text-center">
+							<div class="text-center">
+								<h3>행정구역 시도 목록</h3>
+							</div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td width="30%">시도 코드</td>
+									<td width="55%">시도</td>	
+									<!-- <td width="15%">삭제</td> -->								
+								</tr>
+							</thead>
+							<tbody>									
+								<c:forEach var="districtDtoList" items="${districtDtoList}">
+									<tbody>
+										<tr>
+											<th>${districtDtoList.sidoCode}</th>
+											<th>${districtDtoList.sidoName}</th>
+											<%-- <td><a href="${pageContext.request.contextPath}/deleteSigungu?sigunguCode=${districtDtoList.sigunguCode}">삭제</a></td> --%>																					
+										</tr>
+									</tbody>
+								</c:forEach>	
+							</tbody>
+						</table>
 					</div>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td width="30%">시도 코드</td>
-								<td width="55%">시도</td>	
-								<!-- <td width="15%">삭제</td> -->								
-							</tr>
-						</thead>
-						<tbody>									
-							<c:forEach var="districtDtoList" items="${districtDtoList}">
-								<tbody>
-									<tr>
-										<th>${districtDtoList.sidoCode}</th>
-										<th>${districtDtoList.sidoName}</th>
-										<%-- <td><a href="${pageContext.request.contextPath}/deleteSigungu?sigunguCode=${districtDtoList.sigunguCode}">삭제</a></td> --%>																					
-									</tr>
-								</tbody>
-							</c:forEach>	
-						</tbody>
-					</table>
-					<!-- End Content -->
+				</div>
+				<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
-			
 		</div>
 		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 	</body>

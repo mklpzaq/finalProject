@@ -53,7 +53,7 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftGoodsfacilityCategory/leftGoodsfacilityCategoryInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
 					<div class="panel panel-default">
 						<div class="panel-body text-center">
