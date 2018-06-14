@@ -188,7 +188,7 @@
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 												<h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
-											</div>
+											</div> 
 											<div class="modal-body">
 												<input type="text" id="checkAdminagency">
 												<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
