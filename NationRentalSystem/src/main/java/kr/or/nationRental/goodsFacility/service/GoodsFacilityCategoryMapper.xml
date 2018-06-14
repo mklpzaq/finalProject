@@ -21,7 +21,7 @@
 	</resultMap>
 
 	<!-- 물품시설 카테고리 전체목록 보기 -->
-	<select id="selectListGoodsFacilityCategory" resultMap="selectListGoodsFacility">
+	<!-- <select id="selectListGoodsFacilityCategory" resultMap="selectListGoodsFacility">
 	SELECT 
 		goodsfacility_three.goodsfacility_three_code
 		, goodsfacility_one.goodsfacility_one_name
@@ -33,7 +33,64 @@
 	AND
 		goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
 	ORDER BY goodsfacility_three_code DESC
+	</select> -->
+	
+	<!-- 물품시설 카테고리 전체목록보기 및 페이징 -->
+	<select id="selectListGoodsFacilityCategory" parameterType="java.util.Map" resultMap="selectListGoodsFacility">
+		SELECT 
+			goodsfacility_three.goodsfacility_three_code
+			, goodsfacility_one.goodsfacility_one_name
+			, goodsfacility_two.goodsfacility_two_name
+			, goodsfacility_three.goodsfacility_three_name
+		FROM goodsfacility_one, goodsfacility_two, goodsfacility_three
+		<if test="!keyword.equals('')">
+			<choose>
+				<when test="searchOption.equals('goodsfacilityThreeCode')">
+					WHERE goodsfacility_three.goodsfacility_three_code = #{keyword}
+				</when>
+				<when test="searchOption.equals('goodsfacilityOneName')">
+					WHERE goodsfacility_one.goodsfacility_one_name = #{keyword}
+				</when>
+				<when test="searchOption.equals('goodsfacilityTwoName')">
+					WHERE goodsfacility_two.goodsfacility_two_name = #{keyword}
+				</when>
+				<when test="searchOption.equals('goodsfacilityThreeName')">
+					WHERE  goodsfacility_three.goodsfacility_three_name = #{keyword}
+				</when>
+			</choose>
+		</if>
+		WHERE
+			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+		AND
+			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+		ORDER BY goodsfacility_three_code DESC
+		LIMIT #{beginRow}, #{pagePerRow}	
 	</select>
+	
+	<select id="totalCountGoodsFacilityCategory" parameterType="java.util.Map" resultType="Integer">
+			SELECT 
+				COUNT(*)
+			FROM
+				goodsfacility_three
+			<if test="!keyword.equals('')">
+			<choose>
+				<when test="searchOption.equals('goodsfacilityThreeCode')">
+					WHERE goodsfacility_three.goodsfacility_three_code = #{keyword}
+				</when>
+				<when test="searchOption.equals('goodsfacilityOneName')">
+					WHERE goodsfacility_one.goodsfacility_one_name = #{keyword}
+				</when>
+				<when test="searchOption.equals('goodsfacilityTwoName')">
+					WHERE goodsfacility_two.goodsfacility_two_name = #{keyword}
+				</when>
+				<when test="searchOption.equals('goodsfacilityThreeName')">
+					WHERE  goodsfacility_three.goodsfacility_three_name = #{keyword}
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	
 
 	<!-- 물품시설 1차 카테고리 목록 보기 -->
 	<select id="selectListGoodsFacilityCategoryOne" resultMap="selectListGoodsFacility">

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.nationRental.administrator.service.AdministratorDto;
+import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.district.service.DistrictDto;
 
 
@@ -20,18 +21,30 @@ public class GoodsFacilityCategoryDao {
 	// final : 객체 참조변수를 변경하지 못하게 하는 접근제한자
 	final String NS = "kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryMapper.";
 
+	/*
 	//물품시설 카테고리 전체 목록
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory() {
 		logger.info("---selectListGoodsFacilityCategory");
 		return sqlSession.selectList(NS+"selectListGoodsFacilityCategory");
 	}
-		
+	*/
+	
+	//물품시설 카테고리 전체 목록  페이징
+	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory(Map<String, Object> map) {
+		return sqlSession.selectList(NS+"selectListGoodsFacilityCategory", map);
+	}
+
+	//물품시설 카테고리 전체 목록
+	public int totalCountGoodsFacilityCategory(Map<String, Object> map) {
+		return sqlSession.selectOne(NS+"totalCountGoodsFacilityCategory", map);
+	}
+
 	//물품시설 1차 카테고리 목록 보기
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategoryOne() {
 		logger.info("---selectListGoodsFacilityCategoryOne");
 		return sqlSession.selectList(NS+"selectListGoodsFacilityCategoryOne");
 	}
-	
+		
 	//물품시설 2차 카테고리 목록 보기
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategoryTwo() {
 		logger.info("---selectListGoodsFacilityCategoryTwo");

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.nationRental.administrator.service.AdministratorDto;
+import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.district.service.DistrictDto;
 
 @Service
@@ -17,10 +18,54 @@ public class GoodsFacilityCategoryService {
 	@Autowired GoodsFacilityCategoryDao goodsFacilityCategoryDao;
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityCategoryService.class);
 	
+	/*
 	//물품시설 카테고리 전체목록 보기
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory() {
 		logger.debug("---selectListGoodsFacilityCategory");
 		return goodsFacilityCategoryDao.selectListGoodsFacilityCategory();
+	}
+	*/
+	
+	//물품시설 카테고리 전체목록 보기 및 페이징
+	public Map<String, Object> selectListGoodsFacilityCategory(int currentPage, int pagePerRow, String searchOption, String keyword) {
+		logger.debug("selectListGoodsFacilityCategory :");
+		int beginRow = (currentPage-1)*pagePerRow;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("beginRow", beginRow);
+		map.put("pagePerRow", pagePerRow);
+		logger.debug("currentPage :" + currentPage);
+		logger.debug("beginRow :" + beginRow);
+		logger.debug("pagePerRow :" + pagePerRow);
+		
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		logger.debug("searchOption :" + searchOption);
+		logger.debug("keyword :" + keyword);
+		
+		List<GoodsFacilityCategoryDto> list = goodsFacilityCategoryDao.selectListGoodsFacilityCategory(map);
+		logger.debug("List<GoodsFacilityCategoryDto> : " + list);
+		
+		int total = goodsFacilityCategoryDao.totalCountGoodsFacilityCategory(map);
+		
+		int lastPage = 0;
+		if(0 == total) {
+			lastPage = 1;
+		}else if(total%pagePerRow == 0) {
+			lastPage = total/pagePerRow;
+		}else {
+			lastPage = total/pagePerRow + 1;
+		}
+		/* 페이지가 5개 단위씩 보이게 하는 계산식 */
+		int temp = (currentPage - 1)/5;
+		int beginPageNumForCurrentPage = temp * 5 + 1;
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("list", list);
+		returnMap.put("lastPage", lastPage);
+		returnMap.put("beginPageNumForCurrentPage", beginPageNumForCurrentPage);
+		
+		return returnMap;		
 	}
 	
 	//물품시설 1차 카테고리 목록 보기

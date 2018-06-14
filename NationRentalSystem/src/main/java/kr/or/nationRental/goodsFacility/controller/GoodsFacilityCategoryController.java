@@ -22,12 +22,44 @@ public class GoodsFacilityCategoryController {
 	@Autowired GoodsFacilityCategoryService goodsFacilityCategoryService;
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityCategoryController.class);
 
-	//물품시설 카테고리 전체목록 보기
+	/*//물품시설 카테고리 전체목록 보기
 	@RequestMapping(value="/selectListGoodsFacilityCategory", method=RequestMethod.GET)
 	public String selectListGoodsFacilityCategory(Model model, GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
 		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategory();
 		model.addAttribute("goodsFacilityCategoryDtoList", goodsFacilityCategoryDtoList);
 		logger.debug("---goodsFacilityCategoryDtoList" + goodsFacilityCategoryDtoList);
+		return "goodsfacilityCategory/selectListGoodsFacility";
+	}*/
+	
+	
+	@RequestMapping(value="/selectListGoodsFacilityCategory", method=RequestMethod.GET)
+	public String selectListGoodsFacilityCategory(Model model
+								,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+								,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+								,@RequestParam(value="searchOption", defaultValue="citizenId") String searchOption
+								,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("selectListGoodsFacilityCategory searchSelect : " + searchOption);
+		logger.debug("selectListGoodsFacilityCategory  searchWord : " + keyword);
+		
+		Map<String, Object> map = goodsFacilityCategoryService.selectListGoodsFacilityCategory(currentPage, pagePerRow, searchOption, keyword);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("keyword", keyword);
+		
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchOption : " + searchOption);
+		logger.debug("keyword : " + keyword);
+		
+		
 		return "goodsfacilityCategory/selectListGoodsFacility";
 	}
 	
@@ -78,7 +110,7 @@ public class GoodsFacilityCategoryController {
 	@RequestMapping(value = "/insertGoodsFacilityCategoryTwo", method = RequestMethod.GET)
 	public String insertGoodsFacilityCategoryTwo(Model model) {
 		logger.debug("---insertGoodsFacilityCategoryTwo");
-		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategoryOne();
+		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategoryOne(); //1차카테고리 불러오기
 		logger.debug("---goodsFacilityCategoryDtoList" + goodsFacilityCategoryDtoList);
 		model.addAttribute("goodsFacilityCategoryDtoList", goodsFacilityCategoryDtoList);
    		return "goodsfacilityCategory/insertGoodsFacilityTwo";
@@ -97,8 +129,8 @@ public class GoodsFacilityCategoryController {
 	@RequestMapping(value = "/insertGoodsFacilityCategoryThree", method = RequestMethod.GET)
 	public String insertGoodsFacilityCategoryThree(Model model) {
 		logger.debug("---insertGoodsFacilityCategoryThree");
-		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategoryOne(); //시도리스트
-		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList2 = goodsFacilityCategoryService.selectListGoodsFacilityCategoryTwo(); //시군구리스트
+		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategoryOne(); //1차 카테고리 불러오기
+		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList2 = goodsFacilityCategoryService.selectListGoodsFacilityCategoryTwo(); //2차 카테고리 불러오기
 		logger.debug("---districtDtoList 1차 카테고리 리스트" + goodsFacilityCategoryDtoList);
 		logger.debug("---districtDtoList2 2차 카테고리 리스트" + goodsFacilityCategoryDtoList2);
 		model.addAttribute("goodsFacilityCategoryDtoList", goodsFacilityCategoryDtoList);
