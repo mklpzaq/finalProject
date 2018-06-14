@@ -74,7 +74,9 @@
 				<value>classpath:kr/or/nationRental/annualfeePakage/service/AnnualfeePakageMapper.xml</value>
 				<value>classpath:kr/or/nationRental/board/service/BoardMapper.xml</value>
 				<value>classpath:kr/or/nationRental/goodsFacility/service/GoodsFacilityMapper.xml</value>
-				<value>classpath:kr/or/nationRental/goodsFacility/service/GoodsFacilityFileMapper.xml </value>				
+				<value>classpath:kr/or/nationRental/goodsFacility/service/GoodsFacilityFileMapper.xml </value>
+				<value>classpath:kr/or/nationRental/adminagency/service/AdminagencyMapper.xml</value>
+								
 			</list>
 		</property>
 	</bean>
