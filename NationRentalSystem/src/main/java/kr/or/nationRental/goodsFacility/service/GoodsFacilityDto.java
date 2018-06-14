@@ -1,6 +1,8 @@
 package kr.or.nationRental.goodsFacility.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GoodsFacilityDto {
 	private int goodsfacilityCode;
@@ -22,6 +24,12 @@ public class GoodsFacilityDto {
 	private String goodsfacilityStateAfterservice;
 	private String goodsfacilityIsPossibleRental;
 	private Date goodsfacilityDateRegistration;
+	private List<GoodsFacilityFile> goodsFacilityFile;
+	
+	public GoodsFacilityDto() {
+		this.goodsFacilityFile = new ArrayList<GoodsFacilityFile>();
+	}
+	
 	public int getGoodsfacilityCode() {
 		return goodsfacilityCode;
 	}
@@ -136,6 +144,16 @@ public class GoodsFacilityDto {
 	public void setGoodsfacilityDateRegistration(Date goodsfacilityDateRegistration) {
 		this.goodsfacilityDateRegistration = goodsfacilityDateRegistration;
 	}
+	
+	
+	public List<GoodsFacilityFile> getGoodsFacilityFile() {
+		return goodsFacilityFile;
+	}
+
+	public void setGoodsFacilityFile(List<GoodsFacilityFile> goodsFacilityFile) {
+		this.goodsFacilityFile = goodsFacilityFile;
+	}
+
 	@Override
 	public String toString() {
 		return "GoodsFacilityDto [goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityThreeCode="

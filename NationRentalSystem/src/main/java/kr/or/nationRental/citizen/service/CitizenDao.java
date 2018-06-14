@@ -22,10 +22,10 @@ public class CitizenDao {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CitizenDao.class);
 		
-	public List<DistrictDto> getdistrict() {
+	/*public List<DistrictDto> getdistrict() {
 		logger.debug("CitizenDao getdistrict : ");		
 		return sqlSession.selectList(NS+"getdistrict ");
-	}
+	}*/
 	
 	public int insertCitizen(CitizenDto citizenDto) {
 		logger.debug("CitizenDao insertCitizen : " + citizenDto.toString());

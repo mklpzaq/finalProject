@@ -4,5 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="kr.or.nationRental.goodsFacility.service.GoodsFacilityFileMapper">
+  		<insert id="insertGoodsFacilityFile"
+  				parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityFile">
+  			INSERT INTO goodsfacility_file
+  				(goodsfacility_file_code
+  				,goodsfacility_code
+  				,goodsfacility_file_name
+  				,goodsfacility_file_ext
+  				,goodsfacility_file_type
+  				,goodsfacility_file_size
+  				,date_upload_file)
+  			VALUE
+  				(#{goodsfacilityFileCode}
+  				,#{goodsfacilityCode}
+  				,#{goodsfacilityFileName}
+  				,#{goodsfacilityFileExt}
+  				,#{goodsfacilityFileType}
+  				,#{goodsfacilityFileSize}
+  				,now())  		
+  		</insert>
+  
   
   </mapper>

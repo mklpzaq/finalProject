@@ -8,25 +8,14 @@ public class CitizenDto {
 	private String citizenJuminNum; //주민번호
 	private long sigunguCode; //시군구코드	
 	private String sigunguName;
+	private long sidoCode;
+	private String sidoName;
 	private long eupmyeonCode; //읍면동코드	
 	private String eupmyeonName;
 	private String citizenAddressSangse; //상세주소
 	private int citizenPhone; //시민 전화번호
 	private String citizenEmail; //시민 이메일
 	private Date citizenDateJoin; //가입날짜
-	
-	public String getSigunguName() {
-		return sigunguName;
-	}
-	public void setSigunguName(String sigunguName) {
-		this.sigunguName = sigunguName;
-	}
-	public String getEupmyeonName() {
-		return eupmyeonName;
-	}
-	public void setEupmyeonName(String eupmyeonName) {
-		this.eupmyeonName = eupmyeonName;
-	}
 	public String getCitizenId() {
 		return citizenId;
 	}
@@ -54,15 +43,39 @@ public class CitizenDto {
 	public long getSigunguCode() {
 		return sigunguCode;
 	}
-	public void setSigunguCode(int sigunguCode) {
+	public void setSigunguCode(long sigunguCode) {
 		this.sigunguCode = sigunguCode;
+	}
+	public String getSigunguName() {
+		return sigunguName;
+	}
+	public void setSigunguName(String sigunguName) {
+		this.sigunguName = sigunguName;
+	}
+	public long getSidoCode() {
+		return sidoCode;
+	}
+	public void setSidoCode(long sidoCode) {
+		this.sidoCode = sidoCode;
+	}
+	public String getSidoName() {
+		return sidoName;
+	}
+	public void setSidoName(String sidoName) {
+		this.sidoName = sidoName;
 	}
 	public long getEupmyeonCode() {
 		return eupmyeonCode;
 	}
-	public void setEupmyeonCode(int eupmyeonCode) {
+	public void setEupmyeonCode(long eupmyeonCode) {
 		this.eupmyeonCode = eupmyeonCode;
-	}	
+	}
+	public String getEupmyeonName() {
+		return eupmyeonName;
+	}
+	public void setEupmyeonName(String eupmyeonName) {
+		this.eupmyeonName = eupmyeonName;
+	}
 	public String getCitizenAddressSangse() {
 		return citizenAddressSangse;
 	}
@@ -91,10 +104,11 @@ public class CitizenDto {
 	public String toString() {
 		return "CitizenDto [citizenId=" + citizenId + ", citizenPw=" + citizenPw + ", citizenName=" + citizenName
 				+ ", citizenJuminNum=" + citizenJuminNum + ", sigunguCode=" + sigunguCode + ", sigunguName="
-				+ sigunguName + ", eupmyeonCode=" + eupmyeonCode + ", eupmyeonName=" + eupmyeonName
-				+ ", citizenAddressSangse=" + citizenAddressSangse + ", citizenPhone=" + citizenPhone
-				+ ", citizenEmail=" + citizenEmail + ", citizenDateJoin=" + citizenDateJoin + "]";
-	}
+				+ sigunguName + ", sidoCode=" + sidoCode + ", sidoName=" + sidoName + ", eupmyeonCode=" + eupmyeonCode
+				+ ", eupmyeonName=" + eupmyeonName + ", citizenAddressSangse=" + citizenAddressSangse
+				+ ", citizenPhone=" + citizenPhone + ", citizenEmail=" + citizenEmail + ", citizenDateJoin="
+				+ citizenDateJoin + "]";
+	}	
 	
 	
 }

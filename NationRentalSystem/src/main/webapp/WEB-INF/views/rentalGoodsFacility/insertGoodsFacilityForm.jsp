@@ -73,7 +73,7 @@
 			<!-- Begin Content -->
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2> 시민 회원 가입 폼 </h2>
+						<h2> 시설 & 물품 등록 </h2>
 						<hr/>
 						<!-- ========== -->
 						<div class="panel panel-default">
@@ -114,7 +114,7 @@
 						
 						
 						<!-- ========== -->			
-						<form action="${pageContext.request.contextPath}/insertGoodsFacility" method="post">			
+						<form action="${pageContext.request.contextPath}/insertGoodsFacility" method="post" enctype="multipart/form-data">			
 						
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 물품 카테고리 코드</label>
@@ -177,6 +177,13 @@
 						</div>						
 						
 						<div class="form-group">
+								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 시도 코드</label>
+						    <div class="col-sm-10">
+						    	<input type="text" class="form-control" id="sidoName" name="sidoName" readonly>	    		    	
+						    </div>
+						</div>			
+						
+						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 읍면동 코드</label>
 						    <div class="col-sm-10">
 						    	<input type="text" class="form-control" id="eupmyeonName" name="eupmyeonName" readonly>	    		    	
@@ -200,7 +207,8 @@
 						<div class="form-group">						
 						 	<div class="col-sm-10">
 						 	<label class="checkbox-inline">시설 & 물품 구분</label>
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 시설							
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 시설
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 물품							
 							</div>							
 						</div>
 						
@@ -208,6 +216,7 @@
 						 	<div class="col-sm-10">
 						 	<label class="checkbox-inline">기부 & 구입여부</label>
 						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 기부
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 구입
 							</div>
 						</div>
 						
@@ -215,6 +224,7 @@
 						 	<div class="col-sm-10">
 						 	<label class="checkbox-inline">예비 & 대여 </label>
 						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 예비
+						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 대여
 							</div>
 						</div>
 						
