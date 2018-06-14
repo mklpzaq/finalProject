@@ -19,6 +19,15 @@ public class AgencyEmployeeService {
 	@Transactional
 	public void deleteAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto, HttpSession session) {
 		logger.debug("deleteAgencyEmployee AgencyEmployeeService");
+		agencyEmployeeDto = agencyEmployeeDao.selectOneAgencyEmployee(agencyEmployeeDto);
+		/* begin 탈퇴하기전 1년 보관 스토리지 추가 */
+		agencyEmployeeDto.setAgencyEmployeeInjeungNum(agencyEmployeeDao.getAgencyCode(agencyEmployeeDto));
+		agencyEmployeeDto.setAgencyEmployeeName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(agencyEmployeeDto.toString());
+		agencyEmployeeDao.insertStorageAgencyEmployee(agencyEmployeeDto);
+		/* end 탈퇴하기전 1년 보관 스토리지 추가 */
+		
 		int result = agencyEmployeeDao.deleteAgencyEmployee(agencyEmployeeDto);
 		agencyEmployeeDao.deleteAgencyNakchalEmployee(agencyEmployeeDto);
 		if(1 == result) {
@@ -71,6 +80,15 @@ public class AgencyEmployeeService {
 			result = "F";
 		}else if(1 == agencyEmployeeDao.idCheckCitizen(agencyEmployeeDto)) {
 			logger.debug("시민에서 ID 중복이 발생함");
+			result = "F";
+		}else if(1 == agencyEmployeeDao.idCheckStorageAgencyEmployee(agencyEmployeeDto)) {
+			logger.debug("스토리지 대행업체 직원에서 ID 중복이 발생함");
+			result = "F";
+		}else if(1 == agencyEmployeeDao.idCheckStorageCitizen(agencyEmployeeDto)) {
+			logger.debug("스토리지 시민에서 ID 중복이 발생함");
+			result = "F";
+		}else if(1 == agencyEmployeeDao.idCheckStorageFunctionary(agencyEmployeeDto)) {
+			logger.debug("스토리지 공무원에서 ID 중복이 발생함");
 			result = "F";
 		}else {
 			logger.debug("ID중복이 발생하지 아니함.");

@@ -5,12 +5,13 @@ import java.sql.Date;
 public class AgencyEmployeeDto {
 	private String agencyEmployeeId; //낙찰된 대행업체 직원 id
 	private String agencyEmployeePw; //직원 패스워드
-	private int agencyEmployeeInjeungNum; //낙찰된 대행업체 인증코드	
+	private int agencyEmployeeInjeungNum; //낙찰된 대행업체 인증코드
 	private String agencyName; //대행업체명
 	private String agencyEmployeeName; //직원 이름
 	private String agencyEmployeePhone; //직원 전화번호
 	private String agencyEmployeeEmail; //직원 이메일
 	private Date agencyEmployeeDateJoin; //직원 가입일자
+	
 	public String getAgencyEmployeeId() {
 		return agencyEmployeeId;
 	}
@@ -67,6 +68,4 @@ public class AgencyEmployeeDto {
 				+ ", agencyEmployeeEmail=" + agencyEmployeeEmail + ", agencyEmployeeDateJoin=" + agencyEmployeeDateJoin
 				+ "]";
 	}
-	
-	
 }

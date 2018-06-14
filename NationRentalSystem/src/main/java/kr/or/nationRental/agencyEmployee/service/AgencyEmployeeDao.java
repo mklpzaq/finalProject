@@ -13,7 +13,16 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
-	//deleteAgencyNakchalEmployee
+	public int getAgencyCode(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("getAgencyCode AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"getAgencyCode", agencyEmployeeDto);
+	}
+	
+	public void insertStorageAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("insertStorageAgencyEmployee AgencyEmployeeDao");
+		sqlSession.insert(NS+"insertStorageAgencyEmployee", agencyEmployeeDto);
+	}
+	
 	public int deleteAgencyNakchalEmployee(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("deleteAgencyNakchalEmployee AgencyEmployeeDao");
 		return sqlSession.delete(NS+"deleteAgencyNakchalEmployee", agencyEmployeeDto);
@@ -70,6 +79,19 @@ public class AgencyEmployeeDao {
 	public int idCheckCitizen(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("idCheckCitizen AgencyEmployeeDao");
 		return sqlSession.selectOne(NS+"idCheckCitizen", agencyEmployeeDto);
+	}
+	//
+	public int idCheckStorageAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckStorageAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"idCheckStorageAgencyEmployee", agencyEmployeeDto);
+	}
+	public int idCheckStorageCitizen(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckStorageCitizen AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"idCheckStorageCitizen", agencyEmployeeDto);
+	}
+	public int idCheckStorageFunctionary(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("idCheckStorageFunctionary AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"idCheckStorageFunctionary", agencyEmployeeDto);
 	}
 	
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {

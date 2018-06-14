@@ -59,7 +59,7 @@
 									<label for="boardName" class="col-sm-3 control-label">카테고리</label>
 									<div class="col-sm-9">
 										<select class="form-control" name="">
-											<option>
+											<option >
 												
 											</option>
 										</select>

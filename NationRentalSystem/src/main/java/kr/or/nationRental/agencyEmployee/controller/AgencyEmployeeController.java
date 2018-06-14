@@ -26,6 +26,8 @@ public class AgencyEmployeeController {
 										,HttpSession session) {
 		logger.debug("deleteAgencyEmployee AgencyEmployeeController");
 		logger.debug(agencyEmployeeDto.toString());
+		/* 삭제시 agencyEmployee 정보를 보관해야 하므로 employee정보를 가져온다. */
+		
 		agencyEmployeeService.deleteAgencyEmployee(agencyEmployeeDto, session);
 		
 		return "signUp/leaveMember";

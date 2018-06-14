@@ -4,6 +4,49 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
+	<!-- insertStorageAgencyEmployee -->
+	<select id="getAgencyCode"
+			resultType="Integer">
+		SELECT
+			agen.agency_code
+		FROM
+			agency_nakchal_employee AS nak
+			INNER JOIN
+			agency AS agen
+			ON
+			agen.agency_code = nak.agency_code
+		WHERE
+			agency_employee_id = #{agencyEmployeeId}
+	</select>
+	
+	
+	<insert id="insertStorageAgencyEmployee"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
+		INSERT
+		INTO
+			storage_agency_employee(
+				storage_agency_employee_id
+				,adminagency_code
+				,storage_agency_employee_pw
+				,storage_agency_name
+				,storage_agency_employee_name
+				,storage_agency_employee_phone
+				,storage_agency_employee_email
+				,storage_agency_employee_date_join
+				,storage_agency_employee_date_leave
+			)
+		VALUES(
+			#{agencyEmployeeId}
+			,#{agencyEmployeeInjeungNum}
+			,#{agencyEmployeePw}
+			,#{agencyName}
+			,#{agencyEmployeeName}
+			,#{agencyEmployeePhone}
+			,#{agencyEmployeeEmail}
+			,#{agencyEmployeeDateJoin}
+			,now()
+		)
+	</insert>
 
 	<delete id="deleteAgencyNakchalEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto">
@@ -148,6 +191,43 @@
 		WHERE
 			citizen_id = #{agencyEmployeeId}
 	</select>
+	<!-- @@ -->
+	<select id="idCheckStorageAgencyEmployee"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			storage_agency_employee
+		WHERE
+			storage_agency_employee_id = #{agencyEmployeeId}
+	</select>
+	
+	<select id="idCheckStorageCitizen"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			storage_citizen
+		WHERE
+			storage_citizen_id = #{agencyEmployeeId}
+	</select>
+	
+	<select id="idCheckStorageFunctionary"
+			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			storage_functionary
+		WHERE
+			storage_functionary_id = #{agencyEmployeeId}
+	</select>
+	
+	
+	
+	
 
 	<select id="getAgencyNameForInsert"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
