@@ -57,5 +57,130 @@
   					,#{goodsfacilityIsPossibleRental}
   					,now()) 	
   	</insert>
+  	
+  	<select id="selectGoodsFacilityImage"
+  			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
+  			resultMap="goodsFacility">
+  			SELECT 
+  				gf.goodsfacility_code
+  				,gf.goodsfacility_three_code
+  				,gf.goodsfacility_name
+  				,gf.adminagency_code
+  				,gf.functionary_id
+  				,gff.goodsfacility_file_name
+  				,gff.goodsfacility_file_ext
+  				,gff.goodsfacility_file_type
+  				,gff.goodsfacility_file_size  				
+  			FROM 
+  				goodsfacility as gf
+  			JOIN
+  				goodsfacility_file as gff
+  				using(goodsfacility_code)
+  			WHERE 
+  				goodsfacility_code = #{goodsfacilityCode} 
+  				
+  	
+  	
+  	</select>
+  	
+  	<resultMap type="kr.or.nationRental.goodsFacility.service.GoodsFacilityDao" id="goodsFacility">
+  		<id column="goodsfacility_code" property="goodsfacilityCode"/>
+  		<result column="goodsfacility_three_code" property="goodsfacilityThreeCode"/>
+  		<result column="goodsfacility_name" property="goodsfacilityName"/>
+  		<result column="goodsfacility_purchaseprice" property="goodsfacilityPurchaseprice"/>
+  		<result column="goodsfacility_price_rental" property="goodsfacilityPriceRental"/>
+  		<result column="goodsfacility_text_sangse" property="goodsfacilityTextSangse"/>
+  		<result column="adminagency_code" property="adminagencyCode"/>
+  		<result column="sigungu_name" property="sigunguName"/>
+  		<result column="sido_name" property="sidoName"/>
+  		<result column="eupmyeon_name" property="eupmyeonName"/>
+  		<result column="goodsfacility_address_sangse" property="goodsfacilityAddressSangse"/>
+  		<result column="functionary_id" property="functionaryId"/>
+  		<result column="goodsfacility_classify_goodsfacility" property="goodsfacilityClassifyGoodsfacility"/>
+  		<result column="goodsfacility_classify_donationpurchase" property="goodsfacilityClassifyDonationpurchase"/>
+  		<result column="goodsfacility_is_extra" property="goodsfacilityIsExtra"/>
+  		<result column="goodsfacility_is_possible_delivery" property="goodsfacilityIsPossibleDelivery"/>
+  		<result column="goodsfacility_state_afterservice" property="goodsfacilityStateAfterservice"/>
+  		<result column="goodsfacility_is_possible_rental" property="goodsfacilityIsPossibleRental"/>
+  		<collection ofType="kr.or.nationRental.goodsFacility.service.GoodsFacilityFile" property="goodsFacilityFile">
+  			<id column="goodsfacility_file_name" property="goodsfacilityFileName"/>
+  			<result column="goodsfacility_file_ext" property="goodsfacilityFileExt"/>
+  			<result column="goodsfacility_file_type" property="goodsfacilityFileType"/>
+  			<result column="goodsfacility_file_size" property="goodsfacilityFileSize"/>  		
+  		</collection> 
+  	</resultMap>
+  	
+  	<select id="getGoodsFacilityList"
+  			parameterType="java.util.Map"
+  			resultMap="goodsFacility">  			
+  			SELECT   				
+  				gf.goodsfacility_three_code
+  				,gf.goodsfacility_name
+  				,gf.adminagency_code
+  				,gf.goodsfacility_address_sangse  				
+  				,gf.goodsfacility_is_possible_rental 
+  				,gf.goodsfacility_is_possible_delivery
+  				,gf.goodsfacility_price_rental				
+  				,gff.goodsfacility_file_name
+  				,gff.goodsfacility_file_ext
+  				,gff.goodsfacility_file_type
+  				,gff.goodsfacility_file_size  				
+  			FROM 
+  				goodsfacility as gf
+  			JOIN
+  				goodsfacility_file as gff
+  				using(goodsfacility_code)
+  		
+  		<if test="!keyword.equals('')">
+				<choose>
+					<when test="searchOption.equals('goodsfacilityName')">
+						WHERE goodsfacility_name = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityAddressSangse')">
+						WHERE goodsfacility_address_sangse = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityIsPossibleDelivery')">
+						WHERE goodsfacility_is_possible_delivery = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityIsPossibleRental')">
+						WHERE goodsfacility_is_possible_rental = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityThreeCode')">
+						WHERE goodsfacility_three_code = #{keyword}
+					</when>					
+				</choose>
+			</if>
+				ORDER BY goodsfacility_name DESC
+				LIMIT #{beginRow}, #{pagePerRow}  		  	
+  	</select>
+  	
+  	<select id="totalCountGoodsFacility"
+  			parameterType="java.util.Map"
+  			resultType="Integer">
+  			SELECT
+  				COUNT(*)
+  			FROM
+  				goodsfacility
+			<if test="!keyword.equals('')">
+				<choose>
+					<when test="searchOption.equals('goodsfacilityName')">
+						WHERE goodsfacility_name = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityAddressSangse')">
+						WHERE goodsfacility_address_sangse = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityIsPossibleDelivery')">
+						WHERE goodsfacility_is_possible_delivery = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityIsPossibleRental')">
+						WHERE goodsfacility_is_possible_rental = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityThreeCode')">
+						WHERE goodsfacility_three_code = #{keyword}
+					</when>					
+				</choose>
+			</if>				
+  	</select>  	
+  	
   
   </mapper>

@@ -1,6 +1,7 @@
 package kr.or.nationRental.goodsFacility.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -29,6 +30,22 @@ public class GoodsFacilityDao {
 		
 		int row = sqlSession.insert(NS+"insertGoodsFacility", goodsFacilityDto);
 		return row;				
+	}
+
+	public List<GoodsFacilityDto> getGoodsFacilityList(Map<String, Object> map) {
+		logger.debug("GoodsFacilityDao getGoodsFacilityList");
+		return sqlSession.selectList(NS+"getGoodsFacilityList", map);
+	}
+
+	public int totalCountGoodsFacility(Map<String, Object> map) {
+		logger.debug("GoodsFacilityDao totalCountCitizen");
+		return sqlSession.selectOne(NS+"totalCountGoodsFacility", map);
+	}
+	
+	public GoodsFacilityDto selectGoodsFacilityImage(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityDao selectGoodsFacilityImage : " + goodsFacilityDto.toString());
+		
+		return sqlSession.selectOne(NS+"selectGoodsFacilityImage", goodsFacilityDto);
 	}
 
 }

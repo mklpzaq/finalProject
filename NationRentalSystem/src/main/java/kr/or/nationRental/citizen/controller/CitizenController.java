@@ -30,11 +30,8 @@ public class CitizenController {
 	private static final Logger logger = LoggerFactory.getLogger(CitizenController.class);
 	
 	@RequestMapping(value="/insertCitizen", method=RequestMethod.GET)
-	public String insertCitizen(DistrictDto districDto
-								,Model model) {
-		logger.debug("CitizenController insertCitizen Get : " + "," + districDto.toString()); 
-		Map<String, Object> map = citizenService.selectBoxes(districDto);
-		model.addAttribute("districtList" , map.get("districtList"));		
+	public String insertCitizen() {
+		logger.debug("CitizenController insertCitizen Get : ");		
 				
 		return "citizen/insertCitizenForm";
 	} 

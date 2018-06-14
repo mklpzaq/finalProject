@@ -21,7 +21,7 @@ public class CitizenService {
 	private static final Logger logger = LoggerFactory.getLogger(CitizenService.class);
 	
 
-	public Map<String, Object> selectBoxes(DistrictDto districDto) {
+	/*public Map<String, Object> selectBoxes(DistrictDto districDto) {
 		logger.debug("CitizenService selectBoxes : " + "," + districDto.toString());		
 		
 		List<DistrictDto> districtList = citizenDao.getdistrict();
@@ -31,7 +31,7 @@ public class CitizenService {
 		map.put("districtList", districtList);
 	 
 		return map;
-	}	
+	}	*/
 	
 	public void insertCitizen(CitizenDto citizenDto) {
 		logger.debug("CitizenService insertCitizen : " + citizenDto.toString());

@@ -5,7 +5,7 @@
   
   
  <mapper namespace="kr.or.nationRental.citizen.service.CitizenMapper">
-	<select id="getdistrict"
+	<!-- <select id="getdistrict"
 			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.district.service.DistrictDto"> 
 			
@@ -24,7 +24,7 @@
 			sigungu.sigungu_code = eupmyeon.sigungu_code				
 	
 	</select>
-	
+	 -->
 	
 	
 	<insert id="insertCitizen" 
