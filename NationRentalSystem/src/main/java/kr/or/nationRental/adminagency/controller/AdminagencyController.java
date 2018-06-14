@@ -2,6 +2,8 @@ package kr.or.nationRental.adminagency.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +24,22 @@ public class AdminagencyController {
 	//행정기관 전체 목록 보기 및 페이징
 	@RequestMapping(value="/selectListAdminagency", method=RequestMethod.GET)
 	public String selectListAdminagency(Model model
-								,@RequestParam(value="currentPage", defaultValue="1") int currentPage
-								,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-								,@RequestParam(value="searchOption", defaultValue="search") String searchOption
-								,@RequestParam(value="keyword", defaultValue="") String keyword) {
-		logger.debug("selectListAdminagency searchSelect : " + searchOption);
-		logger.debug("selectListAdminagency  searchWord : " + keyword);
+										,HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchOption", defaultValue="all") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("selectListAdminagency - currentPage : " + currentPage);
+		logger.debug("selectListAdminagency - pagePerRow  : " + pagePerRow);
+		logger.debug("selectListAdminagency - searchSelect  : " + searchOption);
+		logger.debug("selectListAdminagencyy - keyword  : " + keyword);
 		
 		Map<String, Object> map = adminagencyService.selectListAdminagency(currentPage, pagePerRow, searchOption, keyword);
-		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));
-		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
 		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", map.get("startPage"));
+		model.addAttribute("endPage", map.get("endPage"));
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", searchOption);
 		model.addAttribute("keyword", keyword);
@@ -46,7 +51,6 @@ public class AdminagencyController {
 		logger.debug("pagePerRow : "+ pagePerRow);
 		logger.debug("searchOption : " + searchOption);
 		logger.debug("keyword : " + keyword);
-		
 		
 		return "adminagency/selectListAdminagency";
 	}

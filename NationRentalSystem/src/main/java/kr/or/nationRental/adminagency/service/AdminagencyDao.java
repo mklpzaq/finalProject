@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryDto;
-
 
 @Repository
 public class AdminagencyDao {
@@ -20,6 +18,7 @@ public class AdminagencyDao {
 
 	//행정기관 전체 목록  페이징
 	public List<AdminagencyDto> selectListAdminagency(Map<String, Object> map) {
+		logger.debug("selectListAdminagency - map : " + map.toString());
 		return sqlSession.selectList(NS+"selectListAdminagency", map);
 	}
 

@@ -47,8 +47,8 @@
 		</script>
 	</head>
 	<body>
+		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftGoodsfacilityCategory/leftGoodsfacilityCategoryInfo.jsp"/>
@@ -78,7 +78,37 @@
 									</select>개씩 보기
 								</div>
 							</div>
-							<hr/>			
+							<hr/>
+							
+							<!-- Begin Search -->
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-8">
+										
+										<div class="input-group">
+											<div id="selectbox" class="input-group-btn">
+												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
+												</button>
+												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+													<li><a href="#" >all</a></li>
+													<li><a href="#" >goodsfacility_three_code</a></li>
+													<li><a href="#" >1차 물품/시설</a></li>
+													<li><a href="#" >2차 물품/시설</a></li>
+													<li><a href="#" >3차 물품/시설</a></li>
+												</ul>
+											</div>
+											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
+											<span class="input-group-btn">
+												<button id="searchButton" class="btn btn-default" type="button">검색</button>
+											</span>
+										</div>
+									
+									</div>
+									<div class="col-sm-2"></div>
+								</div>
+								<!-- End Search -->
+										
 							<table class="table table-striped">
 								<thead>
 									<tr>

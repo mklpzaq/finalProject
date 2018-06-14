@@ -16,44 +16,46 @@ public class AdminagencyService {
 	
 	//행정기관 전체목록 보기 및 페이징
 	public Map<String, Object> selectListAdminagency(int currentPage, int pagePerRow, String searchOption, String keyword) {
-		logger.debug("selectListAdminagency :");
-		int beginRow = (currentPage-1)*pagePerRow;
+		logger.debug("selectListAdminagency - currentPage : " + currentPage);
+		logger.debug("selectListAdminagency - pagePerRow  : " + pagePerRow);
+		logger.debug("selectListAdminagency - searchOption  : " + searchOption);
+		logger.debug("selectListAdminagency - keyword  : " + keyword);
 		
+		int beginRow = (currentPage-1)*pagePerRow; 
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("beginRow", beginRow);
 		map.put("pagePerRow", pagePerRow);
-		logger.debug("currentPage :" + currentPage);
-		logger.debug("beginRow :" + beginRow);
-		logger.debug("pagePerRow :" + pagePerRow);
-		
 		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
-		logger.debug("searchOption :" + searchOption);
-		logger.debug("keyword :" + keyword);
+		map.put("keyword", keyword);/*
+		map.put("loginMemberId", loginMemberId);*/
 		
 		List<AdminagencyDto> list = adminagencyDao.selectListAdminagency(map);
-		logger.debug("List<AdminagencyDao> : " + list);
-		
+		logger.debug("selectListAdminagency - list  : " + list.toString());
 		int total = adminagencyDao.totalCountAdminagency(map);
-		
+		logger.debug("selectListAdminagency - total  : " + total);
+			
 		int lastPage = 0;
-		if(0 == total) {
-			lastPage = 1;
-		}else if(total%pagePerRow == 0) {
+		if(total%pagePerRow == 0) {
 			lastPage = total/pagePerRow;
 		}else {
 			lastPage = total/pagePerRow + 1;
 		}
-		/* 페이지가 5개 단위씩 보이게 하는 계산식 */
-		int temp = (currentPage - 1)/5;
-		int beginPageNumForCurrentPage = temp * 5 + 1;
 		
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("list", list);
-		returnMap.put("lastPage", lastPage);
-		returnMap.put("beginPageNumForCurrentPage", beginPageNumForCurrentPage);
+		int pageView = 5;
+		int startPage = ((currentPage-1)/5)*5+1; 
+		int endPage = startPage + pageView -1; 
+		if(endPage>lastPage) {
+			endPage=lastPage;
+		}
 		
-		return returnMap;		
+		Map<String, Object> returnmap = new HashMap<String, Object>();
+		returnmap.put("list", list);
+		returnmap.put("lastPage", lastPage);
+		returnmap.put("startPage", startPage);
+		returnmap.put("endPage", endPage);
+		
+		return returnmap;
 	}
 	
 	//행정기관 신규 등록하기

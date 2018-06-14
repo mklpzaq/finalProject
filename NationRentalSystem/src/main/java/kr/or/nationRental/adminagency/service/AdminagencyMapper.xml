@@ -16,53 +16,40 @@
 			, adminagency_address_sangse as adminagencyAddressSangse
 			, adminagency_is_rental_ban as adminagencyIsRentalBan
 		FROM adminagency
-		<if test="!keyword.equals('')">
-			<choose>
-				<when test="searchOption.equals('adminagencyCode')">
-					WHERE adminagency_code = #{keyword}
-				</when>
-				<when test="searchOption.equals('adminagencyName')">
-					WHERE adminagency_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('sidoName')">
-					WHERE sido_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('sigunguName')">
-					WHERE  sigungu_name = #{keyword}
-				</when>
-					<when test="searchOption.equals('eupmyeonName')">
-					WHERE  eupmyeon_name = #{keyword}
-				</when>
-			</choose>
-		</if>
+		<choose>	      
+	        <when test="searchOption == 'all'">    
+	        	where adminagency_code like CONCAT('%', #{keyword}, '%')
+	        	or adminagency_name like CONCAT('%', #{keyword}, '%')
+	        	or sido_name like CONCAT('%', #{keyword}, '%')
+	        	or sigungu_name like CONCAT('%', #{keyword}, '%')
+	        	or eupmyeon_name like CONCAT('%', #{keyword}, '%')
+	        	or adminagency_address_sangse like CONCAT('%', #{keyword}, '%')		        	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
 		ORDER BY adminagency_name ASC
 		LIMIT #{beginRow}, #{pagePerRow}	
 	</select>
 	
 	<select id="totalCountAdminagency" parameterType="java.util.Map" resultType="Integer">
-			SELECT 
-				COUNT(*)
-			FROM
-				adminagency
-			<if test="!keyword.equals('')">
-			<choose>
-				<when test="searchOption.equals('adminagencyCode')">
-					WHERE adminagency_code = #{keyword}
-				</when>
-				<when test="searchOption.equals('adminagencyName')">
-					WHERE adminagency_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('sidoName')">
-					WHERE sido_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('sigunguName')">
-					WHERE sigungu_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('eupmyeonName')">
-					WHERE  eupmyeon_name = #{keyword}
-				</when>
-			</choose>
-		</if>
+		SELECT 
+			COUNT(*)
+		FROM adminagency
+		<choose>	      
+	        <when test="searchOption == 'all'">    
+	        	where adminagency_code like CONCAT('%', #{keyword}, '%')
+	        	or adminagency_name like CONCAT('%', #{keyword}, '%')
+	        	or sido_name like CONCAT('%', #{keyword}, '%')
+	        	or sigungu_name like CONCAT('%', #{keyword}, '%')
+	        	or eupmyeon_name like CONCAT('%', #{keyword}, '%')
+	        	or adminagency_address_sangse like CONCAT('%', #{keyword}, '%')		        	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+        </choose>
 	</select>
 	
 	<!-- 행정기관 신규등록 -->

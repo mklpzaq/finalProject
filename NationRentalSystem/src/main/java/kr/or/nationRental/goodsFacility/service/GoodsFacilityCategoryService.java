@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.nationRental.adminagency.service.AdminagencyDto;
 import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.district.service.DistrictDto;
@@ -18,54 +19,48 @@ public class GoodsFacilityCategoryService {
 	@Autowired GoodsFacilityCategoryDao goodsFacilityCategoryDao;
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityCategoryService.class);
 	
-	/*
-	//물품시설 카테고리 전체목록 보기
-	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory() {
-		logger.debug("---selectListGoodsFacilityCategory");
-		return goodsFacilityCategoryDao.selectListGoodsFacilityCategory();
-	}
-	*/
-	
 	//물품시설 카테고리 전체목록 보기 및 페이징
 	public Map<String, Object> selectListGoodsFacilityCategory(int currentPage, int pagePerRow, String searchOption, String keyword) {
-		logger.debug("selectListGoodsFacilityCategory :");
-		int beginRow = (currentPage-1)*pagePerRow;
+		logger.debug("selectListGoodsFacilityCategory - currentPage : " + currentPage);
+		logger.debug("selectListGoodsFacilityCategory - pagePerRow  : " + pagePerRow);
+		logger.debug("selectListGoodsFacilityCategory - searchOption  : " + searchOption);
+		logger.debug("selectListGoodsFacilityCategory - keyword  : " + keyword);
 		
+		int beginRow = (currentPage-1)*pagePerRow; 
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("beginRow", beginRow);
 		map.put("pagePerRow", pagePerRow);
-		logger.debug("currentPage :" + currentPage);
-		logger.debug("beginRow :" + beginRow);
-		logger.debug("pagePerRow :" + pagePerRow);
-		
 		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
-		logger.debug("searchOption :" + searchOption);
-		logger.debug("keyword :" + keyword);
+		map.put("keyword", keyword);/*
+		map.put("loginMemberId", loginMemberId);*/
 		
 		List<GoodsFacilityCategoryDto> list = goodsFacilityCategoryDao.selectListGoodsFacilityCategory(map);
-		logger.debug("List<GoodsFacilityCategoryDto> : " + list);
-		
+		logger.debug("selectListGoodsFacilityCategory - list  : " + list.toString());
 		int total = goodsFacilityCategoryDao.totalCountGoodsFacilityCategory(map);
-		
+		logger.debug("selectListGoodsFacilityCategory - total  : " + total);
+			
 		int lastPage = 0;
-		if(0 == total) {
-			lastPage = 1;
-		}else if(total%pagePerRow == 0) {
+		if(total%pagePerRow == 0) {
 			lastPage = total/pagePerRow;
 		}else {
 			lastPage = total/pagePerRow + 1;
 		}
-		/* 페이지가 5개 단위씩 보이게 하는 계산식 */
-		int temp = (currentPage - 1)/5;
-		int beginPageNumForCurrentPage = temp * 5 + 1;
 		
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("list", list);
-		returnMap.put("lastPage", lastPage);
-		returnMap.put("beginPageNumForCurrentPage", beginPageNumForCurrentPage);
+		int pageView = 5;
+		int startPage = ((currentPage-1)/5)*5+1; 
+		int endPage = startPage + pageView -1; 
+		if(endPage>lastPage) {
+			endPage=lastPage;
+		}
 		
-		return returnMap;		
+		Map<String, Object> returnmap = new HashMap<String, Object>();
+		returnmap.put("list", list);
+		returnmap.put("lastPage", lastPage);
+		returnmap.put("startPage", startPage);
+		returnmap.put("endPage", endPage);
+		
+		return returnmap;
 	}
 	
 	//물품시설 1차 카테고리 목록 보기

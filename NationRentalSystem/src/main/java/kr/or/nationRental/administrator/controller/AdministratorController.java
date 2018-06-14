@@ -77,7 +77,7 @@ public class AdministratorController {
 	public String updateAdministrator(AdministratorDto administratorDto) {
 		logger.info("---updateAdministrator POST" + administratorDto);
 		int row = administratorService.updateAdministrator(administratorDto);
-		return "redirect:/selectListAdministrator";  // 나중에 경로 바꾸기
+		return "redirect:/selectListAdministrator";
 	}
 	
 	//관리자 권한 삭제

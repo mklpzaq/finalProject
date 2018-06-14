@@ -13,17 +13,18 @@
 				var keyword;
 				
 				/* 드롭다운 박스 클릭시 열고 닫고 이벤트 */
+				
 				$('#selectButton').click(function(){
-					if($('#selectButton').parent().hasClass('open')){
-						$('#selectButton').parent().removeClass('open');
+					if($('#selectbox').hasClass('open')){
+						$('#selectbox').removeClass('open');
 					}else{
-						$('#selectButton').parent().addClass('open');
+						$('#selectbox').addClass('open');
 					}
 				});
 				
 				/* 드롭메뉴 클릭했을때 글자 바꾸기와 드롭메뉴 닫기 */
 				$('#dropDownMenu > li').click(function(){
-					/* searchButton을 누르면 searchWord변수의 값을 get방식으로 getBoardListController로 검색어와 함께 넘길 것이다.
+					/* searchButton을 누르면 keyword변수의 값을 get방식으로 getBoardListController로 검색어와 함께 넘길 것이다.
 					*  클릭했을때 선택한 select내용의 값을 #selectButtonText에 넣어준다.
 					*/
 					$('#selectButtonText, #moniterSearchOption').text($(this).text());
@@ -31,20 +32,20 @@
 				});
 				
 				$('#selectPagePerRow').change(function() {
-					/* searchSelect = $('#monitorSearchSelect').text();
-					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListAdminagency?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
+					/* searchOption = $('#moniterSearchOption').text();
+					keyword = $('#moniterKeyword').val(); */
+					$(location).attr('href', './selectListAdminagency?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
 				});
 				
-				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
+				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
-					$(location).attr('href', './selectListAdminagency?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
+					$(location).attr('href', './selectListAdminagency?=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
 			});
-		</script>
+		</script>		
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
@@ -85,20 +86,21 @@
 								<div class="row">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
+										
 										<div class="input-group">
-											<div class="input-group-btn">
+											<div id="selectbox" class="input-group-btn">
 												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-													<li><a href="#">기관 코드 </a></li>
-													<li><a href="#">기관 명 </a></li>
-													<li><a href="#">시도</a></li>
-													<li><a href="#">시군구</a></li>
+													<li><a href="#" >all</a></li>
+													<li><a href="#" >adminagency_code</a></li>
+													<li><a href="#" >기관 이름</a></li>
+													<li><a href="#" >시도</a></li>
+													<li><a href="#" >시군구</a></li>
 													<li><a href="#">읍면동</a></li>
-													<li><a href="#">상세주소</a></li>
 												</ul>
-											</div>											
+											</div>
 											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
 											<span class="input-group-btn">
 												<button id="searchButton" class="btn btn-default" type="button">검색</button>
@@ -113,8 +115,8 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<td width="10%">지자체 코드</td>
-										<td width="20%">지자체 명</td>
+										<td width="10%">기관 코드</td>
+										<td width="20%">기관 이름</td>
 										<td width="10%">시도</td>
 										<td width="15%">시군구</td>
 										<td width="10%">읍면동</td>
@@ -138,6 +140,7 @@
 									</c:forEach>	
 								</tbody>
 							</table>
+							<!-- 페이징 -->
 							<nav>
 								<ul class="pagination">
 									<li>
@@ -153,15 +156,15 @@
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListAdminagencyy?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListAdminagency?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<c:choose>
-										<c:when test="${lastPage > beginPageNumForCurrentPage + 4}">
-											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
+										<c:when test="${lastPage > startPage + 4}">
+											<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
 														<li class="active"><a href="${pageContext.request.contextPath}/selectListAdminagency?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
@@ -173,7 +176,7 @@
 											</c:forEach>
 										</c:when>
 										<c:otherwise>
-											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
+											<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
 														<li class="active"><a href="${pageContext.request.contextPath}/selectListAdminagency?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
@@ -206,6 +209,7 @@
 									</li>
 								</ul>
 							</nav>
+							<!-- 페이징 끝 -->
 						</div>
 					</div>		
 					<!-- End Content -->

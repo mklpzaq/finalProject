@@ -3,6 +3,8 @@ package kr.or.nationRental.goodsFacility.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +24,25 @@ public class GoodsFacilityCategoryController {
 	@Autowired GoodsFacilityCategoryService goodsFacilityCategoryService;
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityCategoryController.class);
 
-	/*//물품시설 카테고리 전체목록 보기
-	@RequestMapping(value="/selectListGoodsFacilityCategory", method=RequestMethod.GET)
-	public String selectListGoodsFacilityCategory(Model model, GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
-		List<GoodsFacilityCategoryDto> goodsFacilityCategoryDtoList = goodsFacilityCategoryService.selectListGoodsFacilityCategory();
-		model.addAttribute("goodsFacilityCategoryDtoList", goodsFacilityCategoryDtoList);
-		logger.debug("---goodsFacilityCategoryDtoList" + goodsFacilityCategoryDtoList);
-		return "goodsfacilityCategory/selectListGoodsFacility";
-	}*/
-	
 	//물품시설 카테고리 전체 목록 보기 및 페이징
 	@RequestMapping(value="/selectListGoodsFacilityCategory", method=RequestMethod.GET)
 	public String selectListGoodsFacilityCategory(Model model
-								,@RequestParam(value="currentPage", defaultValue="1") int currentPage
-								,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-								,@RequestParam(value="searchOption", defaultValue="search") String searchOption
-								,@RequestParam(value="keyword", defaultValue="") String keyword) {
-		logger.debug("selectListGoodsFacilityCategory searchSelect : " + searchOption);
-		logger.debug("selectListGoodsFacilityCategory  searchWord : " + keyword);
+										,HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchOption", defaultValue="all") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("selectListGoodsFacilityCategory - currentPage : " + currentPage);
+		logger.debug("selectListGoodsFacilityCategory - pagePerRow  : " + pagePerRow);
+		logger.debug("selectListGoodsFacilityCategory - searchSelect  : " + searchOption);
+		logger.debug("selectListGoodsFacilityCategory - keyword  : " + keyword);
 		
 		Map<String, Object> map = goodsFacilityCategoryService.selectListGoodsFacilityCategory(currentPage, pagePerRow, searchOption, keyword);
-		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));
-		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
 		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", map.get("startPage"));
+		model.addAttribute("endPage", map.get("endPage"));
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", searchOption);
 		model.addAttribute("keyword", keyword);
@@ -58,7 +54,6 @@ public class GoodsFacilityCategoryController {
 		logger.debug("pagePerRow : "+ pagePerRow);
 		logger.debug("searchOption : " + searchOption);
 		logger.debug("keyword : " + keyword);
-		
 		
 		return "goodsfacilityCategory/selectListGoodsFacility";
 	}
