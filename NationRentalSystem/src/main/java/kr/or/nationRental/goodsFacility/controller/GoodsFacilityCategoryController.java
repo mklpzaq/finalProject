@@ -31,7 +31,7 @@ public class GoodsFacilityCategoryController {
 		return "goodsfacilityCategory/selectListGoodsFacility";
 	}*/
 	
-	
+	//물품시설 카테고리 전체 목록 보기 및 페이징
 	@RequestMapping(value="/selectListGoodsFacilityCategory", method=RequestMethod.GET)
 	public String selectListGoodsFacilityCategory(Model model
 								,@RequestParam(value="currentPage", defaultValue="1") int currentPage
