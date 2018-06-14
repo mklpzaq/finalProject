@@ -5,7 +5,7 @@
  
 <mapper namespace="kr.or.nationRental.adminagency.service.AdminagencyMapper">
 	
-	<!-- 물품시설 카테고리 전체목록보기 및 페이징 -->
+	<!-- 행정기관 전체목록보기 및 페이징 -->
 	<select id="selectListAdminagency" parameterType="java.util.Map" resultType="kr.or.nationRental.adminagency.service.AdminagencyDto">
 		SELECT 
 			adminagency_code as adminagencyCode
@@ -65,5 +65,27 @@
 		</if>
 	</select>
 	
+	<!-- 행정기관 신규등록 -->
+	<insert id="insertAdminagency" parameterType="kr.or.nationRental.adminagency.service.AdminagencyDto">
+	INSERT INTO adminagency (
+		adminagency_code
+		, adminagency_name
+		, sido_name
+		, sigungu_name
+		, eupmyeon_name
+		, adminagency_address_sangse
+		, adminagency_is_rental_ban
+		, adminagency_date_registration
+	) VALUES (
+		#{adminagencyCode}
+		, #{adminagencyName}
+		, #{sidoName}
+		, #{sigunguName}
+		, #{eupmyeonName}
+		, #{adminagencyAddressSangse}
+		, #{adminagencyIsRentalBan}
+		, NOW()
+	)
+	</insert>
 	
 </mapper>

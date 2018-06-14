@@ -36,7 +36,7 @@ public class GoodsFacilityCategoryController {
 	public String selectListGoodsFacilityCategory(Model model
 								,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 								,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-								,@RequestParam(value="searchOption", defaultValue="citizenId") String searchOption
+								,@RequestParam(value="searchOption", defaultValue="search") String searchOption
 								,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		logger.debug("selectListGoodsFacilityCategory searchSelect : " + searchOption);
 		logger.debug("selectListGoodsFacilityCategory  searchWord : " + keyword);

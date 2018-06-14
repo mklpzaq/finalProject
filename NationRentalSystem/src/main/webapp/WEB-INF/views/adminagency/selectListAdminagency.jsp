@@ -51,10 +51,11 @@
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="/WEB-INF/views/module/leftGoodsfacilityCategory/leftGoodsfacilityCategoryInfo.jsp"/>
+					<jsp:include page="/WEB-INF/views/module/leftAdminagency/leftAdminagencyInfo.jsp"/>
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
+					<br>
 					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
@@ -78,7 +79,37 @@
 									</select>개씩 보기
 								</div>
 							</div>
-							<hr/>			
+							<hr/>
+							
+							<!-- Begin Search -->
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-8">
+										<div class="input-group">
+											<div class="input-group-btn">
+												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
+												</button>
+												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+													<li><a href="#">기관 코드 </a></li>
+													<li><a href="#">기관 명 </a></li>
+													<li><a href="#">시도</a></li>
+													<li><a href="#">시군구</a></li>
+													<li><a href="#">읍면동</a></li>
+													<li><a href="#">상세주소</a></li>
+												</ul>
+											</div>											
+											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
+											<span class="input-group-btn">
+												<button id="searchButton" class="btn btn-default" type="button">검색</button>
+											</span>
+										</div>
+									
+									</div>
+									<div class="col-sm-2"></div>
+								</div>
+								<!-- End Search -->
+										
 							<table class="table table-striped">
 								<thead>
 									<tr>

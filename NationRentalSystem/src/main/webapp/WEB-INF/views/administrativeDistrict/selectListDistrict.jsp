@@ -17,8 +17,10 @@
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
-					<div class="text-center">
-						<h1>행정구역 등록</h1>
+					<br>
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+						<h3>행정구역 등록</h3>
 					</div>
 					<table class="table table-striped">
 						<thead>
