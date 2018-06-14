@@ -20,16 +20,6 @@ public class BoardController {
 	private BoardService boardService;
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
-	/*@RequestMapping(value="/selectListBoard", method=RequestMethod.GET)
-	public String selectListBoard(Model model) {
-		logger.debug("GET viewAgencyEmployeeInfo AgencyEmployeeController");
-		List<BoardDto> list = boardService.selectListBoard();
-		logger.debug(list.toString());
-		model.addAttribute("boardList", list);
-		
-		return "board/selectListBoard";
-	}*/
-	
 	@RequestMapping(value="/selectListBoard", method=RequestMethod.GET)
 	public String selectListBoard(Model model
 									,HttpSession session
