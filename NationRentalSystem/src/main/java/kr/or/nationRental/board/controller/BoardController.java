@@ -1,5 +1,7 @@
 package kr.or.nationRental.board.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,13 +14,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.or.nationRental.board.service.BoardCategoryDto;
 import kr.or.nationRental.board.service.BoardService;
+import kr.or.nationRental.login.service.MemberDto;
 
 @Controller
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	
+	@RequestMapping(value="/insertBoard", method=RequestMethod.GET)
+	public String insertBoardForm(Model model
+								,MemberDto memberDto) {
+		logger.debug("GET insertBoardForm BoardController");
+		logger.debug(memberDto.toString());
+		/* 아이디가 안들어오는 경우는 GUEST계정일 경우이다. */
+		if(memberDto.getMemberId().equals("")) {
+			memberDto = boardService.setGuestId(memberDto);
+		}
+		
+		List<BoardCategoryDto> boardCategoryList = boardService.getBoardCategory();
+		logger.debug("★★★★★★★★★★★★★★★★★★★");
+		logger.debug(boardCategoryList.toString());
+		
+		model.addAttribute("memberId", memberDto.getMemberId());
+		model.addAttribute("boardCategoryList", boardCategoryList);
+		return "board/insertBoardForm";
+	}
 	
 	@RequestMapping(value="/selectListBoard", method=RequestMethod.GET)
 	public String selectListBoard(Model model

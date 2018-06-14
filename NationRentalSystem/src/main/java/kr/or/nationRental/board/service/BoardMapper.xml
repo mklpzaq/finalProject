@@ -5,6 +5,15 @@
   
   <mapper namespace="kr.or.nationRental.board.service.BoardMapper">
   	
+  	<select id="getBoardCategory"
+  			resultType="kr.or.nationRental.board.service.BoardCategoryDto">
+  		SELECT
+  			board_category_code AS boardCategoryCode
+  			,board_category_name AS boardCategoryName
+  		FROM
+  			board_category
+  	</select>
+  	
   	<select id="totalCountBoard"
 			parameterType="java.util.Map"
 			resultType="Integer">

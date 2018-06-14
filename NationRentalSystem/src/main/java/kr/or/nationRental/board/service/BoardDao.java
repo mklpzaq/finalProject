@@ -16,10 +16,10 @@ public class BoardDao {
 	private static final Logger logger = LoggerFactory.getLogger(BoardDao.class);
 	final String NS = "kr.or.nationRental.board.service.BoardMapper.";
 	
-	/*public List<BoardDto> selectListBoard(){
-		logger.debug("selectListBoard BoardDao");
-		return sqlSession.selectList(NS+"selectListBoard");
-	}*/
+	public List<BoardCategoryDto> getBoardCategory(){
+		logger.debug("getBoardCategory BoardDao");
+		return sqlSession.selectList(NS+"getBoardCategory");
+	}
 	
 	public int totalCountBoard(Map<String, Object> map) {
 		logger.debug("totalCountBoard BoardDao");
