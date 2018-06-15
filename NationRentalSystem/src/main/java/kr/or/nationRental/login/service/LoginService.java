@@ -48,6 +48,9 @@ public class LoginService {
 			logger.debug("대행업체 직원 로그인 성공");
 			memberDto = loginDao.selectOneAgencyEmployeeById(memberDto);
 			memberDto.setMemberLevel("직원");
+			String agencyName = loginDao.getAgencyEmployeeAgencyName(memberDto);
+			memberDto.setAgencyName(agencyName);
+			logger.debug("★★★★★★★★★★★★★★★★★★");
 			logger.debug(memberDto.toString());
 			
 			session.setAttribute("member", memberDto);

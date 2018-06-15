@@ -13,6 +13,11 @@ public class LoginDao {
 	private static final Logger logger = LoggerFactory.getLogger(LoginDao.class);
 	final String NS = "kr.or.nationRental.login.service.LoginMapper.";
 	
+	public String getAgencyEmployeeAgencyName(MemberDto memberDto) {
+		logger.debug("getAgencyEmployeeAgencyName LoginDao");
+		return sqlSession.selectOne("getAgencyEmployeeAgencyName", memberDto);
+	}
+	
 	public int loginCheckAdministrator(MemberDto memberDto) {
 		logger.debug("loginCheckAdministrator LoginDao");
 		int result = sqlSession.selectOne(NS+"loginCheckAdministrator", memberDto);

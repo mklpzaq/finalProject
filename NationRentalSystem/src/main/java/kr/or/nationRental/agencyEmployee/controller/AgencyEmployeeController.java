@@ -35,6 +35,7 @@ public class AgencyEmployeeController {
 									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListAgencyEmployee AgencyEmployeeController");
 		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("★★★★★★★★★★★agencyName이 들어왔는가?★★★★★★★★★★★★★★★★★★★★");
 		logger.debug("searchWord : " + searchWord);
 		logger.debug(agencyEmployeeDto.toString());
 		

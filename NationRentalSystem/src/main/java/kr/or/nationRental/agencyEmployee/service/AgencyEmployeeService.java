@@ -50,7 +50,6 @@ public class AgencyEmployeeService {
 		
 		/* 현재 로그인한 대행업체 직원의 업체명 정보를 가져와야 한다. */
 		String agencyName = agencyEmployeeDao.getAgencyName(agencyEmployeeDto);
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug("agencyName : " + agencyName);
 		map.put("agencyName", agencyName);
 		
@@ -98,7 +97,6 @@ public class AgencyEmployeeService {
 		/* begin 탈퇴하기전 1년 보관 스토리지 추가 */
 		agencyEmployeeDto.setAgencyEmployeeInjeungNum(agencyEmployeeDao.getAgencyCode(agencyEmployeeDto));
 		agencyEmployeeDto.setAgencyEmployeeName(agencyEmployeeDao.getAgencyName(agencyEmployeeDto));
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(agencyEmployeeDto.toString());
 		agencyEmployeeDao.insertStorageAgencyEmployee(agencyEmployeeDto);
 		/* end 탈퇴하기전 1년 보관 스토리지 추가 */

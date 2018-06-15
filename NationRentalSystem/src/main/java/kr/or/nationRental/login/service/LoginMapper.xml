@@ -5,6 +5,19 @@
  
 <mapper namespace="kr.or.nationRental.login.service.LoginMapper">
 
+	<select id="getAgencyEmployeeAgencyName"
+			parameterType="kr.or.nationRental.login.service.MemberDto"
+			resultType="String">
+		SELECT
+			agency_name
+		FROM
+			agency_employee
+		WHERE
+			agency_employee_id = #{memberId}		
+		
+	</select>
+
+
 	<select id="loginCheckAdministrator"
 			parameterType="kr.or.nationRental.login.service.MemberDto"
 			resultType="Integer">
