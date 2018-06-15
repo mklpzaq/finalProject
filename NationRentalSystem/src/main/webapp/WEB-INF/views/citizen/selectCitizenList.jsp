@@ -148,26 +148,11 @@
 											<td width="10%">이메일</td>										
 										</tr>
 									</thead>
-									
-									<table border="1">
-								        <c:forEach items="${userlist}" var="data" varStatus="loop">
-								            <tr>
-								                <td><input type="checkbox" name="delete_user_ids" value="${data.user_id}"/></td>
-								                <td><a href="<c:url value="/edit_user.iot"/>?user_id=${data.user_id}">${data.user_id}</a></td>
-								                <td>${data.password}</td>
-								                <td>${data.name}</td>
-								                <td>${data.nickname}</td>
-								            </tr>
-								        </c:forEach>
-								    </table>
-
-
 									<tbody>									
 											<c:forEach var="citizenDto" items="${list}">
 												<tbody>
 													<tr>
 														<th><input type="checkbox" name="deleteCheckbox" value="${citizenDto.citizenId}"></th>
-														<td><a href="<c:url value="/edit_user.iot"/>?user_id=${data.user_id}">${data.user_id}</a></td>
 														<th>${citizenDto.citizenId}</th>
 														<th>${citizenDto.citizenPw}</th>
 														<td>${citizenDto.citizenName}</td>
