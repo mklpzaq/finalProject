@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper">
+	
+	
+	<select id="selectListReturnGoodsfacilityInfo"
+			resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
+		SELECT
+			return_goodsfacility_info_code AS returGoodsfacilityInfoCode
+			,goodsfacility_rental_code AS goodsfacilityRentalCode
+			,goodsfacility_code AS goodsfacilityCode
+			,classify_goodsfacility AS classifyGoodsfacility
+			,citizen_id AS citizenId
+			,is_requested_to_return_as_delivery AS isRequestedToReturnAsDelivery
+			,overdue_days AS overdueDays
+			,adminagency_code AS adminagencyCode
+			,functionary_id AS functionaryId
+			,state_goods_code AS stateGoodsCode
+			,date_return_check AS dateReturnCheck
+		FROM
+			return_goodsfacility_info
+		ORDER BY return_goodsfacility_info_code DESC
+	</select>
+	
+	
+	
+	
+</mapper>

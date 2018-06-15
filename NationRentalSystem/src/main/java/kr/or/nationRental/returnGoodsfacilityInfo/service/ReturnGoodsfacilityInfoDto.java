@@ -8,7 +8,7 @@ public class ReturnGoodsfacilityInfoDto {
 	private String citizenId;
 	private String isRequestedToReturnAsDelivery;
 	private int overdueDays;
-	private int adminagencycode;
+	private int adminagencyCode;
 	private String functionaryId;
 	private int stateGoodsCode;
 	private String dateReturnCheck;
@@ -55,11 +55,11 @@ public class ReturnGoodsfacilityInfoDto {
 	public void setOverdueDays(int overdueDays) {
 		this.overdueDays = overdueDays;
 	}
-	public int getAdminagencycode() {
-		return adminagencycode;
+	public int getAdminagencyCode() {
+		return adminagencyCode;
 	}
-	public void setAdminagencycode(int adminagencycode) {
-		this.adminagencycode = adminagencycode;
+	public void setAdminagencyCode(int adminagencyCode) {
+		this.adminagencyCode = adminagencyCode;
 	}
 	public String getFunctionaryId() {
 		return functionaryId;
@@ -85,7 +85,7 @@ public class ReturnGoodsfacilityInfoDto {
 				+ ", goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", goodsfacilityCode=" + goodsfacilityCode
 				+ ", classifyGoodsfacility=" + classifyGoodsfacility + ", citizenId=" + citizenId
 				+ ", isRequestedToReturnAsDelivery=" + isRequestedToReturnAsDelivery + ", overdueDays=" + overdueDays
-				+ ", adminagencycode=" + adminagencycode + ", functionaryId=" + functionaryId + ", stateGoodsCode="
+				+ ", adminagencyCode=" + adminagencyCode + ", functionaryId=" + functionaryId + ", stateGoodsCode="
 				+ stateGoodsCode + ", dateReturnCheck=" + dateReturnCheck + "]";
 	}
 }
