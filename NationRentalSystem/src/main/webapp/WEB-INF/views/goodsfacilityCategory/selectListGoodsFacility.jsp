@@ -92,7 +92,7 @@
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 													<li><a href="#" >all</a></li>
-													<li><a href="#" >goodsfacilityThreeCode</a></li>
+													<li><a href="#" >goodsfacility_three_code</a></li>
 													<li><a href="#" >goodsfacility_one_name</a></li>
 													<li><a href="#" >goodsfacility_two_name</a></li>
 													<li><a href="#" >goodsfacility_three_name</a></li>
@@ -131,6 +131,7 @@
 									</c:forEach>	
 								</tbody>
 							</table>
+							<!-- 페이징 -->
 							<nav>
 								<ul class="pagination">
 									<li>
@@ -153,8 +154,8 @@
 										</c:choose>
 									</li>
 									<c:choose>
-										<c:when test="${lastPage > beginPageNumForCurrentPage + 4}">
-											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
+										<c:when test="${lastPage > startPage + 4}">
+											<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
 														<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
@@ -166,7 +167,7 @@
 											</c:forEach>
 										</c:when>
 										<c:otherwise>
-											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
+											<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
 														<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
@@ -199,6 +200,7 @@
 									</li>
 								</ul>
 							</nav>
+							<!-- 페이징 끝 -->
 						</div>
 					</div>		
 					<!-- End Content -->

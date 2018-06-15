@@ -33,14 +33,14 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListGoodsFacilityCategory?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
+					$(location).attr('href', './selectListGoodsFacilityCategoryOne?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
-					$(location).attr('href', './selectListGoodsFacilityCategory?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
+					$(location).attr('href', './selectListGoodsFacilityCategoryOne?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
 			});
@@ -55,31 +55,52 @@
 				</div>
 					<div class="col-sm-8"><br>
 						<!-- Begin Content -->
-						<div class="panel panel-default">
-							<div class="panel-body text-center">
-								<div class="text-center">
-									<h1>1차 카테고리 목록</h1>
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+							<div class="row">
+								<div class="col-md-4">
+									<strong>${currentPage} / ${lastPage} Page</strong><br/>
+									<strong>searchOption : </strong><span id="moniterSearchOption">${searchOption}</span><br/>
+									<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 								</div>
-								
-								<!-- Begin Search -->
+								<div class="col-md-4">
+									<h3>1차 카테고리 목록</h3>
+								</div>
+								<div class="col-md-4">
+									<select id="selectPagePerRow" name="selectPagePerRow">
+										<option value="5"<c:if test="${pagePerRow == 5}">selected</c:if>>5</option>
+										<option value="10"<c:if test="${pagePerRow == 10}">selected</c:if>>10</option>
+										<option value="15"<c:if test="${pagePerRow == 15}">selected</c:if>>15</option>
+										<option value="20"<c:if test="${pagePerRow == 20}">selected</c:if>>20</option>
+										<option value="30"<c:if test="${pagePerRow == 30}">selected</c:if>>30</option>
+										<option value="40"<c:if test="${pagePerRow == 40}">selected</c:if>>40</option>
+										<option value="50"<c:if test="${pagePerRow == 50}">selected</c:if>>50</option>
+									</select>개씩 보기
+								</div>
+							</div>
+							<hr/>
+							
+							<!-- Begin Search -->
 								<div class="row">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
+										
 										<div class="input-group">
-											<div class="input-group-btn">
+											<div id="selectbox" class="input-group-btn">
 												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-													<li><a href="#">카테고리 코드 </a></li>
-													<li><a href="#">물품/시설명 </a></li>
+													<li><a href="#" >all</a></li>
+													<li><a href="#" >goodsfacility_one_name</a></li>
 												</ul>
-											</div>											
+											</div>
 											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
 											<span class="input-group-btn">
 												<button id="searchButton" class="btn btn-default" type="button">검색</button>
 											</span>
 										</div>
+									
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
@@ -94,7 +115,7 @@
 										</tr>
 									</thead>
 								<tbody>									
-								<c:forEach var="goodsFacilityCategoryDtoList" items="${goodsFacilityCategoryDtoList}">
+								<c:forEach var="goodsFacilityCategoryDtoList" items="${list}">
 										<tbody>
 											<tr>
 												<th>${goodsFacilityCategoryDtoList.goodsfacilityOneCode}</th>
@@ -105,6 +126,76 @@
 									</c:forEach>	
 								</tbody>
 							</table>
+							<!-- 페이징 -->
+							<nav>
+								<ul class="pagination">
+									<li>
+										<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage > 1}">
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<c:choose>
+										<c:when test="${lastPage > startPage + 4}">
+											<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage < lastPage}">
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryOne?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- 페이징 끝 -->
 						</div>
 						<div class="col-sm-2"></div>
 					</div>

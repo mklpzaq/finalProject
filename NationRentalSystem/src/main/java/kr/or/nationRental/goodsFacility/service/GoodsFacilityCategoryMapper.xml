@@ -20,21 +20,6 @@
 		<result property="goodsfacilityCode" column="goodsfacility_code" />
 	</resultMap>
 
-	<!-- 물품시설 카테고리 전체목록 보기 -->
-	<!-- <select id="selectListGoodsFacilityCategory" resultMap="selectListGoodsFacility">
-	SELECT 
-		goodsfacility_three.goodsfacility_three_code
-		, goodsfacility_one.goodsfacility_one_name
-		, goodsfacility_two.goodsfacility_two_name
-		, goodsfacility_three.goodsfacility_three_name
-	FROM goodsfacility_one, goodsfacility_two, goodsfacility_three
-	WHERE
-		goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
-	AND
-		goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
-	ORDER BY goodsfacility_three_code DESC
-	</select> -->
-	
 	<!-- 물품시설 카테고리 전체목록보기 및 페이징 -->
 	<select id="selectListGoodsFacilityCategory" parameterType="java.util.Map" resultMap="selectListGoodsFacility">
 		SELECT 
@@ -53,22 +38,22 @@
 			goodsfacility_three
 		ON
 			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
-
-<!-- 		<choose>	      
-	        <when test="searchOption == 'all'">    
-	        	where goodsfacility_three.goodsfacility_three_code = #{keyword}
-	        	or goodsfacility_one.goodsfacility_one_name = #{keyword}
-	        	or goodsfacility_two.goodsfacility_two_name = #{keyword}
-	        	or goodsfacility_three.goodsfacility_three_name = #{keyword} 
+		<choose>	      
+	           <when test="searchOption == 'all'">    
+	        	where goodsfacility_three.goodsfacility_two_code like CONCAT('%', #{keyword}, '%')
+	        	or goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%')
+	        	or goodsfacility_two.goodsfacility_two_name like CONCAT('%', #{keyword}, '%')
+	        	or goodsfacility_three.goodsfacility_three_name like CONCAT('%', #{keyword}, '%')	        	        	           
 	        </when>
 	        <otherwise>
-	        	where ${searchOption} = #{keyword}	        
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
 	        </otherwise>
-    	</choose> -->
+    	</choose>
 		ORDER BY goodsfacility_three_code DESC
 		LIMIT #{beginRow}, #{pagePerRow}	
 	</select>
 	
+	<!-- 물품시설 카테고리 전체목록 검색 -->
 	<select id="totalCountGoodsFacilityCategory" parameterType="java.util.Map"  resultType="Integer">
 		SELECT 
 			COUNT(*)
@@ -83,24 +68,164 @@
 			goodsfacility_three
 		ON
 			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
-<!-- 
 		<choose>	      
-	        <when test="searchOption == 'all'">    
-	        	where goodsfacility_three.goodsfacility_three_code = #{keyword}
-	        	or goodsfacility_one.goodsfacility_one_name = #{keyword}
-	        	or goodsfacility_two.goodsfacility_two_name = #{keyword}
-	        	or goodsfacility_three.goodsfacility_three_name = #{keyword} 
+	           <when test="searchOption == 'all'">
+	           where goodsfacility_three.goodsfacility_three_code like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_two.goodsfacility_two_name like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_three.goodsfacility_three_name like CONCAT('%', #{keyword}, '%')	        	        	           
 	        </when>
 	        <otherwise>
-	        	where ${searchOption} = #{keyword}	        
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
 	        </otherwise>
-    	</choose> -->
+    	</choose>
+	</select>
+	
+	<!-- 물품시설 1차 카테고리 목록 페이징 -->
+	<select id="selectListGoodsFacilityCategoryOne" resultMap="selectListGoodsFacility">
+		SELECT
+			goodsfacility_one_code
+			, goodsfacility_one_name
+		FROM goodsfacility_one
+		<choose>	      
+	           <when test="searchOption == 'all'">
+	           where goodsfacility_one.goodsfacility_one_code like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%')        	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
+		ORDER BY goodsfacility_one_code DESC
+	</select>
+	
+	<!-- 물품시설 1차 카테고리 목록  검색 -->
+	<select id="totalCountGoodsFacilityCategoryOne" parameterType="java.util.Map"  resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM goodsfacility_one
+		<choose>	      
+			<when test="searchOption == 'all'">
+	           where goodsfacility_one_code like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_one_name like CONCAT('%', #{keyword}, '%')        	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
+		ORDER BY goodsfacility_one_code DESC
+	</select>
+	
+	<!-- 물품시설 2차 카테고리 목록 보기 페이징 -->
+	<select id="selectListGoodsFacilityCategoryTwo" resultMap="selectListGoodsFacility">
+		SELECT 
+			goodsfacility_one.goodsfacility_one_code 
+			, goodsfacility_one.goodsfacility_one_name
+			, goodsfacility_two.goodsfacility_two_code
+			, goodsfacility_two.goodsfacility_two_name
+		FROM 
+			goodsfacility_one
+		INNER JOIN
+			goodsfacility_two
+		ON
+			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+		<choose>	      
+			<when test="searchOption == 'all'">
+				 where goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%') 
+				 or goodsfacility_two.goodsfacility_two_name like CONCAT('%', #{keyword}, '%')
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
+		ORDER BY goodsfacility_two.goodsfacility_two_code DESC
+	</select>
+	
+	<!-- 물품시설 2차 카테고리 목록 검색 -->
+	<select id="totalCountGoodsFacilityCategoryTwo" parameterType="java.util.Map"  resultType="Integer">
+		SELECT 
+			COUNT(*)
+		FROM 
+			goodsfacility_one
+		INNER JOIN
+			goodsfacility_two
+		ON
+			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+		<choose>	      
+	           <when test="searchOption == 'all'">
+	           where goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_two.goodsfacility_two_name like CONCAT('%', #{keyword}, '%')         	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
+    	ORDER BY goodsfacility_two.goodsfacility_two_code DESC
+	</select>
+	
+	<!-- 물품시설 3차 카테고리 목록 보기 -->
+	<select id="selectListGoodsFacilityCategoryThree" resultMap="selectListGoodsFacility">
+		SELECT 
+			goodsfacility_one.goodsfacility_one_code 
+			, goodsfacility_one.goodsfacility_one_name
+			, goodsfacility_two.goodsfacility_two_code
+			, goodsfacility_two.goodsfacility_two_name
+			, goodsfacility_three.goodsfacility_three_code
+			, goodsfacility_three.goodsfacility_three_name
+		FROM 
+			goodsfacility_one
+		INNER JOIN
+			goodsfacility_two
+		ON
+			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+			
+		INNER JOIN
+			goodsfacility_three
+		ON
+			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+		<choose>	      
+			<when test="searchOption == 'all'">
+	           where goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%') 
+	           or goodsfacility_two.goodsfacility_two_name like CONCAT('%', #{keyword}, '%') 
+	           or goodsfacility_three.goodsfacility_three_name like CONCAT('%', #{keyword}, '%')      	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
+		ORDER BY goodsfacility_three.goodsfacility_three_code DESC
+	</select>
+	
+	<!-- 물품시설 3차 카테고리 목록 검색 -->
+	<select id="totalCountGoodsFacilityCategoryThree" parameterType="java.util.Map"  resultType="Integer">
+		SELECT 
+			COUNT(*)
+		FROM 
+			goodsfacility_one
+		INNER JOIN
+			goodsfacility_two
+		ON
+			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+		INNER JOIN
+			goodsfacility_three 
+		ON
+			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+		<choose>	     
+			<when test="searchOption == 'all'">
+	           where goodsfacility_one.goodsfacility_one_name like CONCAT('%', #{keyword}, '%')
+	           or goodsfacility_two.goodsfacility_two_code like CONCAT('%', #{keyword}, '%') 
+	           or goodsfacility_three.goodsfacility_three_name like CONCAT('%', #{keyword}, '%')      	        	           
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+	        </otherwise>
+    	</choose>
+		ORDER BY goodsfacility_three.goodsfacility_three_code DESC
 	</select>
 	
 	
-
-	<!-- 물품시설 1차 카테고리 목록 보기 -->
-	<select id="selectListGoodsFacilityCategoryOne" resultMap="selectListGoodsFacility">
+	<!-- 2차 리스트 insert용 물품시설 1차 카테고리 목록 보기 -->
+	<select id="selectJoinListGoodsFacilityCategoryOne" resultMap="selectListGoodsFacility">
 	SELECT
 		goodsfacility_one_code
 		, goodsfacility_one_name
@@ -108,8 +233,8 @@
 	ORDER BY goodsfacility_one_code DESC
 	</select>
 
-	<!-- 물품시설 2차 카테고리 목록 보기 -->
-	<select id="selectListGoodsFacilityCategoryTwo" resultMap="selectListGoodsFacility">
+	<!-- 3차 리스트 insert용 물품시설 2차 카테고리 목록 보기 -->
+	<select id="selectJoinListGoodsFacilityCategoryTwo" resultMap="selectListGoodsFacility">
 	SELECT
 		goodsfacility_one.goodsfacility_one_code 
 		, goodsfacility_one.goodsfacility_one_name
@@ -119,23 +244,6 @@
 	WHERE
 		goodsfacility_one.goodsfacility_one_code=goodsfacility_two.goodsfacility_one_code
 	ORDER BY goodsfacility_two_code DESC
-	</select>
-	
-	<!-- 물품시설 3차 카테고리 목록 보기 -->
-	<select id="selectListGoodsFacilityCategoryThree" resultMap="selectListGoodsFacility">
-	SELECT
-		goodsfacility_one.goodsfacility_one_code
-		, goodsfacility_one.goodsfacility_one_name
-		, goodsfacility_two.goodsfacility_two_code
-		, goodsfacility_two.goodsfacility_two_name
-		, goodsfacility_three.goodsfacility_three_code
-		, goodsfacility_three.goodsfacility_three_name
-	FROM goodsfacility_one, goodsfacility_two, goodsfacility_three
-	WHERE 
-		goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
-	AND
-		goodsfacility_two.goodsfacility_two_code=goodsfacility_three.goodsfacility_two_code
-	ORDER BY goodsfacility_three_code DESC
 	</select>
 	
 	<!-- 1차 카테고리 등록 -->

@@ -94,7 +94,7 @@
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 													<li><a href="#" >all</a></li>
 													<li><a href="#" >adminagency_code</a></li>
-													<li><a href="#" >adminagencyName</a></li>
+													<li><a href="#" >adminagency_name</a></li>
 													<li><a href="#" >sido_name</a></li>
 													<li><a href="#" >sigungu_name</a></li>
 													<li><a href="#">eupmyeon_name</a></li>
