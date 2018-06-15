@@ -103,8 +103,17 @@ public class CitizenService {
 		
 		return citizenDao.updateOneCitizen(citizenDto);
 	}
-
 	
+	//회원리스트에서 회원 전체삭제 (임가현 작업)
+	public void deleteCitizen(int[] deleteCheckbox)  {	
+		logger.debug("deleteCitizen");
+		
+		for(int i = 0; i<deleteCheckbox.length; i++) {
+			int citizenId = deleteCheckbox[i];
+			citizenDao.deleteCitizen(citizenId);
+		}
+	 
+}
 
 	
 	

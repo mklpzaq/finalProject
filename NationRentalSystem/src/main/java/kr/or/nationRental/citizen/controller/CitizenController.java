@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -107,6 +108,15 @@ public class CitizenController {
 		return "redirect:/selectOneCitizen";
 	}
 	
+	//회원리스트에서 회원 전체삭제 (임가현 작업)
+	@RequestMapping(value = "/deleteCitizen", method = RequestMethod.GET)
+	public String deleteCitizen(@RequestParam(value="deleteCheckbox") int[] deleteCheckbox) {
+		logger.debug("deleteCitizen");
+		citizenService.deleteCitizen(deleteCheckbox);		
 	
+		return "redirect:/getCitizenList";
+	} 
+
 	
+
 }

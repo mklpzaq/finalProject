@@ -44,6 +44,26 @@
 					$(location).attr('href', './getCitizenList?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
+				//리스트에서 회원 삭제를 위한 체크박스(임가현 작성)
+				$(document).ready(function(){
+					$("#delbtn").click(function(){
+						$('input[name="deleteCheckbox"]:checked').each(function(){							
+							var text = $(this).val();				
+							$("#form1").submit();	
+						});
+					})	
+				});
+			
+				$(document).ready(function(){
+					$("#checkboxAll").click(function(){
+						if($(this).prop("checked")){
+							$("input[type=checkbox]").prop("checked",true);
+						}else{
+							$("input[type=checkbox]").prop("checked",false);
+						}
+					});			
+				});
+				
 			});
 		</script>
 </head>
@@ -116,21 +136,38 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<td width="20%">시민 아이디</td>
-											<td width="25%">시민 비밀번호</td>
-											<td width="25%">시민이름</td>
-											<td width="30%">시군구이름</td>
-											<td width="30%">시도이름</td>
-											<td width="30%">읍면동이름</td>
-											<td width="30%">시민주소</td>
-											<td width="30%">시민 핸드폰번호</td>
-											<td width="30%">시민 이메일</td>										
+											<td><input type="checkbox" id="checkboxAll" value=""></td>
+											<td width="10%">아이디</td>
+											<td width="10%">비밀번호</td>
+											<td width="10%">이름</td>
+											<td width="15%">시군구</td>
+											<td width="10%">시도</td>
+											<td width="10%">읍면동</td>
+											<td width="15%">주소</td>
+											<td width="10%">핸드폰번호</td>
+											<td width="10%">이메일</td>										
 										</tr>
 									</thead>
+									
+									<table border="1">
+								        <c:forEach items="${userlist}" var="data" varStatus="loop">
+								            <tr>
+								                <td><input type="checkbox" name="delete_user_ids" value="${data.user_id}"/></td>
+								                <td><a href="<c:url value="/edit_user.iot"/>?user_id=${data.user_id}">${data.user_id}</a></td>
+								                <td>${data.password}</td>
+								                <td>${data.name}</td>
+								                <td>${data.nickname}</td>
+								            </tr>
+								        </c:forEach>
+								    </table>
+
+
 									<tbody>									
 											<c:forEach var="citizenDto" items="${list}">
 												<tbody>
 													<tr>
+														<th><input type="checkbox" name="deleteCheckbox" value="${citizenDto.citizenId}"></th>
+														<td><a href="<c:url value="/edit_user.iot"/>?user_id=${data.user_id}">${data.user_id}</a></td>
 														<th>${citizenDto.citizenId}</th>
 														<th>${citizenDto.citizenPw}</th>
 														<td>${citizenDto.citizenName}</td>
@@ -145,6 +182,9 @@
 											</c:forEach>									
 									</tbody>
 								</table>
+								<div>
+							  		<button id="delbtn">선택 회원 삭제</button>
+								</div>
 								<nav>
 									<ul class="pagination">
 										<li>

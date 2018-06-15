@@ -151,6 +151,13 @@
 				citizen_id = #{citizenId}	
 	</select>
  
+ 	<delete id="deleteCitizen" 
+ 			parameterType="kr.or.nationRental.citizen.service.CitizenDto">
+		DELETE 
+			FROM citizen 
+		WHERE 
+			citizen_id = #{citizenId}	
+	</delete>
  
  </mapper>
   

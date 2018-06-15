@@ -136,75 +136,75 @@
 									</tbody>
 								</table>
 								<!-- 페이징 -->
-								<nav>
-									<ul class="pagination">
-										<li>
-											<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
-												<span aria-hidden="true">&laquo;</span>
-											</a>
-										</li>
-										<li>
-											<c:choose>
-												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
-														<span aria-hidden="true">&lt;</span>
-													</a>
-												</c:when>
-												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
-														<span aria-hidden="true">&lt;</span>
-													</a>
-												</c:otherwise>
-											</c:choose>
-										</li>
+							<nav>
+								<ul class="pagination">
+									<li>
+										<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li>
 										<c:choose>
-											<c:when test="${lastPage > startPage + 4}">
-												<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
-													<c:choose>
-														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
-														</c:when>
-														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
+											<c:when test="${currentPage > 1}">
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
 											</c:when>
 											<c:otherwise>
-												<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
-													<c:choose>
-														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
-														</c:when>
-														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
 											</c:otherwise>
 										</c:choose>
-										<li>
-											<c:choose>
-												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
-														<span aria-hidden="true">&gt;</span>
-													</a>
-												</c:when>
-												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
-														<span aria-hidden="true">&gt;</span>
-													</a>
-												</c:otherwise>
-											</c:choose>
-										</li>
-										<li>
-											<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
-												<span aria-hidden="true">&raquo;</span>
-											</a>
-										</li>
-									</ul>
-								</nav>
-							<!-- 페이징 끝 -->		
+									</li>
+									<c:choose>
+										<c:when test="${lastPage > startPage + 4}">
+											<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage < lastPage}">
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/selectListGoodsFacilityCategoryThree?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- 페이징 끝 -->	
 						</div>
 					<div class="col-sm-2"></div>
 					</div>

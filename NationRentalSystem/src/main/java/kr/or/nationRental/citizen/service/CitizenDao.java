@@ -58,6 +58,11 @@ public class CitizenDao {
 		return sqlSession.update(NS+"updateOneCitizen", citizenDto);
 	}
 
-	
+	//회원리스트에서 회원 전체삭제 (임가현 작업)
+	public void deleteCitizen(int citizenId) {
+		logger.debug("deleteCitizen" + citizenId);
+		sqlSession.delete(NS+"deleteCitizen", citizenId);
+		 
+	}
 
 }
