@@ -163,19 +163,19 @@
 							<nav>
 								<ul class="pagination">
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+										<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
 									<li>
 										<c:choose>
 											<c:when test="${currentPage > 1}">
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
@@ -186,10 +186,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -198,10 +198,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -210,19 +210,19 @@
 									<li>
 										<c:choose>
 											<c:when test="${currentPage < lastPage}">
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+										<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
 									</li>
