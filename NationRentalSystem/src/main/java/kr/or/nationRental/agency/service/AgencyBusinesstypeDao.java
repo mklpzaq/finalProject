@@ -1,6 +1,7 @@
 package kr.or.nationRental.agency.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -15,12 +16,16 @@ public class AgencyBusinesstypeDao {
 	final String NS = "kr.or.nationRental.agency.service.AgencyBusinesstypeMapper.";
 	@Autowired private SqlSessionTemplate sqlSession;
 
-	//관리자 계정 목록
-	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstype() {
-		logger.info("---selectListAgencyBusinesstype");
-		return sqlSession.selectList(NS+"selectListAgencyBusinesstype");
+	//업종 목록 페이징
+	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstype(Map<String, Object> map) {
+		return sqlSession.selectList(NS+"selectListAgencyBusinesstype", map);
 	}
-	
+
+	//업종 목록
+	public int totalCountAgencyBusinesstype(Map<String, Object> map) {
+		return sqlSession.selectOne(NS+"totalCountAgencyBusinesstype", map);
+	}
+
 	//업종 등록
 	public int insertAgencyBusinesstype(AgencyBusinesstypeDto agencyBusinesstypeDto) {
 		logger.info("---insertAgencyBusinesstype");

@@ -21,14 +21,6 @@ public class GoodsFacilityCategoryDao {
 	// final : 객체 참조변수를 변경하지 못하게 하는 접근제한자
 	final String NS = "kr.or.nationRental.goodsFacility.service.GoodsFacilityCategoryMapper.";
 
-	/*
-	//물품시설 카테고리 전체 목록
-	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory() {
-		logger.info("---selectListGoodsFacilityCategory");
-		return sqlSession.selectList(NS+"selectListGoodsFacilityCategory");
-	}
-	*/
-	
 	//물품시설 카테고리 전체 목록  페이징
 	public List<GoodsFacilityCategoryDto> selectListGoodsFacilityCategory(Map<String, Object> map) {
 		return sqlSession.selectList(NS+"selectListGoodsFacilityCategory", map);

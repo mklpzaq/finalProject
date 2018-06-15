@@ -42,52 +42,59 @@
 			, goodsfacility_one.goodsfacility_one_name
 			, goodsfacility_two.goodsfacility_two_name
 			, goodsfacility_three.goodsfacility_three_name
-		FROM goodsfacility_one, goodsfacility_two, goodsfacility_three
-		<if test="!keyword.equals('')">
-			<choose>
-				<when test="searchOption.equals('goodsfacilityThreeCode')">
-					WHERE goodsfacility_three.goodsfacility_three_code = #{keyword}
-				</when>
-				<when test="searchOption.equals('goodsfacilityOneName')">
-					WHERE goodsfacility_one.goodsfacility_one_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('goodsfacilityTwoName')">
-					WHERE goodsfacility_two.goodsfacility_two_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('goodsfacilityThreeName')">
-					WHERE  goodsfacility_three.goodsfacility_three_name = #{keyword}
-				</when>
-			</choose>
-		</if>
-		WHERE
+		FROM 
+			goodsfacility_one
+		INNER JOIN
+			goodsfacility_two
+		ON
 			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
-		AND
+			
+		INNER JOIN
+			goodsfacility_three
+		ON
 			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+
+<!-- 		<choose>	      
+	        <when test="searchOption == 'all'">    
+	        	where goodsfacility_three.goodsfacility_three_code = #{keyword}
+	        	or goodsfacility_one.goodsfacility_one_name = #{keyword}
+	        	or goodsfacility_two.goodsfacility_two_name = #{keyword}
+	        	or goodsfacility_three.goodsfacility_three_name = #{keyword} 
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} = #{keyword}	        
+	        </otherwise>
+    	</choose> -->
 		ORDER BY goodsfacility_three_code DESC
 		LIMIT #{beginRow}, #{pagePerRow}	
 	</select>
 	
-	<select id="totalCountGoodsFacilityCategory" parameterType="java.util.Map" resultType="Integer">
-			SELECT 
-				COUNT(*)
-			FROM
-				goodsfacility_three
-			<if test="!keyword.equals('')">
-			<choose>
-				<when test="searchOption.equals('goodsfacilityThreeCode')">
-					WHERE goodsfacility_three.goodsfacility_three_code = #{keyword}
-				</when>
-				<when test="searchOption.equals('goodsfacilityOneName')">
-					WHERE goodsfacility_one.goodsfacility_one_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('goodsfacilityTwoName')">
-					WHERE goodsfacility_two.goodsfacility_two_name = #{keyword}
-				</when>
-				<when test="searchOption.equals('goodsfacilityThreeName')">
-					WHERE  goodsfacility_three.goodsfacility_three_name = #{keyword}
-				</when>
-			</choose>
-		</if>
+	<select id="totalCountGoodsFacilityCategory" parameterType="java.util.Map"  resultType="Integer">
+		SELECT 
+			COUNT(*)
+		FROM 
+			goodsfacility_one
+		INNER JOIN
+			goodsfacility_two
+		ON
+			goodsfacility_one.goodsfacility_one_code = goodsfacility_two.goodsfacility_one_code
+			
+		INNER JOIN
+			goodsfacility_three
+		ON
+			goodsfacility_two.goodsfacility_two_code = goodsfacility_three.goodsfacility_two_code
+<!-- 
+		<choose>	      
+	        <when test="searchOption == 'all'">    
+	        	where goodsfacility_three.goodsfacility_three_code = #{keyword}
+	        	or goodsfacility_one.goodsfacility_one_name = #{keyword}
+	        	or goodsfacility_two.goodsfacility_two_name = #{keyword}
+	        	or goodsfacility_three.goodsfacility_three_name = #{keyword} 
+	        </when>
+	        <otherwise>
+	        	where ${searchOption} = #{keyword}	        
+	        </otherwise>
+    	</choose> -->
 	</select>
 	
 	

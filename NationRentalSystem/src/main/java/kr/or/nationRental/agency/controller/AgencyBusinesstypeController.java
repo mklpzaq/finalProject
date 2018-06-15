@@ -1,6 +1,9 @@
 package kr.or.nationRental.agency.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +26,35 @@ public class AgencyBusinesstypeController {
 	
 	//대행업체 업종 목록
 	@RequestMapping(value="/selectListAgencyBusinesstype", method=RequestMethod.GET)
-	public String selectListAgencyBusinesstype(Model model) {
-		List<AgencyBusinesstypeDto> agencyBusinesstypeDto = agencyBusinesstypeService.selectListAgencyBusinesstype();
-		model.addAttribute("agencyBusinesstypeDto", agencyBusinesstypeDto);
+	public String selectListAgencyBusinesstype(Model model
+										,HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchOption", defaultValue="all") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("selectListGoodsFacilityCategory - currentPage : " + currentPage);
+		logger.debug("selectListGoodsFacilityCategory - pagePerRow  : " + pagePerRow);
+		logger.debug("selectListGoodsFacilityCategory - searchSelect  : " + searchOption);
+		logger.debug("selectListGoodsFacilityCategory - keyword  : " + keyword);
+		
+		Map<String, Object> map = agencyBusinesstypeService.selectListAgencyBusinesstype(currentPage, pagePerRow, searchOption, keyword);
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", map.get("startPage"));
+		model.addAttribute("endPage", map.get("endPage"));
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("keyword", keyword);
+		
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchOption : " + searchOption);
+		logger.debug("keyword : " + keyword);
+		
 		return "agency/selectListAgencyBusinesstype";
 	}
 	

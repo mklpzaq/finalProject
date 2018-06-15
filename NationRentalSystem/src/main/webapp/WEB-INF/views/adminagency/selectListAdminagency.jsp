@@ -54,9 +54,8 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftAdminagency/leftAdminagencyInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
-					<br>
 					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
@@ -95,10 +94,10 @@
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 													<li><a href="#" >all</a></li>
 													<li><a href="#" >adminagency_code</a></li>
-													<li><a href="#" >기관 이름</a></li>
-													<li><a href="#" >시도</a></li>
-													<li><a href="#" >시군구</a></li>
-													<li><a href="#">읍면동</a></li>
+													<li><a href="#" >adminagencyName</a></li>
+													<li><a href="#" >sido_name</a></li>
+													<li><a href="#" >sigungu_name</a></li>
+													<li><a href="#">eupmyeon_name</a></li>
 												</ul>
 											</div>
 											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">

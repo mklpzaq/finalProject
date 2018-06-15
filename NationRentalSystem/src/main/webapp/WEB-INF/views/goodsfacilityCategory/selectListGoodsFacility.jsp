@@ -92,10 +92,10 @@
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 													<li><a href="#" >all</a></li>
-													<li><a href="#" >goodsfacility_three_code</a></li>
-													<li><a href="#" >1차 물품/시설</a></li>
-													<li><a href="#" >2차 물품/시설</a></li>
-													<li><a href="#" >3차 물품/시설</a></li>
+													<li><a href="#" >goodsfacilityThreeCode</a></li>
+													<li><a href="#" >goodsfacility_one_name</a></li>
+													<li><a href="#" >goodsfacility_two_name</a></li>
+													<li><a href="#" >goodsfacility_three_name</a></li>
 												</ul>
 											</div>
 											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">

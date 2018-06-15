@@ -36,7 +36,7 @@ public class AgencyController {
 	@RequestMapping(value="/insertAgencyForm", method=RequestMethod.GET)
 	public String insertAgencyForm(Model model) {
 		//등록된 업종리스트를 뽑는다
-		List<AgencyBusinesstypeDto> list = agencyBusinesstypeService.selectListAgencyBusinesstype();
+		List<AgencyBusinesstypeDto> list = agencyBusinesstypeService.selectListAgencyBusinesstype(int currentPage, int pagePerRow, String searchOption, String keyword);
 		model.addAttribute("list", list);
 		
 		return "/agency/insertAgencyForm";
