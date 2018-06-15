@@ -69,7 +69,7 @@
 										<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
-										<h3>시민회원 List</h3>
+										<h3>시설 & 물품 리스트</h3>
 									</div>
 									<div class="col-md-4">
 										<select id="selectPagePerRow" name="selectPagePerRow">
@@ -116,51 +116,53 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<td width="20%">시설 & 물품명</td>
-											<td width="25%">시민 비밀번호</td>
-											<td width="25%">시민이름</td>
-											<td width="30%">시군구이름</td>
-											<td width="30%">시도이름</td>
-											<td width="30%">읍면동이름</td>
-											<td width="30%">시민주소</td>
-											<td width="30%">시민 핸드폰번호</td>
-											<td width="30%">시민 이메일</td>										
+											<td>사진</td>
+											<td>시설 & 물품 카테고리</td>
+											<td>시설 $ 물품 이름</td>
+											<td>해당 행정기관코드</td>
+											<td>행정 상세주소</td>
+											<td>대여가능여부</td>
+											<td>배달가능여부</td>
+											<td>대여비용</td>																													
 										</tr>
 									</thead>
 									<tbody>									
-											<c:forEach var="citizenDto" items="${list}">
-												<tbody>
-													<tr>
-														<th>${citizenDto.citizenId}</th>
-														<th>${citizenDto.citizenPw}</th>
-														<td>${citizenDto.citizenName}</td>
-														<td>${citizenDto.sigunguName}</td>
-														<td>${citizenDto.sidoName}</td>
-														<td>${citizenDto.eupmyeonName}</td>
-														<td>${citizenDto.citizenAddressSangse}</td>
-														<td>${citizenDto.citizenPhone}</td>
-														<td>${citizenDto.citizenEmail}</td>																							
-													</tr>
-												</tbody>
-											</c:forEach>									
+										<c:forEach var="goodsFacilityDto" items="${list}">
+											<tr>
+												<!-- 이미지 작업용 forEach안에서만 -->
+												<c:forEach var="goodsFacilityFile" items="${goodsFacilityDto.goodsFacilityFile}">
+													<%-- <td>${path}${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}</td> --%>
+													<td><img data-src="holder.js/140x140" class="img-circle" alt="${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}" src="${path}${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}" data-holder-rendered="true" style="width: 140px; height: 140px;"></td>
+												</c:forEach>
+												
+												
+												<td>${goodsFacilityDto.goodsfacilityThreeCode}</td>
+												<td>${goodsFacilityDto.goodsfacilityName}</td>
+												<td>${goodsFacilityDto.adminagencyCode}</td>
+												<td>${goodsFacilityDto.goodsfacilityAddressSangse}</td>
+												<td>${goodsFacilityDto.goodsfacilityIsPossibleRental}</td>
+												<td>${goodsFacilityDto.goodsfacilityIsPossibleDelivery}</td>
+												<td>${goodsFacilityDto.goodsfacilityPriceRental}</td>																																			
+											</tr>
+										</c:forEach>									
 									</tbody>
 								</table>
 								<nav>
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}/getCitizenList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}selectGoodsFacilityList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/getCitizenList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
@@ -171,10 +173,10 @@
 												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -183,10 +185,10 @@
 												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -195,19 +197,19 @@
 										<li>
 											<c:choose>
 												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/getCitizenList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>

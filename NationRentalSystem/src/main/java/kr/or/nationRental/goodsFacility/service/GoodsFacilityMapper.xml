@@ -18,7 +18,13 @@
   
   	<insert id="insertGoodsFacility"
   			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
-  			
+		
+		<selectKey resultType="Integer"
+					keyProperty="goodsfacilityCode"
+					order="AFTER">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+		
   			INSERT INTO goodsfacility
   				(goodsfacility_three_code
   				,goodsfacility_name
@@ -83,7 +89,7 @@
   	
   	</select>
   	
-  	<resultMap type="kr.or.nationRental.goodsFacility.service.GoodsFacilityDao" id="goodsFacility">
+  	<resultMap type="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto" id="goodsFacility">
   		<id column="goodsfacility_code" property="goodsfacilityCode"/>
   		<result column="goodsfacility_three_code" property="goodsfacilityThreeCode"/>
   		<result column="goodsfacility_name" property="goodsfacilityName"/>
@@ -104,9 +110,10 @@
   		<result column="goodsfacility_is_possible_rental" property="goodsfacilityIsPossibleRental"/>
   		<collection ofType="kr.or.nationRental.goodsFacility.service.GoodsFacilityFile" property="goodsFacilityFile">
   			<id column="goodsfacility_file_name" property="goodsfacilityFileName"/>
+  			<id column="goodsfacility_code" property="goodsfacilityCode"/>
   			<result column="goodsfacility_file_ext" property="goodsfacilityFileExt"/>
   			<result column="goodsfacility_file_type" property="goodsfacilityFileType"/>
-  			<result column="goodsfacility_file_size" property="goodsfacilityFileSize"/>  		
+  			<result column="goodsfacility_file_size" property="goodsfacilityFileSize"/>  					
   		</collection> 
   	</resultMap>
   	
@@ -114,22 +121,26 @@
   			parameterType="java.util.Map"
   			resultMap="goodsFacility">  			
   			SELECT   				
-  				gf.goodsfacility_three_code
-  				,gf.goodsfacility_name
-  				,gf.adminagency_code
-  				,gf.goodsfacility_address_sangse  				
-  				,gf.goodsfacility_is_possible_rental 
-  				,gf.goodsfacility_is_possible_delivery
-  				,gf.goodsfacility_price_rental				
-  				,gff.goodsfacility_file_name
-  				,gff.goodsfacility_file_ext
-  				,gff.goodsfacility_file_type
-  				,gff.goodsfacility_file_size  				
-  			FROM 
-  				goodsfacility as gf
-  			JOIN
-  				goodsfacility_file as gff
-  				using(goodsfacility_code)
+				goodsfacility.goodsfacility_code
+				,goodsfacility.goodsfacility_three_code
+				,goodsfacility.goodsfacility_name
+				,goodsfacility.adminagency_code
+				,goodsfacility.goodsfacility_address_sangse  				
+				,goodsfacility.goodsfacility_is_possible_rental 
+				,goodsfacility.goodsfacility_is_possible_delivery
+				,goodsfacility.goodsfacility_price_rental				
+				,goodsfacility_file.goodsfacility_file_name
+				,goodsfacility_file.goodsfacility_file_ext
+				,goodsfacility_file.goodsfacility_file_type
+				,goodsfacility_file.goodsfacility_file_size  				
+			FROM 
+				goodsfacility
+			JOIN
+				goodsfacility_file
+			ON
+				goodsfacility.goodsfacility_code = goodsfacility_file.goodsfacility_code
+					
+			
   		
   		<if test="!keyword.equals('')">
 				<choose>

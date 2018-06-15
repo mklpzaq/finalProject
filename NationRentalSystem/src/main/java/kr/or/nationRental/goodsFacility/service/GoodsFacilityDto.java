@@ -29,123 +29,159 @@ public class GoodsFacilityDto {
 	public GoodsFacilityDto() {
 		this.goodsFacilityFile = new ArrayList<GoodsFacilityFile>();
 	}
-	
+
 	public int getGoodsfacilityCode() {
 		return goodsfacilityCode;
 	}
+
 	public void setGoodsfacilityCode(int goodsfacilityCode) {
 		this.goodsfacilityCode = goodsfacilityCode;
 	}
+
 	public int getGoodsfacilityThreeCode() {
 		return goodsfacilityThreeCode;
 	}
+
 	public void setGoodsfacilityThreeCode(int goodsfacilityThreeCode) {
 		this.goodsfacilityThreeCode = goodsfacilityThreeCode;
 	}
+
 	public String getGoodsfacilityName() {
 		return goodsfacilityName;
 	}
+
 	public void setGoodsfacilityName(String goodsfacilityName) {
 		this.goodsfacilityName = goodsfacilityName;
 	}
+
 	public int getGoodsfacilityPurchaseprice() {
 		return goodsfacilityPurchaseprice;
 	}
+
 	public void setGoodsfacilityPurchaseprice(int goodsfacilityPurchaseprice) {
 		this.goodsfacilityPurchaseprice = goodsfacilityPurchaseprice;
 	}
+
 	public int getGoodsfacilityPriceRental() {
 		return goodsfacilityPriceRental;
 	}
+
 	public void setGoodsfacilityPriceRental(int goodsfacilityPriceRental) {
 		this.goodsfacilityPriceRental = goodsfacilityPriceRental;
 	}
+
 	public String getGoodsfacilityTextSangse() {
 		return goodsfacilityTextSangse;
 	}
+
 	public void setGoodsfacilityTextSangse(String goodsfacilityTextSangse) {
 		this.goodsfacilityTextSangse = goodsfacilityTextSangse;
 	}
+
 	public int getAdminagencyCode() {
 		return adminagencyCode;
 	}
+
 	public void setAdminagencyCode(int adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
 	}
+
 	public String getSigunguName() {
 		return sigunguName;
 	}
+
 	public void setSigunguName(String sigunguName) {
 		this.sigunguName = sigunguName;
 	}
+
 	public String getSidoName() {
 		return sidoName;
 	}
+
 	public void setSidoName(String sidoName) {
 		this.sidoName = sidoName;
 	}
+
 	public String getEupmyeonName() {
 		return eupmyeonName;
 	}
+
 	public void setEupmyeonName(String eupmyeonName) {
 		this.eupmyeonName = eupmyeonName;
 	}
+
 	public String getGoodsfacilityAddressSangse() {
 		return goodsfacilityAddressSangse;
 	}
+
 	public void setGoodsfacilityAddressSangse(String goodsfacilityAddressSangse) {
 		this.goodsfacilityAddressSangse = goodsfacilityAddressSangse;
 	}
+
 	public String getFunctionaryId() {
 		return functionaryId;
 	}
+
 	public void setFunctionaryId(String functionaryId) {
 		this.functionaryId = functionaryId;
 	}
+
 	public String getGoodsfacilityClassifyGoodsfacility() {
 		return goodsfacilityClassifyGoodsfacility;
 	}
+
 	public void setGoodsfacilityClassifyGoodsfacility(String goodsfacilityClassifyGoodsfacility) {
 		this.goodsfacilityClassifyGoodsfacility = goodsfacilityClassifyGoodsfacility;
 	}
+
 	public String getGoodsfacilityClassifyDonationpurchase() {
 		return goodsfacilityClassifyDonationpurchase;
 	}
+
 	public void setGoodsfacilityClassifyDonationpurchase(String goodsfacilityClassifyDonationpurchase) {
 		this.goodsfacilityClassifyDonationpurchase = goodsfacilityClassifyDonationpurchase;
 	}
+
 	public String getGoodsfacilityIsExtra() {
 		return goodsfacilityIsExtra;
 	}
+
 	public void setGoodsfacilityIsExtra(String goodsfacilityIsExtra) {
 		this.goodsfacilityIsExtra = goodsfacilityIsExtra;
 	}
+
 	public String getGoodsfacilityIsPossibleDelivery() {
 		return goodsfacilityIsPossibleDelivery;
 	}
+
 	public void setGoodsfacilityIsPossibleDelivery(String goodsfacilityIsPossibleDelivery) {
 		this.goodsfacilityIsPossibleDelivery = goodsfacilityIsPossibleDelivery;
 	}
+
 	public String getGoodsfacilityStateAfterservice() {
 		return goodsfacilityStateAfterservice;
 	}
+
 	public void setGoodsfacilityStateAfterservice(String goodsfacilityStateAfterservice) {
 		this.goodsfacilityStateAfterservice = goodsfacilityStateAfterservice;
 	}
+
 	public String getGoodsfacilityIsPossibleRental() {
 		return goodsfacilityIsPossibleRental;
 	}
+
 	public void setGoodsfacilityIsPossibleRental(String goodsfacilityIsPossibleRental) {
 		this.goodsfacilityIsPossibleRental = goodsfacilityIsPossibleRental;
 	}
+
 	public Date getGoodsfacilityDateRegistration() {
 		return goodsfacilityDateRegistration;
 	}
+
 	public void setGoodsfacilityDateRegistration(Date goodsfacilityDateRegistration) {
 		this.goodsfacilityDateRegistration = goodsfacilityDateRegistration;
 	}
-	
-	
+
 	public List<GoodsFacilityFile> getGoodsFacilityFile() {
 		return goodsFacilityFile;
 	}
@@ -167,7 +203,10 @@ public class GoodsFacilityDto {
 				+ ", goodsfacilityIsExtra=" + goodsfacilityIsExtra + ", goodsfacilityIsPossibleDelivery="
 				+ goodsfacilityIsPossibleDelivery + ", goodsfacilityStateAfterservice=" + goodsfacilityStateAfterservice
 				+ ", goodsfacilityIsPossibleRental=" + goodsfacilityIsPossibleRental
-				+ ", goodsfacilityDateRegistration=" + goodsfacilityDateRegistration + "]";
-	}	
+				+ ", goodsfacilityDateRegistration=" + goodsfacilityDateRegistration + ", goodsFacilityFile="
+				+ goodsFacilityFile + "]";
+	}
+	
+	
 	
 }

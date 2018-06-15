@@ -119,7 +119,8 @@
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 물품 카테고리 코드</label>
 						    <div class="col-sm-10">
-						    	<select class="form-control" name="goodsfacilityThreeCode">
+						    	<input type="text" class="form-control" id="goodsfacilityThreeCode" name="goodsfacilityThreeCode" placeholder="시설 물품 카테고리 코드">
+						    	<!-- <select class="form-control" name="goodsfacilityThreeCode"> -->
 									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
 										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
 									</c:forEach>  --%>

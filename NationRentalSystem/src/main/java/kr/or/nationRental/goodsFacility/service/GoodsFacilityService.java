@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.nationRental.citizen.service.CitizenDto;
@@ -38,12 +39,14 @@ public class GoodsFacilityService {
 		goodsFacilityDao.insertGoodsFacility(goodsFacilityDto);
 		
 	}
-
+	
+	@Transactional
 	public void insertGoodsFacility(GoodsFacilityRequest goodsFacilityRequest, String path) {
 		logger.debug("GoodsFacilityService insertGoodsFacility :" + goodsFacilityRequest.toString());
 		List<MultipartFile> multipartFileList = goodsFacilityRequest.getMultipartfile();
 		
 		GoodsFacilityDto goodsFacilityDto = new GoodsFacilityDto();
+		goodsFacilityDto.setGoodsfacilityCode(goodsFacilityRequest.getGoodsfacilityCode());
 		goodsFacilityDto.setGoodsfacilityThreeCode(goodsFacilityRequest.getGoodsfacilityThreeCode());
 		goodsFacilityDto.setGoodsfacilityName(goodsFacilityRequest.getGoodsfacilityName());
 		goodsFacilityDto.setGoodsfacilityPurchaseprice(goodsFacilityRequest.getGoodsfacilityPurchaseprice());
@@ -106,8 +109,10 @@ public class GoodsFacilityService {
 			logger.debug("goodsFacilityDto : " + goodsFacilityDto);
 			goodsFacilityDao.insertGoodsFacility(goodsFacilityDto);
 			
-			for(GoodsFacilityFile goodsFacilityFile : goodsFacilityDto.getGoodsFacilityFile()) {
-				goodsFacilityFile.setGoodsfacilityCode(goodsFacilityDto.getGoodsfacilityCode());
+			int goodsFacilityCode = goodsFacilityDto.getGoodsfacilityCode();
+			logger.debug("goodsFacilityCode :" + goodsFacilityCode);
+			for(GoodsFacilityFile goodsFacilityFile : goodsFacilityDto.getGoodsFacilityFile()) {				
+				goodsFacilityFile.setGoodsfacilityCode(goodsFacilityCode);
 				goodsFacilityFileDao.insertGoodsFacilityFile(goodsFacilityFile);
 			}
 		}	
@@ -129,7 +134,7 @@ public class GoodsFacilityService {
 		logger.debug("keyword :" + keyword);
 		
 		List<GoodsFacilityDto> list = goodsFacilityDao.getGoodsFacilityList(map);
-		logger.debug("List<CitizenDto> : " + list);
+		logger.debug("List<GoodsFacilityDto> : " + list);
 		
 		int total = goodsFacilityDao.totalCountGoodsFacility(map);
 		

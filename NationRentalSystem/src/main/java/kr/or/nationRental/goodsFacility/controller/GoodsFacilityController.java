@@ -95,6 +95,7 @@ public class GoodsFacilityController {
 	
 	@RequestMapping(value="/selectGoodsFacilityList", method=RequestMethod.GET)
 	public String getGoodsFacilityList(Model model
+			,HttpSession session
 			,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 			,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 			,@RequestParam(value="searchOption", defaultValue="") String searchOption
@@ -102,6 +103,9 @@ public class GoodsFacilityController {
 		logger.debug("GoodsFacilityController GoodsFacilityList GET : ");
 		
 		Map<String, Object> map = goodsFacilityService.getGoodsFacilityList(currentPage, pagePerRow, searchOption, keyword);
+	
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(map.get("list").toString());
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));
@@ -109,8 +113,11 @@ public class GoodsFacilityController {
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", searchOption);
-		model.addAttribute("keyword", keyword);
+		model.addAttribute("keyword", keyword); 
 		
+		String path = session.getServletContext().getRealPath("/resources/image/goodsFacilityImage/");		
+		logger.debug("path : " + path);
+		model.addAttribute("path", path);
 		
 		return "/rentalGoodsFacility/goodsFacilityList";
 	}
