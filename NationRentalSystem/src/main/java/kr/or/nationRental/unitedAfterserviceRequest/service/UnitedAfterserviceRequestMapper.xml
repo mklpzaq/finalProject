@@ -5,8 +5,36 @@
  
 <mapper namespace="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper">
 	
+	<select id="totalCountReturnGoodsfacilityInfo"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			return_goodsfacility_info
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('boardCode')">
+					WHERE board_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('boardCategoryCode')">
+					WHERE board_category_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('memberId')">
+					WHERE member_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('boardName')">
+					WHERE board_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('textBoardContent')">
+					WHERE text_board_content = #{searchWord}
+				</when>
+			</choose>
+		</if>
+	</select>
 	
 	<select id="selectListReturnGoodsfacilityInfo"
+			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
 		SELECT
 			return_goodsfacility_info_code AS returGoodsfacilityInfoCode
@@ -22,7 +50,27 @@
 			,date_return_check AS dateReturnCheck
 		FROM
 			return_goodsfacility_info
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('boardCode')">
+					WHERE board_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('boardCategoryCode')">
+					WHERE board_category_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('memberId')">
+					WHERE member_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('boardName')">
+					WHERE board_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('textBoardContent')">
+					WHERE text_board_content = #{searchWord}
+				</when>
+			</choose>
+		</if>
 		ORDER BY return_goodsfacility_info_code DESC
+		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
 	
 	
