@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardDao {
-	@Autowired
+	@Autowired 
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(BoardDao.class);
 	final String NS = "kr.or.nationRental.board.service.BoardMapper.";
