@@ -27,7 +27,7 @@
 						<div class="panel-body text-center">
 							<h3 class="text-center">통합 AS 의뢰 신청</h3>
 							<hr/>
-							
+							<!-- 우선 return_goodsfacility_info 테이블을 select하여 리스트로 보여주어야 한다. 그 다음 옆에 의뢰신청 버튼을 만들어야 한다.-->
 							
 
 

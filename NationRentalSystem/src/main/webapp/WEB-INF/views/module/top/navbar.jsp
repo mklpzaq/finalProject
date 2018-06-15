@@ -116,7 +116,7 @@
 										<li><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
 										<li><a style="color:#FFFFFF" href="#">시민 결제/취소 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 반납</a></li>
-										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest/?functionaryId=${member.memberId}">통합 AS 의뢰</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService/?functionaryId=${member.memberId}">통합 AS 의뢰</a></li>
 										<li><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAnnualfeePakage">연회비/패키지 등록</a></li>

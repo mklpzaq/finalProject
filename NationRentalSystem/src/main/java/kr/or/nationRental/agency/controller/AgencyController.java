@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.nationRental.agency.service.AgencyBusinesstypeDto;
 import kr.or.nationRental.agency.service.AgencyBusinesstypeService;
@@ -34,10 +35,14 @@ public class AgencyController {
 	
 	//대행업체 등록 화면으로 이동
 	@RequestMapping(value="/insertAgencyForm", method=RequestMethod.GET)
-	public String insertAgencyForm(Model model) {
+	public String insertAgencyForm(Model model
+			,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+			,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+			,@RequestParam(value="searchOption", defaultValue="boardCode") String searchOption
+			,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		//등록된 업종리스트를 뽑는다
-		List<AgencyBusinesstypeDto> list = agencyBusinesstypeService.selectListAgencyBusinesstype(int currentPage, int pagePerRow, String searchOption, String keyword);
-		model.addAttribute("list", list);
+		//List<AgencyBusinesstypeDto> list = agencyBusinesstypeService.selectListAgencyBusinesstype(currentPage, pagePerRow, searchOption, keyword);
+		//model.addAttribute("list", list);
 		
 		return "/agency/insertAgencyForm";
 	}

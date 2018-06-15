@@ -8,18 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.nationRental.functionary.service.FunctionaryDto;
+import kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestService;
 
 @Controller
 public class UnitedAfterserviceRequestController {
 	/*@Autowired
-	private AgencyEmployeeService agencyEmployeeService;*/
+	private UnitedAfterserviceRequestService unitedAfterserviceRequestService;*/
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestController.class);
 	
-	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.GET)
-	public String insertUnitedAfterserviceRequest(FunctionaryDto FunctionaryDto) {
-		logger.debug("GET insertUnitedAfterserviceRequest UnitedAfterserviceRequestController");
+	@RequestMapping(value="/selectListReturnGoodsfacilityInfoForAfterService", method=RequestMethod.GET)
+	public String selectListReturnGoodsfacilityInfoForAfterService(FunctionaryDto FunctionaryDto) {
+		logger.debug("GET selectListReturnGoodsfacilityInfoForAfterService UnitedAfterserviceRequestController");
 		logger.debug(FunctionaryDto.toString());
 		
-		return "unitedAfterserviceRequest/insertUnitedAfterserviceRequestForm";
+		
+		
+		
+		
+		
+		
+		return "unitedAfterserviceRequest/selectListReturnGoodsfacilityInfoForAfterService";
 	}
 }
