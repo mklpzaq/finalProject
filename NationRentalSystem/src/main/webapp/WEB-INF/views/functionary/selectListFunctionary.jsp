@@ -122,22 +122,20 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<td width="20%">이름</td>
-											<td width="25%">행정기관코드</td>
-											<td width="25%">전화번호</td>
-											<td width="30%">이메일</td>										
+											<th width="20%">이름</th>
+											<th width="25%">행정기관코드</th>
+											<th width="25%">전화번호</th>
+											<th width="30%">이메일</th>										
 										</tr>
 									</thead>
 									<tbody>									
-											<c:forEach var="functionaryDto" items="${list}">
-												<tbody>
+											<c:forEach var="functionaryDto" items="${list}">												
 													<tr>
-														<th><a href="#/${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></th>														
-														<th>${functionaryDto.adminagencyCode}</th>
+														<td><a href="#/${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></td>														
+														<td>${functionaryDto.adminagencyCode}</td>
 														<td>${functionaryDto.functionaryPhone}</td>
-														<td>${functionaryDto.functionaryEmail}</td>																							
-													</tr>
-												</tbody>
+														<td>${functionaryDto.functionaryEmail}</td>													
+													</tr>												
 											</c:forEach>									
 									</tbody>
 								</table>

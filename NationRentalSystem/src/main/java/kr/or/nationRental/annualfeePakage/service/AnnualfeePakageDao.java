@@ -1,5 +1,6 @@
 package kr.or.nationRental.annualfeePakage.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -29,6 +30,17 @@ public class AnnualfeePakageDao {
 			
 	}
 
+	public List<AnnualfeePakageDto> selectListAnnualfeePakage(Map<String, Object> map) {
+		logger.debug("AnnualfeePakageDao - selectListAnnualfeePakage - map : " + map.toString());
+		return sqlSession.selectList(NS+"selectListAnnualfeePakage", map);
+	}
+
+	public int totalCountAnnualfeePakage(Map<String, Object> map) {
+		logger.debug("AnnualfeePakageDao - totalCountAnnualfeePakage - map : " + map.toString());
+		return sqlSession.selectOne(NS+"totalCountAnnualfeePakage", map);
+	}
+
+	
 	
 
 	

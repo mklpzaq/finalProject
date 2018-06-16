@@ -31,7 +31,11 @@
 			
 			
 			$('#adminagencyAdd').click(function(){
-				$('#addAdminagency').append('<div class="col-sm-10" id="addAdminagency"><input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드"><input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly"><button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button></div>');
+				$('#addAdminagency').append('<div class="col-sm-10">'
+						+'<input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드">'
+						+'<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">'
+						+'<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>'
+						+'</div>');
 								
 				$(document).on('click','#del',function(){
 					$(this).closest('div').remove();
@@ -69,21 +73,14 @@
 					        	
 					        	$('.tr').click(function(){
 					        		alert('행정기관등록 완료');
-					        		$(this).parents('div').children('#adminagencyCode').val($(this).children().first().text());
-					        		$(this).parents('div').children('#adminagencyName').val($(this).children().last().text());
-					        		/* $('#adminagencyCode').val($(this).children().first().text());
-					        		$('#adminagencyName').val($(this).children().last().text());	 */				        		
+					        		$('#adminagencyCode').val($(this).children().first().text());
+					        		$('#adminagencyName').val($(this).children().last().text());					        				        		
 					        		$('#adminagencyCheckModal').hide();					        		
 					        		$('#checkAdminagency').val("");
 					        		$(".tr").remove();
-					        		 
-					        		
-					        		/* $('#adminagencyCheckModal').on('hidden.bs.modal', function () {
-					        			$('#checkAdminagency').val("");
-					        			$(".tr").remove();
-					        			$(this).removeData('bs.modal');
-						    		}); */
-					        	
+					        		$("#adminagencyCode").removeAttr('id');
+					        		$("#adminagencyName").removeAttr('id');						        		
+
 					        	});
 					        	
 					        	
@@ -95,6 +92,16 @@
 					});
 				});
 			});	
+			/* $('#adminagencyCode').val($(this).children().first().text());
+    		$('#adminagencyName').val($(this).children().last().text());	 */		
+			/* $('#adminagencyCheckModal').on('hidden.bs.modal', function () {
+			$('#checkAdminagency').val("");
+			$(".tr").remove();
+			$(this).removeData('bs.modal');
+			
+			$(this).parentsUnitl('#addAdminagency').children('#adminagencyCode').val($(this).children().first().text());
+			$(this).parentsUnitl('#addAdminagency').children('#adminagencyName').val($(this).children().last().text());		
+			*/
 			
 			/* 클릭했을시에 modal이 나오게 만든 버튼이 속해있는 div에 값을 채워넣어야한다 */
 			/* $('.tr').click(function(){
@@ -112,27 +119,8 @@
 		
 	</head>
 
-	<body>
-	
-		<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
-					</div>
-					<div class="modal-body">
-						<input type="text" id="checkAdminagency">
-						<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
-					</div>
-					<div class="modal-footer">
-						<table id = "adminagencyList" border = "1">
-					
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+	<body>	
+		
 	
 	<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
@@ -179,9 +167,13 @@
 						<div class="form-group">
 							<label for="inputEmail3" class="col-sm-2 control-label">적용되는 행정기관코드</label>
 							<div class="col-sm-10" id="addAdminagency">
-								<!-- <input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드">
-								<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">
-								<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button> -->
+								
+								<!-- <div class="col-sm-10">
+									<input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드">
+									<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">
+									<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>
+								</div> -->
+								
 								<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -201,6 +193,7 @@
 										</div>
 									</div>
 								</div>
+								
 							</div>
 						</div>
 						<div>

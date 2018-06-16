@@ -56,7 +56,6 @@ public class FunctionaryController {
 	
 	@RequestMapping(value="/selectListFunctionary", method=RequestMethod.GET)
 	public String selectListFunctionary(Model model
-										,HttpSession session
 										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 										,@RequestParam(value="searchOption", defaultValue="all") String searchOption

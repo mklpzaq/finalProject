@@ -120,6 +120,7 @@
 										<li><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAnnualfeePakage">연회비/패키지 등록</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 										<li><a style="color:#FFFFFF" href="#">대여금지</a></li>
 									</ul>

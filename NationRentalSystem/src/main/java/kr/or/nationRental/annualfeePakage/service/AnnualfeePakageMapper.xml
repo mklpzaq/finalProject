@@ -39,4 +39,47 @@
 				,#{adminagencyCode})
   	
   	</insert>
-  </mapper>
+  	
+  
+  	<select id="totalCountAnnualfeePakage"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+		COUNT(*)
+			FROM annualfee_pakage
+			<choose>	      
+		        <when test="searchOption == 'all'">    
+		        	where annualfee_pakage_name like CONCAT('%', #{keyword}, '%')
+		        	or annualfee_pakage_text_sangse like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <otherwise>
+		        	where #{searchOption} like CONCAT('%', #{keyword}, '%')	        
+		        </otherwise>
+	    	</choose>
+	</select>
+	
+	<select id="selectListAnnualfeePakage" parameterType="java.util.Map"  resultType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		SELECT
+				annualfee_pakage_code as annualfeePakageCode
+				,functionary_id as functionaryId
+				,annualfee_pakage_name as annualfeePakageName
+				,annualfee_pakage_price as annualfeePakagePrice
+				,annualfee_pakage_text_sangse as annualfeePakageTextSangse
+				,annualfee_pakage_discount_rate as annualfeePakageDiscountRate
+				,annualfee_pakage_date_registration as annualfeePakageDateRegistration
+			FROM annualfee_pakage
+					
+			<choose>	      
+		        <when test="searchOption == 'all'">    
+		        	where annualfee_pakage_name like CONCAT('%', #{keyword}, '%')
+		        	or annualfee_pakage_text_sangse like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <otherwise>
+		        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
+		        </otherwise>
+	    	</choose>
+		
+		ORDER BY annualfee_pakage_date_registration DESC
+		LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+ </mapper>
