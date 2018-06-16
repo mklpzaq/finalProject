@@ -76,4 +76,12 @@ public class AnnualfeePakageService {
 		return returnmap;
 	}
 
+	//상세보기화면에 뿌려줄 데이터들 select
+	public AnnualfeePakageDto annualfeePakageSangse(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageService - annualfeePakageSangse - annualfeePakageDto  : " + annualfeePakageDto.toString());
+		AnnualfeePakageDto returnAnnualfeePakageDto = annualfeePakageDao.annualfeePakageSangse(annualfeePakageDto);
+		logger.debug("AnnualfeePakageService - annualfeePakageSangse - returnAnnualfeePakageDto  : " + returnAnnualfeePakageDto.toString());
+		return returnAnnualfeePakageDto;
+	}
+
 }

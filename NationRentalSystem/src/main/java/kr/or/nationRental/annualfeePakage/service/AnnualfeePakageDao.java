@@ -40,6 +40,11 @@ public class AnnualfeePakageDao {
 		return sqlSession.selectOne(NS+"totalCountAnnualfeePakage", map);
 	}
 
+	public AnnualfeePakageDto annualfeePakageSangse(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageDao - annualfeePakageSangse - annualfeePakageDto : " + annualfeePakageDto.toString());
+		return sqlSession.selectOne(NS+"annualfeePakageSangse", annualfeePakageDto);
+	}
+
 	
 	
 

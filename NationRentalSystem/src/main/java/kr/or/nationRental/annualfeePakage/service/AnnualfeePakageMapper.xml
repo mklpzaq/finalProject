@@ -4,6 +4,39 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageMapper">
+  	
+  	<!-- selectItemList 테이블조인 -->
+	<!--	resultMap - type : 객체 타입
+			resultMap - id : resultMap 명
+			id : PK 멤버변수 지정. 
+			id - column : DB 칼럼명
+			id - property : 커맨드 객체 멤버변수 명
+			result : PK 이외의 멤버변수 지정
+			column, property는 id와 같은 방법으로 사용한다.
+			association : 연관된 데이터를 맵핑시킨다.
+			javaType : 조인될 객체 타입
+			property : 커맨드 객체에서의 변수명
+	 		
+	 		데이터를 매핑시켜준다. 
+			association => 1 : 1 관계 
+			collection => 1 : 다 관계 (한명의 유저가 작성한 글 목록)
+			일반 컬럼과 pk 구분 가능 pk 칼럼에게는 result 아닌 id 사용
+		-->
+  	
+  	<resultMap type="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto" id="annualfeePakageDto">
+		<id column="annualfee_pakage_code" property="annualfeePakageCode" />
+		<result column="functionary_id" property="functionaryId" />
+		<result column="annualfee_pakage_name" property="annualfeePakageName" />
+		<result column="annualfee_pakage_price" property="annualfeePakagePrice" />
+		<result column="annualfee_pakage_text_sangse" property="annualfeePakageTextSangse" />
+		<result column="annualfee_pakage_discount_rate" property="annualfeePakageDiscountRate" />
+		<collection ofType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageAuthorityDto" property="annualfeePakageAuthority">
+				<id column="annualfee_pakage_authority_code" property="annualfeePakageAuthorityCode"/>
+				<result column="annualfee_pakage_code" property="annualfeePakageCode"/>
+				<result column="adminagency_code" property="adminagencyCode"/>				
+		</collection>
+	</resultMap>  	
+  	
   	<insert id="insertAnnualfeePakage" parameterType="kr.or.nationRental.agency.service.AgencyDto">
   		  
 		<selectKey resultType="int" keyProperty="annualfeePakageCode" order="AFTER">  
@@ -81,5 +114,22 @@
 		
 		ORDER BY annualfee_pakage_date_registration DESC
 		LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+	
+	<select id="annualfeePakageSangse" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto" resultMap="annualfeePakageDto">
+		SELECT
+			ap.annualfee_pakage_code
+			,ap.functionary_id
+			,ap.annualfee_pakage_name
+			,ap.annualfee_pakage_price
+			,ap.annualfee_pakage_text_sangse
+			,ap.annualfee_pakage_discount_rate
+			,ap.annualfee_pakage_date_registration
+			,apa.annualfee_pakage_authority_code
+			,apa.adminagency_code
+			FROM annualfee_pakage as ap
+			left join annualfee_pakage_authority as apa
+				using(annualfee_pakage_code)
+				where annualfee_pakage_code = #{annualfeePakageCode}
 	</select>
  </mapper>

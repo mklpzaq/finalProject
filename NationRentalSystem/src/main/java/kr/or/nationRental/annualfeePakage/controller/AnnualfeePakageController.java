@@ -1,5 +1,6 @@
 package kr.or.nationRental.annualfeePakage.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDao;
+import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageAuthorityDto;
 import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto;
 import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageService;
 import kr.or.nationRental.login.service.MemberDto;
@@ -62,6 +63,7 @@ public class AnnualfeePakageController {
 	 *관리자의 경우 - 등록된 연회비 패키지를 전부 볼수 있고, 삭제처리 할수 있는 form
 	 *공무원의 경우 - 등록된 연회비 패키지를 전부 볼수 있고, 그중에서 자신의 id로 등록한 연회비패키지를 수정, 삭제처리할수 있는 form
 	 *시민의 경우 - 등록된 연회비 패키지를 전부 볼수 있고, 그중에서 연회비패키지를 구입할 수 있는 form이며 구입한 연회비 패키지를 구분할수 있는 form 
+	 *위의 기능구분을 상세보기창에서 구분하는것으로 하자
 	 */
 	@RequestMapping(value="/selectListAnnualfeePakage", method=RequestMethod.GET)
 	public String selectListAnualfeePakage(HttpSession session
@@ -87,5 +89,36 @@ public class AnnualfeePakageController {
 		model.addAttribute("keyword", keyword);
 		
 		return "/annualfeePakage/selectListAnnualfeePakage";
+	}
+	
+	/*연회비패키지 상세보기
+	 * 상세보기에 필요한 기능들
+	 *화면에 보여주기
+	 *관리자화면 조건없는 삭제
+	 *공무원 자기가 등록한것 삭제 수정
+	 *시민 구입
+	 *필요한 데이터들
+	 *보여주기 필요 데이터
+	 *level, 등록자 id?, 연회비패키지명, 가격, 상세내용, 할인률, 적용되는 행정기관들
+	 *삭제 수정 구입에 필요한 데이터 세션처리된 id와 level
+	 *보여주기 위한 form을 권한에 따라 따로따로 만드드냐
+	 *아니면 한 화면 내에서 권한을 구분하여 하나로 보여주느냐
+	 *우선은 한 화면 내에서 권한을 구분하여 하나로 보여주는 방법을 생각해본다
+	 */
+	@RequestMapping(value="/annualfeePakageSangse", method=RequestMethod.GET)
+	public String annualfeePakageSangse(HttpSession session
+											,Model model
+											,AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageController - annualfeePakageSangse - annualfeePakageDto : " + annualfeePakageDto);
+		MemberDto member = (MemberDto) session.getAttribute("member");
+		
+
+		AnnualfeePakageDto returnAnnualfeePakageDto = annualfeePakageService.annualfeePakageSangse(annualfeePakageDto);
+		List<AnnualfeePakageAuthorityDto> list = returnAnnualfeePakageDto.getAnnualfeePakageAuthority();
+		
+		model.addAttribute("member", member);
+		model.addAttribute("returnAnnualfeePakageDto", returnAnnualfeePakageDto);
+		model.addAttribute("list", list);
+		return "/annualfeePakage/annualfeePakageSangse";
 	}
 }
