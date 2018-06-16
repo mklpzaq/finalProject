@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -98,11 +98,17 @@
 												<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-												<li><a href="#">boardCode</a></li>
-												<li><a href="#">boardCategoryCode</a></li>
-												<li><a href="#">memberId</a></li>
-												<li><a href="#">boardName</a></li>
-												<li><a href="#">textBoardContent</a></li>
+												<li><a href="#">물품/시설 반납 코드</a></li>
+												<li><a href="#">대여 코드</a></li>
+												<li><a href="#">물품/시설 코드</a></li>
+												<li><a href="#">물품/시설 분류 명</a></li>
+												<li><a href="#">시민 ID</a></li>
+												<li><a href="#">배달반납 유무</a></li>
+												<li><a href="#">연체일수</a></li>
+												<li><a href="#">지자체 기관 코드</a></li>
+												<li><a href="#">반납확인 공무원 ID</a></li>
+												<li><a href="#">물품 상태 코드</a></li>
+												<li><a href="#">반납 확인 일자</a></li>
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -122,7 +128,7 @@
 										<td><strong>물품/시설 반납 코드</strong></td>
 										<td><strong>대여 코드</strong></td>
 										<td><strong>물품/시설 코드</strong></td>
-										<td><strong>물품/시설 분류</strong></td>
+										<td><strong>물품/시설 분류 명</strong></td>
 										<td><strong>시민 ID</strong></td>
 										<td><strong>배달반납 유무</strong></td>
 										<td><strong>연체일수</strong></td>

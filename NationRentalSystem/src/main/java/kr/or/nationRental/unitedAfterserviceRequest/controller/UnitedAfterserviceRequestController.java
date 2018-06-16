@@ -28,9 +28,9 @@ public class UnitedAfterserviceRequestController {
 																	,HttpSession session
 																	,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 																	,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-																	,@RequestParam(value="searchSelect", defaultValue="boardCode") String searchSelect
+																	,@RequestParam(value="searchSelect", defaultValue="물품/시설 반납 코드") String searchSelect
 																	,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
-		logger.debug("GET selectListBoard BoardController");
+		logger.debug("GET selectListReturnGoodsfacilityInfoForAfterService selectListReturnGoodsfacilityInfoForAfterService");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
 		
@@ -43,6 +43,7 @@ public class UnitedAfterserviceRequestController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchSelect", searchSelect);
 		model.addAttribute("searchWord", searchWord);
+		logger.debug("★★★★★★★★★★★controller★★★★★★★★★★★★★★★★★★");
 		logger.debug("list : "+ map.get("list"));
 		logger.debug("lastPage : "+ map.get("lastPage"));
 		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));

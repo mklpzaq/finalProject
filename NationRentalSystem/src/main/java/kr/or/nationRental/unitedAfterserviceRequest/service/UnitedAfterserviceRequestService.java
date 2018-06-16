@@ -53,6 +53,7 @@ public class UnitedAfterserviceRequestService {
 		 * (pagePerRow값이 10이면 list에 담기는 개수는 10개 레코드이다.)
 		 * */
 		List<ReturnGoodsfacilityInfoDto> list = unitedAfterserviceRequestDao.selectListReturnGoodsfacilityInfo(map);
+		logger.debug("★★★★★★★★★★★★service★★★★★★★★★★★★★★★★★★★");
 		logger.debug("list<BoardDto> : " + list);
 		/* 검색을 하였다면 검색조건에 맞는 레코드 개수가 반환되고,
 		 * 검색을 하지 않았다면 DB에 존재하는 모든 address 레코드 개수가 반환된다. 
