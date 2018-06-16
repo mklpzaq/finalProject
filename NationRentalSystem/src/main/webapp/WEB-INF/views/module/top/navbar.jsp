@@ -113,6 +113,7 @@
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/">대행업체 직원조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">기부관리</a></li>
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertGoodsFacility/?functionaryId=${member.memberId}">물품/시설 관리</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectGoodsFacilityList?functionaryId=${member.memberId}">물품/시설 리스트</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
 										<li><a style="color:#FFFFFF" href="#">시민 결제/취소 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">물품 반납</a></li>
