@@ -1,8 +1,14 @@
 package kr.or.nationRental.goodsFacility.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -121,6 +128,47 @@ public class GoodsFacilityController {
 		
 		return "/rentalGoodsFacility/goodsFacilityList";
 	}
+	
+	@RequestMapping(value="/downloadFile", method=RequestMethod.GET)
+	public void download(@RequestParam("goodsfacilityName") String goodsfacilityName
+						,@RequestParam("goodsfacilityFileExt") String goodsfacilityFileExt
+						,HttpServletRequest request
+						, HttpServletResponse response
+						,HttpSession session) throws Exception{
+			String fullPath = session.getServletContext().getRealPath("/resources/image/goodsFacilityImage/") + goodsfacilityName + "." + goodsfacilityFileExt;
+			logger.debug("GoodsFacilityController download fullPath" +fullPath.toString());
+			File file = new File(fullPath);
+			
+			response.setContentType("application/download; utf-8");
+			response.setContentLength((int)file.length());
+			String userAgent = request.getHeader("User-Agent");
+			boolean ie = userAgent.indexOf("MSIE") > -1;
+			String fileName = null;
+			
+			if(ie){            
+				fileName = URLEncoder.encode(file.getName(), "utf-8");
+			} else {            
+				fileName = new String(file.getName().getBytes("utf-8"));
+			}        
+				response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
+				response.setHeader("Content-Transfer-Encoding", "binary");
+				OutputStream out = response.getOutputStream();	        
+				FileInputStream fis = null;
+			
+			try {            
+				fis = new FileInputStream(file);
+				FileCopyUtils.copy(fis, out);
+			} catch(Exception e){            
+				e.printStackTrace();             
+			}finally{             
+				if(fis != null){                 
+				    try{
+				        fis.close();
+				    }catch(Exception e){}
+				}
+					out.flush();
+			}    
+		}
 	
 	@RequestMapping(value="/selectGoodsFacilityImage", method=RequestMethod.GET)
 	public String selectGoodsFacilityImage(GoodsFacilityDto goodsFacilityDto

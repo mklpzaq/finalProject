@@ -132,7 +132,7 @@
 												<!-- 이미지 작업용 forEach안에서만 -->
 												<c:forEach var="goodsFacilityFile" items="${goodsFacilityDto.goodsFacilityFile}">
 													<%-- <td>${path}${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}</td> --%>
-													<td><img data-src="holder.js/140x140" class="img-circle" alt="${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}" src="${path}${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}" data-holder-rendered="true" style="width: 140px; height: 140px;"></td>
+													<td><img data-src="holder.js/140x140" class="img-circle" alt="${goodsFacilityFile.goodsfacilityFileName}${goodsFacilityFile.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${goodsFacilityFile.goodsfacilityFileName}&goodsfacilityFileExt=${goodsFacilityFile.goodsfacilityFileExt}" data-holder-rendered="true" style="width: 140px; height: 140px;"></td>
 												</c:forEach>
 												
 												
