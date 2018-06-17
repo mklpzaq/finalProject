@@ -5,13 +5,98 @@
  
 <mapper namespace="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper">
 	
+	<select id="selectOneFunctionaryForListAgency"
+			parameterType="String"
+			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+		SELECT
+			functionary_id AS functionaryId
+			,adminagency_code AS adminagencyCode
+			,functionary_num AS functionaryNum
+			,functionary_pw AS functionaryPw
+			,functionary_name AS functionaryName
+			,functionary_phone AS functionaryPhone
+			,functionary_email AS functionaryEmail
+			,functionary_date_join AS functionaryDateJoin
+		FROM
+			functionary
+		WHERE
+			functionary_id = #{functionaryId}
+	</select>
+	
+	<select id="selectListAgencyDto"
+			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
+			resultType="kr.or.nationRental.agency.service.AgencyDto">
+		SELECT DISTINCT
+			agen.agency_code AS agencyCode
+			,agen.adminagency_code AS adminagencyCode
+			,agen.functionary_name AS functionaryName
+			,agen.agency_name AS agencyName
+			,agen.agency_businesstype_code AS agencyBusinesstypeCode
+			,agen.agency_date_registration AS agencyDateRegistration
+			,agen.agency_date_contract_closed AS agencyDateContractClosed
+		FROM
+			agency AS agen
+			INNER JOIN
+			functionary AS func
+			ON
+			agen.adminagency_code = func.adminagency_code
+		WHERE
+			func.adminagency_code = #{adminagencyCode}
+	</select>
+	
+	
+	<select id="selectOneUnitedAfterserviceRequestDtoForInsert"
+			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto"
+			resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		SELECT
+			returngf.return_goodsfacility_info_code AS returnGoodsfacilityInfoCode
+			,admina.adminagency_code AS adminagencyCode
+			,admina.adminagency_name AS adminagencyName
+			,gf.goodsfacility_code AS goodsfacilityCode
+			,gf.goodsfacility_name AS goodsfacilityName
+			,gfthree.goodsfacility_three_code AS goodsfacilityThreeCode
+			,gfthree.goodsfacility_three_name AS goodsfacilityThreeName
+			,stateg.state_goods_code AS stateGoodsCode
+			,stateg.state_goods AS stateGoods
+		FROM
+			return_goodsfacility_info AS returngf
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			returngf.goodsfacility_code = gf.goodsfacility_code
+			
+			INNER JOIN
+			adminagency AS admina
+			ON
+			returngf.adminagency_code = admina.adminagency_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+			
+			INNER JOIN
+			state_goods AS stateg
+			ON
+			returngf.state_goods_code = stateg.state_goods_code
+			
+		WHERE
+		return_goodsfacility_info_code = #{returnGoodsfacilityInfoCode}
+	
+	</select>
+	
+	
 	<select id="totalCountReturnGoodsfacilityInfo"
 			parameterType="java.util.Map"
 			resultType="Integer">
 		SELECT
 			COUNT(*)
 		FROM
-			return_goodsfacility_info
+			return_goodsfacility_info AS returngf
+			INNER JOIN
+			state_goods AS stateg
+			ON
+			returngf.state_goods_code = stateg.state_goods_code
 		<if test="!searchWord.equals('')">
 			<choose>
 				<when test="searchSelect.equals('물품/시설 반납 코드')">
@@ -43,6 +128,9 @@
 				</when>
 				<when test="searchSelect.equals('물품 상태 코드')">
 					WHERE state_goods_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('물품 상태')">
+					WHERE state_goods = #{searchWord}
 				</when>
 				<when test="searchSelect.equals('반납 확인 일자')">
 					WHERE date_return_check = #{searchWord}
@@ -55,19 +143,24 @@
 			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
 		SELECT
-			return_goodsfacility_info_code AS returGoodsfacilityInfoCode
-			,goodsfacility_rental_code AS goodsfacilityRentalCode
-			,goodsfacility_code AS goodsfacilityCode
-			,classify_goodsfacility AS classifyGoodsfacility
-			,citizen_id AS citizenId
-			,is_requested_to_return_as_delivery AS isRequestedToReturnAsDelivery
-			,overdue_days AS overdueDays
-			,adminagency_code AS adminagencyCode
-			,functionary_id AS functionaryId
-			,state_goods_code AS stateGoodsCode
-			,date_return_check AS dateReturnCheck
+			returngf.return_goodsfacility_info_code AS returGoodsfacilityInfoCode
+			,returngf.goodsfacility_rental_code AS goodsfacilityRentalCode
+			,returngf.goodsfacility_code AS goodsfacilityCode
+			,returngf.classify_goodsfacility AS classifyGoodsfacility
+			,returngf.citizen_id AS citizenId
+			,returngf.is_requested_to_return_as_delivery AS isRequestedToReturnAsDelivery
+			,returngf.overdue_days AS overdueDays
+			,returngf.adminagency_code AS adminagencyCode
+			,returngf.functionary_id AS functionaryId
+			,returngf.state_goods_code AS stateGoodsCode
+			,stateg.state_goods AS stateGoods
+			,returngf.date_return_check AS dateReturnCheck
 		FROM
-			return_goodsfacility_info
+			return_goodsfacility_info AS returngf
+			INNER JOIN
+			state_goods AS stateg
+			ON
+			returngf.state_goods_code = stateg.state_goods_code
 		<if test="!searchWord.equals('')">
 			<choose>
 				<when test="searchSelect.equals('물품/시설 반납 코드')">
@@ -99,6 +192,9 @@
 				</when>
 				<when test="searchSelect.equals('물품 상태 코드')">
 					WHERE state_goods_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('물품 상태')">
+					WHERE state_goods = #{searchWord}
 				</when>
 				<when test="searchSelect.equals('반납 확인 일자')">
 					WHERE date_return_check = #{searchWord}

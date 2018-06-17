@@ -55,10 +55,10 @@
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
-				<div class="col-sm-1" style="padding:15px;">
+				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="./module/leftHome/leftHome.jsp"/> --%>
 				</div>
-				<div class="col-sm-10">
+				<div class="col-sm-8">
 					<!-- Begin Content -->
 						
 					<div style="margin:15px 0 0 0;" class="panel panel-default">
@@ -108,6 +108,7 @@
 												<li><a href="#">지자체 기관 코드</a></li>
 												<li><a href="#">반납확인 공무원 ID</a></li>
 												<li><a href="#">물품 상태 코드</a></li>
+												<li><a href="#">물품 상태</a></li>
 												<li><a href="#">반납 확인 일자</a></li>
 											</ul>
 										</div>
@@ -135,7 +136,9 @@
 										<td><strong>지자체 기관 코드</strong></td>
 										<td><strong>반납확인 공무원 ID</strong></td>
 										<td><strong>물품 상태 코드</strong></td>
+										<td><strong>물품 상태</strong></td>
 										<td><strong>반납 확인 일자</strong></td>
+										<td><strong>AS 의뢰 신청</strong></td>
 										<!-- <td><strong>수정</strong></td>
 										<td><strong>삭제</strong></td> -->
 									</tr>
@@ -153,7 +156,16 @@
 											<td><strong>${returnGoodsfacilityInfoDto.adminagencyCode}</strong></td>
 											<td><strong>${returnGoodsfacilityInfoDto.functionaryId}</strong></td>
 											<td><strong>${returnGoodsfacilityInfoDto.stateGoodsCode}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.stateGoods}</strong></td>
 											<td><strong>${returnGoodsfacilityInfoDto.dateReturnCheck}</strong></td>
+											<td>
+												<c:choose>
+													<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
+														<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?returnGoodsfacilityInfoCode=${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}&functionaryId=${member.memberId}" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
+													</c:when>
+												</c:choose>
+											</td>
+											
 											<!-- <td><a href="#">수정</a></td>
 											<td><a href="">삭제</a></td> -->
 											<%-- <td><strong>${article.articleId}</strong></td>
@@ -242,7 +254,7 @@
 					
 					<!-- End Content -->
 				</div>
-				<div class="col-sm-1"></div>
+				<div class="col-sm-2"></div>
 			</div>
 		</div>
 		<jsp:include page="../module/bottom/bottomContent.jsp"/>

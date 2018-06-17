@@ -11,6 +11,7 @@ public class ReturnGoodsfacilityInfoDto {
 	private int adminagencyCode;
 	private String functionaryId;
 	private int stateGoodsCode;
+	private String stateGoods;
 	private String dateReturnCheck;
 	
 	public int getReturGoodsfacilityInfoCode() {
@@ -73,6 +74,12 @@ public class ReturnGoodsfacilityInfoDto {
 	public void setStateGoodsCode(int stateGoodsCode) {
 		this.stateGoodsCode = stateGoodsCode;
 	}
+	public String getStateGoods() {
+		return stateGoods;
+	}
+	public void setStateGoods(String stateGoods) {
+		this.stateGoods = stateGoods;
+	}
 	public String getDateReturnCheck() {
 		return dateReturnCheck;
 	}
@@ -86,6 +93,6 @@ public class ReturnGoodsfacilityInfoDto {
 				+ ", classifyGoodsfacility=" + classifyGoodsfacility + ", citizenId=" + citizenId
 				+ ", isRequestedToReturnAsDelivery=" + isRequestedToReturnAsDelivery + ", overdueDays=" + overdueDays
 				+ ", adminagencyCode=" + adminagencyCode + ", functionaryId=" + functionaryId + ", stateGoodsCode="
-				+ stateGoodsCode + ", dateReturnCheck=" + dateReturnCheck + "]";
+				+ stateGoodsCode + ", stateGoods=" + stateGoods + ", dateReturnCheck=" + dateReturnCheck + "]";
 	}
 }

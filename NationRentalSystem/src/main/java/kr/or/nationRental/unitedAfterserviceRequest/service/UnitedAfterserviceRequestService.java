@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.nationRental.agency.service.AgencyDto;
+import kr.or.nationRental.functionary.service.FunctionaryDto;
 import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto;
 
 @Service
@@ -17,10 +19,26 @@ public class UnitedAfterserviceRequestService {
 	private UnitedAfterserviceRequestDao unitedAfterserviceRequestDao;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestService.class);
 	
-	/*public List<ReturnGoodsfacilityInfoDto> selectListReturnGoodsfacilityInfo(){
-		logger.debug("selectListReturnGoodsfacilityInfo UnitedAfterserviceRequestService");
-		return unitedAfterserviceRequestDao.selectListReturnGoodsfacilityInfo();
-	}*/
+	public List<AgencyDto> selectListAgencyDto(String functionaryId) {
+		logger.debug("selectListAgencyDto UnitedAfterserviceRequestService");
+		/* 공무원(Functionary) 이 속한 지자체 기관 구하기 */
+		FunctionaryDto functionaryDto = unitedAfterserviceRequestDao.selectOneFunctionaryForListAgency(functionaryId);
+		logger.debug("★★★★★★★★1★★★★★★★★★★");
+		logger.debug(functionaryDto.toString());
+		/* 공무원(Functionary) 이 속한 지자체 기관과 계약한 대행업체(agency) List 구하기 */
+		List<AgencyDto> list =  unitedAfterserviceRequestDao.selectListAgencyDto(functionaryDto);
+		logger.debug("★★★★★★★★2★★★★★★★★★★");
+		if(!list.isEmpty()) {
+			logger.debug(list.toString());
+		}
+		return list;
+	}
+	
+	
+	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDtoForInsert(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
+		logger.debug("selectOneUnitedAfterserviceRequestDtoForInsert UnitedAfterserviceRequestDto");
+		return unitedAfterserviceRequestDao.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto);
+	}
 	
 	public Map<String, Object> selectListReturnGoodsfacilityInfo(int currentPage, int pagePerRow, String searchSelect, String searchWord){
 		logger.debug("selectListReturnGoodsfacilityInfo UnitedAfterserviceRequestService");

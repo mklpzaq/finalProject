@@ -12,6 +12,11 @@ public class UnitedAfterserviceRequestDto {
 	private int stateGoodsCode;
 	private String textCheckResultGoodsfacility;
 	private int agencyCode;
+	/* form으로 넘어갈 때 더 필요한 정보  */
+	private String adminagencyName;
+	private String goodsfacilityThreeName;
+	private String textRegularCheck;
+	private String stateGoods;
 	
 	public int getUnitedAfterserviceRequestCode() {
 		return unitedAfterserviceRequestCode;
@@ -79,6 +84,30 @@ public class UnitedAfterserviceRequestDto {
 	public void setAgencyCode(int agencyCode) {
 		this.agencyCode = agencyCode;
 	}
+	public String getAdminagencyName() {
+		return adminagencyName;
+	}
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
+	}
+	public String getGoodsfacilityThreeName() {
+		return goodsfacilityThreeName;
+	}
+	public void setGoodsfacilityThreeName(String goodsfacilityThreeName) {
+		this.goodsfacilityThreeName = goodsfacilityThreeName;
+	}
+	public String getTextRegularCheck() {
+		return textRegularCheck;
+	}
+	public void setTextRegularCheck(String textRegularCheck) {
+		this.textRegularCheck = textRegularCheck;
+	}
+	public String getStateGoods() {
+		return stateGoods;
+	}
+	public void setStateGoods(String stateGoods) {
+		this.stateGoods = stateGoods;
+	}
 	@Override
 	public String toString() {
 		return "UnitedAfterserviceRequestDto [unitedAfterserviceRequestCode=" + unitedAfterserviceRequestCode
@@ -86,6 +115,8 @@ public class UnitedAfterserviceRequestDto {
 				+ regularCheckCode + ", adminagencyCode=" + adminagencyCode + ", goodsfacilityThreeCode="
 				+ goodsfacilityThreeCode + ", goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityName="
 				+ goodsfacilityName + ", functionaryId=" + functionaryId + ", stateGoodsCode=" + stateGoodsCode
-				+ ", textCheckResultGoodsfacility=" + textCheckResultGoodsfacility + ", agencyCode=" + agencyCode + "]";
+				+ ", textCheckResultGoodsfacility=" + textCheckResultGoodsfacility + ", agencyCode=" + agencyCode
+				+ ", adminagencyName=" + adminagencyName + ", goodsfacilityThreeName=" + goodsfacilityThreeName
+				+ ", textRegularCheck=" + textRegularCheck + ", stateGoods=" + stateGoods + "]";
 	}
 }
