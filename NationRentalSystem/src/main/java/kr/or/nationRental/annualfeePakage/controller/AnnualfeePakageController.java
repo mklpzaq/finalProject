@@ -115,11 +115,9 @@ public class AnnualfeePakageController {
 		
 
 		AnnualfeePakageDto returnAnnualfeePakageDto = annualfeePakageService.annualfeePakageSangse(annualfeePakageDto);
-		List<AnnualfeePakageAuthorityDto> list = returnAnnualfeePakageDto.getAnnualfeePakageAuthority();
 		
 		model.addAttribute("member", member);
 		model.addAttribute("returnAnnualfeePakageDto", returnAnnualfeePakageDto);
-		model.addAttribute("list", list);
 		return "/annualfeePakage/annualfeePakageSangse";
 	}
 	
@@ -158,14 +156,13 @@ public class AnnualfeePakageController {
 	 * annualfeePakageSangse로 redirect
 	 */
 	@RequestMapping(value="/updateAnnualfeePakage", method=RequestMethod.POST)
-	public String updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto
-										,@RequestParam(value="annualfeePakageAuthorityCode", defaultValue="") List<Integer> annualfeePakageAuthorityCode										
+	public String updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto 
+										,HttpSession session
 										,Model model) {
 		logger.debug("AnnualfeePakageController - updateAnnualfeePakage - POST - annualfeePakageDto : " + annualfeePakageDto);
-		logger.debug("AnnualfeePakageController - updateAnnualfeePakage - annualfeePakageAuthorityCode : " + annualfeePakageAuthorityCode);
 		
 
-		annualfeePakageService.updateAnnualfeePakage(annualfeePakageDto, annualfeePakageAuthorityCode);
+		annualfeePakageService.updateAnnualfeePakage(annualfeePakageDto);
 		
 		return "redirect:/selectListAnnualfeePakage";
 	}

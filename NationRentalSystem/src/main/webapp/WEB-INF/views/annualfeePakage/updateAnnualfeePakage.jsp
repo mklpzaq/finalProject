@@ -99,7 +99,7 @@
 					
 					<div>
 						<form action="${pageContext.request.contextPath}/updateAnnualfeePakage" method="post">
-							<input hidden="hidden" value="${returnAnnualfeePakageDto.annualfeePakageCode}"><!-- 연회비패키지코드 -->
+							<input hidden="hidden" name="annualfeePakageCode" value="${returnAnnualfeePakageDto.annualfeePakageCode}"><!-- 연회비패키지코드 -->
 							<div>연회비패키지명 : <input name="annualfeePakageName" value="${returnAnnualfeePakageDto.annualfeePakageName}"></div>
 							<div>연회비패키지가격 : <input name="annualfeePakagePrice" value="${returnAnnualfeePakageDto.annualfeePakagePrice}"> </div>
 							<div><textarea name="annualfeePakageTextSangse" rows="" cols="">${returnAnnualfeePakageDto.annualfeePakageTextSangse}</textarea></div>
@@ -109,7 +109,7 @@
 								<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
 									<div id="deleteAnnualfeePakageAuthority">
 										<input name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}" readonly="readonly">
-										<input name="adminagencyCode" value="${annualfeePakageAuthority.adminagencyCode}" readonly="readonly">
+										<input value="${annualfeePakageAuthority.adminagencyCode}" readonly="readonly">
 										<button class="delete" type="button">삭제</button>
 									</div>
 								</c:forEach>

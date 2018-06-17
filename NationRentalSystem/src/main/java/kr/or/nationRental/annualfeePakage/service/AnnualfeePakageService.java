@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.or.nationRental.annualfeePakage.controller.AnnualfeePakageController;
-import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Service
 public class AnnualfeePakageService {
@@ -27,12 +25,14 @@ public class AnnualfeePakageService {
 				
 		annualfeePakageDao.insertAnnualfeePakage(annualfeePakageDto);
 		
-		for(int i= 0; i<annualfeePakageDto.getAdminagencyCode().size(); i++) {
-			Map<String, Integer> map = new HashMap<String, Integer>();
-			map.put("adminagencyCode", annualfeePakageDto.getAdminagencyCode().get(i));
-			map.put("annualfeePakageCode", annualfeePakageDto.getAnnualfeePakageCode());
-			annualfeePakageDao.insertAnnualfeePakageAuthority(map);				
-		}		
+		if(annualfeePakageDto.getAdminagencyCode() != null) {
+			for(int i= 0; i<annualfeePakageDto.getAdminagencyCode().size(); i++) {
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				map.put("adminagencyCode", annualfeePakageDto.getAdminagencyCode().get(i));
+				map.put("annualfeePakageCode", annualfeePakageDto.getAnnualfeePakageCode());
+				annualfeePakageDao.insertAnnualfeePakageAuthority(map);				
+			}	
+		}
 	}
 
 	
@@ -101,19 +101,19 @@ public class AnnualfeePakageService {
 		return annualfeePakageDao.annualfeePakageSangse(annualfeePakageDto);
 	}
 
-	@Transactional
-	public void updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto,
-			List<Integer> annualfeePakageAuthorityCode) {
+	
+	public void updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
 		
+		logger.debug("AnnualfeePakageService - updateAnnualfeePakage - annualfeePakageDto  : " + annualfeePakageDto.toString());
 		//annualfee_pakage테이블의 데이터 update 처리
 		annualfeePakageDao.updateAnnualfeePakage(annualfeePakageDto);
 		
-		//annualfee_pakage_authority테이블의 데이터 delete 처리
+		/*//annualfee_pakage_authority테이블의 데이터 delete 처리
 		//위에 deleteAnnualfeePakageAuthority는 해당 패키지내에 적용 행정기관을 모두 삭제하는 것이고
 		//이번에 것은 선택된 행정기관만 삭제하는 것이다
-			for(int i=0; i<annualfeePakageAuthorityCode.size(); i++) {
-				annualfeePakageDao.deleteCheckAnnualfeePakageAuthority(annualfeePakageAuthorityCode.get(i));
-			}
+			for(int i=0; i<annualfeePakageDto.getAnnualfeePakageAuthorityCode().size(); i++) {
+				annualfeePakageDao.deleteCheckAnnualfeePakageAuthority(annualfeePakageDto.getAnnualfeePakageAuthorityCode().get(i));
+			}*/
 		
 		//annualfee_pakage_authority테이블의 데이터 insert 처리
 			for(int i= 0; i<annualfeePakageDto.getAdminagencyCode().size(); i++) {

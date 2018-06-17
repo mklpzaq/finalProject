@@ -10,9 +10,10 @@ public class AnnualfeePakageDto {
 	private int annualfeePakagePrice; //연회비/패키지가격
 	private String annualfeePakageTextSangse; //연회비/패키지상세
 	private int annualfeePakageDiscountRate; //연회비/패키지할인률
-	private Date annualfeePakageDateRegistration; //연회비/패키지등록날짜
-	private List<Integer> adminagencyCode; //행정기관코드
+	private Date annualfeePakageDateRegistration; //연회비/패키지등록날짜	
 	private List<AnnualfeePakageAuthorityDto> annualfeePakageAuthority; //연회비패키지권한범위클래스
+	private List<Integer> annualfeePakageAuthorityCode; //연회비패키지코드
+	private List<Integer> adminagencyCode; //행정기관코드	
 	private String citizenId; //구입자 id
 	public int getAnnualfeePakageCode() {
 		return annualfeePakageCode;
@@ -56,17 +57,23 @@ public class AnnualfeePakageDto {
 	public void setAnnualfeePakageDateRegistration(Date annualfeePakageDateRegistration) {
 		this.annualfeePakageDateRegistration = annualfeePakageDateRegistration;
 	}
-	public List<Integer> getAdminagencyCode() {
-		return adminagencyCode;
-	}
-	public void setAdminagencyCode(List<Integer> adminagencyCode) {
-		this.adminagencyCode = adminagencyCode;
-	}
 	public List<AnnualfeePakageAuthorityDto> getAnnualfeePakageAuthority() {
 		return annualfeePakageAuthority;
 	}
 	public void setAnnualfeePakageAuthority(List<AnnualfeePakageAuthorityDto> annualfeePakageAuthority) {
 		this.annualfeePakageAuthority = annualfeePakageAuthority;
+	}
+	public List<Integer> getAnnualfeePakageAuthorityCode() {
+		return annualfeePakageAuthorityCode;
+	}
+	public void setAnnualfeePakageAuthorityCode(List<Integer> annualfeePakageAuthorityCode) {
+		this.annualfeePakageAuthorityCode = annualfeePakageAuthorityCode;
+	}
+	public List<Integer> getAdminagencyCode() {
+		return adminagencyCode;
+	}
+	public void setAdminagencyCode(List<Integer> adminagencyCode) {
+		this.adminagencyCode = adminagencyCode;
 	}
 	public String getCitizenId() {
 		return citizenId;
@@ -80,9 +87,11 @@ public class AnnualfeePakageDto {
 				+ ", annualfeePakageName=" + annualfeePakageName + ", annualfeePakagePrice=" + annualfeePakagePrice
 				+ ", annualfeePakageTextSangse=" + annualfeePakageTextSangse + ", annualfeePakageDiscountRate="
 				+ annualfeePakageDiscountRate + ", annualfeePakageDateRegistration=" + annualfeePakageDateRegistration
-				+ ", adminagencyCode=" + adminagencyCode + ", annualfeePakageAuthority=" + annualfeePakageAuthority
-				+ ", citizenId=" + citizenId + "]";
+				+ ", annualfeePakageAuthority=" + annualfeePakageAuthority + ", annualfeePakageAuthorityCode="
+				+ annualfeePakageAuthorityCode + ", adminagencyCode=" + adminagencyCode + ", citizenId=" + citizenId
+				+ "]";
 	}
+	
 	
 	
 }

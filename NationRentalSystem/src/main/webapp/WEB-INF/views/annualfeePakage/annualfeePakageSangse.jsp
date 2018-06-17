@@ -50,7 +50,7 @@
 								<div>연회비패키지명 : ${returnAnnualfeePakageDto.annualfeePakageName}</div>
 								<div>연회비패키지가격 : ${returnAnnualfeePakageDto.annualfeePakagePrice}</div>
 								<div><textarea rows="" cols="" readonly="readonly">${returnAnnualfeePakageDto.annualfeePakageTextSangse}</textarea></div>
-								<div>연회비패키지 등록날짜 : ${returnAnnualfeePakageDto.annualfeePakageDiscountRate}</div>
+								<div>연회비패키지 할인률 : ${returnAnnualfeePakageDto.annualfeePakageDiscountRate}</div>
 								<div>
 									<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
 										<div>${annualfeePakageAuthority.annualfeePakageAuthorityCode}</div>

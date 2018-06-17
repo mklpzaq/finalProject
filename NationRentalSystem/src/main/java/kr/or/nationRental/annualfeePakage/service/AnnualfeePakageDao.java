@@ -42,7 +42,10 @@ public class AnnualfeePakageDao {
 
 	public AnnualfeePakageDto annualfeePakageSangse(AnnualfeePakageDto annualfeePakageDto) {
 		logger.debug("AnnualfeePakageDao - annualfeePakageSangse - annualfeePakageDto : " + annualfeePakageDto.toString());
-		return sqlSession.selectOne(NS+"annualfeePakageSangse", annualfeePakageDto);
+		AnnualfeePakageDto returnAnnualfeePakageDto = sqlSession.selectOne(NS+"annualfeePakageSangse", annualfeePakageDto);	
+		logger.debug("AnnualfeePakageDao - annualfeePakageSangse - returnAnnualfeePakageDto : " + returnAnnualfeePakageDto.toString());
+		logger.debug("AnnualfeePakageDao - annualfeePakageSangse - returnAnnualfeePakageDto : " + returnAnnualfeePakageDto.getAnnualfeePakageAuthority().toString());
+		return returnAnnualfeePakageDto;
 	}
 
 	public void deleteAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
