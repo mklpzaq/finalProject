@@ -116,6 +116,21 @@
 		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
 	
+	<select id="selectListAnnualfeePakageOwnership" parameterType="String" resultType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		SELECT
+				annualfee_pakage_code as annualfeePakageCode
+				,functionary_id as functionaryId
+				,annualfee_pakage_name as annualfeePakageName
+				,annualfee_pakage_price as annualfeePakagePrice
+				,annualfee_pakage_text_sangse as annualfeePakageTextSangse
+				,annualfee_pakage_discount_rate as annualfeePakageDiscountRate
+				,annualfee_pakage_date_registration as annualfeePakageDateRegistration
+			FROM annualfee_pakage
+			join annualfee_pakage_ownership
+				using(annualfee_pakage_code)
+				where annualfee_pakage_ownership.citizen_id = #{memeberId}
+	</select>
+	
 	<select id="annualfeePakageSangse" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto" resultMap="annualfeePakageDto">
 		SELECT
 			ap.annualfee_pakage_code
@@ -170,4 +185,6 @@
 				,#{citizenId}
 				,#{annualfeePakageCode})	
 	</insert>
+	
+	
  </mapper>

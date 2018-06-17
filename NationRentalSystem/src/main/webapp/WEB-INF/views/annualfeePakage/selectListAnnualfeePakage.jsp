@@ -116,6 +116,10 @@
 								<div class="col-sm-2"></div>
 							</div>
 							
+							<c:if test="${memeberLevel == '시민'}">
+								<div align="left"><button><a href="${pageContext.request.contextPath}/selectListAnnualfeePakageOwnership">구입한 연회비/패키지</a></button></div>
+							</c:if>
+							
 							<table class="table table-striped">
 								<thead>
 									<tr>

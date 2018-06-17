@@ -185,4 +185,21 @@ public class AnnualfeePakageController {
 		
 		return "redirect:/selectListAnnualfeePakage";
 	}
+	
+	/*시민이 자신이 구입한 연회비패키지만 보기
+	 * 
+	 */
+	@RequestMapping(value="/selectListAnnualfeePakageOwnership", method=RequestMethod.GET)
+	public String selectListAnnualfeePakageOwnership(HttpSession session
+													,Model model) {
+		MemberDto member = (MemberDto) session.getAttribute("member");
+		String memeberId = member.getMemberId();
+		
+
+		List<AnnualfeePakageDto> list = annualfeePakageService.selectListAnnualfeePakageOwnership(memeberId);
+		logger.debug("AnnualfeePakageController - selectListAnualfeePakage - memeberId : " + memeberId);
+		model.addAttribute("list", list);
+		
+		return "/annualfeePakage/selectListAnnualfeePakageOwnership";
+	}
 }

@@ -98,7 +98,7 @@
 					</div>
 					
 					<div>
-						<form action="">
+						<form action="${pageContext.request.contextPath}/updateAnnualfeePakage" method="post">
 							<input hidden="hidden" value="${returnAnnualfeePakageDto.annualfeePakageCode}"><!-- 연회비패키지코드 -->
 							<div>연회비패키지명 : <input name="annualfeePakageName" value="${returnAnnualfeePakageDto.annualfeePakageName}"></div>
 							<div>연회비패키지가격 : <input name="annualfeePakagePrice" value="${returnAnnualfeePakageDto.annualfeePakagePrice}"> </div>

@@ -132,4 +132,13 @@ public class AnnualfeePakageService {
 		
 	}
 
+
+	public List<AnnualfeePakageDto> selectListAnnualfeePakageOwnership(String memeberId) {
+		logger.debug("AnnualfeePakageService - selectListAnnualfeePakageOwnership - memeberId  : " + memeberId);
+		return annualfeePakageDao.selectListAnnualfeePakageOwnership(memeberId);		
+	}
+
+
+	
+
 }

@@ -71,6 +71,12 @@ public class AnnualfeePakageDao {
 		sqlSession.insert(NS+"insertAnnualfeePakageOwnership", annualfeePakageDto);		
 	}
 
+	public List<AnnualfeePakageDto> selectListAnnualfeePakageOwnership(String memeberId) {
+		logger.debug("AnnualfeePakageDao - selectListAnnualfeePakageOwnership - memeberLevel : " + memeberId);		
+		return sqlSession.selectList(NS+"selectListAnnualfeePakageOwnership", memeberId);	
+	}
+
+
 	
 	
 
