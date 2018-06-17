@@ -156,15 +156,47 @@ public class GoodsFacilityService {
 		returnMap.put("beginPageNumForCurrentPage", beginPageNumForCurrentPage);
 		
 		return returnMap;		
-	}
-	
-	public GoodsFacilityDto selectGoodsFacilityImage(GoodsFacilityDto goodsFacilityDto) {
-		logger.debug("GoodsFacilityService goodsFacilityImage : " + goodsFacilityDto.toString());
+	}	
+
+	public Map<String, Object> viewImageGoodsFacility(int currentPage, int pagePerRow, String searchOption,	String keyword) {
+		logger.debug("GoodsFacilityService viewImageGoodsFacility : ");
+		int beginRow = (currentPage-1)*pagePerRow;
 		
-		GoodsFacilityDto goodsFacilityImage = goodsFacilityDao.selectGoodsFacilityImage(goodsFacilityDto);
-		logger.debug("GoodsFacilityService goodsFacilityImage : " + goodsFacilityImage);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("beginRow", beginRow);
+		map.put("pagePerRow", pagePerRow);
+		logger.debug("currentPage :" + currentPage);
+		logger.debug("beginRow :" + beginRow);
+		logger.debug("pagePerRow :" + pagePerRow);
 		
-		return goodsFacilityImage;
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		logger.debug("searchOption :" + searchOption);
+		logger.debug("keyword :" + keyword);
+		
+		List<GoodsFacilityDto> list = goodsFacilityDao.viewImageGoodsFacility(map);
+		logger.debug("viewImageGoodsFacility : " + list);
+		
+		int total = goodsFacilityDao.totalCountGoodsFacility(map);
+		
+		int lastPage = 0;
+		if(0 == total) {
+			lastPage = 1;
+		}else if(total%pagePerRow == 0) {
+			lastPage = total/pagePerRow;
+		}else {
+			lastPage = total/pagePerRow + 1;
+		}
+		/* 페이지가 5개 단위씩 보이게 하는 계산식 */
+		int temp = (currentPage - 1)/5;
+		int beginPageNumForCurrentPage = temp * 5 + 1;
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("list", list);
+		returnMap.put("lastPage", lastPage);
+		returnMap.put("beginPageNumForCurrentPage", beginPageNumForCurrentPage);
+		
+		return returnMap;		
 	}
 
 }

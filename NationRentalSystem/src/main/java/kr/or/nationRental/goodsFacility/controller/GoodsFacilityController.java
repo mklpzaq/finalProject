@@ -102,16 +102,14 @@ public class GoodsFacilityController {
 	
 	@RequestMapping(value="/selectGoodsFacilityList", method=RequestMethod.GET)
 	public String getGoodsFacilityList(Model model
-			,HttpSession session
-			,@RequestParam(value="currentPage", defaultValue="1") int currentPage
-			,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-			,@RequestParam(value="searchOption", defaultValue="") String searchOption
-			,@RequestParam(value="keyword", defaultValue="") String keyword) {
+										,HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchOption", defaultValue="") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		logger.debug("GoodsFacilityController GoodsFacilityList GET : ");
 		
-		Map<String, Object> map = goodsFacilityService.getGoodsFacilityList(currentPage, pagePerRow, searchOption, keyword);
-	
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
+		Map<String, Object> map = goodsFacilityService.getGoodsFacilityList(currentPage, pagePerRow, searchOption, keyword);	
 		logger.debug(map.get("list").toString());
 		
 		model.addAttribute("list", map.get("list"));
@@ -169,19 +167,25 @@ public class GoodsFacilityController {
 					out.flush();
 			}    
 		}
-	
-	@RequestMapping(value="/selectGoodsFacilityImage", method=RequestMethod.GET)
-	public String selectGoodsFacilityImage(GoodsFacilityDto goodsFacilityDto
-											,HttpSession session
-											,Model model) {
-		logger.debug("GoodsFacilityController selectGoodsFacilityImage GET : " + goodsFacilityDto+toString());
+	@RequestMapping(value="/viewImageGoodsFacility", method=RequestMethod.GET)
+	public String viewImageGoodsFacility(Model model			
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchOption", defaultValue="") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("GoodsFacilityController viewImageGoodsFacility GET : ");
 		
-		GoodsFacilityDto goodsFacilityImage = goodsFacilityService.selectGoodsFacilityImage(goodsFacilityDto);
-		model.addAttribute("goodsFacilityImage", goodsFacilityImage);	
-		String path = session.getServletContext().getRealPath("/resources/image/goodsFacilityImage/");
-		model.addAttribute("ImgPath", path);
-		model.addAttribute("dot", ".");
+		Map<String, Object> map = goodsFacilityService.viewImageGoodsFacility(currentPage, pagePerRow, searchOption, keyword);
+		logger.debug("viewImageGoodsFacility map : " + map.toString());
 		
-		return "/rentalGoodsFacility/rentalGoodsFacilityList";
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("keyword", keyword); 
+		
+		return "/rentalGoodsFacility/viewImageGoodsFacility";		
 	}
 }

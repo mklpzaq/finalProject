@@ -62,32 +62,7 @@
   					,#{goodsfacilityStateAfterservice}
   					,#{goodsfacilityIsPossibleRental}
   					,now()) 	
-  	</insert>
-  	
-  	<select id="selectGoodsFacilityImage"
-  			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
-  			resultMap="goodsFacility">
-  			SELECT 
-  				gf.goodsfacility_code
-  				,gf.goodsfacility_three_code
-  				,gf.goodsfacility_name
-  				,gf.adminagency_code
-  				,gf.functionary_id
-  				,gff.goodsfacility_file_name
-  				,gff.goodsfacility_file_ext
-  				,gff.goodsfacility_file_type
-  				,gff.goodsfacility_file_size  				
-  			FROM 
-  				goodsfacility as gf
-  			JOIN
-  				goodsfacility_file as gff
-  				using(goodsfacility_code)
-  			WHERE 
-  				goodsfacility_code = #{goodsfacilityCode} 
-  				
-  	
-  	
-  	</select>
+  	</insert>  	
   	
   	<resultMap type="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto" id="goodsFacility">
   		<id column="goodsfacility_code" property="goodsfacilityCode"/>
@@ -191,7 +166,34 @@
 					</when>					
 				</choose>
 			</if>				
-  	</select>  	
+  	</select> 
+  	
+  	<select id="viewImageGoodsFacility"
+  			parameterType="java.util.Map"
+  			resultMap="goodsFacility">
+  			SELECT   				
+				goodsfacility.goodsfacility_code
+				,goodsfacility.goodsfacility_name					
+				,goodsfacility_file.goodsfacility_file_name
+				,goodsfacility_file.goodsfacility_file_ext			 				
+			FROM 
+				goodsfacility
+			JOIN
+				goodsfacility_file
+			ON
+				goodsfacility.goodsfacility_code = goodsfacility_file.goodsfacility_code 
+				
+			<if test="!keyword.equals('')">
+			<choose>
+				<when test="searchOption.equals('goodsfacilityName')">
+					WHERE goodsfacility_name = #{keyword}
+				</when>				
+			</choose>
+			</if>
+			ORDER BY goodsfacility_name DESC
+			LIMIT #{beginRow}, #{pagePerRow}   	
+  	</select> 	
+  	
   	
   
   </mapper>

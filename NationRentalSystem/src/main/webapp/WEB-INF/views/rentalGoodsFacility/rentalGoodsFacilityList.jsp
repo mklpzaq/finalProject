@@ -17,10 +17,8 @@
 					<jsp:include page="../module/left/leftnavi.jsp"/>
 				</div>
 				<div class="col-sm-8">
-				<!-- Begin Content -->
-	
-	
-					<input value="${ImgPath}${goodsFacilityFile.goodsfacilityFileName}${dot}${goodsFacilityFile.goodsfacilityFileExt}">
+				<!-- Begin Content -->	
+					
 					<h3>대여 물품/시설 리스트</h3>
 					<div class="row">
 						<!-- <div class="col-sm-6 col-md-3"> -->

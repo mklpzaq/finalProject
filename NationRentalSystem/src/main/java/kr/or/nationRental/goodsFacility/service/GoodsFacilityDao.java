@@ -40,12 +40,11 @@ public class GoodsFacilityDao {
 	public int totalCountGoodsFacility(Map<String, Object> map) {
 		logger.debug("GoodsFacilityDao totalCountCitizen");
 		return sqlSession.selectOne(NS+"totalCountGoodsFacility", map);
-	}
-	
-	public GoodsFacilityDto selectGoodsFacilityImage(GoodsFacilityDto goodsFacilityDto) {
-		logger.debug("GoodsFacilityDao selectGoodsFacilityImage : " + goodsFacilityDto.toString());
-		
-		return sqlSession.selectOne(NS+"selectGoodsFacilityImage", goodsFacilityDto);
+	}	
+
+	public List<GoodsFacilityDto> viewImageGoodsFacility(Map<String, Object> map) {
+		logger.debug("GoodsFacilityDao viewImageGoodsFacility");		
+		return sqlSession.selectList(NS+"viewImageGoodsFacility", map);
 	}
 
 }

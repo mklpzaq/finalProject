@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<title>Goods & Facility List</title>
+	<title>View Image</title>
 	
 	<script>
 			$(document).ready(function() {
@@ -34,21 +34,23 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectGoodsFacilityList?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
+					$(location).attr('href', './viewImageGoodsFacility?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
-					$(location).attr('href', './selectGoodsFacilityList?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
+					$(location).attr('href', './viewImageGoodsFacility?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
 			});
 		</script>
+	
+	
 </head>
 <body>
-	<jsp:include page="../module/top/navbar.jsp"/>
+		<jsp:include page="../module/top/navbar.jsp"/>
 		<%-- <jsp:include page="../module/top/mainHeader.jsp"/> --%>
 		<div class="container-fluid">
 			<div class="row">
@@ -57,10 +59,10 @@
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
-				
-				<h2>시설 & 물품 리스트</h2>
-				
-				<div class="panel panel-default">
+
+					<h2>시설 & 물품 이미지 리스트</h2>
+
+					<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
 									<div class="col-md-4">
@@ -69,7 +71,7 @@
 										<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
-										<h3>시설 & 물품 리스트</h3>
+										<h3>시설 & 물품 이미지 리스트</h3>
 									</div>
 									<div class="col-md-4">
 										<select id="selectPagePerRow" name="selectPagePerRow">
@@ -86,7 +88,7 @@
 								</div>
 								<hr/>
 								
-								<!-- Begin Search -->
+								<%-- <!-- Begin Search -->
 								<div class="row">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
@@ -111,58 +113,41 @@
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
-								<!-- End Search -->
+								<!-- End Search --> --%>
 								
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<td>사진</td>
-											<td>시설 & 물품 카테고리</td>
-											<td>시설 $ 물품 이름</td>
-											<td>해당 행정기관코드</td>
-											<td>행정 상세주소</td>
-											<td>대여가능여부</td>
-											<td>배달가능여부</td>
-											<td>대여비용</td>																													
-										</tr>
-									</thead>
-									<tbody>									
-										<c:forEach var="goodsFacilityDto" items="${list}">
-											<tr>
-												<!-- 이미지 작업용 forEach안에서만 -->
-												<c:forEach var="goodsFacilityFile" items="${goodsFacilityDto.goodsFacilityFile}">
-													<%-- <td>${path}${goodsFacilityFile.goodsfacilityFileName}.${goodsFacilityFile.goodsfacilityFileExt}</td> --%>
-													<td><img data-src="holder.js/140x140" class="img-circle" alt="${goodsFacilityFile.goodsfacilityFileName}${goodsFacilityFile.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${goodsFacilityFile.goodsfacilityFileName}&goodsfacilityFileExt=${goodsFacilityFile.goodsfacilityFileExt}" data-holder-rendered="true" style="width: 140px; height: 140px;"></td>
-												</c:forEach>
-												
-												
-												<td>${goodsFacilityDto.goodsfacilityThreeCode}</td>
-												<td>${goodsFacilityDto.goodsfacilityName}</td>
-												<td>${goodsFacilityDto.adminagencyCode}</td>
-												<td>${goodsFacilityDto.goodsfacilityAddressSangse}</td>
-												<td>${goodsFacilityDto.goodsfacilityIsPossibleRental}</td>
-												<td>${goodsFacilityDto.goodsfacilityIsPossibleDelivery}</td>
-												<td>${goodsFacilityDto.goodsfacilityPriceRental}</td>																																			
-											</tr>
-										</c:forEach>									
-									</tbody>
-								</table>
+								
+								<div class="col-sm-3">
+									<c:forEach var="GoodsFacility" items="${list}">
+										<div class="thumbnail">
+											<c:forEach var="GoodsFacilityImage"  items="${GoodsFacility.goodsFacilityFile}">
+												<img data-src="holder.js/100%x200" alt="${GoodsFacilityImage.goodsfacilityFileName}${GoodsFacilityImage.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${GoodsFacilityImage.goodsfacilityFileName}&goodsfacilityFileExt=${GoodsFacilityImage.goodsfacilityFileExt}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+											</c:forEach>
+												<div class="caption">
+													<!-- <h3 style="text-align:center;" id="thumbnail-label">이준희<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3> -->
+													<p>"${GoodsFacility.goodsfacilityName}"</p>
+													<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+												</div>										
+										</div>
+									</c:forEach>	
+								</div>
+								
+								
 								<nav>
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}selectGoodsFacilityList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}viewImageGoodsFacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
@@ -173,10 +158,10 @@
 												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -185,10 +170,10 @@
 												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -197,19 +182,19 @@
 										<li>
 											<c:choose>
 												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/selectGoodsFacilityList?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>
@@ -217,18 +202,14 @@
 								</nav>
 							</div>
 						</div>					
-				
-				
-				
-				
-				
-				
+
+
+
 				<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
 		</div>
-	<jsp:include page="../module/bottom/bottomContent.jsp"/>
-
+		<jsp:include page="../module/bottom/bottomContent.jsp"/>
 </body>
 </html>
