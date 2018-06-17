@@ -156,7 +156,7 @@
 										<li><a style="color:#FFFFFF" href="#">반납 리스트</a></li>
 										<li><a style="color:#FFFFFF" href="#">반납 신청</a></li>
 										<li><a style="color:#FFFFFF" href="#">운송장 정보 확인</a></li>
-										<li><a style="color:#FFFFFF" href="#">연회비/패키지</a></li>
+										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">포인트 조회</a></li>
 										<li><a style="color:#FFFFFF" href="#">배상청구 기록 조회</a></li>
 									</ul>

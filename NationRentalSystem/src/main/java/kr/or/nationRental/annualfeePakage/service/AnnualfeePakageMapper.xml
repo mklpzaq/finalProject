@@ -132,4 +132,42 @@
 				using(annualfee_pakage_code)
 				where annualfee_pakage_code = #{annualfeePakageCode}
 	</select>
+	
+	<delete id="deleteAnnualfeePakage" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		DELETE 
+			FROM annualfee_pakage 
+			WHERE annualfee_pakage_code= #{annualfeePakageCode}
+	</delete>
+	
+	<delete id="deleteAnnualfeePakageAuthority" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		DELETE 
+			FROM annualfee_pakage_authority 
+			WHERE annualfee_pakage_code= #{annualfeePakageCode}
+	</delete>
+	
+	<update id="updateAnnualfeePakage" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		UPDATE annualfee_pakage
+			SET
+		annualfee_pakage_name=#{annualfeePakageName},
+		annualfee_pakage_price=#{annualfeePakagePrice},
+		annualfee_pakage_text_sangse=#{annualfeePakageTextSangse},
+		annualfee_pakage_discount_rate=#{annualfeePakageDiscountRate}
+			WHERE annualfee_pakage_code=#{annualfeePakageCode}	
+	</update>
+	
+	<delete id="deleteCheckAnnualfeePakageAuthority" parameterType="Integer">
+		DELETE 
+			FROM annualfee_pakage_authority 
+			WHERE annualfee_pakage_authority_code= #{integer}
+	</delete>
+	
+	<insert id="insertAnnualfeePakageOwnership" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		INSERT INTO annualfee_pakage_ownership
+				(annualfee_pakage_ownership_code
+				,citizen_id
+				,annualfee_pakage_code)
+			VALUES (NULL
+				,#{citizenId}
+				,#{annualfeePakageCode})	
+	</insert>
  </mapper>

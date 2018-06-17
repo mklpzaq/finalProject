@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,5 +121,68 @@ public class AnnualfeePakageController {
 		model.addAttribute("returnAnnualfeePakageDto", returnAnnualfeePakageDto);
 		model.addAttribute("list", list);
 		return "/annualfeePakage/annualfeePakageSangse";
+	}
+	
+	/*연회비패키지 삭제처리 */
+	@RequestMapping(value="/deleteAnnualfeePakage", method=RequestMethod.GET)
+	public String deleteAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageController - deleteAnnualfeePakage - annualfeePakageDto : " + annualfeePakageDto);
+		
+
+		annualfeePakageService.deleteAnnualfeePakage(annualfeePakageDto);
+		
+		
+		return "redirect:/selectListAnnualfeePakage";
+	}
+	
+	/*연회비패키지 수정처리 
+	 * 수정처리를 위한 화면기능
+	 * */
+	@RequestMapping(value="/updateAnnualfeePakage", method=RequestMethod.GET)
+	public String updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto
+										,Model model) {
+		logger.debug("AnnualfeePakageController - updateAnnualfeePakage - GET - annualfeePakageDto : " + annualfeePakageDto);
+		
+
+		AnnualfeePakageDto returnAnnualfeePakageDto = annualfeePakageService.updateVeiwAnnualfeePakage(annualfeePakageDto);
+		
+		model.addAttribute("returnAnnualfeePakageDto", returnAnnualfeePakageDto);
+		return "/annualfeePakage/updateAnnualfeePakage";
+	}
+	
+	/*연회비 수정처리
+	 * 수정처리를 위한 메서드
+	 * annualfee_pakage테이블의 데이터 update 처리
+	 * annualfee_pakage_authority테이블의 데이터 delete처리
+	 * annualfee_pakage_authority테이블의 데이터 insert처리
+	 * annualfeePakageSangse로 redirect
+	 */
+	@RequestMapping(value="/updateAnnualfeePakage", method=RequestMethod.POST)
+	public String updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto
+										,@RequestParam(value="annualfeePakageAuthorityCode", defaultValue="") List<Integer> annualfeePakageAuthorityCode										
+										,Model model) {
+		logger.debug("AnnualfeePakageController - updateAnnualfeePakage - POST - annualfeePakageDto : " + annualfeePakageDto);
+		logger.debug("AnnualfeePakageController - updateAnnualfeePakage - annualfeePakageAuthorityCode : " + annualfeePakageAuthorityCode);
+		
+
+		annualfeePakageService.updateAnnualfeePakage(annualfeePakageDto, annualfeePakageAuthorityCode);
+		
+		return "redirect:/selectListAnnualfeePakage";
+	}
+	
+	/*연회비 구입
+	 * 연회비패키지코드
+	 * session처리된 id
+	 */
+	@RequestMapping(value="/insertAnnualfeePakageOwnership", method=RequestMethod.GET)
+	public String insertAnnualfeePakageOwnership(AnnualfeePakageDto annualfeePakageDto																			
+										,HttpSession session) {
+		logger.debug("AnnualfeePakageController - updateAnnualfeePakage - POST - annualfeePakageDto : " + annualfeePakageDto);
+		MemberDto member= (MemberDto) session.getAttribute("member");
+		annualfeePakageDto.setCitizenId(member.getMemberId());
+
+		annualfeePakageService.insertAnnualfeePakageOwnership(annualfeePakageDto);
+		
+		return "redirect:/selectListAnnualfeePakage";
 	}
 }

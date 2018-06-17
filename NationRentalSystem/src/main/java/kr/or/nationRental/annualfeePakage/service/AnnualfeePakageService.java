@@ -84,4 +84,52 @@ public class AnnualfeePakageService {
 		return returnAnnualfeePakageDto;
 	}
 
+	
+	@Transactional
+	public void deleteAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
+		//annualfeePakage삭제처리
+		annualfeePakageDao.deleteAnnualfeePakage(annualfeePakageDto);
+		
+		//annualfeePakageAuthority삭제처리
+		annualfeePakageDao.deleteAnnualfeePakageAuthority(annualfeePakageDto);
+		
+	}
+
+
+	public AnnualfeePakageDto updateVeiwAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
+	//annualfeePakageSangse메서드에서 이미 selectOne메서드가 있기때문에 해당 매서드로 updateform 구성
+		return annualfeePakageDao.annualfeePakageSangse(annualfeePakageDto);
+	}
+
+	@Transactional
+	public void updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto,
+			List<Integer> annualfeePakageAuthorityCode) {
+		
+		//annualfee_pakage테이블의 데이터 update 처리
+		annualfeePakageDao.updateAnnualfeePakage(annualfeePakageDto);
+		
+		//annualfee_pakage_authority테이블의 데이터 delete 처리
+		//위에 deleteAnnualfeePakageAuthority는 해당 패키지내에 적용 행정기관을 모두 삭제하는 것이고
+		//이번에 것은 선택된 행정기관만 삭제하는 것이다
+			for(int i=0; i<annualfeePakageAuthorityCode.size(); i++) {
+				annualfeePakageDao.deleteCheckAnnualfeePakageAuthority(annualfeePakageAuthorityCode.get(i));
+			}
+		
+		//annualfee_pakage_authority테이블의 데이터 insert 처리
+			for(int i= 0; i<annualfeePakageDto.getAdminagencyCode().size(); i++) {
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				map.put("adminagencyCode", annualfeePakageDto.getAdminagencyCode().get(i));
+				map.put("annualfeePakageCode", annualfeePakageDto.getAnnualfeePakageCode());
+				annualfeePakageDao.insertAnnualfeePakageAuthority(map);				
+			}	
+		
+	}
+
+
+	public void insertAnnualfeePakageOwnership(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageService - insertAnnualfeePakageOwnership - annualfeePakageDto  : " + annualfeePakageDto.toString());
+		annualfeePakageDao.insertAnnualfeePakageOwnership(annualfeePakageDto);
+		
+	}
+
 }

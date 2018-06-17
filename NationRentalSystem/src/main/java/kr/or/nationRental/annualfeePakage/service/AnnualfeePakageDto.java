@@ -13,6 +13,7 @@ public class AnnualfeePakageDto {
 	private Date annualfeePakageDateRegistration; //연회비/패키지등록날짜
 	private List<Integer> adminagencyCode; //행정기관코드
 	private List<AnnualfeePakageAuthorityDto> annualfeePakageAuthority; //연회비패키지권한범위클래스
+	private String citizenId; //구입자 id
 	public int getAnnualfeePakageCode() {
 		return annualfeePakageCode;
 	}
@@ -67,6 +68,12 @@ public class AnnualfeePakageDto {
 	public void setAnnualfeePakageAuthority(List<AnnualfeePakageAuthorityDto> annualfeePakageAuthority) {
 		this.annualfeePakageAuthority = annualfeePakageAuthority;
 	}
+	public String getCitizenId() {
+		return citizenId;
+	}
+	public void setCitizenId(String citizenId) {
+		this.citizenId = citizenId;
+	}
 	@Override
 	public String toString() {
 		return "AnnualfeePakageDto [annualfeePakageCode=" + annualfeePakageCode + ", functionaryId=" + functionaryId
@@ -74,12 +81,8 @@ public class AnnualfeePakageDto {
 				+ ", annualfeePakageTextSangse=" + annualfeePakageTextSangse + ", annualfeePakageDiscountRate="
 				+ annualfeePakageDiscountRate + ", annualfeePakageDateRegistration=" + annualfeePakageDateRegistration
 				+ ", adminagencyCode=" + adminagencyCode + ", annualfeePakageAuthority=" + annualfeePakageAuthority
-				+ "]";
+				+ ", citizenId=" + citizenId + "]";
 	}
-	
-	
-	
-	
 	
 	
 }

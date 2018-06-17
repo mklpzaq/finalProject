@@ -45,6 +45,32 @@ public class AnnualfeePakageDao {
 		return sqlSession.selectOne(NS+"annualfeePakageSangse", annualfeePakageDto);
 	}
 
+	public void deleteAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageDao - deleteAnnualfeePakage - annualfeePakageDto : " + annualfeePakageDto.toString());
+		sqlSession.delete(NS+"deleteAnnualfeePakage", annualfeePakageDto);
+	}
+
+	public void deleteAnnualfeePakageAuthority(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageDao - deleteAnnualfeePakageAuthority - annualfeePakageDto : " + annualfeePakageDto.toString());
+		sqlSession.delete(NS+"deleteAnnualfeePakageAuthority", annualfeePakageDto);		
+	}
+
+	public void updateAnnualfeePakage(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageDao - updateAnnualfeePakage - annualfeePakageDto : " + annualfeePakageDto.toString());
+		sqlSession.update(NS+"updateAnnualfeePakage", annualfeePakageDto);
+	}
+
+	public void deleteCheckAnnualfeePakageAuthority(Integer integer) {
+		logger.debug("AnnualfeePakageDao - deleteCheckAnnualfeePakageAuthority - integer : " + integer.toString());
+		sqlSession.delete(NS+"deleteCheckAnnualfeePakageAuthority", integer);
+		
+	}
+
+	public void insertAnnualfeePakageOwnership(AnnualfeePakageDto annualfeePakageDto) {
+		logger.debug("AnnualfeePakageDao - insertAnnualfeePakageOwnership - annualfeePakageDto : " + annualfeePakageDto.toString());
+		sqlSession.insert(NS+"insertAnnualfeePakageOwnership", annualfeePakageDto);		
+	}
+
 	
 	
 
