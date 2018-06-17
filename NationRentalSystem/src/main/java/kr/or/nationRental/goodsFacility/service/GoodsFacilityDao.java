@@ -47,4 +47,9 @@ public class GoodsFacilityDao {
 		return sqlSession.selectList(NS+"viewImageGoodsFacility", map);
 	}
 
+	public GoodsFacilityDto viewImageDetail(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityDao viewImageDetail" + goodsFacilityDto.toString());
+		return sqlSession.selectOne(NS+"viewImageDetail", goodsFacilityDto);
+	}
+
 }

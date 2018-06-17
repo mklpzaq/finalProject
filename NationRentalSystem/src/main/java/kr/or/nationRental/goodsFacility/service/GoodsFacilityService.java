@@ -199,4 +199,12 @@ public class GoodsFacilityService {
 		return returnMap;		
 	}
 
+	public GoodsFacilityDto viewImageDetail(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityService viewImageDetail : " + goodsFacilityDto.toString());
+		GoodsFacilityDto viewImageDetailGoodsFacility = goodsFacilityDao.viewImageDetail(goodsFacilityDto);
+		logger.debug("GoodsFacilityService viewImageDetail : " + goodsFacilityDto.toString());
+		
+		return viewImageDetailGoodsFacility;
+	}
+
 }

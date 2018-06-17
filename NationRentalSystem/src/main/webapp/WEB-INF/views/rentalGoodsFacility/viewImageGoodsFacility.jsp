@@ -125,7 +125,7 @@
 												<div class="caption">
 													<!-- <h3 style="text-align:center;" id="thumbnail-label">이준희<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3> -->
 													<p>"${GoodsFacility.goodsfacilityName}"</p>
-													<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+													<p><a href="${pageContext.request.contextPath}/viewImageDetail?goodsfacilityCode=${GoodsFacility.goodsfacilityCode}" class="btn btn-primary" role="button">상세보기 </a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 												</div>										
 										</div>
 									</c:forEach>	

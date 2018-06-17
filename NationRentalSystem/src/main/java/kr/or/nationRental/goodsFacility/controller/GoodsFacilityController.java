@@ -188,4 +188,16 @@ public class GoodsFacilityController {
 		
 		return "/rentalGoodsFacility/viewImageGoodsFacility";		
 	}
+	
+	@RequestMapping(value="/viewImageDetail", method=RequestMethod.GET)
+	public String viewImageDetail(Model model
+										,GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityController viewImageGoodsFacility GET : " + goodsFacilityDto.toString());
+		
+		GoodsFacilityDto viewImageGoods = goodsFacilityService.viewImageDetail(goodsFacilityDto);
+		
+		model.addAttribute("viewImageGoods", viewImageGoods);
+		
+		return "rentalGoodsFacility/viewDetailGoodsFacility";
+	}
 }
