@@ -106,13 +106,7 @@
 							<div>연회비패키지 할인률 : <input name="annualfeePakageDiscountRate" value="${returnAnnualfeePakageDto.annualfeePakageDiscountRate}"></div>
 							<div>
 								<!-- 삭제버튼 클릭시 삭제버튼의 부모태그에 속한 value값들을 복사해서 hidden으로 숨겨놓고 해당 태그는 remove -->
-								<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-									<div id="deleteAnnualfeePakageAuthority">
-										<input name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}" readonly="readonly">
-										<input value="${annualfeePakageAuthority.adminagencyCode}" readonly="readonly">
-										<button class="delete" type="button">삭제</button>
-									</div>
-								</c:forEach>
+								
 							</div>		
 							<div id="addAdminagency">
 								
@@ -123,6 +117,13 @@
 							<button type="submit">수정</button>										
 						</form>						
 						<div>
+							<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
+									<div id="deleteAnnualfeePakageAuthority">
+										<input name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}" readonly="readonly">
+										<input value="${annualfeePakageAuthority.adminagencyCode}" readonly="readonly">
+										<button class="delete" type="button">삭제</button>
+									</div>
+							</c:forEach>
 							<button type="button" id="adminagencyAdd" class="btn btn-primary btn-lg">행정기관추가</button>
 						</div>
 					</div>

@@ -115,7 +115,7 @@ public class AnnualfeePakageController {
 		
 
 		AnnualfeePakageDto returnAnnualfeePakageDto = annualfeePakageService.annualfeePakageSangse(annualfeePakageDto);
-		
+		logger.debug("AnnualfeePakageController - annualfeePakageSangse - returnAnnualfeePakageDto : " + returnAnnualfeePakageDto.toString());
 		model.addAttribute("member", member);
 		model.addAttribute("returnAnnualfeePakageDto", returnAnnualfeePakageDto);
 		return "/annualfeePakage/annualfeePakageSangse";

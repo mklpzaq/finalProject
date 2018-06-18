@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html>
@@ -35,11 +36,12 @@
 								<div>연회비패키지 할인률 : ${returnAnnualfeePakageDto.annualfeePakageDiscountRate}</div>
 								<div>연회비패키지 등록날짜 : ${returnAnnualfeePakageDto.annualfeePakageDateRegistration}</div>
 								<div>
-									<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-										<div>${annualfeePakageAuthority.annualfeePakageAuthorityCode}</div>
-										<div>${annualfeePakageAuthority.annualfeePakageCode}</div>
-										<div>${annualfeePakageAuthority.adminagencyCode}</div>
-									</c:forEach>
+									<c:if test="${fn:length(returnAnnualfeePakageDto.annualfeePakageAuthority) > 1}">	
+										<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
+											연회비패키지행정기관적용코드 : ${annualfeePakageAuthority.annualfeePakageAuthorityCode}
+											연회비패키지적용행정기관 코드 : ${annualfeePakageAuthority.adminagencyCode}
+										</c:forEach>
+									</c:if>
 								</div>
 							</div>
 							<div><a href="${pageContext.request.contextPath}/deleteAnnualfeePakage?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">삭제</a></div>
@@ -51,12 +53,11 @@
 								<div>연회비패키지가격 : ${returnAnnualfeePakageDto.annualfeePakagePrice}</div>
 								<div><textarea rows="" cols="" readonly="readonly">${returnAnnualfeePakageDto.annualfeePakageTextSangse}</textarea></div>
 								<div>연회비패키지 할인률 : ${returnAnnualfeePakageDto.annualfeePakageDiscountRate}</div>
-								<div>
-									<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-										<div>${annualfeePakageAuthority.annualfeePakageAuthorityCode}</div>
-										<div>${annualfeePakageAuthority.annualfeePakageCode}</div>
-										<div>${annualfeePakageAuthority.adminagencyCode}</div>
-									</c:forEach>
+								<div>									
+										<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
+											연회비패키지행정기관적용코드 : ${annualfeePakageAuthority.annualfeePakageAuthorityCode}
+											연회비패키지적용행정기관 코드 : ${annualfeePakageAuthority.adminagencyCode}
+										</c:forEach>
 								</div>
 							</div>
 							<c:if test="${member.memberId == returnAnnualfeePakageDto.functionaryId}">
@@ -72,11 +73,13 @@
 								<div><textarea rows="" cols="" readonly="readonly">${returnAnnualfeePakageDto.annualfeePakageTextSangse}</textarea></div>
 								<div>연회비패키지 등록날짜 : ${returnAnnualfeePakageDto.annualfeePakageDiscountRate}</div>
 								<div>
-									<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-										<div>${annualfeePakageAuthority.annualfeePakageAuthorityCode}</div>
-										<div>${annualfeePakageAuthority.annualfeePakageCode}</div>
-										<div>${annualfeePakageAuthority.adminagencyCode}</div>
-									</c:forEach>
+									<%-- <c:if test="${fn:length(returnAnnualfeePakageDto.annualfeePakageAuthority) > 1}">
+										적용시켜보니 무조껀 null값이 셋팅되는 바람에 사이즈값을 구하면 1이상이 나온다 --%>	
+										<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
+											연회비패키지행정기관적용코드 : ${annualfeePakageAuthority.annualfeePakageAuthorityCode}
+											연회비패키지적용행정기관 코드 : ${annualfeePakageAuthority.adminagencyCode}
+										</c:forEach>
+									<%-- </c:if> --%>
 								</div>
 							</div>
 							<div><a href="${pageContext.request.contextPath}/insertAnnualfeePakageOwnership?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">구입</a></div>						

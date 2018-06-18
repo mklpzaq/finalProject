@@ -12,7 +12,7 @@
 		<script type="text/javascript">
 		$(document).ready(function(){
 			
-			
+			/* 유효성 검사 단하나도 안됨 */
 			
 			/* $('#myModalclick').click('show.bs.modal', function (event) {
 				  var button = $(event.relatedTarget) // Button that triggered the modal
