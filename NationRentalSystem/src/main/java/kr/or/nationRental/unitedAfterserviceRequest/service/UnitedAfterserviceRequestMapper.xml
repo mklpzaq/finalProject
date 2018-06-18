@@ -5,6 +5,41 @@
  
 <mapper namespace="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper">
 	
+	<insert id="insertUnitedAfterserviceRequest"
+			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		INSERT
+		INTO
+			united_afterservice_request(
+				united_afterservice_request_code
+				,return_goodsfacility_info_code
+				,regular_check_code
+				,goodsfacility_three_code
+				,goodsfacility_code
+				,goodsfacility_name
+				,functionary_id
+				,text_check_result_goodsfacility
+				,agency_code
+				,agency_name
+				,agency_businesstype_code
+				,date_request_afterservice
+			)
+		VALUES (#{unitedAfterserviceRequestCode}
+			,#{returnGoodsfacilityInfoCode}
+			,#{regularCheckCode}
+			,#{goodsfacilityThreeCode}
+			,#{goodsfacilityCode}
+			,#{goodsfacilityName}
+			,#{functionaryId}
+			,#{textCheckResultGoodsfacility}
+			,#{agencyCode}
+			,#{agencyName}
+			,#{agencyBusinesstypeCode}
+			,NOW()
+		)
+	
+	</insert>
+	
+	
 	<select id="selectOneAgencyForAjax"
 			parameterType="kr.or.nationRental.agency.service.AgencyDto"
 			resultType="kr.or.nationRental.agency.service.AgencyDto">

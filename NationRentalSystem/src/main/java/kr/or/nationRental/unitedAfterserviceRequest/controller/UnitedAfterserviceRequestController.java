@@ -30,11 +30,11 @@ public class UnitedAfterserviceRequestController {
 		logger.debug("POST insertUnitedAfterserviceRequest UnitedAfterserviceRequestController");
 		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(unitedAfterserviceRequestDto.toString());
+		unitedAfterserviceRequestService.insertUnitedAfterserviceRequest(unitedAfterserviceRequestDto);
 		
 		
 		
-		
-		return null;
+		return "redirect:/selectListReturnGoodsfacilityInfoForAfterService";
 	}
 	
 	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.GET)

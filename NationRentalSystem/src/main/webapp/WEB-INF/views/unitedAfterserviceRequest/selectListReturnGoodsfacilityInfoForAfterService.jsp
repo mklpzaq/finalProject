@@ -70,7 +70,7 @@
 									<strong>searchWord : </strong><span id="monitorSearchWord">${searchWord}</span><br/>						
 								</div>
 								<div class="col-md-4">
-									<h3>통합 AS의뢰 신청</h3>
+									<h3>반납 AS의뢰 신청</h3>
 								</div>
 								<div class="col-md-4">
 									<select id="selectPagePerRow" name="selectPagePerRow">

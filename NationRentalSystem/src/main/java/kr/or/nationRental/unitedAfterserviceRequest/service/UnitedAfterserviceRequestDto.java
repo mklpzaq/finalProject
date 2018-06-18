@@ -12,12 +12,16 @@ public class UnitedAfterserviceRequestDto {
 	private int stateGoodsCode;
 	private String textCheckResultGoodsfacility;
 	private int agencyCode;
+	private String agencyName;
+	private String agencyBusinesstypeCode;
+	private String dateRequestAfterservice;
+	private String dateCompleteAfterservice;
+	
 	/* form으로 넘어갈 때 더 필요한 정보  */
 	private String adminagencyName;
 	private String goodsfacilityThreeName;
 	private String textRegularCheck;
 	private String stateGoods;
-	
 	public int getUnitedAfterserviceRequestCode() {
 		return unitedAfterserviceRequestCode;
 	}
@@ -84,6 +88,30 @@ public class UnitedAfterserviceRequestDto {
 	public void setAgencyCode(int agencyCode) {
 		this.agencyCode = agencyCode;
 	}
+	public String getAgencyName() {
+		return agencyName;
+	}
+	public void setAgencyName(String agencyName) {
+		this.agencyName = agencyName;
+	}
+	public String getAgencyBusinesstypeCode() {
+		return agencyBusinesstypeCode;
+	}
+	public void setAgencyBusinesstypeCode(String agencyBusinesstypeCode) {
+		this.agencyBusinesstypeCode = agencyBusinesstypeCode;
+	}
+	public String getDateRequestAfterservice() {
+		return dateRequestAfterservice;
+	}
+	public void setDateRequestAfterservice(String dateRequestAfterservice) {
+		this.dateRequestAfterservice = dateRequestAfterservice;
+	}
+	public String getDateCompleteAfterservice() {
+		return dateCompleteAfterservice;
+	}
+	public void setDateCompleteAfterservice(String dateCompleteAfterservice) {
+		this.dateCompleteAfterservice = dateCompleteAfterservice;
+	}
 	public String getAdminagencyName() {
 		return adminagencyName;
 	}
@@ -116,7 +144,10 @@ public class UnitedAfterserviceRequestDto {
 				+ goodsfacilityThreeCode + ", goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityName="
 				+ goodsfacilityName + ", functionaryId=" + functionaryId + ", stateGoodsCode=" + stateGoodsCode
 				+ ", textCheckResultGoodsfacility=" + textCheckResultGoodsfacility + ", agencyCode=" + agencyCode
-				+ ", adminagencyName=" + adminagencyName + ", goodsfacilityThreeName=" + goodsfacilityThreeName
-				+ ", textRegularCheck=" + textRegularCheck + ", stateGoods=" + stateGoods + "]";
+				+ ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
+				+ ", dateRequestAfterservice=" + dateRequestAfterservice + ", dateCompleteAfterservice="
+				+ dateCompleteAfterservice + ", adminagencyName=" + adminagencyName + ", goodsfacilityThreeName="
+				+ goodsfacilityThreeName + ", textRegularCheck=" + textRegularCheck + ", stateGoods=" + stateGoods
+				+ "]";
 	}
 }

@@ -9,6 +9,19 @@
 		<title>Insert United Afterservice Request Form</title>
 		<script>
 			$(document).ready(function(){
+				/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
+				$.ajax({
+					type: "POST"
+					,url: "/nationRental/selectOneAgencyForAjax"
+					,data: { agencyName: $('#agencySelect > option:selected').val() }
+					,success:function( JSON ) { // result : String, XML, JSON
+						$('#agencyCode').val(JSON.agencyCode);
+						$('#agencyName').val(JSON.agencyName);
+						$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
+						$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
+					}
+				});
+				
 				$('#agencySelect').change(function() {
 					$.ajax({
 						type: "POST"
@@ -42,7 +55,7 @@
 					
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">통합 AS 의뢰 작성</h3>
+							<h3 class="text-center">반납 AS 의뢰 작성</h3>
 							<hr/>
 							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest" method="post">
 								<%-- <div class="form-group">
@@ -53,7 +66,7 @@
 								<div class="form-group">
 									<label for="return_goodsfacility_info_code" class="col-sm-3 control-label">물품/시설 반납 코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="return_goodsfacility_info_code" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="return_goodsfacility_info_code"  readonly>
+										<input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly>
 									</div>
 								</div>
 							<!-- <div class="form-group">

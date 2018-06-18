@@ -19,6 +19,11 @@ public class UnitedAfterserviceRequestService {
 	private UnitedAfterserviceRequestDao unitedAfterserviceRequestDao;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestService.class);
 	
+	public void insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("insertUnitedAfterserviceRequest UnitedAfterserviceRequestService");
+		unitedAfterserviceRequestDao.insertUnitedAfterserviceRequest(unitedAfterserviceRequestDto);
+	}
+	
 	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {
 		logger.debug("selectOneAgencyForAjax UnitedAfterserviceRequestService");
 		return unitedAfterserviceRequestDao.selectOneAgencyForAjax(agencyDto);

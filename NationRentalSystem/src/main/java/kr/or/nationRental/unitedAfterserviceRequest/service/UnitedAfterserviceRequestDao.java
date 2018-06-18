@@ -20,6 +20,13 @@ public class UnitedAfterserviceRequestDao {
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestDao.class);
 	final String NS = "kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper.";
 	
+	public void insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("insertUnitedAfterserviceRequest UnitedAfterserviceRequestDao");
+		logger.debug("★★★★★★★★★1★★★★★★★★★★★");
+		sqlSession.insert(NS+"insertUnitedAfterserviceRequest", unitedAfterserviceRequestDto);
+		logger.debug("★★★★★★★★★2★★★★★★★★★★★");
+	}
+	
 	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {
 		logger.debug("selectOneAgencyForAjax UnitedAfterserviceRequestDao");
 		return sqlSession.selectOne(NS+"selectOneAgencyForAjax", agencyDto);
