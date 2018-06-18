@@ -10,57 +10,20 @@
 		<script>
 			$(document).ready(function(){
 				$('#agencySelect').change(function() {
-					alert($('#agencySelect > option:selected').val());
-					$.ajax({
-					      type: "POST"
-					      ,url: "/nationRental/selectOneAgencyForAjax"
-					      ,data: { agencyName: $('#agencySelect > option:selected').val() }
-					      ,success:function( JSON ) { // result : String, XML, JSON
-					    	  if(JSON=='T'){
-								alert('중복되지 않는 아이디입니다.');
-					    	  }else{
-								alert('중복된 아이디입니다. 다른 아이디를 입력해주세요.');
-					    	  }
-					      }
-					});
-				
-				});
-				
-				/* $('#idCheckBtn').click(function(){
-					$.ajax({
-					      type: "POST"
-					      ,url: "/nationRental/selectOneAgencyForAjax"
-					      ,data: { agencyName: $('#agencySelect > option:selected').val() }
-					      ,success:function( JSON ) { // result : String, XML, JSON
-					    	  if(JSON=='T'){
-								alert('중복되지 않는 아이디입니다.');
-					    	  }else{
-								alert('중복된 아이디입니다. 다른 아이디를 입력해주세요.');
-					    	  }
-					      }
-					});
-				}); */
-				
-				/* $('#insertBtn').click(function(){
-					//다시한번 유효성 검사를 하고 커밋을 시킨다.
 					$.ajax({
 						type: "POST"
-						,url: "/nationRental/idCheck"
-						,data: { agencyEmployeeId: $('#agencyEmployeeId').val() }
+						,url: "/nationRental/selectOneAgencyForAjax"
+						,data: { agencyName: $('#agencySelect > option:selected').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
-							if(JSON=='T'){
-								$('#insertForm').submit();
-							}else{
-								alert('중복되거나 잘못된 아이디입니다. 다른 아이디를 입력해주세요.');
-							}
+							$('#agencyCode').val(JSON.agencyCode);
+							$('#agencyName').val(JSON.agencyName);
+							$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
+							$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 						}
 					});
-				}); */
-				
-				
+				});
 			});
 		</script>
-		
 	</head>
 	<body>
 		<div style="position:fixed; z-index:-1; width:100%">
@@ -81,12 +44,12 @@
 						<div class="panel-body">
 							<h3 class="text-center">통합 AS 의뢰 작성</h3>
 							<hr/>
-							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertAgencyEmployee" method="post">
-								<!-- <div class="form-group">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest" method="post">
+								<%-- <div class="form-group">
 									<div class="col-sm-9">
-										<input type="hidden" class="form-control" name="return_goodsfacility_info_code" value="" id="return_goodsfacility_info_code">
+										<input type="hidden" class="form-control" name="functionaryId" value="${member.memberId}" id="functionaryId">
 									</div>
-								</div> -->
+								</div> --%>
 								<div class="form-group">
 									<label for="return_goodsfacility_info_code" class="col-sm-3 control-label">물품/시설 반납 코드</label>
 									<div class="col-sm-9">
@@ -165,7 +128,7 @@
 										<!-- <input type="text" class="form-control" name="agencyCode" id="agencyCode" placeholder="의뢰할 대행업체 코드"> -->
 										<select id="agencySelect" class="form-control">
 											<c:forEach var="agencyDto" items="${agencyList}">
-												<option id="agencySelectOption")>${agencyDto.agencyName}</option>
+												<option id="agencySelectOption">${agencyDto.agencyName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -173,29 +136,29 @@
 								<div class="form-group">
 									<label for="agencyCode" class="col-sm-3 control-label">의뢰할 대행업체 코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyCode" id="agencyCode" placeholder="의뢰할 대행업체 코드">
+										<input type="text" class="form-control" name="agencyCode" id="agencyCode" placeholder="의뢰할 대행업체 코드" readonly>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="agencyName" class="col-sm-3 control-label">의뢰할 대행업체명</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyName" id="agencyName" placeholder="의뢰할 대행업체명">
+										<input type="text" class="form-control" name="agencyName" id="agencyName" placeholder="의뢰할 대행업체명" readonly>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="agencyBusinesstypeCode" class="col-sm-3 control-label">대행업체 업종 분류 코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyBusinesstypeCode" id="agencyBusinesstypeCode" placeholder="대행업체 업종 분류 코드">
+										<input type="text" class="form-control" name="agencyBusinesstypeCode" id="agencyBusinesstypeCode" placeholder="대행업체 업종 분류 코드" readonly>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="agencyBusinesstypeName" class="col-sm-3 control-label">대행업체 업종 분류명</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyBusinesstypeName" id="agencyBusinesstypeName" placeholder="대행업체 업종 분류명">
+										<input type="text" class="form-control" name="agencyBusinesstypeName" id="agencyBusinesstypeName" placeholder="대행업체 업종 분류명" readonly>
 									</div>
 								</div>
 								<div class="text-center">
-									<button id="insertBtn" type="button" class="btn btn-primary">입력 완료</button>
+									<button id="insertBtn" type="submit" class="btn btn-primary">입력 완료</button>
 								</div>
 							</form>
 						</div>

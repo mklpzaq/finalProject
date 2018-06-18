@@ -20,6 +20,11 @@ public class UnitedAfterserviceRequestDao {
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestDao.class);
 	final String NS = "kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper.";
 	
+	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {
+		logger.debug("selectOneAgencyForAjax UnitedAfterserviceRequestDao");
+		return sqlSession.selectOne(NS+"selectOneAgencyForAjax", agencyDto);
+	}
+	
 	public FunctionaryDto selectOneFunctionaryForListAgency(String functionaryId) {
 		logger.debug("selectOneFunctionaryForListAgency UnitedAfterserviceRequestDao");
 		return sqlSession.selectOne(NS+"selectOneFunctionaryForListAgency", functionaryId);

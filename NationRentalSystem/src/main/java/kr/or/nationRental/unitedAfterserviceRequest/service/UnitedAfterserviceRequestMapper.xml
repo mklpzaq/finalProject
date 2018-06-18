@@ -5,6 +5,25 @@
  
 <mapper namespace="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper">
 	
+	<select id="selectOneAgencyForAjax"
+			parameterType="kr.or.nationRental.agency.service.AgencyDto"
+			resultType="kr.or.nationRental.agency.service.AgencyDto">
+		SELECT
+			agen.agency_code AS agencyCode
+			,agen.agency_name AS agencyName
+			,agentype.agency_businesstype_code AS agencyBusinesstypeCode
+			,agentype.agency_businesstype_name AS agencyBusinesstypeName
+		FROM
+			agency AS agen
+			INNER JOIN
+			agency_businesstype AS agentype
+			ON
+			agen.agency_businesstype_code = agentype.agency_businesstype_code
+		WHERE
+			agen.agency_name = #{agencyName}
+		
+	</select>
+	
 	<select id="selectOneFunctionaryForListAgency"
 			parameterType="String"
 			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">

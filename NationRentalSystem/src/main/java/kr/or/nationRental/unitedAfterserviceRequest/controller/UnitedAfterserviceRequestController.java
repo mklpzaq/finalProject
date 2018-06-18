@@ -25,7 +25,18 @@ public class UnitedAfterserviceRequestController {
 	private UnitedAfterserviceRequestService unitedAfterserviceRequestService;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestController.class);
 	
-	///insertUnitedAfterserviceRequest
+	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.POST)
+	public String insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("POST insertUnitedAfterserviceRequest UnitedAfterserviceRequestController");
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(unitedAfterserviceRequestDto.toString());
+		
+		
+		
+		
+		return null;
+	}
+	
 	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.GET)
 	public String insertUnitedAfterserviceRequest(Model model
 												,UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {

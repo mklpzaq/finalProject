@@ -19,15 +19,18 @@ public class UnitedAfterserviceRequestService {
 	private UnitedAfterserviceRequestDao unitedAfterserviceRequestDao;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestService.class);
 	
+	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {
+		logger.debug("selectOneAgencyForAjax UnitedAfterserviceRequestService");
+		return unitedAfterserviceRequestDao.selectOneAgencyForAjax(agencyDto);
+	}
+	
 	public List<AgencyDto> selectListAgencyDto(String functionaryId) {
 		logger.debug("selectListAgencyDto UnitedAfterserviceRequestService");
 		/* 공무원(Functionary) 이 속한 지자체 기관 구하기 */
 		FunctionaryDto functionaryDto = unitedAfterserviceRequestDao.selectOneFunctionaryForListAgency(functionaryId);
-		logger.debug("★★★★★★★★1★★★★★★★★★★");
 		logger.debug(functionaryDto.toString());
 		/* 공무원(Functionary) 이 속한 지자체 기관과 계약한 대행업체(agency) List 구하기 */
 		List<AgencyDto> list =  unitedAfterserviceRequestDao.selectListAgencyDto(functionaryDto);
-		logger.debug("★★★★★★★★2★★★★★★★★★★");
 		if(!list.isEmpty()) {
 			logger.debug(list.toString());
 		}
@@ -71,7 +74,6 @@ public class UnitedAfterserviceRequestService {
 		 * (pagePerRow값이 10이면 list에 담기는 개수는 10개 레코드이다.)
 		 * */
 		List<ReturnGoodsfacilityInfoDto> list = unitedAfterserviceRequestDao.selectListReturnGoodsfacilityInfo(map);
-		logger.debug("★★★★★★★★★★★★service★★★★★★★★★★★★★★★★★★★");
 		logger.debug("list<BoardDto> : " + list);
 		/* 검색을 하였다면 검색조건에 맞는 레코드 개수가 반환되고,
 		 * 검색을 하지 않았다면 DB에 존재하는 모든 address 레코드 개수가 반환된다. 

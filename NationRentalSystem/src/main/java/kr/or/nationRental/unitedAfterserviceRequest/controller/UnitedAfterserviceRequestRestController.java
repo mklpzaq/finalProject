@@ -20,13 +20,13 @@ public class UnitedAfterserviceRequestRestController {
 	 * agency 이름을 받아 agencyDto객체를 리턴
 	 * */
 	@RequestMapping(value="/selectOneAgencyForAjax", method=RequestMethod.POST)
-	public String selectOneAgencyForAjax(AgencyDto agencyDto) {
-		logger.debug("POST idCheck AgencyEmployeeRestController");
+	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {
+		logger.debug("POST selectOneAgencyForAjax UnitedAfterserviceRequestRestController");
 		logger.debug(agencyDto.toString());
+		agencyDto = unitedAfterserviceRequestService.selectOneAgencyForAjax(agencyDto);
 		
+		/* 객체를 리턴 */
 		
-		/*String result = agencyEmployeeService.idCheck(agencyEmployeeDto);*/
-		
-		return null;
+		return agencyDto;
 	}
 }
