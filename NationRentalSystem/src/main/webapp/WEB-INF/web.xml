@@ -25,7 +25,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
-            <location>c:\temp</location>
+            <location><!-- c:\temp --></location>
             <max-file-size>-1</max-file-size>
             <max-request-size>-1</max-request-size>
             <file-size-threshold>-1</file-size-threshold>
