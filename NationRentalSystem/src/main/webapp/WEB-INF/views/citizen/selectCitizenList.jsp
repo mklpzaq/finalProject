@@ -49,7 +49,7 @@
 					$("#delbtn").click(function(){
 						$('input[name="deleteCheckbox"]:checked').each(function(){							
 							var text = $(this).val();				
-							$("#form1").submit();	
+							$("#deleteCheck").submit();	
 						});
 					})	
 				});
@@ -132,23 +132,23 @@
 									<div class="col-sm-2"></div>
 								</div>
 								<!-- End Search -->
-								
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<td><input type="checkbox" id="checkboxAll" value=""></td>
-											<td width="10%">아이디</td>
-											<td width="10%">비밀번호</td>
-											<td width="10%">이름</td>
-											<td width="15%">시군구</td>
-											<td width="10%">시도</td>
-											<td width="10%">읍면동</td>
-											<td width="15%">주소</td>
-											<td width="10%">핸드폰번호</td>
-											<td width="10%">이메일</td>										
-										</tr>
-									</thead>
-									<tbody>									
+								<form id="deleteCheck" action="${pageContext.request.contextPath}/deleteCitizen" method="get" >
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<td><input type="checkbox" id="checkboxAll" value=""></td>
+												<td width="10%">아이디</td>
+												<td width="10%">비밀번호</td>
+												<td width="10%">이름</td>
+												<td width="15%">시군구</td>
+												<td width="10%">시도</td>
+												<td width="10%">읍면동</td>
+												<td width="15%">주소</td>
+												<td width="10%">핸드폰번호</td>
+												<td width="10%">이메일</td>										
+											</tr>
+										</thead>
+										<tbody>								
 											<c:forEach var="citizenDto" items="${list}">
 												<tbody>
 													<tr>
@@ -164,9 +164,10 @@
 														<td>${citizenDto.citizenEmail}</td>																							
 													</tr>
 												</tbody>
-											</c:forEach>									
-									</tbody>
-								</table>
+											</c:forEach>						
+										</tbody>
+									</table>
+								</form>	
 								<div>
 							  		<button id="delbtn">선택 회원 삭제</button>
 								</div>
