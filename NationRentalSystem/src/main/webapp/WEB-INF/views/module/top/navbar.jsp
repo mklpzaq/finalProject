@@ -148,7 +148,7 @@
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
 										<li><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectOneCitizen?citizenId=${member.memberId}">시민 회원관리</a></li>
-										<li><a style="color:#FFFFFF" href="#">기부신청 조회</a></li>
+										<li><a style="color:#FFFFFF" href="#">기부신청</a></li>
 										<li><a style="color:#FFFFFF" href="#">대여/예약 취소 </a></li>
 										<li><a style="color:#FFFFFF" href="#">대여/예약 신청/취소 리스트</a></li>
 										<li><a style="color:#FFFFFF" href="#">예약 리스트</a></li>
