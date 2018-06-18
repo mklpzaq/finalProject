@@ -20,6 +20,16 @@ public class UnitedAfterserviceRequestDao {
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestDao.class);
 	final String NS = "kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper.";
 	
+	public int totalCountUnitedAfterserviceRequestDto(Map<String, Object> map) {
+		logger.debug("totalCountUnitedAfterserviceRequestDto UnitedAfterserviceRequestDao");
+		return sqlSession.selectOne(NS+"totalCountUnitedAfterserviceRequestDto", map);
+	}
+	
+	public List<UnitedAfterserviceRequestDto> selectListUnitedAfterserviceRequest(Map<String, Object> map) {
+		logger.debug("selectListUnitedAfterserviceRequest UnitedAfterserviceRequestDao");
+		return sqlSession.selectList(NS+"selectListUnitedAfterserviceRequest", map);
+	}
+	
 	public void insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("insertUnitedAfterserviceRequest UnitedAfterserviceRequestDao");
 		logger.debug("★★★★★★★★★1★★★★★★★★★★★");

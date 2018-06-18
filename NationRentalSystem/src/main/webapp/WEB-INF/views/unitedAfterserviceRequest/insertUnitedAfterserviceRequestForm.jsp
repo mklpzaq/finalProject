@@ -47,8 +47,8 @@
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
-				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="../module/leftHome/leftHome.jsp"/> --%>
+				<div class="col-sm-2" >
+					<jsp:include page="../module/leftUnitedAfterserviceRequest/leftUnitedAfterserviceRequest.jsp"/>
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->

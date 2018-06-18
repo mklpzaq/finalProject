@@ -25,14 +25,60 @@ public class UnitedAfterserviceRequestController {
 	private UnitedAfterserviceRequestService unitedAfterserviceRequestService;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestController.class);
 	
+	/*@RequestMapping(value="/selectListUnitedAfterserviceRequest", method=RequestMethod.GET)
+	public String selectListUnitedAfterserviceRequest(Model model) {
+		logger.debug("POST selectListUnitedAfterserviceRequest UnitedAfterserviceRequestController");
+		
+		List<UnitedAfterserviceRequestDto> list = unitedAfterserviceRequestService.selectListUnitedAfterserviceRequest();
+		model.addAttribute("unitedAfterserviceRequestDtoList", list);
+		
+		return "unitedAfterserviceRequest/selectListUnitedAfterserviceRequest";
+	}*/
+	
+	@RequestMapping(value="/selectListUnitedAfterserviceRequest", method=RequestMethod.GET)
+	public String selectListBoard(Model model
+									,HttpSession session
+									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+									,@RequestParam(value="searchSelect", defaultValue="unitedAfterserviceRequestCode") String searchSelect
+									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
+		logger.debug("GET selectListUnitedAfterserviceRequest UnitedAfterserviceRequestController");
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		Map<String, Object> map = unitedAfterserviceRequestService.selectListUnitedAfterserviceRequest(currentPage, pagePerRow, searchSelect, searchWord);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchWord", searchWord);
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		/* 파일 저장루트 확인용 */
+		String path = session.getServletContext().getRealPath("/resources/upload/");
+		model.addAttribute("path", path);
+		
+		return "unitedAfterserviceRequest/selectListUnitedAfterserviceRequest";
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.POST)
 	public String insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("POST insertUnitedAfterserviceRequest UnitedAfterserviceRequestController");
 		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		unitedAfterserviceRequestService.insertUnitedAfterserviceRequest(unitedAfterserviceRequestDto);
-		
-		
 		
 		return "redirect:/selectListReturnGoodsfacilityInfoForAfterService";
 	}
