@@ -200,11 +200,11 @@ public class GoodsFacilityService {
 	}
 
 	public GoodsFacilityDto viewImageDetail(GoodsFacilityDto goodsFacilityDto) {
-		logger.debug("GoodsFacilityService viewImageDetail : " + goodsFacilityDto.toString());
-		GoodsFacilityDto viewImageDetailGoodsFacility = goodsFacilityDao.viewImageDetail(goodsFacilityDto);
-		logger.debug("GoodsFacilityService viewImageDetail : " + goodsFacilityDto.toString());
+		logger.debug("GoodsFacilityService viewImageDetail : " + goodsFacilityDto.toString());		
+		GoodsFacilityDto viewImageOne = goodsFacilityDao.viewImageDetail(goodsFacilityDto);		
+		logger.debug("GoodsFacilityService viewImageOne : " + viewImageOne.toString());
 		
-		return viewImageDetailGoodsFacility;
+		return viewImageOne;
 	}
 
 }

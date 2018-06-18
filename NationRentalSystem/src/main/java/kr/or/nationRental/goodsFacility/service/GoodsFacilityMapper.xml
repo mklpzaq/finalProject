@@ -196,25 +196,30 @@
   	
   	<select id="viewImageDetail"
   			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
-  			resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+  			resultMap="goodsFacility">  			
   			SELECT
-  				goodsfacility_three_code as goodsfacilityThreeCode
-  				,goodsfacility_name as goodsfacilityName
-  				,goodsfacility_purchaseprice as goodsfacilityPurchaseprice
-  				,goodsfacility_price_rental as goodsfacilityPriceRental
-  				,goodsfacility_text_sangse as goodsfacilityTextSangse
-  				,adminagency_code as adminagencyCode
-  				,sigungu_name as sigunguName
-  				,sido_name as sidoName
-  				,eupmyeon_name as eupmyeonName
-  				,goodsfacility_address_sangse as goodsfacilityAddressSangse
-  				,goodsfacility_is_possible_delivery as goodsfacilityIsPossibleDelivery
-  				,goodsfacility_is_possible_rental as goodsfacilityIsPossibleRental
+  				goodsfacility.goodsfacility_three_code
+  				,goodsfacility.goodsfacility_name
+  				,goodsfacility.goodsfacility_purchaseprice
+  				,goodsfacility.goodsfacility_price_rental
+  				,goodsfacility.goodsfacility_text_sangse
+  				,goodsfacility.adminagency_code
+  				,goodsfacility.sigungu_name
+  				,goodsfacility.sido_name
+  				,goodsfacility.eupmyeon_name
+  				,goodsfacility.goodsfacility_address_sangse
+  				,goodsfacility.goodsfacility_is_possible_delivery
+  				,goodsfacility.goodsfacility_is_possible_rental
+  				,goodsfacility_file.goodsfacility_file_name
+				,goodsfacility_file.goodsfacility_file_ext
   			FROM
   				goodsfacility
-  			WHERE 
-  				goodsfacility_code = #{goodsfacilityCode} 			 
-  	
+  			JOIN
+  				goodsfacility_file
+  			ON
+  				goodsfacility.goodsfacility_code =	goodsfacility_file.goodsfacility_code
+  				WHERE 
+  				goodsfacility.goodsfacility_code =  #{goodsfacilityCode} 	
   	</select>
   	
   

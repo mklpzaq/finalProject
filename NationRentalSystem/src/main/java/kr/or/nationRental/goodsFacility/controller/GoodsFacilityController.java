@@ -192,11 +192,13 @@ public class GoodsFacilityController {
 	@RequestMapping(value="/viewImageDetail", method=RequestMethod.GET)
 	public String viewImageDetail(Model model
 										,GoodsFacilityDto goodsFacilityDto) {
-		logger.debug("GoodsFacilityController viewImageGoodsFacility GET : " + goodsFacilityDto.toString());
+		logger.debug("GoodsFacilityController viewImageGoodsFacility GET : " + goodsFacilityDto.toString());		
+		GoodsFacilityDto viewImageDetailOne = goodsFacilityService.viewImageDetail(goodsFacilityDto);
+		logger.debug("GoodsFacilityController viewImageDetailOne GET : " + viewImageDetailOne.toString());
 		
-		GoodsFacilityDto viewImageGoods = goodsFacilityService.viewImageDetail(goodsFacilityDto);
-		
-		model.addAttribute("viewImageGoods", viewImageGoods);
+		model.addAttribute("viewImageDetailOne", viewImageDetailOne);
+		model.addAttribute("GoodsFacilityFile", viewImageDetailOne.getGoodsFacilityFile());
+		logger.debug("GoodsFacilityController viewImageDetailOne.getGoodsFacilityFile() : " + viewImageDetailOne.getGoodsFacilityFile().toString());
 		
 		return "rentalGoodsFacility/viewDetailGoodsFacility";
 	}

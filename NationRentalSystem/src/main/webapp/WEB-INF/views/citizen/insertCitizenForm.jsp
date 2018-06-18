@@ -19,189 +19,29 @@
 			5.중복된 아이디값은 쓸 수 없다.
 			6.필수정보 입력 데이터는 아이디 비밀번호 주민번호 주소 이름 핸드폰번호 이다.					
 		*/
-		$(document).ready(function(){
-			$("#CitizenID").keyup(function(){
-				if($("#CitizenID").val().length <= 8) {
-					$("#CitizenId").append($("<p/>",{
-						id: "checkId",
-						title: "8자 이상을 입력해주세요 ",
-						text: "8자 이상을 입력해주세요"
-					}));					
-				}else if($("#CitizenID").val().length >= 12) {
-					$("#CitizenId").hide();
-				}			
+	
+		$(document).ready(function(){	
+		
+			$("#idCheck").click(function(){
+			    $.ajax({
+			        type:"POST", //통신타입 get, post
+			        url:"/nationRental/idCheck",  //요청할 url
+			        data : { agencyEmployeeId : $('#checkId').val() },  //넘겨줄 값, 파라메터
+			        success: function( JSON ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
+				        if(JSON=='T'){
+				        	alert('중복되지 않은 아이디입니다');					        	
+				    	}else{
+							alert('중복된 아이디입니다. 다른 아이디를 입력해주세요.');
+				    	}
+			        }     
+			    });
 			});
 			
-			function checkSpace(str) { 
-				if(str.search(/\s/) != -1) { 
-					return true; 
-				} else { 
-					return false; 
-					} 
-			}
-			
-			function checkSpecial(str) {
-				var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi; 
-				if(special_pattern.test(str) == true) {
-					return true; 
-				} else {
-						return false; 
-					} 
-			}
-			
-			//1. 영문, 숫자 혼합하여 6~20자리 이내
-
-			function chkPwd(str){
-
-			 var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
-
-			 if(!reg_pwd.test(str)){
-
-			  return false;
-
-			 }
-
-			 return true;
-
-			}
-
-			if(!chkPwd( $.trim($('#mpassword').val()))){ 
-
-			 alert('비밀번호를 확인하세요.₩n(영문,숫자를 혼합하여 6~20자 이내)');    
-
-			 $('#mpassword').val('');
-
-			 $('#mpassword').focus(); return false;
-
-			 }
-
-			------------------------------------------------------
-
-			//2. 영문,숫자,특수문자 혼합하여 8자리~20자리 이내.(비밀번호 표준)
-
-			function chkPwd(str){
-
-			 var pw = str;
-
-			 var num = pw.search(/[0-9]/g);
-
-			 var eng = pw.search(/[a-z]/ig);
-
-			 var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-			 
-
-			 if(pw.length < 8 || pw.length > 20){
-
-			  alert("8자리 ~ 20자리 이내로 입력해주세요.");
-
-			  return false;
-
-			 }
-
-			 if(pw.search(/₩s/) != -1){
-
-			  alert("비밀번호는 공백업이 입력해주세요.");
-
-			  return false;
-
-			 } if(num < 0 || eng < 0 || spe < 0 ){
-
-			  alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
-
-			  return false;
-
-			 }
-
-			 
-
-			 return true;
-
-			}
-
-			if(!chkPwd( $.trim($('#mpassword').val()))){
-
-			   $('#mpassword').val('');
-
-			   $('#mpassword').focus();
-
-			   return false;
-
-			}
-
-			------------------------------------------------------
-
-			//3. 영문,숫자,특수문자 중 2가지 혼합하여 10자리~20자리 이내.(비밀번호 표준)
-
-			function chkPwd(str){
-
-			 var pw = str;
-
-			 var num = pw.search(/[0-9]/g);
-
-			 var eng = pw.search(/[a-z]/ig);
-
-			 var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-			 if(pw.length < 10 || pw.length > 20){
-
-			  alert("10자리 ~ 20자리 이내로 입력해주세요.");
-
-			  return false;
-
-			 }
-
-			 if(pw.search(/₩s/) != -1){
-
-			  alert("비밀번호는 공백업이 입력해주세요.");
-
-			  return false;
-
-			 }
-
-			 if( (num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0) ){
-
-			  alert("영문,숫자, 특수문자 중 2가지 이상을 혼합하여 입력해주세요.");
-
-			  return false;
-
-			 }
-
-			 return true;
-
-			}
-
-			if(!chkPwd( $.trim($('#mpassword').val()))){
-
-			   $('#mpassword').val('');
-
-			   $('#mpassword').focus();
-
-			   return false;
-
-			}
 			
 			
-			 $('#checkbtn').on('click', function(){
-		            $.ajax({
-		                type: 'POST',
-		                url: '/mate/checkSignup',
-		                data: {
-		                    "id" : $('#id').val()
-		                },
-		                success: function(data){
-		                    if($.trim(data) == 0){
-		                        $('#checkMsg').html('<p style="color:blue">사용가능</p>');
-		                    }
-		                    else{
-		                        $('#checkMsg').html('<p style="color:red">사용불가능</p>');
-		                    }
-		                }
-		            });    //end ajax    
-		        });    //end on	
-					     
-		});
 			
+			
+		});	
 			function sample6_execDaumPostcode() {
 		        new daum.Postcode({
 		            oncomplete: function(data) {
@@ -391,6 +231,26 @@
 		<button type="submit" class="btn btn-primary btn-lg btn-block" id="InsertCitizen" >회원가입</button>
 		
 	</form>
+	
+	<!-- Modal -->
+				<div class="modal fade" id="idCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">아이디 체크</h4>
+				      </div>
+				      <div class="modal-body">
+				     	<input type="text" id="checkId">
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal" id="useId">아이디사용</button>
+				        <button type="button" class="btn btn-primary" id="idCheck">아이디체크</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
 	<!-- End Content -->
 			</div>
 				<div class="col-sm-2"></div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityMapper">
+  	
+  	<select id="selectGoodsFacilityInfo"
+  			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
+  			resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+  			SELECT
+  				goodsfacility_code as goodsfacilityCode
+  				,adminagency_code as adminagencyCode
+  				,goodsfacility_name as goodsfacilityName
+  			FORM
+  				goodsfacility
+  			WHERE 
+  				goodsfacility_code = #{goodsfacilityCode}  	
+  	</select>
+  
+  </mapper>

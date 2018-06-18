@@ -24,33 +24,28 @@
 					<h2>시설 & 물품 상세보기</h2>
 					
 					<div class="col-sm-3">										
-						<div class="thumbnail">						
-							<%-- <img data-src="holder.js/100%x200" alt="${GoodsFacilityImage.goodsfacilityFileName}${GoodsFacilityImage.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${GoodsFacilityImage.goodsfacilityFileName}&goodsfacilityFileExt=${GoodsFacilityImage.goodsfacilityFileExt}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;"> --%>
-						
+						<div class="thumbnail">	
+							<c:forEach var="GoodsFacilityFile" items="${GoodsFacilityFile}">
+								<img data-src="holder.js/100%x200" alt="${GoodsFacilityFile.goodsfacilityFileName}${GoodsFacilityFile.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${GoodsFacilityFile.goodsfacilityFileName}&goodsfacilityFileExt=${GoodsFacilityFile.goodsfacilityFileExt}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+							</c:forEach>	
 							<div class="caption">
 								<!-- <h3 style="text-align:center;" id="thumbnail-label">이준희<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3> -->
-								<p>"${viewImageGoods.goodsfacilityThreeCode}"</p>
-								<p>"${viewImageGoods.goodsfacilityName}"</p>
-								<p>"${viewImageGoods.goodsfacilityPurchaseprice}"</p>
-								<p>"${viewImageGoods.goodsfacilityPriceRental}"</p>
-								<p>"${viewImageGoods.goodsfacilityTextSangse}"</p>
-								<p>"${viewImageGoods.adminagencyCode}"</p>
-								<p>"${viewImageGoods.sigunguName}"</p>
-								<p>"${viewImageGoods.sidoName}"</p>
-								<p>"${viewImageGoods.eupmyeonName}"</p>
-								<p>"${viewImageGoods.goodsfacilityAddressSangse}"</p>
-								<p>"${viewImageGoods.goodsfacilityIsPossibleDelivery}"</p>
-								<p>"${viewImageGoods.goodsfacilityIsPossibleRental}"</p>								
-								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+								<p>"${viewImageDetailOne.goodsfacilityThreeCode}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityName}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityPurchaseprice}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityPriceRental}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityTextSangse}"</p>
+								<p>"${viewImageDetailOne.adminagencyCode}"</p>
+								<p>"${viewImageDetailOne.sigunguName}"</p>
+								<p>"${viewImageDetailOne.sidoName}"</p>
+								<p>"${viewImageDetailOne.eupmyeonName}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityAddressSangse}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityIsPossibleDelivery}"</p>
+								<p>"${viewImageDetailOne.goodsfacilityIsPossibleRental}"</p>								
+								<p><a href="${pageContext.request.contextPath}/applicationRentFrom?goodsfacilityCode=${viewImageDetailOne.goodsfacilityCode}&memberId=${member.memberId}" class="btn btn-primary" role="button">대여/예약으로 가기</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
 							</div>										
 						</div>					
 					</div>
-
-
-
-
-
-
 
 				<!-- End Content -->
 				</div>
