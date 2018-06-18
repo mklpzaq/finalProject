@@ -1,5 +1,7 @@
 package kr.or.nationRental.deliveryOrderCitizen.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +18,13 @@ public class DeliveryOrderCitizenDao {
 	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderCitizenDao.class);
 
 	public void insertDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
-		
-		
+		logger.debug("DeliveryOrderCitizenDao - insertDeliveryOrderCitizen - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		sqlSession.insert(NS+"insertDeliveryOrderCitizen", deliveryOrderCitizenDto);
+	}
+
+	public List<DeliveryOrderCitizenDto> selectListMyDeliveryOrderCitizen(String memberId) {
+		logger.debug("DeliveryOrderCitizenDao - selectListMyDeliveryOrderCitizen - memberId : " + memberId.toString());
+		return sqlSession.selectList(NS+"selectListMyDeliveryOrderCitizen", memberId);		
 	}
 
 }
