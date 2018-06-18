@@ -12,7 +12,7 @@
   				goodsfacility_code as goodsfacilityCode
   				,adminagency_code as adminagencyCode
   				,goodsfacility_name as goodsfacilityName
-  			FORM
+  			FROM
   				goodsfacility
   			WHERE 
   				goodsfacility_code = #{goodsfacilityCode}  	

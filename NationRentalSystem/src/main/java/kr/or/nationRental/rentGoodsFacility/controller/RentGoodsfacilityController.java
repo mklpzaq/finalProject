@@ -34,6 +34,6 @@ public class RentGoodsfacilityController {
 		model.addAttribute("goodsFacilityApplication", goodsFacilityApplication);
 		model.addAttribute("memberDto", memberDto);
 		
-		return "/";
+		return "/rentGoodsFacility/insertApplicationGoodsFacility";
 	}
 }

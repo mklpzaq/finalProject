@@ -198,7 +198,8 @@
   			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
   			resultMap="goodsFacility">  			
   			SELECT
-  				goodsfacility.goodsfacility_three_code
+  				goodsfacility.goodsfacility_code
+  				,goodsfacility.goodsfacility_three_code
   				,goodsfacility.goodsfacility_name
   				,goodsfacility.goodsfacility_purchaseprice
   				,goodsfacility.goodsfacility_price_rental
