@@ -29,4 +29,27 @@ public class DeliveryOrderCitizenService {
 		return deliveryOrderCitizenDao.selectListMyDeliveryOrderCitizen(memberId);
 	}
 
+	public DeliveryOrderCitizenDto updateViewDeliveryOrderCitizenAddress(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenService - updateViewDeliveryOrderCitizenAddress - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		
+		return deliveryOrderCitizenDao.updateViewDeliveryOrderCitizenAddress(deliveryOrderCitizenDto);
+		
+	}
+
+	public void updateDeliveryOrderCitizenAddress(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenService - updateDeliveryOrderCitizenAddress - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		
+		deliveryOrderCitizenDao.updateDeliveryOrderCitizenAddress(deliveryOrderCitizenDto);		
+	}
+
+	public void updateIsCanceledDelivery(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenService - updateIsCanceledDelivery - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		deliveryOrderCitizenDao.updateIsCanceledDelivery(deliveryOrderCitizenDto);		
+	}
+
+	public List<DeliveryOrderCitizenDto> selectListDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenService - selectListDeliveryOrderCitizen - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		return deliveryOrderCitizenDao.selectListDeliveryOrderCitizen(deliveryOrderCitizenDto);			
+	}
+
 }

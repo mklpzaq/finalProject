@@ -27,4 +27,25 @@ public class DeliveryOrderCitizenDao {
 		return sqlSession.selectList(NS+"selectListMyDeliveryOrderCitizen", memberId);		
 	}
 
+	public DeliveryOrderCitizenDto updateViewDeliveryOrderCitizenAddress(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenDao - updateViewDeliveryOrderCitizenAddress - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		return sqlSession.selectOne(NS+"updateViewDeliveryOrderCitizenAddress", deliveryOrderCitizenDto);
+	}
+
+	public void updateDeliveryOrderCitizenAddress(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenDao - updateDeliveryOrderCitizenAddress - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		sqlSession.update(NS+"updateDeliveryOrderCitizenAddress", deliveryOrderCitizenDto);		
+	}
+
+	public void updateIsCanceledDelivery(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenDao - updateIsCanceledDelivery - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		sqlSession.update(NS+"updateIsCanceledDelivery", deliveryOrderCitizenDto);		
+		
+	}
+
+	public List<DeliveryOrderCitizenDto> selectListDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenDao - selectListDeliveryOrderCitizen - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		return sqlSession.selectList(NS+"selectListDeliveryOrderCitizen", deliveryOrderCitizenDto);		
+	}
+	
 }

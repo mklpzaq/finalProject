@@ -58,4 +58,64 @@
 		ORDER BY delivery_order_citizen_date DESC	
 	</select>
 	
+	<select id="updateViewDeliveryOrderCitizenAddress" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+		SELECT
+			delivery_order_citizen_code as deliveryOrderCitizenCode
+			,goodsfacility_rental_code as goodsfacilityRentalCode
+			,classify_rental_state as classifyRentalState
+			,goodsfacility_code as goodsfacilityCode
+			,citizen_id as citizenId
+			,adminagency_code as adminagencyCode
+			,send_address_sigungu as sendAddressSigungu
+			, send_address_eupmyeon as sendAddressEupmyeon
+			, send_address_sangse as sendAddressSangse
+			, receive_address_sigungu as receiveAddressSigungu
+			, receive_address_eupmyeon as receiveAddressEupmyeon
+			, receive_address_sangse as receiveAddressSangse
+			, delivery_order_citizen_date as deliveryOrderCitizenDate
+			, is_canceled_delivery as isCanceledDelivery
+		FROM delivery_order_citizen
+			where delivery_order_citizen_code = #{deliveryOrderCitizenCode}
+	</select>
+	
+	<update id="updateDeliveryOrderCitizenAddress" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+		UPDATE delivery_order_citizen
+			SET		
+			send_address_sigungu=#{sendAddressSigungu}
+			,send_address_eupmyeon=#{sendAddressEupmyeon}
+			,send_address_sangse=#{sendAddressSangse}
+			,receive_address_sigungu=#{receiveAddressSigungu}
+			,receive_address_eupmyeon=#{receiveAddressEupmyeon}
+			,receive_address_sangse=#{receiveAddressSangse}
+		WHERE delivery_order_citizen_code= #{deliveryOrderCitizenCode}
+	</update>
+	
+	<update id="updateIsCanceledDelivery" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+		UPDATE delivery_order_citizen
+			SET		
+			is_canceled_delivery = 'Y'
+		WHERE delivery_order_citizen_code= #{deliveryOrderCitizenCode}	
+	</update>
+	
+	<select id="selectListDeliveryOrderCitizen" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+		SELECT
+			delivery_order_citizen_code as deliveryOrderCitizenCode
+			,goodsfacility_rental_code as goodsfacilityRentalCode
+			,classify_rental_state as classifyRentalState
+			,goodsfacility_code as goodsfacilityCode
+			,citizen_id as citizenId
+			,adminagency_code as adminagencyCode
+			,send_address_sigungu as sendAddressSigungu
+			, send_address_eupmyeon as sendAddressEupmyeon
+			, send_address_sangse as sendAddressSangse
+			, receive_address_sigungu as receiveAddressSigungu
+			, receive_address_eupmyeon as receiveAddressEupmyeon
+			, receive_address_sangse as receiveAddressSangse
+			, delivery_order_citizen_date as deliveryOrderCitizenDate
+			, is_canceled_delivery as isCanceledDelivery
+		FROM delivery_order_citizen
+			where adminagency_code = #{adminagencyCode}		
+		ORDER BY delivery_order_citizen_date DESC
+	</select>
+	
 </mapper>
