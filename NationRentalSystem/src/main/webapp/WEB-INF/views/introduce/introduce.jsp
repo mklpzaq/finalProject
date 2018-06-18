@@ -10,7 +10,7 @@
 		<script>
 			$(document).ready(function(){
 				$('#goHomeBtn').click(function(){
-					$(location).attr('href', './');
+					$(location).attr('href', './'); 
 				});	
 			});
 			
