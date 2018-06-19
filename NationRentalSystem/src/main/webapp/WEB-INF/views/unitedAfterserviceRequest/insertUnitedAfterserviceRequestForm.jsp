@@ -9,6 +9,15 @@
 		<title>Insert United Afterservice Request Form</title>
 		<script>
 			$(document).ready(function(){
+				/* 이전 페이지(반납AS에서 AS요청한것인지, 점검AS에서 AS요청한지에 따라서 적용되는 input 이 달라지게 한다.) */
+				if( $('#beforePageCode').val() === '반납AS' ){
+					alert('반납AS에서 요청함.');
+					$('#addDiv').append('<label for="returnGoodsfacilityInfoCode" class="col-sm-3 control-label">물품/시설 반납 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly></div>');
+				}else if( $('#beforePageCode').val() === '점검AS'){
+					alert('점검AS에서 요청함');
+					$('#addDiv').append('<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="regularCheckCode" id="regularCheckCode" placeholder="정기점검 코드" readonly></div>');
+				}
+				
 				/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
 				$.ajax({
 					type: "POST"
@@ -52,29 +61,28 @@
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
+					<input id="beforePageCode" type="hidden" value="${beforePageCode}">
 					
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h3 class="text-center">반납 AS 의뢰 작성</h3>
 							<hr/>
 							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest" method="post">
+								<div id="addDiv" class="form-group">
+								
+								</div>
 								<%-- <div class="form-group">
-									<div class="col-sm-9">
-										<input type="hidden" class="form-control" name="functionaryId" value="${member.memberId}" id="functionaryId">
-									</div>
-								</div> --%>
-								<div class="form-group">
 									<label for="returnGoodsfacilityInfoCode" class="col-sm-3 control-label">물품/시설 반납 코드</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly>
 									</div>
-								</div>
-								<div class="form-group">
+								</div> --%>
+								<!-- <div class="form-group">
 									<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="regularCheckCode" id="regularCheckCode" placeholder="정기점검 코드" readonly>
 									</div>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label for="adminagencyCode" class="col-sm-3 control-label">지자체기관 코드</label>
 									<div class="col-sm-9">
@@ -176,7 +184,14 @@
 							</form>
 						</div>
 					</div>
-					
+					<!-- <script>
+						if( $('#beforePageCode').val() === '반납AS' ){
+							alert('반납');
+							$('#addDiv').append('<label for="returnGoodsfacilityInfoCode" class="col-sm-3 control-label">물품/시설 반납 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly></div>');
+						}else if( $('#beforePageCode').val() === '점검AS'){
+							$('#addDiv').append('<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="regularCheckCode" id="regularCheckCode" placeholder="정기점검 코드" readonly></div>');
+						}
+					</script> -->
 					
 					
 					

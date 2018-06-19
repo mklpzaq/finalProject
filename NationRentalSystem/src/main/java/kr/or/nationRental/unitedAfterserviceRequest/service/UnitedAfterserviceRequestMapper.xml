@@ -5,6 +5,91 @@
  
 <mapper namespace="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper">
 	
+	<select id="totalCountRegularCheck"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			regular_check
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('regularCheckCode')">
+					WHERE regular_check_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('adminagencyCode')">
+					WHERE adminagency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityCode')">
+					WHERE goodsfacility_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityName')">
+					WHERE goodsfacility_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('textRegularCheck')">
+					WHERE text_regular_check = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('functionaryId')">
+					WHERE functionary_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('stateGoodsCode')">
+					WHERE state_goods_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('dateRegularCheckGoodsfacility')">
+					WHERE date_regular_check_goodsfacility = #{searchWord}
+				</when>
+			</choose>
+		</if>
+	</select>
+
+	<select id="selectListRegularCheck"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.regularCheck.service.RegularCheckDto">
+		SELECT
+			regular_check_code AS regularCheckCode
+			,adminagency_code AS adminagencyCode
+			,goodsfacility_code AS goodsfacilityCode
+			,goodsfacility_name AS goodsfacilityName
+			,text_regular_check AS textRegularCheck
+			,functionary_id AS functionaryId
+			,state_goods_code AS stateGoodsCode
+			,date_regular_check_goodsfacility AS dateRegularCheckGoodsfacility
+		FROM
+			regular_check
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('regularCheckCode')">
+					WHERE regular_check_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('adminagencyCode')">
+					WHERE adminagency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityCode')">
+					WHERE goodsfacility_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityName')">
+					WHERE goodsfacility_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('textRegularCheck')">
+					WHERE text_regular_check = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('functionaryId')">
+					WHERE functionary_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('stateGoodsCode')">
+					WHERE state_goods_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('dateRegularCheckGoodsfacility')">
+					WHERE date_regular_check_goodsfacility = #{searchWord}
+				</when>
+			</choose>
+		</if>
+		ORDER BY regular_check_code DESC
+		LIMIT #{beginRow}, #{pagePerRow}
+
+	</select>
+	
+	
 	<select id="totalCountUnitedAfterserviceRequestDto"
 			parameterType="java.util.Map"
 			resultType="Integer">

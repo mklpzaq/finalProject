@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<title>Insert United Afterservice Request</title>
+		<title>select List Return Goodsfacility Info For AfterService</title>
 		<script> 
 			$(document).ready(function() {
 				var searchSelect;
@@ -145,36 +145,42 @@
 								</thead>
 								<tbody>
 									<c:forEach var="returnGoodsfacilityInfoDto" items="${list}">
-										<tr>
-											<td><strong>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityRentalCode}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityCode}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.classifyGoodsfacility}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.citizenId}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.isRequestedToReturnAsDelivery}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.overdueDays}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.adminagencyCode}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.functionaryId}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.stateGoodsCode}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.stateGoods}</strong></td>
-											<td><strong>${returnGoodsfacilityInfoDto.dateReturnCheck}</strong></td>
-											<td>
-												<c:choose>
-													<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
-														<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?returnGoodsfacilityInfoCode=${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}&functionaryId=${member.memberId}" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
-													</c:when>
-												</c:choose>
-											</td>
-											
-											<!-- <td><a href="#">수정</a></td>
-											<td><a href="">삭제</a></td> -->
-											<%-- <td><strong>${article.articleId}</strong></td>
-											<td>${board.boardTitle}</td>
-											<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
-											<td>${article.articleContent}</td>
-											<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
-											<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
-										</tr>
+										<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
+										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
+										<%-- <c:choose>
+											<c:when test="${returnGoodsfacilityInfoDto.adminagencyCode eq member.adminagencyCode}"> --%>
+												<tr>
+													<td><strong>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityRentalCode}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityCode}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.classifyGoodsfacility}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.citizenId}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.isRequestedToReturnAsDelivery}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.overdueDays}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.adminagencyCode}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.functionaryId}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.stateGoodsCode}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.stateGoods}</strong></td>
+													<td><strong>${returnGoodsfacilityInfoDto.dateReturnCheck}</strong></td>
+													<td>
+														<c:choose>
+															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
+																<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?returnGoodsfacilityInfoCode=${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}&functionaryId=${member.memberId}&beforePageCode=반납AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
+															</c:when>
+														</c:choose>
+													</td>
+													
+													<!-- <td><a href="#">수정</a></td>
+													<td><a href="">삭제</a></td> -->
+													<%-- <td><strong>${article.articleId}</strong></td>
+													<td>${board.boardTitle}</td>
+													<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
+													<td>${article.articleContent}</td>
+													<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
+													<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
+												</tr>
+										<%-- 	</c:when>
+										</c:choose> --%>
 									</c:forEach>
 								</tbody>
 							</table>

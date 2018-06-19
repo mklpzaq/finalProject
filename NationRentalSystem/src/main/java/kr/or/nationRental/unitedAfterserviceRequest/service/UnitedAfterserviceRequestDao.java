@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.functionary.service.FunctionaryDto;
+import kr.or.nationRental.regularCheck.service.RegularCheckDto;
 import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto;
 
 @Repository
@@ -19,6 +20,21 @@ public class UnitedAfterserviceRequestDao {
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestDao.class);
 	final String NS = "kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper.";
+	
+	/*public List<RegularCheckDto> selectListRegularCheck() {
+		logger.debug("selectListRegularCheck UnitedAfterserviceRequestDao");
+		return sqlSession.selectList(NS+"selectListRegularCheck");
+	}*/
+	
+	public int totalCountRegularCheck(Map<String, Object> map) {
+		logger.debug("totalCountRegularCheck UnitedAfterserviceRequestDao");
+		return sqlSession.selectOne(NS+"totalCountRegularCheck", map);
+	}
+	
+	public List<RegularCheckDto> selectListRegularCheck(Map<String, Object> map){
+		logger.debug("selectListRegularCheck UnitedAfterserviceRequestDao");
+		return sqlSession.selectList(NS+"selectListRegularCheck", map);
+	}
 	
 	public int totalCountUnitedAfterserviceRequestDto(Map<String, Object> map) {
 		logger.debug("totalCountUnitedAfterserviceRequestDto UnitedAfterserviceRequestDao");
@@ -32,9 +48,7 @@ public class UnitedAfterserviceRequestDao {
 	
 	public void insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("insertUnitedAfterserviceRequest UnitedAfterserviceRequestDao");
-		logger.debug("★★★★★★★★★1★★★★★★★★★★★");
 		sqlSession.insert(NS+"insertUnitedAfterserviceRequest", unitedAfterserviceRequestDto);
-		logger.debug("★★★★★★★★★2★★★★★★★★★★★");
 	}
 	
 	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {

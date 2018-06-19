@@ -25,18 +25,58 @@ public class UnitedAfterserviceRequestController {
 	private UnitedAfterserviceRequestService unitedAfterserviceRequestService;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestController.class);
 	
-	/*@RequestMapping(value="/selectListUnitedAfterserviceRequest", method=RequestMethod.GET)
-	public String selectListUnitedAfterserviceRequest(Model model) {
-		logger.debug("POST selectListUnitedAfterserviceRequest UnitedAfterserviceRequestController");
+	/*@RequestMapping(value="/selectListRegularCheck", method=RequestMethod.GET)
+	public String selectListRegularCheck(Model model) {
+		logger.debug("selectListRegularCheck UnitedAfterserviceRequestController");
+		List<RegularCheckDto> list = unitedAfterserviceRequestService.selectListRegularCheck();
+		logger.debug("★★★★★★★★★★★★★★★★");
+		logger.debug(list.toString());
+		model.addAttribute("list", list);
 		
-		List<UnitedAfterserviceRequestDto> list = unitedAfterserviceRequestService.selectListUnitedAfterserviceRequest();
-		model.addAttribute("unitedAfterserviceRequestDtoList", list);
 		
-		return "unitedAfterserviceRequest/selectListUnitedAfterserviceRequest";
+		return "unitedAfterserviceRequest/selectListRegularCheck";
 	}*/
 	
-	@RequestMapping(value="/selectListUnitedAfterserviceRequest", method=RequestMethod.GET)
+	@RequestMapping(value="/selectListRegularCheck", method=RequestMethod.GET)
 	public String selectListBoard(Model model
+									,HttpSession session
+									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+									,@RequestParam(value="searchSelect", defaultValue="regularCheckCode") String searchSelect
+									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
+		logger.debug("GET selectListRegularCheck UnitedAfterserviceRequestController");
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		Map<String, Object> map = unitedAfterserviceRequestService.selectListRegularCheck(currentPage, pagePerRow, searchSelect, searchWord);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchWord", searchWord);
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		/* 파일 저장루트 확인용 */
+		String path = session.getServletContext().getRealPath("/resources/upload/");
+		model.addAttribute("path", path);
+		
+		return "unitedAfterserviceRequest/selectListRegularCheck";
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/selectListUnitedAfterserviceRequest", method=RequestMethod.GET)
+	public String selectListUnitedAfterserviceRequest(Model model
 									,HttpSession session
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
@@ -80,14 +120,16 @@ public class UnitedAfterserviceRequestController {
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		unitedAfterserviceRequestService.insertUnitedAfterserviceRequest(unitedAfterserviceRequestDto);
 		
-		return "redirect:/selectListReturnGoodsfacilityInfoForAfterService";
+		return "redirect:/selectListUnitedAfterserviceRequest";
 	}
 	
 	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.GET)
 	public String insertUnitedAfterserviceRequest(Model model
-												,UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+												,UnitedAfterserviceRequestDto unitedAfterserviceRequestDto
+												,@RequestParam(value="beforePageCode") String beforePageCode) {
 		logger.debug("GET insertUnitedAfterserviceRequest UnitedAfterserviceRequestController");
 		logger.debug(unitedAfterserviceRequestDto.toString());
+		logger.debug("beforePageCode : " + beforePageCode);
 		String functionaryId = unitedAfterserviceRequestDto.getFunctionaryId();
 		unitedAfterserviceRequestDto = unitedAfterserviceRequestService.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto);
 		List<AgencyDto> list = unitedAfterserviceRequestService.selectListAgencyDto(functionaryId);
@@ -96,6 +138,7 @@ public class UnitedAfterserviceRequestController {
 		
 		model.addAttribute("unitedAfterserviceRequestDto", unitedAfterserviceRequestDto);
 		model.addAttribute("agencyList", list);
+		model.addAttribute("beforePageCode", beforePageCode);
 		
 		return "unitedAfterserviceRequest/insertUnitedAfterserviceRequestForm";
 	}
