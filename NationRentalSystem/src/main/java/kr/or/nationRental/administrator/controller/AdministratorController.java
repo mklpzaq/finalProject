@@ -50,7 +50,7 @@ public class AdministratorController {
 	public String insertAdministrator(AdministratorDto administratorDto) {
 		logger.info("---insertAdministrator POST");
 		administratorService.insertAdministrator(administratorDto);
-		return "redirect:/";  // 나중엔 관리자 메인페이지로 이동시키자.
+		return "redirect:/";
 	}
 	
 	//관리자 계정 목록
