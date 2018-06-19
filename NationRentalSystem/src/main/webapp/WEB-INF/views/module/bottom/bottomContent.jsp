@@ -10,7 +10,8 @@
 	</head>
 	<body>
 	<!-- #FFCD12(노랑) -->
-		<div class="container-fluid" style="padding:20px; background-color:#BDBDBD;">
+	<!-- class="container-fluid"  -->
+		<div class="container-fluid" style="margin:15px 0 0 0; padding:15px; background-color:#BDBDBD;">
 			<div class="row">
 				<div class="col-sm-12">
 					제작 : team2<br/>
@@ -20,5 +21,5 @@
 			</div>
 			
 		</div>
-	</body>  
+	</body>	
 </html>

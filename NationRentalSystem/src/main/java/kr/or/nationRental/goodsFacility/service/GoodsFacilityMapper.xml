@@ -113,6 +113,7 @@
   		<result column="goodsfacility_is_possible_delivery" property="goodsfacilityIsPossibleDelivery"/>
   		<result column="goodsfacility_state_afterservice" property="goodsfacilityStateAfterservice"/>
   		<result column="goodsfacility_is_possible_rental" property="goodsfacilityIsPossibleRental"/>
+  		<result column="goodsfacility_date_registration" property="goodsfacilityDateRegistration"/>
   		<collection ofType="kr.or.nationRental.goodsFacility.service.GoodsFacilityFile" property="goodsFacilityFile">
   			<id column="goodsfacility_file_name" property="goodsfacilityFileName"/>
   			<id column="goodsfacility_code" property="goodsfacilityCode"/>
@@ -228,29 +229,35 @@
   			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
   			resultMap="goodsFacility">  			
   			SELECT
-  				goodsfacility.goodsfacility_code
-  				,goodsfacility.goodsfacility_three_code
-  				,goodsfacility.goodsfacility_name
-  				,goodsfacility.goodsfacility_purchaseprice
-  				,goodsfacility.goodsfacility_price_rental
-  				,goodsfacility.goodsfacility_text_sangse
-  				,goodsfacility.adminagency_code
-  				,goodsfacility.sigungu_name
-  				,goodsfacility.sido_name
-  				,goodsfacility.eupmyeon_name
-  				,goodsfacility.goodsfacility_address_sangse
-  				,goodsfacility.goodsfacility_is_possible_delivery
-  				,goodsfacility.goodsfacility_is_possible_rental
-  				,goodsfacility_file.goodsfacility_file_name
-				,goodsfacility_file.goodsfacility_file_ext
+  				gf.goodsfacility_code
+  				,gf.goodsfacility_three_code
+  				,gf.goodsfacility_name
+  				,gf.goodsfacility_purchaseprice
+  				,gf.goodsfacility_price_rental
+  				,gf.goodsfacility_text_sangse
+  				,gf.adminagency_code
+  				,gf.sigungu_name
+  				,gf.sido_name
+  				,gf.eupmyeon_name
+  				,gf.goodsfacility_address_sangse
+  				,gf.functionary_id
+  				,gf.goodsfacility_classify_goodsfacility
+  				,gf.goodsfacility_classify_donationpurchase
+  				,gf.goodsfacility_is_extra
+  				,gf.goodsfacility_is_possible_delivery
+  				,gf.goodsfacility_state_afterservice
+  				,gf.goodsfacility_is_possible_rental
+  				,gf.goodsfacility_date_registration
+  				,gff.goodsfacility_file_name
+				,gff.goodsfacility_file_ext
   			FROM
-  				goodsfacility
-  			JOIN
-  				goodsfacility_file
-  			ON
-  				goodsfacility.goodsfacility_code =	goodsfacility_file.goodsfacility_code
-  				WHERE 
-  				goodsfacility.goodsfacility_code =  #{goodsfacilityCode} 	
+  				goodsfacility AS gf
+  				JOIN
+  				goodsfacility_file AS gff
+  				ON
+  				gf.goodsfacility_code =	gff.goodsfacility_code
+  			WHERE 
+  				gf.goodsfacility_code = #{goodsfacilityCode} 	
   	</select>
   	
   

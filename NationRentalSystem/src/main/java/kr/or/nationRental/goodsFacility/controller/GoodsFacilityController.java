@@ -173,7 +173,7 @@ public class GoodsFacilityController {
 	@RequestMapping(value="/viewImageGoodsFacility", method=RequestMethod.GET)
 	public String viewImageGoodsFacility(Model model			
 										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
-										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="pagePerRow", defaultValue="12", required=true) int pagePerRow
 										,@RequestParam(value="searchOption", defaultValue="") String searchOption
 										,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		logger.debug("GoodsFacilityController viewImageGoodsFacility GET : ");
@@ -194,7 +194,7 @@ public class GoodsFacilityController {
 	
 	@RequestMapping(value="/viewImageDetail", method=RequestMethod.GET)
 	public String viewImageDetail(Model model
-										,GoodsFacilityDto goodsFacilityDto) {
+								,GoodsFacilityDto goodsFacilityDto) {
 		logger.debug("GoodsFacilityController viewImageGoodsFacility GET : " + goodsFacilityDto.toString());		
 		GoodsFacilityDto viewImageDetailOne = goodsFacilityService.viewImageDetail(goodsFacilityDto);
 		logger.debug("GoodsFacilityController viewImageDetailOne GET : " + viewImageDetailOne.toString());

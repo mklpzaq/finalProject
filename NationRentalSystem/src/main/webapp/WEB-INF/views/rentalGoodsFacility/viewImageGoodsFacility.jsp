@@ -2,13 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<title>View Image</title>
-	
-	<script>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<title>View Image GoodsFacility</title>
+		<script>
 			$(document).ready(function() {
 				var searchOption;
 				var keyword;
@@ -43,26 +42,24 @@
 					keyword = $('#keyword').val();
 					$(location).attr('href', './viewImageGoodsFacility?searchSignal=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
-				
 			});
 		</script>
-	
-	
-</head>
-<body>
-		<jsp:include page="../module/top/navbar.jsp"/>
-		<%-- <jsp:include page="../module/top/mainHeader.jsp"/> --%>
+	</head>
+	<body>
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		<!-- style="height:1500px;" -->
 		<div class="container-fluid">
+			<jsp:include page="../module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/left/leftnavi.jsp"/>
+					<%-- <jsp:include page="../module/left/leftnavi.jsp"/> --%>
 				</div>
 				<div class="col-sm-8">
-				<!-- Begin Content -->
+					<!-- Begin Content -->
 
-					<h2>시설 & 물품 이미지 리스트</h2>
-
-					<div class="panel panel-default">
+					<div style="margin:15px 0 0 0;" class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
 									<div class="col-md-4">
@@ -71,17 +68,14 @@
 										<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
-										<h3>시설 & 물품 이미지 리스트</h3>
+										<h3>대여 시설/물품 리스트</h3>
 									</div>
 									<div class="col-md-4">
 										<select id="selectPagePerRow" name="selectPagePerRow">
-											<option value="5"<c:if test="${pagePerRow == 5}">selected</c:if>>5</option>
-											<option value="10"<c:if test="${pagePerRow == 10}">selected</c:if>>10</option>
-											<option value="15"<c:if test="${pagePerRow == 15}">selected</c:if>>15</option>
+											<option value="8"<c:if test="${pagePerRow == 8}">selected</c:if>>8</option>
+											<option value="12"<c:if test="${pagePerRow == 12}">selected</c:if>>12</option>
+											<option value="16"<c:if test="${pagePerRow == 16}">selected</c:if>>16</option>
 											<option value="20"<c:if test="${pagePerRow == 20}">selected</c:if>>20</option>
-											<option value="30"<c:if test="${pagePerRow == 30}">selected</c:if>>30</option>
-											<option value="40"<c:if test="${pagePerRow == 40}">selected</c:if>>40</option>
-											<option value="50"<c:if test="${pagePerRow == 50}">selected</c:if>>50</option>
 										</select>개씩 보기
 										
 									</div>
@@ -115,27 +109,29 @@
 								</div>
 								<!-- End Search --> --%>
 								
-								
-								<div class="col-sm-3">
+								<div class="row">
 									<c:forEach var="GoodsFacility" items="${list}">
-										<div class="thumbnail">
-											<c:forEach var="GoodsFacilityImage"  items="${GoodsFacility.goodsFacilityFile}">
-												<img data-src="holder.js/100%x200" alt="${GoodsFacilityImage.goodsfacilityFileName}${GoodsFacilityImage.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${GoodsFacilityImage.goodsfacilityFileName}&goodsfacilityFileExt=${GoodsFacilityImage.goodsfacilityFileExt}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
-											</c:forEach>
+										<div class="col-sm-3">
+											<div class="thumbnail">
+												<c:forEach var="GoodsFacilityImage"  items="${GoodsFacility.goodsFacilityFile}">
+													<img data-src="holder.js/100%x200" alt="${GoodsFacilityImage.goodsfacilityFileName}${GoodsFacilityImage.goodsfacilityFileExt}" src="${pageContext.request.contextPath}/downloadFile?goodsfacilityName=${GoodsFacilityImage.goodsfacilityFileName}&goodsfacilityFileExt=${GoodsFacilityImage.goodsfacilityFileExt}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+												</c:forEach>
 												<div class="caption">
 													<!-- <h3 style="text-align:center;" id="thumbnail-label">이준희<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3> -->
 													<p>"${GoodsFacility.goodsfacilityName}"</p>
-													<p><a href="${pageContext.request.contextPath}/viewImageDetail?goodsfacilityCode=${GoodsFacility.goodsfacilityCode}" class="btn btn-primary" role="button">상세보기 </a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+													<a href="${pageContext.request.contextPath}/viewImageDetail?goodsfacilityCode=${GoodsFacility.goodsfacilityCode}" class="btn btn-primary" role="button">상세보기 </a>
 												</div>										
+											</div>
 										</div>
-									</c:forEach>	
-								</div>
+									</c:forEach>
+								</div>	
+								
 								
 								
 								<nav>
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}viewImageGoodsFacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}/viewImageGoodsFacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
@@ -205,11 +201,13 @@
 
 
 
-				<!-- End Content -->
+					<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
 		</div>
-		<jsp:include page="../module/bottom/bottomContent.jsp"/>
-</body>
+		<div>
+			<jsp:include page="../module/bottom/bottomContent.jsp"/>
+		</div>
+	</body>
 </html>
