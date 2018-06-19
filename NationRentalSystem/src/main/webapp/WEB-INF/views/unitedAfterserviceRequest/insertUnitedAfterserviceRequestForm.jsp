@@ -64,17 +64,17 @@
 									</div>
 								</div> --%>
 								<div class="form-group">
-									<label for="return_goodsfacility_info_code" class="col-sm-3 control-label">물품/시설 반납 코드</label>
+									<label for="returnGoodsfacilityInfoCode" class="col-sm-3 control-label">물품/시설 반납 코드</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly>
 									</div>
 								</div>
-							<!-- <div class="form-group">
-									<label for="regular_check_code" class="col-sm-3 control-label">정기점검 코드</label>
+								<div class="form-group">
+									<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="regular_check_code" id="regular_check_code" placeholder="정기점검 코드">
+										<input type="text" class="form-control" name="regularCheckCode" id="regularCheckCode" placeholder="정기점검 코드" readonly>
 									</div>
-								</div> -->
+								</div>
 								<div class="form-group">
 									<label for="adminagencyCode" class="col-sm-3 control-label">지자체기관 코드</label>
 									<div class="col-sm-9">
