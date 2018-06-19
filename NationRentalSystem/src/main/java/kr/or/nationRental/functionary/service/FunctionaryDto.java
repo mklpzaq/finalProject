@@ -15,6 +15,11 @@ public class FunctionaryDto {
 	private Date functionaryDateWorkStart; //전입날짜
 	private Date functionaryDateWorkEnd; //전출날짜
 	private String functionaryStateWork; //전입전출상태
+	/* 입력받기 위해 필요한 추가사항 */
+	private String sidoName;
+	private String sigunguName;
+	private String eupmyeonName;
+	private String adminagencyAddressSangse;
 	public String getFunctionaryId() {
 		return functionaryId;
 	}
@@ -93,6 +98,30 @@ public class FunctionaryDto {
 	public void setFunctionaryStateWork(String functionaryStateWork) {
 		this.functionaryStateWork = functionaryStateWork;
 	}
+	public String getSidoName() {
+		return sidoName;
+	}
+	public void setSidoName(String sidoName) {
+		this.sidoName = sidoName;
+	}
+	public String getSigunguName() {
+		return sigunguName;
+	}
+	public void setSigunguName(String sigunguName) {
+		this.sigunguName = sigunguName;
+	}
+	public String getEupmyeonName() {
+		return eupmyeonName;
+	}
+	public void setEupmyeonName(String eupmyeonName) {
+		this.eupmyeonName = eupmyeonName;
+	}
+	public String getAdminagencyAddressSangse() {
+		return adminagencyAddressSangse;
+	}
+	public void setAdminagencyAddressSangse(String adminagencyAddressSangse) {
+		this.adminagencyAddressSangse = adminagencyAddressSangse;
+	}
 	@Override
 	public String toString() {
 		return "FunctionaryDto [functionaryId=" + functionaryId + ", adminagencyCode=" + adminagencyCode
@@ -101,10 +130,8 @@ public class FunctionaryDto {
 				+ ", functionaryEmail=" + functionaryEmail + ", functionaryDateJoin=" + functionaryDateJoin
 				+ ", functionaryMoveInoutCode=" + functionaryMoveInoutCode + ", functionaryDateWorkStart="
 				+ functionaryDateWorkStart + ", functionaryDateWorkEnd=" + functionaryDateWorkEnd
-				+ ", functionaryStateWork=" + functionaryStateWork + "]";
+				+ ", functionaryStateWork=" + functionaryStateWork + ", sidoName=" + sidoName + ", sigunguName="
+				+ sigunguName + ", eupmyeonName=" + eupmyeonName + ", adminagencyAddressSangse="
+				+ adminagencyAddressSangse + "]";
 	}
-	
-	
-	
-	
 }

@@ -32,6 +32,7 @@ public class GoodsFacilityService {
 	
 	public Map<String, Object> selectadminagency(FunctionaryDto functionaryDto) {
 		logger.debug("GoodsFacilityService selectadminagency :");
+		
 		functionaryDto = goodsFacilityDao.selectadminagency(functionaryDto);
 		
 		List<GoodsFacilityCategoryDto> list = goodsFacilityDao.selectListGoodsFacilityCategoryDto();

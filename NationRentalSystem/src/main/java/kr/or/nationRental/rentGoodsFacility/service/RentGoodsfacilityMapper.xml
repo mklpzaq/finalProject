@@ -18,4 +18,88 @@
   				goodsfacility_code = #{goodsfacilityCode}  	
   	</select>
   
+  	<insert id="insertApplicationRent"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			<selectKey resultType="Integer"
+					keyProperty="goodsfacilityRentalCode"
+					order="AFTER">
+			SELECT LAST_INSERT_ID()
+			</selectKey>
+  			
+  			INSERT INTO goodsfacility_rental
+  					(adminagency_code
+  					,goodsfacility_code
+  					,goodsfacility_name
+  					,citizen_id
+  					,citizen_name
+  					,citizen_phone
+  					,goodsfacility_rental_date_start
+  					,goodsfacility_rental_day_end
+  					,goodsfacility_rental_is_ordered_delivery
+  					,goodsfacility_rental_date_registration
+  					,goodsfacility_rental_is_canceled
+  					,goodsfacility_rental_deposit)
+  				VALUE(#{adminagencyCode}
+  					 ,#{goodsfacilityCode}
+  					 ,#{goodsfacilityName}
+  					 ,#{citizenId}
+  					 ,#{citizenName}
+  					 ,#{citizenPhone}
+  					 ,#{goodsfacilityRentalDateStart}
+  					 ,#{goodsfacilityRentalDayEnd}
+  					 ,#{goodsfacilityRentalIsOrderedDelivery}
+  					 ,now()
+  					 ,#{goodsfacilityRentalIsCanceled}
+  					 ,#{goodsfacilityRentalDeposit})
+  	</insert>
+  	
+  	<select id="getApplicationList"
+  			parameterType="java.util.Map"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT
+  				adminagency_code as adminagencyCode
+  				,goodsfacility_code as goodsfacilityCode
+  				,goodsfacility_name as goodsfacilityName
+  				,goodsfacility_rental_date_start as goodsfacilityRentalDateStart
+  				,goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
+  				,goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
+  				,goodsfacility_rental_date_registration as goodsfacilityRentalDateRegistration
+  			FROM
+  				goodsfacility_rental
+  			WHERE 
+  				citizen_id = #{citizenId}
+  				
+  				<if test="!keyword.equals('')">
+				<choose>
+					<when test="searchOption.equals('adminagencyCode')">
+						WHERE adminagency_code = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityRentalDateRegistration')">
+						WHERE goodsfacility_rental_date_registration = #{keyword}
+					</when>					
+				</choose>
+			</if>
+				ORDER BY citizen_id DESC
+				LIMIT #{beginRow}, #{pagePerRow}
+  	</select>
+  	
+  	<select id="totalCountRentFORM"
+  			parameterType="java.util.Map"
+			resultType="Integer">
+			SELECT 
+				COUNT(*)
+			FROM
+				goodsfacility_rental
+			<if test="!keyword.equals('')">
+				<choose>
+					<when test="searchOption.equals('adminagencyCode')">
+						WHERE adminagency_code = #{keyword}
+					</when>
+					<when test="searchOption.equals('goodsfacilityRentalDateRegistration')">
+						WHERE goodsfacility_rental_date_registration = #{keyword}
+					</when>					
+				</choose>
+			</if>
+  	</select>
+  
   </mapper>

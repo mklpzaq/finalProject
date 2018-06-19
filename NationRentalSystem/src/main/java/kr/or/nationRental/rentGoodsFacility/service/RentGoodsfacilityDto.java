@@ -9,7 +9,7 @@ public class RentGoodsfacilityDto {
 	private String goodsfacilityName;
 	private String citizenId;
 	private String citizenName;
-	private String citizen_phone;
+	private String citizenPhone;
 	private Date goodsfacilityRentalDateStart;
 	private Date goodsfacilityRentalDayEnd;
 	private String goodsfacilityRentalIsOrderedDelivery;
@@ -54,10 +54,10 @@ public class RentGoodsfacilityDto {
 		this.citizenName = citizenName;
 	}
 	public String getCitizen_phone() {
-		return citizen_phone;
+		return citizenPhone;
 	}
-	public void setCitizen_phone(String citizen_phone) {
-		this.citizen_phone = citizen_phone;
+	public void setCitizen_phone(String citizenPhone) {
+		this.citizenPhone = citizenPhone;
 	}
 	public Date getGoodsfacilityRentalDateStart() {
 		return goodsfacilityRentalDateStart;
@@ -100,7 +100,7 @@ public class RentGoodsfacilityDto {
 		return "RentGoodsfacilityDto [goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", adminagencyCode="
 				+ adminagencyCode + ", goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityName="
 				+ goodsfacilityName + ", citizenId=" + citizenId + ", citizenName=" + citizenName + ", citizen_phone="
-				+ citizen_phone + ", goodsfacilityRentalDateStart=" + goodsfacilityRentalDateStart
+				+ citizenPhone + ", goodsfacilityRentalDateStart=" + goodsfacilityRentalDateStart
 				+ ", goodsfacilityRentalDayEnd=" + goodsfacilityRentalDayEnd + ", goodsfacilityRentalIsOrderedDelivery="
 				+ goodsfacilityRentalIsOrderedDelivery + ", goodsfacilityRentalDateRegistration="
 				+ goodsfacilityRentalDateRegistration + ", goodsfacilityRentalIsCanceled="

@@ -108,7 +108,7 @@
 						<h2> 시설 & 물품 등록 </h2>
 						<hr/>
 						<!-- ========== -->
-						<div class="panel panel-default">
+						<%-- <div class="panel panel-default">
 						<div class="panel-body text-center">
 							<form id="insertAddr" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdministrator" method="post">
 								<div class="form-group">
@@ -142,7 +142,7 @@
 								</div>
 							</form>
 						</div>
-					</div>
+					</div> --%>
 						
 						
 						<!-- ========== -->			
@@ -222,32 +222,32 @@
 						    	<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" value="${functionaryDto.adminagencyCode}" readonly>	    		    	
 						    </div>
 						</div>
-						
+											
 						<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 시군구 코드</label>
+								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 시도</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="sigunguName" name="sigunguName" readonly>	    		    	
+						    	<input type="text" class="form-control" id="sidoName" name="sidoName" value="${functionaryDto.sidoName}" readonly>	    		    	
 						    </div>
-						</div>						
+						</div>
 						
 						<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 시도 코드</label>
+								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 시군구</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="sidoName" name="sidoName" readonly>	    		    	
+						    	<input type="text" class="form-control" id="sigunguName" name="sigunguName" value="${functionaryDto.sigunguName}" readonly>	    		    	
 						    </div>
-						</div>			
+						</div>								
 						
 						<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 읍면동 코드</label>
+								<label for="goodsfacility" class="col-sm-2 control-label">시설 위치 읍면동</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="eupmyeonName" name="eupmyeonName" readonly>	    		    	
+						    	<input type="text" class="form-control" id="eupmyeonName" name="eupmyeonName" value="${functionaryDto.eupmyeonName}" readonly>	    		    	
 						    </div>
 						</div>					
 						
 						<div class="form-group">
 						<label for="goodsfacility" class="col-sm-2 control-label">상세 주소</label>
 						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="goodsfacilityAddressSangse" name="goodsfacilityAddressSangse" placeholder="상세 주소">
+						    	<input type="text" class="form-control" id="goodsfacilityAddressSangse" name="goodsfacilityAddressSangse" value="${functionaryDto.adminagencyAddressSangse}" readonly>
 						    </div>
 						</div>
 						
@@ -260,20 +260,12 @@
 						
 						<div class="form-group">								
 						    <div class="col-sm-10">
-						    <label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>
+						    <label for="goodsfacility" class="col-sm-2 control-label">기부 & 구입여부</label>
 						    	<select class="form-control" name="goodsfacilityStateAfterservice">													
 										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>									
 								</select>		    		    	
 						    </div>
-						</div>
-						
-						<div class="form-group">						
-						 	<div class="col-sm-10">
-						 	<label class="checkbox-inline" class="col-sm-2 control-label" >기부 & 구입여부</label>
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 기부
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 구입
-							</div>
-						</div>
+						</div>				
 						
 						<div class="form-group">						
 						 	<div class="col-sm-10">

@@ -60,21 +60,43 @@
 								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">신청인ID</label>
 								    <div class="col-sm-10">
-								    	<input type="text" class="form-control" id="memberId" name="memberId" value="${memberDto.memberId}">			    	
+								    	<input type="text" class="form-control" id="citizenId" name="citizenId" value="${memberDto.memberId}">			    	
 								    </div>
 								</div>
 								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">신청인이름</label>
 								    <div class="col-sm-10">
-								    	<input type="text" class="form-control" id="memberName" name="memberName" value="${memberDto.memberName}">			    	
+								    	<input type="text" class="form-control" id="citizenName" name="citizenName" value="${memberDto.memberName}">			    	
 								    </div>
 								</div>
 								<div class="form-group">
-									<label for="application" class="col-sm-2 control-label">신청인이름</label>
+									<label for="application" class="col-sm-2 control-label">신청인핸드폰</label>
 								    <div class="col-sm-10">
-								    	<input type="text" class="form-control" id="memberPhone" name="memberPhone" value="${memberDto.memberPhone}">			    	
+								    	<input type="text" class="form-control" id="citizenPhone" name="citizenPhone" value="${memberDto.memberPhone}">			    	
 								    </div>
 								</div>
+								<div class="form-group">
+									<label for="application" class="col-sm-2 control-label">대관시작일</label>
+								    <div class="col-sm-10">
+								    	<input type="date" class="form-control" id=goodsfacilityRentalDateStart name="goodsfacilityRentalDateStart">			    	
+								    </div>
+								</div>
+								<div class="form-group">
+									<label for="application" class="col-sm-2 control-label">대관종료일</label>
+								    <div class="col-sm-10">
+								    	<input type="date" class="form-control" id=goodsfacilityRentalDayEnd name="goodsfacilityRentalDayEnd">			    	
+								    </div>
+								</div>
+								<div class="form-group">
+								<label for="goodsfacility" class="col-sm-2 control-label">배달신청여부</label>
+							    	<div class="col-sm-10">						    	
+								   	 	<select id="goodsfacilityRentalIsOrderedDelivery" name="goodsfacilityRentalIsOrderedDelivery" class="form-control">													
+												 <option>네</option>
+												 <option>아니요</option>						
+										</select>		    		    	
+						   		 	</div>
+								</div>
+								
 								<div class="form-group">
 									 <div class="col-sm-10">	
 										<button type="submit" id="insertApplication">대여 & 예약 신청</button>	

@@ -15,18 +15,26 @@
   			WHERE
   			    goodsfacility_three_name = #{goodsfacilityThreeName}	
   			
-  	</select>
+  	</select>  	
   	
   	<select id="selectadminagency"
   			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
   			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
-  			
   			SELECT
-  				adminagency_code as adminagencyCode, functionary_id as functionaryId
-  			FROM
-  				functionary
-  			WHERE 	
-  				functionary_id = #{functionaryId}  	
+  			 	functionary.functionary_id as functionaryId
+				 ,functionary.adminagency_code as adminagencyCode
+				 ,adminagency.sido_name as sidoName
+				 ,adminagency.sigungu_name as sigunguName
+				 ,adminagency.eupmyeon_name as eupmyeonName
+				 ,adminagency.adminagency_address_sangse as adminagencyAddressSangse
+			FROM 
+	 			functionary
+			JOIN
+				adminagency
+			ON
+				functionary.adminagency_code = adminagency.adminagency_code
+			WHERE
+				functionary_id = #{functionaryId}
   	</select>
   	
   	<select id="selectListGoodsFacilityCategoryDto"
