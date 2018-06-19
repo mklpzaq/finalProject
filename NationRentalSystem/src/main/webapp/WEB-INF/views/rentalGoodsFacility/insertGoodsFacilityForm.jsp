@@ -10,6 +10,31 @@
 	<title>Insert Goods and Facility</title>
 	<!-- 다음 주소 API Script -->
 		<script>
+		$(document).ready(function(){
+			/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
+			/* $.ajax({
+				type: "POST"
+				,url: "/nationRental/selectOneGoodsFacilityForAjax"
+				,data: { goodsfacilityThreeName: $('#goodsfacilityThreeName > option:selected').val() }
+				,success:function( JSON ) { // result : String, XML, JSON
+					$('#goodsfacilityThreeCode').val(JSON.goodsfacilityThreeCode);
+					$('#goodsfacilityThreeName').val(JSON.goodsfacilityThreeName);					
+				}
+			}); */
+			
+			$('#selectGoodsfacilityThreeName').change(function() {
+				$.ajax({
+					type: "POST"
+					,url: "/nationRental/selectOneGoodsFacilityForAjax"
+					,data: { goodsfacilityThreeName: $('#selectGoodsfacilityThreeName > option:selected').val() }
+					,success:function( JSON ) { // result : String, XML, JSON						
+						$('#goodsfacilityThreeCode').val(JSON.goodsfacilityThreeCode);
+						$('#goodsfacilityThreeName').val(JSON.goodsfacilityThreeName);						
+					}
+				});
+			});
+		});
+		
 		    function sample6_execDaumPostcode() {
 		        new daum.Postcode({
 		            oncomplete: function(data) {
@@ -55,6 +80,13 @@
 		                document.getElementById('bname').value = data.bname; //읍면동
 		                document.getElementById('sample6_address').value = fullAddr; //상세주소
 		                document.getElementById('buildingCode').value = data.buildingCode; //상세주소
+		                
+		                /*========== */
+		                document.getElementById('sidoName').value = data.sido; //시도
+		                document.getElementById('sigunguName').value = data.sigungu; //시도
+		                document.getElementById('eupmyeonName').value = data.bname; //시도
+			               
+		                
 		            }
 		        }).open();
 		    }
@@ -116,18 +148,39 @@
 						<!-- ========== -->			
 						<form action="${pageContext.request.contextPath}/insertGoodsFacility" method="post" enctype="multipart/form-data">			
 						
-						<div class="form-group">
+						<%-- <div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 물품 카테고리 코드</label>
-						    <div class="col-sm-10">
-						    	<input type="text" class="form-control" id="goodsfacilityThreeCode" name="goodsfacilityThreeCode" placeholder="시설 물품 카테고리 코드">
-						    	<!-- <select class="form-control" name="goodsfacilityThreeCode"> -->
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
+						    <div class="col-sm-10">						    	
+						    <select id="selectGoodsfacilityThreeCode" class="form-control" name="goodsfacilityThreeCode">
+									<c:forEach var="goodsfacility" items="${list}"> 					
+										 <option value="${goodsfacility.goodsfacilityThreeCode}">${goodsfacility.goodsfacilityThreeCode}</option>										
+									</c:forEach>
+								</select>		    		    	
+						    </div>
+						</div> --%>
+						<div class="form-group">
+								<label for="goodsfacility" class="col-sm-2 control-label">시설 물품 카테고리 이름</label>
+						    <div class="col-sm-10">						    	
+						    <select id="selectGoodsfacilityThreeName" class="form-control">
+									<c:forEach var="goodsfacility" items="${list}"> 					
+										 <option value="${goodsfacility.goodsfacilityThreeName}">${goodsfacility.goodsfacilityThreeName}</option>										
+									</c:forEach>
 								</select>		    		    	
 						    </div>
 						</div>
-						
+						<div class="form-group">
+							<label for="goodsfacilityThreeCode" class="col-sm-2 control-label">시설 물품 카테고리 코드</label>
+						    <div class="col-sm-10">
+						    	<input type="text" class="form-control" id="goodsfacilityThreeCode" name="goodsfacilityThreeCode" placeholder="시설 물품 카테고리 코드">			    	
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="goodsfacilityThreeName" class="col-sm-2 control-label">시설 물품 카테고리 이름</label>
+						    <div class="col-sm-10">
+						    	<input type="text" class="form-control" id="goodsfacilityThreeName"  placeholder="시설 물품 카테고리 이름">			    	
+						    </div>
+						</div>
+												
 						<div class="form-group">
 							<label for="goodsfacility" class="col-sm-2 control-label">시설 & 물품 이름</label>
 						    <div class="col-sm-10">
@@ -205,17 +258,18 @@
 						    </div>
 						</div>	
 						
-						<div class="form-group">						
-						 	<div class="col-sm-10">
-						 	<label class="checkbox-inline">시설 & 물품 구분</label>
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 시설
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 물품							
-							</div>							
+						<div class="form-group">								
+						    <div class="col-sm-10">
+						    <label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>
+						    	<select class="form-control" name="goodsfacilityStateAfterservice">													
+										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>									
+								</select>		    		    	
+						    </div>
 						</div>
 						
 						<div class="form-group">						
 						 	<div class="col-sm-10">
-						 	<label class="checkbox-inline">기부 & 구입여부</label>
+						 	<label class="checkbox-inline" class="col-sm-2 control-label" >기부 & 구입여부</label>
 						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 기부
 						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 구입
 							</div>
@@ -223,15 +277,15 @@
 						
 						<div class="form-group">						
 						 	<div class="col-sm-10">
-						 	<label class="checkbox-inline">예비 & 대여 </label>
+						 	<label class="checkbox-inline" class="col-sm-2 control-label" >예비 & 대여 </label>
 						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 예비
 						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 대여
 							</div>
 						</div>
 						
-						<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">배달가능여부</label>
+						<div class="form-group">								
 						    <div class="col-sm-10">
+						    <label for="goodsfacility" class="col-sm-2 control-label">배달가능여부</label>	
 						    	<select class="form-control" name="goodsfacilityIsPossibleDelivery">
 									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
 										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
@@ -240,9 +294,9 @@
 						    </div>
 						</div>												
 						
-						<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>
+						<div class="form-group">								
 						    <div class="col-sm-10">
+						    <label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>
 						    	<select class="form-control" name="goodsfacilityStateAfterservice">
 									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
 										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
@@ -251,9 +305,9 @@
 						    </div>
 						</div>
 						
-						<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">대여 가능 여부</label>
+						<div class="form-group">								
 						    <div class="col-sm-10">
+						    <label for="goodsfacility" class="col-sm-2 control-label">대여 가능 여부</label>
 						    	<select class="form-control" name="goodsfacilityIsPossibleRental">
 									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
 										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										

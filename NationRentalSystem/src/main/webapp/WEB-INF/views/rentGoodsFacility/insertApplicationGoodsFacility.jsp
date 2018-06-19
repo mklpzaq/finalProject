@@ -8,6 +8,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<title>Insert Application</title>
 
+	<script>
+		function changehtml(){
+			var property = $("#searchOption").val();
+			var show = $("#keyword");
+			if(property=="order_date"){
+				$("#keyword").html('<input type="date" name="keyword">~<input type="date" name="keyword">');
+			}else {
+				$("#keyword").html('<input type="text" name="keyword">');
+			}
+		}	
+	
+	</script>
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -68,9 +81,23 @@
 									</div>
 								</div>						
 							
-							</form>
-						
+							</form>						
 						</div>
+						
+							<div>
+								<form action="<%=request.getContextPath()%>/orderList" method="get">
+									<select id="searchOption" name="searchOption" onclick="changehtml();">											
+										<option value="member_id" <c:if test="${member_id == 'member_id'}">selected</c:if>>주문아이디</option>
+										<option value="item_name"  <c:if test="${item_name == 'item_name'}">selected</c:if>>주문제품</option>											
+										<option value="order_date" <c:if test="${order_date == 'order_date'}">selected</c:if>>주문날짜</option>		
+									</select>
+									<dr id="keyword"></dr>
+									<%-- <input id="keyword" name="keyword" value="${keyword}"> --%>
+									<input type="submit" value="검색버튼" >
+								</form>
+							</div>
+						
+						
 						</div>					
 					
 					</div>

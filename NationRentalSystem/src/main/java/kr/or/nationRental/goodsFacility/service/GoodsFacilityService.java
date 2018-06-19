@@ -19,18 +19,27 @@ import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Service
 public class GoodsFacilityService {
-	
 	@Autowired
 	private GoodsFacilityDao goodsFacilityDao;
 	@Autowired
-	private GoodsFacilityFileDao goodsFacilityFileDao;
-	
+	private GoodsFacilityFileDao goodsFacilityFileDao;	
 	private static final Logger logger = LoggerFactory.getLogger(GoodsFacilityService.class);
 	
-	public FunctionaryDto selectadminagency(FunctionaryDto functionaryDto) {
+	public GoodsFacilityCategoryDto selectOneGoodsFacilityCategoryDtoForAjax(GoodsFacilityCategoryDto goodsFacilityCategoryDto) {
+		logger.debug("GoodsFacilityService selectOneGoodsFacilityCategoryDtoForAjax :" +goodsFacilityCategoryDto.toString());		
+		return goodsFacilityDao.selectOneGoodsFacilityCategoryDto(goodsFacilityCategoryDto);
+	}
+	
+	public Map<String, Object> selectadminagency(FunctionaryDto functionaryDto) {
 		logger.debug("GoodsFacilityService selectadminagency :");
 		functionaryDto = goodsFacilityDao.selectadminagency(functionaryDto);
-		return functionaryDto;
+		
+		List<GoodsFacilityCategoryDto> list = goodsFacilityDao.selectListGoodsFacilityCategoryDto();
+		logger.debug("List<GoodsFacilityCategoryDto> list : " +list.toString());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("functionaryDto", functionaryDto);
+		map.put("list", list);
+		return map;
 	}
 
 	public void insertGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
@@ -206,5 +215,7 @@ public class GoodsFacilityService {
 		
 		return viewImageOne;
 	}
+
+	
 
 }

@@ -26,6 +26,7 @@ import kr.or.nationRental.functionary.service.FunctionaryDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityRequest;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityService;
+import kr.or.nationRental.login.service.MemberDto;
 
 @Controller
 public class GoodsFacilityController {
@@ -45,9 +46,11 @@ public class GoodsFacilityController {
 										,Model model) {
 		logger.debug("GET insertGoodsFacility GoodsFacilityController" + functionaryDto.toString());
 			
-		functionaryDto = goodsFacilityService.selectadminagency(functionaryDto);		
-		logger.debug(functionaryDto.toString());
-		model.addAttribute("functionaryDto", functionaryDto);
+		Map<String, Object> map = goodsFacilityService.selectadminagency(functionaryDto);		
+		logger.debug(map.toString());
+		
+		model.addAttribute("functionaryDto", map.get("functionaryDto"));
+		model.addAttribute("list", map.get("list"));
 		
 		return "/rentalGoodsFacility/insertGoodsFacilityForm";
 	}

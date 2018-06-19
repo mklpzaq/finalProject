@@ -26,10 +26,12 @@ public class GoodsFacilityDto {
 	private Date goodsfacilityDateRegistration;
 	private List<GoodsFacilityFile> goodsFacilityFile;
 	
+	/* 입력받을때 필요할 내용 */
+	private String goodsfacilityThreeName;
+
 	public GoodsFacilityDto() {
 		this.goodsFacilityFile = new ArrayList<GoodsFacilityFile>();
 	}
-
 	public int getGoodsfacilityCode() {
 		return goodsfacilityCode;
 	}
@@ -190,6 +192,14 @@ public class GoodsFacilityDto {
 		this.goodsFacilityFile = goodsFacilityFile;
 	}
 
+	public String getGoodsfacilityThreeName() {
+		return goodsfacilityThreeName;
+	}
+
+	public void setGoodsfacilityThreeName(String goodsfacilityThreeName) {
+		this.goodsfacilityThreeName = goodsfacilityThreeName;
+	}
+
 	@Override
 	public String toString() {
 		return "GoodsFacilityDto [goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityThreeCode="
@@ -204,7 +214,7 @@ public class GoodsFacilityDto {
 				+ goodsfacilityIsPossibleDelivery + ", goodsfacilityStateAfterservice=" + goodsfacilityStateAfterservice
 				+ ", goodsfacilityIsPossibleRental=" + goodsfacilityIsPossibleRental
 				+ ", goodsfacilityDateRegistration=" + goodsfacilityDateRegistration + ", goodsFacilityFile="
-				+ goodsFacilityFile + "]";
+				+ goodsFacilityFile + ", goodsfacilityThreeName=" + goodsfacilityThreeName + "]";
 	}
 	
 	

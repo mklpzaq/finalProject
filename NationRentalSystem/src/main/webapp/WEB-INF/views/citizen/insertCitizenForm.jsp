@@ -87,6 +87,11 @@
 		                document.getElementById('bname').value = data.bname; //읍면동
 		                document.getElementById('sample6_address').value = fullAddr; //상세주소
 		                document.getElementById('buildingCode').value = data.buildingCode; //상세주소
+		                
+		                /*========== */
+		                document.getElementById('sidoName').value = data.sido; //시도
+		                document.getElementById('sigunguName').value = data.sigungu; //시도
+		                document.getElementById('eupmyeonName').value = data.bname; //시도
 		            }
 		        }).open();
 		    }
@@ -173,19 +178,12 @@
 		    </div>
 		</div>
 			<div class="form-group">
-				  <label class="col-sm-2 control-label" for="inputSuccess5">주민번호 앞자리</label>				  
+				  <label class="col-sm-2 control-label" for="inputSuccess5">주민번호</label>				  
 				  <div class="col-sm-10">
 				  	<input type="text" class="form-control" id="inputSuccess5" name="citizenJuminNum" aria-describedby="inputSuccess5Status">
 				  </div>				
 				  	<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>				  
-			</div>
-			<div class="form-group">
-				  <label class="col-sm-2 control-label" for="inputGroupSuccess4">주민번호 뒷자리</label>
-				<div class="col-sm-10">				   
-				    <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
-				</div>
-				  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>				  
-			</div>
+			</div>			
 		<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 		    <div class="col-sm-10">
