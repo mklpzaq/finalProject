@@ -28,13 +28,17 @@
 								<td width="5%">대여/반납상태 구분</td>
 								<td width="10%">시민ID</td>
 								<td width="10%">행정기관코드</td>
-								<td width="20%">보내는 사람주소</td>
-								<td width="20%">받는 사람주소</td>
+								<td width="15%">보내는 사람주소</td>
+								<td width="15%">받는 사람주소</td>
 								<td width="10%">배달신청일</td>
 								<td width="5%">배달신청취소여부</td>	
+								<c:if test="${memberLevel == '공무원'}">	
+									<td width="10%">배달의뢰 신청</td>
+									<td width="10%">배달의뢰 신청취소</td>
+								</c:if>								
 								<c:if test="${memberLevel == '시민'}">	
-									<td width="5%">배달반납수정</td>
-									<td width="5%">배달신청취소</td>	
+									<td width="10%">배달반납수정</td>
+									<td width="10%">배달신청취소</td>	
 								</c:if>									
 							</tr>
 						</thead>
@@ -53,6 +57,10 @@
 										<c:if test="${memberLevel == '시민'}">
 											<td><a href="${pageContext.request.contextPath}/updateViewDeliveryOrderCitizenAddress?deliveryOrderCitizenCode=${deliveryOrderCitizenDao.deliveryOrderCitizenCode}">배달반납수정</a></td>
 											<td><a href="${pageContext.request.contextPath}/updateIsCanceledDelivery?deliveryOrderCitizenCode=${deliveryOrderCitizenDao.deliveryOrderCitizenCode}">배달신청취소</a></td>																						
+										</c:if>
+										<c:if test="${memberLevel == '공무원'}">
+											<td><a href="${pageContext.request.contextPath}/#?deliveryOrderCitizenCode=${deliveryOrderCitizenDao.deliveryOrderCitizenCode}">배달의뢰신청</a></td>
+											<td><a href="${pageContext.request.contextPath}/#?deliveryOrderCitizenCode=${deliveryOrderCitizenDao.deliveryOrderCitizenCode}">배달의뢰신청취소</a></td>
 										</c:if>
 									</tr>
 								</tbody>
