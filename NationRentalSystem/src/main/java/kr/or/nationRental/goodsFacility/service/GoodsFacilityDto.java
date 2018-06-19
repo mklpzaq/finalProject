@@ -29,6 +29,10 @@ public class GoodsFacilityDto {
 	/* 입력받을때 필요할 내용 */
 	private String goodsfacilityThreeName;
 
+	public GoodsFacilityDto() {
+		this.goodsFacilityFile = new ArrayList<GoodsFacilityFile>();
+	}
+	
 	public int getGoodsfacilityCode() {
 		return goodsfacilityCode;
 	}
