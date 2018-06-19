@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoMapper">
+ 	
+ 	<select id="returnGoodsfacilityInfoCheck" parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto" resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
+ 		select 
+ 			goodsfacility_rental.goodsfacility_rental_code as goodsfacilityRentalCode
+ 			,goodsfacility_rental.citizen_id as citizenId
+			,goodsfacility_rental.goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
+			,goodsfacility_rental.adminagency_code as adminagencyCode
+			,goodsfacility.goodsfacility_classify_goodsfacility as classifyGoodsfacility
+		from goodsfacility_rental
+		inner join goodsfacility
+		using(goodsfacility_code)
+		where goodsfacility_code = #{goodsfacilityCode}
+		order by goodsfacility_rental_date_start DESC limit 1	
+ 	</select> 
+ 	
+ 	<select id="selectOneGoodsfacilityRentalIsOrderedDelivery" parameterType="Integer" resultType="Integer">
+ 		select 
+ 			count(delivery_order_citizen_code)
+			from
+			delivery_order_citizen
+			where goodsfacility_rental_code = #{goodsfacilityRentalCode}
+			and classify_rental_state = '반납'
+ 	</select>
+ 	
+ 	<select id="stateGoodsCode" resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.StateGoodsDto">
+ 		select 
+ 			state_goods_code as stateGoodsCode
+ 			,state_goods as stateGoods
+		from state_goods
+ 	</select>
+ 	
+ 	<insert id="insertReturnGoodsfacilityInfo" parameterType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
+ 		INSERT INTO return_goodsfacility_info
+			(return_goodsfacility_info_code
+			, goodsfacility_rental_code
+			, goodsfacility_code
+			, classify_goodsfacility
+			, citizen_id
+			, is_requested_to_return_as_delivery
+			, overdue_days
+			, adminagency_code
+			, functionary_id
+			, state_goods_code
+			, date_return_check)
+		VALUES 
+			(NULL
+			, #{goodsfacilityRentalCode}
+			, #{goodsfacilityCode}
+			, #{classifyGoodsfacility}
+			, #{citizenId}
+			, #{isRequestedToReturnAsDelivery}
+			, #{overdueDays}
+			, #{adminagencyCode}
+			, #{functionaryId}
+			, #{stateGoodsCode}
+			, NOW())
+ 	</insert>
+ 	
+ </mapper>

@@ -78,7 +78,8 @@
 				<value>classpath:kr/or/nationRental/adminagency/service/AdminagencyMapper.xml</value>
 				<value>classpath:kr/or/nationRental/unitedAfterserviceRequest/service/UnitedAfterserviceRequestMapper.xml</value>
 				<value>classpath:kr/or/nationRental/deliveryOrderCitizen/service/DeliveryOrderCitizenMapper.xml</value>
-				<value>classpath:kr/or/nationRental/rentGoodsFacility/service/RentGoodsfacilityMapper.xml</value>			
+				<value>classpath:kr/or/nationRental/rentGoodsFacility/service/RentGoodsfacilityMapper.xml</value>
+				<value>classpath:kr/or/nationRental/returnGoodsfacilityInfo/service/ReturnGoodsfacilityInfoMapper.xml</value>			
 			</list>
 		</property>
 	</bean>
