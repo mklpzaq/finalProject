@@ -38,7 +38,7 @@
 						<hr/>
 						<div class="panel panel-default">
 						<div class="panel-body text-center">
-							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertTotalRentalPaymentInfo" method="post">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/selectListRentalTotalPayment" method="post">
 								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">시설 & 물품 관리코드</label>
 								    <div class="col-sm-10">

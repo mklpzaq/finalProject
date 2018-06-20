@@ -5,45 +5,59 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>결제완료</title>
+		<title>대여대관 결제하기</title>
 	</head>
 	<body>
-		<body>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-2" style="padding:15px;"></div>
-				<div class="col-sm-8">
-				<div class="text-center"><br>
-					<!-- Begin Content -->
+				<div class="col-sm-2" style="padding:15px;">
+				</div>
+				<div class="col-sm-8"><br>
+					<!-- Begin Content(1) -->
 					<div class="panel panel-default">
 						<div class="panel-body text-center">
-							<div class="text-center">
-								<h3>총 결제 금액</h3>
+							<div class="row">
+								<div class="col-md-4">
+									<h3>대여/대관 내역</h3>
+								</div>
 							</div>
-							<table class="table table-striped">	
+							<hr/>
+							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th>물품코드</th>
-										<th>물품명</th>
-										<th>대여가격</th>
-										<th>대여시작일</th>
-										<th>대여종료일</th>
-										<th>배달선택</th>
+										<td width="20%">상품코드</td>
+										<td width="50%">상품이름</td>
+										<td width="15%">대여/대관 금액</td>
+										<td width="15%">배송선택</td>								
 									</tr>
 								</thead>
-								<tbody>
-									<c:forEach var="rentGoodsfacilityDto" items="${rentGoodsfacilityDtoList}">
-										<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
-										<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
-										<td>${rentGoodsfacilityDto.#}</td>
-										<td>${rentGoodsfacilityDto.goodsfacilityRentalDateStart}</td>
-										<td>${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}</td>
-										<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>
-									</c:forEach>
+								<tbody>									
+									<c:forEach var="rentGoodsfacilityDtoList" items="${rentGoodsfacilityDtoList}">
+										<tbody>
+											<tr>
+												<th>${rentGoodsfacilityDtoList.goodsfacilityCode}</th>
+												<th>${rentGoodsfacilityDtoList.goodsfacilityName}</th>
+												<td>${rentGoodsfacilityDtoList.goodsfacilityPriceRental}</td>
+												<td>${rentGoodsfacilityDtoList.goodsfacilityRentalIsOrderedDelivery}</td>																						
+											</tr>
+										</tbody>
+									</c:forEach>	
 								</tbody>
 							</table>
-							<table class="table table-striped">	
+						</div>
+					</div>
+					<!-- End Content(1) -->
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+	<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
+	</body>
+</html>
+
+
+<%-- <table class="table table-striped">	
 								<thead>
 									<tr>
 										<th>총 결제 금액</th>
@@ -73,14 +87,4 @@
 										</tr>
 									</c:forEach>
 								</tbody>	
-							</table>
-						</div>
-					</div>
-					<!-- End Content -->
-				</div>
-				<div class="col-sm-2"></div>
-			</div>
-		</div>
-	<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
-	</body>
-</html>
+							</table> --%>
