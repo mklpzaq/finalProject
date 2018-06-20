@@ -127,8 +127,9 @@
 			SELECT
 				citizen_id as citizenId
 				,citizen_pw as citizenPw
-				,sigungu_code as sigunguCode
-				,eupmyeon_code as eupmyeonCode
+				,sido_name as sidoName
+				,sigungu_name as sigunguName
+				,eupmyeon_name as eupmyeonName
 				,citizen_address_sangse as citizenAddressSangse
 				,citizen_phone as citizenPhone
 				,citizen_email as citizenEmail
@@ -157,6 +158,15 @@
 			FROM citizen 
 		WHERE 
 			citizen_id = #{citizenId}	
+	</delete>
+	
+	<delete id="deleteOneSelf"
+			parameterType="kr.or.nationRental.citizen.service.CitizenDto">
+			DELETE			 	
+			FROM 
+				citizen 
+			WHERE 
+				citizen_id = #{citizenId}	
 	</delete>
  
  </mapper>

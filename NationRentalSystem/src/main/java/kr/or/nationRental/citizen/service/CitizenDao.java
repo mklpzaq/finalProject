@@ -65,4 +65,9 @@ public class CitizenDao {
 		 
 	}
 
+	public void deleteOneSelf(CitizenDto citizenDto) {
+		logger.debug("CitizenDao deleteOneSelf : " + citizenDto.toString());
+		sqlSession.delete(NS+"deleteOneSelf", citizenDto);
+	}
+
 }

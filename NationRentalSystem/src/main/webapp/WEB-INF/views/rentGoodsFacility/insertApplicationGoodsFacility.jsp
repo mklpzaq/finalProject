@@ -64,6 +64,12 @@
 								    </div>
 								</div>
 								<div class="form-group">
+									<label for="application" class="col-sm-2 control-label">시설 & 물품 렌트비용</label>
+								    <div class="col-sm-10">
+								    	<input type="text" class="form-control" id="goodsfacilityPriceRental" name="goodsfacilityPriceRental" value="${goodsFacilityApplication.goodsfacilityPriceRental}">			    	
+								    </div>
+								</div>
+								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">신청인ID</label>
 								    <div class="col-sm-10">
 								    	<input type="text" class="form-control" id="citizenId" name="citizenId" value="${memberDto.memberId}">			    	

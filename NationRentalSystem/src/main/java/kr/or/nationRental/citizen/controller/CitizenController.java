@@ -117,6 +117,11 @@ public class CitizenController {
 		return "redirect:/getCitizenList";
 	} 
 
-	
+	@RequestMapping(value="/deleteSelfCitizen", method = RequestMethod.GET)
+	public String  deleteSelfCitizen(CitizenDto citizenDto) {
+		logger.debug("CitizenController deleteSelfCitizen - GET : " +citizenDto.toString());
+		citizenService.deleteOneSelf(citizenDto);
+		return "redirect:/goSignUp";
+	}
 
 }

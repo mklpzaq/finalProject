@@ -13,6 +13,7 @@
   				,adminagency_code as adminagencyCode
   				,goodsfacility_name as goodsfacilityName
   				,goodsfacility_address_sangse as goodsfacilityAddressSangse
+  				,goodsfacility_price_rental as goodsfacilityPriceRental
   			FROM
   				goodsfacility
   			WHERE 

@@ -115,6 +115,12 @@ public class CitizenService {
 	 
 }
 
+	public void deleteOneSelf(CitizenDto citizenDto) {
+		logger.debug("CitizenService deleteOneSelf : " +citizenDto.toString());
+		citizenDao.deleteOneSelf(citizenDto);
+		
+	}
+
 	
 	
 
