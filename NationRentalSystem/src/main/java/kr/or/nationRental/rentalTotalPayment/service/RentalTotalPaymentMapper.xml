@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentMapper">
+
+  	<select id="getRentGoodsfacilityDtoList"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT
+				goodsfacility_rental_code as goodsfacilityRentalCode
+				, adminagency_code as adminagencyCode
+				, goodsfacility_code as goodsfacilityCode
+				, goodsfacility_name as goodsfacilityName
+				, citizen_id as citizenId
+				, citizen_name as citizenName
+				, citizen_phone as citizenPhone
+				, goodsfacility_rental_date_start as goodsfacilityRentalDateStart
+				, goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
+				, goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
+				, goodsfacility_rental_date_registration as goodsfacilityRentalDateRegistration
+				, goodsfacility_rental_is_canceled as goodsfacilityRentalIsCanceled
+				, goodsfacility_rental_deposit as goodsfacilityRentalDeposit
+				<!-- , goodsfacility_price_rental as goodsfacilityPriceRental -->
+			FROM goodsfacility_rental 	
+  	</select>
+
+</mapper>
