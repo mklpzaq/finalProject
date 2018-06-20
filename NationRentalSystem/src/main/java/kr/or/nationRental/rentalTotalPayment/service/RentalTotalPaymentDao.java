@@ -18,17 +18,17 @@ public class RentalTotalPaymentDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//RentGoodsfacilityDto 리스트를 가져오는 작업
+	/*//RentGoodsfacilityDto 리스트를 가져오는 작업
 		public List<RentGoodsfacilityDto> getRentGoodsfacilityDtoList() {
 			logger.debug("---getRentGoodsfacilityDtoList");
-			logger.debug("★★★★★★★★★★오류잡기1★★★★★★★★★★★★★");
+			
 			List<RentGoodsfacilityDto> list = sqlSession.selectList(NS+"getRentGoodsfacilityDtoList");
-			logger.debug("★★★★★★★★★★오류잡기2★★★★★★★★★★★★★");
+			
 			if(!list.isEmpty()) {
 				logger.debug(list.toString());
 			}else {
 				logger.debug("list에 아무런 값이 없습니다.");
 			}
 			return list;
-		}
+		}*/
 }

@@ -5,7 +5,7 @@
     
 <mapper namespace="kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentMapper">
 
-  	<select id="getRentGoodsfacilityDtoList"
+  <!-- 	<select id="getRentGoodsfacilityDtoList"
   			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
   			SELECT
 				gfrental.goodsfacility_rental_code as goodsfacilityRentalCode
@@ -28,6 +28,6 @@
 				goodsfacility AS gf
 				ON
 				gfrental.goodsfacility_code = gf.goodsfacility_code
-  	</select>
+  	</select> -->
 
 </mapper>

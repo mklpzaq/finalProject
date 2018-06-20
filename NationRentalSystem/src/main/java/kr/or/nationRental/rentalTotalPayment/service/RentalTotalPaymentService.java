@@ -16,10 +16,10 @@ public class RentalTotalPaymentService {
 	private static final Logger logger = LoggerFactory.getLogger(RentalTotalPaymentService.class);
 	@Autowired RentalTotalPaymentDao rentalTotalPaymentDao;
 	
-	//RentGoodsfacilityDto 리스트를 가져오는 작업
+	/*//RentGoodsfacilityDto 리스트를 가져오는 작업
 	public List<RentGoodsfacilityDto> getRentGoodsfacilityDtoList() {
 		logger.debug("---getRentGoodsfacilityDtoList");
 		return rentalTotalPaymentDao.getRentGoodsfacilityDtoList();	
-	}
+	}*/
 
 }

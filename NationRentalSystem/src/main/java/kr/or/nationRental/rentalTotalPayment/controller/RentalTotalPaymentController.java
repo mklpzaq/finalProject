@@ -23,9 +23,11 @@ public class RentalTotalPaymentController {
 	
 	//예약 화면에서 선택된 정보를 가지고 와 셋팅한다.
 	@RequestMapping(value="/selectListRentalTotalPayment", method=RequestMethod.POST)
-	public String selectListRentalTotalPayment(Model model) {
-		List<RentGoodsfacilityDto> rentGoodsfacilityDtoList = rentalTotalPaymentService.getRentGoodsfacilityDtoList();
-		model.addAttribute("rentGoodsfacilityDtoList", rentGoodsfacilityDtoList);
+	public String selectListRentalTotalPayment(Model model, RentGoodsfacilityDto rentGoodsfacilityDto) {
+		/*List<RentGoodsfacilityDto> rentGoodsfacilityDtoList = rentalTotalPaymentService.getRentGoodsfacilityDtoList();*/
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(rentGoodsfacilityDto.toString());
+		model.addAttribute("rentGoodsfacilityDto", rentGoodsfacilityDto);
 		return "rentalTotalPayment/selectRentalTotalPaymentForm";
 		
 	}
