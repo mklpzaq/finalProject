@@ -26,6 +26,14 @@ public class UnitedAfterserviceRequestDao {
 		return sqlSession.selectList(NS+"selectListRegularCheck");
 	}*/
 	
+	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS UnitedAfterserviceRequestDao");
+		unitedAfterserviceRequestDto = sqlSession.selectOne(NS+"selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS", unitedAfterserviceRequestDto);
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(unitedAfterserviceRequestDto.toString());
+		return unitedAfterserviceRequestDto;
+	}
+	
 	public int totalCountRegularCheck(Map<String, Object> map) {
 		logger.debug("totalCountRegularCheck UnitedAfterserviceRequestDao");
 		return sqlSession.selectOne(NS+"totalCountRegularCheck", map);

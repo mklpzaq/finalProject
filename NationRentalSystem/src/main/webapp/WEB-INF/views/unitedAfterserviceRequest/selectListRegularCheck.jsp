@@ -97,13 +97,14 @@
 												<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-												<li><a href="#">regularCheckCode</a></li>
-												<li><a href="#">adminagencyCode</a></li>
-												<li><a href="#">goodsfacilityCode</a></li>
-												<li><a href="#">goodsfacilityName</a></li>
-												<li><a href="#">textRegularCheck</a></li>
-												<li><a href="#">functionaryId</a></li>
-												<li><a href="#">stateGoodsCode</a></li>
+												<li><a href="#">정기점검 코드</a></li>
+												<li><a href="#">지자체 기관 코드</a></li>
+												<li><a href="#">물품/시설 코드</a></li>
+												<li><a href="#">물품/시설 명</a></li>
+												<li><a href="#">정기점검 결과</a></li>
+												<li><a href="#">점검 공무원 ID</a></li>
+												<li><a href="#">물품 상태 코드</a></li>
+												<li><a href="#">정기점검 결과 날짜</a></li>
 												<li><a href="#">dateRegularCheckGoodsfacility</a></li>
 											</ul>
 										</div>
@@ -136,31 +137,29 @@
 								</thead>
 								<tbody>
 									<c:forEach var="regularCheckDto" items="${list}">
-										<tr>
-											<td><strong>${regularCheckDto.regularCheckCode}</strong></td>
-											<td><strong>${regularCheckDto.adminagencyCode}</strong></td>
-											<td><strong>${regularCheckDto.goodsfacilityCode}</strong></td>
-											<td><strong>${regularCheckDto.goodsfacilityName}</strong></td>
-											<td><strong>${regularCheckDto.textRegularCheck}</strong></td>
-											<td><strong>${regularCheckDto.functionaryId}</strong></td>
-											<td><strong>${regularCheckDto.stateGoodsCode}</strong></td>
-											<td><strong>${regularCheckDto.dateRegularCheckGoodsfacility}</strong></td>
-											<td>
-												<c:choose>
-													<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
-														<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?regularCheckCode=${regularCheckDto.regularCheckCode}&functionaryId=${member.memberId}&beforePageCode=점검AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
-													</c:when>
-												</c:choose>
-											</td>
-											<!-- <td><a href="#">수정</a></td>
-											<td><a href="">삭제</a></td> -->
-											<%-- <td><strong>${article.articleId}</strong></td>
-											<td>${board.boardTitle}</td>
-											<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
-											<td>${article.articleContent}</td>
-											<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
-											<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
-										</tr>
+									<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
+										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
+										<c:choose>
+											<c:when test="${regularCheckDto.adminagencyCode eq member.adminagencyCode}">
+												<tr>
+													<td><strong>${regularCheckDto.regularCheckCode}</strong></td>
+													<td><strong>${regularCheckDto.adminagencyCode}</strong></td>
+													<td><strong>${regularCheckDto.goodsfacilityCode}</strong></td>
+													<td><strong>${regularCheckDto.goodsfacilityName}</strong></td>
+													<td><strong>${regularCheckDto.textRegularCheck}</strong></td>
+													<td><strong>${regularCheckDto.functionaryId}</strong></td>
+													<td><strong>${regularCheckDto.stateGoodsCode}</strong></td>
+													<td><strong>${regularCheckDto.dateRegularCheckGoodsfacility}</strong></td>
+													<td>
+														<c:choose>
+															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
+																<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?regularCheckCode=${regularCheckDto.regularCheckCode}&functionaryId=${member.memberId}&beforePageCode=점검AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
+															</c:when>
+														</c:choose>
+													</td>
+												</tr>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</tbody>
 							</table>

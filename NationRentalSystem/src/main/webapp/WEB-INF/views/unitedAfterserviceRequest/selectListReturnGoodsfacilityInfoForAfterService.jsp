@@ -147,8 +147,8 @@
 									<c:forEach var="returnGoodsfacilityInfoDto" items="${list}">
 										<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
 										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
-										<%-- <c:choose>
-											<c:when test="${returnGoodsfacilityInfoDto.adminagencyCode eq member.adminagencyCode}"> --%>
+										<c:choose>
+											<c:when test="${returnGoodsfacilityInfoDto.adminagencyCode eq member.adminagencyCode}">
 												<tr>
 													<td><strong>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</strong></td>
 													<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityRentalCode}</strong></td>
@@ -169,18 +169,9 @@
 															</c:when>
 														</c:choose>
 													</td>
-													
-													<!-- <td><a href="#">수정</a></td>
-													<td><a href="">삭제</a></td> -->
-													<%-- <td><strong>${article.articleId}</strong></td>
-													<td>${board.boardTitle}</td>
-													<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
-													<td>${article.articleContent}</td>
-													<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
-													<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
 												</tr>
-										<%-- 	</c:when>
-										</c:choose> --%>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</tbody>
 							</table>

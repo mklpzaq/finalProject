@@ -166,9 +166,15 @@ public class UnitedAfterserviceRequestService {
 	}
 	
 	
-	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDtoForInsert(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
+	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDtoForInsert(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto, String beforePageCode){
 		logger.debug("selectOneUnitedAfterserviceRequestDtoForInsert UnitedAfterserviceRequestDto");
-		return unitedAfterserviceRequestDao.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto);
+		if(beforePageCode.equals("반납AS")) {
+			unitedAfterserviceRequestDto = unitedAfterserviceRequestDao.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto);
+		}else if(beforePageCode.equals("점검AS")) {
+			unitedAfterserviceRequestDto = unitedAfterserviceRequestDao.selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS(unitedAfterserviceRequestDto);
+		}
+		
+		return unitedAfterserviceRequestDto;
 	}
 	
 	public Map<String, Object> selectListReturnGoodsfacilityInfo(int currentPage, int pagePerRow, String searchSelect, String searchWord){

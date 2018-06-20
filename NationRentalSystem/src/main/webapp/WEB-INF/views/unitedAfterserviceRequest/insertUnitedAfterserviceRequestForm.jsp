@@ -15,7 +15,7 @@
 					$('#addDiv').append('<label for="returnGoodsfacilityInfoCode" class="col-sm-3 control-label">물품/시설 반납 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly></div>');
 				}else if( $('#beforePageCode').val() === '점검AS'){
 					alert('점검AS에서 요청함');
-					$('#addDiv').append('<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="regularCheckCode" id="regularCheckCode" placeholder="정기점검 코드" readonly></div>');
+					$('#addDiv').append('<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="regularCheckCode" value="${unitedAfterserviceRequestDto.regularCheckCode}" id="regularCheckCode" placeholder="정기점검 코드" readonly></div>');
 				}
 				
 				/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
@@ -65,7 +65,7 @@
 					
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">반납 AS 의뢰 작성</h3>
+							<h3 class="text-center">통합 AS 의뢰 작성</h3>
 							<hr/>
 							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest" method="post">
 								<div id="addDiv" class="form-group">

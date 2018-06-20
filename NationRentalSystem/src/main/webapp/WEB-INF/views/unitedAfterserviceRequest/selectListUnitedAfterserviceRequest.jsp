@@ -51,7 +51,7 @@
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
 		
-		<div class="container-fluid" style="height:900px;">
+		<div class="container-fluid">
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
@@ -151,31 +151,37 @@
 								</thead>
 								<tbody>
 									<c:forEach var="unitedAfterserviceRequestDto" items="${list}">
-										<tr>
-											<td><strong>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.regularCheckCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.adminagencyCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.goodsfacilityThreeCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.goodsfacilityCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.goodsfacilityName}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.functionaryId}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.stateGoodsCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.agencyCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.agencyName}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.agencyBusinesstypeCode}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.dateRequestAfterservice}</strong></td>
-											<td><strong>${unitedAfterserviceRequestDto.dateCompleteAfterservice}</strong></td>
-											<!-- <td><a href="#">수정</a></td>
-											<td><a href="">삭제</a></td> -->
-											<%-- <td><strong>${article.articleId}</strong></td>
-											<td>${board.boardTitle}</td>
-											<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
-											<td>${article.articleContent}</td>
-											<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
-											<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
-										</tr>
+										<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
+										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
+										<c:choose>
+											<c:when test="${unitedAfterserviceRequestDto.functionaryId eq member.memberId}">
+												<tr>
+													<td><strong>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.regularCheckCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.adminagencyCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.goodsfacilityThreeCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.goodsfacilityCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.goodsfacilityName}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.functionaryId}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.stateGoodsCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.agencyCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.agencyName}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.agencyBusinesstypeCode}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.dateRequestAfterservice}</strong></td>
+													<td><strong>${unitedAfterserviceRequestDto.dateCompleteAfterservice}</strong></td>
+													<!-- <td><a href="#">수정</a></td>
+													<td><a href="">삭제</a></td> -->
+													<%-- <td><strong>${article.articleId}</strong></td>
+													<td>${board.boardTitle}</td>
+													<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
+													<td>${article.articleContent}</td>
+													<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
+													<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
+												</tr>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</tbody>
 							</table>

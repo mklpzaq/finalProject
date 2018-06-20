@@ -42,7 +42,7 @@ public class UnitedAfterserviceRequestController {
 									,HttpSession session
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-									,@RequestParam(value="searchSelect", defaultValue="regularCheckCode") String searchSelect
+									,@RequestParam(value="searchSelect", defaultValue="정기점검 코드") String searchSelect
 									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListRegularCheck UnitedAfterserviceRequestController");
 		logger.debug("searchSelect : " + searchSelect);
@@ -131,7 +131,9 @@ public class UnitedAfterserviceRequestController {
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		logger.debug("beforePageCode : " + beforePageCode);
 		String functionaryId = unitedAfterserviceRequestDto.getFunctionaryId();
-		unitedAfterserviceRequestDto = unitedAfterserviceRequestService.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto);
+		logger.debug("★★★★★★★★★★insert United Controller★★★★★★★★★");
+		logger.debug("functionaryId : " + functionaryId);
+		unitedAfterserviceRequestDto = unitedAfterserviceRequestService.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto, beforePageCode);
 		List<AgencyDto> list = unitedAfterserviceRequestService.selectListAgencyDto(functionaryId);
 		
 		logger.debug(list.toString());
