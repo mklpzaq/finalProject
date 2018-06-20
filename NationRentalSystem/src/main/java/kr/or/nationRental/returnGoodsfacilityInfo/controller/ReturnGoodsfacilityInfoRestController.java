@@ -23,7 +23,7 @@ public class ReturnGoodsfacilityInfoRestController {
 	public ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoCheck(GoodsFacilityDto goodsFacilityDto) {
 		logger.debug("ReturnGoodsfacilityInfoRestController - returnGoodsfacilityInfoCheck - goodsFacilityDto : " + goodsFacilityDto.toString());
 		ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto = returnGoodsfacilityInfoService.returnGoodsfacilityInfoCheck(goodsFacilityDto);
-				
+		logger.debug("ReturnGoodsfacilityInfoRestController - returnGoodsfacilityInfoCheck - returnGoodsfacilityInfoDto : " + returnGoodsfacilityInfoDto.toString());	
 		return returnGoodsfacilityInfoDto;
 	}
 

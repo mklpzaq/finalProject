@@ -18,13 +18,19 @@
 					url : "/nationRental/returnGoodsfacilityInfoCheck",
 					data : { goodsfacilityCode : $('#goodsfacilityCode').val() },
 					success : function( returnGoodsfacilityInfoDto ){
-						$("#goodsfacilityRentalCode").val(returnGoodsfacilityInfoDto.goodsfacilityRentalCode);	
-						$("#citizenId").val(returnGoodsfacilityInfoDto.citizenId);	
-						$("#overdueDays").val(returnGoodsfacilityInfoDto.overdueDays);	
-						$("#adminagencyCode").val(returnGoodsfacilityInfoDto.adminagencyCode);	
-						$("#isRequestedToReturnAsDelivery").val(returnGoodsfacilityInfoDto.isRequestedToReturnAsDelivery);	
-						$("#classifyGoodsfacility").val(returnGoodsfacilityInfoDto.classifyGoodsfacility)
-					}
+						if(returnGoodsfacilityInfoDto != null){
+							$("#goodsfacilityRentalCode").val(returnGoodsfacilityInfoDto.goodsfacilityRentalCode);	
+							$("#citizenId").val(returnGoodsfacilityInfoDto.citizenId);	
+							$("#overdueDays").val(returnGoodsfacilityInfoDto.overdueDays);	
+							$("#adminagencyCode").val(returnGoodsfacilityInfoDto.adminagencyCode);	
+							$("#isRequestedToReturnAsDelivery").val(returnGoodsfacilityInfoDto.isRequestedToReturnAsDelivery);	
+							$("#classifyGoodsfacility").val(returnGoodsfacilityInfoDto.classifyGoodsfacility)
+						}else {
+							alert("이미 반납된 물품입니다");
+						}
+					}, error : function(){
+			            alert("이미 반납된 물품입니다");
+					}    
 				})
 				
 			});

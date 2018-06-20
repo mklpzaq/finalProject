@@ -1,6 +1,7 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -36,6 +37,19 @@ public class ReturnGoodsfacilityInfoDao {
 	public void insertReturnGoodsfacilityInfo(ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto) {
 		
 		sqlsession.insert(NS+"insertReturnGoodsfacilityInfo", returnGoodsfacilityInfoDto);
+	}
+
+	public int checkreturnGoodsfacilityInfo(ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto) {
+		return sqlsession.selectOne(NS+"checkreturnGoodsfacilityInfo", returnGoodsfacilityInfoDto);		
+	}
+	
+	//등록된 반납정보 조회	
+	public List<ReturnGoodsfacilityInfoDto> selectReturnGoodsfacilityInfo(Map<String, Object> map) {
+		return sqlsession.selectList(NS+"selectReturnGoodsfacilityInfo", map);	
+	}
+
+	public int totalCountSelectReturnGoodsfacilityInfo(Map<String, Object> map) {		
+		return sqlsession.selectOne(NS+"totalCountSelectReturnGoodsfacilityInfo", map);	
 	}
 
 
