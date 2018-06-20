@@ -48,6 +48,40 @@
 						</div>
 					</div>
 					<!-- End Content(1) -->
+					<!-- Begin Content(2) -->
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+							<div class="row">
+								<div class="col-md-4">
+									<h3>할인정보</h3>
+								</div>
+							</div>
+							<hr/>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<td width="20%"></td>
+										<td width="50%">상품이름</td>
+										<td width="15%">대여/대관 금액</td>
+										<td width="15%">배송선택</td>								
+									</tr>
+								</thead>
+								<tbody>									
+									<c:forEach var="rentGoodsfacilityDtoList" items="${rentGoodsfacilityDtoList}">
+										<tbody>
+											<tr>
+												<th>${rentGoodsfacilityDtoList.goodsfacilityCode}</th>
+												<th>${rentGoodsfacilityDtoList.goodsfacilityName}</th>
+												<td>${rentGoodsfacilityDtoList.goodsfacilityPriceRental}</td>
+												<td>${rentGoodsfacilityDtoList.goodsfacilityRentalIsOrderedDelivery}</td>																						
+											</tr>
+										</tbody>
+									</c:forEach>	
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- End Content(2) -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
