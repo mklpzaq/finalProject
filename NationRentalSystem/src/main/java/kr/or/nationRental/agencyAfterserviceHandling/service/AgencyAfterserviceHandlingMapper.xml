@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper">
+	
+	<select id="totalCountUnitedAfterserviceRequestDto"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			united_afterservice_request
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('unitedAfterserviceRequestCode')">
+					WHERE united_afterservice_request_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('returnGoodsfacilityInfoCode')">
+					WHERE return_goodsfacility_info_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('regularCheckCode')">
+					WHERE regular_check_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('adminagencyCode')">
+					WHERE adminagency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityThreeCode')">
+					WHERE goodsfacility_three_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityCode')">
+					WHERE goodsfacility_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityName')">
+					WHERE goodsfacility_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('functionaryId')">
+					WHERE functionary_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('stateGoodsCode')">
+					WHERE state_goods_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('textCheckResultGoodsfacility')">
+					WHERE text_check_result_goodsfacility = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('agencyCode')">
+					WHERE agency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('agencyName')">
+					WHERE agency_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('agencyBusinesstypeCode')">
+					WHERE agency_businesstype_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('dateRequestAfterservice')">
+					WHERE date_request_afterservice = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('dateCompleteAfterservice')">
+					WHERE date_complete_afterservice = #{searchWord}
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="selectListUnitedAfterserviceRequest"
+			resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		SELECT
+			united_afterservice_request_code AS unitedAfterserviceRequestCode
+			,return_goodsfacility_info_code AS returnGoodsfacilityInfoCode
+			,regular_check_code AS regularCheckCode
+			,adminagency_code AS adminagencyCode
+			,goodsfacility_three_code AS goodsfacilityThreeCode
+			,goodsfacility_code AS goodsfacilityCode
+			,goodsfacility_name AS goodsfacilityName
+			,functionary_id AS functionaryId
+			,state_goods_code AS stateGoodsCode
+			,text_check_result_goodsfacility AS textCheckResultGoodsfacility
+			,agency_code AS agencyCode
+			,agency_name AS agencyName
+			,agency_businesstype_code AS agencyBusinesstypeCode
+			,date_request_afterservice AS dateRequestAfterservice
+			,date_complete_afterservice AS dateCompleteAfterservice
+		FROM
+			united_afterservice_request
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('unitedAfterserviceRequestCode')">
+					WHERE united_afterservice_request_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('returnGoodsfacilityInfoCode')">
+					WHERE return_goodsfacility_info_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('regularCheckCode')">
+					WHERE regular_check_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('adminagencyCode')">
+					WHERE adminagency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityThreeCode')">
+					WHERE goodsfacility_three_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityCode')">
+					WHERE goodsfacility_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('goodsfacilityName')">
+					WHERE goodsfacility_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('functionaryId')">
+					WHERE functionary_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('stateGoodsCode')">
+					WHERE state_goods_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('textCheckResultGoodsfacility')">
+					WHERE text_check_result_goodsfacility = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('agencyCode')">
+					WHERE agency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('agencyName')">
+					WHERE agency_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('agencyBusinesstypeCode')">
+					WHERE agency_businesstype_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('dateRequestAfterservice')">
+					WHERE date_request_afterservice = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('dateCompleteAfterservice')">
+					WHERE date_complete_afterservice = #{searchWord}
+				</when>
+			</choose>
+		</if>
+		ORDER BY united_afterservice_request_code DESC
+		LIMIT #{beginRow}, #{pagePerRow}
+	
+	</select>
+	
+	
+</mapper>

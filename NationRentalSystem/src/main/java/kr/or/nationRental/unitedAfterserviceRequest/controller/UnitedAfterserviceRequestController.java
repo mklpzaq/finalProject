@@ -25,17 +25,6 @@ public class UnitedAfterserviceRequestController {
 	private UnitedAfterserviceRequestService unitedAfterserviceRequestService;
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestController.class);
 	
-	/*@RequestMapping(value="/selectListRegularCheck", method=RequestMethod.GET)
-	public String selectListRegularCheck(Model model) {
-		logger.debug("selectListRegularCheck UnitedAfterserviceRequestController");
-		List<RegularCheckDto> list = unitedAfterserviceRequestService.selectListRegularCheck();
-		logger.debug("★★★★★★★★★★★★★★★★");
-		logger.debug(list.toString());
-		model.addAttribute("list", list);
-		
-		
-		return "unitedAfterserviceRequest/selectListRegularCheck";
-	}*/
 	
 	@RequestMapping(value="/selectListRegularCheckForAfterService", method=RequestMethod.GET)
 	public String selectListBoard(Model model
