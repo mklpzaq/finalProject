@@ -4,9 +4,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">		
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>		
 	<title>Insert Citizen</title>
 
 	<script type="text/javascript">
@@ -22,10 +22,10 @@
 	
 		$(document).ready(function(){	
 		
-			$("#idCheck").click(function(){
+			$("#idCheckCitizen").click(function(){
 			    $.ajax({
 			        type:"POST", //통신타입 get, post
-			        url:"/nationRental/idCheck",  //요청할 url
+			        url:"/nationRental/idCheckCitizen",  //요청할 url
 			        data : { agencyEmployeeId : $('#checkId').val() },  //넘겨줄 값, 파라메터
 			        success: function( JSON ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
 				        if(JSON=='T'){
@@ -37,8 +37,167 @@
 			    });
 			});
 			
+			$("#useId").click(function(){
+				$('#CitizenId').val($("#checkId").val());
+			});
 			
-			
+			$("#btn").click(function(){	
+				
+				var email = $("#citizenEmail").val();
+				console.log(email);
+		        var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+				
+				
+			  var funtionaryForm = true;
+				  
+	          //아이디 입력여부 검사
+	          if ($("#CitizenId").val() == "") {
+	              alert("아이디를 입력하지 않았습니다.");
+	              $("#CitizenId").focus();		               
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          if ($("#CitizenId").val().indexOf(" ") > 0) {
+	              alert("아이디에 공백이 들어갈 수 없습니다.");
+	              $("#CitizenId").focus();
+	              $("#CitizenId").select();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          for (i = 0; i < $("#CitizenId").val().length; i++) {    
+	              ch = $("#CitizenId").val().charAt(i) //지정한 인덱스에 해당하는 문자열의 값을 리턴
+	              if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+	                  alert("아이디는 대소문자, 숫자만 입력가능합니다."); 	//!(ch >= '0' && ch <= '9') ch가 0~9사이에 있으면 거짓 없으면 참
+	                  $("#CitizenId").val().focus();					//!(ch >= 'a' && ch <= 'z') ch가 a~z사이에 있으면 거짓 없으면 참
+	                  $("#CitizenId").val().select();					//!(ch >= 'A' && ch <= 'Z') ch가 A~Z사이에 있으면 거짓 없으면 참
+	                  citizenForm = false;
+		              return								//참참참이면 alert("아이디는 대소문자, 숫자만 입력가능합니다.")	실행
+	              }												//하나라도 거짓이면 즉, 안에 조건이 참이면 no실행
+			  }
+	          
+	          if ($("#CitizenId").val().length<8 || $("#CitizenId").val().length>16) {
+	              alert("아이디를 8~16자까지 입력해주세요.");
+	              $("#CitizenId").focus();
+	              $("#CitizenId").val().select();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          if ($("#CitizenPw").val() == $("#CitizenId").val()) {
+	              alert("아이디와 비밀번호가 같습니다.");
+	              $("#CitizenPw").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          if ($("#CitizenPw").val() == "") {
+	              alert("비밀번호를 입력하지 않았습니다.");
+	              $("#CitizenPw").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          //비밀번호 길이 체크(4~8자 까지 허용)
+	          if ($("#CitizenPw").val().length<4 || $("#CitizenPw").val().length>12) {
+	              alert("비밀번호를 4~12자까지 입력해주세요.");
+	              $("#CitizenPw").focus();
+	              $("#CitizenPw").select();
+	              citizenForm = false;
+	              return
+	          }
+	   
+	          //비밀번호와 비밀번호 확인 일치여부 체크
+	          if ($("#CitizenPw").val() != $("#ReCitizenPW").val()) {
+	              alert("비밀번호가 일치하지 않습니다");
+	              $("#CitizenPw") = ""
+	              $("#CitizenPw").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          if ($("#citizenEmail").val() == "") {
+	              alert("이메일을 입력하지 않았습니다.");
+	              $("#citizenEmail").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	   			
+	          if (regex.test(email) === false) {
+	              alert("잘못된 이메일 형식입니다.");
+	              $("#citizenEmail").val() = "" 
+	              $("#citizenEmail").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          if ($("#CitizenName").val() == "") {
+	              alert("이름을 입력하지 않았습니다.");
+	              $("#CitizenName").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          if($("#CitizenName").val().length<2){
+	              alert("이름을 2자 이상 입력해주십시오.");
+	              $("#CitizenName").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          
+	          if ($("#citizenJuminNum").val() == "") {
+	              alert("주민번호를 입력하지 않았습니다.");
+	              $("#citizenJuminNum").focus();
+	              citizenForm = false;
+	              return
+	          }
+	          	/* //해당 isNumeric매서드 실행안됨
+	            // 숫자가 아닌 것을 입력한 경우
+	            if (!isNumeric($("#functionaryNum").val())) {
+	              alert("공무원번호는 숫자로 입력하세요.");
+	              $("#functionaryNum").val() = "";
+	              $("#functionaryNum").focus();
+	              funtionaryForm = false;
+	              return
+	            } */
+	          
+	            for (i = 0; i < $("#citizenJuminNum").val().length; i++) {    
+		              ch = $("#citizenJuminNum").val().charAt(i) //지정한 인덱스에 해당하는 문자열의 값을 리턴
+		              if (!(ch >= '0' && ch <= '9')) {
+		                  alert("주민번호는 숫자만 입력가능합니다."); 	
+		                  $("#citizenJuminNum").focus();					
+		                  $("#citizenJuminNum").val().select();					
+		                  citizenForm = false;
+			              return							
+		              }												
+				}
+	            
+	            /* //연락처 안잡힘
+	            if ($("#functionaryPhone").val().length === 11) {
+		              alert("연락처는 11자이상 입력하여야합니다.");
+		              $("#functionaryPhone").focus();
+		              $("#functionaryPhone").select();
+		              funtionaryForm = false;
+		              return
+		          }
+	            
+	            //연락처 안잡힘
+	            for (i = 0; i < $("#functionaryPhone").val().length; i++) {    
+		              ch = $("#functionaryPhone").val().charAt(i) //지정한 인덱스에 해당하는 문자열의 값을 리턴
+		              if (!(ch >= '0' && ch <= '9')) {
+		                  alert("연락처는 숫자만 입력가능합니다."); 	
+		                  $("#functionaryPhone").focus();					
+		                  $("#functionaryPhone").val().select();					
+		                  funtionaryForm = false;
+			              return								
+		              }												
+				} */
+	            
+	            if(citizenForm){
+	            	$("#citizenForm").submit();
+	            }
+	          
+	         });
 			
 			
 		});	
@@ -149,16 +308,18 @@
 					</div>
 	
 	<h2> 시민 회원 가입 폼 </h2>
-	<form action="${pageContext.request.contextPath}/insertCitizen" method="post">
+	<form action="${pageContext.request.contextPath}/insertCitizen" id="citizenForm" method="post">
 		<div class="form-group">
 				<label for="ID" class="col-sm-2 control-label">회원ID</label>
 		    <div class="col-sm-10">
-		    	<input type="text" class="form-control" id="CitizenId" name="CitizenId" placeholder="회원ID">
-		    	  <button type="submit" id="checkbtn" class="btn btn-default">중복확인</button>
-		    	 <!--  <div id="checkMsg"></div>		    	 
-		    	<div id ="CitizenId"></div>	 -->	    	
-		    </div>
-		</div>
+		    	<input type="text" class="form-control" id="CitizenId" name="CitizenId" placeholder="회원ID" readonly>
+		    	<!-- Button trigger modal -->
+				<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#idCheckModal">
+				 아이디체크
+				</button>													
+			</div>							    	
+		 </div>
+	
 		<div class="form-group">
 				<label for="PW" class="col-sm-2 control-label">회원PW</label>
 		    <div class="col-sm-10">
@@ -180,9 +341,8 @@
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputSuccess5">주민번호</label>				  
 				  <div class="col-sm-10">
-				  	<input type="text" class="form-control" id="inputSuccess5" name="citizenJuminNum" aria-describedby="inputSuccess5Status">
-				  </div>				
-				  	<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>				  
+				  	<input type="text" class="form-control" id="citizenJuminNum" name="citizenJuminNum" aria-describedby="inputSuccess5Status">
+				  </div>			  				  
 			</div>			
 		<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -226,7 +386,7 @@
 		    </div>
 		</div>		
 		
-		<button type="submit" class="btn btn-primary btn-lg btn-block" id="InsertCitizen" >회원가입</button>
+		<button type="button" class="btn btn-primary btn-lg btn-block" id="btn" >회원가입</button>
 		
 	</form>
 	
@@ -243,7 +403,7 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal" id="useId">아이디사용</button>
-				        <button type="button" class="btn btn-primary" id="idCheck">아이디체크</button>
+				        <button type="button" class="btn btn-primary" id="idCheckCitizen">아이디체크</button>
 				      </div>
 				    </div>
 				  </div>
