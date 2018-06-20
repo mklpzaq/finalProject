@@ -47,9 +47,12 @@
 		</script>
 	</head>
 	<body>
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		<jsp:include page="../module/top/navbar.jsp"/>
 		<!-- ${agencyEmployeeDtoList} -->
 		<div class="container-fluid">
-			<jsp:include page="../module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="../module/leftBoard/leftBoardList.jsp"/> --%>
