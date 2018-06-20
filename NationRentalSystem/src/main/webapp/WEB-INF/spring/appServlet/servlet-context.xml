@@ -80,7 +80,7 @@
 				<value>classpath:kr/or/nationRental/deliveryOrderCitizen/service/DeliveryOrderCitizenMapper.xml</value>
 				<value>classpath:kr/or/nationRental/rentGoodsFacility/service/RentGoodsfacilityMapper.xml</value>
 				<value>classpath:kr/or/nationRental/returnGoodsfacilityInfo/service/ReturnGoodsfacilityInfoMapper.xml</value>
-				<value>classpath:kr/or/nationRental/totalRentalPaymentInfo/service/TotalRentalPaymentInfoMapper.xml</value>
+				<!-- <value>classpath:kr/or/nationRental/totalRentalPaymentInfo/service/TotalRentalPaymentInfoMapper.xml</value> -->
 							
 			</list>
 		</property>
