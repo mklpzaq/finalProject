@@ -46,9 +46,15 @@
 								    </div>
 								</div>
 								<div class="form-group">
-									<label for="application" class="col-sm-2 control-label">행정기관</label>
+									<label for="application" class="col-sm-2 control-label">행정기관코드</label>
 								    <div class="col-sm-10">
 								    	<input type="text" class="form-control" id="adminagencyCode" name="adminagencyCode" value="${goodsFacilityApplication.adminagencyCode}">			    	
+								    </div>
+								</div>
+								<div class="form-group">
+									<label for="application" class="col-sm-2 control-label">행정기관이름</label>
+								    <div class="col-sm-10">
+								    	<input type="text" class="form-control" id="goodsfacilityAddressSangse" name="goodsfacilityAddressSangse" value="${goodsFacilityApplication.goodsfacilityAddressSangse}">			    	
 								    </div>
 								</div>
 								<div class="form-group">

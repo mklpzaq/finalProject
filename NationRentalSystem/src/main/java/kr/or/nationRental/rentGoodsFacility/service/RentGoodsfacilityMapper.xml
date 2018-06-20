@@ -12,6 +12,7 @@
   				goodsfacility_code as goodsfacilityCode
   				,adminagency_code as adminagencyCode
   				,goodsfacility_name as goodsfacilityName
+  				,goodsfacility_address_sangse as goodsfacilityAddressSangse
   			FROM
   				goodsfacility
   			WHERE 
