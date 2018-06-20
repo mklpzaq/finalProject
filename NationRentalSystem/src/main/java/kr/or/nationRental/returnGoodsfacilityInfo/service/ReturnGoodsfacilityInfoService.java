@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.or.nationRental.functionary.service.FunctionaryDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 
 @Service
@@ -102,18 +101,38 @@ public class ReturnGoodsfacilityInfoService {
 																			, int currentPage
 																			, int pagePerRow
 																			, String searchOption
-																			, String keyword) {
+																			, String keyword
+																			, DateDto dateDto) {
+		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - keyword : " + keyword);
+		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
 		int beginRow = (currentPage-1)*pagePerRow; 
 		int adminagencyCode = returnGoodsfacilityInfoDto.getAdminagencyCode();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("adminagencyCode", adminagencyCode);
-		map.put("beginRow", beginRow);
-		map.put("pagePerRow", pagePerRow);
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);/*
-		map.put("loginMemberId", loginMemberId);*/
+		List<ReturnGoodsfacilityInfoDto> list = null;
+		if(dateDto.getEndDate() != null) {
+			map.put("dateDto", dateDto);
+			map.put("keyword", keyword);
+			map.put("adminagencyCode", adminagencyCode);
+			map.put("beginRow", beginRow);
+			map.put("pagePerRow", pagePerRow);
+			map.put("searchOption", searchOption);
+			list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+		}else{
+			searchOption = "all";
+			map.put("keyword", keyword);
+			map.put("adminagencyCode", adminagencyCode);
+			map.put("beginRow", beginRow);
+			map.put("pagePerRow", pagePerRow);
+			map.put("searchOption", searchOption);
+			list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+		}
 		
-		List<ReturnGoodsfacilityInfoDto> list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+		
+		
+		
+		/*map.put("loginMemberId", loginMemberId);*/
+		
+		
 		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - list  : " + list.toString());
 		int total = returnGoodsfacilityInfoDao.totalCountSelectReturnGoodsfacilityInfo(map);
 		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - total  : " + total);
@@ -142,7 +161,6 @@ public class ReturnGoodsfacilityInfoService {
 		
 		return returnmap;
 	}
-	
-	
+
 
 }

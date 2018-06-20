@@ -97,9 +97,9 @@
 			using(state_goods_code)
 			<choose>	      
 		        <when test="searchOption == 'all'">    
-		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	where (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
 		        	or citizen.citizen_name like CONCAT('%', #{keyword}, '%')	
-		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%'))        	        	           
 		        </when>
 		        <when test="searchOption == 'goodsfacility_name'">    
 		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
@@ -110,9 +110,18 @@
 		        <when test="searchOption == 'functionary_name'">    
 		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <otherwise>
-		        
-		        </otherwise>
+		          <when test="searchOption == 'classify_goodsfacility'">    
+		        	where return_goodsfacility_info.classify_goodsfacility like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		          <when test="searchOption == 'is_requested_to_return_as_delivery'">    
+		        	where return_goodsfacility_info.is_requested_to_return_as_delivery = #{keyword}	        	        	           
+		        </when>
+		          <when test="searchOption == 'state_goods_code'">    
+		        	where st.state_goods like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == 'date_return_check'">
+		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}        	        	           
+		        </when>	
 	    	</choose>
 			and return_goodsfacility_info.adminagency_code = #{adminagencyCode}	
 			ORDER BY return_goodsfacility_info.date_return_check DESC
@@ -132,9 +141,9 @@
 			using(state_goods_code)
 			<choose>	      
 		        <when test="searchOption == 'all'">    
-		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	where (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
 		        	or citizen.citizen_name like CONCAT('%', #{keyword}, '%')	
-		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%'))	        	        	           
 		        </when>
 		        <when test="searchOption == 'goodsfacility_name'">    
 		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
@@ -145,9 +154,18 @@
 		        <when test="searchOption == 'functionary_name'">    
 		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <otherwise>
-		        
-		        </otherwise>
+		        <when test="searchOption == 'classify_goodsfacility'">    
+		        	where return_goodsfacility_info.classify_goodsfacility like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == 'is_requested_to_return_as_delivery'">    
+		        	where return_goodsfacility_info.is_requested_to_return_as_delivery like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == 'state_goods_code'">    
+		        	where return_goodsfacility_info.state_goods_code like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == 'date_return_check'">
+		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}       	        	           
+		        </when>		        
 	    	</choose>
 			and return_goodsfacility_info.adminagency_code = #{adminagencyCode}	 				
  	</select>

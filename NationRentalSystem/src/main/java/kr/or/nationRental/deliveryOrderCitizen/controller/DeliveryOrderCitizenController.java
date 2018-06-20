@@ -85,10 +85,11 @@ public class DeliveryOrderCitizenController {
 												,Model model
 												,HttpSession session) {
 		MemberDto member = (MemberDto) session.getAttribute("member");
+		String memberLevel = member.getMemberLevel();
 		logger.debug("DeliveryOrderCitizenController - selectListDeliveryOrderCitizen - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.getAdminagencyCode());
 		List<DeliveryOrderCitizenDto> list= deliveryOrderCitizenService.selectListDeliveryOrderCitizen(deliveryOrderCitizenDto);
 		model.addAttribute("list", list);
-		model.addAttribute("memberLevel", member.getMemberLevel());
+		model.addAttribute("memberLevel", memberLevel);
 		return "/citizen/selectListMyDeliveryOrderCitizen";
 	}
 	

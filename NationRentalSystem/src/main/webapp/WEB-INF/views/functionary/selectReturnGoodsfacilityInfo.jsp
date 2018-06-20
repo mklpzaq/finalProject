@@ -29,21 +29,70 @@
 					*  클릭했을때 선택한 select내용의 값을 #selectButtonText에 넣어준다.
 					*/
 					$('#selectButtonText, #moniterSearchOption').text($(this).text());
+					
+					
+					if($(this).text() == 'date_return_check'){ //날짜검색
+						$("#keyword").remove();					
+						$("#keywordDiv").html('<input type="date" id="startDate" name="startDate">~<input type="date" id="endDate" name="endDate">');
+						/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
+						$('#searchButton').click(function(){
+							searchOption = $('#selectButtonText').text();
+							startDate = $('#startDate').val();
+							endDate = $('#endDate').val();
+							$(location).attr('href', './selectReturnGoodsfacilityInfo?=y&searchOption=' + searchOption + '&startDate=' + startDate + '&endDate=' + endDate);
+						});
+						
+					}else if($(this).text() == 'classify_goodsfacility'){ //물품인지 시설인지
+						$("#keyword").remove();					
+						$("#keywordDiv").html('<select id="keyword"><option>물품</option>	<option>시설</option>	</select>');
+						/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
+						$('#searchButton').click(function(){
+							searchOption = $('#selectButtonText').text();
+							keyword = $('#keyword').val();
+							$(location).attr('href', './selectReturnGoodsfacilityInfo?=y&searchOption=' + searchOption + '&keyword=' + keyword);
+						});
+						
+					}else if($(this).text() == 'is_requested_to_return_as_delivery'){ //반납배달인지 아닌지
+						$("#keyword").remove();					
+						$("#keywordDiv").html('<select id="keyword"><option>배달반납신청</option>	<option>배달반납신청안함</option></select>');
+						/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
+						$('#searchButton').click(function(){
+							searchOption = $('#selectButtonText').text();
+							keyword = $('#keyword').val();
+							$(location).attr('href', './selectReturnGoodsfacilityInfo?=y&searchOption=' + searchOption + '&keyword=' + keyword);
+						});
+						
+					}else if($(this).text() == 'state_goods_code'){ //반납상태
+						$("#keyword").remove();					
+						$("#keywordDiv").html('<select id="keyword"><option>양호</option>	<option>세탁필요</option><option>세척필요</option><option>청소필요</option><option>수리필요</option><option>세탁필요</option></select>');								
+						/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
+						$('#searchButton').click(function(){
+							searchOption = $('#selectButtonText').text();
+							keyword = $('#keyword').val();
+							$(location).attr('href', './selectReturnGoodsfacilityInfo?=y&searchOption=' + searchOption + '&keyword=' + keyword);
+						});
+						
+					}else {
+						$("#keyword").remove(); //타이핑검색
+						$("#keywordDiv").html('<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">');	
+						/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
+						$('#searchButton').click(function(){
+							searchOption = $('#selectButtonText').text();
+							keyword = $('#keyword').val();
+							$(location).attr('href', './selectReturnGoodsfacilityInfo?=y&searchOption=' + searchOption + '&keyword=' + keyword);
+						});
+						
+					}
+					
 					$('#selectButton').parent().removeClass('open');
 				});
 				
 				$('#selectPagePerRow').change(function() {
 					/* searchOption = $('#moniterSearchOption').text();
 					keyword = $('#moniterKeyword').val(); */
-					$(location).attr('href', './selectListFunctionary?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
+					$(location).attr('href', './selectReturnGoodsfacilityInfo?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
 				});
 				
-				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
-				$('#searchButton').click(function(){
-					searchOption = $('#selectButtonText').text();
-					keyword = $('#keyword').val();
-					$(location).attr('href', './selectListFunctionary?=y&searchOption=' + searchOption + '&keyword=' + keyword);
-				});
 				
 			});
 		</script>		
@@ -60,7 +109,7 @@
 					<!-- Begin Content -->
 						
 						<div class="text-center">
-							<h1>공무원회원 조회</h1>
+							<h1>반납정보 조회</h1>
 							<h2>Nation Integrated Reserve and Rental System</h2>
 							<P>The time on the server is ${serverTime}.</P>
 						</div>
@@ -106,10 +155,16 @@
 													<li><a href="#">goodsfacility_name</a></li>
 													<li><a href="#">citizen_name</a></li>
 													<li><a href="#">functionary_name</a></li>
+													<li><a href="#">classify_goodsfacility</a></li>
+													<li><a href="#">is_requested_to_return_as_delivery</a></li>
+													<li><a href="#">state_goods_code</a></li>
+													<li><a href="#">date_return_check</a></li>																										
 												</ul>
 											</div>
-											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
-											<span class="input-group-btn">
+											
+											
+											<div id="keywordDiv"><input type="text" id="keyword" class="form-control" placeholder="검색어 입력"></div>										
+											<span class="input-group-btn" id="searchButtonSpan">
 												<button id="searchButton" class="btn btn-default" type="button">검색</button>
 											</span>
 										</div>
@@ -155,19 +210,19 @@
 								<nav>
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
@@ -178,10 +233,10 @@
 												<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -190,10 +245,10 @@
 												<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -202,19 +257,19 @@
 										<li>
 											<c:choose>
 												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>

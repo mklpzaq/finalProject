@@ -1,5 +1,7 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.controller;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.nationRental.login.service.MemberDto;
+import kr.or.nationRental.returnGoodsfacilityInfo.service.DateDto;
 import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto;
 import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoService;
 import kr.or.nationRental.returnGoodsfacilityInfo.service.StateGoodsDto;
@@ -51,14 +54,27 @@ public class ReturnGoodsfacilityInfoController {
 	public String selectReturnGoodsfacilityInfo(@RequestParam(value="currentPage", defaultValue="1") int currentPage
 												,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 												,@RequestParam(value="searchOption", defaultValue="all") String searchOption
-												,@RequestParam(value="keyword", defaultValue="") String keyword			
+												,@RequestParam(value="keyword", defaultValue="") String keyword
+												,DateDto dateDto
 												,Model model
 												,HttpSession session) {
+		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - keyword : " + keyword);
+		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
 		MemberDto member = (MemberDto) session.getAttribute("member");
 		ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto = new ReturnGoodsfacilityInfoDto();
+		Map<String, Object> map  = null;
 		returnGoodsfacilityInfoDto.setAdminagencyCode(member.getAdminagencyCode());
-		Map<String, Object> map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword);
-		model.addAttribute("map", map);
+		
+		map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", map.get("startPage"));
+		model.addAttribute("endPage", map.get("endPage"));
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("keyword", keyword);
 		return "/functionary/selectReturnGoodsfacilityInfo";
 	}
 }
