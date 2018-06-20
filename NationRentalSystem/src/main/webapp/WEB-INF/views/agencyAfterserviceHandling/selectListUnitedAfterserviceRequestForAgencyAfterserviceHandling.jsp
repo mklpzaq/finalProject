@@ -33,14 +33,14 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListUnitedAfterserviceRequest?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text());
+					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchSelect = $('#selectButtonText').text();
 					searchWord = $('#searchWord').val();
-					$(location).attr('href', './selectListUnitedAfterserviceRequest?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord);
+					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord);
 				});
 				
 			});
@@ -58,7 +58,7 @@
 				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="../module/leftUnitedAfterserviceRequest/leftUnitedAfterserviceRequest.jsp"/> --%>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-9">
 					<!-- Begin Content -->
 					
 					<div style="margin:15px 0 0 0;" class="panel panel-default">
@@ -70,7 +70,7 @@
 									<strong>searchWord : </strong><span id="monitorSearchWord">${searchWord}</span><br/>						
 								</div>
 								<div class="col-md-4">
-									<h3>대행업체  AS 처리 리스트</h3>
+									<h3>공무원 AS 요청 리스트</h3>
 								</div>
 								<div class="col-md-4">
 									<select id="selectPagePerRow" name="selectPagePerRow">
@@ -98,21 +98,21 @@
 												<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-												<li><a href="#">unitedAfterserviceRequestCode</a></li>
-												<li><a href="#">returnGoodsfacilityInfoCode</a></li>
-												<li><a href="#">regularCheckCode</a></li>
-												<li><a href="#">adminagencyCode</a></li>
-												<li><a href="#">goodsfacilityThreeCode</a></li>
-												<li><a href="#">goodsfacilityCode</a></li>
-												<li><a href="#">goodsfacilityName</a></li>
-												<li><a href="#">functionaryId</a></li>
-												<li><a href="#">stateGoodsCode</a></li>
-												<li><a href="#">textCheckResultGoodsfacility</a></li>
-												<li><a href="#">agencyCode</a></li>
-												<li><a href="#">agencyName</a></li>
-												<li><a href="#">agencyBusinesstypeCode</a></li>
-												<li><a href="#">dateRequestAfterservice</a></li>
-												<li><a href="#">dateCompleteAfterservice</a></li>
+												<li><a href="#">AS 코드</a></li>
+												<li><a href="#">반납 정보 코드</a></li>
+												<li><a href="#">정기점검 코드</a></li>
+												<li><a href="#">지자체 기관 코드</a></li>
+												<li><a href="#">카테고리 코드</a></li>
+												<li><a href="#">물품/시설 코드</a></li>
+												<li><a href="#">물품/시설 명</a></li>
+												<li><a href="#">공무원 ID</a></li>
+												<li><a href="#">물품/시설 상태 코드</a></li>
+												<li><a href="#">물품/시설 점검 결과</a></li>
+												<li><a href="#">대행업체 코드</a></li>
+												<li><a href="#">대행업체 명</a></li>
+												<li><a href="#">대행업체 업종 코드</a></li>
+												<li><a href="#">AS 요청일자</a></li>
+												<li><a href="#">AS 완료일자</a></li>
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -188,19 +188,19 @@
 							<nav>
 								<ul class="pagination">
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
 									<li>
 										<c:choose>
 											<c:when test="${currentPage > 1}">
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
@@ -211,10 +211,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -223,10 +223,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -235,19 +235,19 @@
 									<li>
 										<c:choose>
 											<c:when test="${currentPage < lastPage}">
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequest?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
 									</li>
@@ -264,7 +264,7 @@
 					
 					<!-- End Content -->
 				</div>
-				<div class="col-sm-2"></div>
+				<div class="col-sm-1"></div>
 			</div>
 		</div>
 		<jsp:include page="../module/bottom/bottomContent.jsp"/>

@@ -14,49 +14,49 @@
 			united_afterservice_request
 		<if test="!searchWord.equals('')">
 			<choose>
-				<when test="searchSelect.equals('unitedAfterserviceRequestCode')">
+				<when test="searchSelect.equals('AS 코드')">
 					WHERE united_afterservice_request_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('returnGoodsfacilityInfoCode')">
+				<when test="searchSelect.equals('반납 정보 코드')">
 					WHERE return_goodsfacility_info_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('regularCheckCode')">
+				<when test="searchSelect.equals('정기점검 코드')">
 					WHERE regular_check_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('adminagencyCode')">
+				<when test="searchSelect.equals('지자체 기관 코드')">
 					WHERE adminagency_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('goodsfacilityThreeCode')">
+				<when test="searchSelect.equals('카테고리 코드')">
 					WHERE goodsfacility_three_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('goodsfacilityCode')">
+				<when test="searchSelect.equals('물품/시설 코드')">
 					WHERE goodsfacility_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('goodsfacilityName')">
+				<when test="searchSelect.equals('물품/시설 명')">
 					WHERE goodsfacility_name = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('functionaryId')">
+				<when test="searchSelect.equals('공무원 ID')">
 					WHERE functionary_id = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('stateGoodsCode')">
+				<when test="searchSelect.equals('물품/시설 상태 코드')">
 					WHERE state_goods_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('textCheckResultGoodsfacility')">
+				<when test="searchSelect.equals('물품/시설 점검 결과')">
 					WHERE text_check_result_goodsfacility = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('agencyCode')">
+				<when test="searchSelect.equals('대행업체 코드')">
 					WHERE agency_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('agencyName')">
+				<when test="searchSelect.equals('대행업체 명')">
 					WHERE agency_name = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('agencyBusinesstypeCode')">
+				<when test="searchSelect.equals('대행업체 업종 코드')">
 					WHERE agency_businesstype_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('dateRequestAfterservice')">
+				<when test="searchSelect.equals('AS 요청일자')">
 					WHERE date_request_afterservice = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('dateCompleteAfterservice')">
+				<when test="searchSelect.equals('AS 완료일자')">
 					WHERE date_complete_afterservice = #{searchWord}
 				</when>
 			</choose>

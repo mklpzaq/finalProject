@@ -125,7 +125,7 @@
 										<input type="text" class="form-control" name="functionaryId" id="functionaryId" value="${member.memberId}" placeholder="AS 요청 공무원 ID" readonly>
 									</div>
 								</div>
-								<div class="form-group hidden">
+								<div class="form-group">
 									<label for="stateGoodsCode" class="col-sm-3 control-label">물품/시설 상태 코드</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="stateGoodsCode" id="stateGoodsCode" value="${unitedAfterserviceRequestDto.stateGoodsCode}" placeholder="물품/시설 상태 코드" readonly>

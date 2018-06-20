@@ -25,7 +25,7 @@ public class AgencyAfterserviceHandlingController {
 																	,HttpSession session
 																	,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 																	,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-																	,@RequestParam(value="searchSelect", defaultValue="unitedAfterserviceRequestCode") String searchSelect
+																	,@RequestParam(value="searchSelect", defaultValue="AS 코드") String searchSelect
 																	,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling AgencyAfterserviceHandlingController");
 		logger.debug("searchSelect : " + searchSelect);
@@ -52,6 +52,6 @@ public class AgencyAfterserviceHandlingController {
 		String path = session.getServletContext().getRealPath("/resources/upload/");
 		model.addAttribute("path", path);
 		
-		return "agencyAfterserviceHandling/selectListUnitedAfterserviceRequestForAgencyEmployee";
+		return "agencyAfterserviceHandling/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling";
 	}
 }
