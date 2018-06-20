@@ -13,7 +13,7 @@
 					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService');
 				});
 				$('#regularChecAfterserviceBtn').click(function(){
-					$(location).attr('href', './selectListRegularCheck');
+					$(location).attr('href', './selectListRegularCheckForAfterService');
 				});
 				$('#listAfterserviceRequestBtn').click(function(){
 					$(location).attr('href', './selectListUnitedAfterserviceRequest');

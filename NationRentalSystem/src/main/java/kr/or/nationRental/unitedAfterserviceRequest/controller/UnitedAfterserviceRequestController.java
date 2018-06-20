@@ -37,7 +37,7 @@ public class UnitedAfterserviceRequestController {
 		return "unitedAfterserviceRequest/selectListRegularCheck";
 	}*/
 	
-	@RequestMapping(value="/selectListRegularCheck", method=RequestMethod.GET)
+	@RequestMapping(value="/selectListRegularCheckForAfterService", method=RequestMethod.GET)
 	public String selectListBoard(Model model
 									,HttpSession session
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
@@ -69,7 +69,7 @@ public class UnitedAfterserviceRequestController {
 		String path = session.getServletContext().getRealPath("/resources/upload/");
 		model.addAttribute("path", path);
 		
-		return "unitedAfterserviceRequest/selectListRegularCheck";
+		return "unitedAfterserviceRequest/selectListRegularCheckForAfterService";
 	}
 	
 	
