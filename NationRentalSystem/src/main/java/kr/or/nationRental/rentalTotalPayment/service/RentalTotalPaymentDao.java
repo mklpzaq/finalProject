@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
 
 
@@ -16,11 +15,20 @@ import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
 public class RentalTotalPaymentDao {
 	private static final Logger logger = LoggerFactory.getLogger(RentalTotalPaymentDao.class);
 	final String NS = "kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentMapper.";
-	@Autowired private SqlSessionTemplate sqlSession;
+	@Autowired
+	private SqlSessionTemplate sqlSession;
 	
 	//RentGoodsfacilityDto 리스트를 가져오는 작업
 		public List<RentGoodsfacilityDto> getRentGoodsfacilityDtoList() {
 			logger.debug("---getRentGoodsfacilityDtoList");
-			return sqlSession.selectList(NS+"getRentGoodsfacilityDtoList");	
+			logger.debug("★★★★★★★★★★오류잡기1★★★★★★★★★★★★★");
+			List<RentGoodsfacilityDto> list = sqlSession.selectList(NS+"getRentGoodsfacilityDtoList");
+			logger.debug("★★★★★★★★★★오류잡기2★★★★★★★★★★★★★");
+			if(!list.isEmpty()) {
+				logger.debug(list.toString());
+			}else {
+				logger.debug("list에 아무런 값이 없습니다.");
+			}
+			return list;
 		}
 }
