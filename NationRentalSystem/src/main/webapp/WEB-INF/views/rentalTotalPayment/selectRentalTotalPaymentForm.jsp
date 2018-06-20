@@ -60,7 +60,8 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<td width="20%"></td>
+										<th>패키지/연회비 : </th>
+										<td></td>
 										<td width="50%">상품이름</td>
 										<td width="15%">대여/대관 금액</td>
 										<td width="15%">배송선택</td>								

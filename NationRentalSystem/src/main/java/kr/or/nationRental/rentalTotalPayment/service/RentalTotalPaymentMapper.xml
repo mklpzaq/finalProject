@@ -21,7 +21,6 @@
 				, goodsfacility_rental_date_registration as goodsfacilityRentalDateRegistration
 				, goodsfacility_rental_is_canceled as goodsfacilityRentalIsCanceled
 				, goodsfacility_rental_deposit as goodsfacilityRentalDeposit
-				<!-- , goodsfacility_price_rental as goodsfacilityPriceRental -->
 			FROM goodsfacility_rental 	
   	</select>
 

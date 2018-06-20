@@ -23,7 +23,7 @@ public class RentalTotalPaymentController {
 	
 	//예약 화면에서 선택된 정보를 가지고 와 셋팅한다.
 	@RequestMapping(value="/selectListRentalTotalPayment", method=RequestMethod.POST)
-	public String selectListRentalTotalPayment2(Model model) {
+	public String selectListRentalTotalPayment(Model model) {
 		List<RentGoodsfacilityDto> rentGoodsfacilityDtoList = rentalTotalPaymentService.getRentGoodsfacilityDtoList();
 		model.addAttribute("rentGoodsfacilityDtoList", rentGoodsfacilityDtoList);
 		return "rentalTotalPayment/selectRentalTotalPaymentForm";
