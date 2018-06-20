@@ -45,7 +45,7 @@
 							</div>
 							
 							
-							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertAgencyEmployee" method="post">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertTotalRentalPaymentInfo" method="post">
 								<div class="form-group">
 									<label for="goodsfacilityCode" class="col-sm-3 control-label">시설/물품 코드</label>
 									<div class="col-sm-9">
@@ -185,7 +185,7 @@
 								<p>"${viewImageDetailOne.goodsfacilityIsPossibleDelivery}"</p>
 								<p>"${viewImageDetailOne.goodsfacilityIsPossibleRental}"</p>								
 								<p><a href="${pageContext.request.contextPath}/applicationRentFrom?goodsfacilityCode=${viewImageDetailOne.goodsfacilityCode}&memberId=${member.memberId}" class="btn btn-primary" role="button">대여/예약으로 가기</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-							</div>										
+							</div>								
 					
 						</div>
 					</div>	

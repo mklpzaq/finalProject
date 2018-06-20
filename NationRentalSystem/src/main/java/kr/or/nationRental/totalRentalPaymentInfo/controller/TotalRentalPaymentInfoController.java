@@ -23,11 +23,12 @@ public class TotalRentalPaymentInfoController {
 	private static final Logger logger = LoggerFactory.getLogger(TotalRentalPaymentInfoController.class);
 	
 	//먼저 총결제코드를 생성해야한다. 코드 외에 나머지 값은 null로 시작한다.
-	@RequestMapping(value="/insertTotalRentalPaymentInfo", method=RequestMethod.GET)
-	public String insertTotalRentalPaymentInfo(TotalRentalPaymentInfoDto totalRentalPaymentInfoDto) {
+	@RequestMapping(value="/insertTotalRentalPaymentInfo", method=RequestMethod.POST)
+	public String insertTotalRentalPaymentInfo() {
 		logger.info("---insertTotalRentalPaymentInfo");
-		totalRentalPaymentInfoService.insertTotalRentalPaymentInfo(totalRentalPaymentInfoDto);
-		return "redirect:/updateTotalRentalPaymentInfo";
+		/*totalRentalPaymentInfoService.insertTotalRentalPaymentInfo(totalRentalPaymentInfoDto);*/
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★");
+		return "redirect:/";
 		
 	}
 	
