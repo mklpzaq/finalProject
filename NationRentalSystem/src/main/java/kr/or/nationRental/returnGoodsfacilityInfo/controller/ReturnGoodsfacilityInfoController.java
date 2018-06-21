@@ -62,9 +62,16 @@ public class ReturnGoodsfacilityInfoController {
 		MemberDto member = (MemberDto) session.getAttribute("member");
 		ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto = new ReturnGoodsfacilityInfoDto();
 		Map<String, Object> map  = null;
-		returnGoodsfacilityInfoDto.setAdminagencyCode(member.getAdminagencyCode());
-		
-		map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+		//조회하는 사람의 권한이 시민인지 공무원인지에 따라 조회할 수 있는 범위가 다르다
+		returnGoodsfacilityInfoDto.setMemberLevel(member.getMemberLevel());
+		if(returnGoodsfacilityInfoDto.getMemberLevel() == "공무원") {
+			returnGoodsfacilityInfoDto.setAdminagencyCode(member.getAdminagencyCode());			
+			map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+			
+		}else if(returnGoodsfacilityInfoDto.getMemberLevel() == "시민") {
+			returnGoodsfacilityInfoDto.setCitizenId(member.getMemberId());
+			map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+		}
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));

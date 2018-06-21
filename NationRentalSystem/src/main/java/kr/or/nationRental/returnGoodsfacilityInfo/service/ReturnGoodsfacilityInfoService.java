@@ -109,29 +109,60 @@ public class ReturnGoodsfacilityInfoService {
 		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
 		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() : " + dateDto.getEndDate());
 		int beginRow = (currentPage-1)*pagePerRow; 
-		int adminagencyCode = returnGoodsfacilityInfoDto.getAdminagencyCode();
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<ReturnGoodsfacilityInfoDto> list = null;
-		if(dateDto.getEndDate() != "") {	
-			logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() != null : ");
-			map.put("dateDto", dateDto);
-			map.put("keyword", keyword);
-			map.put("adminagencyCode", adminagencyCode);
-			map.put("beginRow", beginRow);
-			map.put("pagePerRow", pagePerRow);
-			map.put("searchOption", searchOption);
-			list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
-		}else{
-			logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() == null : ");
-			searchOption = "all";
-			map.put("keyword", keyword);
-			map.put("adminagencyCode", adminagencyCode);
-			map.put("beginRow", beginRow);
-			map.put("pagePerRow", pagePerRow);
-			map.put("searchOption", searchOption);
-			list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
-		}
+				
 		
+		//공무원 권한의 조회일때, 공무원이 속한 행정기관단위로 조회가 된다
+		if(returnGoodsfacilityInfoDto.getMemberLevel() == "공무원") {
+			if(dateDto.getEndDate() != "") {	
+				int adminagencyCode = returnGoodsfacilityInfoDto.getAdminagencyCode();
+				logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() != null : ");
+				map.put("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
+				map.put("dateDto", dateDto);
+				map.put("keyword", keyword);
+				map.put("adminagencyCode", adminagencyCode);
+				map.put("beginRow", beginRow);
+				map.put("pagePerRow", pagePerRow);
+				map.put("searchOption", searchOption);
+				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+			}else{
+				int adminagencyCode = returnGoodsfacilityInfoDto.getAdminagencyCode();
+				logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() == null : ");
+				map.put("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
+				searchOption = "all";
+				map.put("keyword", keyword);
+				map.put("adminagencyCode", adminagencyCode);
+				map.put("beginRow", beginRow);
+				map.put("pagePerRow", pagePerRow);
+				map.put("searchOption", searchOption);
+				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+			}
+		}else if(returnGoodsfacilityInfoDto.getMemberLevel() == "시민") {
+			if(dateDto.getEndDate() != "") {	
+				String citizenId = returnGoodsfacilityInfoDto.getCitizenId();
+				logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() != null : ");
+				map.put("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
+				map.put("dateDto", dateDto);
+				map.put("keyword", keyword);
+				map.put("citizenId", citizenId);
+				map.put("beginRow", beginRow);
+				map.put("pagePerRow", pagePerRow);
+				map.put("searchOption", searchOption);
+				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+			}else{
+				String citizenId = returnGoodsfacilityInfoDto.getCitizenId();
+				logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() == null : ");
+				searchOption = "all";
+				map.put("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
+				map.put("keyword", keyword);
+				map.put("citizenId", citizenId);
+				map.put("beginRow", beginRow);
+				map.put("pagePerRow", pagePerRow);
+				map.put("searchOption", searchOption);
+				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+			}			
+		}
 		
 		
 		

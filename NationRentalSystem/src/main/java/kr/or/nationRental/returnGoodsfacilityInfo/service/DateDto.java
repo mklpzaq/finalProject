@@ -1,6 +1,5 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.service;
 
-import java.sql.Date;
 
 public class DateDto {
 	private String startDate;
