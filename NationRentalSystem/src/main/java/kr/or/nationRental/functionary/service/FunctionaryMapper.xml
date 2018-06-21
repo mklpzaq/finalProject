@@ -52,37 +52,47 @@
 		SELECT
 		COUNT(*)
 			FROM functionary
+			inner join adminagency
+				using(adminagency_code)					
 			<choose>	      
-		        <when test="searchOption == 'all'">    
-		        	where functionary_name like CONCAT('%', #{keyword}, '%')
-		        	or adminagency_code like CONCAT('%', #{keyword}, '%')		        	        	           
+		        <when test="searchOption == '전체 검색'">    
+		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')
+		        	or adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
-		        <otherwise>
-		        	where #{searchOption} like CONCAT('%', #{keyword}, '%')	        
-		        </otherwise>
+		        <when test="searchOption == '공무원 이름 검색'">    
+		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '소속 행정기관 검색'"> 
+		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
 	    	</choose>
 	</select>
 	
 	<select id="selectListFunctionary" parameterType="java.util.Map"  resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 		SELECT
-				functionary_id as functionaryId
-				,adminagency_code as adminagencyCode
-				,functionary_num as functionaryNum
-				,functionary_pw as functionaryPw
-				,functionary_name as functionaryName
-				,functionary_phone as functionaryPhone
-				,functionary_email as functionaryEmail
-				,functionary_date_join as functionaryDateJoin
+				functionary.functionary_id as functionaryId
+				,functionary.adminagency_code as adminagencyCode
+				,adminagency.adminagency_name as adminagencyName
+				,functionary.functionary_num as functionaryNum
+				,functionary.functionary_pw as functionaryPw
+				,functionary.functionary_name as functionaryName
+				,functionary.functionary_phone as functionaryPhone
+				,functionary.functionary_email as functionaryEmail
+				,functionary.functionary_date_join as functionaryDateJoin
 			FROM functionary
-					
+			inner join adminagency
+				using(adminagency_code)					
 			<choose>	      
-		        <when test="searchOption == 'all'">    
-		        	where functionary_name like CONCAT('%', #{keyword}, '%')
-		        	or adminagency_code like CONCAT('%', #{keyword}, '%')		        	        	           
+		        <when test="searchOption == '전체 검색'">    
+		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')
+		        	or adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
-		        <otherwise>
-		        	where ${searchOption} like CONCAT('%', #{keyword}, '%')	        
-		        </otherwise>
+		        <when test="searchOption == '공무원 이름 검색'">    
+		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '소속 행정기관 검색'"> 
+		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
 	    	</choose>
 		
 		ORDER BY functionary_date_join DESC

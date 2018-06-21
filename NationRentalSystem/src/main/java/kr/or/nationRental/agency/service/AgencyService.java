@@ -1,5 +1,6 @@
 package kr.or.nationRental.agency.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -79,14 +80,16 @@ public class AgencyService {
 		
 		//낙찰된 대행업체에 속해있는 ID들을 select 하는 매서드
 		List<String> agencyEmployeeDtoId = agencyDao.selectAgencyNakchalEmployeeId(agencyDto);
-		logger.debug("AgencyService - selectAgencyNakchalEmployeeId - agencyEmployeeDtoId : " + agencyEmployeeDtoId.toString());
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(agencyEmployeeDtoId.toString());
+		logger.debug("AgencyService - selectAgencyNakchalEmployeeId - agencyEmployeeDtoId.size() : " + agencyEmployeeDtoId.size());
 		
-		List<AgencyEmployeeDto> agencyEmployeeDto = null;
+		List<AgencyEmployeeDto> agencyEmployeeDto = new ArrayList<AgencyEmployeeDto>();
 		//낙찰된 대행업체에 속해있는 ID들로 해당 ID를 가지고 있는 데이터들을 select하는 매서드
 		for(int i=0; i<agencyEmployeeDtoId.size(); i++) {
-			agencyEmployeeDto = agencyDao.selectAgencyEmployee(agencyEmployeeDtoId.get(i));
+			logger.debug("AgencyService - selectAgencyNakchalEmployeeId - agencyEmployeeDtoId.get(i) : " + agencyEmployeeDtoId.get(i));
+			agencyEmployeeDto.add(i, agencyDao.selectAgencyEmployee(agencyEmployeeDtoId.get(i)));
 		}
-		logger.debug("AgencyService - selectAgencyNakchalEmployeeId - agencyEmployeeDtoId : " + agencyEmployeeDtoId.toString());
 		
 		return agencyEmployeeDto;
 	}

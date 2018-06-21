@@ -141,22 +141,22 @@
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertDeliveryOrderCitizen" method="post">
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label for="goodsfacilityRentalCode" class="col-sm-3 control-label">시설/물품 대여/예약 신청코드</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="goodsfacilityRentalCode" id="goodsfacilityRentalCode" placeholder="행정기관 코드를 입력해주세요.">
 										</div>
-									</div>
+									</div> -->
 									<div class="form-group">
 										<label for="classifyRentalState" class="col-sm-3 control-label">대여/반납상태 구분</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="classifyRentalState" id="classifyRentalState" placeholder="(대여/반납) 상태를 입력해주세요.">
+											<input type="text" class="form-control" name="classifyRentalState" id="classifyRentalState" value="${deliveryOrderCitizenDto.classifyRentalState}">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="goodsfacilityCode" class="col-sm-3 control-label">시설/물품 개별관리코드</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" placeholder="(대여/반납) 상태를 입력해주세요.">
+											<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" value="${deliveryOrderCitizenDto.goodsfacilityCode}">
 										</div>
 									</div>
 									<!-- session처리 이후에 가져오면 됨 <div class="form-group">
@@ -168,7 +168,7 @@
 									<div class="form-group">
 										<label for="adminagencyCode" class="col-sm-3 control-label">행정기관코드</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="adminagencyCode" id="adminagencyCode" placeholder="행정기관 코드를 입력해주세요.">
+											<input type="text" class="form-control" name="adminagencyCode" id="adminagencyCode" value="${deliveryOrderCitizenDto.adminagencyCode}">
 										</div>
 									</div>
 																

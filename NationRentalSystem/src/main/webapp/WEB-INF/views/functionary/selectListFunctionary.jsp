@@ -65,7 +65,6 @@
 							<P>The time on the server is ${serverTime}.</P>
 						</div>
 						
-						<div><a herf="${pageContext.request.contextPath}/">공무원 회원정보 수정</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
@@ -103,9 +102,9 @@
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-													<li><a href="#">all</a></li>
-													<li><a href="#">functionary_name</a></li>
-													<li><a href="#">adminagency_code</a></li>
+													<li><a href="#">전체 검색</a></li>
+													<li><a href="#">공무원 이름 검색</a></li>
+													<li><a href="#">소속 행정기관 검색</a></li>
 												</ul>
 											</div>
 											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
@@ -123,7 +122,7 @@
 									<thead>
 										<tr>
 											<th width="20%">이름</th>
-											<th width="25%">행정기관코드</th>
+											<th width="25%">행정기관명</th>
 											<th width="25%">전화번호</th>
 											<th width="30%">이메일</th>										
 										</tr>
@@ -132,7 +131,7 @@
 											<c:forEach var="functionaryDto" items="${list}">												
 													<tr>
 														<td><a href="#/${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></td>														
-														<td>${functionaryDto.adminagencyCode}</td>
+														<td>${functionaryDto.adminagencyName}</td>
 														<td>${functionaryDto.functionaryPhone}</td>
 														<td>${functionaryDto.functionaryEmail}</td>													
 													</tr>												

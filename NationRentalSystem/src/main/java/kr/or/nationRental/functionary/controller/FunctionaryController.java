@@ -58,7 +58,7 @@ public class FunctionaryController {
 	public String selectListFunctionary(Model model
 										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-										,@RequestParam(value="searchOption", defaultValue="all") String searchOption
+										,@RequestParam(value="searchOption", defaultValue="전체 검색") String searchOption
 										,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		logger.debug("FunctionaryController - selectListFunctionary - currentPage : " + currentPage);
 		logger.debug("FunctionaryController - selectListFunctionary - pagePerRow  : " + pagePerRow);
@@ -145,11 +145,12 @@ public class FunctionaryController {
 		return "redirect:/";
 	}
 	
+	//id찾기 화면으로 이동
 	@RequestMapping(value="/idSelect", method=RequestMethod.GET)
 	public String idSelect() {
 		
 		
-		return "/functionary/idSelect";
+		return "/signUp/idSelect";
 	}
 	
 	/*id찾기

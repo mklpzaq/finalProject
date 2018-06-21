@@ -1,6 +1,7 @@
 package kr.or.nationRental.agency.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,11 +39,12 @@ public class AgencyController {
 	public String insertAgencyForm(Model model
 			,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 			,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-			,@RequestParam(value="searchOption", defaultValue="boardCode") String searchOption
+			,@RequestParam(value="searchOption", defaultValue="all") String searchOption
 			,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		//등록된 업종리스트를 뽑는다
-		//List<AgencyBusinesstypeDto> list = agencyBusinesstypeService.selectListAgencyBusinesstype(currentPage, pagePerRow, searchOption, keyword);
-		//model.addAttribute("list", list);
+		Map<String, Object> map = agencyBusinesstypeService.selectListAgencyBusinesstype(currentPage, pagePerRow, searchOption, keyword);
+		
+		model.addAttribute("list", map.get("list"));
 		
 		return "/agency/insertAgencyForm";
 	}

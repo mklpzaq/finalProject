@@ -65,10 +65,10 @@ public class AgencyDao {
 		return sqlSession.selectList(NS + "selectAgencyNakchalEmployeeId", agencyDto);
 	}
 
-	public List<AgencyEmployeeDto> selectAgencyEmployee(String agencyEmployeeDtoId) {
+	public AgencyEmployeeDto selectAgencyEmployee(String agencyEmployeeDtoId) {
 		logger.debug("AgencyDao - selectAgencyEmployee - agencyEmployeeDtoId : " + agencyEmployeeDtoId.toString());
 		
-		return sqlSession.selectList(NS + "selectAgencyEmployee2", agencyEmployeeDtoId);
+		return sqlSession.selectOne(NS + "selectAgencyEmployee2", agencyEmployeeDtoId);
 	}
 
 }

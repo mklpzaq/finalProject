@@ -36,7 +36,7 @@ public class ReturnGoodsfacilityInfoController {
 		List<StateGoodsDto> list = returnGoodsfacilityInfoService.stateGoodsCode();
 		model.addAttribute("adminagencyCode", returnGoodsfacilityInfoDto.getAdminagencyCode());
 		model.addAttribute("list", list);
-		return "/functionary/insertReturnGoodsfacilityInfoForm";
+		return "/returnGoodsfacilityInfo/insertReturnGoodsfacilityInfoForm";
 	}
 	//반납등록
 	@RequestMapping(value="/insertReturnGoodsfacilityInfoForm", method=RequestMethod.POST)
@@ -81,6 +81,6 @@ public class ReturnGoodsfacilityInfoController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", map.get("searchOption"));
 		model.addAttribute("keyword", keyword);
-		return "/functionary/selectReturnGoodsfacilityInfo";
+		return "/returnGoodsfacilityInfo/selectReturnGoodsfacilityInfo";
 	}
 }

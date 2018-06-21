@@ -49,6 +49,7 @@
 			,agency.agency_businesstype_code as agencyBusinesstypeCode
 			,agency.agency_date_registration as agencyDateRegistration
 			,agency_businesstype.agency_businesstype_name as agencyBusinesstypeName
+			,agency.agency_date_contract_closed as agencyDateContractClosed
 		FROM agency
 		INNER join agency_businesstype
 			on agency.agency_businesstype_code = agency_businesstype.agency_businesstype_code

@@ -24,11 +24,13 @@ public class DeliveryOrderCitizenController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderCitizenController.class);
 	
+	//배달신청등록
 	@RequestMapping(value="/insertDeliveryOrderCitizen", method=RequestMethod.GET)
-	public String insertDeliveryOrderCitizen() {
-		
-				
-		return "/citizen/insertDeliveryOrderCitizenform";
+	public String insertDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto
+											,Model model) {
+		logger.debug("DeliveryOrderCitizenController - insertDeliveryOrderCitizen - GET - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		model.addAttribute("DeliveryOrderCitizenDto", deliveryOrderCitizenDto);
+		return "/deliveryOrder/insertDeliveryOrderCitizenform";
 	}
 	
 	@RequestMapping(value="/insertDeliveryOrderCitizen", method=RequestMethod.POST)
@@ -52,7 +54,7 @@ public class DeliveryOrderCitizenController {
 		List<DeliveryOrderCitizenDto> list = deliveryOrderCitizenService.selectListMyDeliveryOrderCitizen(memberId);
 		model.addAttribute("list", list);
 		model.addAttribute("memberLevel", member.getMemberLevel());
-		return "/citizen/selectListMyDeliveryOrderCitizen";
+		return "/deliveryOrder/selectListMyDeliveryOrderCitizen";
 	} 
 	
 	@RequestMapping(value="/updateViewDeliveryOrderCitizenAddress", method=RequestMethod.GET)
@@ -61,7 +63,7 @@ public class DeliveryOrderCitizenController {
 		logger.debug("DeliveryOrderCitizenController - updateViewDeliveryOrderCitizenAddress - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
 		DeliveryOrderCitizenDto returndeliveryOrderCitizenDto = deliveryOrderCitizenService.updateViewDeliveryOrderCitizenAddress(deliveryOrderCitizenDto);
 		model.addAttribute("returndeliveryOrderCitizenDto", returndeliveryOrderCitizenDto);
-		return "/citizen/updateViewDeliveryOrderCitizenAddress";
+		return "/deliveryOrder/updateViewDeliveryOrderCitizenAddress";
 	}
 	
 	@RequestMapping(value="/updateDeliveryOrderCitizenAddress", method=RequestMethod.POST)
@@ -90,7 +92,7 @@ public class DeliveryOrderCitizenController {
 		List<DeliveryOrderCitizenDto> list= deliveryOrderCitizenService.selectListDeliveryOrderCitizen(deliveryOrderCitizenDto);
 		model.addAttribute("list", list);
 		model.addAttribute("memberLevel", memberLevel);
-		return "/citizen/selectListMyDeliveryOrderCitizen";
+		return "/deliveryOrder/selectListMyDeliveryOrderCitizen";
 	}
 	
 }
