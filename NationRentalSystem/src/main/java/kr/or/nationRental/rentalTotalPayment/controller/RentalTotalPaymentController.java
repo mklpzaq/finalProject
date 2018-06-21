@@ -30,11 +30,11 @@ public class RentalTotalPaymentController {
 		
 	}
 	@RequestMapping(value="/insertRentalTotalPayment", method=RequestMethod.POST)
-	public String insertRentalTotalPayment(RentalTotalPaymentDto rentalTotalPaymentDto) {
-		logger.debug("★★★★★★★★★★★★★★확인시작★★★★★★★★★★★★★★★★★");
+	public String insertRentalTotalPayment(RentGoodsfacilityDto rentGoodsfacilityDto
+											, RentalTotalPaymentDto rentalTotalPaymentDto) {
 		logger.debug("insertRentalTotalPayment : " + rentalTotalPaymentDto.toString());
-		logger.debug("★★★★★★★★★★★★★★확인끝끝★★★★★★★★★★★★★★★★★");
 		rentalTotalPaymentService.insertRentalTotalPayment(rentalTotalPaymentDto);
+		rentalTotalPaymentService.insertRentGoodsfacility(rentGoodsfacilityDto);
 		
 		return "redirect:/viewApplicationRentForCitizen"; 
 	}
