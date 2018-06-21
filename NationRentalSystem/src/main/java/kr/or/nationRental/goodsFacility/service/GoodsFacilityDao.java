@@ -64,5 +64,15 @@ public class GoodsFacilityDao {
 		return sqlSession.selectOne(NS+"viewImageDetail", goodsFacilityDto);
 	}
 
+	public GoodsFacilityDto updateGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityDao updateGoodsFacility" + goodsFacilityDto.toString());
+		return sqlSession.selectOne(NS+"updateGoodsFacility", goodsFacilityDto);
+	}
+
+	public int updateOneGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityDao updateOneGoodsFacility" + goodsFacilityDto.toString());
+		return sqlSession.update(NS+"updateOneGoodsFacility", goodsFacilityDto);
+	}
+
 
 }

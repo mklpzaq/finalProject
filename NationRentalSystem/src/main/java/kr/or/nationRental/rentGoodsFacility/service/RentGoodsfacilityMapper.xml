@@ -60,6 +60,8 @@
   			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
   			SELECT
   				adminagency_code as adminagencyCode
+  				,citizen_id as citizenId
+  				,citizen_phone as citizenPhone
   				,goodsfacility_code as goodsfacilityCode
   				,goodsfacility_name as goodsfacilityName
   				,goodsfacility_rental_date_start as goodsfacilityRentalDateStart
@@ -69,7 +71,7 @@
   			FROM
   				goodsfacility_rental
   			WHERE 
-  				citizen_id = #{citizenId}
+  				citizen_id = #{citizenDto.citizenId}
   				
   				<if test="!keyword.equals('')">
 				<choose>

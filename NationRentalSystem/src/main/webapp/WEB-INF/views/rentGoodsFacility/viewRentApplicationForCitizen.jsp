@@ -116,6 +116,7 @@
 									<thead>
 										<tr>
 											<td>행정기관코드</td>
+											<td>연락처</td>
 											<td>시설&물품개별관리코드</td>
 											<td>시설&물품명</td>
 											<td>대여&대관 시작일</td>
@@ -128,12 +129,15 @@
 										<c:forEach var="rentGoodsfacilityDto" items="${list}">
 											<tr>	
 												<td>${rentGoodsfacilityDto.adminagencyCode}</td>
+												<td>${rentGoodsfacilityDto.citizenPhone}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateStart}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>
-												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>																																															
+												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
+												<td><a href="${pageContext.request.contextPath}/">수정</a></td>
+												<td><a href="${pageContext.request.contextPath}/">반납배달신청</a></td>																																															
 											</tr>
 										</c:forEach>									
 									</tbody>

@@ -32,7 +32,7 @@ public class RentGoodsfacilityDao {
 	}
 
 	public List<RentGoodsfacilityDto> getApplicationList(Map<String, Object> map) {
-		logger.debug("RentGoodsfacilityDao getApplicationList : ");
+		logger.debug("RentGoodsfacilityDao getApplicationList : " + map.toString());
 		return sqlSession.selectList(NS+"getApplicationList", map);		
 	}
 

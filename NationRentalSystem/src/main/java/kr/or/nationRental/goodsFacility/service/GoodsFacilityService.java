@@ -217,6 +217,18 @@ public class GoodsFacilityService {
 		return viewImageOne;
 	}
 
+	public GoodsFacilityDto updateGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityService updateGoodsFacility : " + goodsFacilityDto.toString());
+		
+		return goodsFacilityDao.updateGoodsFacility(goodsFacilityDto);
+	}
+
+	public int updateOneGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityService updateOneGoodsFacility : " + goodsFacilityDto.toString());
+		
+		return goodsFacilityDao.updateOneGoodsFacility(goodsFacilityDto);
+	}
+
 	
 
 }

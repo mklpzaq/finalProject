@@ -260,5 +260,67 @@
   				gf.goodsfacility_code = #{goodsfacilityCode} 	
   	</select>
   	
+  	<select id="updateGoodsFacility"
+  			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto"
+  			resultMap="goodsFacility">
+  			SELECT
+  				gf.goodsfacility_code
+  				,gf.goodsfacility_three_code
+  				,gf.goodsfacility_name
+  				,gf.goodsfacility_purchaseprice
+  				,gf.goodsfacility_price_rental
+  				,gf.goodsfacility_text_sangse
+  				,gf.adminagency_code
+  				,gf.sigungu_name
+  				,gf.sido_name
+  				,gf.eupmyeon_name
+  				,gf.goodsfacility_address_sangse
+  				,gf.functionary_id
+  				,gf.goodsfacility_classify_goodsfacility
+  				,gf.goodsfacility_classify_donationpurchase
+  				,gf.goodsfacility_is_extra
+  				,gf.goodsfacility_is_possible_delivery
+  				,gf.goodsfacility_state_afterservice
+  				,gf.goodsfacility_is_possible_rental
+  				,gf.goodsfacility_date_registration
+  				,gff.goodsfacility_file_name
+				,gff.goodsfacility_file_ext
+  			FROM
+  				goodsfacility AS gf
+  				JOIN
+  				goodsfacility_file AS gff
+  				ON
+  				gf.goodsfacility_code =	gff.goodsfacility_code
+  			WHERE 
+  				gf.goodsfacility_code = #{goodsfacilityCode} 	  	
+  	</select>
+  	
+  	<select id="updateOneGoodsFacility"
+  			parameterType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+  		UPDATE
+  			goodsfacility
+  		SET
+  			goodsfacility_three_code = #{goodsfacilityThreeCode}
+  			,goodsfacility_name = #{goodsfacilityName}
+  			,goodsfacility_purchaseprice = #{goodsfacilityPurchaseprice}
+  			,goodsfacility_price_rental = #{goodsfacilityPriceRental}
+  			,goodsfacility_text_sangse = #{goodsfacilityTextSangse}
+  			,adminagency_code = #{adminagencyCode}
+  			,sigungu_name = #{sigunguName}
+  			,sido_name = #{sidoName}
+  			,eupmyeon_name = #{eupmyeonName}
+  			,goodsfacility_address_sangse = #{goodsfacilityAddressSangse}
+  			,functionary_id = #{functionaryId}
+  			,goodsfacility_classify_goodsfacility = #{goodsfacilityClassifyGoodsfacility}
+  			,goodsfacility_classify_donationpurchase = #{goodsfacilityClassifyDonationpurchase}
+  			,goodsfacility_is_extra = #{goodsfacilityIsExtra}
+			,goodsfacility_is_possible_delivery = #{goodsfacilityIsPossibleDelivery}
+			,goodsfacility_state_afterservice = #{goodsfacilityStateAfterservice}
+			,goodsfacility_is_possible_rental = #{goodsfacilityIsPossibleRental}
+			,goodsfacility_date_registration = #{goodsfacilityDateRegistration}
+  		WHERE 
+  			goodsfacility_code = #{goodsfacilityCode}
+  	
+  	</select> 
   
   </mapper>

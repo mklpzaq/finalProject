@@ -203,6 +203,25 @@ public class GoodsFacilityController {
 		model.addAttribute("GoodsFacilityFile", viewImageDetailOne.getGoodsFacilityFile());
 		logger.debug("GoodsFacilityController viewImageDetailOne.getGoodsFacilityFile() : " + viewImageDetailOne.getGoodsFacilityFile().toString());
 		
-		return "rentalGoodsFacility/viewDetailGoodsFacility";
+		return "rentalGoodsFacility/viewDetailGoodsFacility";		
+	}
+	
+	@RequestMapping(value="/updateGoodsFacility" , method=RequestMethod.GET)
+	public String updateGoodsFacility(Model model
+										,GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityController updateGoodsFacility GET : " + goodsFacilityDto.toString());
+		GoodsFacilityDto updateGoodsFacility = goodsFacilityService.updateGoodsFacility(goodsFacilityDto);
+		model.addAttribute("updateGoodsFacility", updateGoodsFacility);
+		model.addAttribute("GoodsFacilityFile", updateGoodsFacility.getGoodsFacilityFile());
+		
+		return "/rentalGoodsFacility/updateGoodsFacility";
+	}
+	
+	@RequestMapping(value="updateGoodsFacility" , method=RequestMethod.POST)
+	public String updateGoodsFacility(GoodsFacilityDto goodsFacilityDto) {
+		logger.debug("GoodsFacilityController updateGoodsFacility POST : " + goodsFacilityDto.toString());
+		
+		int result = goodsFacilityService.updateOneGoodsFacility(goodsFacilityDto);
+		return "redirect:/viewImageDetail";
 	}
 }
