@@ -46,4 +46,9 @@ public class RentGoodsfacilityDao {
 		return sqlSession.selectOne(NS+"updateRentApp", rentGoodsfacilityDto);
 	}
 
+	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityDao updateApplication : ");
+		return sqlSession.update(NS+"updateApplication", rentGoodsfacilityDto);
+	}
+
 }

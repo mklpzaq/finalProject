@@ -87,7 +87,7 @@ public class RentGoodsfacilityController {
 		logger.debug("RentGoodsfacilityController updateApplicationForm POST: " + rentGoodsfacilityDto.toString());
 		int result = rentGoodsfacilityService.updateApplication(rentGoodsfacilityDto);
 				
-		return "";
+		return "redirect:/viewApplicationRentForCitizen";
 	}
-	
+		
 }

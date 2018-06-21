@@ -83,8 +83,9 @@ public class RentGoodsfacilityService {
 	}
 
 	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		logger.debug("RentGoodsfacilityService updateRentApplication  :" + rentGoodsfacilityDto.toString());
+		
+		return rentGoodsfacilityDao.updateApplication(rentGoodsfacilityDto);
 	}
 
 }
