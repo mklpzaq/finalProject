@@ -1,6 +1,6 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.service;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ReturnGoodsfacilityInfoDto {
 	private int returGoodsfacilityInfoCode; //시설/물품 반납 정보 코드
@@ -126,5 +126,6 @@ public class ReturnGoodsfacilityInfoDto {
 				+ functionaryId + ", functionaryName=" + functionaryName + ", stateGoodsCode=" + stateGoodsCode
 				+ ", stateGoods=" + stateGoods + ", dateReturnCheck=" + dateReturnCheck + "]";
 	}
+	
 	
 }

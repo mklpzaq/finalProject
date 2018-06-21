@@ -1,7 +1,6 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.controller;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +56,7 @@ public class ReturnGoodsfacilityInfoController {
 												,@RequestParam(value="keyword", defaultValue="") String keyword
 												,DateDto dateDto
 												,Model model
-												,HttpSession session) {
+												,HttpSession session) throws ParseException {
 		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - keyword : " + keyword);
 		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
 		MemberDto member = (MemberDto) session.getAttribute("member");
@@ -73,7 +72,7 @@ public class ReturnGoodsfacilityInfoController {
 		model.addAttribute("startPage", map.get("startPage"));
 		model.addAttribute("endPage", map.get("endPage"));
 		model.addAttribute("pagePerRow", pagePerRow);
-		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("searchOption", map.get("searchOption"));
 		model.addAttribute("keyword", keyword);
 		return "/functionary/selectReturnGoodsfacilityInfo";
 	}

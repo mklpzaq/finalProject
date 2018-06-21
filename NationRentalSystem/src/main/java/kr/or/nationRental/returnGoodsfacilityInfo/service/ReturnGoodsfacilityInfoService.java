@@ -1,7 +1,9 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -102,14 +104,16 @@ public class ReturnGoodsfacilityInfoService {
 																			, int pagePerRow
 																			, String searchOption
 																			, String keyword
-																			, DateDto dateDto) {
+																			, DateDto dateDto) throws ParseException {
 		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - keyword : " + keyword);
 		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
+		logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() : " + dateDto.getEndDate());
 		int beginRow = (currentPage-1)*pagePerRow; 
 		int adminagencyCode = returnGoodsfacilityInfoDto.getAdminagencyCode();
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<ReturnGoodsfacilityInfoDto> list = null;
-		if(dateDto.getEndDate() != null) {
+		if(dateDto.getEndDate() != "") {	
+			logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() != null : ");
 			map.put("dateDto", dateDto);
 			map.put("keyword", keyword);
 			map.put("adminagencyCode", adminagencyCode);
@@ -118,6 +122,7 @@ public class ReturnGoodsfacilityInfoService {
 			map.put("searchOption", searchOption);
 			list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
 		}else{
+			logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() == null : ");
 			searchOption = "all";
 			map.put("keyword", keyword);
 			map.put("adminagencyCode", adminagencyCode);
@@ -152,6 +157,7 @@ public class ReturnGoodsfacilityInfoService {
 		}
 		
 		Map<String, Object> returnmap = new HashMap<String, Object>();
+		returnmap.put("searchOption", searchOption);
 		returnmap.put("list", list);
 		returnmap.put("lastPage", lastPage);
 		returnmap.put("startPage", startPage);
