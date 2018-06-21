@@ -10,12 +10,48 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>		
 		<script type="text/javascript">
+		function payment_OnOff(v,id){
+			//라디오 버튼 value 값 조건 비교
+			//결제수단 : 카드/계좌이체/무통장 입금 라디오 선택
+			if(v == "creditCard"){
+				document.getElementById('selectCard').style.display = ""; // 보여줌
+				document.getElementById('selectAccount').style.display = "none"; //숨김
+				document.getElementById('selectCash').style.display = "none";  //숨김 
+			}else if(v == "account"){
+				document.getElementById('selectCard').style.display = "none";
+				document.getElementById('selectAccount').style.display = "";
+				document.getElementById('selectCash').style.display = "none";
+			}else if(v == "cash"){
+				document.getElementById('selectCard').style.display = "none";
+				document.getElementById('selectAccount').style.display = "none";
+				document.getElementById('selectCash').style.display = "";
+			}
+		}
+			//결제수단 : 현금영수증 라디오 선택
+		function cashReceipt1_OnOff(v,id){
+			if(v == "yes"){
+				document.getElementById('cashReceiptYes1').style.display = ""; // 보여줌
+				document.getElementById('cashReceiptNo1').style.display = "none";
+			}else if(v == "no"){
+				document.getElementById('cashReceiptYes1').style.display = "none"; //숨김
+				document.getElementById('cashReceiptNo1').style.display = "";
+			}
+		}
 		
+		function cashReceipt2_OnOff(v,id){
+			if(v == "yes"){
+				document.getElementById('cashReceiptYes2').style.display = ""; // 보여줌
+				document.getElementById('cashReceiptNo2').style.display = "none";
+			}else if(v == "no"){
+				document.getElementById('cashReceiptYes2').style.display = "none"; //숨김
+				document.getElementById('cashReceiptNo2').style.display = "";
+			}
+		}
+
 		
-		$(document).ready(function(){
-			$('#annualfeePakageCheckModal').on('shown.bs.modal', function () {
+		/* 	$('#annualfeePakageCheckModal').on('shown.bs.modal', function () {
 				  $('#myInput').focus()
-				})
+				}) */
 				
 	/* 		$("#annualfeePakageList").chang(function(){
 			    $.ajax({
@@ -106,7 +142,7 @@
 							</p>	
 							<p style="text-align: left">사용할 포인트 : 
 								<input type="text" name="usePoint">
-								보유 포인트 :
+								보유 포인트 : {#.#}
 							</p>
 						</div>
 					</div>
@@ -126,23 +162,76 @@
 							<p style="text-align: left">배    송    비 : </p>
 							<p style="text-align: left">총 결제 금액 : </p>
 							<hr/>
+							
 							<h4 style="text-align: left">[ 결제 수단 선택 ]</h4>
 							<form style="text-align: left">
-								<input type="radio" name="creditCard" value="creditCard" checked>신용카드 &nbsp &nbsp
-								<input type="radio" name="account" value="account ">실시간 계좌이체 &nbsp &nbsp
-								<input type="radio" name="cash"  value="cash">무통장 입금
-								<div id="creditCard" name="creditCard">
+								<input type="radio" name="payment" value="creditCard" onclick="payment_OnOff(this.value,'selectCard');">신용카드 &nbsp &nbsp
+								<input type="radio" name="payment" value="account" onclick="payment_OnOff(this.value,'selectAccount');">실시간 계좌이체 &nbsp &nbsp
+								<input type="radio" name="payment"  value="cash" onclick="payment_OnOff(this.value,'selectCash');">무통장 입금
+								<br><br>
+								<!-- 신용카드 선택 -->
+								<div id="selectCard" style="display:none;">
 									카드 선택 : 
-									<select name="cars">
+									<select name="cardType">
 										<option value="hyundai">현대</option>
 										<option value="kbstar">국민</option>
 										<option value="sinhan">신한</option>
 										<option value="lotte">롯데</option>
 									</select>
 								</div>
-								<div id="accountTransfer" name="accountTransfer">
-									예금주 명 : <input type="text" name="accountName"><br>
+								<!-- 실시간 계좌이체 선택 -->
+								<div id="selectAccount" style="display:none;">
+									예금주 명 : <input type="text" name="memberName"><br>
 									현금영수증 :
+									<input type="radio" name="cashReceipt " value="yes" onclick="cashReceipt1_OnOff(this.value,'cashReceiptYes1');">신청 &nbsp &nbsp
+									<input type="radio" name="cashReceipt" value="no" onclick="cashReceipt1_OnOff(this.value,'cashReceiptNo1');">미신청 
+									<!-- 현금영수증 신청 선택 -->
+									<div id="cashReceiptYes1" style="display:none;">
+										휴대폰번호 또는 사업자번호 : <input type="text" name="accountNumber">
+									</div>
+									<div id="cashReceiptNo1" style="display:none;">
+									</div>
+								</div>
+								<!-- 무통장 입금 선택 -->
+								<div id="selectCash"style="display:none;">
+									입금은행 :
+									<select name="selectBank">
+										<option value="bank1">농협 : 123-123456-12-123</option>
+										<option value="bank2">우체국 : 789-7894-45-78945</option>
+									</select><br>
+									환불계좌 : 
+									<select name="selectBank2">
+										<option value="bank1">NH농협</option>
+										<option value="bank2">KB국민</option>
+										<option value="bank3">신한</option>
+										<option value="bank4">우리</option>
+										<option value="bank5">하나</option>
+										<option value="bank5">IBK기업</option>
+										<option value="bank6">외환</option>
+										<option value="bank7">SC제일</option>
+										<option value="bank8">KEB산업</option>
+										<option value="bank9">새마을</option>
+										<option value="bank10">대구</option>
+										<option value="bank11">광주</option>
+										<option value="bank12">신협</option>
+										<option value="bank13">전북</option>
+										<option value="bank14">경남</option>
+										<option value="bank15">부산</option>
+										<option value="bank16">수협</option>
+										<option value="bank17">제주</option>
+										<option value="bank18">저축은행</option>
+										<option value="bank19">카카오뱅크</option>
+									</select>
+									<input type="text" name="accountNumber"><br>
+									현금영수증 :
+									<input type="radio" name="cashReceipt " value="yes" onclick="cashReceipt2_OnOff(this.value,'cashReceiptYes2');">신청 &nbsp &nbsp
+									<input type="radio" name="cashReceipt" value="no" onclick="cashReceipt2_OnOff(this.value,'cashReceiptNo2');">미신청 
+									<!-- 현금영수증 신청 선택 -->
+									<div id="cashReceiptYes2" style="display:none;">
+										휴대폰번호 또는 사업자번호 : <input type="text" name="accountNumber">
+									</div>
+									<div id="cashReceiptNo2" style="display:none;">
+									</div>
 								</div>
 							</form>
 						</div>
