@@ -16,7 +16,7 @@ public class AgencyAfterserviceHandlingDto {
 	
 	/* 추가 맴버 변수*/
 	private String agencyBusinesstypeName;
-	
+
 	public int getAgencyAfterserviceHandlingCode() {
 		return agencyAfterserviceHandlingCode;
 	}
@@ -89,6 +89,12 @@ public class AgencyAfterserviceHandlingDto {
 	public void setDateAfterserviceEnd(String dateAfterserviceEnd) {
 		this.dateAfterserviceEnd = dateAfterserviceEnd;
 	}
+	public String getAgencyBusinesstypeName() {
+		return agencyBusinesstypeName;
+	}
+	public void setAgencyBusinesstypeName(String agencyBusinesstypeName) {
+		this.agencyBusinesstypeName = agencyBusinesstypeName;
+	}
 	@Override
 	public String toString() {
 		return "AgencyAfterserviceHandlingDto [agencyAfterserviceHandlingCode=" + agencyAfterserviceHandlingCode
@@ -97,6 +103,7 @@ public class AgencyAfterserviceHandlingDto {
 				+ ", agencyEmployeeId=" + agencyEmployeeId + ", goodsfacilityCode=" + goodsfacilityCode
 				+ ", goodsfacilityName=" + goodsfacilityName + ", dateAfterserviceStart=" + dateAfterserviceStart
 				+ ", textExpertOpinion=" + textExpertOpinion + ", classifyAfterserviceState="
-				+ classifyAfterserviceState + ", dateAfterserviceEnd=" + dateAfterserviceEnd + "]";
+				+ classifyAfterserviceState + ", dateAfterserviceEnd=" + dateAfterserviceEnd
+				+ ", agencyBusinesstypeName=" + agencyBusinesstypeName + "]";
 	}
 }

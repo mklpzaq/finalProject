@@ -25,6 +25,21 @@ public class AgencyAfterserviceHandlingController {
 	private AgencyAfterserviceHandlingService agencyAfterserviceHandlingService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingController.class);
 	
+	@RequestMapping(value="/selectListAgencyAfterserviceHandling", method=RequestMethod.GET)
+	public String selectListAgencyAfterserviceHandling() {
+		logger.debug("GET selectListAgencyAfterserviceHandling AgencyAfterserviceHandlingController");
+		
+		return "agencyAfterserviceHandling/selectListAgencyAfterserviceHandling";
+	}
+	
+	@RequestMapping(value="/insertAgencyAfterserviceHandling", method=RequestMethod.POST)
+	public String insertAgencyAfterserviceHandling(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
+		logger.debug("POST insertAgencyAfterserviceHandling AgencyAfterserviceHandlingController");
+		logger.debug(agencyAfterserviceHandlingDto.toString());
+		agencyAfterserviceHandlingService.insertAgencyAfterserviceHandling(agencyAfterserviceHandlingDto);
+		return "redirect:/selectListAgencyAfterserviceHandling";
+	}
+	
 	@RequestMapping(value="/insertAgencyAfterserviceHandling", method=RequestMethod.GET)
 	public String insertAgencyAfterserviceHandling(Model model
 													,UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
@@ -32,16 +47,22 @@ public class AgencyAfterserviceHandlingController {
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		
 		String agencyEmployeeId = unitedAfterserviceRequestDto.getAgencyEmployeeId();
-		/* 대행업체 업종 리스트를 가져온다. */
-		List<AgencyBusinesstypeDto> list = agencyAfterserviceHandlingService.selectListAgencyBusinesstypeDto(unitedAfterserviceRequestDto);
+		/* 현재 로그인 되어 있는 직원이 소속된 대행업체 코드, 대행업체 이름을 가져온다. */
+		AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto = new AgencyAfterserviceHandlingDto();
+		agencyAfterserviceHandlingDto.setAgencyEmployeeId(agencyEmployeeId);
+		agencyAfterserviceHandlingDto = agencyAfterserviceHandlingService.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(agencyAfterserviceHandlingDto);
 		
+		/* 대행업체 업종 리스트를 가져온다. */
+		
+		List<AgencyBusinesstypeDto> list = agencyAfterserviceHandlingService.selectListAgencyBusinesstypeDto(unitedAfterserviceRequestDto);
+		/* 통합 AS요청 정보를 가져온다. */
 		unitedAfterserviceRequestDto = agencyAfterserviceHandlingService.selectOneUnitedAfterserviceRequestDto(unitedAfterserviceRequestDto);
-		logger.debug("★★★★★★★★★★★★★★★★★★★★");
 		unitedAfterserviceRequestDto.setAgencyEmployeeId(agencyEmployeeId);
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		
 		model.addAttribute("unitedAfterserviceRequestDto", unitedAfterserviceRequestDto);
 		model.addAttribute("listAgencyBusinesstypeDto", list);
+		model.addAttribute("agencyAfterserviceHandlingDto", agencyAfterserviceHandlingDto);
 		return "agencyAfterserviceHandling/insertAgencyAfterServiceHandlingForm";
 	}
 	

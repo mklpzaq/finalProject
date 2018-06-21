@@ -5,6 +5,68 @@
  
 <mapper namespace="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper">
 	
+	<insert id="insertAgencyAfterserviceHandling"
+			parameterType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto">
+		INSERT
+		INTO
+			agency_afterservice_handling(
+				united_afterservice_request_code
+				,agency_code
+				,agency_name
+				,agency_businesstype_code
+				,agency_employee_id
+				,goodsfacility_code
+				,goodsfacility_name
+				,date_afterservice_start
+				,classify_afterservice_state
+			)
+		VALUES(
+			#{unitedAfterserviceRequestCode}
+			,#{agencyCode}
+			,#{agencyName}
+			,#{agencyBusinesstypeCode}
+			,#{agencyEmployeeId}
+			,#{goodsfacilityCode}
+			,#{goodsfacilityName}
+			,NOW()
+			,#{classifyAfterserviceState}
+		)
+	</insert>
+	
+	<select id="selectOneAgencyBusinesstypeForAjax"
+			parameterType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyBusinesstypeDto"
+			resultType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyBusinesstypeDto">
+		SELECT
+			agency_businesstype_code AS agencyBusinesstypeCode
+			,agency_businesstype_name AS agencyBusinesstypeName
+		FROM
+			agency_businesstype
+		WHERE
+			agency_businesstype_name = '청소'
+	</select>
+	
+	<select id="selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee"
+			parameterType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto"
+			resultType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto">
+		SELECT
+			agenemp.agency_employee_id AS agencyEmployeeId
+			,agen.agency_code AS agencyCode
+			,agen.agency_name AS agencyName
+		FROM
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+		WHERE
+			agenemp.agency_employee_id = #{agencyEmployeeId}
+	</select>
+	
 	<select id="selectListAgencyBusinesstypeDto"
 			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto"
 			resultType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyBusinesstypeDto">

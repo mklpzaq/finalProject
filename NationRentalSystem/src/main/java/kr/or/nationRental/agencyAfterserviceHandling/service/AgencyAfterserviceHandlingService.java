@@ -17,6 +17,21 @@ public class AgencyAfterserviceHandlingService {
 	private AgencyAfterserviceHandlingDao agencyAfterserviceHandlingDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingService.class);
 
+	public void insertAgencyAfterserviceHandling(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
+		logger.debug("insertAgencyAfterserviceHandling AgencyAfterserviceHandlingService");
+		agencyAfterserviceHandlingDao.insertAgencyAfterserviceHandling(agencyAfterserviceHandlingDto);
+	}
+	
+	public AgencyBusinesstypeDto selectOneAgencyBusinesstypeForAjax(AgencyBusinesstypeDto agencyBusinesstypeDto) {
+		logger.debug("selectOneAgencyBusinesstypeForAjax AgencyAfterserviceHandlingService");
+		return agencyAfterserviceHandlingDao.selectOneAgencyBusinesstypeForAjax(agencyBusinesstypeDto);
+	}
+	
+	public AgencyAfterserviceHandlingDto selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto AgencyAfterserviceHandlingDto) {
+		logger.debug("selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee AgencyAfterserviceHandlingService");
+		return agencyAfterserviceHandlingDao.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto);
+	}
+	
 	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstypeDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
 		logger.debug("selectListAgencyBusinesstypeDto AgencyAfterserviceHandlingService");
 		return agencyAfterserviceHandlingDao.selectListAgencyBusinesstypeDto(unitedAfterserviceRequestDto);

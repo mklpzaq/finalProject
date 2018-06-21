@@ -8,23 +8,18 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>Insert Agency AfterService Handling Form</title>
 		<script>
-			/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
-			$('#AgencyBusinesstypeDtoSelect').change(function() {
+			$(document).ready(function(){
+				/* 첫 화면에서도 바로 적용되게 ajax를 change 이벤트 발생전에도 실행되게 하였다. */
 				$.ajax({
 					type: "POST"
 					,url: "/nationRental/selectOneAgencyBusinesstypeForAjax"
 					,data: { agencyBusinesstypeName: $('#AgencyBusinesstypeDtoSelect > option:selected').val() }
 					,success:function( JSON ) { // result : String, XML, JSON
-						alert(JSON);
-						/* $('#agencyCode').val(JSON.agencyCode);
-						$('#agencyName').val(JSON.agencyName);
 						$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
-						$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName); */
+						$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 					}
 				});
-			});
-			
-			$(document).ready(function(){
+				
 				$('#AgencyBusinesstypeDtoSelect').change(function() {
 					$.ajax({
 						type: "POST"
@@ -32,10 +27,8 @@
 						,data: { agencyBusinesstypeName: $('#AgencyBusinesstypeDtoSelect > option:selected').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
 							alert(JSON);
-							/* $('#agencyCode').val(JSON.agencyCode);
-							$('#agencyName').val(JSON.agencyName);
 							$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
-							$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName); */
+							$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 						}
 					});
 				});
@@ -61,7 +54,7 @@
 						<div class="panel-body">
 							<h3 class="text-center">AS 수락 작성</h3>
 							<hr/>
-							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest" method="post">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/insertAgencyAfterserviceHandling" method="post">
 								<div class="form-group">
 									<label for="unitedAfterserviceRequestCode" class="col-sm-3 control-label">AS 요청 코드</label>
 									<div class="col-sm-9">
@@ -158,16 +151,16 @@
 								</div>
 								
 								<div class="form-group hidden">
-									<label for="agencyCode" class="col-sm-3 control-label hidden">의뢰한 대행업체 코드</label>
+									<label for="agencyCodeForView" class="col-sm-3 control-label hidden">의뢰한 대행업체 코드</label>
 									<div class="col-sm-9">
-										<input type="hidden" class="form-control" name="agencyCode" value="${unitedAfterserviceRequestDto.agencyCode}" id="agencyCode" placeholder="의뢰할 대행업체 코드" readonly>
+										<input type="hidden" class="form-control" value="${unitedAfterserviceRequestDto.agencyCode}" id="agencyCodeForView" placeholder="의뢰한 대행업체 코드" readonly>
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label for="agencyName" class="col-sm-3 control-label">의뢰한 대행업체명</label>
+									<label for="agencyNameForView" class="col-sm-3 control-label">의뢰한 대행업체명</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyName" value="${unitedAfterserviceRequestDto.agencyName}" id="agencyName" placeholder="의뢰할 대행업체명" readonly>
+										<input type="text" class="form-control" value="${unitedAfterserviceRequestDto.agencyName}" id="agencyNameForView" placeholder="의뢰한 대행업체명" readonly>
 									</div>
 								</div>
 								
@@ -178,9 +171,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="agencyBusinesstypeNameBefore" class="col-sm-3 control-label">대행업체 업종 분류명</label>
+									<label for="stateGoods" class="col-sm-3 control-label">물품 상태</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" value="${unitedAfterserviceRequestDto.stateGoods}" id="agencyBusinesstypeNameBefore" placeholder="대행업체 업종 분류명" readonly>
+										<input type="text" class="form-control" value="${unitedAfterserviceRequestDto.stateGoods}" id="stateGoods" placeholder="물품 상태" readonly>
 									</div>
 								</div>
 								<div class="form-group">
@@ -190,10 +183,24 @@
 									</div>
 								</div>
 								<hr/>
+								<!-- agencyAfterserviceHandlingDto -->
+								
 								<div class="form-group">
 									<label for="agencyEmployeeId" class="col-sm-3 control-label">현재 대행업체 직원 ID</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyEmployeeId" value="${unitedAfterserviceRequestDto.agencyEmployeeId}" id="agencyEmployeeId" placeholder="현재 대행업체 직원 ID" readonly>
+										<input type="text" class="form-control" name="agencyEmployeeId" value="${agencyAfterserviceHandlingDto.agencyEmployeeId}" id="agencyEmployeeId" placeholder="현재 대행업체 직원 ID" readonly>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyCode" class="col-sm-3 control-label">직원 소속 대행업체 코드</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyCode" value="${agencyAfterserviceHandlingDto.agencyCode}" id="agencyCode" placeholder="직원 소속 대행업체 코드" readonly>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="agencyName" class="col-sm-3 control-label">직원 소속 대행업체 명</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyName" value="${agencyAfterserviceHandlingDto.agencyName}" id="agencyName" placeholder="직원 소속 대행업체 명" readonly>
 									</div>
 								</div>
 								<div class="form-group">
@@ -217,6 +224,12 @@
 									<label for="agencyBusinesstypeName" class="col-sm-3 control-label">선택한 대행업체 업종분류 명</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="agencyBusinesstypeName" id="agencyBusinesstypeName" placeholder="선택한 대행업체 업종분류 명" readonly>
+									</div>
+								</div>
+								<div class="form-group hidden">
+									<label for="classifyAfterserviceState" class="col-sm-3 control-label">AS 처리상태 구분</label>
+									<div class="col-sm-9">
+										<input type="hidden" class="form-control" name="classifyAfterserviceState" value="AS처리중" id="classifyAfterserviceState" placeholder="AS 처리상태 구분" readonly>
 									</div>
 								</div>
 								
