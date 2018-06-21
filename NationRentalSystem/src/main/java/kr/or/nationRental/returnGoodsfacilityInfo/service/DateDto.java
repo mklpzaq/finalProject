@@ -1,20 +1,19 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.service;
 
-import java.sql.Date;
 
 public class DateDto {
-	private Date startDate;
-	private Date endDate;
-	public Date getStartDate() {
+	private String startDate;
+	private String endDate;
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	@Override
@@ -22,7 +21,4 @@ public class DateDto {
 		return "DateDto [startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
 	
-	
-	
-
 }

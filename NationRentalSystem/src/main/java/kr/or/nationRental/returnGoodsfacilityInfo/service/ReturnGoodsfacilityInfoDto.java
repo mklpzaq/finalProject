@@ -1,6 +1,6 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.service;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ReturnGoodsfacilityInfoDto {
 	private int returGoodsfacilityInfoCode; //시설/물품 반납 정보 코드
@@ -8,6 +8,7 @@ public class ReturnGoodsfacilityInfoDto {
 	private int goodsfacilityCode; //시설/물품 개별관리코드
 	private String goodsfacilityName; //시설/물품명
 	private String classifyGoodsfacility; //물품/시설 구분
+	private String memberLevel; //로그인 Id의 권한
 	private String citizenId; //시민ID
 	private String citizenName; //시민이름
 	private String isRequestedToReturnAsDelivery; //배달반납신청 유무
@@ -48,6 +49,12 @@ public class ReturnGoodsfacilityInfoDto {
 	}
 	public void setClassifyGoodsfacility(String classifyGoodsfacility) {
 		this.classifyGoodsfacility = classifyGoodsfacility;
+	}
+	public String getMemberLevel() {
+		return memberLevel;
+	}
+	public void setMemberLevel(String memberLevel) {
+		this.memberLevel = memberLevel;
 	}
 	public String getCitizenId() {
 		return citizenId;
@@ -120,11 +127,12 @@ public class ReturnGoodsfacilityInfoDto {
 		return "ReturnGoodsfacilityInfoDto [returGoodsfacilityInfoCode=" + returGoodsfacilityInfoCode
 				+ ", goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", goodsfacilityCode=" + goodsfacilityCode
 				+ ", goodsfacilityName=" + goodsfacilityName + ", classifyGoodsfacility=" + classifyGoodsfacility
-				+ ", citizenId=" + citizenId + ", citizenName=" + citizenName + ", isRequestedToReturnAsDelivery="
-				+ isRequestedToReturnAsDelivery + ", goodsfacilityRentalDayEnd=" + goodsfacilityRentalDayEnd
-				+ ", overdueDays=" + overdueDays + ", adminagencyCode=" + adminagencyCode + ", functionaryId="
-				+ functionaryId + ", functionaryName=" + functionaryName + ", stateGoodsCode=" + stateGoodsCode
-				+ ", stateGoods=" + stateGoods + ", dateReturnCheck=" + dateReturnCheck + "]";
+				+ ", memberLevel=" + memberLevel + ", citizenId=" + citizenId + ", citizenName=" + citizenName
+				+ ", isRequestedToReturnAsDelivery=" + isRequestedToReturnAsDelivery + ", goodsfacilityRentalDayEnd="
+				+ goodsfacilityRentalDayEnd + ", overdueDays=" + overdueDays + ", adminagencyCode=" + adminagencyCode
+				+ ", functionaryId=" + functionaryId + ", functionaryName=" + functionaryName + ", stateGoodsCode="
+				+ stateGoodsCode + ", stateGoods=" + stateGoods + ", dateReturnCheck=" + dateReturnCheck + "]";
 	}
+	
 	
 }

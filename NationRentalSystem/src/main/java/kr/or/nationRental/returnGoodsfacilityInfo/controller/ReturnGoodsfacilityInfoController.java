@@ -1,7 +1,6 @@
 package kr.or.nationRental.returnGoodsfacilityInfo.controller;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -57,15 +56,22 @@ public class ReturnGoodsfacilityInfoController {
 												,@RequestParam(value="keyword", defaultValue="") String keyword
 												,DateDto dateDto
 												,Model model
-												,HttpSession session) {
+												,HttpSession session) throws ParseException {
 		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - keyword : " + keyword);
 		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
 		MemberDto member = (MemberDto) session.getAttribute("member");
 		ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto = new ReturnGoodsfacilityInfoDto();
 		Map<String, Object> map  = null;
-		returnGoodsfacilityInfoDto.setAdminagencyCode(member.getAdminagencyCode());
-		
-		map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+		//조회하는 사람의 권한이 시민인지 공무원인지에 따라 조회할 수 있는 범위가 다르다
+		returnGoodsfacilityInfoDto.setMemberLevel(member.getMemberLevel());
+		if(returnGoodsfacilityInfoDto.getMemberLevel() == "공무원") {
+			returnGoodsfacilityInfoDto.setAdminagencyCode(member.getAdminagencyCode());			
+			map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+			
+		}else if(returnGoodsfacilityInfoDto.getMemberLevel() == "시민") {
+			returnGoodsfacilityInfoDto.setCitizenId(member.getMemberId());
+			map = returnGoodsfacilityInfoService.selectReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto ,currentPage ,pagePerRow ,searchOption ,keyword, dateDto);
+		}
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));
@@ -73,7 +79,7 @@ public class ReturnGoodsfacilityInfoController {
 		model.addAttribute("startPage", map.get("startPage"));
 		model.addAttribute("endPage", map.get("endPage"));
 		model.addAttribute("pagePerRow", pagePerRow);
-		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("searchOption", map.get("searchOption"));
 		model.addAttribute("keyword", keyword);
 		return "/functionary/selectReturnGoodsfacilityInfo";
 	}

@@ -123,7 +123,15 @@
 		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}        	        	           
 		        </when>	
 	    	</choose>
-			and return_goodsfacility_info.adminagency_code = #{adminagencyCode}	
+	    	
+	    	<choose>
+	    		<when test="memberLevel == '공무원'">
+					and return_goodsfacility_info.adminagency_code = #{adminagencyCode}	
+				</when>
+				<when test="memberLevel == '시민'">
+					and return_goodsfacility_info.citizen_id = #{citizenId}	
+				</when>
+			</choose>
 			ORDER BY return_goodsfacility_info.date_return_check DESC
 			LIMIT #{beginRow}, #{pagePerRow}						 		
  	</select>
@@ -167,7 +175,15 @@
 		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}       	        	           
 		        </when>		        
 	    	</choose>
-			and return_goodsfacility_info.adminagency_code = #{adminagencyCode}	 				
+	    	
+			<choose>
+	    		<when test="memberLevel == '공무원'">
+					and return_goodsfacility_info.adminagency_code = #{adminagencyCode}	
+				</when>
+				<when test="memberLevel == '시민'">
+					and return_goodsfacility_info.citizen_id = #{citizenId}	
+				</when>
+			</choose> 				
  	</select>
  	
  </mapper>
