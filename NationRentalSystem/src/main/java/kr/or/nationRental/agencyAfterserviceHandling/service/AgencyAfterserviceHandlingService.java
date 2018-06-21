@@ -16,6 +16,16 @@ public class AgencyAfterserviceHandlingService {
 	@Autowired
 	private AgencyAfterserviceHandlingDao agencyAfterserviceHandlingDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingService.class);
+
+	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstypeDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
+		logger.debug("selectListAgencyBusinesstypeDto AgencyAfterserviceHandlingService");
+		return agencyAfterserviceHandlingDao.selectListAgencyBusinesstypeDto(unitedAfterserviceRequestDto);
+	}
+	
+	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("selectOneUnitedAfterserviceRequestDto AgencyAfterserviceHandlingService");
+		return agencyAfterserviceHandlingDao.selectOneUnitedAfterserviceRequestDto(unitedAfterserviceRequestDto);
+	}
 	
 	public Map<String, Object> selectListUnitedAfterserviceRequest(int currentPage, int pagePerRow, String searchSelect, String searchWord){
 		logger.debug("selectListUnitedAfterserviceRequest AgencyAfterserviceHandlingService");

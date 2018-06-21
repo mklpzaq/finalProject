@@ -105,7 +105,7 @@ public class UnitedAfterserviceRequestController {
 	@RequestMapping(value="/insertUnitedAfterserviceRequest", method=RequestMethod.POST)
 	public String insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("POST insertUnitedAfterserviceRequest UnitedAfterserviceRequestController");
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug("★★★★★★★★★☆☆☆☆☆☆☆☆☆☆☆★★★★★★★★★★★★");
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		unitedAfterserviceRequestService.insertUnitedAfterserviceRequest(unitedAfterserviceRequestDto);
 		
@@ -120,7 +120,6 @@ public class UnitedAfterserviceRequestController {
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		logger.debug("beforePageCode : " + beforePageCode);
 		String functionaryId = unitedAfterserviceRequestDto.getFunctionaryId();
-		logger.debug("★★★★★★★★★★insert United Controller★★★★★★★★★");
 		logger.debug("functionaryId : " + functionaryId);
 		unitedAfterserviceRequestDto = unitedAfterserviceRequestService.selectOneUnitedAfterserviceRequestDtoForInsert(unitedAfterserviceRequestDto, beforePageCode);
 		List<AgencyDto> list = unitedAfterserviceRequestService.selectListAgencyDto(functionaryId);

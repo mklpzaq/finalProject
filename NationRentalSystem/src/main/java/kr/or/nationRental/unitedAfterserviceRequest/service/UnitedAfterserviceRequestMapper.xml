@@ -275,6 +275,7 @@
 				,goodsfacility_code
 				,goodsfacility_name
 				,functionary_id
+				,state_goods_code
 				,text_check_result_goodsfacility
 				,agency_code
 				,agency_name
@@ -289,6 +290,7 @@
 			,#{goodsfacilityCode}
 			,#{goodsfacilityName}
 			,#{functionaryId}
+			,#{stateGoodsCode}
 			,#{textCheckResultGoodsfacility}
 			,#{agencyCode}
 			,#{agencyName}

@@ -56,7 +56,7 @@
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
 				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="../module/leftUnitedAfterserviceRequest/leftUnitedAfterserviceRequest.jsp"/> --%>
+					<jsp:include page="../module/leftAgencyAfterserviceHandling/leftAgencyAfterserviceHandling.jsp"/>
 				</div>
 				<div class="col-sm-9">
 					<!-- Begin Content -->
@@ -70,7 +70,7 @@
 									<strong>searchWord : </strong><span id="monitorSearchWord">${searchWord}</span><br/>						
 								</div>
 								<div class="col-md-4">
-									<h3>공무원 AS 요청 리스트</h3>
+									<h3>AS 요청 리스트</h3>
 								</div>
 								<div class="col-md-4">
 									<select id="selectPagePerRow" name="selectPagePerRow">
@@ -144,6 +144,7 @@
 										<td><strong>대행업체 업종 코드</strong></td>
 										<td><strong>AS 요청일자</strong></td>
 										<td><strong>AS 완료일자</strong></td>
+										<td><strong>AS 요청 수락</strong></td>
 										
 										<!-- <td><strong>수정</strong></td>
 										<td><strong>삭제</strong></td> -->
@@ -171,14 +172,13 @@
 													<td><strong>${unitedAfterserviceRequestDto.agencyBusinesstypeCode}</strong></td>
 													<td><strong>${unitedAfterserviceRequestDto.dateRequestAfterservice}</strong></td>
 													<td><strong>${unitedAfterserviceRequestDto.dateCompleteAfterservice}</strong></td>
-													<!-- <td><a href="#">수정</a></td>
-													<td><a href="">삭제</a></td> -->
-													<%-- <td><strong>${article.articleId}</strong></td>
-													<td>${board.boardTitle}</td>
-													<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
-													<td>${article.articleContent}</td>
-													<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
-													<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
+													<td>
+														<%-- <c:choose>
+															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}"> --%>
+																<a href="${pageContext.request.contextPath}/insertAgencyAfterserviceHandling?unitedAfterserviceRequestCode=${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}&agencyEmployeeId=${member.memberId}" class="btn btn-primary" role="button">AS 요청 수락</a>		
+															<%-- </c:when>
+														</c:choose> --%>
+													</td>
 												</tr>
 											<%-- </c:when>
 										</c:choose> --%>

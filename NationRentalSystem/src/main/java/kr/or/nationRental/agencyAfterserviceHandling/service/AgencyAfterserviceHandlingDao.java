@@ -18,6 +18,16 @@ public class AgencyAfterserviceHandlingDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingDao.class);
 	final String NS = "kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper.";
 	
+	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstypeDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
+		logger.debug("selectListAgencyBusinesstypeDto AgencyAfterserviceHandlingDao");
+		return sqlSession.selectList(NS+"selectListAgencyBusinesstypeDto", unitedAfterserviceRequestDto);
+	}
+	
+	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("selectOneUnitedAfterserviceRequestDto AgencyAfterserviceHandlingDao");
+		return sqlSession.selectOne(NS+"selectOneUnitedAfterserviceRequestDto", unitedAfterserviceRequestDto);
+	}
+	
 	public int totalCountUnitedAfterserviceRequestDto(Map<String, Object> map) {
 		logger.debug("totalCountUnitedAfterserviceRequestDto AgencyAfterserviceHandlingDao");
 		return sqlSession.selectOne(NS+"totalCountUnitedAfterserviceRequestDto", map);

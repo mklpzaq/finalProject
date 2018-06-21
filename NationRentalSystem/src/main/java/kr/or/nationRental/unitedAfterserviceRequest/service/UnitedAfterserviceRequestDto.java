@@ -23,6 +23,7 @@ public class UnitedAfterserviceRequestDto {
 	private String textRegularCheck;
 	private String stateGoods;
 	private String beforePageCode;
+	private String agencyEmployeeId;
 	
 	public int getUnitedAfterserviceRequestCode() {
 		return unitedAfterserviceRequestCode;
@@ -144,6 +145,12 @@ public class UnitedAfterserviceRequestDto {
 	public void setBeforePageCode(String beforePageCode) {
 		this.beforePageCode = beforePageCode;
 	}
+	public String getAgencyEmployeeId() {
+		return agencyEmployeeId;
+	}
+	public void setAgencyEmployeeId(String agencyEmployeeId) {
+		this.agencyEmployeeId = agencyEmployeeId;
+	}
 	@Override
 	public String toString() {
 		return "UnitedAfterserviceRequestDto [unitedAfterserviceRequestCode=" + unitedAfterserviceRequestCode
@@ -156,6 +163,6 @@ public class UnitedAfterserviceRequestDto {
 				+ ", dateRequestAfterservice=" + dateRequestAfterservice + ", dateCompleteAfterservice="
 				+ dateCompleteAfterservice + ", adminagencyName=" + adminagencyName + ", goodsfacilityThreeName="
 				+ goodsfacilityThreeName + ", textRegularCheck=" + textRegularCheck + ", stateGoods=" + stateGoods
-				+ ", beforePageCode=" + beforePageCode + "]";
+				+ ", beforePageCode=" + beforePageCode + ", agencyEmployeeId=" + agencyEmployeeId + "]";
 	}
 }

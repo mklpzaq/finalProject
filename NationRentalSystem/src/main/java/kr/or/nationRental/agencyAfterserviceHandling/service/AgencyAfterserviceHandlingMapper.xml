@@ -5,6 +5,75 @@
  
 <mapper namespace="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper">
 	
+	<select id="selectListAgencyBusinesstypeDto"
+			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto"
+			resultType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyBusinesstypeDto">
+		SELECT
+			agenbusintype.agency_businesstype_code AS agencyBusinesstypeCode
+			,agenbusintype.agency_businesstype_name AS agencyBusinesstypeName
+		FROM
+			agency_employee AS emp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			emp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+		
+			INNER JOIN
+			agency_businesstype AS agenbusintype
+			ON
+			agen.agency_businesstype_code = agenbusintype.agency_businesstype_code
+		WHERE
+			emp.agency_employee_id = #{agencyEmployeeId}
+	</select>
+	
+	<select id="selectOneUnitedAfterserviceRequestDto"
+			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto"
+			resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		SELECT
+			unitedar.united_afterservice_request_code AS unitedAfterserviceRequestCode
+			,unitedar.return_goodsfacility_info_code AS returnGoodsfacilityInfoCode
+			,unitedar.regular_check_code AS regularCheckCode
+			,unitedar.adminagency_code AS adminagencyCode
+			,unitedar.goodsfacility_three_code AS goodsfacilityThreeCode
+			,unitedar.goodsfacility_code AS goodsfacilityCode
+			,unitedar.goodsfacility_name AS goodsfacilityName
+			,unitedar.functionary_id AS functionaryId
+			,unitedar.state_goods_code AS stateGoodsCode
+			,unitedar.text_check_result_goodsfacility AS textCheckResultGoodsfacility
+			,unitedar.agency_code AS agencyCode
+			,unitedar.agency_name AS agencyName
+			,unitedar.agency_businesstype_code AS agencyBusinesstypeCode
+			,unitedar.date_request_afterservice AS dateRequestAfterservice
+			,unitedar.date_complete_afterservice AS dateCompleteAfterservice
+			,admina.adminagency_name AS adminagencyName
+			,stateg.state_goods AS stateGoods
+			,gfthree.goodsfacility_three_name AS goodsfacilityThreeName
+			
+			FROM
+			united_afterservice_request AS unitedar
+			INNER JOIN
+			adminagency AS admina
+			ON
+			unitedar.adminagency_code = admina.adminagency_code
+			
+			INNER JOIN
+			state_goods AS stateg
+			ON
+			unitedar.state_goods_code = stateg.state_goods_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			unitedar.goodsfacility_three_code = gfthree.goodsfacility_three_code
+		WHERE
+			united_afterservice_request_code = #{unitedAfterserviceRequestCode}
+	</select>
+	
 	<select id="totalCountUnitedAfterserviceRequestDto"
 			parameterType="java.util.Map"
 			resultType="Integer">
