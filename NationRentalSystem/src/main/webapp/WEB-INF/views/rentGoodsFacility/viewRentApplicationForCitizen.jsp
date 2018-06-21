@@ -136,7 +136,7 @@
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
-												<td><a href="${pageContext.request.contextPath}/">수정</a></td>
+												<td><a href="${pageContext.request.contextPath}/updateApplicationForm?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">수정</a></td>
 												<td><a href="${pageContext.request.contextPath}/">반납배달신청</a></td>																																															
 											</tr>
 										</c:forEach>									

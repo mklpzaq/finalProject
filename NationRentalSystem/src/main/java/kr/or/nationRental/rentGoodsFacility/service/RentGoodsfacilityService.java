@@ -76,4 +76,15 @@ public class RentGoodsfacilityService {
 		return returnMap;		
 	}
 
+	public RentGoodsfacilityDto updateRentApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService updateRentApplication  :" + rentGoodsfacilityDto.toString());
+		
+		return rentGoodsfacilityDao.updateRentApp(rentGoodsfacilityDto);
+	}
+
+	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

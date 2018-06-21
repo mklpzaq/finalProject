@@ -71,4 +71,22 @@ public class RentGoodsfacilityController {
 		return "/rentGoodsFacility/viewRentApplicationForCitizen";
 	}
 	
+	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.GET)
+	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto
+										,Model model) {
+		logger.debug("RentGoodsfacilityController updateApplicationForm GET: " + rentGoodsfacilityDto.toString());
+		
+		RentGoodsfacilityDto updateRentApp = rentGoodsfacilityService.updateRentApplication(rentGoodsfacilityDto);
+		model.addAttribute("updateRentApp", updateRentApp);
+		return "/rentGoodsFacility/updateRentApplicationForm";
+	}
+	
+	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.POST)
+	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityController updateApplicationForm POST: " + rentGoodsfacilityDto.toString());
+		int result = rentGoodsfacilityService.updateApplication(rentGoodsfacilityDto);
+				
+		return "";
+	}
+	
 }

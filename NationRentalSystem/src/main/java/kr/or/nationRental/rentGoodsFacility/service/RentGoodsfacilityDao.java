@@ -41,4 +41,9 @@ public class RentGoodsfacilityDao {
 		return sqlSession.selectOne(NS+"totalCountRentFORM", map);
 	}
 
+	public RentGoodsfacilityDto updateRentApp(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityDao totalCountRentFORM : ");
+		return sqlSession.selectOne(NS+"updateRentApp", rentGoodsfacilityDto);
+	}
+
 }

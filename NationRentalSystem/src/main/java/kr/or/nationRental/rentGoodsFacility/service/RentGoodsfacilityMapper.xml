@@ -59,7 +59,8 @@
   			parameterType="java.util.Map"
   			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
   			SELECT
-  				adminagency_code as adminagencyCode
+  				goodsfacility_rental_code as goodsfacilityRentalCode
+  				,adminagency_code as adminagencyCode
   				,citizen_id as citizenId
   				,citizen_phone as citizenPhone
   				,goodsfacility_code as goodsfacilityCode
@@ -104,6 +105,23 @@
 					</when>					
 				</choose>
 			</if>
+  	</select>
+  	
+  	<select id="updateRentApp"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT  				
+  				citizen_id as citizenId
+  				,citizen_phone as citizenPhone
+  				,goodsfacility_code as goodsfacilityCode
+  				,goodsfacility_name as goodsfacilityName
+  				,goodsfacility_rental_date_start as goodsfacilityRentalDateStart
+  				,goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
+  				,goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
+  			FROM
+  				goodsfacility_rental
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}
   	</select>
   
   </mapper>
