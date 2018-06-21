@@ -52,6 +52,7 @@ public class RentGoodsfacilityController {
 	@RequestMapping(value="/viewApplicationRentForCitizen", method=RequestMethod.GET)
 	public String viewApplicationRentForCitizen(Model model
 												,CitizenDto citizenDto
+												,RentGoodsfacilityDto rentGoodsfacilityDto
 												,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 												,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 												,@RequestParam(value="searchOption", defaultValue="citizenId") String searchOption

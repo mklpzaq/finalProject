@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
 
 
@@ -18,17 +19,15 @@ public class RentalTotalPaymentDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	/*//RentGoodsfacilityDto 리스트를 가져오는 작업
-		public List<RentGoodsfacilityDto> getRentGoodsfacilityDtoList() {
-			logger.debug("---getRentGoodsfacilityDtoList");
-			
-			List<RentGoodsfacilityDto> list = sqlSession.selectList(NS+"getRentGoodsfacilityDtoList");
-			
-			if(!list.isEmpty()) {
-				logger.debug(list.toString());
-			}else {
-				logger.debug("list에 아무런 값이 없습니다.");
-			}
-			return list;
-		}*/
+	public int insertRentGoodsfacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("insertRentGoodsfacility : " + rentGoodsfacilityDto.toString());
+		int row = sqlSession.insert(NS+"insertRentGoodsfacility", rentGoodsfacilityDto);
+		return row;
+	}
+	
+	public int insertRentTotalPayment(RentalTotalPaymentDto rentalTotalPaymentDto) {
+		logger.debug("insertRentTotalPayment : " + rentalTotalPaymentDto.toString());
+		int row = sqlSession.insert(NS+"insertRentTotalPayment", rentalTotalPaymentDto);
+		return row;
+	}
 }

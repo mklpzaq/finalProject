@@ -5,29 +5,73 @@
     
 <mapper namespace="kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentMapper">
 
-  <!-- 	<select id="getRentGoodsfacilityDtoList"
-  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
-  			SELECT
-				gfrental.goodsfacility_rental_code as goodsfacilityRentalCode
-				, gfrental.adminagency_code as adminagencyCode
-				, gfrental.goodsfacility_code as goodsfacilityCode
-				, gfrental.goodsfacility_name as goodsfacilityName
-				, gfrental.citizen_id as citizenId
-				, gfrental.citizen_name as citizenName
-				, gfrental.citizen_phone as citizenPhone
-				, gfrental.goodsfacility_rental_date_start as goodsfacilityRentalDateStart
-				, gfrental.goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
-				, gfrental.goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
-				, gfrental.goodsfacility_rental_date_registration as goodsfacilityRentalDateRegistration
-				, gfrental.goodsfacility_rental_is_canceled as goodsfacilityRentalIsCanceled
-				, gfrental.goodsfacility_rental_deposit as goodsfacilityRentalDeposit
-				, gf.goodsfacility_price_rental as goodsfacilityPriceRental
-			FROM
-				goodsfacility_rental AS gfrental
-				INNER JOIN
-				goodsfacility AS gf
-				ON
-				gfrental.goodsfacility_code = gf.goodsfacility_code
-  	</select> -->
+	<insert id="insertRentGoodsfacility"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  		
+  			INSERT INTO goodsfacility_rental(
+				goodsfacility_rental_code
+				, adminagency_code
+				, goodsfacility_code
+				, goodsfacility_name
+				, citizen_id
+				, citizen_name
+				, citizen_phone
+				, goodsfacility_rental_date_start
+				, goodsfacility_rental_day_end
+				, goodsfacility_rental_is_ordered_delivery
+				, goodsfacility_rental_date_registration
+				, goodsfacility_rental_is_canceled
+				, goodsfacility_rental_deposit
+				)VALUES (
+					NULL
+					, #{adminagencyCode}
+					, #{goodsfacilityCode}
+					, #{goodsfacilityName}
+					, #{citizenId}
+					, #{citizenName}
+					, #{citizenPhone}
+					, NOW()
+					, NOW()
+					, #{goodsfacilityRentalIsOrderedDelivery}
+					, NOW()
+					, #{goodsfacilityRentalIsCanceled}
+					, #{goodsfacilityRentalDeposit}
+				)
+  	</insert>
+
+
+	<insert id="insertRentTotalPayment"
+  			parameterType="kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentDto">
+  			
+  			INSERT INTO rental_total_payment (
+  				rental_total_payment_code
+  				, goodsfacility_rental_code
+  				, citizen_id
+  				, goodsfacility_code
+  				, goodsfacility_name
+  				, adminagency_code
+  				, goodsfacility_price_rental
+  				, used_point
+  				, annualfee_pakage_code
+  				, annualfee_pakage_name
+  				, delivery_price
+  				, rental_total_payment
+  				, date_payment
+  			) VALUES (
+  				NULL
+  				, #{GoodsfacilityRentalCode}
+  				, #{citizenId}
+  				, #{goodsfacilityCode}
+  				, #{goodsfacilityName}
+  				, #{adminagencyCode}
+  				, #{goodsfacilityPriceRental}
+  				, #{usedPoint}
+  				, #{annualfeePakageCode}
+  				, #{annualfeePakageName}
+  				, #{deliveryPrice}
+  				, #{rentalTotalPayment}
+  				, NOW()
+  			)
+  	</insert>
 
 </mapper>

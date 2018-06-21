@@ -1,6 +1,5 @@
 package kr.or.nationRental.rentalTotalPayment.controller;
 
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityService;
 import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
+import kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentDto;
 import kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentService;
 
 @Controller
@@ -24,14 +23,21 @@ public class RentalTotalPaymentController {
 	//예약 화면에서 선택된 정보를 가지고 와 셋팅한다.
 	@RequestMapping(value="/selectListRentalTotalPayment", method=RequestMethod.POST)
 	public String selectListRentalTotalPayment(Model model, RentGoodsfacilityDto rentGoodsfacilityDto) {
-		/*List<RentGoodsfacilityDto> rentGoodsfacilityDtoList = rentalTotalPaymentService.getRentGoodsfacilityDtoList();*/
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(rentGoodsfacilityDto.toString());
+		rentalTotalPaymentService.insertRentGoodsfacility(rentGoodsfacilityDto);
 		model.addAttribute("rentGoodsfacilityDto", rentGoodsfacilityDto);
 		return "rentalTotalPayment/selectRentalTotalPaymentForm";
 		
 	}
-
+	@RequestMapping(value="/insertRentalTotalPayment", method=RequestMethod.POST)
+	public String insertRentalTotalPayment(RentalTotalPaymentDto rentalTotalPaymentDto) {
+		logger.debug("★★★★★★★★★★★★★★확인시작★★★★★★★★★★★★★★★★★");
+		logger.debug("insertRentalTotalPayment : " + rentalTotalPaymentDto.toString());
+		logger.debug("★★★★★★★★★★★★★★확인끝끝★★★★★★★★★★★★★★★★★");
+		rentalTotalPaymentService.insertRentalTotalPayment(rentalTotalPaymentDto);
+		
+		return "redirect:/viewApplicationRentForCitizen"; 
+	}
 	
 	
 }

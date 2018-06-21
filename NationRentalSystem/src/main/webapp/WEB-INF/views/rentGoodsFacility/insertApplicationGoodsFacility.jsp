@@ -100,11 +100,11 @@
 								    </div>
 								</div>
 								<div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">배달신청여부</label>
+								<label for="goodsfacility" class="col-sm-2 control-label">배달신청</label>
 							    	<div class="col-sm-10">						    	
 								   	 	<select id="goodsfacilityRentalIsOrderedDelivery" name="goodsfacilityRentalIsOrderedDelivery" class="form-control">													
-												 <option>네</option>
-												 <option>아니요</option>						
+												 <option>2500</option>
+												 <option>0</option>						
 										</select>		    		    	
 						   		 	</div>
 								</div>

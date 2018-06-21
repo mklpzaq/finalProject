@@ -16,10 +16,16 @@ public class RentalTotalPaymentService {
 	private static final Logger logger = LoggerFactory.getLogger(RentalTotalPaymentService.class);
 	@Autowired RentalTotalPaymentDao rentalTotalPaymentDao;
 	
-	/*//RentGoodsfacilityDto 리스트를 가져오는 작업
-	public List<RentGoodsfacilityDto> getRentGoodsfacilityDtoList() {
-		logger.debug("---getRentGoodsfacilityDtoList");
-		return rentalTotalPaymentDao.getRentGoodsfacilityDtoList();	
-	}*/
+	public void insertRentGoodsfacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("insertRentalTotalPayment : " + rentGoodsfacilityDto.toString());
+		rentalTotalPaymentDao.insertRentGoodsfacility(rentGoodsfacilityDto);
+		
+	}
+	
+	public void insertRentalTotalPayment(RentalTotalPaymentDto rentalTotalPaymentDto) {
+		logger.debug("insertRentalTotalPayment : " + rentalTotalPaymentDto.toString());
+		rentalTotalPaymentDao.insertRentTotalPayment(rentalTotalPaymentDto);
+		
+		}
 
 }
