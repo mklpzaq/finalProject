@@ -39,8 +39,8 @@
 					<div id="angkorTagController" class="col-sm-12">
 						<!-- Begin Content -->
 			
-						<div class="backgroundColor navbar-header">
-							<a style="color:#FFFFFF" class="backgroundcolor navbar-brand" href="${pageContext.request.contextPath}/">Home</a>
+						<div class="navbar-header">
+							<a style="color:#FFFFFF" class="navbar-brand" href="${pageContext.request.contextPath}/">Home</a>
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
@@ -117,15 +117,11 @@
 								<hr style="margin:0 0 5px 0;"/>
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionary">공무원 회원관리</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/functionaryBasicInformation/?functionaryId=${member.memberId}">내 정보수정</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/deleteFunctionnary/?functionaryId=${member.memberId}">회원탈퇴</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대행업체 업종 검색</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewFunctionaryInfo?functionaryId=${member.memberId}">공무원 회원관리</a></li>		
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAgencyForm">대행업체 등록</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListContractAgency">대행업체 관리</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/">대행업체 직원조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">기부관리</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertGoodsFacility/?functionaryId=${member.memberId}">물품/시설 관리</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertGoodsFacility?functionaryId=${member.memberId}">물품/시설 관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectGoodsFacilityList?functionaryId=${member.memberId}">물품/시설 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">시민 결제/취소 조회</a></li>
@@ -147,7 +143,7 @@
 									<ul class="nav navbar-nav">
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewAgencyEmployeeInfo?agencyEmployeeId=${member.memberId}">직원 회원 관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyEmployee?agencyEmployeeId=${member.memberId}">소속 대행업체 직원 조회</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">계약한 지자체 공무원 조회</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionaryForAgencyEmployee?agencyEmployeeId=${member.memberId}">계약한 지자체 공무원 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">소속업체 낙찰정보 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?agencyEmployeeId=${member.memberId}">통합 AS 의뢰 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">배달 의뢰 리스트</a></li>

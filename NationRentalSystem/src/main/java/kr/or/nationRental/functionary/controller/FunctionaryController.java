@@ -79,18 +79,18 @@ public class FunctionaryController {
 	}
 		
 	//공무원 기본정보조회
-	@RequestMapping(value="/functionaryBasicInformation", method=RequestMethod.GET)
+	@RequestMapping(value="/viewFunctionaryInfo", method=RequestMethod.GET)
 	public String functionaryBasicInformation(/*@RequestParam(value="functionaryId") String functionaryId*/
 											HttpSession session
 											,Model model) {
 		MemberDto member = (MemberDto) session.getAttribute("member");
 		String functionaryId = member.getMemberId();
-		logger.debug("FunctionaryController - functionaryBasicInformation - functionaryId : " + functionaryId);
-		FunctionaryDto returnfunctionaryDto = functionaryService.functionaryBasicInformation(functionaryId);
-		logger.debug("FunctionaryController - functionaryBasicInformation - returnfunctionaryDto : " + returnfunctionaryDto.toString());
+		logger.debug("FunctionaryController - viewFunctionaryInfo - functionaryId : " + functionaryId);
+		FunctionaryDto returnfunctionaryDto = functionaryService.viewFunctionaryInfo(functionaryId);
+		logger.debug("FunctionaryController - viewFunctionaryInfo - returnfunctionaryDto : " + returnfunctionaryDto.toString());
 		model.addAttribute("returnfunctionaryDto", returnfunctionaryDto);
 		
-		return "/functionary/functionaryBasicInformation";
+		return "/functionary/viewFunctionaryInfo";
 	}
 	
 	/*공무원 정보 수정
@@ -111,7 +111,7 @@ public class FunctionaryController {
 	public String updateFunctionnary(@RequestParam(value="functionaryId") String functionaryId
 												,Model model) {
 		logger.debug("FunctionaryController - updateFunctionnary - get - functionaryId : " + functionaryId.toString());
-		FunctionaryDto returnfunctionaryDto = functionaryService.functionaryBasicInformation(functionaryId);
+		FunctionaryDto returnfunctionaryDto = functionaryService.viewFunctionaryInfo(functionaryId);
 		logger.debug("FunctionaryController - updateFunctionnary - get - returnfunctionaryDto : " + returnfunctionaryDto.toString());
 		model.addAttribute("returnfunctionaryDto", returnfunctionaryDto);
 		

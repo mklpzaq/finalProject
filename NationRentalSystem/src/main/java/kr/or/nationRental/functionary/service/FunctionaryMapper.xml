@@ -99,7 +99,7 @@
 		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
 	
-	<select id="functionaryBasicInformation" parameterType="String" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+	<select id="viewFunctionaryInfo" parameterType="String" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 			SELECT
 				functionary_id as functionaryId
 				,adminagency_code as adminagencyCode

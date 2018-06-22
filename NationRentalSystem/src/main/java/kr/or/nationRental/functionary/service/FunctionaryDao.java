@@ -43,9 +43,9 @@ public class FunctionaryDao {
 		return sqlSession.selectOne(NS+"totalCountFunctionary", map);
 	}
 	
-	public FunctionaryDto functionaryBasicInformation(String functionaryId) {
-		logger.debug("FunctionaryDao - functionaryBasicInformation - functionaryId : " + functionaryId);
-		return sqlSession.selectOne(NS+"functionaryBasicInformation", functionaryId);
+	public FunctionaryDto viewFunctionaryInfo(String functionaryId) {
+		logger.debug("FunctionaryDao - viewFunctionaryInfo - functionaryId : " + functionaryId);
+		return sqlSession.selectOne(NS+"viewFunctionaryInfo", functionaryId);
 	}
 	
 	public int updateFunctionnary(FunctionaryDto functionaryDto) {

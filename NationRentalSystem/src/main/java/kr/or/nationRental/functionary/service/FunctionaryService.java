@@ -74,12 +74,12 @@ public class FunctionaryService {
 		
 		return returnmap;
 	}
-	
-	public FunctionaryDto functionaryBasicInformation(String functionaryId) {
-		logger.debug("FunctionaryService - functionaryBasicInformation - functionaryId : " + functionaryId.toString());
+	//공무원 기본정보조회
+	public FunctionaryDto viewFunctionaryInfo(String functionaryId) {
+		logger.debug("FunctionaryService - viewFunctionaryInfo - functionaryId : " + functionaryId.toString());
 		
-		FunctionaryDto returnfunctionaryDto= functionaryDao.functionaryBasicInformation(functionaryId);
-		logger.debug("FunctionaryService - functionaryBasicInformation - returnfunctionaryDto : " + returnfunctionaryDto.toString());
+		FunctionaryDto returnfunctionaryDto= functionaryDao.viewFunctionaryInfo(functionaryId);
+		logger.debug("FunctionaryService - viewFunctionaryInfo - returnfunctionaryDto : " + returnfunctionaryDto.toString());
 		
 		return returnfunctionaryDto;
 	}
@@ -116,7 +116,7 @@ public class FunctionaryService {
 		//공무원 이력수정처리
 		functionaryDao.updateFuctionaryMoveInout(returnfunctionaryDto);
 		//탈퇴공무원 데이터 1년저장을 위한 select
-		functionaryDto = functionaryDao.functionaryBasicInformation(fuctionaryId);
+		functionaryDto = functionaryDao.viewFunctionaryInfo(fuctionaryId);
 		//탈퇴공무원 데이터 1년저장을 위한 insert
 		functionaryDao.insertStorageFunctionary(functionaryDto);
 		//delete 처리		

@@ -50,23 +50,22 @@
 	</head>
 
 	<body>
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-2" style="padding:15px;">
-						<jsp:include page="../module/left/leftnavi.jsp"/>
-					</div>
-					<div class="col-sm-8">
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-2" style="padding:15px;">
+					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
+				</div>
+				<div style="padding:15px;" class="col-sm-8">
 					<!-- Begin Content -->
-						
-						<div class="text-center">
-							<h1>공무원회원 조회</h1>
-							<h2>Nation Integrated Reserve and Rental System</h2>
-							<P>The time on the server is ${serverTime}.</P>
-						</div>
-						
-						<div class="panel panel-default">
-							<div class="panel-body text-center">
+							
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="text-center">공무원 리스트</h3>
+							<hr/>						
 								<div class="row">
 									<div class="col-md-4">
 										<strong>${currentPage} / ${lastPage} Page</strong><br/>
@@ -138,7 +137,7 @@
 											</c:forEach>									
 									</tbody>
 								</table>
-								<nav>
+								<nav style="text-align:center">
 									<ul class="pagination">
 										<li>
 											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
@@ -206,8 +205,7 @@
 										</li>
 									</ul>
 								</nav>
-							</div>
-						</div>
+							
 					
 					
 					
@@ -229,8 +227,13 @@
 								</form>
 							</div> --%>
 											
+				<!-- End Content -->
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
 				</div>
 			</div>
 		</div>
+		<jsp:include page="../module/bottom/bottomContent.jsp"/>
 	</body>
 </html>

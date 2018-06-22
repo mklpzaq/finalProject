@@ -1,7 +1,5 @@
 package kr.or.nationRental.agencyEmployee.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -24,6 +22,16 @@ public class AgencyEmployeeController {
 	@Autowired
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
+	
+	@RequestMapping(value="/selectListFunctionaryForAgencyEmployee", method=RequestMethod.GET)
+	public String selectListFunctionaryForAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeController");
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(agencyEmployeeDto.toString());
+		
+		return null;
+	}
+	
 	
 	@RequestMapping(value="/selectListAgencyEmployee", method=RequestMethod.GET)
 	public String selectListAgencyEmployee(Model model
