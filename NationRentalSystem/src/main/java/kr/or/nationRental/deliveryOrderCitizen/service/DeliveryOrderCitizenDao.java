@@ -47,5 +47,17 @@ public class DeliveryOrderCitizenDao {
 		logger.debug("DeliveryOrderCitizenDao - selectListDeliveryOrderCitizen - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
 		return sqlSession.selectList(NS+"selectListDeliveryOrderCitizen", deliveryOrderCitizenDto);		
 	}
+
+	public DeliveryOrderCitizenDto insertDeliveryOrderCitizenAddressSelect(
+			DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenDao - insertDeliveryOrderCitizenAddressSelect - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		return sqlSession.selectOne(NS+"insertDeliveryOrderCitizenAddressSelect", deliveryOrderCitizenDto);
+	}
+
+	public DeliveryOrderCitizenDto insertDeliveryOrderAdminagencyAddressSelect(
+			DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("DeliveryOrderCitizenDao - insertDeliveryOrderAdminagencyAddressSelect - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
+		return sqlSession.selectOne(NS+"insertDeliveryOrderAdminagencyAddressSelect", deliveryOrderCitizenDto);
+	}
 	
 }

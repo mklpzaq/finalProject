@@ -1,6 +1,7 @@
 package kr.or.nationRental.deliveryOrderCitizen.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,9 +28,17 @@ public class DeliveryOrderCitizenController {
 	//배달신청등록
 	@RequestMapping(value="/insertDeliveryOrderCitizen", method=RequestMethod.GET)
 	public String insertDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto
+											,HttpSession session
 											,Model model) {
 		logger.debug("DeliveryOrderCitizenController - insertDeliveryOrderCitizen - GET - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
-		model.addAttribute("DeliveryOrderCitizenDto", deliveryOrderCitizenDto);
+			
+		
+		Map<String, Object> map = deliveryOrderCitizenService.insertDeliveryOrderCitizenSelectAddress(deliveryOrderCitizenDto, session);
+		
+		model.addAttribute("deliveryOrderCitizenDto", deliveryOrderCitizenDto);
+		model.addAttribute("map", map);
+		
+		
 		return "/deliveryOrder/insertDeliveryOrderCitizenform";
 	}
 	

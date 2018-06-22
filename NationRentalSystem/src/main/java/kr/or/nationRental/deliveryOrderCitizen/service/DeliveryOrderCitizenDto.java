@@ -9,9 +9,11 @@ public class DeliveryOrderCitizenDto {
 	private int goodsfacilityCode; //시설/물품 개별관리코드
 	private String citizenId; //시민ID
 	private int adminagencyCode; //행정기관코드
+	private String sendAddressSido; //보내는쪽 시도명
 	private String sendAddressSigungu; //보내는쪽 시군구명
 	private String sendAddressEupmyeon; //보내는쪽 읍면동명
 	private String sendAddressSangse; //보내는쪽 상세주소
+	private String receiveAddressSido; //받는 쪽 시도
 	private String receiveAddressSigungu; //받는쪽 시군구명
 	private String receiveAddressEupmyeon; //받는쪽 읍면동명
 	private String receiveAddressSangse; //받는쪽 상세주소
@@ -53,6 +55,12 @@ public class DeliveryOrderCitizenDto {
 	public void setAdminagencyCode(int adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
 	}
+	public String getSendAddressSido() {
+		return sendAddressSido;
+	}
+	public void setSendAddressSido(String sendAddressSido) {
+		this.sendAddressSido = sendAddressSido;
+	}
 	public String getSendAddressSigungu() {
 		return sendAddressSigungu;
 	}
@@ -70,6 +78,12 @@ public class DeliveryOrderCitizenDto {
 	}
 	public void setSendAddressSangse(String sendAddressSangse) {
 		this.sendAddressSangse = sendAddressSangse;
+	}
+	public String getReceiveAddressSido() {
+		return receiveAddressSido;
+	}
+	public void setReceiveAddressSido(String receiveAddressSido) {
+		this.receiveAddressSido = receiveAddressSido;
 	}
 	public String getReceiveAddressSigungu() {
 		return receiveAddressSigungu;
@@ -106,13 +120,13 @@ public class DeliveryOrderCitizenDto {
 		return "DeliveryOrderCitizenDto [deliveryOrderCitizenCode=" + deliveryOrderCitizenCode
 				+ ", goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", classifyRentalState="
 				+ classifyRentalState + ", goodsfacilityCode=" + goodsfacilityCode + ", citizenId=" + citizenId
-				+ ", adminagencyCode=" + adminagencyCode + ", sendAddressSigungu=" + sendAddressSigungu
-				+ ", sendAddressEupmyeon=" + sendAddressEupmyeon + ", sendAddressSangse=" + sendAddressSangse
+				+ ", adminagencyCode=" + adminagencyCode + ", sendAddressSido=" + sendAddressSido
+				+ ", sendAddressSigungu=" + sendAddressSigungu + ", sendAddressEupmyeon=" + sendAddressEupmyeon
+				+ ", sendAddressSangse=" + sendAddressSangse + ", receiveAddressSido=" + receiveAddressSido
 				+ ", receiveAddressSigungu=" + receiveAddressSigungu + ", receiveAddressEupmyeon="
 				+ receiveAddressEupmyeon + ", receiveAddressSangse=" + receiveAddressSangse
 				+ ", deliveryOrderCitizenDate=" + deliveryOrderCitizenDate + ", isCanceledDelivery="
 				+ isCanceledDelivery + "]";
 	}
-	
 	
 }

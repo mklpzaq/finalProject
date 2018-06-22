@@ -141,12 +141,12 @@
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertDeliveryOrderCitizen" method="post">
-									<!-- <div class="form-group">
+									<div class="form-group">
 										<label for="goodsfacilityRentalCode" class="col-sm-3 control-label">시설/물품 대여/예약 신청코드</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="goodsfacilityRentalCode" id="goodsfacilityRentalCode" placeholder="행정기관 코드를 입력해주세요.">
+											<input type="text" class="form-control" name="goodsfacilityRentalCode" id="goodsfacilityRentalCode" value="${deliveryOrderCitizenDto.goodsfacilityRentalCode}">
 										</div>
-									</div> -->
+									</div>
 									<div class="form-group">
 										<label for="classifyRentalState" class="col-sm-3 control-label">대여/반납상태 구분</label>
 										<div class="col-sm-9">
@@ -190,10 +190,10 @@
 										<div class="form-group">
 											<label for="jibunAddress" class="col-sm-4 control-label">지번주소</label>
 											<div class="col-sm-8">
-												<input type="text" style="float:left" size="10" id="sido" name="sidoName" placeholder="시도">
-												<input type="text" style="float:left" size="10" id="sigungu" name="sendAddressSigungu" placeholder="시군구">
-												<input type="text" style="float:left" size="10" id="bname" name="sendAddressEupmyeon" placeholder="읍면동">
-												<input type="text" style="float:left" size="30" id="sample6_address2" name="sendAddressSangse" placeholder="상세주소">
+												<input type="text" style="float:left" size="10" id="sido" name="sidoName" value="${map.returnCitizenAddress.sendAddressSido}">
+												<input type="text" style="float:left" size="10" id="sigungu" name="sendAddressSigungu" value="${map.returnCitizenAddress.sendAddressSigungu}">
+												<input type="text" style="float:left" size="10" id="bname" name="sendAddressEupmyeon" value="${map.returnCitizenAddress.sendAddressEupmyeon}">
+												<input type="text" style="float:left" size="30" id="sample6_address2" name="sendAddressSangse" value="${map.returnCitizenAddress.sendAddressSangse}">
 											</div>
 										</div>
 										<br>										
@@ -216,10 +216,10 @@
 										<div class="form-group">
 											<label for="jibunAddress" class="col-sm-4 control-label">지번주소</label>
 											<div class="col-sm-8">
-												<input type="text" style="float:left" size="10" id="sido2" name="sidoName" placeholder="시도">
-												<input type="text" style="float:left" size="10" id="sigungu2" name="receiveAddressSigungu" placeholder="시군구">
-												<input type="text" style="float:left" size="10" id="bname2" name="receiveAddressEupmyeon" placeholder="읍면동">
-												<input type="text" style="float:left" size="30" id="sample7_address2" name="receiveAddressSangse" placeholder="상세주소">
+												<input type="text" style="float:left" size="10" id="sido2" name="sidoName" value="${map.returnAdminagencyAddress.receiveAddressSido}">
+												<input type="text" style="float:left" size="10" id="sigungu2" name="receiveAddressSigungu" value="${map.returnAdminagencyAddress.receiveAddressSigungu}">
+												<input type="text" style="float:left" size="10" id="bname2" name="receiveAddressEupmyeon" value="${map.returnAdminagencyAddress.receiveAddressEupmyeon}">
+												<input type="text" style="float:left" size="30" id="sample7_address2" name="receiveAddressSangse" value="${map.returnAdminagencyAddress.receiveAddressSangse}">
 											</div>
 										</div>
 										<br>									
