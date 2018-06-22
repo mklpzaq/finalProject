@@ -39,8 +39,8 @@
 					<div id="angkorTagController" class="col-sm-12">
 						<!-- Begin Content -->
 			
-						<div class="backgroundColor navbar-header">
-							<a style="color:#FFFFFF" class="backgroundcolor navbar-brand" href="${pageContext.request.contextPath}/">Home</a>
+						<div class="navbar-header">
+							<a style="color:#FFFFFF" class="navbar-brand" href="${pageContext.request.contextPath}/">Home</a>
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
