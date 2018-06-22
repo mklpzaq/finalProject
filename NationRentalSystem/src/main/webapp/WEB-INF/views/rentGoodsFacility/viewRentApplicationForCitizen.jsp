@@ -120,9 +120,12 @@
 											<td>시설&물품개별관리코드</td>
 											<td>시설&물품명</td>
 											<td>대여&대관 시작일</td>
-											<td>대여&대관 종료일</td>
+											<td>대여/대관 종료일</td>
 											<td>배달신청여부</td>
-											<td>신청날짜</td>																																								
+											<td>신청날짜</td>
+											<td>수정</td>
+											<td>반납</td>
+											<td>결제취소</td>																																							
 										</tr>
 									</thead>
 									<tbody>									
@@ -138,6 +141,7 @@
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
 												<td><a href="${pageContext.request.contextPath}/updateApplicationForm?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">수정</a></td>
 												<td><a href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}&adminagencyCode=${rentGoodsfacilityDto.adminagencyCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}&classifyRentalState=반납">반납배달신청</a></td>																																															
+												<td><a href="${pageContext.request.contextPath}/canceledGoodsfaciltyRental?rentalTotalPaymentCode=${rentalTotalPaymentDto.rentalTotalPaymentCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}">결제취소</a></td>   
 											</tr>
 										</c:forEach>									
 									</tbody>
