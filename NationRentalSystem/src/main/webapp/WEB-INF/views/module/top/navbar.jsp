@@ -157,7 +157,7 @@
 									</ul>
 								</div>
 							</c:when>
-							<c:when test="${member.memberLevel == '시민'}">
+							<c:when test="${member.memberLevel == '시민'}"> 
 								<hr style="margin:0 0 5px 0;"/>
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
