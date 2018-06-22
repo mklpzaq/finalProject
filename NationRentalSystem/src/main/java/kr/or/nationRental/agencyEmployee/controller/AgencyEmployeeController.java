@@ -26,12 +26,15 @@ public class AgencyEmployeeController {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
 	@RequestMapping(value="/selectListFunctionaryForAgencyEmployee", method=RequestMethod.GET)
-	public String selectListFunctionaryForAgencyEmployee(FunctionaryDto functionaryDto) {
+	public String selectListFunctionaryForAgencyEmployee(Model model
+														,FunctionaryDto functionaryDto) {
 		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeController");
 		logger.debug(functionaryDto.toString());
 		List<FunctionaryDto> list = agencyEmployeeService.selectListFunctionaryForAgencyEmployee(functionaryDto);
-		
-		return null;
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(list.toString());
+		model.addAttribute("functionaryDtoList", list);
+		return "agencyEmployee/selectListFunctionaryForAgencyEmployee";
 	}
 	
 	

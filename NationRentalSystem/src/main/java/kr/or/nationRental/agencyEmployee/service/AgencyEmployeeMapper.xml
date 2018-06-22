@@ -8,7 +8,45 @@
 	<select id="selectListFunctionaryForAgencyEmployee"
 			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
 			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
-		
+		SELECT
+			func.functionary_id AS functionaryId
+			,func.functionary_pw AS functionaryPw
+			,func.functionary_num AS functionaryNum
+			,adminagen.adminagency_code AS adminagencyCode
+			,adminagen.sido_name AS sidoName
+			,adminagen.sigungu_name AS sigunguName
+			,adminagen.eupmyeon_name AS eupmyeonName
+			,adminagen.adminagency_name AS adminagencyName
+			,adminagen.adminagency_address_sangse AS adminagencyAddressSangse
+			,func.functionary_name AS functionaryName
+			,func.functionary_phone AS functionaryPhone
+			,func.functionary_email AS functionaryEmail
+			,func.functionary_date_join AS functionaryDateJoin
+			
+		FROM
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+			
+			INNER JOIN
+			adminagency AS adminagen
+			ON
+			agen.adminagency_code = adminagen.adminagency_code
+			
+			INNER JOIN
+			functionary AS func
+			ON
+			adminagen.adminagency_code = func.adminagency_code
+			
+		WHERE
+			agenemp.agency_employee_id = #{agencyEmployeeId}
 	</select> 
 	
 	
