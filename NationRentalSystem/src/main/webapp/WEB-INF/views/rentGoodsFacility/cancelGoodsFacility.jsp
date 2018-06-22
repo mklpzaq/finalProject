@@ -27,6 +27,12 @@
 						<div class="panel-body text-center">
 							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/cancelGoodsFacility" method="post">
 								<div class="form-group">
+									<label for="application" class="col-sm-2 control-label">코드</label>
+								    <div class="col-sm-10">
+								    	<input type="hidden" class="form-control" id="goodsfacilityRentalCode" name="goodsfacilityRentalCode" value="${cencelRent.goodsfacilityRentalCode}" readonly>			    	
+								    </div>
+								</div>
+								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">시설물품명</label>
 								    <div class="col-sm-10">
 								    	<input type="text" class="form-control" id="goodsfacilityName" name="goodsfacilityName" value="${cencelRent.goodsfacilityName}" readonly>			    	

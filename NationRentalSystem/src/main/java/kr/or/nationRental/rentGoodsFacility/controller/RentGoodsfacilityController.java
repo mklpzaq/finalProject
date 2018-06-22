@@ -104,9 +104,11 @@ public class RentGoodsfacilityController {
 	}
 	
 	@RequestMapping(value="/cancelGoodsFacility", method=RequestMethod.POST)
-	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto
+										,RedirectAttributes redirectAttributes) {
 		logger.debug("RentGoodsfacilityController cancelGoodsFacility POST: " + rentGoodsfacilityDto.toString());
 		rentGoodsfacilityService.cancelRentGoodsFacility(rentGoodsfacilityDto);
+		redirectAttributes.addAttribute("citizenId", rentGoodsfacilityDto.getCitizenId());
 		return "redirect:/viewApplicationRentForCitizen";
 	}
 }
