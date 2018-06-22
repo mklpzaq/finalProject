@@ -118,19 +118,19 @@
 									<tbody>	
 										<tr>
 											<td>
-											<input type="hidden" name="goodsfacilityRentalCode"  value="${rentGoodsfacilityDto.goodsfacilityCode}">
-											<input type="hidden" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyCode}">
-											<input type="hidden" name="citizenId" value="${rentGoodsfacilityDto.citizenId}">
-											<input type="hidden" name="citizenName" value="${rentGoodsfacilityDto.citizenName}">
-											<input type="hidden" name="goodsfacilityRentalDateStart" value="${rentGoodsfacilityDto.goodsfacilityRentalDateStart}">
-											<input type="hidden" name="goodsfacilityRentalDayEnd" value="${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}">
-											<input type="hidden" name="goodsfacilityRentalDateRegistration" value="${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}">
-											<input type="hidden" name="goodsfacilityRentalIsCanceled" value="${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}">
-											<input type="hidden" name="goodsfacilityRentalDeposit" value="${rentGoodsfacilityDto.goodsfacilityRentalDeposit}">
-											<input type="hidden" name="goodsfacilityCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
-											<input type="hidden" name="goodsfacilityName" value="${rentGoodsfacilityDto.goodsfacilityName}">
-											<input type="hidden" name="goodsfacilityPriceRental" value="${rentGoodsfacilityDto.goodsfacilityPriceRental}">
-											<input type="hidden" name="goodsfacilityRentalIsOrderedDelivery" value="${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
+												<input type="text" name="goodsfacilityRentalCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
+												<input type="text" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyCode}">
+												<input type="text" name="citizenId" value="${rentGoodsfacilityDto.citizenId}">
+												<input type="text" name="citizenName" value="${rentGoodsfacilityDto.citizenName}">
+												<input type="text" name="goodsfacilityRentalDateStart" value="${rentGoodsfacilityDto.goodsfacilityRentalDateStart}">
+												<input type="text" name="goodsfacilityRentalDayEnd" value="${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}">
+												<input type="text" value="${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}">
+												<input type="text" value="${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}">
+												<input type="text" name="goodsfacilityRentalDeposit" value="${rentGoodsfacilityDto.goodsfacilityRentalDeposit}">
+												<input type="text" name="goodsfacilityCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
+												<input type="text" name="goodsfacilityName" value="${rentGoodsfacilityDto.goodsfacilityName}">
+												<input type="text" name="goodsfacilityPriceRental" value="${rentGoodsfacilityDto.goodsfacilityPriceRental}">
+												<input type="text" name="goodsfacilityRentalIsOrderedDelivery" value="${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
 											</td>
 											<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
 											<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
@@ -140,7 +140,7 @@
 									</tbody>
 									<tfoot>
 										<tr>
-											<td colspan="17" style="text-align:right">
+											<td colspan="5" style="text-align:right">
 												가격
 												<strong>${rentGoodsfacilityDto.goodsfacilityPriceRental}</strong>
 												+ 배송비 
@@ -158,7 +158,7 @@
 						</div>
 						<!-- End Content(1) -->
 						<!-- Begin Content(2) -->
-						<!-- <div class="panel panel-default">
+						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
 									<div style="text-align: center">
@@ -166,18 +166,16 @@
 									</div>
 								</div>
 								<hr/>
-								보유하고 있는 패키지/연회비를 모달로 불러올 수 있게 처리한다.
 								<p style="text-align: center">패키지/연회비 : 
 									<input type="text" name="annualfeePakage">
 									<button type="button" id="myModalclick" class="btn" data-toggle="modal" data-target="#annualfeePakageCheckModal">선택</button>
-								</p>
-								보유하고 있는 포인트를 불러온다.	
+								</p>	
 								<p style="text-align: center">사용할 포인트 : 
 									<input type="text" name="usePoint" value="">
 									보유 포인트 :
 								</p>
 							</div>
-						</div> -->
+						</div>
 						<!-- End Content(2) -->
 						<!-- Begin Content(3) -->
 						<div class="panel panel-default">

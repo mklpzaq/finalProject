@@ -1,6 +1,5 @@
 package kr.or.nationRental.rentalTotalPayment.service;
 
-import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -8,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
 
 

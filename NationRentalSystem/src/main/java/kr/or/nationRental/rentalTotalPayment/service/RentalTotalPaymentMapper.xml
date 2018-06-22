@@ -9,8 +9,7 @@
   			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
   		
   			INSERT INTO goodsfacility_rental(
-				goodsfacility_rental_code
-				, adminagency_code
+				adminagency_code
 				, goodsfacility_code
 				, goodsfacility_name
 				, citizen_id
@@ -20,21 +19,18 @@
 				, goodsfacility_rental_day_end
 				, goodsfacility_rental_is_ordered_delivery
 				, goodsfacility_rental_date_registration
-				, goodsfacility_rental_is_canceled
 				, goodsfacility_rental_deposit
 				)VALUES (
-					NULL
-					, #{adminagencyCode}
+					#{adminagencyCode}
 					, #{goodsfacilityCode}
 					, #{goodsfacilityName}
 					, #{citizenId}
 					, #{citizenName}
 					, #{citizenPhone}
-					, NOW()
-					, NOW()
+					, #{goodsfacilityRentalDateStart}
+					, #{goodsfacilityRentalDayEnd}
 					, #{goodsfacilityRentalIsOrderedDelivery}
 					, NOW()
-					, #{goodsfacilityRentalIsCanceled}
 					, #{goodsfacilityRentalDeposit}
 				)
   	</insert>
@@ -44,8 +40,7 @@
   			parameterType="kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentDto">
   			
   			INSERT INTO rental_total_payment (
-  				rental_total_payment_code
-  				, goodsfacility_rental_code
+  				goodsfacility_rental_code
   				, citizen_id
   				, goodsfacility_code
   				, goodsfacility_name
@@ -58,8 +53,7 @@
   				, rental_total_payment
   				, date_payment
   			) VALUES (
-  				NULL
-  				, #{GoodsfacilityRentalCode}
+  				#{GoodsfacilityRentalCode}
   				, #{citizenId}
   				, #{goodsfacilityCode}
   				, #{goodsfacilityName}
