@@ -25,7 +25,8 @@ public class DeliveryOrderCitizenController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderCitizenController.class);
 	
-	//배달신청등록
+	//배달신청등록 화면으로 이동
+	//배달을 신청할 때 필요한 기본정보 및 주소지를 셋팅한다
 	@RequestMapping(value="/insertDeliveryOrderCitizen", method=RequestMethod.GET)
 	public String insertDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto
 											,HttpSession session
@@ -42,6 +43,8 @@ public class DeliveryOrderCitizenController {
 		return "/deliveryOrder/insertDeliveryOrderCitizenform";
 	}
 	
+	//배달신청등록 기능
+	//넘어온 데이터들을 간단하게 insert 하는 기능
 	@RequestMapping(value="/insertDeliveryOrderCitizen", method=RequestMethod.POST)
 	public String insertDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto
 											,HttpSession session) {
@@ -53,6 +56,8 @@ public class DeliveryOrderCitizenController {
 		return "redirect:/selectListMyDeliveryOrderCitizen";
 	}
 	
+	//배달신청조회 기능
+	//권한에 따라 다른 화면을 보여줘야하므로 세션처리된 Level을 같이 셋팅해준다
 	@RequestMapping(value="/selectListMyDeliveryOrderCitizen", method=RequestMethod.GET)
 	public String selectListMyDeliveryOrderCitizen(HttpSession session
 													,Model model) {
@@ -66,6 +71,8 @@ public class DeliveryOrderCitizenController {
 		return "/deliveryOrder/selectListMyDeliveryOrderCitizen";
 	} 
 	
+	//신청한 배달의 주소지를 수정하는 화면으로 이동
+	//수정할 배달정보의 기존정보를 select해준다
 	@RequestMapping(value="/updateViewDeliveryOrderCitizenAddress", method=RequestMethod.GET)
 	public String updateViewDeliveryOrderCitizenAddress(DeliveryOrderCitizenDto deliveryOrderCitizenDto
 													,Model model) {
@@ -75,6 +82,7 @@ public class DeliveryOrderCitizenController {
 		return "/deliveryOrder/updateViewDeliveryOrderCitizenAddress";
 	}
 	
+	//신청한 배달의 주소지를 수정기능
 	@RequestMapping(value="/updateDeliveryOrderCitizenAddress", method=RequestMethod.POST)
 	public String updateDeliveryOrderCitizenAddress(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
 		logger.debug("DeliveryOrderCitizenController - updateDeliveryOrderCitizenAddress - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
@@ -83,6 +91,8 @@ public class DeliveryOrderCitizenController {
 		return "redirect:/selectListMyDeliveryOrderCitizen";
 	}
 	
+	//배달신청을 취소하는 기능
+	//신청을 취소했다는 정보를 공무원에게 전해줘야하기때문에 기본적으로 delete가 아닌 update로 만든다
 	@RequestMapping(value="/updateIsCanceledDelivery", method=RequestMethod.GET)
 	public String updateIsCanceledDelivery(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
 		logger.debug("DeliveryOrderCitizenController - updateIsCanceledDelivery - deliveryOrderCitizenDto : " + deliveryOrderCitizenDto.toString());
@@ -90,7 +100,9 @@ public class DeliveryOrderCitizenController {
 		
 		return "redirect:/selectListMyDeliveryOrderCitizen";
 	}
+	
 	//공무원이 시민의 배달신청을 조회
+	//권한에 따라 다른 화면을 보여줘야하므로 세션처리된 Level을 같이 셋팅해준다
 	@RequestMapping(value="/selectListDeliveryOrderCitizen", method=RequestMethod.GET)
 	public String selectListDeliveryOrderCitizen(DeliveryOrderCitizenDto deliveryOrderCitizenDto
 												,Model model

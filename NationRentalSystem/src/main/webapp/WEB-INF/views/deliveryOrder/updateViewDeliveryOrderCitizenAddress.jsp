@@ -135,7 +135,7 @@
 					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/updateDeliveryOrderCitizenAddress" method="post">
-								<input name="deliveryOrderCitizenCode" hidden="hidden" value="${returndeliveryOrderCitizenDto.deliveryOrderCitizenCode}">								
+								<input hidden="hidden" name="deliveryOrderCitizenCode" value="${returndeliveryOrderCitizenDto.deliveryOrderCitizenCode}">								
 								<div>
 									<div class="form-group">
 										<label for="sample6_postcode" class="col-sm-4 control-label">보내는 사람 도로명주소</label>
@@ -153,10 +153,10 @@
 									<div class="form-group">
 										<label for="jibunAddress" class="col-sm-4 control-label">입력된 보내는 사람 주소</label>
 										<div class="col-sm-8">
-											<input type="text" style="float:left" size="10" id="sido" name="sidoName" placeholder="시도">
-											<input type="text" style="float:left" size="10" id="sigungu" name="sendAddressSigungu" placeholder="${returndeliveryOrderCitizenDto.sendAddressSigungu}">
-											<input type="text" style="float:left" size="10" id="bname" name="sendAddressEupmyeon" placeholder="${returndeliveryOrderCitizenDto.sendAddressEupmyeon}">
-											<input type="text" style="float:left" size="30" id="sample6_address2" name="sendAddressSangse" placeholder="${returndeliveryOrderCitizenDto.sendAddressSangse}">
+											<input type="text" style="float:left" size="10" id="sido" name="sidoName" value="${returndeliveryOrderCitizenDto.receiveAddressSigungu}">
+											<input type="text" style="float:left" size="10" id="sigungu" name="sendAddressSigungu" value="${returndeliveryOrderCitizenDto.sendAddressSigungu}">
+											<input type="text" style="float:left" size="10" id="bname" name="sendAddressEupmyeon" value="${returndeliveryOrderCitizenDto.sendAddressEupmyeon}">
+											<input type="text" style="float:left" size="30" id="sample6_address2" name="sendAddressSangse" value="${returndeliveryOrderCitizenDto.sendAddressSangse}">
 										</div>
 									</div>
 									<br>										
@@ -179,10 +179,10 @@
 									<div class="form-group">
 										<label for="jibunAddress" class="col-sm-4 control-label">입력된 받는 사람 주소</label>
 										<div class="col-sm-8">
-											<input type="text" style="float:left" size="10" id="sido2" name="sidoName" placeholder="시도">
-											<input type="text" style="float:left" size="10" id="sigungu2" name="receiveAddressSigungu" placeholder="${returndeliveryOrderCitizenDto.receiveAddressSigungu}">
-											<input type="text" style="float:left" size="10" id="bname2" name="receiveAddressEupmyeon" placeholder="${returndeliveryOrderCitizenDto.receiveAddressEupmyeon}">
-											<input type="text" style="float:left" size="30" id="sample7_address2" name="receiveAddressSangse" placeholder="${returndeliveryOrderCitizenDto.receiveAddressSangse}">
+											<input type="text" style="float:left" size="10" id="sido2" name="sidoName" value="${returndeliveryOrderCitizenDto.receiveAddressSigungu}">
+											<input type="text" style="float:left" size="10" id="sigungu2" name="receiveAddressSigungu" value="${returndeliveryOrderCitizenDto.receiveAddressSigungu}">
+											<input type="text" style="float:left" size="10" id="bname2" name="receiveAddressEupmyeon" value="${returndeliveryOrderCitizenDto.receiveAddressEupmyeon}">
+											<input type="text" style="float:left" size="30" id="sample7_address2" name="receiveAddressSangse" value="${returndeliveryOrderCitizenDto.receiveAddressSangse}">
 										</div>
 									</div>
 									<br>									

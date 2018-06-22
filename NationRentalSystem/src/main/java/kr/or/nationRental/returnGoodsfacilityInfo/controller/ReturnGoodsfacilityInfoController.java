@@ -33,16 +33,22 @@ public class ReturnGoodsfacilityInfoController {
 	@RequestMapping(value="/insertReturnGoodsfacilityInfoForm", method=RequestMethod.GET)
 	public String insertReturnGoodsfacilityInfoForm(ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto
 													,Model model) {
+		logger.debug("ReturnGoodsfacilityInfoController - insertReturnGoodsfacilityInfoForm - GET - returnGoodsfacilityInfoDto : " + returnGoodsfacilityInfoDto.toString());
+		//선택할 수 있는 반납 상태 리스트
 		List<StateGoodsDto> list = returnGoodsfacilityInfoService.stateGoodsCode();
+		logger.debug("ReturnGoodsfacilityInfoController - insertReturnGoodsfacilityInfoForm - list : " + list.toString());
 		model.addAttribute("adminagencyCode", returnGoodsfacilityInfoDto.getAdminagencyCode());
 		model.addAttribute("list", list);
 		return "/returnGoodsfacilityInfo/insertReturnGoodsfacilityInfoForm";
 	}
+	
 	//반납등록
+	//반납등록시에 만약 배달신청정보가 있으면 반납등록하는 동시에 배달신청을 취소로 업데이트한다
 	@RequestMapping(value="/insertReturnGoodsfacilityInfoForm", method=RequestMethod.POST)
 	public String insertReturnGoodsfacilityInfoForm(ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto
 													,Model model
 													,HttpSession session) {
+		logger.debug("ReturnGoodsfacilityInfoController - insertReturnGoodsfacilityInfoForm - POST - returnGoodsfacilityInfoDto : " + returnGoodsfacilityInfoDto.toString());
 		MemberDto member = (MemberDto) session.getAttribute("member");
 		returnGoodsfacilityInfoDto.setFunctionaryId(member.getMemberId());
 		returnGoodsfacilityInfoService.insertReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto);

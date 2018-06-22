@@ -16,7 +16,7 @@
 		inner join goodsfacility
 		using(goodsfacility_code)
 		where goodsfacility_code = #{goodsfacilityCode}
-		order by goodsfacility_rental_date_start DESC limit 1	
+		order by goodsfacility_rental_date_registration DESC limit 1	
  	</select> 
  	
  	<select id="selectOneGoodsfacilityRentalIsOrderedDelivery" parameterType="Integer" resultType="Integer">
@@ -61,6 +61,13 @@
 			, #{stateGoodsCode}
 			, NOW())
  	</insert>
+ 	
+ 	<update id="updateIsCanceledDelivery" parameterType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
+		UPDATE delivery_order_citizen
+			SET		
+			is_canceled_delivery = 'Y'
+		WHERE goodsfacility_rental_code = #{goodsfacilityRentalCode}	
+	</update>
  	
  	<select	id="checkreturnGoodsfacilityInfo" parameterType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto" resultType="Integer">
  		select 

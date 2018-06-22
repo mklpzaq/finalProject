@@ -15,7 +15,7 @@
 			$("#btn").click(function(){
 				$.ajax({
 					type : "GET",
-					url : "/nationRental/returnGoodsfacilityInfoCheck",
+					url : "${pageContext.request.contextPath}/returnGoodsfacilityInfoCheck",
 					data : { goodsfacilityCode : $('#goodsfacilityCode').val() },
 					success : function( returnGoodsfacilityInfoDto ){
 						if(returnGoodsfacilityInfoDto != null){
@@ -96,8 +96,9 @@
 								<div class="form-group">
 									<label for="isRequestedToReturnAsDelivery" class="col-sm-3 control-label">배달반납신청 유무</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="isRequestedToReturnAsDelivery" id="isRequestedToReturnAsDelivery" placeholder="">
+										<input type="text" class="form-control" name="isRequestedToReturnAsDelivery" id="isRequestedToReturnAsDelivery" placeholder="">										
 									</div>
+									배달반납을 신청하고 일반 반납을 할시에는 변경을 해주시기 바랍니다								
 								</div>
 								<div class="form-group">
 									<label for="overdueDays" class="col-sm-3 control-label">연체일수</label>

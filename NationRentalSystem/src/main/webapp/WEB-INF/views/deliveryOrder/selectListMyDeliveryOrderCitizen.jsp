@@ -50,8 +50,8 @@
 										<th>${deliveryOrderCitizenDao.classifyRentalState}</th>
 										<td>${deliveryOrderCitizenDao.citizenId}</td>
 										<td>${deliveryOrderCitizenDao.adminagencyCode}</td>
-										<td>${deliveryOrderCitizenDao.sendAddressSigungu}&nbsp;${deliveryOrderCitizenDao.sendAddressEupmyeon}&nbsp;${deliveryOrderCitizenDao.sendAddressSangse}</td>
-										<td>${deliveryOrderCitizenDao.receiveAddressSigungu}&nbsp;${deliveryOrderCitizenDao.receiveAddressEupmyeon}&nbsp;${deliveryOrderCitizenDao.receiveAddressSangse}</td>
+										<td>${deliveryOrderCitizenDao.sendAddressSido}&nbsp;${deliveryOrderCitizenDao.sendAddressSigungu}&nbsp;${deliveryOrderCitizenDao.sendAddressEupmyeon}&nbsp;${deliveryOrderCitizenDao.sendAddressSangse}</td>
+										<td>${deliveryOrderCitizenDao.receiveAddressSido}&nbsp;${deliveryOrderCitizenDao.receiveAddressSigungu}&nbsp;${deliveryOrderCitizenDao.receiveAddressEupmyeon}&nbsp;${deliveryOrderCitizenDao.receiveAddressSangse}</td>
 										<td>${deliveryOrderCitizenDao.deliveryOrderCitizenDate}</td>
 										<td>${deliveryOrderCitizenDao.isCanceledDelivery}</td>
 										<c:if test="${memberLevel == '시민'}">

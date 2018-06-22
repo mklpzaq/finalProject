@@ -13,9 +13,11 @@
 			, goodsfacility_code
 			, citizen_id
 			, adminagency_code
+			, send_address_sido
 			, send_address_sigungu
 			, send_address_eupmyeon
 			, send_address_sangse
+			, receive_address_sido
 			, receive_address_sigungu
 			, receive_address_eupmyeon
 			, receive_address_sangse
@@ -27,9 +29,11 @@
 			, #{goodsfacilityCode}
 			, #{citizenId}
 			, #{adminagencyCode}
+			, #{sendAddressSido}
 			, #{sendAddressSigungu}
 			, #{sendAddressEupmyeon}
 			, #{sendAddressSangse}
+			, #{receiveAddressSido}
 			, #{receiveAddressSigungu}
 			, #{receiveAddressEupmyeon}
 			, #{receiveAddressSangse}
@@ -40,14 +44,16 @@
 	<select id="selectListMyDeliveryOrderCitizen" parameterType="String" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
 		SELECT
 			delivery_order_citizen_code as deliveryOrderCitizenCode
-			,goodsfacility_rental_code as goodsfacilityRentalCode
-			,classify_rental_state as classifyRentalState
-			,goodsfacility_code as goodsfacilityCode
-			,citizen_id as citizenId
-			,adminagency_code as adminagencyCode
-			,send_address_sigungu as sendAddressSigungu
+			, goodsfacility_rental_code as goodsfacilityRentalCode
+			, classify_rental_state as classifyRentalState
+			, goodsfacility_code as goodsfacilityCode
+			, citizen_id as citizenId
+			, adminagency_code as adminagencyCode
+			, send_address_sido as sendAddressSido
+			, send_address_sigungu as sendAddressSigungu
 			, send_address_eupmyeon as sendAddressEupmyeon
 			, send_address_sangse as sendAddressSangse
+			, receive_address_sido as receiveAddressSido
 			, receive_address_sigungu as receiveAddressSigungu
 			, receive_address_eupmyeon as receiveAddressEupmyeon
 			, receive_address_sangse as receiveAddressSangse
@@ -61,14 +67,16 @@
 	<select id="updateViewDeliveryOrderCitizenAddress" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
 		SELECT
 			delivery_order_citizen_code as deliveryOrderCitizenCode
-			,goodsfacility_rental_code as goodsfacilityRentalCode
-			,classify_rental_state as classifyRentalState
-			,goodsfacility_code as goodsfacilityCode
-			,citizen_id as citizenId
-			,adminagency_code as adminagencyCode
-			,send_address_sigungu as sendAddressSigungu
+			, goodsfacility_rental_code as goodsfacilityRentalCode
+			, classify_rental_state as classifyRentalState
+			, goodsfacility_code as goodsfacilityCode
+			, citizen_id as citizenId
+			, adminagency_code as adminagencyCode
+			, send_address_sido as sendAddressSido
+			, send_address_sigungu as sendAddressSigungu
 			, send_address_eupmyeon as sendAddressEupmyeon
 			, send_address_sangse as sendAddressSangse
+			, receive_address_sido as receiveAddressSido
 			, receive_address_sigungu as receiveAddressSigungu
 			, receive_address_eupmyeon as receiveAddressEupmyeon
 			, receive_address_sangse as receiveAddressSangse
@@ -81,9 +89,11 @@
 	<update id="updateDeliveryOrderCitizenAddress" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
 		UPDATE delivery_order_citizen
 			SET		
-			send_address_sigungu=#{sendAddressSigungu}
+			send_address_sido=#{sendAddressSido}
+			,send_address_sigungu=#{sendAddressSigungu}
 			,send_address_eupmyeon=#{sendAddressEupmyeon}
 			,send_address_sangse=#{sendAddressSangse}
+			,receive_address_sido=#{receiveAddressSido}
 			,receive_address_sigungu=#{receiveAddressSigungu}
 			,receive_address_eupmyeon=#{receiveAddressEupmyeon}
 			,receive_address_sangse=#{receiveAddressSangse}
@@ -100,14 +110,16 @@
 	<select id="selectListDeliveryOrderCitizen" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
 		SELECT
 			delivery_order_citizen_code as deliveryOrderCitizenCode
-			,goodsfacility_rental_code as goodsfacilityRentalCode
-			,classify_rental_state as classifyRentalState
-			,goodsfacility_code as goodsfacilityCode
-			,citizen_id as citizenId
-			,adminagency_code as adminagencyCode
-			,send_address_sigungu as sendAddressSigungu
+			, goodsfacility_rental_code as goodsfacilityRentalCode
+			, classify_rental_state as classifyRentalState
+			, goodsfacility_code as goodsfacilityCode
+			, citizen_id as citizenId
+			, adminagency_code as adminagencyCode
+			, send_address_sido as sendAddressSido
+			, send_address_sigungu as sendAddressSigungu
 			, send_address_eupmyeon as sendAddressEupmyeon
 			, send_address_sangse as sendAddressSangse
+			, receive_address_sido as receiveAddressSido
 			, receive_address_sigungu as receiveAddressSigungu
 			, receive_address_eupmyeon as receiveAddressEupmyeon
 			, receive_address_sangse as receiveAddressSangse

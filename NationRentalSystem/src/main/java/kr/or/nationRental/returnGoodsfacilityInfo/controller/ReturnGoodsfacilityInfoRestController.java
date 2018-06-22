@@ -19,6 +19,8 @@ public class ReturnGoodsfacilityInfoRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ReturnGoodsfacilityInfoRestController.class);
 	
+	//반납할 시설/물품의 정보들을 불러오는 ajax
+	//이미 반납한 시설/물품은 더 이상 반하지 못하게 한다
 	@RequestMapping(value="/returnGoodsfacilityInfoCheck", method=RequestMethod.GET)
 	public ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoCheck(GoodsFacilityDto goodsFacilityDto) {
 		logger.debug("ReturnGoodsfacilityInfoRestController - returnGoodsfacilityInfoCheck - goodsFacilityDto : " + goodsFacilityDto.toString());
