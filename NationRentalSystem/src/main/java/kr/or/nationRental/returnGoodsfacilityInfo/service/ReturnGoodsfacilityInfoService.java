@@ -40,9 +40,9 @@ public class ReturnGoodsfacilityInfoService {
 			//배달반납 신청유무가 반납등록에 왜 필요한지 모르겠으나 배달반납 신청유무를 구하기 위한 코드
 			int IsOrderedDelivery = returnGoodsfacilityInfoDao.selectOneGoodsfacilityRentalIsOrderedDelivery(returnGoodsfacilityInfoDto.getGoodsfacilityRentalCode());
 			if(IsOrderedDelivery == 0) {
-				returnGoodsfacilityInfoDto.setIsRequestedToReturnAsDelivery("배달반납신청안함");
+				returnGoodsfacilityInfoDto.setIsRequestedToReturnAsDelivery("N");
 			}else {
-				returnGoodsfacilityInfoDto.setIsRequestedToReturnAsDelivery("배달반납신청");
+				returnGoodsfacilityInfoDto.setIsRequestedToReturnAsDelivery("Y");
 			}
 			
 			//연체날짜 계산식

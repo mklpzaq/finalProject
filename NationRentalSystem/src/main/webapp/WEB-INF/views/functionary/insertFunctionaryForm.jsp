@@ -365,12 +365,15 @@
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-3 control-label">행정기관명</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="행정기관명" readonly="readonly">
-										<!-- Button trigger modal -->
-										<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">
-										 행정기관찾기
-										</button>
-										
+										<div class="input-group">
+											<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="행정기관명" readonly="readonly">
+											<!-- Button trigger modal -->
+											<span class="input-group-btn">								
+												<button type="button" id="myModalclick" class="btn btn-default" data-toggle="modal" data-target="#adminagencyCheckModal">
+												 행정기관찾기
+												</button>
+											</span>
+										</div>
 										<!-- Modal -->
 										<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										  <div class="modal-dialog">

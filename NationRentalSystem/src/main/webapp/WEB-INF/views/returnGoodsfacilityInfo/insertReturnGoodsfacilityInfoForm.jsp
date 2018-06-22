@@ -26,10 +26,16 @@
 							$("#isRequestedToReturnAsDelivery").val(returnGoodsfacilityInfoDto.isRequestedToReturnAsDelivery);	
 							$("#classifyGoodsfacility").val(returnGoodsfacilityInfoDto.classifyGoodsfacility)
 						}else {
-							alert("이미 반납된 물품입니다");
+							alert("이미 반납된 물품입니다");							
 						}
 					}, error : function(){
 			            alert("이미 반납된 물품입니다");
+			            $("#goodsfacilityRentalCode").val("");	
+						$("#citizenId").val("");	
+						$("#overdueDays").val("");	
+						$("#adminagencyCode").val("");	
+						$("#isRequestedToReturnAsDelivery").val("");	
+						$("#classifyGoodsfacility").val("")
 					}    
 				})
 				
@@ -59,8 +65,7 @@
 					
 					<div style="margin:15px 0 15px 0;" class="panel panel-default">
 						<div class="panel-body text-center">
-							<h1>물품 반납222</h1>
-							<h2>Nation Integrated Reserve and Rental System</h2>
+							<h1>대여물품/시설 반납</h1>
 						</div>
 					</div>
 				
