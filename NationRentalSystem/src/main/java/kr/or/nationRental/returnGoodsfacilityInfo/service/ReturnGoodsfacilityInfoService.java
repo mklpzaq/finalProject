@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 
@@ -22,11 +23,13 @@ public class ReturnGoodsfacilityInfoService {
 	@Autowired private ReturnGoodsfacilityInfoDao returnGoodsfacilityInfoDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReturnGoodsfacilityInfoService.class);
-
+		
+	//반납할 시설/물품의 정보들을 불러오는 ajax
 	public ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoCheck(GoodsFacilityDto goodsFacilityDto) {
 		logger.debug("ReturnGoodsfacilityInfoService - returnGoodsfacilityInfoCheck - goodsFacilityDto : " + goodsFacilityDto.toString());
 		
 		//대여/예약정보 셋팅, 반납등록품목 물품인지 시설인지 셋팅
+		//해당 물품/시설코드로 가장 최근에 대여된 데이터를 찾는다
 		ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto = returnGoodsfacilityInfoDao.returnGoodsfacilityInfoCheck(goodsFacilityDto);
 		logger.debug("ReturnGoodsfacilityInfoService - returnGoodsfacilityInfoCheck - returnGoodsfacilityInfoDto : " + returnGoodsfacilityInfoDto.toString());
 		
@@ -34,7 +37,7 @@ public class ReturnGoodsfacilityInfoService {
 		int checkreturnGoodsfacilityInfo = returnGoodsfacilityInfoDao.checkreturnGoodsfacilityInfo(returnGoodsfacilityInfoDto);
 		logger.debug("ReturnGoodsfacilityInfoService - returnGoodsfacilityInfoCheck - checkreturnGoodsfacilityInfo : " + checkreturnGoodsfacilityInfo);
 		if(checkreturnGoodsfacilityInfo == 0) {
-			//배달반납 신청유무가 반납등록에 왜 필요한지 모르겠다
+			//배달반납 신청유무가 반납등록에 왜 필요한지 모르겠으나 배달반납 신청유무를 구하기 위한 코드
 			int IsOrderedDelivery = returnGoodsfacilityInfoDao.selectOneGoodsfacilityRentalIsOrderedDelivery(returnGoodsfacilityInfoDto.getGoodsfacilityRentalCode());
 			if(IsOrderedDelivery == 0) {
 				returnGoodsfacilityInfoDto.setIsRequestedToReturnAsDelivery("배달반납신청안함");
@@ -89,13 +92,19 @@ public class ReturnGoodsfacilityInfoService {
 		return returnGoodsfacilityInfoDto;
 	}
 	
-	//반납상태리스트
+	//선택할 수 있는 반납 상태 리스트
 	public List<StateGoodsDto> stateGoodsCode() {
 		return returnGoodsfacilityInfoDao.stateGoodsCode();
 	}
+	
 	//반납등록
+	@Transactional
 	public void insertReturnGoodsfacilityInfo(ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto) {
+		
+		//반납등록 insert
 		returnGoodsfacilityInfoDao.insertReturnGoodsfacilityInfo(returnGoodsfacilityInfoDto);
+		//배달신청 취소 update 
+		returnGoodsfacilityInfoDao.updateIsCanceledDelivery(returnGoodsfacilityInfoDto);
 		
 	}
 	//등록된 반납정보 조회
