@@ -129,7 +129,7 @@
 										<c:forEach var="rentGoodsfacilityDto" items="${list}">
 											<tr>	
 												<td>${rentGoodsfacilityDto.adminagencyCode}</td>
-												<td>${rentGoodsfacilityDto.citizenPhone}</td>
+												<td>${rentGoodsfacilityDto.citizenPhone}</td> 
 												<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateStart}</td>
