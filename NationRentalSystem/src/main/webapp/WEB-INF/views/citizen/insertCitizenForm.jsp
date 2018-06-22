@@ -26,7 +26,7 @@
 			$("#idCheckCitizen").click(function(){
 			    $.ajax({
 			        type:"POST", //통신타입 get, post
-			        url:"/nationRental/idCheckCitizen",  //요청할 url
+			        url:"${pageContext.request.contextPath}/idCheckCitizen",  //요청할 url
 			        data : { agencyEmployeeId : $('#checkId').val() },  //넘겨줄 값, 파라메터
 			        success: function( JSON ){//데이터를 받아오는데 성공하면 이후에 할 행동				        
 				        if(JSON=='T'){

@@ -76,10 +76,13 @@
   				
   				<if test="!keyword.equals('')">
 				<choose>
-					<when test="searchOption.equals('adminagencyCode')">
+					<when test="searchOption.equals('아이디')">
+						WHERE citizen_id = #{keyword}
+					</when>					
+					<when test="searchOption.equals('행정기관')">
 						WHERE adminagency_code = #{keyword}
 					</when>
-					<when test="searchOption.equals('goodsfacilityRentalDateRegistration')">
+					<when test="searchOption.equals('배달여부')">
 						WHERE goodsfacility_rental_date_registration = #{keyword}
 					</when>					
 				</choose>
@@ -97,12 +100,15 @@
 				goodsfacility_rental
 			<if test="!keyword.equals('')">
 				<choose>
-					<when test="searchOption.equals('adminagencyCode')">
+					<when test="searchOption.equals('아이디')">
+						WHERE citizen_id = #{keyword}
+					</when>					
+					<when test="searchOption.equals('행정기관')">
 						WHERE adminagency_code = #{keyword}
 					</when>
-					<when test="searchOption.equals('goodsfacilityRentalDateRegistration')">
+					<when test="searchOption.equals('배달여부')">
 						WHERE goodsfacility_rental_date_registration = #{keyword}
-					</when>					
+					</when>							
 				</choose>
 			</if>
   	</select>
@@ -134,5 +140,14 @@
   			WHERE
   				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
   	</update>
+  	
+  	<select id="cancelRent"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT
+  				
+  	
+  	</select>
+  	
   
   </mapper>

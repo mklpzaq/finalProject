@@ -25,7 +25,7 @@
 			$('#selectGoodsfacilityThreeName').change(function() {
 				$.ajax({
 					type: "POST"
-					,url: "/nationRental/selectOneGoodsFacilityForAjax"
+					,url: "${pageContext.request.contextPath}/selectOneGoodsFacilityForAjax"
 					,data: { goodsfacilityThreeName: $('#selectGoodsfacilityThreeName > option:selected').val() }
 					,success:function( JSON ) { // result : String, XML, JSON						
 						$('#goodsfacilityThreeCode').val(JSON.goodsfacilityThreeCode);

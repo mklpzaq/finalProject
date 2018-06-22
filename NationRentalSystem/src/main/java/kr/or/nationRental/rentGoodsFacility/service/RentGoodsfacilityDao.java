@@ -51,4 +51,9 @@ public class RentGoodsfacilityDao {
 		return sqlSession.update(NS+"updateApplication", rentGoodsfacilityDto);
 	}
 
+	public RentGoodsfacilityDto cancelRent(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityDao cancelRent : ");
+		return sqlSession.selectOne(NS+"cancelRent", rentGoodsfacilityDto);
+	}
+
 }

@@ -33,7 +33,7 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './viewApplicationRentForCitizen?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text());
+					$(location).attr('href', './viewApplicationRentForCitizen?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#monitorKeyword').text() + '&citizenId=' +$('#citizenId').val());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
@@ -97,6 +97,7 @@
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+													<li><a href="#">아이디</a></li>
 													<li><a href="#">행정기관</a></li>													
 													<li><a href="#">배달여부</a></li>
 												</ul>
@@ -116,22 +117,22 @@
 									<thead>
 										<tr>
 											<td>행정기관코드</td>
+											<td>아이디</td>
 											<td>연락처</td>
 											<td>시설&물품개별관리코드</td>
 											<td>시설&물품명</td>
 											<td>대여&대관 시작일</td>
-											<td>대여/대관 종료일</td>
+											<td>대여&대관 종료일</td>
 											<td>배달신청여부</td>
-											<td>신청날짜</td>
-											<td>수정</td>
-											<td>반납</td>
-											<td>결제취소</td>																																							
+											<td>신청날짜</td>																																								
 										</tr>
 									</thead>
-									<tbody>									
+									<tbody>
+										<input id="citizenId" type="hidden" value="${member.memberId}">									
 										<c:forEach var="rentGoodsfacilityDto" items="${list}">
 											<tr>	
 												<td>${rentGoodsfacilityDto.adminagencyCode}</td>
+												<td>${rentGoodsfacilityDto.citizenId}</td>
 												<td>${rentGoodsfacilityDto.citizenPhone}</td> 
 												<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
@@ -140,8 +141,8 @@
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
 												<td><a href="${pageContext.request.contextPath}/updateApplicationForm?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">수정</a></td>
-												<td><a href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}&adminagencyCode=${rentGoodsfacilityDto.adminagencyCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}&classifyRentalState=반납">반납배달신청</a></td>																																															
-												<td><a href="${pageContext.request.contextPath}/canceledGoodsfaciltyRental?rentalTotalPaymentCode=${rentalTotalPaymentDto.rentalTotalPaymentCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}">결제취소</a></td>   
+												<td><a href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}&adminagencyCode=${rentGoodsfacilityDto.adminagencyCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}&classifyRentalState=반납">반납배달신청</a></td>
+												<td><a href="${pageContext.request.contextPath}/"></a></td>																																															
 											</tr>
 										</c:forEach>									
 									</tbody>
@@ -149,19 +150,19 @@
 								<nav>
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}viewApplicationRentForCitizen?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
@@ -172,10 +173,10 @@
 												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -184,10 +185,10 @@
 												<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -196,19 +197,19 @@
 										<li>
 											<c:choose>
 												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}" aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&citizenId=${rentGoodsfacilityDto.citizenId}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>

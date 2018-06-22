@@ -56,7 +56,7 @@ public class RentGoodsfacilityController {
 												,RentGoodsfacilityDto rentGoodsfacilityDto
 												,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 												,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-												,@RequestParam(value="searchOption", defaultValue="citizenId") String searchOption
+												,@RequestParam(value="searchOption", defaultValue="") String searchOption
 												,@RequestParam(value="keyword", defaultValue="") String keyword) {
 		logger.debug("RentGoodsfacilityController viewApplicationRentForCitizen GET: " + citizenDto.toString());
 		Map<String, Object> map = rentGoodsfacilityService.getApplicationList(currentPage, pagePerRow, searchOption, keyword , citizenDto);
@@ -92,6 +92,13 @@ public class RentGoodsfacilityController {
 		logger.debug("rentGoodsfacilityDto.getCitizenId() : "+ rentGoodsfacilityDto.getCitizenId());
 		
 		return "redirect:/viewApplicationRentForCitizen";
+	}
+	
+	@RequestMapping(value="/cancelGoodsFacility" , method=RequestMethod.GET)
+	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityController cancelGoodsFacility GET: " + rentGoodsfacilityDto.toString());
+		RentGoodsfacilityDto cencel  = rentGoodsfacilityService.cancelRent(rentGoodsfacilityDto);
+		return null;
 	}
 		
 }

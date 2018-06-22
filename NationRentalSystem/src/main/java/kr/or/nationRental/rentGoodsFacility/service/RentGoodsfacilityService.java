@@ -88,4 +88,10 @@ public class RentGoodsfacilityService {
 		return rentGoodsfacilityDao.updateApplication(rentGoodsfacilityDto);
 	}
 
+	public RentGoodsfacilityDto cancelRent(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService cancelRent  :" + rentGoodsfacilityDto.toString());
+		
+		return rentGoodsfacilityDao.cancelRent(rentGoodsfacilityDto);
+	}
+
 }
