@@ -20,6 +20,8 @@ public class FunctionaryDto {
 	private String sigunguName;
 	private String eupmyeonName;
 	private String adminagencyAddressSangse;
+	private String agencyEmployeeId;
+	
 	public String getFunctionaryId() {
 		return functionaryId;
 	}
@@ -122,6 +124,12 @@ public class FunctionaryDto {
 	public void setAdminagencyAddressSangse(String adminagencyAddressSangse) {
 		this.adminagencyAddressSangse = adminagencyAddressSangse;
 	}
+	public String getAgencyEmployeeId() {
+		return agencyEmployeeId;
+	}
+	public void setAgencyEmployeeId(String agencyEmployeeId) {
+		this.agencyEmployeeId = agencyEmployeeId;
+	}
 	@Override
 	public String toString() {
 		return "FunctionaryDto [functionaryId=" + functionaryId + ", adminagencyCode=" + adminagencyCode
@@ -132,6 +140,6 @@ public class FunctionaryDto {
 				+ functionaryDateWorkStart + ", functionaryDateWorkEnd=" + functionaryDateWorkEnd
 				+ ", functionaryStateWork=" + functionaryStateWork + ", sidoName=" + sidoName + ", sigunguName="
 				+ sigunguName + ", eupmyeonName=" + eupmyeonName + ", adminagencyAddressSangse="
-				+ adminagencyAddressSangse + "]";
+				+ adminagencyAddressSangse + ", agencyEmployeeId=" + agencyEmployeeId + "]";
 	}
 }

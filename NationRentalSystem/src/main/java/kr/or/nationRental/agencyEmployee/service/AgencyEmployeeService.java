@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.nationRental.functionary.service.FunctionaryDto;
+
 
 @Service
 public class AgencyEmployeeService {
@@ -19,10 +21,10 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
-	/*public Map<String, Object> selectListAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
-		logger.debug("selectListAgencyEmployee AgencyEmployeeService");
-		return agencyEmployeeDao.selectListAgencyEmployee(agencyEmployeeDto);
-	}*/
+	public List<FunctionaryDto> selectListFunctionaryForAgencyEmployee(FunctionaryDto functionaryDto) {
+		logger.debug("selectListFunctionaryForAgencyEmployee agencyEmployeeDao");
+		return agencyEmployeeDao.selectListFunctionaryForAgencyEmployee(functionaryDto);
+	}
 	
 	public Map<String, Object> selectListAgencyEmployee(int currentPage, int pagePerRow, String searchSelect, String searchWord, AgencyEmployeeDto agencyEmployeeDto){
 		logger.debug("selectListAgencyEmployee AgencyEmployeeService");

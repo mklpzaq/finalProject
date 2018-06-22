@@ -11,7 +11,7 @@
 	<body>
 	<!-- #FFCD12(노랑) -->
 	<!-- class="container-fluid"  -->
-		<nav id="navbar" style="background-color:#005EAA; margin:0;" class="navbar navbar navbar-default navbar-fixed-bottom">
+		
 			<div class="container-fluid" style="margin:15px 0 0 0; padding:15px; background-color:#BDBDBD;">
 				<div class="row">
 					<div class="col-sm-12">
@@ -21,6 +21,5 @@
 					</div>
 				</div>			
 			</div>
-		</nav>
 	</body>	
 </html>

@@ -37,7 +37,7 @@
 	<body>
 		<jsp:include page="./module/backgroundImg/backgroundImg.jsp"/>
 		<jsp:include page="./module/top/navbar.jsp"/>
-		<div class="container-fluid" style="height:900px; margin:15px 0 0 0;">
+		<div class="container-fluid" style="height:100%; margin:15px 0 0 0;">
 			<div class="row" >
 				<div class="col-sm-2">
 					<jsp:include page="./module/leftHome/leftHome.jsp"/>

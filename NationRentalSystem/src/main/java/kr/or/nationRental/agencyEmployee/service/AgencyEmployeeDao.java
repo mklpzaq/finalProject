@@ -9,12 +9,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.functionary.service.FunctionaryDto;
+
 @Repository
 public class AgencyEmployeeDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
+	
+	public List<FunctionaryDto> selectListFunctionaryForAgencyEmployee(FunctionaryDto functionaryDto) {
+		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectList(NS+"selectListFunctionaryForAgencyEmployee", functionaryDto);
+	}
 	
 	public int totalCountAgencyEmployee(Map<String, Object> map) {
 		logger.debug("totalCountAgencyEmployee AgencyEmployeeDao");
