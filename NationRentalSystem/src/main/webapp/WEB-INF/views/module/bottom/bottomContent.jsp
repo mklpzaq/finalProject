@@ -11,15 +11,16 @@
 	<body>
 	<!-- #FFCD12(노랑) -->
 	<!-- class="container-fluid"  -->
-		<div class="container-fluid" style="margin:15px 0 0 0; padding:15px; background-color:#BDBDBD;">
-			<div class="row">
-				<div class="col-sm-12">
-					제작 : team2<br/>
-					대표번호 : 1234-1234    문의시간 : 09:00~18:00 (월~금)<br/>
-					팩스 : 000-000-0000
-				</div>
+		<nav id="navbar" style="background-color:#005EAA; margin:0;" class="navbar navbar navbar-default navbar-fixed-bottom">
+			<div class="container-fluid" style="margin:15px 0 0 0; padding:15px; background-color:#BDBDBD;">
+				<div class="row">
+					<div class="col-sm-12">
+						제작 : team2<br/>
+						대표번호 : 1234-1234    문의시간 : 09:00~18:00 (월~금)<br/>
+						팩스 : 000-000-0000
+					</div>
+				</div>			
 			</div>
-			
-		</div>
+		</nav>
 	</body>	
 </html>

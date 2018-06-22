@@ -11,34 +11,37 @@
 	</head>
 	
 	<body>
-	<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		<jsp:include page="../module/top/navbar.jsp"/>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
+					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
 				</div>
-				<div class="col-sm-8">
-				<!-- Begin Content -->
-					
-					<div class="text-center">
-						<h1>계약된 낙찰업체</h1>
-						<h2>Nation Integrated Reserve and Rental System</h2>
-						<P>The time on the server is ${serverTime}.</P>
-					</div>
+				<div style="padding:15px;" class="col-sm-8">
+					<!-- Begin Content -->
+							
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="text-center">계약된 대행업체 리스트</h3>
+							<hr/>
+						</div>
 						<div><button><a href="${pageContext.request.contextPath}/selectListContractClosedAgency">계약해지된 낙찰업체</a></button></div>										
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td width="10%">낙찰번호</td>
-								<td width="15%">등록 공무원 이름</td>
-								<td width="15%">대행업체명</td>
-								<td width="15%">대행업체 업종</td>
-								<td width="15%">대행업체 낙찰시기</td>
-								<td width="15%">대행업체 직원 조회</td>
-								<td width="15%">대행업체 계약해지</td>								
-							</tr>
-						</thead>
-						<tbody>									
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td width="10%">낙찰번호</td>
+									<td width="15%">등록 공무원 이름</td>
+									<td width="15%">대행업체명</td>
+									<td width="15%">대행업체 업종</td>
+									<td width="15%">대행업체 낙찰시기</td>
+									<td width="15%">대행업체 직원 조회</td>
+									<td width="15%">대행업체 계약해지</td>								
+								</tr>
+							</thead>
+							<tbody>									
 								<c:forEach var="AgencyDto" items="${List}">
 									<tbody>
 										<tr>
@@ -52,10 +55,13 @@
 										</tr>
 									</tbody>
 								</c:forEach>									
-						</tbody>
-					</table>								
+							</tbody>
+						</table>								
+					</div>
+					<div class="col-sm-2"></div>					
 				</div>
 			</div>
 		</div>
+		<jsp:include page="../module/bottom/bottomContent.jsp"/>
 	</body>
 </html>

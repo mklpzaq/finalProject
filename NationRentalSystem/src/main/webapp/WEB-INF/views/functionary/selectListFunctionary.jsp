@@ -137,7 +137,7 @@
 											</c:forEach>									
 									</tbody>
 								</table>
-								<nav>
+								<nav style="text-align:center">
 									<ul class="pagination">
 										<li>
 											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
