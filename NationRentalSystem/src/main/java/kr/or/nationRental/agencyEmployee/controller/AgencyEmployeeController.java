@@ -1,5 +1,6 @@
 package kr.or.nationRental.agencyEmployee.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeService;
+import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Controller
 public class AgencyEmployeeController {
@@ -24,10 +26,10 @@ public class AgencyEmployeeController {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
 	
 	@RequestMapping(value="/selectListFunctionaryForAgencyEmployee", method=RequestMethod.GET)
-	public String selectListFunctionaryForAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {
+	public String selectListFunctionaryForAgencyEmployee(FunctionaryDto functionaryDto) {
 		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeController");
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
-		logger.debug(agencyEmployeeDto.toString());
+		logger.debug(functionaryDto.toString());
+		List<FunctionaryDto> list = agencyEmployeeService.selectListFunctionaryForAgencyEmployee(functionaryDto);
 		
 		return null;
 	}

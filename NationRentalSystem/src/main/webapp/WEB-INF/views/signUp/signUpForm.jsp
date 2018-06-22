@@ -11,7 +11,7 @@
 	<body>
 		<jsp:include page="../module/backgroundImg/backgroundImg.jsp"/>
 		<jsp:include page="../module/top/navbar.jsp"/>
-		<div class="container-fluid" style="margin:15px 0 0 0; height:700px;">
+		<div class="container-fluid" style="margin:15px 0 0 0; height:680px;">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<%-- <jsp:include page="../module/left/leftnavi.jsp"/> --%>

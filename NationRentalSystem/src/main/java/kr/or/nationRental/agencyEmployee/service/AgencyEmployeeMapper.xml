@@ -5,6 +5,13 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 	
+	<select id="selectListFunctionaryForAgencyEmployee"
+			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
+			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
+		
+	</select> 
+	
+	
 	<select id="totalCountAgencyEmployee"
 			parameterType="java.util.Map"
 			resultType="Integer">
