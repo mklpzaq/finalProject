@@ -45,6 +45,7 @@
   				, goodsfacility_code
   				, goodsfacility_name
   				, adminagency_code
+  				, adminagency_name
   				, goodsfacility_price_rental
   				, used_point
   				, annualfee_pakage_code
@@ -53,11 +54,12 @@
   				, rental_total_payment
   				, date_payment
   			) VALUES (
-  				#{GoodsfacilityRentalCode}
+  				#{goodsfacilityRentalCode}
   				, #{citizenId}
   				, #{goodsfacilityCode}
   				, #{goodsfacilityName}
   				, #{adminagencyCode}
+  				, #{adminagencyName}
   				, #{goodsfacilityPriceRental}
   				, #{usedPoint}
   				, #{annualfeePakageCode}
@@ -67,5 +69,5 @@
   				, NOW()
   			)
   	</insert>
-
+  	
 </mapper>

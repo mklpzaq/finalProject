@@ -120,6 +120,7 @@
 											<td>
 												<input type="text" name="goodsfacilityRentalCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
 												<input type="text" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyCode}">
+												<input type="text" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyName}">
 												<input type="text" name="citizenId" value="${rentGoodsfacilityDto.citizenId}">
 												<input type="text" name="citizenName" value="${rentGoodsfacilityDto.citizenName}">
 												<input type="text" name="goodsfacilityRentalDateStart" value="${rentGoodsfacilityDto.goodsfacilityRentalDateStart}">
