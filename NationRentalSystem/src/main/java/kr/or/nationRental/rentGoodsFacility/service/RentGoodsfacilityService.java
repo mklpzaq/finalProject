@@ -91,7 +91,15 @@ public class RentGoodsfacilityService {
 	public RentGoodsfacilityDto cancelRent(RentGoodsfacilityDto rentGoodsfacilityDto) {
 		logger.debug("RentGoodsfacilityService cancelRent  :" + rentGoodsfacilityDto.toString());
 		
-		return rentGoodsfacilityDao.cancelRent(rentGoodsfacilityDto);
+		return rentGoodsfacilityDao.cancelRent(rentGoodsfacilityDto); 
 	}
 
+	public void cancelRentGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService cancelRentGoodsFacility  :" + rentGoodsfacilityDto.toString());
+		rentGoodsfacilityDao.cancelRentGoodsFacility(rentGoodsfacilityDto);
+		
+		rentGoodsfacilityDao.cancelDelivery(rentGoodsfacilityDto);	
+	}
+
+	
 }

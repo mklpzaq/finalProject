@@ -95,10 +95,18 @@ public class RentGoodsfacilityController {
 	}
 	
 	@RequestMapping(value="/cancelGoodsFacility" , method=RequestMethod.GET)
-	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto
+										,Model model) {
 		logger.debug("RentGoodsfacilityController cancelGoodsFacility GET: " + rentGoodsfacilityDto.toString());
-		RentGoodsfacilityDto cencel  = rentGoodsfacilityService.cancelRent(rentGoodsfacilityDto);
-		return null;
+		RentGoodsfacilityDto cencelRent  = rentGoodsfacilityService.cancelRent(rentGoodsfacilityDto);
+		model.addAttribute("cencelRent", cencelRent);
+		return "/rentGoodsFacility/cancelGoodsFacility";
 	}
-		
+	
+	@RequestMapping(value="/cancelGoodsFacility", method=RequestMethod.POST)
+	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityController cancelGoodsFacility POST: " + rentGoodsfacilityDto.toString());
+		rentGoodsfacilityService.cancelRentGoodsFacility(rentGoodsfacilityDto);
+		return "redirect:/viewApplicationRentForCitizen";
+	}
 }

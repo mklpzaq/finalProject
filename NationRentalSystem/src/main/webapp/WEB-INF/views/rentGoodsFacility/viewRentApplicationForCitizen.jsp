@@ -124,7 +124,8 @@
 											<td>대여&대관 시작일</td>
 											<td>대여&대관 종료일</td>
 											<td>배달신청여부</td>
-											<td>신청날짜</td>																																								
+											<td>신청날짜</td>	
+											<td>취소상태</td>																																							
 										</tr>
 									</thead>
 									<tbody>
@@ -140,9 +141,10 @@
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
+												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}</td>
 												<td><a href="${pageContext.request.contextPath}/updateApplicationForm?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">수정</a></td>
 												<td><a href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}&adminagencyCode=${rentGoodsfacilityDto.adminagencyCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}&classifyRentalState=반납">반납배달신청</a></td>
-												<td><a href="${pageContext.request.contextPath}/"></a></td>																																															
+												<td><a href="${pageContext.request.contextPath}/cancelGoodsFacility?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">대여취소</a></td>																																															
 											</tr>
 										</c:forEach>									
 									</tbody>

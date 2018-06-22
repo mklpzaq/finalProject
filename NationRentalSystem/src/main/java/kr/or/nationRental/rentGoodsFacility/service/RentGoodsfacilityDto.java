@@ -21,6 +21,7 @@ public class RentGoodsfacilityDto {
 	private int goodsfacilityPriceRental;
 	private String goodsfacilityAddressSangse;
 	private String adminagencyName;
+	private String isCanceledDelivery;
 	public int getGoodsfacilityRentalCode() {
 		return goodsfacilityRentalCode;
 	}
@@ -117,6 +118,12 @@ public class RentGoodsfacilityDto {
 	public void setAdminagencyName(String adminagencyName) {
 		this.adminagencyName = adminagencyName;
 	}
+	public String getIsCanceledDelivery() {
+		return isCanceledDelivery;
+	}
+	public void setIsCanceledDelivery(String isCanceledDelivery) {
+		this.isCanceledDelivery = isCanceledDelivery;
+	}
 	@Override
 	public String toString() {
 		return "RentGoodsfacilityDto [goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", adminagencyCode="
@@ -128,8 +135,9 @@ public class RentGoodsfacilityDto {
 				+ goodsfacilityRentalDateRegistration + ", goodsfacilityRentalIsCanceled="
 				+ goodsfacilityRentalIsCanceled + ", goodsfacilityRentalDeposit=" + goodsfacilityRentalDeposit
 				+ ", goodsfacilityPriceRental=" + goodsfacilityPriceRental + ", goodsfacilityAddressSangse="
-				+ goodsfacilityAddressSangse + ", adminagencyName=" + adminagencyName + "]";
-	} 
+				+ goodsfacilityAddressSangse + ", adminagencyName=" + adminagencyName + ", isCanceledDelivery="
+				+ isCanceledDelivery + "]";
+	}
 	
 	
 	

@@ -69,6 +69,7 @@
   				,goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
   				,goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
   				,goodsfacility_rental_date_registration as goodsfacilityRentalDateRegistration
+  				,goodsfacility_rental_is_canceled as goodsfacilityRentalIsCanceled
   			FROM
   				goodsfacility_rental
   			WHERE 
@@ -145,9 +146,41 @@
   			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
   			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
   			SELECT
-  				
-  	
+  				goodsfacility_rental_code as goodsfacilityRentalCode			
+  				,citizen_id as citizenId
+  				,citizen_name as citizenName
+  				,citizen_phone as citizenPhone
+  				,goodsfacility_code as goodsfacilityCode
+  				,goodsfacility_name as goodsfacilityName
+  				,goodsfacility_rental_date_start as goodsfacilityRentalDateStart
+  				,goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
+  				,goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
+  				,goodsfacility_rental_date_registration as goodsfacilityRentalDateRegistration  															
+  			FROM
+  				goodsfacility_rental
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
   	</select>
+  	
+  	<update id="cancelRentGoodsFacility"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			UPDATE
+  				goodsfacility_rental
+  			SET
+  				goodsfacility_rental_is_canceled = "Y"
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
+  	</update>
+  	
+  	<update id="cancelDelivery"
+  			parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+  			UPDATE
+  				delivery_order_citizen
+  			SET
+  				is_canceled_delivery = "Y"
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
+  	</update>
   	
   
   </mapper>
