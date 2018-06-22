@@ -13,10 +13,12 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/left/leftnavi.jsp"/>
+					<%-- <jsp:include page="../module/left/leftnavi.jsp"/> --%>
 				</div>
 				<div class="col-sm-8">
-				<!-- Begin Content -->
+					<!-- Begin Content -->
+					
+					
 					<h3>회원가입</h3>
 					<hr/>
 				
@@ -28,7 +30,7 @@
 					<a href="${pageContext.request.contextPath}/addr">주소테스트</a>
 				
 				
-				<!-- End Content -->
+					<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>

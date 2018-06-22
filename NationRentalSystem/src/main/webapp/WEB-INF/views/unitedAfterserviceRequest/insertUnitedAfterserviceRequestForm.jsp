@@ -21,7 +21,7 @@
 				/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
 				$.ajax({
 					type: "POST"
-					,url: "/nationRental/selectOneAgencyForAjax"
+					,url: "${pageContext.request.contextPath}/selectOneAgencyForAjax"
 					,data: { agencyName: $('#agencySelect > option:selected').val() }
 					,success:function( JSON ) { // result : String, XML, JSON
 						$('#agencyCode').val(JSON.agencyCode);
@@ -34,7 +34,7 @@
 				$('#agencySelect').change(function() {
 					$.ajax({
 						type: "POST"
-						,url: "/nationRental/selectOneAgencyForAjax"
+						,url: "${pageContext.request.contextPath}/selectOneAgencyForAjax"
 						,data: { agencyName: $('#agencySelect > option:selected').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
 							$('#agencyCode').val(JSON.agencyCode);
@@ -48,12 +48,10 @@
 		</script>
 	</head>
 	<body>
-		<div style="position:fixed; z-index:-1; width:100%">
-			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
-		</div>
-		
-		<div class="container-fluid" style="height:1200px; margin:15px 0 0 0;">
-			<jsp:include page="../module/top/navbar.jsp"/>
+		<jsp:include page="../module/backgroundImg/backgroundImg.jsp"/>
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid" style="margin:15px 0 0 0;">
+			
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
 				<div class="col-sm-2" >

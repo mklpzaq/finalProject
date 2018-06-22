@@ -176,10 +176,7 @@ public class AgencyEmployeeService {
 	 * */
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyNameForInsert AgencyEmployeeService");
-		agencyEmployeeDto = agencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);
-		logger.debug(agencyEmployeeDto.toString());
-		
-		return agencyEmployeeDto;
+		return agencyEmployeeDao.getAgencyNameForInsert(agencyEmployeeDto);
 	}
 	
 	public int injeungAgencyEmployee(AgencyEmployeeDto agencyEmployeeDto) {

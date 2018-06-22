@@ -12,7 +12,7 @@
 				/* 첫 화면에서도 바로 적용되게 ajax를 change 이벤트 발생전에도 실행되게 하였다. */
 				$.ajax({
 					type: "POST"
-					,url: "/nationRental/selectOneAgencyBusinesstypeForAjax"
+					,url: "${pageContext.request.contextPath}/selectOneAgencyBusinesstypeForAjax"
 					,data: { agencyBusinesstypeName: $('#AgencyBusinesstypeDtoSelect > option:selected').val() }
 					,success:function( JSON ) { // result : String, XML, JSON
 						$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
@@ -23,7 +23,7 @@
 				$('#AgencyBusinesstypeDtoSelect').change(function() {
 					$.ajax({
 						type: "POST"
-						,url: "/nationRental/selectOneAgencyBusinesstypeForAjax"
+						,url: "${pageContext.request.contextPath}/selectOneAgencyBusinesstypeForAjax"
 						,data: { agencyBusinesstypeName: $('#AgencyBusinesstypeDtoSelect > option:selected').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
 							alert(JSON);

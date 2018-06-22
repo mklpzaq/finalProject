@@ -111,9 +111,7 @@ public class AgencyEmployeeDao {
 	
 	public AgencyEmployeeDto getAgencyNameForInsert(AgencyEmployeeDto agencyEmployeeDto) {
 		logger.debug("getAgencyNameForInsert AgencyEmployeeDao");
-		agencyEmployeeDto = sqlSession.selectOne(NS+"getAgencyNameForInsert", agencyEmployeeDto);
-		logger.debug(agencyEmployeeDto.toString());
-		return agencyEmployeeDto;
+		return sqlSession.selectOne(NS+"getAgencyNameForInsert", agencyEmployeeDto);
 	}
 	
 	/* 대행업체 인증코드 획득 = 대행업체 낙찰코드 획득 */

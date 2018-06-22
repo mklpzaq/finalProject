@@ -135,7 +135,7 @@ public class AgencyEmployeeController {
 		 * insertAgencyEmployeeForm.jsp로 넘어가게 된다.
 		 *  */
 		agencyEmployeeDto = agencyEmployeeService.getAgencyNameForInsert(agencyEmployeeDto);
-		logger.debug(agencyEmployeeDto.toString());
+		/*logger.debug(agencyEmployeeDto.toString());*/
 		model.addAttribute("agencyInfo", agencyEmployeeDto);
 		return "agencyEmployee/insertAgencyEmployeeForm";
 	}

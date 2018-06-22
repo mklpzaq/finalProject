@@ -12,10 +12,10 @@
 				$('#injeungBtn').click(function(){
 					$.ajax({
 					      type: "POST"
-					      ,url: "/nationRental/injeungAgencyEmployee"
+					      ,url: "${pageContext.request.contextPath}/injeungAgencyEmployee"
 					      ,data: { agencyEmployeeInjeungNum: $('#agencyEmployeeInjeungNum').val() }
 					      ,success:function( JSON ) { // result : String, XML, JSON
-					    	  if(JSON!='null'){
+					    	  if(JSON === 'T'){
 								alert('인증성공');
 								/* $(location).attr('href', './insertAgencyEmployee'); */
 								$('#injeungAgencyEmployeeForm').submit();

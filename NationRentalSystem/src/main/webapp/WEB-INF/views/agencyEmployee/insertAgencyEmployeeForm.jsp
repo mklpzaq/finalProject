@@ -14,7 +14,7 @@
 				$('#idCheckBtn').click(function(){
 					$.ajax({
 					      type: "POST"
-					      ,url: "/nationRental/idCheck"
+					      ,url: "${pageContext.request.contextPath}/idCheck"
 					      ,data: { agencyEmployeeId: $('#agencyEmployeeId').val() }
 					      ,success:function( JSON ) { // result : String, XML, JSON
 					    	  if(JSON=='T'){
@@ -32,7 +32,7 @@
 					//다시한번 유효성 검사를 하고 커밋을 시킨다.
 					$.ajax({
 						type: "POST"
-						,url: "/nationRental/idCheck"
+						,url: "${pageContext.request.contextPath}/idCheck"
 						,data: { agencyEmployeeId: $('#agencyEmployeeId').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
 							if(JSON=='T'){

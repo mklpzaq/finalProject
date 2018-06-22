@@ -35,21 +35,17 @@
 	</script>
 	
 	<body>
-		<div style="position:fixed; z-index:-1; width:100%">
-			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
-		</div>
-		
-		<div class="container-fluid" style="height:900px;">
-			<jsp:include page="./module/top/navbar.jsp"/>
-			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
+		<jsp:include page="./module/backgroundImg/backgroundImg.jsp"/>
+		<jsp:include page="./module/top/navbar.jsp"/>
+		<div class="container-fluid" style="height:900px; margin:15px 0 0 0;">
 			<div class="row" >
-				<div class="col-sm-2" style="padding:15px;">
+				<div class="col-sm-2">
 					<jsp:include page="./module/leftHome/leftHome.jsp"/>
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					
-					<div style="margin:15px 0 15px 0;" class="panel panel-default">
+					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<h1>국가 통합 대여/예약 시스템</h1>
 							<h2>Nation Integrated Reserve and Rental System</h2>
