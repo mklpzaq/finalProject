@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.goodsFacility.controller.GoodsFacilityController;
@@ -83,10 +84,13 @@ public class RentGoodsfacilityController {
 	}
 	
 	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.POST)
-	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto) {
+	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto
+										,RedirectAttributes redirectAttributes) {
 		logger.debug("RentGoodsfacilityController updateApplicationForm POST: " + rentGoodsfacilityDto.toString());
 		int result = rentGoodsfacilityService.updateApplication(rentGoodsfacilityDto);
-				
+		redirectAttributes.addAttribute("citizenId", rentGoodsfacilityDto.getCitizenId());
+		logger.debug("rentGoodsfacilityDto.getCitizenId() : "+ rentGoodsfacilityDto.getCitizenId());
+		
 		return "redirect:/viewApplicationRentForCitizen";
 	}
 		

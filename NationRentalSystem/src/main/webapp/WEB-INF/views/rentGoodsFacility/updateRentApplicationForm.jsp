@@ -22,9 +22,15 @@
 			<h2>대여 & 대관 수정 폼</h2>
 			<form action="${pageContext.request.contextPath}/updateApplicationForm" method="post">
 				<div class="form-group">
+						<label for="ID" class="col-sm-2 control-label">대여코드</label>
+				    <div class="col-sm-10">
+				    	<input type="text" class="form-control" id="goodsfacilityRentalCode" name="goodsfacilityRentalCode" value="${updateRentApp.goodsfacilityRentalCode}" readonly>				    	     	
+				    </div>
+				</div>			
+				<div class="form-group">
 						<label for="ID" class="col-sm-2 control-label">회원ID</label>
 				    <div class="col-sm-10">
-				    	<input type="text" class="form-control" id="CitizenId" name="CitizenId" value="${updateRentApp.citizenId}" readonly>				    	     	
+				    	<input type="text" class="form-control" id="citizenId" name="citizenId" value="${updateRentApp.citizenId}" readonly>				    	     	
 				    </div>
 				</div>				
 				<div class="form-group">
