@@ -118,4 +118,24 @@
 		ORDER BY delivery_order_citizen_date DESC
 	</select>
 	
+	<select id="insertDeliveryOrderCitizenAddressSelect" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+		select
+			citizen.sido_name as sendAddressSido
+			,citizen.sigungu_name as sendAddressSigungu
+			,citizen.eupmyeon_name as sendAddressEupmyeon
+			,citizen.citizen_address_sangse as sendAddressSangse
+			FROM citizen
+			where citizen_id = #{citizenId}	
+	</select>
+	
+	<select id="insertDeliveryOrderAdminagencyAddressSelect" parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto" resultType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+		SELECT
+			adminagency.sido_name as receiveAddressSido
+			,adminagency.sigungu_name as receiveAddressSigungu
+			,adminagency.eupmyeon_name as receiveAddressEupmyeon
+			,adminagency.adminagency_address_sangse	as receiveAddressSangse
+			FROM adminagency
+			where adminagency_code = #{adminagencyCode}
+	</select>
+	
 </mapper>

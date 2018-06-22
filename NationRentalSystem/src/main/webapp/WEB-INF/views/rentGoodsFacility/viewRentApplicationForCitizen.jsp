@@ -129,7 +129,7 @@
 										<c:forEach var="rentGoodsfacilityDto" items="${list}">
 											<tr>	
 												<td>${rentGoodsfacilityDto.adminagencyCode}</td>
-												<td>${rentGoodsfacilityDto.citizenPhone}</td>
+												<td>${rentGoodsfacilityDto.citizenPhone}</td> 
 												<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateStart}</td>
@@ -137,7 +137,7 @@
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
 												<td><a href="${pageContext.request.contextPath}/updateApplicationForm?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">수정</a></td>
-												<td><a href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen?adminagencyCode=${rentGoodsfacilityDto.adminagencyCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}&classifyRentalState=반납">반납배달신청</a></td>																																															
+												<td><a href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}&adminagencyCode=${rentGoodsfacilityDto.adminagencyCode}&goodsfacilityCode=${rentGoodsfacilityDto.goodsfacilityCode}&classifyRentalState=반납">반납배달신청</a></td>																																															
 											</tr>
 										</c:forEach>									
 									</tbody>
