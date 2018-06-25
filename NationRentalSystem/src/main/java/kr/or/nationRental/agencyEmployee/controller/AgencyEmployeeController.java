@@ -27,13 +27,37 @@ public class AgencyEmployeeController {
 	
 	@RequestMapping(value="/selectListFunctionaryForAgencyEmployee", method=RequestMethod.GET)
 	public String selectListFunctionaryForAgencyEmployee(Model model
-														,FunctionaryDto functionaryDto) {
+														,HttpSession session
+														,FunctionaryDto functionaryDto
+														,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+														,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+														,@RequestParam(value="searchSelect", defaultValue="공무원 ID") String searchSelect
+														,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeController");
-		logger.debug(functionaryDto.toString());
-		List<FunctionaryDto> list = agencyEmployeeService.selectListFunctionaryForAgencyEmployee(functionaryDto);
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★");
-		logger.debug(list.toString());
-		model.addAttribute("functionaryDtoList", list);
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		Map<String, Object> map = agencyEmployeeService.selectListFunctionaryForAgencyEmployee(currentPage, pagePerRow, searchSelect, searchWord, functionaryDto);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchWord", searchWord);
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		/* 파일 저장루트 확인용 */
+		String path = session.getServletContext().getRealPath("/resources/upload/");
+		model.addAttribute("path", path);
+		
 		return "agencyEmployee/selectListFunctionaryForAgencyEmployee";
 	}
 	

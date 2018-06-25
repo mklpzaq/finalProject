@@ -5,6 +5,74 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 	
+	<select id="totalCountFunctionaryForAgencyEmployee"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+			
+			INNER JOIN
+			adminagency AS adminagen
+			ON
+			agen.adminagency_code = adminagen.adminagency_code
+			
+			INNER JOIN
+			functionary AS func
+			ON
+			adminagen.adminagency_code = func.adminagency_code
+			
+		WHERE
+			agenemp.agency_employee_id = #{agencyEmployeeId}
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('공무원 ID')">
+					AND func.functionary_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('지자체 기관코드')">
+					AND adminagen.adminagency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('지자체 기관명')">
+					AND adminagen.adminagency_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('시도명')">
+					AND adminagen.sido_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('시군구명')">
+					AND sigungu_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('읍면동명')">
+					AND adminagen.eupmyeon_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('상세주소')">
+					AND adminagen.adminagency_address_sangse = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원명')">
+					AND func.functionary_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원전화')">
+					AND func.functionary_phone = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원이메일')">
+					AND func.functionary_email = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원가입일')">
+					AND func.functionary_date_join = #{searchWord}
+				</when>
+			</choose>
+		</if>
+	</select>
+	
 	<select id="selectListFunctionaryForAgencyEmployee"
 			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
 			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
@@ -47,6 +115,47 @@
 			
 		WHERE
 			agenemp.agency_employee_id = #{agencyEmployeeId}
+		<if test="!searchWord.equals('')">
+			<choose>
+				<when test="searchSelect.equals('공무원 ID')">
+					AND func.functionary_id = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('지자체 기관코드')">
+					AND adminagen.adminagency_code = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('지자체 기관명')">
+					AND adminagen.adminagency_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('시도명')">
+					AND adminagen.sido_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('시군구명')">
+					AND sigungu_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('읍면동명')">
+					AND adminagen.eupmyeon_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('상세주소')">
+					AND adminagen.adminagency_address_sangse = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원명')">
+					AND func.functionary_name = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원전화')">
+					AND func.functionary_phone = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원이메일')">
+					AND func.functionary_email = #{searchWord}
+				</when>
+				<when test="searchSelect.equals('공무원가입일')">
+					AND func.functionary_date_join = #{searchWord}
+				</when>
+			</choose>
+		</if>
+		ORDER BY func.functionary_date_join DESC
+		LIMIT #{beginRow}, #{pagePerRow}	
+			
+			
 	</select> 
 	
 	

@@ -18,9 +18,14 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
-	public List<FunctionaryDto> selectListFunctionaryForAgencyEmployee(FunctionaryDto functionaryDto) {
+	public int totalCountFunctionaryForAgencyEmployee(Map<String, Object> map) {
+		logger.debug("totalCountFunctionaryForAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"totalCountFunctionaryForAgencyEmployee", map);
+	}
+	
+	public List<FunctionaryDto> selectListFunctionaryForAgencyEmployee(Map<String, Object> map) {
 		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeDao");
-		return sqlSession.selectList(NS+"selectListFunctionaryForAgencyEmployee", functionaryDto);
+		return sqlSession.selectList(NS+"selectListFunctionaryForAgencyEmployee", map);
 	}
 	
 	public int totalCountAgencyEmployee(Map<String, Object> map) {
