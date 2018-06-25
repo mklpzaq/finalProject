@@ -56,7 +56,7 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					
-					<div style="margin:15px 0 0 0;" class="panel panel-default">
+					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
 								<div class="col-md-4">
