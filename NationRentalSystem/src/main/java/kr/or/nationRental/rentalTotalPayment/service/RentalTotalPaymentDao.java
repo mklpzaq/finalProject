@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.nationRental.agency.service.AgencyBusinesstypeDto;
 import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
 
 
@@ -32,6 +31,18 @@ public class RentalTotalPaymentDao {
 		logger.debug("insertRentTotalPayment : " + rentalTotalPaymentDto.toString());
 		int row = sqlSession.insert(NS+"insertRentTotalPayment", rentalTotalPaymentDto);
 		return row;
+	}
+	
+	//결제 완료 리스트
+	public List<RentalTotalPaymentDto> selectListRentalTotalPayment() {
+		logger.info("---selectListRentalTotalPayment");
+		return sqlSession.selectList(NS+"selectListRentalTotalPayment");
+	}
+	
+	//환불신청 리스트
+	public List<RequestRefundDto> selectListRequestRefund() {
+		logger.info("---selectListRequestRefund");
+		return sqlSession.selectList(NS+"selectListRequestRefund");
 	}
 
 }

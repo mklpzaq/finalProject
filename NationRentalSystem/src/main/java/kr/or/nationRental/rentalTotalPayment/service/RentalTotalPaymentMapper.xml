@@ -70,4 +70,34 @@
   			)
   	</insert>
   	
+  	<!-- 결제 완료리스트 -->
+	<select id="selectListRentalTotalPayment" resultType="kr.or.nationRental.rentalTotalPayment.service.RentalTotalPaymentDto">
+		SELECT
+			rental_total_payment_code as rentalTotalPaymentCode
+			, goodsfacility_rental_code as goodsfacilityRentalCode
+			, citizen_id as citizenId
+			, goodsfacility_code as goodsfacilityCode
+			, goodsfacility_name as goodsfacilityName
+			, adminagency_code as adminagencyCode
+			, adminagency_name as adminagencyName
+			, goodsfacility_price_rental as goodsfacilityPriceRental
+			, used_point as usedPoint
+			, annualfee_pakage_code as annualfeePakageCode
+			, annualfee_pakage_name as annualfeePakageName
+			, delivery_price as deliveryPrice
+			, rental_total_payment as rentalTotalPayment
+			, date_payment as datePayment
+		FROM rental_total_payment	
+	</select>
+	
+	<!-- 결제 완료리스트 -->
+	<select id="selectListRequestRefund" resultType="kr.or.nationRental.rentalTotalPayment.service.RequestRefundDto">
+		SELECT
+			request_refund_code as requestRefundCode
+			, rental_total_payment_code as rentalTotalPaymentCode
+			, citizen_id as citizenId
+			, date_request_refund as dateRequestRefund
+		FROM request_refund	
+	</select>
+  	
 </mapper>

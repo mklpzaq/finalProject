@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.or.nationRental.agency.service.AgencyBusinesstypeDto;
-import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto;
 
 @Service
@@ -28,4 +26,13 @@ public class RentalTotalPaymentService {
 		rentalTotalPaymentDao.insertRentTotalPayment(rentalTotalPaymentDto);
 	}
 	
+	//결제완료리스트
+	public List<RentalTotalPaymentDto> selectListRentalTotalPayment() {
+		return rentalTotalPaymentDao.selectListRentalTotalPayment();
+	}
+	
+	//환불신청리스트
+	public List<RequestRefundDto> selectListRequestRefund() {
+		return rentalTotalPaymentDao.selectListRequestRefund();
+	}
 }

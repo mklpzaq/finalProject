@@ -100,12 +100,12 @@
 						         <ul class="nav navbar-nav">
 						          <!-- 관리자 메뉴 -->
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAdministrator">관리자 회원관리</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDistrict">행정구역 등록</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAdminagency">지자체 기관 등록</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">시설/물품 카테고리 등록</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyBusinesstype">업종분류코드 등록</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDistrict">행정구역 관리</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAdminagency">행정기관 관리</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">시설/물품 관리</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyBusinesstype">업종분류 관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getCitizenList">시민계정 조회</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li> <!-- 시설/물품관리 하위로 들어가면 좋겠다고 생각합니다 -->
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지 설정</a></li>
@@ -123,7 +123,7 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertGoodsFacility?functionaryId=${member.memberId}">물품/시설 관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectGoodsFacilityList?functionaryId=${member.memberId}">물품/시설 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">시민 결제/취소 조회</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListRentalTotalPayment">결제/환불 목록</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertReturnGoodsfacilityInfoForm?adminagencyCode=${member.adminagencyCode}">물품/시설반납</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizen?adminagencyCode=${member.adminagencyCode}">물품 배달 신청 확인</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?functionaryId=${member.memberId}">통합 AS 의뢰</a></li>

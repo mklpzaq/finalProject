@@ -273,6 +273,8 @@
 								<button type="submit" id="insertButton" class="btn btn-default">결제하기</button>
 							</div>
 						</div>
+						
+						
 					<!-- Begin Modal -->
 						<div class="modal fade" id="annualfeePakageCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">

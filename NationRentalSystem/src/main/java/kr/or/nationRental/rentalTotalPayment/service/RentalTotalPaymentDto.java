@@ -3,8 +3,8 @@ package kr.or.nationRental.rentalTotalPayment.service;
 import java.sql.Date;
 
 public class RentalTotalPaymentDto {
-	private int RentalTotalPaymentCode; // 시설/물품 대여 최종결제 코드
-	private int GoodsfacilityRentalCode; //시설/물품 대여/예약 신청코드
+	private int rentalTotalPaymentCode; // 시설/물품 대여 최종결제 코드
+	private int goodsfacilityRentalCode; //시설/물품 대여/예약 신청코드
 	private String citizenId; //시민ID
 	private int goodsfacilityCode; //시설/물품 개별관리코드
 	private String goodsfacilityName; //시설/물품명
@@ -19,16 +19,16 @@ public class RentalTotalPaymentDto {
 	private Date datePayment; //결제날짜
 	
 	public int getRentalTotalPaymentCode() {
-		return RentalTotalPaymentCode;
+		return rentalTotalPaymentCode;
 	}
 	public void setRentalTotalPaymentCode(int rentalTotalPaymentCode) {
-		RentalTotalPaymentCode = rentalTotalPaymentCode;
+		this.rentalTotalPaymentCode = rentalTotalPaymentCode;
 	}
 	public int getGoodsfacilityRentalCode() {
-		return GoodsfacilityRentalCode;
+		return goodsfacilityRentalCode;
 	}
 	public void setGoodsfacilityRentalCode(int goodsfacilityRentalCode) {
-		GoodsfacilityRentalCode = goodsfacilityRentalCode;
+		this.goodsfacilityRentalCode = goodsfacilityRentalCode;
 	}
 	public String getCitizenId() {
 		return citizenId;
@@ -105,8 +105,8 @@ public class RentalTotalPaymentDto {
 	
 	@Override
 	public String toString() {
-		return "RentalTotalPaymentDto [RentalTotalPaymentCode=" + RentalTotalPaymentCode + ", GoodsfacilityRentalCode="
-				+ GoodsfacilityRentalCode + ", citizenId=" + citizenId + ", goodsfacilityCode=" + goodsfacilityCode
+		return "RentalTotalPaymentDto [rentalTotalPaymentCode=" + rentalTotalPaymentCode + ", goodsfacilityRentalCode="
+				+ goodsfacilityRentalCode + ", citizenId=" + citizenId + ", goodsfacilityCode=" + goodsfacilityCode
 				+ ", goodsfacilityName=" + goodsfacilityName + ", adminagencyCode=" + adminagencyCode
 				+ ", adminagencyName=" + adminagencyName + ", goodsfacilityPriceRental=" + goodsfacilityPriceRental
 				+ ", usedPoint=" + usedPoint + ", annualfeePakageCode=" + annualfeePakageCode + ", annualfeePakageName="
