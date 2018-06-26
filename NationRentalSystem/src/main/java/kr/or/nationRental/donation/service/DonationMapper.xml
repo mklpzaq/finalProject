@@ -5,5 +5,23 @@
  
 <mapper namespace="kr.or.nationRental.donation.service.DonationMapper">
 
+	<!-- 회원 : 기부신청 등록 -->
+	<insert id="insertDonation" parameterType="kr.or.nationRental.donation.service.DonationDto">
+	INSERT INTO donation_request (
+		donation_request_code
+		, member_id
+		, donation_name
+		, donation_pw
+		, donation_content
+		, donation_request_data
+	) VALUES (
+		NULL
+		, #{memberId}
+		, #{donationName}
+		, #{donationPw}
+		, #{donationContent}
+		, NOW()
+	)
+	</insert>
 
 </mapper>
