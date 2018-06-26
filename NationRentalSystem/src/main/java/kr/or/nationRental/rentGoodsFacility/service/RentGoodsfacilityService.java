@@ -101,5 +101,10 @@ public class RentGoodsfacilityService {
 		rentGoodsfacilityDao.cancelDelivery(rentGoodsfacilityDto);	
 	}
 
+	public RentGoodsfacilityDto updateDeliveryGoodsInfo(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService updateDeliveryGoodsInfo  :" + rentGoodsfacilityDto.toString());		
+		return rentGoodsfacilityDao.updateDeliveryGoodsInfo(rentGoodsfacilityDto);
+	}
+
 	
 }

@@ -111,4 +111,14 @@ public class RentGoodsfacilityController {
 		redirectAttributes.addAttribute("citizenId", rentGoodsfacilityDto.getCitizenId());
 		return "redirect:/viewApplicationRentForCitizen";
 	}
+		
+	@RequestMapping(value="/updateDeliverGoods", method=RequestMethod.GET)
+	public String updateDeliverGoods(RentGoodsfacilityDto rentGoodsfacilityDto
+										,Model model){
+		logger.debug("RentGoodsfacilityController updateDeliverGoods GET: " + rentGoodsfacilityDto.toString());
+		RentGoodsfacilityDto updateDeliveryGoods = rentGoodsfacilityService.updateDeliveryGoodsInfo(rentGoodsfacilityDto);
+		model.addAttribute("updateDeliveryGoods", updateDeliveryGoods);
+		return "/rentGoodsFacility/insertDeliveryGoodsFacility";
+	}
+	
 }

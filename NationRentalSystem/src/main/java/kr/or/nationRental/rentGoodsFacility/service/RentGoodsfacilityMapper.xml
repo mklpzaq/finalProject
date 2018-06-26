@@ -182,5 +182,24 @@
   				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
   	</update>
   	
+  	<select id="updateDeliveryGoodsInfo"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT
+				goodsfacility_rental.goodsfacility_rental_code  			
+  				,goodsfacility_rental.goodsfacility_name
+  				,goodsfacility_rental.citizen_id
+  				,goodsfacility_rental.citizen_name
+  				,citizen.citizen_address_sangse  				
+  			FROM
+  				goodsfacility_rental
+  			JOIN
+  				citizen
+  			ON
+  				goodsfacility_rental.citizen_id = citizen.citizen_id
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}
+  	
+  	</select>
   
   </mapper>

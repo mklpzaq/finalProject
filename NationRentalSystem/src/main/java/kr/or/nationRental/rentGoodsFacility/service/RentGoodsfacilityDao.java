@@ -66,4 +66,8 @@ public class RentGoodsfacilityDao {
 		
 	}
 
+	public RentGoodsfacilityDto updateDeliveryGoodsInfo(RentGoodsfacilityDto rentGoodsfacilityDto) {		
+		return sqlSession.selectOne(NS+"updateDeliveryGoodsInfo", rentGoodsfacilityDto);
+	}
+
 }
