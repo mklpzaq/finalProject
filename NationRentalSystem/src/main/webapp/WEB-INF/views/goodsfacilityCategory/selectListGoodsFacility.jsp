@@ -46,7 +46,10 @@
 			});
 		</script>
 	</head>
-	<body>
+	<body>	
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
 			<div class="row">
