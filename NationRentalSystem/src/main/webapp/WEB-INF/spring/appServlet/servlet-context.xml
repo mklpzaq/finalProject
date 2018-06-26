@@ -83,6 +83,8 @@
 				<value>classpath:kr/or/nationRental/rentalTotalPayment/service/RentalTotalPaymentMapper.xml</value>
 				<value>classpath:kr/or/nationRental/agencyAfterserviceHandling/service/AgencyAfterserviceHandlingMapper.xml</value>
 				<value>classpath:kr/or/nationRental/rentalTotalPayment/service/RentalTotalPaymentMapper.xml</value>
+				<value>classpath:kr/or/nationRental/donation/service/DonationMapper.xml</value>
+				
 							
 			</list>
 		</property>
