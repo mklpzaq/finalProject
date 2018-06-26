@@ -23,7 +23,7 @@
 					<div class="panel panel-default">	
 						<div class="panel-body text-center">
 							<div class="text-center">
-								<h3>행정구역 등록</h3>
+								<h3>전체 행정구역 목록</h3>
 							</div>
 							<table class="table table-striped">
 								<thead>

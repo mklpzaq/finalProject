@@ -49,12 +49,6 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="eupmyeonMiddleCode" class="col-sm-3 control-label">소분류 코드</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" name="eupmyeonMiddleCode" id="eupmyeonMiddleCode" placeholder="소분류 코드를 입력해주세요.">
-										</div>
-									</div>
-									<div class="form-group">
 										<label for="sigunguName" class="col-sm-3 control-label">읍면동 명</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="eupmyeonName" id="eupmyeonName" placeholder="읍면동 이름을 입력해주세요.">

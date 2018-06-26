@@ -23,17 +23,14 @@
 					<div class="panel panel-default">	
 						<div class="panel-body text-center">
 							<div class="text-center">
-								<h3>행정구역 읍면동 등록</h3>
+								<h3>행정구역 읍면동</h3>
 							</div>
 							<table class="table table-striped">
 								<thead>
 									<tr>
 										<td width="10%">읍면동 코드</td>
-										<td width="10%">시도 코드</td>
 										<td width="15%">시도</td>
-										<td width="10%">중분류 코드</td>
 										<td width="15%">시군구</td>
-										<td width="10%">소분류 코드</td>
 										<td width="15%">읍면동</td>
 										<td width="15%">삭제</td>									
 									</tr>
@@ -43,11 +40,8 @@
 										<tbody>
 											<tr>
 												<th>${districtDtoList.eupmyeonCode}</th>
-												<th>${districtDtoList.sidoCode}</th>
 												<th>${districtDtoList.sidoName}</th>
-												<th>${districtDtoList.sigunguMiddleCode}</th>
 												<th>${districtDtoList.sigunguName}</th>
-												<th>${districtDtoList.eupmyeonMiddleCode}</th>
 												<th>${districtDtoList.eupmyeonName}</th>
 												<th></th>																					
 											</tr>

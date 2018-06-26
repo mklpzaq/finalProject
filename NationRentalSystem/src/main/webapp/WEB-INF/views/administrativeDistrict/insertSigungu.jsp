@@ -38,12 +38,6 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="sigunguCode" class="col-sm-3 control-label">중분류 코드</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" name="sigunguMiddleCode" id="sigunguMiddleCode" placeholder="중분류 코드를 입력해주세요.">
-										</div>
-									</div>
-									<div class="form-group">
 										<label for="sigunguName" class="col-sm-3 control-label">시군구 명</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="sigunguName" id="sigunguName" placeholder="시군구 이름을 입력해주세요.">

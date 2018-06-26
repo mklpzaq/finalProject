@@ -49,32 +49,26 @@
 	<select id="selectListSigungu" resultMap="selectListDistrict">
 	SELECT 
 		sigungu.sigungu_code
-		, sido.sido_code
 		, sido.sido_name
-		, sigungu.sigungu_middle_code
 		, sigungu.sigungu_name
+		
 	FROM sido, sigungu 
 	WHERE 
-		sido.sido_code = sigungu.sido_code 
-	ORDER BY sigungu_middle_code ASC	
+		sido.sido_code = sigungu.sido_code 	
 	</select>
 	
 	<!-- 행정구역 읍면동 목록 -->
 	<select id="selectListEupmyeon" resultMap="selectListDistrict">
 		SELECT 
 		eupmyeon.eupmyeon_code
-		, sido.sido_code
 		, sido.sido_name
-		, sigungu.sigungu_middle_code
 		, sigungu.sigungu_name
-		, eupmyeon.eupmyeon_middle_code
 		, eupmyeon.eupmyeon_name
 	FROM sido, sigungu, eupmyeon
 	WHERE 
 		sido.sido_code = sigungu.sido_code
 	AND
 		sigungu.sigungu_code = eupmyeon.sigungu_code 
-	ORDER BY eupmyeon_middle_code ASC
 	</select>
 	
 	<!-- 시도 등록 -->
@@ -93,12 +87,10 @@
 		INSERT INTO sigungu(
 			sigungu_code
 			, sido_code
-			, sigungu_middle_code
 			, sigungu_name
 		) VALUES (
-			#{sigunguCode}
+			NULL
 			, #{sidoCode}
-			, #{sigunguMiddleCode}
 			, #{sigunguName}
 		)	
 	</insert>
@@ -108,12 +100,10 @@
 	INSERT INTO eupmyeon (
 		eupmyeon_code
 		, sigungu_code
-		, eupmyeon_middle_code
 		, eupmyeon_name
 		) VALUES (
-			#{eupmyeonCode}
+			NULL
 			, #{sigunguCode}
-			, #{eupmyeonMiddleCode}
 			, #{eupmyeonName}
 		)
 	</insert>

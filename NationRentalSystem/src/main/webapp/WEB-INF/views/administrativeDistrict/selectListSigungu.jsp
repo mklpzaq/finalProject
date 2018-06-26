@@ -12,52 +12,45 @@
 		<div style="position:fixed; z-index:-1; width:100%">
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
+		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 		<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="/WEB-INF/views/module/leftAdministrativeDistrict/leftSigunguDistrictInfo.jsp"/>
 				</div>
 				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
-					<div class="text-center">
-						<h1>행정구역 시군구 목록</h1>
-					</div>
-					<!-- 버튼으로 만들고 싶음 -->
-					<a href="${pageContext.request.contextPath}/selectListDistrict">행정구역 전체목록</a>/
-					<a href="${pageContext.request.contextPath}/insertSigungu">시군구 추가</a><br><br><br>
-					
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td width="15%">시군구 코드</td>
-								<td width="15%">시도 코드</td>
-								<td width="20%">시도</td>
-								<td width="15%">중분류 코드</td>
-								<td width="20%">시군구</td>
-								<!-- <td width="15%">삭제</td>	 -->							
-							</tr>
-						</thead>
-						<tbody>									
-							<c:forEach var="districtDtoList" items="${districtDtoList}">
-								<tbody>
+					<div class="panel panel-default">	
+						<div class="panel-body text-center">
+							<div class="text-center">
+								<h3>행정구역 시군구</h3>
+							</div>
+							<table class="table table-striped">
+								<thead>
 									<tr>
-										<th>${districtDtoList.sigunguCode}</th>
-										<th>${districtDtoList.sidoCode}</th>
-										<th>${districtDtoList.sidoName}</th>
-										<th>${districtDtoList.sigunguMiddleCode}</th>
-										<th>${districtDtoList.sigunguName}</th>
-										<%-- <td><a href="${pageContext.request.contextPath}/deleteSigungu?sigunguCode=${districtDtoList.sigunguCode}">삭제</a></td> --%>																					
+										<td>시군구코드</td>
+										<td>시도</td>
+										<td>시군구</td>
 									</tr>
+								</thead>
+								<tbody>									
+									<c:forEach var="districtDtoList" items="${districtDtoList}">
+										<tbody>
+											<tr>
+												<th style="text-align: center;">${districtDtoList.sigunguCode}</th>
+												<th style="text-align: center;">${districtDtoList.sidoName}</th>
+												<th style="text-align: center;">${districtDtoList.sigunguName}</th>																					
+											</tr>
+										</tbody>
+									</c:forEach>	
 								</tbody>
-							</c:forEach>	
-						</tbody>
-					</table>
+							</table>
+						</div>
+					</div>
 					<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
-			
 		</div>
 		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 	</body>

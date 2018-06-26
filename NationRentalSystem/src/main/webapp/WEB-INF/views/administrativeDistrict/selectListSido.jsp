@@ -25,7 +25,7 @@
 							<div class="text-center">
 								<h3>행정구역 시도 목록</h3>
 							</div>
-						<table class="table table-striped">
+						<table class="table table-striped" >
 							<thead>
 								<tr>
 									<td width="30%">시도 코드</td>
@@ -37,8 +37,8 @@
 								<c:forEach var="districtDtoList" items="${districtDtoList}">
 									<tbody>
 										<tr>
-											<th>${districtDtoList.sidoCode}</th>
-											<th>${districtDtoList.sidoName}</th>
+											<th style="text-align: center">${districtDtoList.sidoCode}</th>
+											<th style="text-align: center;">${districtDtoList.sidoName}</th>
 											<%-- <td><a href="${pageContext.request.contextPath}/deleteSigungu?sigunguCode=${districtDtoList.sigunguCode}">삭제</a></td> --%>																					
 										</tr>
 									</tbody>

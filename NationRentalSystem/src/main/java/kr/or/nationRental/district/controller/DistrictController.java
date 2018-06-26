@@ -83,8 +83,7 @@ public class DistrictController {
 	//시군구  등록 post호출
 	@RequestMapping(value="/insertSigungu",  method = RequestMethod.POST)
 	public String insertSigungu(DistrictDto districtDto) {
-		logger.debug(districtDto.toString());
-		districtDto.setSigunguCode(districtDto.getSidoCode() + districtDto.getSigunguMiddleCode());		
+		logger.debug(districtDto.toString());	
 		logger.debug("insertSigungu");
 		int row = districtService.insertSigungu(districtDto);
 		return "redirect:/selectListSigungu";
@@ -108,7 +107,6 @@ public class DistrictController {
 	@RequestMapping(value="/insertEupmyeon",  method = RequestMethod.POST)
 	public String insertEupmyeon(DistrictDto districtDto) {
 		logger.debug(districtDto.toString());
-		districtDto.setEupmyeonCode(districtDto.getSigunguCode() + districtDto.getEupmyeonMiddleCode());
 		logger.debug("---insertEupmyeonCode" + districtDto.getEupmyeonCode());
 		logger.debug("insertEupmyeon");
 		int row = districtService.insertEupmyeon(districtDto);
