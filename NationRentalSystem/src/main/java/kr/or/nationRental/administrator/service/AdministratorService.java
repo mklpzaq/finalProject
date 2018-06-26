@@ -23,6 +23,12 @@ public class AdministratorService {
 		return administratorDao.selectListAdministrator();
 	}
 	
+	//관리자 계정정보 보기
+	public AdministratorDto viewAdminInfo(AdministratorDto administratorDto)  {	
+		logger.info("viewAdminInfo");
+		return administratorDao.viewAdminInfo(administratorDto); 
+	}
+	
 	//관리자 정보 수정화면 불러오기
 	public AdministratorDto updateAdministratorForm(AdministratorDto administratorDto)  {	
 		logger.info("updateAdministratorForm");

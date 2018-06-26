@@ -61,6 +61,15 @@ public class AdministratorController {
 		return "adminstrator/selectListAdmin";
 	}
 	
+	//관리자 계정정보 보기
+	@RequestMapping(value = "/viewAdminInfo", method = RequestMethod.GET)
+	public String viewAdminInfo(AdministratorDto administratorDto, Model model) {
+		logger.info("---updateAdministrator GET" + administratorDto);
+		AdministratorDto viewAdminInfo = administratorService.viewAdminInfo(administratorDto);		
+		model.addAttribute("viewAdminInfo", viewAdminInfo);
+		return "adminstrator/viewAdminInfo";  
+	} 
+	
 	//관리자 정보 수정화면 불러오기 GET
 	//계획 : 내정보수정 버튼을 누르면 수정하기 버튼이 있는 화면으로 이동시킨다.
 	@RequestMapping(value = "/updateAdministrator", method = RequestMethod.GET)

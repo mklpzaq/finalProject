@@ -96,7 +96,7 @@
 				</div>
 				<div class="col-sm-8"><br>
 					<form id="insertRentalTotalPayment" class="form-horizontal" action="${pageContext.request.contextPath}/insertRentalTotalPayment" method="post">
-						<!-- Begin Content(1) -->
+						<!-- Begin Content(1 대여예약신청정보) -->
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
@@ -118,20 +118,20 @@
 									<tbody>	
 										<tr>
 											<td>
-												<input type="text" name="goodsfacilityRentalCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
-												<input type="text" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyCode}">
-												<input type="text" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyName}">
-												<input type="text" name="citizenId" value="${rentGoodsfacilityDto.citizenId}">
-												<input type="text" name="citizenName" value="${rentGoodsfacilityDto.citizenName}">
-												<input type="text" name="goodsfacilityRentalDateStart" value="${rentGoodsfacilityDto.goodsfacilityRentalDateStart}">
-												<input type="text" name="goodsfacilityRentalDayEnd" value="${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}">
-												<input type="text" value="${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}">
-												<input type="text" value="${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}">
-												<input type="text" name="goodsfacilityRentalDeposit" value="${rentGoodsfacilityDto.goodsfacilityRentalDeposit}">
-												<input type="text" name="goodsfacilityCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
-												<input type="text" name="goodsfacilityName" value="${rentGoodsfacilityDto.goodsfacilityName}">
-												<input type="text" name="goodsfacilityPriceRental" value="${rentGoodsfacilityDto.goodsfacilityPriceRental}">
-												<input type="text" name="goodsfacilityRentalIsOrderedDelivery" value="${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
+												<input type="hidden" name="goodsfacilityRentalCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
+												<input type="hidden" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyCode}">
+												<input type="hidden" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyName}">
+												<input type="hidden" name="citizenId" value="${rentGoodsfacilityDto.citizenId}">
+												<input type="hidden" name="citizenName" value="${rentGoodsfacilityDto.citizenName}">
+												<input type="hidden" name="goodsfacilityRentalDateStart" value="${rentGoodsfacilityDto.goodsfacilityRentalDateStart}">
+												<input type="hidden" name="goodsfacilityRentalDayEnd" value="${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}">
+												<input type="hidden" value="${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}">
+												<input type="hidden" value="${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}">
+												<input type="hidden" name="goodsfacilityRentalDeposit" value="${rentGoodsfacilityDto.goodsfacilityRentalDeposit}">
+												<input type="hidden" name="goodsfacilityCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
+												<input type="hidden" name="goodsfacilityName" value="${rentGoodsfacilityDto.goodsfacilityName}">
+												<input type="hidden" name="goodsfacilityPriceRental" value="${rentGoodsfacilityDto.goodsfacilityPriceRental}">
+												<input type="hidden" name="goodsfacilityRentalIsOrderedDelivery" value="${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
 											</td>
 											<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
 											<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
@@ -158,8 +158,8 @@
 							</div>
 						</div>
 						<!-- End Content(1) -->
-						<!-- Begin Content(2) -->
-						<div class="panel panel-default">
+						<!-- Begin Content(2 할인정보) -->
+					<!-- 	<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
 									<div style="text-align: center">
@@ -176,9 +176,9 @@
 									보유 포인트 :
 								</p>
 							</div>
-						</div>
+						</div> -->
 						<!-- End Content(2) -->
-						<!-- Begin Content(3) -->
+						<!-- Begin Content(3 결제정보) -->
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
 								<div class="row">
@@ -187,27 +187,30 @@
 									</div>
 								</div>
 								<hr/>
-							
+									
 									<input type="radio" name="payment" value="creditCard" onclick="payment_OnOff(this.value,'selectCard');">신용카드 &nbsp &nbsp
 									<input type="radio" name="payment" value="account" onclick="payment_OnOff(this.value,'selectAccount');">실시간 계좌이체 &nbsp &nbsp
 									<input type="radio" name="payment"  value="cash" onclick="payment_OnOff(this.value,'selectCash');">무통장 입금
 									<br><br>
+
 									<!-- 신용카드 선택 -->
 									<div id="selectCard" style="display:none;">
 										카드 선택 : 
-										<select name="cardType">
-											<option value="hyundai">현대</option>
-											<option value="kbstar">국민</option>
-											<option value="sinhan">신한</option>
-											<option value="lotte">롯데</option>
-										</select>
+											<select name="cardType">
+												<option value="hyundai">현대</option>
+												<option value="kbstar">국민</option>
+												<option value="sinhan">신한</option>
+												<option value="lotte">롯데</option>
+											</select>
 									</div>
+									
 									<!-- 실시간 계좌이체 선택 -->
 									<div id="selectAccount" style="display:none;">
-										예금주 명 : <input type="text" name="memberName"><br>
+										예금주 명 : 
+											<input type="text" name="memberName"><br>
 										현금영수증 :
-										<input type="radio" name="cashReceipt " value="yes" onclick="cashReceipt1_OnOff(this.value,'cashReceiptYes1');">신청 &nbsp &nbsp
-										<input type="radio" name="cashReceipt" value="no" onclick="cashReceipt1_OnOff(this.value,'cashReceiptNo1');">미신청 
+											<input type="radio" name="cashReceipt " value="yes" onclick="cashReceipt1_OnOff(this.value,'cashReceiptYes1');">신청 &nbsp &nbsp
+											<input type="radio" name="cashReceipt" value="no" onclick="cashReceipt1_OnOff(this.value,'cashReceiptNo1');">미신청 
 										<!-- 현금영수증 신청 선택 -->
 										<div id="cashReceiptYes1" style="display:none;">
 											휴대폰번호 : <input type="text" name="accountNumber">
@@ -215,40 +218,44 @@
 										<div id="cashReceiptNo1" style="display:none;">
 										</div>
 									</div>
+									
 									<!-- 무통장 입금 선택 -->
 									<div id="selectCash"style="display:none;">
 										입금은행 :
-										<select name="selectBank">
-											<option value="bank1">농협 : 123-123456-12-123</option>
-											<option value="bank2">우체국 : 789-7894-45-78945</option>
-										</select><br>
+											<select name="selectBank">
+												<option value="bank1">농협 : 123-123456-12-123</option>
+												<option value="bank2">우체국 : 789-7894-45-78945</option>
+											</select>
+											<br>
 										환불계좌 : 
-										<select name="selectBank2">
-											<option value="bank1">NH농협</option>
-											<option value="bank2">KB국민</option>
-											<option value="bank3">신한</option>
-											<option value="bank4">우리</option>
-											<option value="bank5">하나</option>
-											<option value="bank5">IBK기업</option>
-											<option value="bank6">외환</option>
-											<option value="bank7">SC제일</option>
-											<option value="bank8">KEB산업</option>
-											<option value="bank9">새마을</option>
-											<option value="bank10">대구</option>
-											<option value="bank11">광주</option>
-											<option value="bank12">신협</option>
-											<option value="bank13">전북</option>
-											<option value="bank14">경남</option>
-											<option value="bank15">부산</option>
-											<option value="bank16">수협</option>
-											<option value="bank17">제주</option>
-											<option value="bank18">저축은행</option>
-											<option value="bank19">카카오뱅크</option>
-										</select>
-										<input type="text" name="accountNumber"><br>
+											<select name="selectBank2">
+												<option value="bank1">NH농협</option>
+												<option value="bank2">KB국민</option>
+												<option value="bank3">신한</option>
+												<option value="bank4">우리</option>
+												<option value="bank5">하나</option>
+												<option value="bank5">IBK기업</option>
+												<option value="bank6">외환</option>
+												<option value="bank7">SC제일</option>
+												<option value="bank8">KEB산업</option>
+												<option value="bank9">새마을</option>
+												<option value="bank10">대구</option>
+												<option value="bank11">광주</option>
+												<option value="bank12">신협</option>
+												<option value="bank13">전북</option>
+												<option value="bank14">경남</option>
+												<option value="bank15">부산</option>
+												<option value="bank16">수협</option>
+												<option value="bank17">제주</option>
+												<option value="bank18">저축은행</option>
+												<option value="bank19">카카오뱅크</option>
+											</select>
+											<input type="text" name="accountNumber">
+											<br>
 										현금영수증 :
-										<input type="radio" name="cashReceipt " value="yes" onclick="cashReceipt2_OnOff(this.value,'cashReceiptYes2');">신청 &nbsp &nbsp
-										<input type="radio" name="cashReceipt" value="no" onclick="cashReceipt2_OnOff(this.value,'cashReceiptNo2');">미신청 
+											<input type="radio" name="cashReceipt " value="yes" onclick="cashReceipt2_OnOff(this.value,'cashReceiptYes2');">신청 &nbsp &nbsp
+											<input type="radio" name="cashReceipt" value="no" onclick="cashReceipt2_OnOff(this.value,'cashReceiptNo2');">미신청 
+											
 										<!-- 현금영수증 신청 선택 -->
 										<div id="cashReceiptYes2" style="display:none;">
 											휴대폰번호 : <input type="text" name="accountNumber">
@@ -262,7 +269,7 @@
 						<!-- End Content(3) -->
 						<br>
 						<div class="form-group">
-							<div class="col-sm-12">
+							<div class="col-sm-12" style="text-align:center">
 								<button type="submit" id="insertButton" class="btn btn-default">결제하기</button>
 							</div>
 						</div>
@@ -275,7 +282,7 @@
 						        <h4 class="modal-title" id="myModalLabel">보유하고 있는 패키지/연회비 쿠폰</h4>
 						      </div>
 						      <div class="modal-footer">
-					      		<select id="annualfeePakageList" name="goodsfacilityOneCode">
+					      		<select id="annualfeePakageList" name="annualfeePakageList">
 									<option>보유 패키지/연회비 쿠폰</option>
 									<c:forEach var="annualfeePakageDto" items="${list}">
 										<option value="${annualfeePakageDto.annualfeePakageCode}">${annualfeePakageDto.annualfeePakageName}</option>

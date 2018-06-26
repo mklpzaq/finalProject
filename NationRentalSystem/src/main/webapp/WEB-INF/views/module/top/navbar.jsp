@@ -100,7 +100,6 @@
 						         <ul class="nav navbar-nav">
 						          <!-- 관리자 메뉴 -->
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAdministrator">관리자 회원관리</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/updateAdministrator?adminId=${member.memberId}">내 정보수정</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDistrict">행정구역 등록</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAdminagency">지자체 기관 등록</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">시설/물품 카테고리 등록</a></li>

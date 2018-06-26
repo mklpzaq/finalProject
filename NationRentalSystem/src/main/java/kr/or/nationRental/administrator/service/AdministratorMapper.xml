@@ -35,6 +35,20 @@
 		FROM administrator	
 	</select>
 	
+	<!--관리자 개인정보 불러오기 -->
+	<select id="viewAdminInfo" parameterType="kr.or.nationRental.administrator.service.AdministratorDto" resultType="kr.or.nationRental.administrator.service.AdministratorDto">
+		select 
+			administrator_id as adminId
+			, administrator_pw as adminPw
+			, functionary_num as functionaryNum
+			, administrator_phone as adminPhone
+			, administrator_name as adminName
+			, administrator_date_join as adminDateJoin
+		from administrator
+		where 
+			administrator_id = #{adminId}
+	</select>
+	
 	<!--관리자 정보 수정 불러오기 -->
 	<select id="updateAdministratorForm" parameterType="kr.or.nationRental.administrator.service.AdministratorDto" resultType="kr.or.nationRental.administrator.service.AdministratorDto">
 		select 

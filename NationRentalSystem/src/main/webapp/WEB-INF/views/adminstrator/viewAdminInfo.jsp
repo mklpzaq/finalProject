@@ -6,13 +6,6 @@
 		<title>관리자 정보수정</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script>
-		$(document).ready(function(){
-			$('#deleteButton').click(function(){
-				confirm("삭제 하시겠습니까?");
-			});
-		});
-		</script>
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
@@ -23,7 +16,7 @@
 				</div>
 				<div class="col-sm-8">
 					<div class="text-center">
-						<h2>관리자 정보수정</h2>
+						<h2>관리자 정보</h2>
 					</div>
 					<div class="container-fluid">
 						<div class="row">
@@ -32,54 +25,40 @@
 								<!-- Begin Content -->
 									<div class="panel panel-default">
 										<div class="panel-body text-center">
-											<form id="insertAdministrator" class="form-horizontal" action="${pageContext.request.contextPath}/updateAdministrator" method="post">
+											<form id="insertAdministrator" class="form-horizontal" method="post">
 												<div class="form-group">
 													<label for="adminId" class="col-sm-3 control-label">ID</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="adminId" id="adminId" value="${administratorUpdate.adminId}" readonly>
+														<input type="text" class="form-control" name="adminId" id="adminId" value="${viewAdminInfo.adminId}" readonly>
 													</div>
 												</div>
 												<div class="form-group">
 													<label for="adminPw" class="col-sm-3 control-label">PW</label>
 													<div class="col-sm-9">
-														<input type="password" class="form-control" name="adminPw" id="adminPw" value="${administratorUpdate.adminPw}">
+														<input type="password" class="form-control" name="adminPw" id="adminPw" value="${viewAdminInfo.adminPw}"readonly>
 														<span id="pwIcon"></span>
 														<span id="pwHelper"></span>
 													</div>
 												</div>
 												<div class="form-group">
-													<label for="adminPwCheck" class="col-sm-3 control-label">PW확인</label>
-													<div class="col-sm-9">
-														<input type="password" class="form-control" name="adminPwCheck" id="adminPwCheck" value="${administratorUpdate.adminPw}">
-														<span id="pwCheckIcon"></span>
-														<span id="pwCheckHelper"></span>
-													</div>
-												</div>
-												<div class="form-group">
 													<label for="adminName" class="col-sm-3 control-label">이름</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="adminName" id="adminName" value="${administratorUpdate.adminName}" readonly>
+														<input type="text" class="form-control" name="adminName" id="adminName" value="${viewAdminInfo.adminName}" readonly>
 													</div>
 												</div>
 												<div class="form-group">
 													<label for="functionaryNum" class="col-sm-3 control-label">공무원번호</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="functionaryNum" id="functionaryNum" value="${administratorUpdate.functionaryNum}" readonly>
+														<input type="text" class="form-control" name="functionaryNum" id="functionaryNum" value="${viewAdminInfo.functionaryNum}" readonly>
 													</div>
 												</div>
 												<div class="form-group">
 													<label for="adminPhone" class="col-sm-3 control-label">전화번호</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="adminPhone" id="adminPhone" value="${administratorUpdate.adminPhone}">
+														<input type="text" class="form-control" name="adminPhone" id="adminPhone" value="${viewAdminInfo.adminPhone}" readonly>
 													</div>
 												</div>
 												<br>
-												<div class="form-group">
-													<div class="col-sm-12">
-														<button type="submit" id="updateButton" class="btn btn-default">수정하기</button>
-														<button type="submit" id="deleteButton" class="btn btn-default"><a href ="${pageContext.request.contextPath}/deleteAdministrator?adminId=${administratorDto.adminId}">삭제하기</a></button>
-													</div>
-												</div>
 											</form>
 										</div>
 									</div>
