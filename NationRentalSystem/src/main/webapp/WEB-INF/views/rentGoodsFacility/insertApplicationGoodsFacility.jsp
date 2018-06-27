@@ -9,7 +9,7 @@
 	<title>Insert Application</title>
 
 	<script>
-		function changehtml(){
+		/* function changehtml(){
 			var property = $("#searchOption").val();
 			var show = $("#keyword");
 			if(property=="order_date"){
@@ -17,7 +17,25 @@
 			}else {
 				$("#keyword").html('<input type="text" name="keyword">');
 			}
-		}	
+		} */
+		
+		$(document).ready(function(){
+			$('#insertDelivery').hide();
+						
+			$('#goodsfacilityRentalIsOrderedDelivery').change(function() {
+				
+				if($('#goodsfacilityRentalIsOrderedDelivery').val() === '신청'){
+					$('#insertDelivery').show();
+				}else{
+					$('#insertDelivery').hide();
+				}				
+			});
+			
+			if($('#goodsfacilityClassifyGoodsfacility').val() != '물품'){
+				$('#takeDlivery').hide();
+			}
+			
+		});
 	
 	</script>
 
@@ -45,6 +63,12 @@
 								    	<input type="text" class="form-control" id="goodsfacilityCode" name="goodsfacilityCode" value="${goodsFacilityApplication.goodsfacilityCode}">			    	
 								    </div>
 								</div>
+								<div class="form-group">
+									<label for="application" class="col-sm-2 control-label">시설 & 물품</label>
+								    <div class="col-sm-10">
+								    	<input type="text" class="form-control" id="goodsfacilityClassifyGoodsfacility" name="goodsfacilityClassifyGoodsfacility" value="${goodsFacilityApplication.goodsfacilityClassifyGoodsfacility}">			    	
+								    </div>
+								</div>								
 								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">행정기관코드</label>
 								    <div class="col-sm-10">
@@ -99,26 +123,26 @@
 								    	<input type="date" class="form-control" id=goodsfacilityRentalDayEnd name="goodsfacilityRentalDayEnd">			    	
 								    </div>
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="takeDlivery">
 								<label for="goodsfacility" class="col-sm-2 control-label">배달신청</label>
 							    	<div class="col-sm-10">						    	
-								   	 	<select id="goodsfacilityRentalIsOrderedDelivery" name="goodsfacilityRentalIsOrderedDelivery" class="form-control">													
-												 <option>2500</option>
-												 <option>0</option>						
+								   	 	<select id="goodsfacilityRentalIsOrderedDelivery" name="goodsfacilityRentalIsOrderedDelivery" class="form-control">
+								   	 			 <option>안함</option>
+												 <option>신청</option>																		
 										</select>		    		    	
 						   		 	</div>
-								</div>
-								
+								</div>								
 								<div class="form-group">
-									 <div class="col-sm-10">	
-										<button type="submit" id="insertApplication">대여 & 예약 신청</button>	
+									 <div class="col-sm-10">
+									 	<button type="button" id="insertDelivery">주소지 설정</button>	
+										<button type="button" id="insertApplication">대여 & 예약 신청</button>	
 									</div>
 								</div>						
 							
 							</form>						
 						</div>
 						
-							<div>
+							<%-- <div>
 								<form action="<%=request.getContextPath()%>/orderList" method="get">
 									<select id="searchOption" name="searchOption" onclick="changehtml();">											
 										<option value="member_id" <c:if test="${member_id == 'member_id'}">selected</c:if>>주문아이디</option>
@@ -126,11 +150,11 @@
 										<option value="order_date" <c:if test="${order_date == 'order_date'}">selected</c:if>>주문날짜</option>		
 									</select>
 									<dr id="keyword"></dr>
-									<%-- <input id="keyword" name="keyword" value="${keyword}"> --%>
+									<input id="keyword" name="keyword" value="${keyword}">
 									<input type="submit" value="검색버튼" >
 								</form>
 							</div>
-						
+						 --%>
 						
 						</div>					
 					

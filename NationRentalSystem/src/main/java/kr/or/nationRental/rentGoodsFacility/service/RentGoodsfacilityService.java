@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.nationRental.citizen.service.CitizenDto;
+import kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityService;
 
@@ -101,9 +102,15 @@ public class RentGoodsfacilityService {
 		rentGoodsfacilityDao.cancelDelivery(rentGoodsfacilityDto);	
 	}
 
-	public RentGoodsfacilityDto updateDeliveryGoodsInfo(RentGoodsfacilityDto rentGoodsfacilityDto) {
-		logger.debug("RentGoodsfacilityService updateDeliveryGoodsInfo  :" + rentGoodsfacilityDto.toString());		
-		return rentGoodsfacilityDao.updateDeliveryGoodsInfo(rentGoodsfacilityDto);
+	public RentGoodsfacilityDto insertDeliveryGoodsInfo(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService insertDeliveryGoodsInfo  :" + rentGoodsfacilityDto.toString());		
+		return rentGoodsfacilityDao.insertDeliveryGoodsInfo(rentGoodsfacilityDto);
+	}
+
+	public void insertDeliverGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("RentGoodsfacilityService insertDeliverGoods  :" + deliveryOrderCitizenDto.toString());
+		rentGoodsfacilityDao.insertDeliveryGoods(deliveryOrderCitizenDto);
+		
 	}
 
 	

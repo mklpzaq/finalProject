@@ -22,6 +22,11 @@ public class RentGoodsfacilityDto {
 	private String goodsfacilityAddressSangse;
 	private String adminagencyName;
 	private String isCanceledDelivery;
+	private String citizenAddressSangse;
+	private String sidoName;
+	private String sigunguName;
+	private String eupmyeonName; 
+	private String adminagencyAddressSangse;
 	public int getGoodsfacilityRentalCode() {
 		return goodsfacilityRentalCode;
 	}
@@ -124,6 +129,36 @@ public class RentGoodsfacilityDto {
 	public void setIsCanceledDelivery(String isCanceledDelivery) {
 		this.isCanceledDelivery = isCanceledDelivery;
 	}
+	public String getCitizenAddressSangse() {
+		return citizenAddressSangse;
+	}
+	public void setCitizenAddressSangse(String citizenAddressSangse) {
+		this.citizenAddressSangse = citizenAddressSangse;
+	}
+	public String getSidoName() {
+		return sidoName;
+	}
+	public void setSidoName(String sidoName) {
+		this.sidoName = sidoName;
+	}
+	public String getSigunguName() {
+		return sigunguName;
+	}
+	public void setSigunguName(String sigunguName) {
+		this.sigunguName = sigunguName;
+	}
+	public String getEupmyeonName() {
+		return eupmyeonName;
+	}
+	public void setEupmyeonName(String eupmyeonName) {
+		this.eupmyeonName = eupmyeonName;
+	}
+	public String getAdminagencyAddressSangse() {
+		return adminagencyAddressSangse;
+	}
+	public void setAdminagencyAddressSangse(String adminagencyAddressSangse) {
+		this.adminagencyAddressSangse = adminagencyAddressSangse;
+	}
 	@Override
 	public String toString() {
 		return "RentGoodsfacilityDto [goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", adminagencyCode="
@@ -136,9 +171,11 @@ public class RentGoodsfacilityDto {
 				+ goodsfacilityRentalIsCanceled + ", goodsfacilityRentalDeposit=" + goodsfacilityRentalDeposit
 				+ ", goodsfacilityPriceRental=" + goodsfacilityPriceRental + ", goodsfacilityAddressSangse="
 				+ goodsfacilityAddressSangse + ", adminagencyName=" + adminagencyName + ", isCanceledDelivery="
-				+ isCanceledDelivery + "]";
-	}
+				+ isCanceledDelivery + ", citizenAddressSangse=" + citizenAddressSangse + ", sidoName=" + sidoName
+				+ ", sigunguName=" + sigunguName + ", eupmyeonName=" + eupmyeonName + ", adminagencyAddressSangse="
+				+ adminagencyAddressSangse + "]";
+	} 
 	
-	
-	
+		
+		
 }

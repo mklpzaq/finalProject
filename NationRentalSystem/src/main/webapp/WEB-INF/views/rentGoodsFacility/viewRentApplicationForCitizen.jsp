@@ -139,7 +139,7 @@
 												<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateStart}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}</td>
-												<td><a href="${pageContext.request.contextPath}/updateDeliverGoods?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</a></td>
+												<td><a href="${pageContext.request.contextPath}/insertDeliverGoods?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</a></td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}</td>
 												<td>${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}</td>
 												<td><a href="${pageContext.request.contextPath}/updateApplicationForm?goodsfacilityRentalCode=${rentGoodsfacilityDto.goodsfacilityRentalCode}">수정</a></td>

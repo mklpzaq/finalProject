@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDao;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 
@@ -66,8 +67,12 @@ public class RentGoodsfacilityDao {
 		
 	}
 
-	public RentGoodsfacilityDto updateDeliveryGoodsInfo(RentGoodsfacilityDto rentGoodsfacilityDto) {		
-		return sqlSession.selectOne(NS+"updateDeliveryGoodsInfo", rentGoodsfacilityDto);
+	public RentGoodsfacilityDto insertDeliveryGoodsInfo(RentGoodsfacilityDto rentGoodsfacilityDto) {		
+		return sqlSession.selectOne(NS+"insertDeliveryGoodsInfo", rentGoodsfacilityDto);
+	}
+
+	public void insertDeliveryGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		sqlSession.insert(NS+"insertDeliveryGoods", deliveryOrderCitizenDto);		
 	}
 
 }
