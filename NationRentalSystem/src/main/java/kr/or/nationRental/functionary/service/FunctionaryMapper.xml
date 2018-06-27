@@ -257,5 +257,117 @@
 			where functionary_name = #{memberName}
 			and functionary_phone = #{memberPhone}		
 	</select>
+	
+	<select id="selectFunctionaryWorkGoodsfacility" 
+		parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
+		resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+		<!-- SELECT
+			goodsfacility_code as goodsfacilityCode
+			,goodsfacility_name as goodsfacilityName
+			,goodsfacility_purchaseprice as goodsfacilityPurchaseprice
+			,goodsfacility_price_rental as goodsfacilityPriceRental
+			,adminagency_code as adminagencyCode
+			,adminagency_name as adminagencyName
+			,goodsfacility_classify_goodsfacility as goodsfacilityClassifyGoodsfacility
+			,goodsfacility_classify_donationpurchase as goodsfacilityClassifyDonationpurchase
+			,goodsfacility_is_extra as goodsfacilityIsExtra
+			,goodsfacility_is_possible_delivery as goodsfacilityIsPossibleDelivery
+			,goodsfacility_state_afterservice as goodsfacilityStateAfterservice
+			,goodsfacility_is_possible_rental as goodsfacilityIsPossibleRental
+			,goodsfacility_date_registration as goodsfacilityDateRegistration
+			from goodsfacility
+			inner join adminagency
+			using(adminagency_code) -->
+		SELECT
+			goodsfacility.goodsfacility_code as goodsfacilityCode
+			,goodsfacility.goodsfacility_name as goodsfacilityName		
+			,goodsfacility.adminagency_code as adminagencyCode
+			,adminagency.adminagency_name as adminagencyName		
+			,goodsfacility.goodsfacility_date_registration as goodsfacilityDateRegistration
+		from goodsfacility
+		inner join adminagency
+			using(adminagency_code)
+			where functionary_id = #{functionaryId}	
+	</select>
+	
+	<select id="selectFunctionaryWorkReturnGoodsfacilityInfo" 
+	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
+	resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
+		SELECT
+			rgi.return_goodsfacility_info_code as returnGoodsfacilityInfoCode
+			,rgi.goodsfacility_code as goodsfacilityCode
+			,rgi.classify_goodsfacility as classifyGoodsfacility
+			,rgi.citizen_id as citizenId
+			,ci.citizen_name as citizenName
+			,rgi.is_requested_to_return_as_delivery as isRequestedToReturnAsDelivery
+			,rgi.overdue_days as overdueDays
+			,rgi.adminagency_code as adminagencyCode
+			,ad.adminagency_name as adminagencyName
+			,rgi.state_goods_code as stateGoodsCode
+			,rgi.date_return_check as dateReturnCheck
+			from return_goodsfacility_info as rgi
+			inner join adminagency as ad
+			 using(adminagency_code)
+			inner join citizen as ci
+				using(citizen_id)
+			where functionary_id = #{functionaryId}
+	</select>
+	
+	<select id="selectFunctionaryWorkUnitedAfterserviceReques" 
+	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
+	resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		SELECT
+			united_afterservice_request_code as unitedAfterserviceRequestCode
+			,(case 
+			 when 0 = return_goodsfacility_info_code then '정기점검'
+			 when return_goodsfacility_info_code > 0 then '반납'
+			 else '에러'
+			  end) as requestType
+			,adminagency_code as adminagencyCode
+			,goodsfacility_code as goodsfacilityCode
+			,goodsfacility_name as goodsfacilityName
+			,state_goods_code as stateGoodsCode
+			,text_check_result_goodsfacility as textCheckResultGoodsfacility
+			,agency_code as agencyCode
+			,agency_name as agencyName
+			,date_request_afterservice as dateRequestAfterservice
+			,date_complete_afterservice as dateCompleteAfterservice
+		from united_afterservice_request
+			where functionary_id = #{functionaryId}				
+	</select>
+	
+	<select id="selectFunctionaryWorkAgency" 
+	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
+	resultType="kr.or.nationRental.agency.service.AgencyDto">
+		SELECT
+			agency.agency_code as agencyCode
+			,agency.adminagency_code as adminagencyCode
+			,agency.functionary_name as functionaryName
+			,agency.agency_name as agencyName
+			,agency.agency_businesstype_code as agencyBusinesstypeCode
+			,agency.agency_date_registration as agencyDateRegistration
+			,agency.agency_date_contract_closed as agencyDateContractClosed			
+		from agency
+		inner join functionary
+		    using(functionary_name)
+			where functionary.functionary_id = #{functionaryId}	
+	</select>
+	
+	<select id="selectFunctionaryWorkAnnualfeePakage" 
+	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
+	resultType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">
+		SELECT
+			annualfee_pakage_code as annualfeePakageCode
+			,annualfee_pakage_name as annualfeePakageName
+			,annualfee_pakage_price as annualfeePakagePrice
+			,annualfee_pakage_text_sangse as annualfeePakageTextSangse
+			,annualfee_pakage_discount_rate as annualfeePakageDiscountRate
+			,adminagency_code as adminagencyCode
+			,annualfee_pakage_date_registration as annualfeePakageDateRegistration			
+		from annualfee_pakage
+		inner join annualfee_pakage_authority
+			using(annualfee_pakage_code)
+			where functionary_id = #{functionaryId}	
+	</select>
 </mapper>
 	

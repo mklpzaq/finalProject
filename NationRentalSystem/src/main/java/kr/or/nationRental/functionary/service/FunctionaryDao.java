@@ -10,9 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.nationRental.administrator.service.AdministratorDto;
+import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
+import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto;
 import kr.or.nationRental.citizen.service.CitizenDto;
+import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.login.service.MemberDto;
+import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto;
+import kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto;
 
 @Repository
 public class FunctionaryDao {
@@ -118,6 +123,35 @@ public class FunctionaryDao {
 	public int functionaryIdCheck(MemberDto memberDto) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS+"functionaryIdCheck", memberDto);
+	}
+	
+	//공무원 대여물품/시설등록한 업무 조회
+	public List<GoodsFacilityDto> selectFunctionaryWorkGoodsfacility(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - selectFunctionaryWorkGoodsfacility - memberId : " + functionaryDto);
+		return sqlSession.selectList(NS+"selectFunctionaryWorkGoodsfacility", functionaryDto);
+	}
+	
+	//공무원 반납등록업무조회
+	public List<ReturnGoodsfacilityInfoDto> selectFunctionaryWorkReturnGoodsfacilityInfo(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - selectFunctionaryWorkReturnGoodsfacilityInfo - memberId : " + functionaryDto);
+		return sqlSession.selectList(NS+"selectFunctionaryWorkReturnGoodsfacilityInfo", functionaryDto);
+	}
+	
+	//공무원 AS의뢰신청업무조회
+	public List<UnitedAfterserviceRequestDto> selectFunctionaryWorkUnitedAfterserviceReques(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - selectFunctionaryWorkReturnGoodsfacilityInfo - memberId : " + functionaryDto);
+		return sqlSession.selectList(NS+"selectFunctionaryWorkUnitedAfterserviceReques", functionaryDto);
+	}
+	
+	//공무원 대행업체 등록 조회
+	public List<AgencyDto> selectFunctionaryWorkAgency(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - selectFunctionaryWorkAgency - memberId : " + functionaryDto);
+		return sqlSession.selectList(NS+"selectFunctionaryWorkAgency", functionaryDto);
+	}
+	//공무원 연회비/패키지 등록 조회
+	public List<AnnualfeePakageDto> selectFunctionaryWorkAnnualfeePakage(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryDao - selectFunctionaryWorkAnnualfeePakage - memberId : " + functionaryDto);
+		return sqlSession.selectList(NS+"selectFunctionaryWorkAnnualfeePakage", functionaryDto);
 	}
 	
 	

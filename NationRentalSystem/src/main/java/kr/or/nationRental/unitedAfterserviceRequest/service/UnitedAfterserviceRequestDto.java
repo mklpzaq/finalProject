@@ -4,6 +4,7 @@ public class UnitedAfterserviceRequestDto {
 	private int unitedAfterserviceRequestCode;
 	private int returnGoodsfacilityInfoCode;
 	private int regularCheckCode;
+	private String requestType; //반납의뢰인지, 정기점검의뢰인지
 	private int adminagencyCode;
 	private int goodsfacilityThreeCode;
 	private int goodsfacilityCode;
@@ -24,7 +25,6 @@ public class UnitedAfterserviceRequestDto {
 	private String stateGoods;
 	private String beforePageCode;
 	private String agencyEmployeeId;
-	
 	public int getUnitedAfterserviceRequestCode() {
 		return unitedAfterserviceRequestCode;
 	}
@@ -42,6 +42,12 @@ public class UnitedAfterserviceRequestDto {
 	}
 	public void setRegularCheckCode(int regularCheckCode) {
 		this.regularCheckCode = regularCheckCode;
+	}
+	public String getRequestType() {
+		return requestType;
+	}
+	public void setRequestType(String requestType) {
+		this.requestType = requestType;
 	}
 	public int getAdminagencyCode() {
 		return adminagencyCode;
@@ -155,14 +161,16 @@ public class UnitedAfterserviceRequestDto {
 	public String toString() {
 		return "UnitedAfterserviceRequestDto [unitedAfterserviceRequestCode=" + unitedAfterserviceRequestCode
 				+ ", returnGoodsfacilityInfoCode=" + returnGoodsfacilityInfoCode + ", regularCheckCode="
-				+ regularCheckCode + ", adminagencyCode=" + adminagencyCode + ", goodsfacilityThreeCode="
-				+ goodsfacilityThreeCode + ", goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityName="
-				+ goodsfacilityName + ", functionaryId=" + functionaryId + ", stateGoodsCode=" + stateGoodsCode
-				+ ", textCheckResultGoodsfacility=" + textCheckResultGoodsfacility + ", agencyCode=" + agencyCode
-				+ ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
+				+ regularCheckCode + ", requestType=" + requestType + ", adminagencyCode=" + adminagencyCode
+				+ ", goodsfacilityThreeCode=" + goodsfacilityThreeCode + ", goodsfacilityCode=" + goodsfacilityCode
+				+ ", goodsfacilityName=" + goodsfacilityName + ", functionaryId=" + functionaryId + ", stateGoodsCode="
+				+ stateGoodsCode + ", textCheckResultGoodsfacility=" + textCheckResultGoodsfacility + ", agencyCode="
+				+ agencyCode + ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
 				+ ", dateRequestAfterservice=" + dateRequestAfterservice + ", dateCompleteAfterservice="
 				+ dateCompleteAfterservice + ", adminagencyName=" + adminagencyName + ", goodsfacilityThreeName="
 				+ goodsfacilityThreeName + ", textRegularCheck=" + textRegularCheck + ", stateGoods=" + stateGoods
 				+ ", beforePageCode=" + beforePageCode + ", agencyEmployeeId=" + agencyEmployeeId + "]";
 	}
+	
+	
 }

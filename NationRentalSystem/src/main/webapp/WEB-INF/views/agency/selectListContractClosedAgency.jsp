@@ -26,7 +26,7 @@
 							
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">계약된 대행업체 리스트</h3>
+							<h3 class="text-center">계약해지된 대행업체 리스트</h3>
 							<hr/>
 						</div>
 						<div><button><a href="${pageContext.request.contextPath}/selectListContractAgency">계약된 낙찰업체</a></button></div>										

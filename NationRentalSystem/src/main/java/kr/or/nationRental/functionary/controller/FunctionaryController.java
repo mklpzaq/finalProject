@@ -181,4 +181,20 @@ public class FunctionaryController {
 		}*/
 		return "/functionary/checkId";
 	}
+	
+	/*공무원 업무조회
+	 * 목표
+	 * 해당 공무원이 처리한 대여물품/시설등록, 반납정보등록, AS의뢰신청, 배달의뢰신청, 기부등록, 대행업체 등록, 계약해지, 연회비/패키지 등록, 배상청구 등록등을 볼 수 있어야한다
+	 * 방향 session 처리된 공무원 아이디로 select만 전부하면 된다?....
+	 */
+	@RequestMapping(value="/selectFunctionaryWork", method=RequestMethod.GET)
+	public String selectFunctionaryWork(FunctionaryDto functionaryDto
+										,Model model) {
+		logger.debug("FunctionaryController - selectFunctionaryWork - functionaryDto : " + functionaryDto.toString());	
+		Map<String, Object> map = functionaryService.selectFunctionaryWork(functionaryDto);
+		logger.debug("FunctionaryController - selectFunctionaryWork - map : " + map.toString());	
+		model.addAttribute("map", map);
+		
+		return "/functionary/selectFunctionaryWork";
+	}
 }
