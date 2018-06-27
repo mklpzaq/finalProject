@@ -50,7 +50,8 @@
 							<div class="col-sm-3">
 								<div class="thumbnail">
 								<!-- 118 * 162 -->
-									<img data-src="holder.js/100%x200" alt="100%x200" src="${pageContext.request.contextPath}/resources/image/idPhoto/LeeInho.png" data-holder-rendered="true" style="height: 255px; width: 195px; display: block;">
+								<!-- src="${pageContext.request.contextPath}/resources/image/idPhoto/LeeInho.jpg" -->
+									<img data-src="holder.js/100%x200" alt="100%x200" src="${pageContext.request.contextPath}/resources/image/idPhoto/LeeInHo.jpg" data-holder-rendered="true" style="height: 255px; width: 195px; display: block;">
 									<div class="caption">
 										<h3 style="text-align:center;" id="thumbnail-label">이인호<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
 										<p>
@@ -68,7 +69,8 @@
 							<div class="col-sm-3">
 								<div class="thumbnail">
 								<!-- 358 * 472 -->
-									<img data-src="holder.js/100%x200" alt="100%x200" src="${pageContext.request.contextPath}/resources/image/idPhoto/LeeJunhee.jpg" data-holder-rendered="true" data-holder-rendered="true" style="height: 255px; width: 195px; display: block;">
+								<!-- src="${pageContext.request.contextPath}/resources/image/idPhoto/LeeJunhee.jpg" -->
+									<img data-src="holder.js/100%x200" alt="100%x200" src="${pageContext.request.contextPath}/resources/image/idPhoto/LeeJunHee.jpg" data-holder-rendered="true" style="height: 255px; width: 195px; display: block;">
 									<div class="caption">
 										<h3 style="text-align:center;" id="thumbnail-label">이준희<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
 										<p>
