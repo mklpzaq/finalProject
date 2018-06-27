@@ -5,8 +5,70 @@
  
 <mapper namespace="kr.or.nationRental.nakchal.service.NakchalMapper">
 
+	<select id="totalCountAgencyNakchalInfo"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+			
+			INNER JOIN
+			agency_businesstype AS agenbusintype
+			ON
+			agen.agency_businesstype_code = agenbusintype.agency_businesstype_code
+		
+			INNER JOIN
+			adminagency AS adminagen
+			ON
+			agen.adminagency_code = adminagen.adminagency_code
+		
+		WHERE
+			agenemp.agency_employee_id = #{agencyEmployeeId}
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('소속업체 낙찰 코드')">
+						AND agen.agency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND adminagen.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 시도명')">
+						AND adminagen.sido_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 시군구명')">
+						AND adminagen.sigungu_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 읍면동명')">
+						AND adminagen.eupmyeon_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 명')">
+						AND adminagen.adminagency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('소속 대행업체명')">
+						AND agen.agency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('소속 대행업체 업종 명')">
+						AND agenbusintype.agency_businesstype_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('소속 대행업체 낙찰 등록일자')">
+						AND agen.agency_date_registration = #{searchWord}
+					</when>
+				</choose>
+			</if>
+	</select>
+
 	<select id="selectListAgencyNakchalInfo"
-			parameterType="kr.or.nationRental.nakchal.service.NakchalDto"
+			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.nakchal.service.NakchalDto">
 		SELECT
 			agen.agency_code AS agencyCode
@@ -47,6 +109,39 @@
 		
 		WHERE
 			agenemp.agency_employee_id = #{agencyEmployeeId}
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('소속업체 낙찰 코드')">
+						AND agen.agency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND adminagen.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 시도명')">
+						AND adminagen.sido_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 시군구명')">
+						AND adminagen.sigungu_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 읍면동명')">
+						AND adminagen.eupmyeon_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 명')">
+						AND adminagen.adminagency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('소속 대행업체명')">
+						AND agen.agency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('소속 대행업체 업종 명')">
+						AND agenbusintype.agency_businesstype_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('소속 대행업체 낙찰 등록일자')">
+						AND agen.agency_date_registration = #{searchWord}
+					</when>
+				</choose>
+			</if>
+			ORDER BY agen.agency_date_registration DESC
+			LIMIT #{beginRow}, #{pagePerRow}		
 	</select>
 
 	

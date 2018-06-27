@@ -22,6 +22,17 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	/*public BusinessTypeForAgencyEmployeeDto selectOneBusinesstypeForAgencyEmployee(String agencyEmployeeId) {
+		logger.debug("selectOneBusinesstypeForAgencyEmployee AgencyEmployeeService");
+		AgencyEmployeeDto agencyEmployeeDto = new AgencyEmployeeDto();
+		agencyEmployeeDto.setAgencyEmployeeId(agencyEmployeeId);
+		String agencyName = agencyEmployeeDao.getAgencyName(agencyEmployeeDto);
+		List<String> listNowAgencyBusinesstype = agencyEmployeeDao.selectListNowAgencyBusinesstype(agencyEmployeeId);
+		List<String> listAddAgencyBusinesstype = agencyEmployeeDao.selectListAddAgencyBusinesstypeList(agencyEmployeeId);
+		
+	}*/
+	
+	
 	public Map<String, Object> selectListFunctionaryForAgencyEmployee(int currentPage, int pagePerRow, String searchSelect, String searchWord, FunctionaryDto functionaryDto) {
 		logger.debug("selectListFunctionaryForAgencyEmployee agencyEmployeeDao");
 		int beginRow = (currentPage-1)*pagePerRow;

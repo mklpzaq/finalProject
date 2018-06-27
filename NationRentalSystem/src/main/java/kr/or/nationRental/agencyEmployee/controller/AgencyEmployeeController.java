@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeService;
+import kr.or.nationRental.agencyEmployee.service.BusinessTypeForAgencyEmployeeDto;
 import kr.or.nationRental.functionary.service.FunctionaryDto;
 
 @Controller
@@ -24,6 +25,29 @@ public class AgencyEmployeeController {
 	@Autowired
 	private AgencyEmployeeService agencyEmployeeService;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeController.class);
+	
+	@RequestMapping(value="/insertBusinesstypeForAgencyEmployee", method=RequestMethod.GET)
+	public String insertBusinesstypeForAgencyEmployee(Model model
+													,@RequestParam(value="agencyEmployeeId") String agencyEmployeeId) {
+		logger.debug("GET insertBusinesstypeForAgencyEmployee AgencyEmployeeController");
+		logger.debug("agencyEmployeeId : " + agencyEmployeeId);
+		
+		//BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto = agencyEmployeeService.selectOneBusinesstypeForAgencyEmployee(agencyEmployeeId);
+		
+		
+		model.addAttribute("agencyEmployeeId", agencyEmployeeId);
+		return "agencyEmployee/insertBusinesstypeForAgencyEmployeeForm";
+	}
+	
+	@RequestMapping(value="/insertBusinesstypeForAgencyEmployee", method=RequestMethod.POST)
+	public String insertBusinesstypeForAgencyEmployee(Model model
+												,BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
+		logger.debug("POST insertBusinesstypeForAgencyEmployee AgencyEmployeeController");
+		logger.debug(businessTypeForAgencyEmployeeDto.toString());
+		
+		//model.addAttribute("agencyEmployeeId", agencyEmployeeDto.getAgencyEmployeeId());
+		return null;
+	}
 	
 	@RequestMapping(value="/selectListFunctionaryForAgencyEmployee", method=RequestMethod.GET)
 	public String selectListFunctionaryForAgencyEmployee(Model model
@@ -33,7 +57,7 @@ public class AgencyEmployeeController {
 														,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 														,@RequestParam(value="searchSelect", defaultValue="공무원 ID") String searchSelect
 														,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
-		logger.debug("selectListFunctionaryForAgencyEmployee AgencyEmployeeController");
+		logger.debug("GET selectListFunctionaryForAgencyEmployee AgencyEmployeeController");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
 		

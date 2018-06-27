@@ -33,14 +33,14 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListBoard?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text());
+					$(location).attr('href', './selectListAgencyNakchalInfo?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text() + '&agencyEmployeeId=' + $('#agencyEmployeeId').val());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchSelect = $('#selectButtonText').text();
 					searchWord = $('#searchWord').val();
-					$(location).attr('href', './selectListBoard?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord);
+					$(location).attr('href', './selectListAgencyNakchalInfo?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord + '&agencyEmployeeId=' + $('#agencyEmployeeId').val());
 				});
 				
 			});
@@ -57,8 +57,9 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					
-					<div style="margin:15px 0 0 0;" class="panel panel-default">
+					<div class="panel panel-default">
 						<div class="panel-body text-center">
+							<input id="agencyEmployeeId" type="hidden" value="${member.memberId}">
 							<div class="row">
 								<div class="col-md-4">
 									<strong>${currentPage} / ${lastPage} Page</strong><br/>
@@ -94,11 +95,15 @@
 												<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-												<li><a href="#">boardCode</a></li>
-												<li><a href="#">boardCategoryCode</a></li>
-												<li><a href="#">memberId</a></li>
-												<li><a href="#">boardName</a></li>
-												<li><a href="#">textBoardContent</a></li>
+												<li><a href="#">소속업체 낙찰 코드</a></li>
+												<li><a href="#">지자체 기관 코드</a></li>
+												<li><a href="#">지자체 기관 시도명</a></li>
+												<li><a href="#">지자체 기관 시군구명</a></li>
+												<li><a href="#">지자체 기관 읍면동명</a></li>
+												<li><a href="#">지자체 기관 명</a></li>
+												<li><a href="#">소속 대행업체명</a></li>
+												<li><a href="#">소속 대행업체 업종 명</a></li>
+												<li><a href="#">소속 대행업체 낙찰 등록일자</a></li>
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -131,20 +136,20 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="NakchalDto" items="${NakchalDtoList}">
+									<c:forEach var="NakchalDto" items="${list}">
 										<tr>
-											<td><strong>${NakchalDto.agencyCode}</strong></td>
-											<td><strong>${NakchalDto.agencyEmployeeId}</strong></td>
+											<td>${NakchalDto.agencyCode}</td>
+											<td>${NakchalDto.agencyEmployeeId}</td>
 											<%-- <td><strong>${NakchalDto.functionaryName}</strong></td> --%>
-											<td><strong>${NakchalDto.adminagencyCode}</strong></td>
-											<td><strong>${NakchalDto.sidoName}</strong></td>
-											<td><strong>${NakchalDto.sigunguName}</strong></td>
-											<td><strong>${NakchalDto.eupmyeonName}</strong></td>
-											<td><strong>${NakchalDto.adminagencyName}</strong></td>
-											<td><strong>${NakchalDto.agencyName}</strong></td>
+											<td>${NakchalDto.adminagencyCode}</td>
+											<td>${NakchalDto.sidoName}</td>
+											<td>${NakchalDto.sigunguName}</td>
+											<td>${NakchalDto.eupmyeonName}</td>
+											<td>${NakchalDto.adminagencyName}</td>
+											<td>${NakchalDto.agencyName}</td>
 											<%-- <td><strong>${NakchalDto.agencyBusinesstypeCode}</strong></td> --%>
-											<td><strong>${NakchalDto.agencyBusinesstypeName}</strong></td>
-											<td><strong>${NakchalDto.agencyDateRegistration}</strong></td>
+											<td>${NakchalDto.agencyBusinesstypeName}</td>
+											<td>${NakchalDto.agencyDateRegistration}</td>
 											<%-- <td><strong>${NakchalDto.agencyDateContractClosed}</strong></td> --%>
 										</tr>
 									</c:forEach>
@@ -153,19 +158,19 @@
 							<nav>
 								<ul class="pagination">
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+										<a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
 									<li>
 										<c:choose>
 											<c:when test="${currentPage > 1}">
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
@@ -176,10 +181,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -188,10 +193,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -200,19 +205,19 @@
 									<li>
 										<c:choose>
 											<c:when test="${currentPage < lastPage}">
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}" aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}"aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+										<a href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&agencyEmployeeId=${member.memberId}" aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
 									</li>
