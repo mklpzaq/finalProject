@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.nationRental.citizen.service.CitizenDto;
+import kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto;
 import kr.or.nationRental.goodsFacility.controller.GoodsFacilityController;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.login.service.MemberDto;
@@ -112,13 +113,24 @@ public class RentGoodsfacilityController {
 		return "redirect:/viewApplicationRentForCitizen";
 	}
 		
-	@RequestMapping(value="/updateDeliverGoods", method=RequestMethod.GET)
-	public String updateDeliverGoods(RentGoodsfacilityDto rentGoodsfacilityDto
+	@RequestMapping(value="/insertDeliverGoods", method=RequestMethod.GET)
+	public String insertDeliverGoods(RentGoodsfacilityDto rentGoodsfacilityDto
 										,Model model){
-		logger.debug("RentGoodsfacilityController updateDeliverGoods GET: " + rentGoodsfacilityDto.toString());
-		RentGoodsfacilityDto updateDeliveryGoods = rentGoodsfacilityService.updateDeliveryGoodsInfo(rentGoodsfacilityDto);
-		model.addAttribute("updateDeliveryGoods", updateDeliveryGoods);
+		logger.debug("RentGoodsfacilityController insertDeliverGoods GET: " + rentGoodsfacilityDto.toString());
+		RentGoodsfacilityDto insertDeliveryGoods = rentGoodsfacilityService.insertDeliveryGoodsInfo(rentGoodsfacilityDto);
+		model.addAttribute("updateDeliveryGoods", insertDeliveryGoods);
 		return "/rentGoodsFacility/insertDeliveryGoodsFacility";
 	}
+	
+	@RequestMapping(value="/insertDeliverGoods", method=RequestMethod.POST)
+	public String insertDeliverGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto
+									,RedirectAttributes redirectAttributes) {
+		logger.debug("RentGoodsfacilityController insertDeliverGoods POST: " + deliveryOrderCitizenDto.toString());
+		rentGoodsfacilityService.insertDeliverGoods(deliveryOrderCitizenDto);
+		redirectAttributes.addAttribute("citizenId", deliveryOrderCitizenDto.getCitizenId());
+		return "redirect:/viewApplicationRentForCitizen";
+	}
+	
+	
 	
 }
