@@ -10,7 +10,7 @@
 			resultType="kr.or.nationRental.nakchal.service.NakchalDto">
 		SELECT
 			agen.agency_code AS agencyCode
-			
+			,agenemp.agency_employee_id AS agencyEmployeeId
 			,agen.functionary_name AS functionaryName
 			,adminagen.adminagency_code AS adminagencyCode
 			,adminagen.adminagency_name AS adminagencyName
