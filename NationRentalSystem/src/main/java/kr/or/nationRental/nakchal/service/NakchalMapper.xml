@@ -5,16 +5,48 @@
  
 <mapper namespace="kr.or.nationRental.nakchal.service.NakchalMapper">
 
-	<select id="getAgencyEmployeeAgencyName"
-			parameterType="kr.or.nationRental.login.service.MemberDto"
-			resultType="String">
+	<select id="selectListAgencyNakchalInfo"
+			parameterType="kr.or.nationRental.nakchal.service.NakchalDto"
+			resultType="kr.or.nationRental.nakchal.service.NakchalDto">
 		SELECT
-			agency_name
+			agen.agency_code AS agencyCode
+			
+			,agen.functionary_name AS functionaryName
+			,adminagen.adminagency_code AS adminagencyCode
+			,adminagen.adminagency_name AS adminagencyName
+			,adminagen.sido_name AS sidoName
+			,adminagen.sigungu_name AS sigunguName
+			,adminagen.eupmyeon_name AS eupmyeonName
+			,agen.agency_name AS agencyName
+			,agenbusintype.agency_businesstype_code AS agencyBusinesstypeCode
+			,agenbusintype.agency_businesstype_name AS agencyBusinesstypeName
+			,agen.agency_date_registration AS agencyDateRegistration
+			,agen.agency_date_contract_closed AS agencyDateContractClosed
+			
 		FROM
-			agency_employee
-		WHERE
-			agency_employee_id = #{memberId}		
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+			
+			INNER JOIN
+			agency_businesstype AS agenbusintype
+			ON
+			agen.agency_businesstype_code = agenbusintype.agency_businesstype_code
 		
+			INNER JOIN
+			adminagency AS adminagen
+			ON
+			agen.adminagency_code = adminagen.adminagency_code
+		
+		WHERE
+			agenemp.agency_employee_id = #{agencyEmployeeId}
 	</select>
 
 	

@@ -19,9 +19,28 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					
-					
-					
-					Select List Agency Nakchal Info
+					<div class="panel panel-default">
+						<div class="panel-body text-center">
+							Select List Agency Nakchal Info
+							<hr/>
+							
+							<c:forEach var="NakchalDto" items="${NakchalDtoList}">
+								<td><strong>${NakchalDto.agencyCode}</strong></td>
+								<td><strong>${NakchalDto.agencyEmployeeId}</strong></td>
+								<td><strong>${NakchalDto.functionaryName}</strong></td>
+								<td><strong>${NakchalDto.adminagencyCode}</strong></td>
+								<td><strong>${NakchalDto.adminagencyName}</strong></td>
+								<td><strong>${NakchalDto.sidoName}</strong></td>
+								<td><strong>${NakchalDto.sigunguName}</strong></td>
+								<td><strong>${NakchalDto.eupmyeonName}</strong></td>
+								<td><strong>${NakchalDto.agencyName}</strong></td>
+								<td><strong>${NakchalDto.agencyBusinesstypeCode}</strong></td>
+								<td><strong>${NakchalDto.agencyBusinesstypeName}</strong></td>
+								<td><strong>${NakchalDto.agencyDateRegistration}</strong></td>
+								<td><strong>${NakchalDto.agencyDateContractClosed}</strong></td>
+							</c:forEach>
+						</div>
+					</div>
 					
 					
 					

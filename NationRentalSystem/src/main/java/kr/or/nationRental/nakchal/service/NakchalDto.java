@@ -2,86 +2,88 @@ package kr.or.nationRental.nakchal.service;
 
 public class NakchalDto {
 	/* agency table */
-	private int agency_code;
-	private int adminagency_code;
-	private String functionary_name;
-	private String agency_name;
-	private int agency_businesstype_code;
-	private String agency_date_registration;
-	private String agency_date_contract_closed;
+	private int agencyCode;
+	private int adminagencyCode;
+	private String functionaryName;
+	private String agencyName;
+	private int agencyBusinesstypeCode;
+	private String agencyDateRegistration;
+	private String agencyDateContractClosed;
 	/* adminagency table */
-	private String adminagency_name;
-	private String sido_name;
-	private String sigungu_name;
-	private String eupmyeon_name;
+	private String adminagencyName;
+	private String sidoName;
+	private String sigunguName;
+	private String eupmyeonName;
 	/* agencyEmployee table */
 	private String agencyEmployeeId;
+	/* agency_businesstype table */
+	private String agencyBusinesstypeName;
 	
-	public int getAgency_code() {
-		return agency_code;
+	public int getAgencyCode() {
+		return agencyCode;
 	}
-	public void setAgency_code(int agency_code) {
-		this.agency_code = agency_code;
+	public void setAgencyCode(int agencyCode) {
+		this.agencyCode = agencyCode;
 	}
-	public int getAdminagency_code() {
-		return adminagency_code;
+	public int getAdminagencyCode() {
+		return adminagencyCode;
 	}
-	public void setAdminagency_code(int adminagency_code) {
-		this.adminagency_code = adminagency_code;
+	public void setAdminagencyCode(int adminagencyCode) {
+		this.adminagencyCode = adminagencyCode;
 	}
-	public String getFunctionary_name() {
-		return functionary_name;
+	public String getFunctionaryName() {
+		return functionaryName;
 	}
-	public void setFunctionary_name(String functionary_name) {
-		this.functionary_name = functionary_name;
+	public void setFunctionaryName(String functionaryName) {
+		this.functionaryName = functionaryName;
 	}
-	public String getAgency_name() {
-		return agency_name;
+	public String getAgencyName() {
+		return agencyName;
 	}
-	public void setAgency_name(String agency_name) {
-		this.agency_name = agency_name;
+	public void setAgencyName(String agencyName) {
+		this.agencyName = agencyName;
 	}
-	public int getAgency_businesstype_code() {
-		return agency_businesstype_code;
+	public int getAgencyBusinesstypeCode() {
+		return agencyBusinesstypeCode;
 	}
-	public void setAgency_businesstype_code(int agency_businesstype_code) {
-		this.agency_businesstype_code = agency_businesstype_code;
+	public void setAgencyBusinesstypeCode(int agencyBusinesstypeCode) {
+		this.agencyBusinesstypeCode = agencyBusinesstypeCode;
 	}
-	public String getAgency_date_registration() {
-		return agency_date_registration;
+	public String getAgencyDateRegistration() {
+		return agencyDateRegistration;
 	}
-	public void setAgency_date_registration(String agency_date_registration) {
-		this.agency_date_registration = agency_date_registration;
+	public void setAgencyDateRegistration(String agencyDateRegistration) {
+		this.agencyDateRegistration = agencyDateRegistration;
 	}
-	public String getAgency_date_contract_closed() {
-		return agency_date_contract_closed;
+	public String getAgencyDateContractClosed() {
+		return agencyDateContractClosed;
 	}
-	public void setAgency_date_contract_closed(String agency_date_contract_closed) {
-		this.agency_date_contract_closed = agency_date_contract_closed;
+	public void setAgencyDateContractClosed(String agencyDateContractClosed) {
+		this.agencyDateContractClosed = agencyDateContractClosed;
 	}
-	public String getAdminagency_name() {
-		return adminagency_name;
+	public String getAdminagencyName() {
+		return adminagencyName;
 	}
-	public void setAdminagency_name(String adminagency_name) {
-		this.adminagency_name = adminagency_name;
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
 	}
-	public String getSido_name() {
-		return sido_name;
+	public String getSidoName() {
+		return sidoName;
 	}
-	public void setSido_name(String sido_name) {
-		this.sido_name = sido_name;
+	public void setSidoName(String sidoName) {
+		this.sidoName = sidoName;
 	}
-	public String getSigungu_name() {
-		return sigungu_name;
+	public String getSigunguName() {
+		return sigunguName;
 	}
-	public void setSigungu_name(String sigungu_name) {
-		this.sigungu_name = sigungu_name;
+	public void setSigunguName(String sigunguName) {
+		this.sigunguName = sigunguName;
 	}
-	public String getEupmyeon_name() {
-		return eupmyeon_name;
+	public String getEupmyeonName() {
+		return eupmyeonName;
 	}
-	public void setEupmyeon_name(String eupmyeon_name) {
-		this.eupmyeon_name = eupmyeon_name;
+	public void setEupmyeonName(String eupmyeonName) {
+		this.eupmyeonName = eupmyeonName;
 	}
 	public String getAgencyEmployeeId() {
 		return agencyEmployeeId;
@@ -89,13 +91,19 @@ public class NakchalDto {
 	public void setAgencyEmployeeId(String agencyEmployeeId) {
 		this.agencyEmployeeId = agencyEmployeeId;
 	}
+	public String getAgencyBusinesstypeName() {
+		return agencyBusinesstypeName;
+	}
+	public void setAgencyBusinesstypeName(String agencyBusinesstypeName) {
+		this.agencyBusinesstypeName = agencyBusinesstypeName;
+	}
 	@Override
 	public String toString() {
-		return "NakchalDto [agency_code=" + agency_code + ", adminagency_code=" + adminagency_code
-				+ ", functionary_name=" + functionary_name + ", agency_name=" + agency_name
-				+ ", agency_businesstype_code=" + agency_businesstype_code + ", agency_date_registration="
-				+ agency_date_registration + ", agency_date_contract_closed=" + agency_date_contract_closed
-				+ ", adminagency_name=" + adminagency_name + ", sido_name=" + sido_name + ", sigungu_name="
-				+ sigungu_name + ", eupmyeon_name=" + eupmyeon_name + ", agencyEmployeeId=" + agencyEmployeeId + "]";
+		return "NakchalDto [agencyCode=" + agencyCode + ", adminagencyCode=" + adminagencyCode + ", functionaryName="
+				+ functionaryName + ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
+				+ ", agencyDateRegistration=" + agencyDateRegistration + ", agencyDateContractClosed="
+				+ agencyDateContractClosed + ", adminagencyName=" + adminagencyName + ", sidoName=" + sidoName
+				+ ", sigunguName=" + sigunguName + ", eupmyeonName=" + eupmyeonName + ", agencyEmployeeId="
+				+ agencyEmployeeId + ", agencyBusinesstypeName=" + agencyBusinesstypeName + "]";
 	}
 }
