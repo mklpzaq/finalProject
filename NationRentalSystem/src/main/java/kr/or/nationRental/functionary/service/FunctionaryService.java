@@ -11,9 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.nationRental.administrator.service.AdministratorDto;
+import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
+import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto;
 import kr.or.nationRental.citizen.service.CitizenDto;
+import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.login.service.MemberDto;
+import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto;
+import kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto;
 
 @Service
 public class FunctionaryService {
@@ -151,48 +156,39 @@ public class FunctionaryService {
 			 map.put("functionaryId", functionaryId);
 		}
 		
+		return map;
+	}
+	//공무원 업무조회
+	public Map<String, Object> selectFunctionaryWork(FunctionaryDto functionaryDto) {
+		logger.debug("FunctionaryService - selectFunctionaryWork - memberId : " + functionaryDto);
+		Map<String, Object> map = new HashMap<String, Object>();
+		//배달의뢰신청, 기부등록, 계약해지, 배상청구 등록
 		
+		//대여물품/시설등록조회
+		List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - goodsfacilityList : " + goodsfacilityList.toString());
+		//반납정보등록조회
+		List<ReturnGoodsfacilityInfoDto> returnGoodsfacilityInfoList = functionaryDao.selectFunctionaryWorkReturnGoodsfacilityInfo(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - returnGoodsfacilityInfoList : " + returnGoodsfacilityInfoList.toString());
+		//AS의뢰신청조회
+		List<UnitedAfterserviceRequestDto> unitedAfterserviceRequestList = functionaryDao.selectFunctionaryWorkUnitedAfterserviceReques(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - unitedAfterserviceRequestList : " + unitedAfterserviceRequestList.toString());
+		/*//배달의뢰신청조회 공무원 배달의뢰신청이 아직 완료되지 않음
+		List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(memberId);
+		logger.debug("FunctionaryService - selectFunctionaryWork - goodsfacilityList : " + goodsfacilityList.toString());*/
 		
+		//대행업체등록조회
+		List<AgencyDto> AgencyList = functionaryDao.selectFunctionaryWorkAgency(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - AgencyList : " + AgencyList.toString());
+		//연회비/패키지 등록 조회
+		List<AnnualfeePakageDto> AnnualfeePakageList = functionaryDao.selectFunctionaryWorkAnnualfeePakage(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - AnnualfeePakageList : " + AnnualfeePakageList.toString());
 		
-		
-		
-		
-		/*String adminId = null;
-		String agencyEmployeeId = null;
-		String citizenId = null;
-		String functionaryId = null; 
-		if(administratorDto.getAdminId() != null) {
-			adminId = administratorDto.getAdminId();
-		}
-		
-		if(agencyEmployeeDto.getAgencyEmployeeId() != null) {
-			agencyEmployeeId = agencyEmployeeDto.getAgencyEmployeeId();
-		}
-		if(citizenDto.getCitizenId() != null) {
-			citizenId = citizenDto.getCitizenId();
-		}
-		
-		if(functionaryDto.getFunctionaryId() != null) {
-			functionaryId = functionaryDto.getFunctionaryId();
-		}
-		
-		
-		
-		if(adminId != null) {
-			map.put("adminId", adminId);
-		}
-		
-		if(agencyEmployeeId != null) {
-			map.put("agencyEmployeeId", agencyEmployeeId);
-		}
-		
-		if(citizenId != null) {
-			map.put("citizenId", citizenId);
-		}
-		
-		if(functionaryId != null) {
-			map.put("functionaryId", functionaryId);
-		}*/
+		map.put("goodsfacilityList", goodsfacilityList);
+		map.put("returnGoodsfacilityInfoList", returnGoodsfacilityInfoList);
+		map.put("unitedAfterserviceRequestList", unitedAfterserviceRequestList);
+		map.put("AgencyList", AgencyList);
+		map.put("AnnualfeePakageList", AnnualfeePakageList);
 		
 		return map;
 	}

@@ -15,6 +15,7 @@ public class ReturnGoodsfacilityInfoDto {
 	private Date goodsfacilityRentalDayEnd; //반납예정일
 	private int overdueDays; //연체일수
 	private int adminagencyCode; //행정기관코드
+	private String adminagencyName; //행정기관명
 	private String functionaryId; //공무원ID
 	private String functionaryName; //공무원이름
 	private int stateGoodsCode; //물품상태코드(
@@ -92,6 +93,12 @@ public class ReturnGoodsfacilityInfoDto {
 	public void setAdminagencyCode(int adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
 	}
+	public String getAdminagencyName() {
+		return adminagencyName;
+	}
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
+	}
 	public String getFunctionaryId() {
 		return functionaryId;
 	}
@@ -130,10 +137,9 @@ public class ReturnGoodsfacilityInfoDto {
 				+ ", memberLevel=" + memberLevel + ", citizenId=" + citizenId + ", citizenName=" + citizenName
 				+ ", isRequestedToReturnAsDelivery=" + isRequestedToReturnAsDelivery + ", goodsfacilityRentalDayEnd="
 				+ goodsfacilityRentalDayEnd + ", overdueDays=" + overdueDays + ", adminagencyCode=" + adminagencyCode
-				+ ", functionaryId=" + functionaryId + ", functionaryName=" + functionaryName + ", stateGoodsCode="
-				+ stateGoodsCode + ", stateGoods=" + stateGoods + ", dateReturnCheck=" + dateReturnCheck + "]";
+				+ ", adminagencyName=" + adminagencyName + ", functionaryId=" + functionaryId + ", functionaryName="
+				+ functionaryName + ", stateGoodsCode=" + stateGoodsCode + ", stateGoods=" + stateGoods
+				+ ", dateReturnCheck=" + dateReturnCheck + "]";
 	}
-	
-	
 	
 }

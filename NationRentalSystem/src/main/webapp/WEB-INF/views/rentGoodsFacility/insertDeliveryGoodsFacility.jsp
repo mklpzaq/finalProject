@@ -141,7 +141,7 @@
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
-								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/updateDeliverGoods" method="post">
+								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertDeliverGoods" method="post">
 									<div class="form-group">
 										<label for="goodsfacilityRentalCode" class="col-sm-3 control-label">시설/물품 대여/예약 신청코드</label>
 										<div class="col-sm-9">
@@ -149,9 +149,21 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label for="classifyRentalState" class="col-sm-3 control-label">구분</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="classifyRentalState" id="classifyRentalState" value="대여">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="classifyRentalState" class="col-sm-3 control-label">물품코드</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" value="${updateDeliveryGoods.goodsfacilityCode}">
+										</div>
+									</div>
+									<div class="form-group">
 										<label for="classifyRentalState" class="col-sm-3 control-label">신청인ID</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="classifyRentalState" id="classifyRentalState" value="${updateDeliveryGoods.citizenId}">
+											<input type="text" class="form-control" name="citizenId" id="citizenId" value="${updateDeliveryGoods.citizenId}">
 										</div>
 									</div>
 									<div class="form-group">
@@ -163,9 +175,45 @@
 									<div class="form-group">
 										<label for="adminagencyCode" class="col-sm-3 control-label">선청한 물품 이름</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="adminagencyCode" id="adminagencyCode" value="${updateDeliveryGoods.goodsfacilityName}">
+											<input type="text" class="form-control" name="goodsfacilityName" id="goodsfacilityName" value="${updateDeliveryGoods.goodsfacilityName}">
 										</div>
-									</div>	
+									</div>
+									<div class="form-group">
+										<label for="adminagencyCode" class="col-sm-3 control-label">행정기관코드</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="adminagencyCode" id="adminagencyCode" value="${updateDeliveryGoods.adminagencyCode}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="adminagencyCode" class="col-sm-3 control-label">해당물품행정기관명</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="adminagencyName" id="adminagencyName" value="${updateDeliveryGoods.adminagencyName}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="adminagencyCode" class="col-sm-3 control-label">보내는 행정기관 시도</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="sendAddressSido" id="sendAddressSido" value="${updateDeliveryGoods.sidoName}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="adminagencyCode" class="col-sm-3 control-label">보내는 행정기관 시군구</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="sendAddressSigungu" id="sendAddressSigungu" value="${updateDeliveryGoods.sigunguName}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="adminagencyCode" class="col-sm-3 control-label">보내는 행정기관 읍면동</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="sendAddressEupmyeon" id="sendAddressEupmyeon" value="${updateDeliveryGoods.eupmyeonName}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="adminagencyCode" class="col-sm-3 control-label">보내는 행정기관 상세주소</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="sendAddressSangse" id="sendAddressSangse" value="${updateDeliveryGoods.adminagencyAddressSangse}">
+										</div>
+									</div>						
 									<div>
 										<div class="form-group">
 											<label for="sample6_postcode" class="col-sm-4 control-label">받는 사람 도로명주소</label>
@@ -183,7 +231,7 @@
 										<div class="form-group">
 											<label for="jibunAddress" class="col-sm-4 control-label">지번주소</label>
 											<div class="col-sm-8">
-												<input type="text" style="float:left" size="10" id="sido2" name="sidoName">
+												<input type="text" style="float:left" size="10" id="sido2" name="receiveAddressSido">
 												<input type="text" style="float:left" size="10" id="sigungu2" name="receiveAddressSigungu">
 												<input type="text" style="float:left" size="10" id="bname2" name="receiveAddressEupmyeon">
 												<input type="text" style="float:left" size="30" id="sample7_address2" name="receiveAddressSangse" value="${updateDeliveryGoods.citizenAddressSangse}">

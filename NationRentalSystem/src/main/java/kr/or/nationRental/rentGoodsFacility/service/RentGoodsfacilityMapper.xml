@@ -14,6 +14,7 @@
   				,goodsfacility_name as goodsfacilityName
   				,goodsfacility_address_sangse as goodsfacilityAddressSangse
   				,goodsfacility_price_rental as goodsfacilityPriceRental
+  				,goodsfacility_classify_goodsfacility as goodsfacilityClassifyGoodsfacility
   			FROM
   				goodsfacility
   			WHERE 
@@ -182,24 +183,77 @@
   				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
   	</update>
   	
-  	<select id="updateDeliveryGoodsInfo"
+  	<select id="insertDeliveryGoodsInfo"
   			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
   			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
   			SELECT
-				goodsfacility_rental.goodsfacility_rental_code  			
-  				,goodsfacility_rental.goodsfacility_name
-  				,goodsfacility_rental.citizen_id
-  				,goodsfacility_rental.citizen_name
-  				,citizen.citizen_address_sangse  				
+				goodsfacility_rental.goodsfacility_rental_code as goodsfacilityRentalCode			
+  				,goodsfacility_rental.goodsfacility_name as goodsfacilityName
+  				,goodsfacility_rental.citizen_id as citizenId
+  				,goodsfacility_rental.citizen_name as citizenName
+  				,goodsfacility_rental.goodsfacility_code as goodsfacilityCode
+  				,goodsfacility_rental.adminagency_code as adminagencyCode
+  				,citizen.citizen_address_sangse as citizenAddressSangse
+  				,adminagency.adminagency_name as adminagencyName
+  				,adminagency.sido_name as sidoName
+  				,adminagency.sigungu_name as sigunguName
+  				,adminagency.eupmyeon_name as eupmyeonName
+  				,adminagency.adminagency_address_sangse	as adminagencyAddressSangse 		
   			FROM
   				goodsfacility_rental
   			JOIN
-  				citizen
+  				citizen  			
   			ON
   				goodsfacility_rental.citizen_id = citizen.citizen_id
+  			JOIN
+  				adminagency
+  			ON
+  				goodsfacility_rental.adminagency_code = adminagency.adminagency_code
   			WHERE
   				goodsfacility_rental_code = #{goodsfacilityRentalCode}
   	
   	</select>
+  	
+  	<insert id="insertDeliveryGoods"
+  			parameterType="kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto">
+  			<selectKey resultType="Integer"
+					keyProperty="deliveryOrderCitizenCode"
+					order="AFTER">
+			SELECT LAST_INSERT_ID()
+			</selectKey>
+			INSERT INTO delivery_order_citizen
+				(goodsfacility_rental_code
+				,classify_rental_state
+				,goodsfacility_code
+				,citizen_id
+				,adminagency_code
+				,send_address_sido
+				,send_address_sigungu
+				,send_address_eupmyeon
+				,send_address_sangse
+				,receive_address_sido
+				,receive_address_sigungu
+				,receive_address_eupmyeon
+				,receive_address_sangse
+				,delivery_order_citizen_date
+				,is_canceled_delivery)
+			VALUE
+				(#{goodsfacilityRentalCode}
+				,#{classifyRentalState}
+				,#{goodsfacilityCode}
+				,#{citizenId}
+				,#{adminagencyCode}
+				,#{sendAddressSido}
+				,#{sendAddressSigungu}
+				,#{sendAddressEupmyeon}
+				,#{sendAddressSangse}
+				,#{receiveAddressSido}
+				,#{receiveAddressSigungu}
+				,#{receiveAddressEupmyeon}
+				,#{receiveAddressSangse}
+				,now()
+				,"N")
+  	
+  	</insert>
   
   </mapper>
