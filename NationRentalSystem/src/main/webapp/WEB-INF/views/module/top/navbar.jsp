@@ -157,7 +157,7 @@
 								<div style="padding:0;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 									<ul class="nav navbar-nav">
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectOneCitizen?citizenId=${member.memberId}">시민 회원관리</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertDonation?citizenId=${member.memberId}">기부신청</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDonation?citizenId=${member.memberId}">기부신청</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여/예약 취소 </a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여/예약 신청/취소 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?citizenId=${member.memberId}">대여 리스트</a></li>

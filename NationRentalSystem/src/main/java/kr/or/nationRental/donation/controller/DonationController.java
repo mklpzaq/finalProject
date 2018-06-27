@@ -1,14 +1,20 @@
 package kr.or.nationRental.donation.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.nationRental.donation.service.DonationDto;
 import kr.or.nationRental.donation.service.DonationService;
+import kr.or.nationRental.login.service.MemberDto;
 
 
 
@@ -20,8 +26,13 @@ public class DonationController {
 
 	//회원 : 기부 신청 폼 불러오기
 	@RequestMapping(value="/insertDonation", method=RequestMethod.GET)
-	public String insertDonation() {
-		logger.debug("insertDonation");
+	public String insertDonation(Model model
+								, MemberDto memberDto
+								, HttpSession session) {
+		logger.debug("insertDonation : " + memberDto);
+		logger.debug("insertDonation : " + session);
+		session.getAttribute("member");
+		model.addAttribute("member", session.getAttribute("member"));
 		return "donation/insertDonationForm";
 	}
 	
@@ -31,14 +42,29 @@ public class DonationController {
 		logger.debug("insertDonation");
 		donationService.insertDonation(donationDto);
    		return "redirect:/selectListDonation";
-		}	
-	
+	}	
 	
 	//회원 : 기부신청 리스트
+	@RequestMapping(value="/selectListDonation", method=RequestMethod.GET)
+	public String selectListDonation(Model model
+									, HttpSession session) {
+		MemberDto member = (MemberDto) session.getAttribute("member");
+		String memberId = member.getMemberId();
+		List<DonationDto> donationDtoList = donationService.selectListDonation(memberId);
+		model.addAttribute("donationDtoList", donationDtoList);
+		logger.debug("---donationDtoList" + donationDtoList);
+	
+		/* 파일 저장루트 확인용 */
+		String path = session.getServletContext().getRealPath("/resources/upload/");
+		model.addAttribute("path", path);
+		
+		return "donation/selectListDonation";
+	}
+	
 	
 	//회원 : 기부 취소
 	
-	//공무원 : 기부 신청 리스트
+	//공무원 : 기부 승인대기 리스트
 	
 	//공무원 : 기부 승인
 	

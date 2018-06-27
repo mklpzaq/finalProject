@@ -10,18 +10,35 @@
 	INSERT INTO donation_request (
 		donation_request_code
 		, member_id
-		, donation_name
+		, donation_title
 		, donation_pw
 		, donation_content
-		, donation_request_data
+		, donation_request_date
 	) VALUES (
-		NULL
-		, #{memberId}
-		, #{donationName}
-		, #{donationPw}
-		, #{donationContent}
-		, NOW()
+			NULL
+			, #{memberId}
+			, #{donationTitle}
+			, #{donationPw}
+			, #{donationContent}
+			, NOW()
 	)
 	</insert>
+	
+	<select id="selectListDonation"
+			parameterType="String"
+			resultType="kr.or.nationRental.donation.service.DonationDto">
+		SELECT
+			donation_request_code AS donationRequestCode
+			, member_id AS memberId
+			, donation_title AS donationTitle
+			, donation_pw AS donationPw
+			, donation_content AS donationContent
+			, donation_request_date AS donationRequestDate
+		FROM
+			donation_request
+		WHERE 
+  			member_id = #{memberId}
+		ORDER BY donation_request_code DESC	
+	</select>
 
 </mapper>

@@ -1,14 +1,14 @@
 package kr.or.nationRental.donation.service;
 
-import com.mysql.fabric.xmlrpc.base.Data;
+import java.sql.Date;
 
 public class DonationDto {
 	private int donationRequestCode; // 기부신청코드
 	private String memberId; //작성자 ID
-	private String donationName; //제목
+	private String donationTitle; //제목
 	private String donationPw; //작성PS
 	private String donationContent; //내용
-	private Data donationRequestData; //작성날짜
+	private Date donationRequestDate; //작성날짜
 	
 	public int getDonationRequestCode() {
 		return donationRequestCode;
@@ -22,11 +22,11 @@ public class DonationDto {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public String getDonationName() {
-		return donationName;
+	public String getDonationTitle() {
+		return donationTitle;
 	}
-	public void setDonationName(String donationName) {
-		this.donationName = donationName;
+	public void setDonationTitle(String donationTitle) {
+		this.donationTitle = donationTitle;
 	}
 	public String getDonationPw() {
 		return donationPw;
@@ -40,18 +40,19 @@ public class DonationDto {
 	public void setDonationContent(String donationContent) {
 		this.donationContent = donationContent;
 	}
-	public Data getDonationRequestData() {
-		return donationRequestData;
+	public Date getDonationRequestDate() {
+		return donationRequestDate;
 	}
-	public void setDonationRequestData(Data donationRequestData) {
-		this.donationRequestData = donationRequestData;
+	public void setDonationRequestDate(Date donationRequestDate) {
+		this.donationRequestDate = donationRequestDate;
 	}
 	
 	@Override
 	public String toString() {
-		return "DonationDto [donationRequestCode=" + donationRequestCode + ", memberId=" + memberId + ", donationName="
-				+ donationName + ", donationPw=" + donationPw + ", donationContent=" + donationContent
-				+ ", donationRequestData=" + donationRequestData + "]";
+		return "DonationDto [donationRequestCode=" + donationRequestCode + ", memberId=" + memberId + ", donationTitle="
+				+ donationTitle + ", donationPw=" + donationPw + ", donationContent=" + donationContent
+				+ ", donationRequestDate=" + donationRequestDate + "]";
 	}
+	
 	
 }

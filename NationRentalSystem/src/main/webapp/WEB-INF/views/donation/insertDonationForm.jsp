@@ -15,24 +15,25 @@
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<div class="row" >
 				<div class="col-sm-2" style="padding:15px;">
+					<jsp:include page="/WEB-INF/views/module/leftDonation/leftDonation.jsp"/>
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
 					<div style="margin:15px;" class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">Insert Board</h3>
+							<h3 class="text-center">기부 신청서</h3>
 							<hr/>
 							<form class="form-horizontal" action="${pageContext.request.contextPath}/insertDonation" method="post" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="memberId" class="col-sm-3 control-label">작성자 ID</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="citizenId" id="memberId" value="${memberId}" placeholder="작성자 ID" readonly>
+										<input type="text" class="form-control" name="memberId" id="memberId" value="${member.memberId}" readonly>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="donationName" class="col-sm-3 control-label">제목</label>
+									<label for="donationTitle" class="col-sm-3 control-label">제목</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="donationName" id="donationName" placeholder="제목을 작성해 주십시요.">
+										<input type="text" class="form-control" name="donationTitle" id="donationTitle" placeholder="제목을 작성해 주십시요.">
 									</div>
 								</div>
 								<div class="form-group">
