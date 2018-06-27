@@ -6,6 +6,7 @@ public class AgencyDto {
 
 	private int agencyCode; //대행업체 낙찰번호
 	private int adminagencyCode; //행정기관코드
+	private String adminagencyName; //행정기관명
 	private String functionaryName; //등록 공무원명
 	private String agencyName; //대행업체명
 	private int agencyBusinesstypeCode; //대행업체 업종분류 코드
@@ -23,6 +24,12 @@ public class AgencyDto {
 	}
 	public void setAdminagencyCode(int adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
+	}
+	public String getAdminagencyName() {
+		return adminagencyName;
+	}
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
 	}
 	public String getFunctionaryName() {
 		return functionaryName;
@@ -62,12 +69,11 @@ public class AgencyDto {
 	}
 	@Override
 	public String toString() {
-		return "AgencyDto [agencyCode=" + agencyCode + ", adminagencyCode=" + adminagencyCode + ", functionaryName="
-				+ functionaryName + ", agencyName=" + agencyName + ", agencyBusinesstypeCode=" + agencyBusinesstypeCode
-				+ ", agencyBusinesstypeName=" + agencyBusinesstypeName + ", agencyDateRegistration="
-				+ agencyDateRegistration + ", agencyDateContractClosed=" + agencyDateContractClosed + "]";
+		return "AgencyDto [agencyCode=" + agencyCode + ", adminagencyCode=" + adminagencyCode + ", adminagencyName="
+				+ adminagencyName + ", functionaryName=" + functionaryName + ", agencyName=" + agencyName
+				+ ", agencyBusinesstypeCode=" + agencyBusinesstypeCode + ", agencyBusinesstypeName="
+				+ agencyBusinesstypeName + ", agencyDateRegistration=" + agencyDateRegistration
+				+ ", agencyDateContractClosed=" + agencyDateContractClosed + "]";
 	}
-	
-	
 	
 }

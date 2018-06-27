@@ -317,22 +317,25 @@
 	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
 	resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
 		SELECT
-			united_afterservice_request_code as unitedAfterserviceRequestCode
+			united_afterservice_request.united_afterservice_request_code as unitedAfterserviceRequestCode
 			,(case 
-			 when 0 = return_goodsfacility_info_code then '정기점검'
-			 when return_goodsfacility_info_code > 0 then '반납'
+			 when 0 = united_afterservice_request.return_goodsfacility_info_code then '정기점검'
+			 when united_afterservice_request.return_goodsfacility_info_code > 0 then '반납'
 			 else '에러'
 			  end) as requestType
-			,adminagency_code as adminagencyCode
-			,goodsfacility_code as goodsfacilityCode
-			,goodsfacility_name as goodsfacilityName
-			,state_goods_code as stateGoodsCode
-			,text_check_result_goodsfacility as textCheckResultGoodsfacility
-			,agency_code as agencyCode
-			,agency_name as agencyName
-			,date_request_afterservice as dateRequestAfterservice
-			,date_complete_afterservice as dateCompleteAfterservice
+			,united_afterservice_request.adminagency_code as adminagencyCode
+			,adminagency.adminagency_name as adminagencyName
+			,united_afterservice_request.goodsfacility_code as goodsfacilityCode
+			,united_afterservice_request.goodsfacility_name as goodsfacilityName
+			,united_afterservice_request.state_goods_code as stateGoodsCode
+			,united_afterservice_request.text_check_result_goodsfacility as textCheckResultGoodsfacility
+			,united_afterservice_request.agency_code as agencyCode
+			,united_afterservice_request.agency_name as agencyName
+			,united_afterservice_request.date_request_afterservice as dateRequestAfterservice
+			,united_afterservice_request.date_complete_afterservice as dateCompleteAfterservice
 		from united_afterservice_request
+		inner join adminagency
+		 using(adminagency_code)
 			where functionary_id = #{functionaryId}				
 	</select>
 	
@@ -342,14 +345,18 @@
 		SELECT
 			agency.agency_code as agencyCode
 			,agency.adminagency_code as adminagencyCode
+			,adminagency.adminagency_name as adminagencyName
 			,agency.functionary_name as functionaryName
+			,functionary.functionary_id as functionaryId			
 			,agency.agency_name as agencyName
 			,agency.agency_businesstype_code as agencyBusinesstypeCode
 			,agency.agency_date_registration as agencyDateRegistration
 			,agency.agency_date_contract_closed as agencyDateContractClosed			
-		from agency
-		inner join functionary
+		from functionary
+		inner join agency
 		    using(functionary_name)
+		inner join adminagency
+			on agency.adminagency_code = adminagency.adminagency_code
 			where functionary.functionary_id = #{functionaryId}	
 	</select>
 	
