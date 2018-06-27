@@ -143,7 +143,7 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewAgencyEmployeeInfo?agencyEmployeeId=${member.memberId}">직원 회원 관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyEmployee?agencyEmployeeId=${member.memberId}">소속 대행업체 직원 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionaryForAgencyEmployee?agencyEmployeeId=${member.memberId}">계약한 지자체 공무원 조회</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">소속업체 낙찰정보 조회</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?agencyEmployeeId=${member.memberId}">소속업체 낙찰정보 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?agencyEmployeeId=${member.memberId}">통합 AS 의뢰 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">배달 의뢰 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">의뢰 처리 현황 작성</a></li>
