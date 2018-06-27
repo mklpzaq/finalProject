@@ -28,4 +28,9 @@ public class DonationDao {
 		return sqlSession.selectList(NS+"selectListDonation", memberId);
 	}
 	
+	//회원 : 기부신청 1개 게시글 보기
+	public DonationDto viewDonation(DonationDto donationDto) {
+		return sqlSession.selectOne(NS + "viewDonation", donationDto);	
+	}
+	
 }

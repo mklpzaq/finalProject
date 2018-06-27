@@ -1,6 +1,7 @@
 package kr.or.nationRental.donation.service;
 
 import java.sql.Date;
+import java.util.List;
 
 public class DonationDto {
 	private int donationRequestCode; // 기부신청코드
@@ -53,6 +54,6 @@ public class DonationDto {
 				+ donationTitle + ", donationPw=" + donationPw + ", donationContent=" + donationContent
 				+ ", donationRequestDate=" + donationRequestDate + "]";
 	}
-	
+
 	
 }

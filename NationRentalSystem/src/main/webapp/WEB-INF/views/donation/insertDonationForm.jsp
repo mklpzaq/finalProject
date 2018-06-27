@@ -37,15 +37,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="boardPw" class="col-sm-3 control-label">비밀번호</label>
+									<label for="donationContent" class="col-sm-3 control-label">내용</label>
 									<div class="col-sm-9">
-										<input id="donationPw" type="text" class="form-control" name="donationPw" id="donationPw" placeholder="게시글 비밀번호">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="textContent" class="col-sm-3 control-label">내용</label>
-									<div class="col-sm-9">
-										<textarea id="textContent" name="textContent" class="form-control" rows="3" placeholder="내용을 작성해 주십시요."></textarea>
+										<textarea id="donationContent" name="donationContent" class="form-control" rows="3" placeholder="내용을 작성해 주십시요."></textarea>
 									</div>
 								</div>
 								<div id="addDiv">

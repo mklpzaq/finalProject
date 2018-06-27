@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.nationRental.donation.service.DonationDto;
+import kr.or.nationRental.donation.service.DonationRequest;
 import kr.or.nationRental.donation.service.DonationService;
 import kr.or.nationRental.login.service.MemberDto;
 
@@ -38,10 +39,13 @@ public class DonationController {
 	
 	//회원 : 기부 신청하기
 	@RequestMapping(value = "/insertDonation", method = RequestMethod.POST)
-	public String insertDonation(DonationDto donationDto) {
+	public String insertDonation(DonationDto donationDto
+									, DonationRequest donationRequest
+									, HttpSession session) {
 		logger.debug("insertDonation");
+		logger.debug("donationRequest");
 		donationService.insertDonation(donationDto);
-   		return "redirect:/selectListDonation";
+		return "redirect:/selectListDonation";
 	}	
 	
 	//회원 : 기부신청 리스트
@@ -59,13 +63,21 @@ public class DonationController {
 		model.addAttribute("path", path);
 		
 		return "donation/selectListDonation";
+	}	
+	//회원 : 기부신청 1개 게시글 보기
+	@RequestMapping(value="/viewDonation", method=RequestMethod.GET)
+	public String viewDonation(DonationDto donationDto, Model model) {
+		logger.debug("viewDonation");
+		DonationDto viewDonation = donationService.viewDonation(donationDto);
+		model.addAttribute("viewDonation", viewDonation);
+		return "donation/viewDonation";	
 	}
-	
 	
 	//회원 : 기부 취소
 	
 	//공무원 : 기부 승인대기 리스트
-	
+
+
 	//공무원 : 기부 승인
 	
 	//공무원 : 기부 반려

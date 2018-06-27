@@ -10,10 +10,10 @@ public class DonationFileDto {
 	private String donationFileName; //기부파일이름
 	private String donationFileExt; //기부파일ext
 	private String donationFileType; //기부파일type
-	private int donationFileSize; //기부파일size
+	private long donationFileSize; //기부파일size
 	private Data donationUploadFile; //기부파일 업로드날짜
-	private List<DonationFileDto> donationFileDto;
 	
+	private List<DonationFileDto> donationFileDto;
 	public int getDonationFileCode() {
 		return donationFileCode;
 	}
@@ -44,10 +44,10 @@ public class DonationFileDto {
 	public void setDonationFileType(String donationFileType) {
 		this.donationFileType = donationFileType;
 	}
-	public int getDonationFileSize() {
+	public long getDonationFileSize() {
 		return donationFileSize;
 	}
-	public void setDonationFileSize(int donationFileSize) {
+	public void setDonationFileSize(long donationFileSize) {
 		this.donationFileSize = donationFileSize;
 	}
 	public Data getDonationUploadFile() {

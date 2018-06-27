@@ -81,7 +81,7 @@
 										<tr>
 											<td>${donationDtoList.donationRequestCode}</td>
 											<td>${donationDtoList.memberId}</td>
-											<td>${donationDtoList.donationTitle}</td>
+											<td><a href="${pageContext.request.contextPath}/viewDonation?donationRequestCode=${donationDtoList.donationRequestCode}">${donationDtoList.donationTitle}</a></td>
 											<td>${donationDtoList.donationRequestDate}</td>
 											<td><!-- 공무원의 승인/거절에 따른 결과를 보여줘야함 --></td>																	
 										</tr>
