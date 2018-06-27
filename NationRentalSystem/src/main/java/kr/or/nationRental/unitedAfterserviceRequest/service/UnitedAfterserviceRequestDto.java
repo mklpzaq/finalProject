@@ -150,7 +150,7 @@ public class UnitedAfterserviceRequestDto {
 	}
 	public void setBeforePageCode(String beforePageCode) {
 		this.beforePageCode = beforePageCode;
-	}
+	} 
 	public String getAgencyEmployeeId() {
 		return agencyEmployeeId;
 	}
