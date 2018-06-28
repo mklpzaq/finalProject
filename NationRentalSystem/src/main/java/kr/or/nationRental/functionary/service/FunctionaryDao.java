@@ -126,9 +126,14 @@ public class FunctionaryDao {
 	}
 	
 	//공무원 대여물품/시설등록한 업무 조회
-	public List<GoodsFacilityDto> selectFunctionaryWorkGoodsfacility(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - selectFunctionaryWorkGoodsfacility - memberId : " + functionaryDto);
-		return sqlSession.selectList(NS+"selectFunctionaryWorkGoodsfacility", functionaryDto);
+	public List<GoodsFacilityDto> selectFunctionaryWorkGoodsfacility(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - selectFunctionaryWorkGoodsfacility - map : " + map.toString());
+		return sqlSession.selectList(NS+"selectFunctionaryWorkGoodsfacility", map);
+	}
+	//공무원 대여물품/시설등록한 업무 조회 카운트
+	public int totalCountFunctionaryWorkGoodsfacility(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - totalCountFunctionaryWorkGoodsfacility - map : " + map);
+		return sqlSession.selectOne(NS+"totalCountFunctionaryWorkGoodsfacility", map);
 	}
 	
 	//공무원 반납등록업무조회
@@ -153,6 +158,8 @@ public class FunctionaryDao {
 		logger.debug("FunctionaryDao - selectFunctionaryWorkAnnualfeePakage - memberId : " + functionaryDto);
 		return sqlSession.selectList(NS+"selectFunctionaryWorkAnnualfeePakage", functionaryDto);
 	}
+
+	
 	
 	
 

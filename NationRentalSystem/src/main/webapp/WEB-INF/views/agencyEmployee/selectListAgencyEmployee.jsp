@@ -81,8 +81,7 @@
 										<option value="30"<c:if test="${pagePerRow == 30}">selected</c:if>>30</option>
 										<option value="40"<c:if test="${pagePerRow == 40}">selected</c:if>>40</option>
 										<option value="50"<c:if test="${pagePerRow == 50}">selected</c:if>>50</option>
-									</select>개씩 보기
-									
+									</select>개씩 보기									
 								</div>
 							</div>
 							<hr/>

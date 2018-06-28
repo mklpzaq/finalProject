@@ -164,9 +164,9 @@ public class FunctionaryService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		//배달의뢰신청, 기부등록, 계약해지, 배상청구 등록
 		
-		//대여물품/시설등록조회
+		/*//대여물품/시설등록조회
 		List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(functionaryDto);
-		logger.debug("FunctionaryService - selectFunctionaryWork - goodsfacilityList : " + goodsfacilityList.toString());
+		logger.debug("FunctionaryService - selectFunctionaryWork - goodsfacilityList : " + goodsfacilityList.toString());*/
 		//반납정보등록조회
 		List<ReturnGoodsfacilityInfoDto> returnGoodsfacilityInfoList = functionaryDao.selectFunctionaryWorkReturnGoodsfacilityInfo(functionaryDto);
 		logger.debug("FunctionaryService - selectFunctionaryWork - returnGoodsfacilityInfoList : " + returnGoodsfacilityInfoList.toString());
@@ -184,13 +184,57 @@ public class FunctionaryService {
 		List<AnnualfeePakageDto> annualfeePakageList = functionaryDao.selectFunctionaryWorkAnnualfeePakage(functionaryDto);
 		logger.debug("FunctionaryService - selectFunctionaryWork - annualfeePakageList : " + annualfeePakageList.toString());
 		
-		map.put("goodsfacilityList", goodsfacilityList);
+		//map.put("goodsfacilityList", goodsfacilityList);
 		map.put("returnGoodsfacilityInfoList", returnGoodsfacilityInfoList);
 		map.put("unitedAfterserviceRequestList", unitedAfterserviceRequestList);
 		map.put("agencyList", agencyList);
 		map.put("annualfeePakageList", annualfeePakageList);
 		
 		return map;
+	}
+
+	public Map<String, Object> selectFunctionaryWorkGoodsfacility(String functionaryId
+																	, int currentPage
+																	, int pagePerRow
+																	, String searchOption
+																	, String keyword) {		
+		int beginRow = (currentPage-1)*pagePerRow; 
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("functionaryId", functionaryId);
+		map.put("beginRow", beginRow);
+		map.put("pagePerRow", pagePerRow);
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);/*
+		map.put("loginMemberId", loginMemberId);*/
+		
+		//대여물품/시설등록조회
+		List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(map);
+		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - goodsfacilityList : " + goodsfacilityList.toString());
+		int total = functionaryDao.totalCountFunctionaryWorkGoodsfacility(map);
+		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - total  : " + total);
+			
+		int lastPage = 0;
+		if(total%pagePerRow == 0) {
+			lastPage = total/pagePerRow;
+		}else {
+			lastPage = total/pagePerRow + 1;
+		}
+		
+		int pageView = 5;
+		int startPage = ((currentPage-1)/5)*5+1; 
+		int endPage = startPage + pageView -1; 
+		if(endPage>lastPage) {
+			endPage=lastPage;
+		}
+		
+		Map<String, Object> returnmap = new HashMap<String, Object>();
+		returnmap.put("goodsfacilityList", goodsfacilityList);
+		returnmap.put("lastPage", lastPage);
+		returnmap.put("startPage", startPage);
+		returnmap.put("endPage", endPage);
+		
+		return returnmap;
 	}
 	
 }

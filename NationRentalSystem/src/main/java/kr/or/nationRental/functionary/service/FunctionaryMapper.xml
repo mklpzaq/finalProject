@@ -258,7 +258,71 @@
 			and functionary_phone = #{memberPhone}		
 	</select>
 	
-	<select id="selectFunctionaryWorkGoodsfacility" 
+	<select id="totalCountFunctionaryWorkGoodsfacility"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+		COUNT(*)
+			from goodsfacility
+			inner join adminagency
+				using(adminagency_code)						
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	or adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <when test="searchOption == '시설/물품명 검색'">    
+		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <!-- <when test="searchOption == '등록날짜 검색'"> 
+		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when> -->
+	    	</choose>
+	</select>
+	
+	<select id="selectFunctionaryWorkGoodsfacility" parameterType="java.util.Map"  resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+		SELECT
+			goodsfacility.goodsfacility_code as goodsfacilityCode
+			,goodsfacility.goodsfacility_name as goodsfacilityName
+			,goodsfacility.goodsfacility_purchaseprice as goodsfacilityPurchaseprice
+			,goodsfacility.goodsfacility_price_rental as goodsfacilityPriceRental
+			,goodsfacility.adminagency_code as adminagencyCode
+			,adminagency.adminagency_name as adminagencyName
+			,goodsfacility.goodsfacility_classify_goodsfacility as goodsfacilityClassifyGoodsfacility
+			,goodsfacility.goodsfacility_classify_donationpurchase as goodsfacilityClassifyDonationpurchase
+			,goodsfacility.goodsfacility_is_extra as goodsfacilityIsExtra
+			,goodsfacility.goodsfacility_is_possible_delivery as goodsfacilityIsPossibleDelivery
+			,goodsfacility.goodsfacility_state_afterservice as goodsfacilityStateAfterservice
+			,goodsfacility.goodsfacility_is_possible_rental as goodsfacilityIsPossibleRental
+			,goodsfacility.goodsfacility_date_registration as goodsfacilityDateRegistration
+			from goodsfacility
+			inner join adminagency
+				using(adminagency_code)						
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	or adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <when test="searchOption == '시설/물품명 검색'">    
+		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <!-- <when test="searchOption == '등록날짜 검색'"> 
+		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when> -->
+	    	</choose>
+			and goodsfacility.functionary_id = #{functionaryId}	
+			ORDER BY goodsfacility.goodsfacility_date_registration DESC
+			LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+	
+	<!-- 테스트중 -->
+	<select id="selectFunctionaryWorkGoodsfacilitytest" 
 		parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
 		resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
 		<!-- SELECT
@@ -277,7 +341,8 @@
 			,goodsfacility_date_registration as goodsfacilityDateRegistration
 			from goodsfacility
 			inner join adminagency
-			using(adminagency_code) -->
+			using(adminagency_code)
+			where functionary_id = #{functionaryId}	 -->
 		SELECT
 			goodsfacility.goodsfacility_code as goodsfacilityCode
 			,goodsfacility.goodsfacility_name as goodsfacilityName		

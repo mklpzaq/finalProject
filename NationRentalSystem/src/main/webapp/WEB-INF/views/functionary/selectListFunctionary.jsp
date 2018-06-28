@@ -60,12 +60,11 @@
 					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
 				</div>
 				<div style="padding:15px;" class="col-sm-8">
+				
 					<!-- Begin Content -->
-							
+											
 					<div class="panel panel-default">
-						<div class="panel-body">
-							<h3 class="text-center">공무원 리스트</h3>
-							<hr/>						
+						<div class="panel-body text-center">	
 								<div class="row">
 									<div class="col-md-4">
 										<strong>${currentPage} / ${lastPage} Page</strong><br/>
@@ -73,9 +72,9 @@
 										<strong>keyword : </strong><span id="moniterKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
-										<h3>Article List</h3>
+										<h3>공무원 리스트</h3>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-4 text-rihgt">
 										<select id="selectPagePerRow" name="selectPagePerRow">
 											<option value="5"<c:if test="${pagePerRow == 5}">selected</c:if>>5</option>
 											<option value="10"<c:if test="${pagePerRow == 10}">selected</c:if>>10</option>
@@ -97,7 +96,7 @@
 										
 										<div class="input-group">
 											<div id="selectbox" class="input-group-btn">
-												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="#dropDownMenu">
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
@@ -129,7 +128,7 @@
 									<tbody>									
 											<c:forEach var="functionaryDto" items="${list}">												
 													<tr>
-														<td><a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></td>														
+														<td><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?functionaryId=${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></td>														
 														<td>${functionaryDto.adminagencyName}</td>
 														<td>${functionaryDto.functionaryPhone}</td>
 														<td>${functionaryDto.functionaryEmail}</td>													

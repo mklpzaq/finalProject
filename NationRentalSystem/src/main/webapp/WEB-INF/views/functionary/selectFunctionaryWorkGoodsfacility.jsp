@@ -35,41 +35,41 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchOption = $('#moniterSearchOption').text();
 					keyword = $('#moniterKeyword').val(); */
-					$(location).attr('href', './selectListFunctionary?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
+					$(location).attr('href', './selectFunctionaryWorkGoodsfacility?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
-					$(location).attr('href', './selectListFunctionary?=y&searchOption=' + searchOption + '&keyword=' + keyword);
+					$(location).attr('href', './selectFunctionaryWorkGoodsfacility?=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
 				
 				
-				$("#goodsfacilityListButton").click(function(){
-					$("#goodsfacilityList").parent().children().hide();
+				/* $("#goodsfacilityListButton").click(function(){
+					$("#goodsfacilityList").closest("#tableckckck").children().hide();
 					$("#goodsfacilityList").show();				
 				})
 				$("#returnGoodsfacilityInfoListButton").click(function(){
-					$("#returnGoodsfacilityInfoList").parent().children().hide();
+					$("#returnGoodsfacilityInfoList").closest("#tableckckck").children().hide();
 					$("#returnGoodsfacilityInfoList").show();		
 								
 				})
 				$("#unitedAfterserviceRequestListButton").click(function(){
-					$("#unitedAfterserviceRequestList").parent().children().hide();
+					$("#unitedAfterserviceRequestList").closest("#tableckckck").children().hide();
 					$("#unitedAfterserviceRequestList").show();	
 								
 				})
 				$("#agencyListButton").click(function(){
-					$("#agencyList").parent().children().hide();
+					$("#agencyList").closest("#tableckckck").children().hide();
 					$("#agencyList").show();		
 									
 				})
 				$("#annualfeePakageListButton").click(function(){
-					$("#annualfeePakageList").parent().children().hide();
+					$("#annualfeePakageList").closest("#tableckckck").children().hide();
 					$("#annualfeePakageList").show();	
-				})
+				}) */
 				
 			});
 		</script>		
@@ -89,9 +89,7 @@
 					<!-- Begin Content -->
 					
 					<div class="panel panel-default">
-						<div class="panel-body">
-							<h3 class="text-center">업무조회 리스트</h3>
-							<hr/>						
+						<div class="panel-body text-center">	
 								<div class="row">
 									<div class="col-md-4">
 										<strong>${currentPage} / ${lastPage} Page</strong><br/>
@@ -99,7 +97,8 @@
 										<strong>keyword : </strong><span id="moniterKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
-										<h3>Article List</h3>
+									<h3>업무조회 리스트</h3>
+									<h4>시설/물품등록업무 조회</h4>
 									</div>
 									<div class="col-md-4">
 										<select id="selectPagePerRow" name="selectPagePerRow">
@@ -127,24 +126,23 @@
 								<div class="row">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										
 										<div class="input-group">
 											<div id="selectbox" class="input-group-btn">
-												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+												<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="#dropDownMenu">
 													<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
 												</button>
 												<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 													<li><a href="#">전체 검색</a></li>
-													<li><a href="#">공무원 이름 검색</a></li>
-													<li><a href="#">소속 행정기관 검색</a></li>
+													<li><a href="#">시설/물품명 검색</a></li>
+													<li><a href="#">행정기관명 검색</a></li>
+													<li><a href="#">등록날짜 검색</a></li>
 												</ul>
 											</div>
 											<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
 											<span class="input-group-btn">
 												<button id="searchButton" class="btn btn-default" type="button">검색</button>
 											</span>
-										</div>
-									
+										</div>									
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
@@ -160,7 +158,7 @@
 											</tr>
 										</thead>
 										<tbody>									
-											<c:forEach var="goodsfacilityDto" items="${map.goodsfacilityList}">
+											<c:forEach var="goodsfacilityDto" items="${list}">
 													<tr>
 														<td>${goodsfacilityDto.goodsfacilityCode}</td>														
 														<td>${goodsfacilityDto.goodsfacilityName}</td>
@@ -217,26 +215,26 @@
 													</tr>																						
 											</c:forEach>									
 										</tbody>
-									</table>
+									</table>									
 									<table id="agencyList" class="table table-striped" hidden="hidden">
 										<thead>
 											<tr>
 												<th width="10%">대행업체등록코드</th>
 												<th width="10%">행정기관명</th>
-												<th width="10%">대행업체명</th>											
-												<th width="10%">등록일자</th>									
+												<th width="10%">대행업체명</th>
+												<th width="10%">등록일자</th>
 											</tr>
 										</thead>
-										<tbody>									
-											<c:forEach var="agencyDto" items="${map.agencyList}">
-													<tr>
-														<td>${agencyDto.agencyCode}</td>														
-														<td>${agencyDto.adminagencyName}</td>
-														<td>${agencyDto.agencyName}</td>
-														<td>${agencyDto.goodsfacilityPriceRental}</td>													
-													</tr>																						
-											</c:forEach>									
-										</tbody>
+										<tbody>
+											<c:forEach items="${map.agencyList}" var="agencyDto">
+												<tr>
+													<td>${agencyDto.agencyCode}</td>
+													<td>${agencyDto.adminagencyName}</td>
+													<td>${agencyDto.agencyName}</td>
+													<td>${agencyDto.goodsfacilityPriceRental}</td>
+												</tr>
+											</c:forEach>
+										</tbody>									
 									</table>
 									<table id="annualfeePakageList" class="table table-striped" hidden="hidden">
 										<thead>
@@ -262,19 +260,19 @@
 								<nav style="text-align:center">
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
@@ -285,10 +283,10 @@
 												<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -297,10 +295,10 @@
 												<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -309,19 +307,19 @@
 										<li>
 											<c:choose>
 												<c:when test="${currentPage < lastPage}">
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/selectListFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>

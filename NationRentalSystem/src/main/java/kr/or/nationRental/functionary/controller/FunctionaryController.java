@@ -186,15 +186,41 @@ public class FunctionaryController {
 	 * 목표
 	 * 해당 공무원이 처리한 대여물품/시설등록, 반납정보등록, AS의뢰신청, 배달의뢰신청, 기부등록, 대행업체 등록, 계약해지, 연회비/패키지 등록, 배상청구 등록등을 볼 수 있어야한다
 	 * 방향 session 처리된 공무원 아이디로 select만 전부하면 된다?....
+	 * 한 화면에서 다양한 업무조회를 한꺼번에 확인하려했으나 시간과 능력부족으로 페이지를 나누기로 했다
 	 */
-	@RequestMapping(value="/selectFunctionaryWork", method=RequestMethod.GET)
-	public String selectFunctionaryWork(FunctionaryDto functionaryDto
-										,Model model) {
-		logger.debug("FunctionaryController - selectFunctionaryWork - functionaryDto : " + functionaryDto.toString());	
-		Map<String, Object> map = functionaryService.selectFunctionaryWork(functionaryDto);
-		logger.debug("FunctionaryController - selectFunctionaryWork - map : " + map.toString());	
-		model.addAttribute("map", map);
+	/*공무원 대여물품/시설등록업무조회
+	 *필요기능
+	 *해당 아이디의 공무원이 처리한 업무 리스트, 검색, 페이징 처리
+	 */
+	@RequestMapping(value="/selectFunctionaryWorkGoodsfacility", method=RequestMethod.GET)
+	public String selectFunctionaryWorkGoodsfacility(FunctionaryDto functionaryDto
+										,Model model
+										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+										,@RequestParam(value="searchOption", defaultValue="전체 검색") String searchOption
+										,@RequestParam(value="keyword", defaultValue="") String keyword) {
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - currentPage : " + currentPage);
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - pagePerRow  : " + pagePerRow);
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - searchSelect  : " + searchOption);
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - keyword  : " + keyword);
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - functionaryDto : " + functionaryDto.toString());
+		String functionaryId = functionaryDto.getFunctionaryId();
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - functionaryId : " + functionaryId);
+		Map<String, Object> map = functionaryService.selectFunctionaryWorkGoodsfacility(functionaryId
+																						,currentPage
+																						,pagePerRow
+																						,searchOption
+																						,keyword);
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - map : " + map.toString());		
+		model.addAttribute("list", map.get("goodsfacilityList"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", map.get("startPage"));
+		model.addAttribute("endPage", map.get("endPage"));
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchOption", searchOption);
+		model.addAttribute("keyword", keyword);
 		
-		return "/functionary/selectFunctionaryWork";
+		return "/functionary/selectFunctionaryWorkGoodsfacility";
 	}
 }
