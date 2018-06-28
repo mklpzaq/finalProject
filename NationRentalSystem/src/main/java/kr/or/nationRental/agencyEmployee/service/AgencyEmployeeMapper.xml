@@ -298,7 +298,7 @@
 	<select id="getAgencyName"
 			parameterType="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto"
 			resultType="String">
-		SELECT
+		SELECT DISTINCT
 			agen.agency_name
 		FROM
 			agency_nakchal_employee AS nak

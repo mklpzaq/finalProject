@@ -178,17 +178,17 @@ public class FunctionaryService {
 		logger.debug("FunctionaryService - selectFunctionaryWork - goodsfacilityList : " + goodsfacilityList.toString());*/
 		
 		//대행업체등록조회
-		List<AgencyDto> AgencyList = functionaryDao.selectFunctionaryWorkAgency(functionaryDto);
-		logger.debug("FunctionaryService - selectFunctionaryWork - AgencyList : " + AgencyList.toString());
+		List<AgencyDto> agencyList = functionaryDao.selectFunctionaryWorkAgency(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - agencyList : " + agencyList.toString());
 		//연회비/패키지 등록 조회
-		List<AnnualfeePakageDto> AnnualfeePakageList = functionaryDao.selectFunctionaryWorkAnnualfeePakage(functionaryDto);
-		logger.debug("FunctionaryService - selectFunctionaryWork - AnnualfeePakageList : " + AnnualfeePakageList.toString());
+		List<AnnualfeePakageDto> annualfeePakageList = functionaryDao.selectFunctionaryWorkAnnualfeePakage(functionaryDto);
+		logger.debug("FunctionaryService - selectFunctionaryWork - annualfeePakageList : " + annualfeePakageList.toString());
 		
 		map.put("goodsfacilityList", goodsfacilityList);
 		map.put("returnGoodsfacilityInfoList", returnGoodsfacilityInfoList);
 		map.put("unitedAfterserviceRequestList", unitedAfterserviceRequestList);
-		map.put("AgencyList", AgencyList);
-		map.put("AnnualfeePakageList", AnnualfeePakageList);
+		map.put("agencyList", agencyList);
+		map.put("annualfeePakageList", annualfeePakageList);
 		
 		return map;
 	}

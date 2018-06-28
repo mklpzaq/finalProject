@@ -22,6 +22,9 @@
 				$('#deleteNoBtn').click(function(){
 					$('#deleteAgencyEmployeeModal').hide();
 				});
+				$('#insertBusinesstypeForAgencyEmployeeBtn').click(function(){
+					$(location).attr('href', './insertBusinesstypeForAgencyEmployee?agencyEmployeeId=' + $('#memberId').val());
+				});
 			});
 		</script>
 		
@@ -35,6 +38,7 @@
 			<button type="button" id="deleteAgencyEmployeeModalBtn" class="btn btn-default" data-toggle="modal" data-target="#deleteAgencyEmployeeModal">
 				회원 탈퇴
 			</button>
+			<button id="insertBusinesstypeForAgencyEmployeeBtn" type="button" class="btn btn-default" >직원 업종 추가 등록</button>
 			<!-- <button id="deleteAgencyEmployeeBtn" type="button" class="btn btn-default">회원 탈퇴</button> -->
 		</div>
 		

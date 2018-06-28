@@ -45,6 +45,32 @@
 					$(location).attr('href', './selectListFunctionary?=y&searchOption=' + searchOption + '&keyword=' + keyword);
 				});
 				
+				
+				
+				$("#goodsfacilityListButton").click(function(){
+					$("#goodsfacilityList").parent().children().hide();
+					$("#goodsfacilityList").show();				
+				})
+				$("#returnGoodsfacilityInfoListButton").click(function(){
+					$("#returnGoodsfacilityInfoList").parent().children().hide();
+					$("#returnGoodsfacilityInfoList").show();		
+								
+				})
+				$("#unitedAfterserviceRequestListButton").click(function(){
+					$("#unitedAfterserviceRequestList").parent().children().hide();
+					$("#unitedAfterserviceRequestList").show();	
+								
+				})
+				$("#agencyListButton").click(function(){
+					$("#agencyList").parent().children().hide();
+					$("#agencyList").show();		
+									
+				})
+				$("#annualfeePakageListButton").click(function(){
+					$("#annualfeePakageList").parent().children().hide();
+					$("#annualfeePakageList").show();	
+				})
+				
 			});
 		</script>		
 	</head>
@@ -64,7 +90,7 @@
 					
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">공무원 리스트</h3>
+							<h3 class="text-center">업무조회 리스트</h3>
 							<hr/>						
 								<div class="row">
 									<div class="col-md-4">
@@ -92,8 +118,8 @@
 									<button type="button" id="goodsfacilityListButton">대여물품/시설등록조회</button>
 									<button type="button" id="returnGoodsfacilityInfoListButton">반납정보등록조회</button>
 									<button type="button" id="unitedAfterserviceRequestListButton">AS의뢰신청조회</button>
-									<button type="button" id="AgencyListButton">대행업체등록조회</button>
-									<button type="button" id="AnnualfeePakageListButton">연회비/패키지 등록 조회</button>
+									<button type="button" id="agencyListButton">대행업체등록조회</button>
+									<button type="button" id="annualfeePakageListButton">연회비/패키지 등록 조회</button>
 								</div>
 								<hr/>
 								
@@ -123,116 +149,116 @@
 									<div class="col-sm-2"></div>
 								</div>
 								<!-- End Search -->
-								
-								<table id="goodsfacilityList" class="table table-striped">
-									<thead>
-										<tr>
-											<th width="10%">시설/물품 개별관리코드</th>
-											<th width="10%">시설/물품명</th>
-											<th width="10%">행정기관명</th>
-											<th width="10%">등록일자</th>									
-										</tr>
-									</thead>
-									<tbody>									
-										<c:forEach var="goodsfacilityDto" items="${map.goodsfacilityList}">
-												<tr>
-													<td>${goodsfacilityDto.goodsfacilityCode}</td>														
-													<td>${goodsfacilityDto.goodsfacilityName}</td>
-													<td>${goodsfacilityDto.goodsfacilityPurchaseprice}</td>
-													<td>${goodsfacilityDto.goodsfacilityPriceRental}</td>													
-												</tr>																						
-										</c:forEach>									
-									</tbody>
-								</table>
-								<table id="returnGoodsfacilityInfoList" class="table table-striped">
-									<thead>
-										<tr>
-											<th width="10%">반납등록코드</th>
-											<th width="10%">시설/물품명</th>
-											<th width="10%">행정기관명</th>
-											<th width="10%">반납한 회원명</th>
-											<th width="10%">반납확인일</th>										
-										</tr>
-									</thead>
-									<tbody>									
-										<c:forEach var="returnGoodsfacilityInfoDto" items="${map.returnGoodsfacilityInfoList}">
-												<tr>
-													<td>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</td>														
-													<td>${returnGoodsfacilityInfoDto.goodsfacilityName}</td>
-													<td>${returnGoodsfacilityInfoDto.adminagencyName}</td>
-													<td>${returnGoodsfacilityInfoDto.citizenName}</td>
-													<td>${returnGoodsfacilityInfoDto.dateReturnCheck}</td>													
-												</tr>																						
-										</c:forEach>									
-									</tbody>
-								</table>
-								<table id="unitedAfterserviceRequestList" class="table table-striped">
-									<thead>
-										<tr>
-											<th width="10%">AS의뢰신청코드</th>
-											<th width="10%">정기/반납</th>
-											<th width="10%">행정기관명</th>
-											<th width="10%">반납받은 시설/물품명</th>
-											<th width="10%">검수결과</th>
-											<th width="10%">의뢰받은 대행업체명</th>
-											<th width="10%">공무원 의뢰 신청날짜</th>																		
-										</tr>
-									</thead>
-									<tbody>									
-										<c:forEach var="unitedAfterserviceRequestDto" items="${map.unitedAfterserviceRequestList}">
-												<tr>
-													<td>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</td>														
-													<td>${unitedAfterserviceRequestDto.goodsfacilityName}</td>
-													<td>${unitedAfterserviceRequestDto.goodsfacilityPurchaseprice}</td>
-													<td>${unitedAfterserviceRequestDto.goodsfacilityPriceRental}</td>													
-													<td>${unitedAfterserviceRequestDto.goodsfacilityPriceRental}</td>	
-													<td>${unitedAfterserviceRequestDto.goodsfacilityPriceRental}</td>	
-													<td>${unitedAfterserviceRequestDto.goodsfacilityPriceRental}</td>	
-												</tr>																						
-										</c:forEach>									
-									</tbody>
-								</table>
-								<table id="AgencyList" class="table table-striped">
-									<thead>
-										<tr>
-											<th width="10%">대행업체등록코드</th>
-											<th width="10%">시설/물품명</th>
-											<th width="10%">행정기관명</th>
-											<th width="10%">등록일자</th>									
-										</tr>
-									</thead>
-									<tbody>									
-										<c:forEach var="goodsfacilityDto" items="${map.AgencyList}">
-												<tr>
-													<td>${goodsfacilityDto.goodsfacilityCode}</td>														
-													<td>${goodsfacilityDto.goodsfacilityName}</td>
-													<td>${goodsfacilityDto.goodsfacilityPurchaseprice}</td>
-													<td>${goodsfacilityDto.goodsfacilityPriceRental}</td>													
-												</tr>																						
-										</c:forEach>									
-									</tbody>
-								</table>
-								<table id="AnnualfeePakageList" class="table table-striped">
-									<thead>
-										<tr>
-											<th width="10%">연회비/패키지등록코드</th>
-											<th width="10%">시설/물품명</th>
-											<th width="10%">행정기관명</th>
-											<th width="10%">등록일자</th>									
-										</tr>
-									</thead>
-									<tbody>									
-										<c:forEach var="goodsfacilityDto" items="${map.AnnualfeePakageList}">
-												<tr>
-													<td>${goodsfacilityDto.goodsfacilityCode}</td>														
-													<td>${goodsfacilityDto.goodsfacilityName}</td>
-													<td>${goodsfacilityDto.goodsfacilityPurchaseprice}</td>
-													<td>${goodsfacilityDto.goodsfacilityPriceRental}</td>													
-												</tr>																						
-										</c:forEach>									
-									</tbody>
-								</table>
-								
+								<div id="tableckckck">							
+									<table id="goodsfacilityList" class="table table-striped">
+										<thead>
+											<tr>
+												<th width="10%">시설/물품 개별관리코드</th>
+												<th width="10%">시설/물품명</th>
+												<th width="10%">행정기관명</th>
+												<th width="10%">등록일자</th>									
+											</tr>
+										</thead>
+										<tbody>									
+											<c:forEach var="goodsfacilityDto" items="${map.goodsfacilityList}">
+													<tr>
+														<td>${goodsfacilityDto.goodsfacilityCode}</td>														
+														<td>${goodsfacilityDto.goodsfacilityName}</td>
+														<td>${goodsfacilityDto.goodsfacilityPurchaseprice}</td>
+														<td>${goodsfacilityDto.goodsfacilityPriceRental}</td>													
+													</tr>																						
+											</c:forEach>									
+										</tbody>
+									</table>
+									<%-- <table id="returnGoodsfacilityInfoList" class="table table-striped" hidden="hidden">
+										<thead>
+											<tr>
+												<th width="10%">반납등록코드</th>
+												<th width="10%">시설/물품명</th>
+												<th width="10%">행정기관명</th>
+												<th width="10%">반납한 회원명</th>
+												<th width="10%">반납확인일</th>										
+											</tr>
+										</thead>
+										<tbody>									
+											<c:forEach var="returnGoodsfacilityInfoDto" items="${map.returnGoodsfacilityInfoList}">
+													<tr>
+														<td>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</td>														
+														<td>${returnGoodsfacilityInfoDto.goodsfacilityName}</td>
+														<td>${returnGoodsfacilityInfoDto.adminagencyName}</td>
+														<td>${returnGoodsfacilityInfoDto.citizenName}</td>
+														<td>${returnGoodsfacilityInfoDto.dateReturnCheck}</td>													
+													</tr>																						
+											</c:forEach>									
+										</tbody>
+									</table>
+									<table id="unitedAfterserviceRequestList" class="table table-striped" hidden="hidden">
+										<thead>
+											<tr>
+												<th width="10%">AS의뢰신청코드</th>
+												<th width="10%">정기/반납</th>
+												<th width="10%">행정기관명</th>
+												<th width="10%">반납받은 시설/물품명</th>
+												<th width="10%">검수결과</th>
+												<th width="10%">의뢰받은 대행업체명</th>
+												<th width="10%">신청날짜</th>																		
+											</tr>
+										</thead>
+										<tbody>									
+											<c:forEach var="unitedAfterserviceRequestDto" items="${map.unitedAfterserviceRequestList}">
+													<tr>
+														<td>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</td>														
+														<td>${unitedAfterserviceRequestDto.requestType}</td>
+														<td>${unitedAfterserviceRequestDto.adminagencyName}</td>
+														<td>${unitedAfterserviceRequestDto.goodsfacilityName}</td>													
+														<td>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</td>	
+														<td>${unitedAfterserviceRequestDto.agencyName}</td>	
+														<td>${unitedAfterserviceRequestDto.dateRequestAfterservice}</td>	
+													</tr>																						
+											</c:forEach>									
+										</tbody>
+									</table>
+									<table id="agencyList" class="table table-striped" hidden="hidden">
+										<thead>
+											<tr>
+												<th width="10%">대행업체등록코드</th>
+												<th width="10%">행정기관명</th>
+												<th width="10%">대행업체명</th>											
+												<th width="10%">등록일자</th>									
+											</tr>
+										</thead>
+										<tbody>									
+											<c:forEach var="agencyDto" items="${map.agencyList}">
+													<tr>
+														<td>${agencyDto.agencyCode}</td>														
+														<td>${agencyDto.adminagencyName}</td>
+														<td>${agencyDto.agencyName}</td>
+														<td>${agencyDto.goodsfacilityPriceRental}</td>													
+													</tr>																						
+											</c:forEach>									
+										</tbody>
+									</table>
+									<table id="annualfeePakageList" class="table table-striped" hidden="hidden">
+										<thead>
+											<tr>
+												<th width="10%">연회비/패키지코드</th>
+												<th width="10%">연회비/패키지명</th> 
+												<th width="10%">적용되는 행정기관명</th>
+												<th width="10%">연회비/패키지등록날짜</th>									
+											</tr>
+										</thead>
+										<tbody>									
+											<c:forEach var="annualfeePakageDto" items="${map.annualfeePakageList}">
+													<tr>
+														<td>${annualfeePakageDto.annualfeePakageCode}</td>														
+														<td>${annualfeePakageDto.annualfeePakageName}</td>
+														<td>${annualfeePakageDto.adminagencyCode}</td>
+														<td>${annualfeePakageDto.annualfeePakageDateRegistration}</td>													
+													</tr>																						
+											</c:forEach>									
+										</tbody>
+									</table> --%>
+								</div>
 								<nav style="text-align:center">
 									<ul class="pagination">
 										<li>

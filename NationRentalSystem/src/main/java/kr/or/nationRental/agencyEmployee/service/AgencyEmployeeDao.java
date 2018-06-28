@@ -18,6 +18,10 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	
+	 
+	
+	/* 이전까지 된것 */
 	public int totalCountFunctionaryForAgencyEmployee(Map<String, Object> map) {
 		logger.debug("totalCountFunctionaryForAgencyEmployee AgencyEmployeeDao");
 		return sqlSession.selectOne(NS+"totalCountFunctionaryForAgencyEmployee", map);
