@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.donation.service.DonationDto;
 import kr.or.nationRental.donation.service.DonationRequest;
@@ -91,22 +92,22 @@ public class DonationController {
 	//공무원 : 기부 승인대기 1개 게시물 보기
 	@RequestMapping(value="/viewApprovalDonation", method=RequestMethod.GET)
 	public String viewApprovalDonation(DonationDto donationDto, Model model) {
-		logger.debug("viewDonation");
+		logger.debug("viewApprovalDonation");
 		DonationDto viewDonation = donationService.viewDonation(donationDto);
 		model.addAttribute("viewDonation", viewDonation);
 		return "donation/viewApprovalDonation";	
 	}
 	
 	//공무원 : 기부 승인(업데이트)
-	@RequestMapping(value = "/updateApprovalDonation", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateApprovalDonation", method=RequestMethod.POST)
 	public String updateApprovalDonation(DonationDto donationDto) {
 		logger.info("---updateApprovalDonation POST" + donationDto);
-		int row = donationService.updateApprovalDonation(donationDto);
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(donationDto.toString());
+		int result = donationService.updateApprovalDonation(donationDto);
 		return "redirect:/approvalListDonation";
 	}
-	
-	//공무원 : 기부 반려
-	
+
 	//기부 완료 리스트( 모든 회원이 볼 수 있음)
 	
 	

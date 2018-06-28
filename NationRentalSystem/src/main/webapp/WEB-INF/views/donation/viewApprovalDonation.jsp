@@ -23,11 +23,17 @@
 						<div class="panel-body">
 							<h3 class="text-center">기부 신청서</h3>
 							<hr/>
-							<form class="form-horizontal" enctype="multipart/form-data">
+							<form id="approvalDonation" class="form-horizontal" action="${pageContext.request.contextPath}/updateApprovalDonation" method="post">
+								<div class="form-group">
+									<label for="donationRequestCode" class="col-sm-3 control-label">신청코드</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="donationRequestCode" id="donationRequestCode" value="${viewDonation.donationRequestCode}" readonly>
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="memberId" class="col-sm-3 control-label">작성자 ID</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="memberId" id="memberId" value="${member.memberId}" readonly>
+										<input type="text" class="form-control" name="memberId" id="memberId" value="${viewDonation.memberId}" readonly>
 									</div>
 								</div>
 								<div class="form-group">
@@ -42,6 +48,17 @@
 										<textarea id="donationContent" name="donationContent" class="form-control" rows="3" readonly>${viewDonation.donationContent}</textarea>
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="donationApproval" class="col-sm-3 control-label">승인여부</label>
+							    	<div class="col-sm-5">						    	
+								   	 	<select id="donationApproval" name="donationApproval" class="form-control">
+							   	 			 <option>-</option>
+							   	 			 <option>승인</option>
+											 <option>반려</option>																		
+										</select>		    		    	
+					   		 		</div>
+								</div>		
+							
 								
 								<!-- 첨부파일보기 시작 -->
 								<%-- <div>
@@ -61,11 +78,13 @@
 									</c:forEach>
 								</div> --%>
 								<!-- 첨부파일보기 종료 -->
-								<div style="text-align: center;">	
-									<a href="${pageContext.request.contextPath}/approvalListDonation">
-										[목록]
-									</a>
+								<div class="form-group" style="text-align: center;">
+									<div class="col-sm-12">
+										<button type="submit" id="updateButton" class="btn btn-default">수정하기</button>
+										<button type="submit" id="deleteButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/approvalListDonation">목록</a></button>
+									</div>
 								</div>
+				
 							</form>
 						</div>
 					</div>

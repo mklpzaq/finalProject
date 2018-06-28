@@ -62,12 +62,12 @@
 	<select id="viewDonation" 
 			resultType="kr.or.nationRental.donation.service.DonationDto">
 		SELECT
-			donation_request_code AS donationRequestCode
-			, member_id AS memberId
-			, donation_title AS donationTitle
-			, donation_content AS donationContent
-			, donation_request_date AS donationRequestDate
-			, donation_approval AS donationApproval
+			donation_request_code as donationRequestCode
+			, member_id as memberId
+			, donation_title as donationTitle
+			, donation_content as donationContent
+			, donation_request_date as donationRequestDate
+			, donation_approval as donationApproval
 		FROM
 			donation_request
 		WHERE 
@@ -75,15 +75,11 @@
 	</select>
 	
 	<!-- 공무원 : 기부 승인(업데이트) -->
-	<update id="updateApprovalDonation" parameterType="kr.or.nationRental.donation.service.DonationDto">
+	<update id="updateApprovalDonation" 
+			parameterType="kr.or.nationRental.donation.service.DonationDto">
 		UPDATE donation_request
 		SET
-			donation_request_code = #{donationRequestCode}
-			, member_id = #{memberId}
-			, donation_title = #{donationTitle}
-			, donation_content = #{donationContent}
-			, donation_request_date = #{donationRequestDate}
-			, donation_approval = #{donationApproval}
+			donation_approval = #{donationApproval}
 		WHERE 
 			donation_request_code = #{donationRequestCode}
 	</update>

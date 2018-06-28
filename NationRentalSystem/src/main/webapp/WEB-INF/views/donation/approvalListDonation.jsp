@@ -71,8 +71,7 @@
 									<td width="10%">신청자ID</td>
 									<td width="50%">제목</td>
 									<td width="15%">신청날짜</td>
-									<td width="15%">승인</td>	
-									<td width="15%">반려</td>								
+									<td width="15%">승인</td>								
 								</tr>
 							</thead>
 							<tbody>									

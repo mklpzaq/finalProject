@@ -59,6 +59,9 @@ public class DonationDto {
 	public String toString() {
 		return "DonationDto [donationRequestCode=" + donationRequestCode + ", memberId=" + memberId + ", donationTitle="
 				+ donationTitle + ", donationPw=" + donationPw + ", donationContent=" + donationContent
-				+ ", donationRequestDate=" + donationRequestDate + ", donationApproval=" + donationApproval + "]";
-	}	
+				+ ", donationRequestDate=" + donationRequestDate + ", donationApproval=" + donationApproval
+				+ ", citizenId=" + "]";
+	}
+	
+	
 }
