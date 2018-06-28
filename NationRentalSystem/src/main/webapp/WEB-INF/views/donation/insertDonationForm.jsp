@@ -3,7 +3,15 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>기부 신청하기</title>
+		<script>
+			$(document).ready(function(){
+				$('#addFileButton').click(function(){
+					$('#addDiv').append('<div class="form-group"><label for="multipartFile" class="col-sm-3 control-label">파일 업로드</label><div class="col-sm-9"><input type="file" name="multipartFile"><p class="help-block">업로드할 파일을 선택하세요</p></div></div>');
+				});
+			});
+		</script>
 	</head>
 	<body>
 		
