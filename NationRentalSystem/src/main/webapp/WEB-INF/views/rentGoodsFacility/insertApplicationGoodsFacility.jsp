@@ -36,7 +36,7 @@
 			}
 			
 			$('#insertDelivery').click(function(){
-				$('#insertForm').attr('action','${pageContext.request.contextPath}/applicationRentFrom');
+				$('#insertForm').attr('action','${pageContext.request.contextPath}/insertApplication');				
 				$('#insertForm').submit();
 			})
 			
@@ -61,7 +61,7 @@
 						<hr/>
 						<div class="panel panel-default">
 						<div class="panel-body text-center">
-							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/selectRentalTotalPaymentForm" method="post">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/applicationRentFrom" method="post">
 								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">시설 & 물품 관리코드</label>
 								    <div class="col-sm-10">
