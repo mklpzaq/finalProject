@@ -16,7 +16,6 @@
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<div class="row" >
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="/WEB-INF/views/module/leftDonation/leftDonation.jsp"/>
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
@@ -34,15 +33,16 @@
 								<div class="form-group">
 									<label for="donationTitle" class="col-sm-3 control-label">제목</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="donationTitle" id="donationTitle" value="${viewDonation.donationTitle}">
+										<input type="text" class="form-control" name="donationTitle" id="donationTitle" value="${viewDonation.donationTitle}" readonly>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="donationContent" class="col-sm-3 control-label">내용</label>
 									<div class="col-sm-9">
-										<textarea id="donationContent" name="donationContent" class="form-control" rows="3" >${viewDonation.donationContent}</textarea>
+										<textarea id="donationContent" name="donationContent" class="form-control" rows="3" readonly>${viewDonation.donationContent}</textarea>
 									</div>
 								</div>
+								
 								<!-- 첨부파일보기 시작 -->
 								<%-- <div>
 									첨부파일 : <br/>
@@ -61,14 +61,8 @@
 									</c:forEach>
 								</div> --%>
 								<!-- 첨부파일보기 종료 -->
-								<div style="text-align: center;">
-									<a href="${pageContext.request.contextPath}/updateDonation?donationRequestCode=${donationDto.donationRequestCode}">
-										[수정]
-									</a>&nbsp;&nbsp;
-									<a href="${pageContext.request.contextPath}/deleteDonation?donationRequestCode=${donationDto.donationRequestCode}">
-										[삭제]
-									</a>&nbsp;&nbsp;
-									<a href="${pageContext.request.contextPath}/selectListDonation">
+								<div style="text-align: center;">	
+									<a href="${pageContext.request.contextPath}/approvalListDonation">
 										[목록]
 									</a>
 								</div>

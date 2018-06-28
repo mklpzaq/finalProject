@@ -10,6 +10,7 @@ public class DonationDto {
 	private String donationPw; //작성PS
 	private String donationContent; //내용
 	private Date donationRequestDate; //작성날짜
+	private String donationApproval; //승인여부
 	
 	public int getDonationRequestCode() {
 		return donationRequestCode;
@@ -47,13 +48,17 @@ public class DonationDto {
 	public void setDonationRequestDate(Date donationRequestDate) {
 		this.donationRequestDate = donationRequestDate;
 	}
+	public String getDonationApproval() {
+		return donationApproval;
+	}
+	public void setDonationApproval(String donationApproval) {
+		this.donationApproval = donationApproval;
+	}
 	
 	@Override
 	public String toString() {
 		return "DonationDto [donationRequestCode=" + donationRequestCode + ", memberId=" + memberId + ", donationTitle="
 				+ donationTitle + ", donationPw=" + donationPw + ", donationContent=" + donationContent
-				+ ", donationRequestDate=" + donationRequestDate + "]";
-	}
-
-	
+				+ ", donationRequestDate=" + donationRequestDate + ", donationApproval=" + donationApproval + "]";
+	}	
 }

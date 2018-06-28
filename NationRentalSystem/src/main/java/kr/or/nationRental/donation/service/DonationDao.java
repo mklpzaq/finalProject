@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository
 public class DonationDao {
 	@Autowired private SqlSessionTemplate sqlSession;
@@ -33,4 +34,20 @@ public class DonationDao {
 		return sqlSession.selectOne(NS + "viewDonation", donationDto);	
 	}
 	
+	//공무원 : 기부 승인대기 리스트
+	public List<DonationDto> approvalListDonation(){
+		logger.debug("approvalListDonation");
+		return sqlSession.selectList(NS+"approvalListDonation");
+	}
+	
+	//공무원 : 기부 승인대기 1개 게시물 보기
+	public DonationDto viewApprovalDonation(DonationDto donationDto) {
+		return sqlSession.selectOne(NS + "viewDonation", donationDto);	
+	}
+	
+	//공무원 : 기부 승인(업데이트)
+	public int updateApprovalDonation(DonationDto donationDto) { 
+		logger.info("---updateAdmupdateApprovalDonationinistrator");
+		return sqlSession.update(NS+"updateApprovalDonation", donationDto);
+	}
 }

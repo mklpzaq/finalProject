@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>나의 기부 신청</title>
+		<title>기부신청목록</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
@@ -54,14 +54,13 @@
 			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="/WEB-INF/views/module/leftDonation/leftDonation.jsp"/>
 				</div>
 				<div class="col-sm-8"><br>
 					<!-- Begin Content -->
 					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
-									<h2>나의 기부 신청</h2>
+									<h2>기부신청목록</h2>
 								</div>
 							<hr/>
 							
@@ -72,18 +71,19 @@
 									<td width="10%">신청자ID</td>
 									<td width="50%">제목</td>
 									<td width="15%">신청날짜</td>
-									<td width="15%">승인여부</td>								
+									<td width="15%">승인</td>	
+									<td width="15%">반려</td>								
 								</tr>
 							</thead>
 							<tbody>									
-								<c:forEach var="donationDtoList" items="${donationDtoList}">
+								<c:forEach var="approvalList" items="${approvalList}">
 									<tbody>
 										<tr>
-											<td>${donationDtoList.donationRequestCode}</td>
-											<td>${donationDtoList.memberId}</td>
-											<td><a href="${pageContext.request.contextPath}/viewDonation?donationRequestCode=${donationDtoList.donationRequestCode}">${donationDtoList.donationTitle}</a></td>
-											<td>${donationDtoList.donationRequestDate}</td>
-											<td>${donationDtoList.donationApproval}</td>																	
+											<td>${approvalList.donationRequestCode}</td>
+											<td>${approvalList.memberId}</td>
+											<td><a href="${pageContext.request.contextPath}/viewApprovalDonation?donationRequestCode=${approvalList.donationRequestCode}">${approvalList.donationTitle}</a></td>
+											<td>${approvalList.donationRequestDate}</td>
+											<td>${approvalList.donationApproval}</td>																	
 										</tr>
 									</tbody>
 								</c:forEach>	

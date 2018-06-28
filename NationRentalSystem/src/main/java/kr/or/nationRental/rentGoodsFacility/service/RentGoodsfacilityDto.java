@@ -27,6 +27,8 @@ public class RentGoodsfacilityDto {
 	private String sigunguName;
 	private String eupmyeonName; 
 	private String adminagencyAddressSangse;
+	private int deliveryPrice;
+	
 	public int getGoodsfacilityRentalCode() {
 		return goodsfacilityRentalCode;
 	}
@@ -159,6 +161,12 @@ public class RentGoodsfacilityDto {
 	public void setAdminagencyAddressSangse(String adminagencyAddressSangse) {
 		this.adminagencyAddressSangse = adminagencyAddressSangse;
 	}
+	public int getDeliveryPrice() {
+		return deliveryPrice;
+	}
+	public void setDeliveryPrice(int deliveryPrice) {
+		this.deliveryPrice = deliveryPrice;
+	}
 	@Override
 	public String toString() {
 		return "RentGoodsfacilityDto [goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", adminagencyCode="
@@ -173,9 +181,8 @@ public class RentGoodsfacilityDto {
 				+ goodsfacilityAddressSangse + ", adminagencyName=" + adminagencyName + ", isCanceledDelivery="
 				+ isCanceledDelivery + ", citizenAddressSangse=" + citizenAddressSangse + ", sidoName=" + sidoName
 				+ ", sigunguName=" + sigunguName + ", eupmyeonName=" + eupmyeonName + ", adminagencyAddressSangse="
-				+ adminagencyAddressSangse + "]";
-	} 
-	
+				+ adminagencyAddressSangse + ", deliveryPrice=" + deliveryPrice + "]";
+	}
 		
 		
 }

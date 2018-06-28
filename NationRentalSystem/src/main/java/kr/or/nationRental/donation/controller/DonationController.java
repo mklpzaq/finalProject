@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.donation.service.DonationDto;
 import kr.or.nationRental.donation.service.DonationRequest;
 import kr.or.nationRental.donation.service.DonationService;
@@ -64,6 +65,7 @@ public class DonationController {
 		
 		return "donation/selectListDonation";
 	}	
+	
 	//회원 : 기부신청 1개 게시글 보기
 	@RequestMapping(value="/viewDonation", method=RequestMethod.GET)
 	public String viewDonation(DonationDto donationDto, Model model) {
@@ -73,12 +75,35 @@ public class DonationController {
 		return "donation/viewDonation";	
 	}
 	
-	//회원 : 기부 취소
+	//회원 : 기부 내용 수정
+	
+	//회원 : 기부 취소(삭제)
 	
 	//공무원 : 기부 승인대기 리스트
-
-
-	//공무원 : 기부 승인
+	@RequestMapping(value="/approvalListDonation", method=RequestMethod.GET)
+	public String approvalListDonation(Model model) {
+		logger.debug("---approvalListDonation");
+		List<DonationDto> approvalList = donationService.approvalListDonation();
+		model.addAttribute("approvalList", approvalList);
+		return "donation/approvalListDonation";
+	}	
+	
+	//공무원 : 기부 승인대기 1개 게시물 보기
+	@RequestMapping(value="/viewApprovalDonation", method=RequestMethod.GET)
+	public String viewApprovalDonation(DonationDto donationDto, Model model) {
+		logger.debug("viewDonation");
+		DonationDto viewDonation = donationService.viewDonation(donationDto);
+		model.addAttribute("viewDonation", viewDonation);
+		return "donation/viewApprovalDonation";	
+	}
+	
+	//공무원 : 기부 승인(업데이트)
+	@RequestMapping(value = "/updateApprovalDonation", method = RequestMethod.GET)
+	public String updateApprovalDonation(DonationDto donationDto) {
+		logger.info("---updateApprovalDonation POST" + donationDto);
+		int row = donationService.updateApprovalDonation(donationDto);
+		return "redirect:/approvalListDonation";
+	}
 	
 	//공무원 : 기부 반려
 	

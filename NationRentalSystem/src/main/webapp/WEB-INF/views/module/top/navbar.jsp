@@ -119,7 +119,7 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewFunctionaryInfo?functionaryId=${member.memberId}">공무원 회원관리</a></li>		
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAgencyForm">대행업체 등록</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListContractAgency">대행업체 관리</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">기부관리</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/approvalListDonation">기부관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertGoodsFacility?functionaryId=${member.memberId}">물품/시설 관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectGoodsFacilityList?functionaryId=${member.memberId}">물품/시설 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>

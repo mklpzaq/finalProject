@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class DonationService {
 	@Autowired DonationDao donationDao;
@@ -31,4 +30,25 @@ public class DonationService {
 	public DonationDto viewDonation(DonationDto donationDto) {
 		return donationDao.viewDonation(donationDto);
 	}
+	
+	//공무원 : 기부 승인대기 리스트
+	public List<DonationDto> approvalListDonation() {
+		logger.info("---approvalListDonation");
+		return donationDao.approvalListDonation();
+	}
+	
+	//공무원 : 기부 승인대기 1개 게시물 보기
+	public DonationDto viewApprovalDonation(DonationDto donationDto) {
+		return donationDao.viewApprovalDonation(donationDto);
+	}
+	
+	//공무원 : 기부 승인(업데이트)
+	public int updateApprovalDonation(DonationDto donationDto)  {	
+		logger.info("updateAdministrator");
+		return donationDao.updateApprovalDonation(donationDto);
+	}
 }
+
+
+
+
