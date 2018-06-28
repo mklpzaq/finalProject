@@ -208,7 +208,7 @@
   			JOIN
   				adminagency
   			ON
-  				goodsfacility_rental.adminagency_code = adminagency.adminagency_code
+  				goodsfacility_rental.adminagency_code = adminagency.adminagency_code  				
   			WHERE
   				goodsfacility_rental_code = #{goodsfacilityRentalCode}
   	

@@ -45,10 +45,12 @@ public class RentGoodsfacilityController {
 	}
 	
 	@RequestMapping(value="/applicationRentFrom", method=RequestMethod.POST)
-	public String insertApplicationRentForm(RentGoodsfacilityDto rentGoodsfacilityDto) {
+	public String insertApplicationRentForm(RentGoodsfacilityDto rentGoodsfacilityDto
+											,RedirectAttributes redirectAttributes) {
 		logger.debug("RentGoodsfacilityController applicationRentFrom POST: " + rentGoodsfacilityDto.toString());
 		rentGoodsfacilityService.insertApplicationRent(rentGoodsfacilityDto);
-		return "redirect:/applicationRentFrom";
+		redirectAttributes.addAttribute("goodsfacilityRentalCode", rentGoodsfacilityDto.getGoodsfacilityRentalCode());
+		return "redirect:/insertDeliverGoods";
 	}
 	
 	@RequestMapping(value="/viewApplicationRentForCitizen", method=RequestMethod.GET)

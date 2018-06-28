@@ -137,7 +137,7 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->						
 						<div class="text-center">
-							<h1>배달주소지 변경</h1>
+							<h1>배달주소지 등록</h1>
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">

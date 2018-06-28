@@ -24,7 +24,7 @@
 						
 			$('#goodsfacilityRentalIsOrderedDelivery').change(function() {
 				
-				if($('#goodsfacilityRentalIsOrderedDelivery').val() === '신청'){
+				if($('#goodsfacilityRentalIsOrderedDelivery').val() === '2500'){
 					$('#insertDelivery').show();
 				}else{
 					$('#insertDelivery').hide();
@@ -34,6 +34,11 @@
 			if($('#goodsfacilityClassifyGoodsfacility').val() != '물품'){
 				$('#takeDlivery').hide();
 			}
+			
+			$('#insertDelivery').click(function(){
+				$('#insertForm').attr('action','${pageContext.request.contextPath}/applicationRentFrom');
+				$('#insertForm').submit();
+			})
 			
 		});
 	
@@ -56,7 +61,7 @@
 						<hr/>
 						<div class="panel panel-default">
 						<div class="panel-body text-center">
-							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/selectListRentalTotalPayment" method="post">
+							<form id="insertForm" class="form-horizontal" action="${pageContext.request.contextPath}/selectRentalTotalPaymentForm" method="post">
 								<div class="form-group">
 									<label for="application" class="col-sm-2 control-label">시설 & 물품 관리코드</label>
 								    <div class="col-sm-10">
@@ -127,15 +132,15 @@
 								<label for="goodsfacility" class="col-sm-2 control-label">배달신청</label>
 							    	<div class="col-sm-10">						    	
 								   	 	<select id="goodsfacilityRentalIsOrderedDelivery" name="goodsfacilityRentalIsOrderedDelivery" class="form-control">
-								   	 			 <option>안함</option>
-												 <option>신청</option>																		
+								   	 			 <option value="0">안함</option>
+												 <option value="2500">신청</option>																		
 										</select>		    		    	
 						   		 	</div>
 								</div>								
 								<div class="form-group">
 									 <div class="col-sm-10">
 									 	<button type="button" id="insertDelivery">주소지 설정</button>	
-										<button type="button" id="insertApplication">대여 & 예약 신청</button>	
+										<button type="submit" id="insertApplication">대여 & 예약 신청</button>	
 									</div>
 								</div>						
 							
