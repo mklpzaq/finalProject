@@ -43,7 +43,7 @@ public class RentalTotalPaymentController {
 	}
 	
 	//결제완료리스트
-	@RequestMapping(value="/selectListRentalTotalPayment", method=RequestMethod.POST)
+	@RequestMapping(value="/selectListRentalTotalPayment", method=RequestMethod.GET)
 	public String selectListRentalTotalPayment(Model model, RentalTotalPaymentDto rentalTotalPaymentDto) {
 		logger.debug(rentalTotalPaymentDto.toString());
 		List <RentalTotalPaymentDto> rentalTotalPaymentDtoList = rentalTotalPaymentService.selectListRentalTotalPayment();
