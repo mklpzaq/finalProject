@@ -43,6 +43,11 @@ public class AgencyEmployeeController {
 												,BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
 		logger.debug("POST insertBusinesstypeForAgencyEmployee AgencyEmployeeController");
 		logger.debug(businessTypeForAgencyEmployeeDto.toString());
+		logger.debug("★★★★★★★★★★★★POSTTTT★★★★★★★★★");
+		for(String addAgencyBusinesstype : businessTypeForAgencyEmployeeDto.getAddAgencyBusinesstypeList()) {
+			logger.debug("addAgencyBusinesstype : " + addAgencyBusinesstype);
+		}
+		/* 체크박스 값 들어오는 것까지 확인 */
 		
 		//model.addAttribute("agencyEmployeeId", agencyEmployeeDto.getAgencyEmployeeId());
 		return null;

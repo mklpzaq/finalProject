@@ -143,7 +143,7 @@
 										<div id="addAgencyBusinesstypeListDiv" class="col-sm-9">
 											<div class="checkbox">
 												<label>
-													<input class="addAgencyBusinesstypeListCheckBox" name="addAgencyBusinesstypeList" type="checkbox">${addAgencyBusinesstype}
+													<input class="addAgencyBusinesstypeListCheckBox" name="addAgencyBusinesstypeList" value="${addAgencyBusinesstype}" type="checkbox">${addAgencyBusinesstype}
 												</label>
 											</div>
 										</div>
