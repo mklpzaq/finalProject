@@ -1,5 +1,6 @@
 package kr.or.nationRental.agencyEmployee.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,15 +23,63 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
-	/*public BusinessTypeForAgencyEmployeeDto selectOneBusinesstypeForAgencyEmployee(String agencyEmployeeId) {
+	public BusinessTypeForAgencyEmployeeDto selectOneBusinesstypeForAgencyEmployee(String agencyEmployeeId) {
 		logger.debug("selectOneBusinesstypeForAgencyEmployee AgencyEmployeeService");
 		AgencyEmployeeDto agencyEmployeeDto = new AgencyEmployeeDto();
 		agencyEmployeeDto.setAgencyEmployeeId(agencyEmployeeId);
-		String agencyName = agencyEmployeeDao.getAgencyName(agencyEmployeeDto);
-		List<String> listNowAgencyBusinesstype = agencyEmployeeDao.selectListNowAgencyBusinesstype(agencyEmployeeId);
-		List<String> listAddAgencyBusinesstype = agencyEmployeeDao.selectListAddAgencyBusinesstypeList(agencyEmployeeId);
 		
-	}*/
+		BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto = new BusinessTypeForAgencyEmployeeDto();
+		businessTypeForAgencyEmployeeDto.setAgencyEmployeeId(agencyEmployeeId);
+		String agencyName = agencyEmployeeDao.getAgencyName(agencyEmployeeDto);
+		businessTypeForAgencyEmployeeDto.setAgencyName(agencyName);
+		
+		List<String> listNowAgencyBusinesstype = agencyEmployeeDao.selectListNowAgencyBusinesstypeForAgencyEmployee(agencyEmployeeId);
+		if(listNowAgencyBusinesstype != null) {
+			logger.debug(listNowAgencyBusinesstype.toString());
+		}else {
+			logger.debug("listNowAgencyBusinesstype : null");
+		}
+		businessTypeForAgencyEmployeeDto.setNowAgencyBusinesstypeListForAgencyEmployee(listNowAgencyBusinesstype);
+		
+		List<String> listAllAgencyBusinesstype = agencyEmployeeDao.selectListAllAgencyBusinesstype(agencyName);
+		if(listAllAgencyBusinesstype != null) {
+			logger.debug(listAllAgencyBusinesstype.toString());
+		}else {
+			logger.debug("listAllAgencyBusinesstype : null");
+		}
+		businessTypeForAgencyEmployeeDto.setAllAgencyBusinesstypeList(listAllAgencyBusinesstype);
+		
+		/* 대행업체(agency)의 낙찰된 업종명들과
+		 * 대행업체 직원(agencyEmployee)에 등록된 업종명들을 서로 같은지 비교하여
+		 * 대행업체 직원(agencyEmployee)이 가지고 있지 않은 업종명을  addAgencyBusinesstypeList에 담는다.
+		 * */
+		boolean flag = false;
+		List<String> addAgencyBusinesstypeList = new ArrayList<String>();
+		for(String allAgencyBusinesstype : listAllAgencyBusinesstype) {
+			flag = false;
+			for(String nowAgencyBusinesstype: listNowAgencyBusinesstype) {
+				if(nowAgencyBusinesstype.equals(allAgencyBusinesstype)) {
+					flag = true;
+					break;
+				}
+			}
+			if(flag == false) {
+				addAgencyBusinesstypeList.add(allAgencyBusinesstype);
+				businessTypeForAgencyEmployeeDto.setAddAgencyBusinesstypeList(addAgencyBusinesstypeList);
+			}
+		}
+		
+		if(addAgencyBusinesstypeList != null) {
+			logger.debug(addAgencyBusinesstypeList.toString());
+		}else {
+			logger.debug("addAgencyBusinesstypeList : null");
+		}
+		
+		businessTypeForAgencyEmployeeDto.setAddAgencyBusinesstypeList(addAgencyBusinesstypeList);
+		logger.debug(businessTypeForAgencyEmployeeDto.toString());
+	
+		return businessTypeForAgencyEmployeeDto;
+	}
 	
 	
 	public Map<String, Object> selectListFunctionaryForAgencyEmployee(int currentPage, int pagePerRow, String searchSelect, String searchWord, FunctionaryDto functionaryDto) {

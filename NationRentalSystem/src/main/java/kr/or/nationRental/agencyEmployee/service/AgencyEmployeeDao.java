@@ -18,7 +18,15 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	public List<String> selectListAllAgencyBusinesstype(String agencyName) {
+		logger.debug("selectListAllAgencyBusinesstype AgencyEmployeeDao");
+		return sqlSession.selectList(NS+"selectListAllAgencyBusinesstype", agencyName);
+	}
 	
+	public List<String> selectListNowAgencyBusinesstypeForAgencyEmployee(String agencyEmployeeId) {
+		logger.debug("selectListNowAgencyBusinesstypeForAgencyEmployee AgencyEmployeeDao");
+		return sqlSession.selectList(NS+"selectListNowAgencyBusinesstypeForAgencyEmployee", agencyEmployeeId);
+	}
 	 
 	
 	/* 이전까지 된것 */

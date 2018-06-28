@@ -32,10 +32,9 @@ public class AgencyEmployeeController {
 		logger.debug("GET insertBusinesstypeForAgencyEmployee AgencyEmployeeController");
 		logger.debug("agencyEmployeeId : " + agencyEmployeeId);
 		
-		//BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto = agencyEmployeeService.selectOneBusinesstypeForAgencyEmployee(agencyEmployeeId);
+		BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto = agencyEmployeeService.selectOneBusinesstypeForAgencyEmployee(agencyEmployeeId);
 		
-		
-		model.addAttribute("agencyEmployeeId", agencyEmployeeId);
+		model.addAttribute("businessTypeForAgencyEmployeeDto", businessTypeForAgencyEmployeeDto);
 		return "agencyEmployee/insertBusinesstypeForAgencyEmployeeForm";
 	}
 	

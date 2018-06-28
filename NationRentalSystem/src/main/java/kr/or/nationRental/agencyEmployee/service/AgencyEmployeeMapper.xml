@@ -5,6 +5,51 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 	
+	<select id="selectListAllAgencyBusinesstype"
+			parameterType="String"
+			resultType="String">
+		SELECT DISTINCT
+			agenbusintype.agency_businesstype_name
+		FROM
+			agency AS agen
+			INNER JOIN
+			agency_businesstype AS agenbusintype
+			ON
+			agen.agency_businesstype_code = agenbusintype.agency_businesstype_code
+		WHERE
+			agen.agency_name = #{agencyName}
+
+		
+	</select>
+	
+	<select id="selectListNowAgencyBusinesstypeForAgencyEmployee"
+			parameterType="String"
+			resultType="String">
+		SELECT DISTINCT
+			agenbusintype.agency_businesstype_name
+		FROM
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
+			
+			INNER JOIN
+			agency_businesstype AS agenbusintype
+			ON
+			agen.agency_businesstype_code = agenbusintype.agency_businesstype_code
+			
+		WHERE
+			agenemp.agency_employee_id = #{agencyEmployeeId}
+	
+	</select>
+	
+	
 	<select id="totalCountFunctionaryForAgencyEmployee"
 			parameterType="java.util.Map"
 			resultType="Integer">
