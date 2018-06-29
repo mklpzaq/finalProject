@@ -23,6 +23,7 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	@Transactional
 	public void insertBusinesstypeForAgencyEmployee(BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
 		logger.debug("insertBusinesstypeForAgencyEmployee AgencyEmployeeService");
 		logger.debug("★★★★★★★★★★111★★★★★★★★★★★★★★");

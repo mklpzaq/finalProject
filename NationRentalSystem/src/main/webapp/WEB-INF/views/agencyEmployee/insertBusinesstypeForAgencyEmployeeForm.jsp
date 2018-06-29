@@ -150,7 +150,7 @@
 									</c:forEach>
 								</div>
 								<div class="text-center">
-									<button id="insertBtn" type="button" class="btn btn-default">입력 완료</button>
+									<button id="insertBtn" type="button" class="btn btn-primary">추가 업종 선택 완료</button>
 								</div>
 							</form>
 						</div>

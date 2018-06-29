@@ -160,7 +160,7 @@
 	<select id="selectListFunctionaryForAgencyEmployee"
 			parameterType="kr.or.nationRental.functionary.service.FunctionaryDto"
 			resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
-		SELECT
+		SELECT DISTINCT
 			func.functionary_id AS functionaryId
 			,func.functionary_pw AS functionaryPw
 			,func.functionary_num AS functionaryNum
