@@ -255,5 +255,26 @@
 				,"N")
   	
   	</insert>
+  	
+  	<select id="getPrice"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT
+  				goodsfacility_rental.goodsfacility_code as goodsfacilityCode
+				,goodsfacility_rental.goodsfacility_name as goodsfacilityName
+				,goodsfacility_rental.citizen_id as citizenId
+				,goodsfacility_rental.citizen_name as citizenName
+  				,goodsfacility_rental.goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery  				
+  				,goodsfacility.goodsfacility_price_rental as goodsfacilityPriceRental
+  			FROM
+  				goodsfacility_rental
+  			JOIN
+  				goodsfacility
+  			ON
+  				goodsfacility_rental.goodsfacility_code = goodsfacility.goodsfacility_code
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}
+  			
+  	</select>
   
   </mapper>

@@ -72,7 +72,14 @@ public class RentGoodsfacilityDao {
 	}
 
 	public void insertDeliveryGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("RentGoodsfacilityDao insertDeliveryGoods : ");
 		sqlSession.insert(NS+"insertDeliveryGoods", deliveryOrderCitizenDto);		
 	}
 
+	public RentGoodsfacilityDto getPrice(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityDao getPrice : ");
+		return sqlSession.selectOne(NS+"getPrice", rentGoodsfacilityDto);
+	}
+
+	
 }

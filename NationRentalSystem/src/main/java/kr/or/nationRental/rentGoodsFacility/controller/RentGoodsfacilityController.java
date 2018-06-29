@@ -136,14 +136,24 @@ public class RentGoodsfacilityController {
 	}
 	
 	@RequestMapping(value="/insertDeliverGoods", method=RequestMethod.POST)
-	public String insertDeliverGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto
+	public String insertDeliverGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto									
 									,RedirectAttributes redirectAttributes) {
 		logger.debug("RentGoodsfacilityController insertDeliverGoods POST: " + deliveryOrderCitizenDto.toString());
 		rentGoodsfacilityService.insertDeliverGoods(deliveryOrderCitizenDto);
 		redirectAttributes.addAttribute("goodsfacilityRentalCode", deliveryOrderCitizenDto.getGoodsfacilityRentalCode());
-		return "/rentalTotalPayment/selectRentalAddDliverPayForm";
+		redirectAttributes.addAttribute("goodsfacilityCode", deliveryOrderCitizenDto.getGoodsfacilityCode());
+		return "redirect:/getDeliveryPrice";
 	}
 	
+	
+	@RequestMapping(value="/getDeliveryPrice", method=RequestMethod.GET)
+	public String getDeliveryPrice(RentGoodsfacilityDto rentGoodsfacilityDto
+									,Model model) {
+		logger.debug("RentGoodsfacilityController getDeliveryPrice GET: " + rentGoodsfacilityDto.toString());
+		RentGoodsfacilityDto result = rentGoodsfacilityService.getPrice(rentGoodsfacilityDto);
+		model.addAttribute("result", result);
+		return "/rentalTotalPayment/selectRentalAddDliverPayForm";
+	}
 	
 	
 }

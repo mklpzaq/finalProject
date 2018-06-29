@@ -109,9 +109,14 @@ public class RentGoodsfacilityService {
 
 	public void insertDeliverGoods(DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
 		logger.debug("RentGoodsfacilityService insertDeliverGoods  :" + deliveryOrderCitizenDto.toString());
-		rentGoodsfacilityDao.insertDeliveryGoods(deliveryOrderCitizenDto);
-		
+		rentGoodsfacilityDao.insertDeliveryGoods(deliveryOrderCitizenDto);			
 	}
+
+	public RentGoodsfacilityDto getPrice(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService getPrice  :" + rentGoodsfacilityDto.toString());
+		return rentGoodsfacilityDao.getPrice(rentGoodsfacilityDto);
+	}
+
 
 	
 }

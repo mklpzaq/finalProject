@@ -121,38 +121,30 @@
 									<tbody>	
 										<tr>
 											<td>
-												<input type="hidden" name="goodsfacilityRentalCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
-												<input type="hidden" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyCode}">
-												<input type="hidden" name="adminagencyCode" value="${rentGoodsfacilityDto.adminagencyName}">
-												<input type="hidden" name="citizenId" value="${rentGoodsfacilityDto.citizenId}">
-												<input type="hidden" name="citizenName" value="${rentGoodsfacilityDto.citizenName}">
-												<input type="hidden" name="goodsfacilityRentalDateStart" value="${rentGoodsfacilityDto.goodsfacilityRentalDateStart}">
-												<input type="hidden" name="goodsfacilityRentalDayEnd" value="${rentGoodsfacilityDto.goodsfacilityRentalDayEnd}">
-												<input type="hidden" value="${rentGoodsfacilityDto.goodsfacilityRentalDateRegistration}">
-												<input type="hidden" value="${rentGoodsfacilityDto.goodsfacilityRentalIsCanceled}">
-												<input type="hidden" name="goodsfacilityRentalDeposit" value="${rentGoodsfacilityDto.goodsfacilityRentalDeposit}">
-												<input type="hidden" name="goodsfacilityCode" value="${rentGoodsfacilityDto.goodsfacilityCode}">
-												<input type="hidden" name="goodsfacilityName" value="${rentGoodsfacilityDto.goodsfacilityName}">
-												<input type="hidden" name="goodsfacilityPriceRental" value="${rentGoodsfacilityDto.goodsfacilityPriceRental}">
-												<input type="hidden" name="goodsfacilityRentalIsOrderedDelivery" value="${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
+												<input type="hidden" name="goodsfacilityRentalCode" value="${result.goodsfacilityCode}">
+												<input type="hidden" name="goodsfacilityName" value="${result.goodsfacilityName}">
+												<input type="hidden" name="citizenId" value="${result.citizenId}">
+												<input type="hidden" name="citizenName" value="${result.citizenName}">
+												<input type="hidden" name="goodsfacilityRentalIsOrderedDelivery" value="${result.goodsfacilityRentalIsOrderedDelivery}">
+												<input type="hidden" name="goodsfacilityPriceRental" value="${result.goodsfacilityPriceRental}">												
 											</td>
-											<td>${rentGoodsfacilityDto.goodsfacilityCode}</td>
-											<td>${rentGoodsfacilityDto.goodsfacilityName}</td>
-											<td>${rentGoodsfacilityDto.goodsfacilityPriceRental}</td>
-											<td>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</td>																					
+											<td>${result.goodsfacilityCode}</td>
+											<td>${result.goodsfacilityName}</td>
+											<td>${result.goodsfacilityPriceRental}</td>
+											<td>${result.goodsfacilityRentalIsOrderedDelivery}</td>																					
 										</tr>
 									</tbody>
 									<tfoot>
 										<tr>
 											<td colspan="5" style="text-align:right">
 												가격
-												<strong>${rentGoodsfacilityDto.goodsfacilityPriceRental}</strong>
+												<strong>${result.goodsfacilityPriceRental}</strong>
 												+ 배송비 
-												<input type="hidden" name="deliveryPrice" value="${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
-												<strong>${rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</strong>
+												<input type="hidden" name="deliveryPrice" value="${result.goodsfacilityRentalIsOrderedDelivery}">
+												<strong>${result.goodsfacilityRentalIsOrderedDelivery}</strong>
 												= 합계 : 
-												<input type="hidden" name="rentalTotalPayment" value="${rentGoodsfacilityDto.goodsfacilityPriceRental+rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}">
-												<strong class="total">${rentGoodsfacilityDto.goodsfacilityPriceRental+rentGoodsfacilityDto.goodsfacilityRentalIsOrderedDelivery}</strong>
+												<input type="hidden" name="rentalTotalPayment" value="${result.goodsfacilityPriceRental+result.goodsfacilityRentalIsOrderedDelivery}">
+												<strong class="total">${result.goodsfacilityPriceRental+result.goodsfacilityRentalIsOrderedDelivery}</strong>
 												원
 											</td>
 										</tr>
