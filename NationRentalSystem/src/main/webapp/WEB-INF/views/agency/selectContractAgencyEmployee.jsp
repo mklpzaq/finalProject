@@ -11,21 +11,23 @@
 	</head>
 	
 	<body>
-	<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		<jsp:include page="../module/top/navbar.jsp"/>
 		<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-2" style="padding:15px;">
-						<jsp:include page="/WEB-INF/views/module/left/leftnavi.jsp"/>
-					</div>
-					<div class="col-sm-8">
+			<div class="row">
+				<div class="col-sm-2" style="padding:15px;">
+					<jsp:include page="../module/lefrAgency/leftAgencyInfo.jsp"/>
+				</div>
+				<div style="padding:15px;" class="col-sm-8">
 					<!-- Begin Content -->
-					
-						<div class="text-center">
-							<h1>계약된 낙찰업체</h1>
-							<h2>Nation Integrated Reserve and Rental System</h2>
-							<P>The time on the server is ${serverTime}.</P>
-						</div>
-																
+							
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="text-center">계약된 대행업체 직원리스트</h3>
+							<hr/>
+						</div>										
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -38,22 +40,25 @@
 								</tr>
 							</thead>
 							<tbody>									
-									<c:forEach var="agencyEmployeeDto" items="${agencyEmployeeDto}">
-										<tbody>
-											<tr>
-												<th>${agencyEmployeeDto.agencyEmployeeId}</th>														
-												<th>${agencyEmployeeDto.agencyName}</th>
-												<td>${agencyEmployeeDto.agencyEmployeeName}</td>
-												<td>${agencyEmployeeDto.agencyEmployeePhone}</td>
-												<td>${agencyEmployeeDto.agencyEmployeeEmail}</td>
-												<td>${agencyEmployeeDto.agencyEmployeeDateJoin}</td>																																	
-											</tr>
-										</tbody>
-									</c:forEach>									
+								<c:forEach var="agencyEmployeeDto" items="${agencyEmployeeDto}">
+									<tbody>
+										<tr>
+											<th>${agencyEmployeeDto.agencyEmployeeId}</th>														
+											<th>${agencyEmployeeDto.agencyName}</th>
+											<td>${agencyEmployeeDto.agencyEmployeeName}</td>
+											<td>${agencyEmployeeDto.agencyEmployeePhone}</td>
+											<td>${agencyEmployeeDto.agencyEmployeeEmail}</td>
+											<td>${agencyEmployeeDto.agencyEmployeeDateJoin}</td>																																	
+										</tr>
+									</tbody>
+								</c:forEach>									
 							</tbody>
 						</table>								
 					</div>
-				</div>					
-		</div>	
+					<div class="col-sm-2"></div>					
+				</div>
+			</div>
+		</div>
+		<jsp:include page="../module/bottom/bottomContent.jsp"/>
 	</body>
 </html>

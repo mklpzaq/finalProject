@@ -8,6 +8,16 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>Insert title here</title>
+		<script>
+			$(document).ready(function(){
+				$('#deleteYesBtn').click(function(){
+					$(location).attr('href', './updateAgencyContractClosed?agencyCode=' + $("#agencyModalBtn").val());
+				});
+				$('#deleteNoBtn').click(function(){
+					$('#agencyModal').hide();
+				});				
+			});
+		</script>
 	</head>
 	
 	<body>
@@ -50,12 +60,32 @@
 											<td>${AgencyDto.agencyBusinesstypeName}</td>
 											<td>${AgencyDto.agencyDateRegistration}</td>
 											<td><a href="${pageContext.request.contextPath}/selectContractAgencyEmployee?agencyCode=${AgencyDto.agencyCode}">직원조회</a></td>
-											<td><a href="${pageContext.request.contextPath}/updateAgencyContractClosed?agencyCode=${AgencyDto.agencyCode}">계약해지</a></td>																						
+											<td><button type="button" id="agencyModalBtn" value="${AgencyDto.agencyCode}" class="btn btn-default" data-toggle="modal" data-target="#agencyModal">계약해지</button></td>																						
 										</tr>
 									</tbody>
 								</c:forEach>									
 							</tbody>
-						</table>								
+						</table>
+						
+						<!--Begin Modal -->
+							<div class="modal fade" id="#agencyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title text-center" id="myModalLabel">정말로 해지하시겠습니까?</h4>
+										</div>
+										<div class="modal-body text-center">
+											<button type="button" class="btn btn-primary" id="deleteYesBtn">해지합니다</button> &emsp; &emsp;
+											<button type="button" class="btn btn-primary" id="deleteNoBtn">아니오</button>
+										</div>
+										<div class="modal-footer">
+									
+										</div>
+									</div>
+								</div>
+							</div>
+						<!--End Modal -->						
 					</div>
 					<div class="col-sm-2"></div>					
 				</div>
