@@ -48,6 +48,9 @@ public class AgencyEmployeeController {
 			logger.debug("addAgencyBusinesstype : " + addAgencyBusinesstype);
 		}
 		/* 체크박스 값 들어오는 것까지 확인 */
+		agencyEmployeeService.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
+		
+		
 		
 		//model.addAttribute("agencyEmployeeId", agencyEmployeeDto.getAgencyEmployeeId());
 		return null;

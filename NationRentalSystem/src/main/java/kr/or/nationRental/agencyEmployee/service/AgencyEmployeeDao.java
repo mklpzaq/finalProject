@@ -18,6 +18,26 @@ public class AgencyEmployeeDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeDao.class);
 	final String NS = "kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper.";
 	
+	public void insertBusinesstypeForAgencyEmployee(BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
+		logger.debug("insertBusinesstypeForAgencyEmployee AgencyEmployeeDao");
+		sqlSession.insert(NS+"insertBusinesstypeForAgencyEmployee", businessTypeForAgencyEmployeeDto);
+	}
+	
+	public int getAgencyCodeForInsertBusinesstype(BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
+		logger.debug("getAgencyCodeForInsertBusinesstype AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"getAgencyCodeForInsertBusinesstype", businessTypeForAgencyEmployeeDto);
+	}
+	
+	public int getAgencyBusinesstypeCode(BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
+		logger.debug("getAgencyBusinesstypeCode AgencyEmployeeDao");
+		return sqlSession.selectOne(NS+"getAgencyBusinesstypeCode", businessTypeForAgencyEmployeeDto);
+	}
+	
+	
+	
+	
+	
+	
 	public List<String> selectListAllAgencyBusinesstype(String agencyName) {
 		logger.debug("selectListAllAgencyBusinesstype AgencyEmployeeDao");
 		return sqlSession.selectList(NS+"selectListAllAgencyBusinesstype", agencyName);
@@ -27,9 +47,7 @@ public class AgencyEmployeeDao {
 		logger.debug("selectListNowAgencyBusinesstypeForAgencyEmployee AgencyEmployeeDao");
 		return sqlSession.selectList(NS+"selectListNowAgencyBusinesstypeForAgencyEmployee", agencyEmployeeId);
 	}
-	 
-	
-	/* 이전까지 된것 */
+
 	public int totalCountFunctionaryForAgencyEmployee(Map<String, Object> map) {
 		logger.debug("totalCountFunctionaryForAgencyEmployee AgencyEmployeeDao");
 		return sqlSession.selectOne(NS+"totalCountFunctionaryForAgencyEmployee", map);

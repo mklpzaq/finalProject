@@ -4,6 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
+
+	<!-- <insert id="insertBusinesstypeForAgencyEmployee"
+			parameterType="kr.or.nationRental.agencyEmployee.service.BusinessTypeForAgencyEmployeeDto">
+		INSERT
+		INTO
+			
+		
+	</insert> -->
+	
+	<select id="getAgencyCodeForInsertBusinesstype"
+			parameterType="kr.or.nationRental.agencyEmployee.service.BusinessTypeForAgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			agency_code
+		FROM
+			agency
+		WHERE
+			agency_name = #{agencyName}
+			AND
+			agency_businesstype_code = #{agencyBusinesstypeCode}
+			
+	</select>
+	
+	
+	<select id="getAgencyBusinesstypeCode"
+			parameterType="kr.or.nationRental.agencyEmployee.service.BusinessTypeForAgencyEmployeeDto"
+			resultType="Integer">
+		SELECT
+			agency_businesstype_code
+		FROM
+			agency_businesstype
+		WHERE	
+			agency_businesstype_name = #{agencyBusinesstypeName}
+	</select>
+	
 	
 	<select id="selectListAllAgencyBusinesstype"
 			parameterType="String"
@@ -18,8 +53,6 @@
 			agen.agency_businesstype_code = agenbusintype.agency_businesstype_code
 		WHERE
 			agen.agency_name = #{agencyName}
-
-		
 	</select>
 	
 	<select id="selectListNowAgencyBusinesstypeForAgencyEmployee"

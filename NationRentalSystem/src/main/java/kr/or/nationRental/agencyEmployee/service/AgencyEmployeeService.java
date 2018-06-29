@@ -23,6 +23,53 @@ public class AgencyEmployeeService {
 	private AgencyEmployeeDao agencyEmployeeDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyEmployeeService.class);
 	
+	public void insertBusinesstypeForAgencyEmployee(BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
+		logger.debug("insertBusinesstypeForAgencyEmployee AgencyEmployeeService");
+		logger.debug("★★★★★★★★★★111★★★★★★★★★★★★★★");
+		logger.debug(businessTypeForAgencyEmployeeDto.toString());
+		/* agencyCode 세팅 */
+		
+		for(String agencyBusinesstypeName  : businessTypeForAgencyEmployeeDto.getAddAgencyBusinesstypeList()) {
+			/* agencyBusinesstypeName 세팅 */
+			businessTypeForAgencyEmployeeDto.setAgencyBusinesstypeName(agencyBusinesstypeName);
+			
+			int agencyBusinesstypeCode = agencyEmployeeDao.getAgencyBusinesstypeCode(businessTypeForAgencyEmployeeDto);
+			/* agencyBusinesstypeCode 세팅 */
+			businessTypeForAgencyEmployeeDto.setAgencyBusinesstypeCode(agencyBusinesstypeCode);
+			
+			int agencyCode = agencyEmployeeDao.getAgencyCodeForInsertBusinesstype(businessTypeForAgencyEmployeeDto);
+			/* agencyCode 세팅 */
+			businessTypeForAgencyEmployeeDto.setAgencyCode(agencyCode);
+			
+			logger.debug("★★★★★★★★★★★★2222★★★★★★★★★★★★★★★");
+			logger.debug(businessTypeForAgencyEmployeeDto.toString());
+			/* insert만 시키면 됨  */
+			
+		}
+		
+		
+		
+		
+		
+		/*for(String agencyBusinesstypeName : businessTypeForAgencyEmployeeDto.getAddAgencyBusinesstypeList()) {
+			String agencyCode = agencyEmployeeDao.getAgencyCode(agencyBusinesstypeName);
+			
+			
+			logger.debug("★★★★★★★★★★2222★★★★★★★★★★★★★★");
+			logger.debug("agencyCode : " + agencyCode);
+			businessTypeForAgencyEmployeeDto.setAgencyCode(agencyCode);
+			logger.debug("★★★★★★★★★★3333★★★★★★★★★★★★★★");
+			logger.debug(businessTypeForAgencyEmployeeDto.toString());
+			//agencyEmployeeDao.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
+		}*/
+		
+		
+		
+		
+		//agencyEmployeeDao.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
+	}
+	
+	
 	public BusinessTypeForAgencyEmployeeDto selectOneBusinesstypeForAgencyEmployee(String agencyEmployeeId) {
 		logger.debug("selectOneBusinesstypeForAgencyEmployee AgencyEmployeeService");
 		AgencyEmployeeDto agencyEmployeeDto = new AgencyEmployeeDto();
