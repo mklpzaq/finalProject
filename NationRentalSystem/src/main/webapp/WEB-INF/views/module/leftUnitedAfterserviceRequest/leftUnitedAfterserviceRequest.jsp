@@ -10,7 +10,7 @@
 		<script>
 			$(document).ready(function(){
 				$('#returnAfterserviceBtn').click(function(){
-					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService');
+					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
 				});
 				$('#regularChecAfterserviceBtn').click(function(){
 					$(location).attr('href', './selectListRegularCheckForAfterService');
@@ -22,6 +22,7 @@
 		</script>
 	</head>
 	<body>
+		<input id="adminagencyCodeForLeft" type="hidden" value="${member.adminagencyCode}">
 		<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
 			<button id="returnAfterserviceBtn" type="button" class="btn btn-default" >반납 AS 신청</button>
 			<button id="regularChecAfterserviceBtn"type="button" class="btn btn-default">점검 AS 신청</button>
