@@ -58,13 +58,18 @@ public class ReturnGoodsfacilityInfoController {
 	@RequestMapping(value="/selectReturnGoodsfacilityInfo", method=RequestMethod.GET)
 	public String selectReturnGoodsfacilityInfo(@RequestParam(value="currentPage", defaultValue="1") int currentPage
 												,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-												,@RequestParam(value="searchOption", defaultValue="all") String searchOption
+												,@RequestParam(value="searchOption", defaultValue="전체 검색") String searchOption
 												,@RequestParam(value="keyword", defaultValue="") String keyword
 												,DateDto dateDto
 												,Model model
 												,HttpSession session) throws ParseException {
+		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - searchOption : " + searchOption);
 		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - keyword : " + keyword);
 		logger.debug("ReturnGoodsfacilityInfoController - selectReturnGoodsfacilityInfo - dateDto : " + dateDto.toString());
+		//검색했을때 검색되는 정보가 하나도 없을때는 currentPage가 0이 되기 때문에 defaultValue가 적용되지도 않고 0이 들어와 계산 되는 경우를 막기 위해서
+		if(currentPage == 0) {
+			currentPage = 1;
+		}		
 		MemberDto member = (MemberDto) session.getAttribute("member");
 		ReturnGoodsfacilityInfoDto returnGoodsfacilityInfoDto = new ReturnGoodsfacilityInfoDto();
 		Map<String, Object> map  = null;
@@ -87,6 +92,8 @@ public class ReturnGoodsfacilityInfoController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", map.get("searchOption"));
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("startDate", dateDto.getStartDate());
+		model.addAttribute("endDate", dateDto.getEndDate());
 		return "/returnGoodsfacilityInfo/selectReturnGoodsfacilityInfo";
 	}
 }

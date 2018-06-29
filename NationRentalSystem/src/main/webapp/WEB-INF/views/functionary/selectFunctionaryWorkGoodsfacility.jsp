@@ -32,17 +32,18 @@
 					$('#selectButton').parent().removeClass('open');
 				});
 				
+				/* 검색시에 검색조건에 select된 공무원의 id 추가 */
 				$('#selectPagePerRow').change(function() {
 					/* searchOption = $('#moniterSearchOption').text();
 					keyword = $('#moniterKeyword').val(); */
-					$(location).attr('href', './selectFunctionaryWorkGoodsfacility?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text());
+					$(location).attr('href', './selectFunctionaryWorkGoodsfacility?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchOption=' + $('#moniterSearchOption').text() + '&keyword=' + $('#moniterKeyword').text() + '&functionaryId=' + $("#functionaryId").val());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
-					$(location).attr('href', './selectFunctionaryWorkGoodsfacility?=y&searchOption=' + searchOption + '&keyword=' + keyword);
+					$(location).attr('href', './selectFunctionaryWorkGoodsfacility?searchOption=' + searchOption + '&keyword=' + keyword + '&functionaryId=' + $("#functionaryId").val());
 				});
 				
 				
@@ -92,6 +93,7 @@
 						<div class="panel-body text-center">	
 								<div class="row">
 									<div class="col-md-4">
+										<input id="functionaryId" hidden="hidden" value="${functionaryId}">
 										<strong>${currentPage} / ${lastPage} Page</strong><br/>
 										<strong>searchOption : </strong><span id="moniterSearchOption">${searchOption}</span><br/>
 										<strong>keyword : </strong><span id="moniterKeyword">${keyword}</span><br/>						
@@ -260,19 +262,19 @@
 								<nav style="text-align:center">
 									<ul class="pagination">
 										<li>
-											<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Previous">
+											<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}" aria-label="Previous">
 												<span aria-hidden="true">&laquo;</span>
 											</a>
 										</li>
 										<li>
 											<c:choose>
 												<c:when test="${currentPage > 1}">
-													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Previous">
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}"aria-label="Previous">
 														<span aria-hidden="true">&lt;</span>
 													</a>
 												</c:otherwise>
@@ -283,10 +285,10 @@
 												<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
-															<li><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}">${pageNum}</a></li>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
@@ -295,7 +297,7 @@
 												<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
 													<c:choose>
 														<c:when test="${pageNum == currentPage}">
-															<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
+															<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}">${pageNum}</a></li>
 														</c:when>
 														<c:otherwise>
 															<li><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}">${pageNum}</a></li>
@@ -311,15 +313,15 @@
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:when>
-												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}"aria-label="Next">
+												<c:otherwise>												
+													<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}"aria-label="Next">
 														<span aria-hidden="true">&gt;</span>
 													</a>
 												</c:otherwise>
 											</c:choose>
 										</li>
 										<li>
-											<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}" aria-label="Next">
+											<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}" aria-label="Next">
 												<span aria-hidden="true">&raquo;</span>
 											</a>
 										</li>

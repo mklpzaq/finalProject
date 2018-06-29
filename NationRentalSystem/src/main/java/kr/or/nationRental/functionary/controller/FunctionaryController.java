@@ -204,6 +204,11 @@ public class FunctionaryController {
 		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - searchSelect  : " + searchOption);
 		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - keyword  : " + keyword);
 		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - functionaryDto : " + functionaryDto.toString());
+		
+		//검색했을때 검색되는 정보가 하나도 없을때는 currentPage가 0이 되기 때문에 defaultValue가 적용되지도 않고 0이 들어와 계산 되는 경우를 막기 위해서
+		if(currentPage == 0) {
+			currentPage = 1;
+		}
 		String functionaryId = functionaryDto.getFunctionaryId();
 		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - functionaryId : " + functionaryId);
 		Map<String, Object> map = functionaryService.selectFunctionaryWorkGoodsfacility(functionaryId
@@ -211,7 +216,11 @@ public class FunctionaryController {
 																						,pagePerRow
 																						,searchOption
 																						,keyword);
-		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - map : " + map.toString());		
+		logger.debug("FunctionaryController - selectFunctionaryWorkGoodsfacility - map : " + map.toString());
+		
+		logger.debug("★★★★★★★★★★★★★★★★★");
+		logger.debug(map.get("goodsfacilityList").toString());
+		
 		model.addAttribute("list", map.get("goodsfacilityList"));
 		model.addAttribute("lastPage", map.get("lastPage"));
 		model.addAttribute("currentPage", currentPage);
@@ -220,6 +229,7 @@ public class FunctionaryController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchOption", searchOption);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("functionaryId", functionaryId);
 		
 		return "/functionary/selectFunctionaryWorkGoodsfacility";
 	}

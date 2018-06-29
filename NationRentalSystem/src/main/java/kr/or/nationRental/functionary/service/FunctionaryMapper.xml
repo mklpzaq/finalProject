@@ -94,7 +94,6 @@
 		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
 	    	</choose>
-		
 		ORDER BY functionary_date_join DESC
 		LIMIT #{beginRow}, #{pagePerRow}
 	</select>
@@ -266,21 +265,23 @@
 			from goodsfacility
 			inner join adminagency
 				using(adminagency_code)						
+			WHERE goodsfacility.functionary_id = #{functionaryId}					
 			<choose>	      
 		        <when test="searchOption == '전체 검색'">    
-		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
-		        	or adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        	AND (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	OR adminagency.adminagency_name like CONCAT('%', #{keyword}, '%'))     	        	           
 		        </when>
 		        <when test="searchOption == '시설/물품명 검색'">    
-		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        	AND goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
 		        <when test="searchOption == '행정기관명 검색'"> 
-		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
 		        <!-- <when test="searchOption == '등록날짜 검색'"> 
 		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when> -->
 	    	</choose>
+	    	and goodsfacility.functionary_id = #{functionaryId}	
 	</select>
 	
 	<select id="selectFunctionaryWorkGoodsfacility" parameterType="java.util.Map"  resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
@@ -290,6 +291,7 @@
 			,goodsfacility.goodsfacility_purchaseprice as goodsfacilityPurchaseprice
 			,goodsfacility.goodsfacility_price_rental as goodsfacilityPriceRental
 			,goodsfacility.adminagency_code as adminagencyCode
+			,goodsfacility.functionary_id as functionaryId
 			,adminagency.adminagency_name as adminagencyName
 			,goodsfacility.goodsfacility_classify_goodsfacility as goodsfacilityClassifyGoodsfacility
 			,goodsfacility.goodsfacility_classify_donationpurchase as goodsfacilityClassifyDonationpurchase
@@ -298,25 +300,27 @@
 			,goodsfacility.goodsfacility_state_afterservice as goodsfacilityStateAfterservice
 			,goodsfacility.goodsfacility_is_possible_rental as goodsfacilityIsPossibleRental
 			,goodsfacility.goodsfacility_date_registration as goodsfacilityDateRegistration
-			from goodsfacility
-			inner join adminagency
-				using(adminagency_code)						
+			FROM
+				goodsfacility
+			INNER JOIN
+				adminagency
+				using(adminagency_code)	
+			WHERE goodsfacility.functionary_id = #{functionaryId}					
 			<choose>	      
 		        <when test="searchOption == '전체 검색'">    
-		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
-		        	or adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        	AND (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	OR adminagency.adminagency_name like CONCAT('%', #{keyword}, '%'))     	        	           
 		        </when>
 		        <when test="searchOption == '시설/물품명 검색'">    
-		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        	AND goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
 		        <when test="searchOption == '행정기관명 검색'"> 
-		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when>
 		        <!-- <when test="searchOption == '등록날짜 검색'"> 
 		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when> -->
-	    	</choose>
-			and goodsfacility.functionary_id = #{functionaryId}	
+	    	</choose>				
 			ORDER BY goodsfacility.goodsfacility_date_registration DESC
 			LIMIT #{beginRow}, #{pagePerRow}
 	</select>

@@ -103,31 +103,31 @@
 			join state_goods as st
 			using(state_goods_code)
 			<choose>	      
-		        <when test="searchOption == 'all'">    
+		        <when test="searchOption == '전체 검색'">    
 		        	where (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
 		        	or citizen.citizen_name like CONCAT('%', #{keyword}, '%')	
 		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%'))        	        	           
 		        </when>
-		        <when test="searchOption == 'goodsfacility_name'">    
+		        <when test="searchOption == '시설/물품명 검색'">    
 		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'citizen_name'">    
+		        <when test="searchOption == '시민명 검색'">    
 		        	where citizen.citizen_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'functionary_name'">    
+		        <when test="searchOption == '처리 공무원 검색'">    
 		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		          <when test="searchOption == 'classify_goodsfacility'">    
+		          <when test="searchOption == '시설/물품 구분검색'">    
 		        	where return_goodsfacility_info.classify_goodsfacility like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		          <when test="searchOption == 'is_requested_to_return_as_delivery'">    
+		          <when test="searchOption == '배달반납 신청유무 검색'">    
 		        	where return_goodsfacility_info.is_requested_to_return_as_delivery = #{keyword}	        	        	           
 		        </when>
-		          <when test="searchOption == 'state_goods_code'">    
+		          <when test="searchOption == '반납상태 검색'">    
 		        	where st.state_goods like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'date_return_check'">
-		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}        	        	           
+		        <when test="searchOption == '반납날짜 검색'">
+		        	WHERE (return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate})       	        	           
 		        </when>	
 	    	</choose>
 	    	
@@ -155,32 +155,32 @@
 			join state_goods as st
 			using(state_goods_code)
 			<choose>	      
-		        <when test="searchOption == 'all'">    
+		        <when test="searchOption == '전체 검색'">    
 		        	where (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
 		        	or citizen.citizen_name like CONCAT('%', #{keyword}, '%')	
-		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%'))	        	        	           
+		        	or functionary.functionary_name like CONCAT('%', #{keyword}, '%'))        	        	           
 		        </when>
-		        <when test="searchOption == 'goodsfacility_name'">    
+		        <when test="searchOption == '시설/물품명 검색'">    
 		        	where goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'citizen_name'">    
+		        <when test="searchOption == '시민명 검색'">    
 		        	where citizen.citizen_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'functionary_name'">    
+		        <when test="searchOption == '처리 공무원 검색'">    
 		        	where functionary.functionary_name like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'classify_goodsfacility'">    
+		          <when test="searchOption == '시설/물품 구분검색'">    
 		        	where return_goodsfacility_info.classify_goodsfacility like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'is_requested_to_return_as_delivery'">    
-		        	where return_goodsfacility_info.is_requested_to_return_as_delivery like CONCAT('%', #{keyword}, '%')	        	        	           
+		          <when test="searchOption == '배달반납 신청유무 검색'">    
+		        	where return_goodsfacility_info.is_requested_to_return_as_delivery = #{keyword}	        	        	           
 		        </when>
-		        <when test="searchOption == 'state_goods_code'">    
-		        	where return_goodsfacility_info.state_goods_code like CONCAT('%', #{keyword}, '%')	        	        	           
+		          <when test="searchOption == '반납상태 검색'">    
+		        	where st.state_goods like CONCAT('%', #{keyword}, '%')	        	        	           
 		        </when>
-		        <when test="searchOption == 'date_return_check'">
-		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}       	        	           
-		        </when>		        
+		        <when test="searchOption == '반납날짜 검색'">
+		        	WHERE return_goodsfacility_info.date_return_check BETWEEN #{dateDto.startDate} AND #{dateDto.endDate}        	        	           
+		        </when>	
 	    	</choose>
 	    	
 			<choose>

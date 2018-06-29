@@ -199,8 +199,10 @@ public class FunctionaryService {
 																	, String searchOption
 																	, String keyword) {		
 		int beginRow = (currentPage-1)*pagePerRow; 
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
+		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - currentPage : " + currentPage);
+		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - functionaryId : " + functionaryId);
 		map.put("functionaryId", functionaryId);
 		map.put("beginRow", beginRow);
 		map.put("pagePerRow", pagePerRow);
@@ -210,7 +212,7 @@ public class FunctionaryService {
 		
 		//대여물품/시설등록조회
 		List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(map);
-		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - goodsfacilityList : " + goodsfacilityList.toString());
+		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - goodsfacilityList : " + goodsfacilityList);
 		int total = functionaryDao.totalCountFunctionaryWorkGoodsfacility(map);
 		logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - total  : " + total);
 			

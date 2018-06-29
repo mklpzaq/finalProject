@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
+					<jsp:include page="../module/lefrAgency/leftAgencyInfo.jsp"/>
 				</div>
 				<div style="padding:15px;" class="col-sm-8">
 					<!-- Begin Content -->
@@ -28,8 +28,7 @@
 						<div class="panel-body">
 							<h3 class="text-center">계약해지된 대행업체 리스트</h3>
 							<hr/>
-						</div>
-						<div><button><a href="${pageContext.request.contextPath}/selectListContractAgency">계약된 낙찰업체</a></button></div>										
+						</div>										
 						<table class="table table-striped">
 							<thead>
 								<tr>

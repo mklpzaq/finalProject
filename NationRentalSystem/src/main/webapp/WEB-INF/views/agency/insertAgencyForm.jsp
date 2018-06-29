@@ -18,7 +18,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/leftAgencyEmployee/leftAgencyEmployeeInfo.jsp"/>
+					<jsp:include page="../module/lefrAgency/leftAgencyInfo.jsp"/>
 				</div>
 				<div style="padding:15px;" class="col-sm-8">
 					<!-- Begin Content -->

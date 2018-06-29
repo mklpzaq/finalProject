@@ -135,11 +135,12 @@ public class ReturnGoodsfacilityInfoService {
 				map.put("pagePerRow", pagePerRow);
 				map.put("searchOption", searchOption);
 				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+			//날짜 선택이 안됐을 때, 전체 검색에 검색어를 입력하지 않은 상태로 만들어 검색하게 만든다
 			}else{
 				int adminagencyCode = returnGoodsfacilityInfoDto.getAdminagencyCode();
 				logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() == null : ");
 				map.put("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
-				searchOption = "all";
+				searchOption = "전체 검색";
 				map.put("keyword", keyword);
 				map.put("adminagencyCode", adminagencyCode);
 				map.put("beginRow", beginRow);
@@ -147,6 +148,7 @@ public class ReturnGoodsfacilityInfoService {
 				map.put("searchOption", searchOption);
 				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
 			}
+		//시민 권한의 조회일때, 시민의 id로 반납된 정보가 조회된다
 		}else if(returnGoodsfacilityInfoDto.getMemberLevel() == "시민") {
 			if(dateDto.getEndDate() != "") {	
 				String citizenId = returnGoodsfacilityInfoDto.getCitizenId();
@@ -159,10 +161,11 @@ public class ReturnGoodsfacilityInfoService {
 				map.put("pagePerRow", pagePerRow);
 				map.put("searchOption", searchOption);
 				list = returnGoodsfacilityInfoDao.selectReturnGoodsfacilityInfo(map);
+			//날짜 선택이 안됐을 때, 전체 검색에 검색어를 입력하지 않은 상태로 만들어 검색하게 만든다
 			}else{
 				String citizenId = returnGoodsfacilityInfoDto.getCitizenId();
 				logger.debug("ReturnGoodsfacilityInfoService - selectReturnGoodsfacilityInfo - dateDto.getEndDate() == null : ");
-				searchOption = "all";
+				searchOption = "전체 검색";
 				map.put("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
 				map.put("keyword", keyword);
 				map.put("citizenId", citizenId);

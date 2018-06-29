@@ -9,11 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.agency.service.AgencyDto;
-import kr.or.nationRental.agencyEmployee.service.AgencyEmployeeDto;
 import kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto;
-import kr.or.nationRental.citizen.service.CitizenDto;
 import kr.or.nationRental.goodsFacility.service.GoodsFacilityDto;
 import kr.or.nationRental.login.service.MemberDto;
 import kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto;
