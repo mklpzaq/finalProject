@@ -43,32 +43,10 @@ public class AgencyEmployeeService {
 			
 			logger.debug("★★★★★★★★★★★★2222★★★★★★★★★★★★★★★");
 			logger.debug(businessTypeForAgencyEmployeeDto.toString());
-			/* insert만 시키면 됨  */
-			
+			/* agency_nakchal_employee에 insert */
+			agencyEmployeeDao.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
 		}
-		
-		
-		
-		
-		
-		/*for(String agencyBusinesstypeName : businessTypeForAgencyEmployeeDto.getAddAgencyBusinesstypeList()) {
-			String agencyCode = agencyEmployeeDao.getAgencyCode(agencyBusinesstypeName);
-			
-			
-			logger.debug("★★★★★★★★★★2222★★★★★★★★★★★★★★");
-			logger.debug("agencyCode : " + agencyCode);
-			businessTypeForAgencyEmployeeDto.setAgencyCode(agencyCode);
-			logger.debug("★★★★★★★★★★3333★★★★★★★★★★★★★★");
-			logger.debug(businessTypeForAgencyEmployeeDto.toString());
-			//agencyEmployeeDao.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
-		}*/
-		
-		
-		
-		
-		//agencyEmployeeDao.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
 	}
-	
 	
 	public BusinessTypeForAgencyEmployeeDto selectOneBusinesstypeForAgencyEmployee(String agencyEmployeeId) {
 		logger.debug("selectOneBusinesstypeForAgencyEmployee AgencyEmployeeService");

@@ -5,13 +5,19 @@
  
 <mapper namespace="kr.or.nationRental.agencyEmployee.service.AgencyEmployeeMapper">
 
-	<!-- <insert id="insertBusinesstypeForAgencyEmployee"
+	<insert id="insertBusinesstypeForAgencyEmployee"
 			parameterType="kr.or.nationRental.agencyEmployee.service.BusinessTypeForAgencyEmployeeDto">
 		INSERT
 		INTO
-			
-		
-	</insert> -->
+			agency_nakchal_employee(
+				agency_code
+				,agency_employee_id
+			)
+		VALUES(
+			#{agencyCode}
+			,#{agencyEmployeeId}
+		)
+	</insert>
 	
 	<select id="getAgencyCodeForInsertBusinesstype"
 			parameterType="kr.or.nationRental.agencyEmployee.service.BusinessTypeForAgencyEmployeeDto"

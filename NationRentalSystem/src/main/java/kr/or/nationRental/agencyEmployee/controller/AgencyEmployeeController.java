@@ -40,6 +40,7 @@ public class AgencyEmployeeController {
 	
 	@RequestMapping(value="/insertBusinesstypeForAgencyEmployee", method=RequestMethod.POST)
 	public String insertBusinesstypeForAgencyEmployee(Model model
+												,RedirectAttributes redirectAttributes
 												,BusinessTypeForAgencyEmployeeDto businessTypeForAgencyEmployeeDto) {
 		logger.debug("POST insertBusinesstypeForAgencyEmployee AgencyEmployeeController");
 		logger.debug(businessTypeForAgencyEmployeeDto.toString());
@@ -50,10 +51,8 @@ public class AgencyEmployeeController {
 		/* 체크박스 값 들어오는 것까지 확인 */
 		agencyEmployeeService.insertBusinesstypeForAgencyEmployee(businessTypeForAgencyEmployeeDto);
 		
-		
-		
-		//model.addAttribute("agencyEmployeeId", agencyEmployeeDto.getAgencyEmployeeId());
-		return null;
+		redirectAttributes.addAttribute("agencyEmployeeId", businessTypeForAgencyEmployeeDto.getAgencyEmployeeId());
+		return "redirect:/insertBusinesstypeForAgencyEmployee";
 	}
 	
 	@RequestMapping(value="/selectListFunctionaryForAgencyEmployee", method=RequestMethod.GET)
