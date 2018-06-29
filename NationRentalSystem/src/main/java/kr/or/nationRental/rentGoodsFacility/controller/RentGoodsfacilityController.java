@@ -85,28 +85,7 @@ public class RentGoodsfacilityController {
 		model.addAttribute("keyword", keyword);
 		
 		return "/rentGoodsFacility/viewRentApplicationForCitizen";
-	}
-	
-	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.GET)
-	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto
-										,Model model) {
-		logger.debug("RentGoodsfacilityController updateApplicationForm GET: " + rentGoodsfacilityDto.toString());
-		
-		RentGoodsfacilityDto updateRentApp = rentGoodsfacilityService.updateRentApplication(rentGoodsfacilityDto);
-		model.addAttribute("updateRentApp", updateRentApp);
-		return "/rentGoodsFacility/updateRentApplicationForm";
-	}
-	
-	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.POST)
-	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto
-										,RedirectAttributes redirectAttributes) {
-		logger.debug("RentGoodsfacilityController updateApplicationForm POST: " + rentGoodsfacilityDto.toString());
-		int result = rentGoodsfacilityService.updateApplication(rentGoodsfacilityDto);
-		redirectAttributes.addAttribute("citizenId", rentGoodsfacilityDto.getCitizenId());
-		logger.debug("rentGoodsfacilityDto.getCitizenId() : "+ rentGoodsfacilityDto.getCitizenId());
-		
-		return "redirect:/viewApplicationRentForCitizen";
-	}
+	}	
 	
 	@RequestMapping(value="/cancelGoodsFacility" , method=RequestMethod.GET)
 	public String cancelGoodsFacility(RentGoodsfacilityDto rentGoodsfacilityDto
@@ -155,5 +134,25 @@ public class RentGoodsfacilityController {
 		return "/rentalTotalPayment/selectRentalAddDliverPayForm";
 	}
 	
+	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.GET)
+	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto
+										,Model model
+										,DeliveryOrderCitizenDto deliveryOrderCitizenDto) {
+		logger.debug("RentGoodsfacilityController updateApplicationForm GET: " + rentGoodsfacilityDto.toString());
+		
+		RentGoodsfacilityDto updateRentApp = rentGoodsfacilityService.updateRentApplication(rentGoodsfacilityDto);
+		model.addAttribute("updateRentApp", updateRentApp);
+		return "/rentGoodsFacility/updateRentApplicationForm";
+	}
 	
+	@RequestMapping(value="/updateApplicationForm", method=RequestMethod.POST)
+	public String updateApplicationForm(RentGoodsfacilityDto rentGoodsfacilityDto
+										,RedirectAttributes redirectAttributes) {
+		logger.debug("RentGoodsfacilityController updateApplicationForm POST: " + rentGoodsfacilityDto.toString());
+		int result = rentGoodsfacilityService.updateApplication(rentGoodsfacilityDto);
+		redirectAttributes.addAttribute("citizenId", rentGoodsfacilityDto.getCitizenId());
+		logger.debug("rentGoodsfacilityDto.getCitizenId() : "+ rentGoodsfacilityDto.getCitizenId());
+		
+		return "redirect:/viewApplicationRentForCitizen";
+	}
 }

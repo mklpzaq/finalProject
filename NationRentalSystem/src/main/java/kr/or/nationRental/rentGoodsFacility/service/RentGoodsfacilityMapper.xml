@@ -115,34 +115,6 @@
 			</if>
   	</select>
   	
-  	<select id="updateRentApp"
-  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
-  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
-  			SELECT 
-  			 	goodsfacility_rental_code as goodsfacilityRentalCode			
-  				,citizen_id as citizenId
-  				,citizen_phone as citizenPhone
-  				,goodsfacility_code as goodsfacilityCode
-  				,goodsfacility_name as goodsfacilityName
-  				,goodsfacility_rental_date_start as goodsfacilityRentalDateStart
-  				,goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
-  				,goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
-  			FROM
-  				goodsfacility_rental
-  			WHERE
-  				goodsfacility_rental_code = #{goodsfacilityRentalCode}
-  	</select>
-  	
-  	<update id="updateApplication"
-  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
-  			UPDATE
-  				goodsfacility_rental
-  			SET
-  				citizen_phone = #{citizenPhone}
-  			WHERE
-  				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
-  	</update>
-  	
   	<select id="cancelRent"
   			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
   			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
@@ -276,5 +248,34 @@
   				goodsfacility_rental_code = #{goodsfacilityRentalCode}
   			
   	</select>
+  	
+  	<select id="updateRentApp"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto"
+  			resultType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			SELECT 
+  			 	goodsfacility_rental_code as goodsfacilityRentalCode			
+  				,citizen_id as citizenId
+  				,citizen_phone as citizenPhone
+  				,goodsfacility_code as goodsfacilityCode
+  				,goodsfacility_name as goodsfacilityName
+  				,goodsfacility_rental_date_start as goodsfacilityRentalDateStart
+  				,goodsfacility_rental_day_end as goodsfacilityRentalDayEnd
+  				,goodsfacility_rental_is_ordered_delivery as goodsfacilityRentalIsOrderedDelivery
+  				
+  			FROM
+  				goodsfacility_rental  			
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}
+  	</select>
+  	
+  	<update id="updateApplication"
+  			parameterType="kr.or.nationRental.rentGoodsFacility.service.RentGoodsfacilityDto">
+  			UPDATE
+  				delivery_order_citizen
+  			SET
+  				citizen_phone = #{citizenPhone}
+  			WHERE
+  				goodsfacility_rental_code = #{goodsfacilityRentalCode}  	
+  	</update>
   
   </mapper>

@@ -42,16 +42,6 @@ public class RentGoodsfacilityDao {
 		return sqlSession.selectOne(NS+"totalCountRentFORM", map);
 	}
 
-	public RentGoodsfacilityDto updateRentApp(RentGoodsfacilityDto rentGoodsfacilityDto) {
-		logger.debug("RentGoodsfacilityDao totalCountRentFORM : ");
-		return sqlSession.selectOne(NS+"updateRentApp", rentGoodsfacilityDto);
-	}
-
-	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
-		logger.debug("RentGoodsfacilityDao updateApplication : ");
-		return sqlSession.update(NS+"updateApplication", rentGoodsfacilityDto);
-	}
-
 	public RentGoodsfacilityDto cancelRent(RentGoodsfacilityDto rentGoodsfacilityDto) {
 		logger.debug("RentGoodsfacilityDao cancelRent : ");
 		return sqlSession.selectOne(NS+"cancelRent", rentGoodsfacilityDto);
@@ -81,5 +71,13 @@ public class RentGoodsfacilityDao {
 		return sqlSession.selectOne(NS+"getPrice", rentGoodsfacilityDto);
 	}
 
-	
+	public RentGoodsfacilityDto updateRentApp(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityDao totalCountRentFORM : ");
+		return sqlSession.selectOne(NS+"updateRentApp", rentGoodsfacilityDto);
+	}
+
+	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityDao updateApplication : ");
+		return sqlSession.update(NS+"updateApplication", rentGoodsfacilityDto);
+	}
 }

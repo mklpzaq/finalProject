@@ -77,18 +77,6 @@ public class RentGoodsfacilityService {
 		return returnMap;		
 	}
 
-	public RentGoodsfacilityDto updateRentApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
-		logger.debug("RentGoodsfacilityService updateRentApplication  :" + rentGoodsfacilityDto.toString());
-		
-		return rentGoodsfacilityDao.updateRentApp(rentGoodsfacilityDto);
-	}
-
-	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
-		logger.debug("RentGoodsfacilityService updateRentApplication  :" + rentGoodsfacilityDto.toString());
-		
-		return rentGoodsfacilityDao.updateApplication(rentGoodsfacilityDto);
-	}
-
 	public RentGoodsfacilityDto cancelRent(RentGoodsfacilityDto rentGoodsfacilityDto) {
 		logger.debug("RentGoodsfacilityService cancelRent  :" + rentGoodsfacilityDto.toString());
 		
@@ -117,6 +105,16 @@ public class RentGoodsfacilityService {
 		return rentGoodsfacilityDao.getPrice(rentGoodsfacilityDto);
 	}
 
+	public RentGoodsfacilityDto updateRentApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService updateRentApplication  :" + rentGoodsfacilityDto.toString());
+		
+		return rentGoodsfacilityDao.updateRentApp(rentGoodsfacilityDto);
+	}
 
+	public int updateApplication(RentGoodsfacilityDto rentGoodsfacilityDto) {
+		logger.debug("RentGoodsfacilityService updateRentApplication  :" + rentGoodsfacilityDto.toString());
+		
+		return rentGoodsfacilityDao.updateApplication(rentGoodsfacilityDto);
+	}
 	
 }
