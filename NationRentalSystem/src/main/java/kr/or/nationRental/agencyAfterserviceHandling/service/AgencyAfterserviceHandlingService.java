@@ -27,10 +27,19 @@ public class AgencyAfterserviceHandlingService {
 		return agencyAfterserviceHandlingDao.selectOneAgencyBusinesstypeForAjax(agencyBusinesstypeDto);
 	}
 	
+	
+	
+	
+	
+	
 	public AgencyAfterserviceHandlingDto selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto AgencyAfterserviceHandlingDto) {
 		logger.debug("selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee AgencyAfterserviceHandlingService");
 		return agencyAfterserviceHandlingDao.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto);
 	}
+	
+	
+	
+	
 	
 	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstypeDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
 		logger.debug("selectListAgencyBusinesstypeDto AgencyAfterserviceHandlingService");

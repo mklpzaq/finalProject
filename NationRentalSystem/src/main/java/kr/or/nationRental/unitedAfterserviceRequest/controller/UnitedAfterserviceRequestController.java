@@ -145,8 +145,10 @@ public class UnitedAfterserviceRequestController {
 		logger.debug("GET selectListReturnGoodsfacilityInfoForAfterService selectListReturnGoodsfacilityInfoForAfterService");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(functionaryDto.toString());
 		
-		Map<String, Object> map = unitedAfterserviceRequestService.selectListReturnGoodsfacilityInfo(currentPage, pagePerRow, searchSelect, searchWord);
+		Map<String, Object> map = unitedAfterserviceRequestService.selectListReturnGoodsfacilityInfo(currentPage, pagePerRow, searchSelect, searchWord, functionaryDto);
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));

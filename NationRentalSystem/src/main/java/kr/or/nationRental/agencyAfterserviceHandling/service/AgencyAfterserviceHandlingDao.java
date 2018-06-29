@@ -28,10 +28,21 @@ public class AgencyAfterserviceHandlingDao {
 		return sqlSession.selectOne(NS+"selectOneAgencyBusinesstypeForAjax", agencyBusinesstypeDto);
 	}
 	
+	
+	
+	
+	
+	
 	public AgencyAfterserviceHandlingDto selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
 		logger.debug("selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee AgencyAfterserviceHandlingDao");
 		return sqlSession.selectOne(NS+"selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee", agencyAfterserviceHandlingDto);
 	}
+
+	
+	
+	
+	
+	
 	
 	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstypeDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
 		logger.debug("selectListAgencyBusinesstypeDto AgencyAfterserviceHandlingDao");

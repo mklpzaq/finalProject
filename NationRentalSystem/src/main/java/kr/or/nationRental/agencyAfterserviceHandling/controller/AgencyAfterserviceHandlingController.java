@@ -47,11 +47,17 @@ public class AgencyAfterserviceHandlingController {
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		
 		String agencyEmployeeId = unitedAfterserviceRequestDto.getAgencyEmployeeId();
+		int agencyBusinesstypeCode = unitedAfterserviceRequestDto.getAgencyBusinesstypeCode();
 		/* 현재 로그인 되어 있는 직원이 소속된 대행업체 코드, 대행업체 이름을 가져온다. */
 		AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto = new AgencyAfterserviceHandlingDto();
 		agencyAfterserviceHandlingDto.setAgencyEmployeeId(agencyEmployeeId);
+		agencyAfterserviceHandlingDto.setAgencyBusinesstypeCode(agencyBusinesstypeCode);
+		logger.debug("★★★★★★★★★★AAAAjjjjj★★★★★★★★★★★★★★★★");
+		logger.debug(agencyAfterserviceHandlingDto.toString());
 		agencyAfterserviceHandlingDto = agencyAfterserviceHandlingService.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(agencyAfterserviceHandlingDto);
-		
+		logger.debug("★★★★★★★★★★jjjjj★★★★★★★★★★★★★★★★");
+		logger.debug(unitedAfterserviceRequestDto.toString());
+		logger.debug(agencyAfterserviceHandlingDto.toString());
 		/* 대행업체 업종 리스트를 가져온다. */
 		
 		List<AgencyBusinesstypeDto> list = agencyAfterserviceHandlingService.selectListAgencyBusinesstypeDto(unitedAfterserviceRequestDto);

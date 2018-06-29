@@ -16,6 +16,8 @@ public class AgencyAfterserviceHandlingDto {
 	
 	/* 추가 맴버 변수*/
 	private String agencyBusinesstypeName;
+	
+	/* getter, setter, toString */
 
 	public int getAgencyAfterserviceHandlingCode() {
 		return agencyAfterserviceHandlingCode;

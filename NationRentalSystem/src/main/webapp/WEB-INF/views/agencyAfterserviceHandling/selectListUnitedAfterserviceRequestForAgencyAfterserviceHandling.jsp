@@ -175,7 +175,7 @@
 													<td>
 														<%-- <c:choose>
 															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}"> --%>
-																<a href="${pageContext.request.contextPath}/insertAgencyAfterserviceHandling?unitedAfterserviceRequestCode=${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}&agencyEmployeeId=${member.memberId}" class="btn btn-primary" role="button">AS 요청 수락</a>		
+																<a href="${pageContext.request.contextPath}/insertAgencyAfterserviceHandling?unitedAfterserviceRequestCode=${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}&agencyEmployeeId=${member.memberId}&agencyBusinesstypeCode=${unitedAfterserviceRequestDto.agencyBusinesstypeCode}" class="btn btn-primary" role="button">AS 요청 수락</a>		
 															<%-- </c:when>
 														</c:choose> --%>
 													</td>

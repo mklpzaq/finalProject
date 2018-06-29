@@ -14,7 +14,7 @@ public class UnitedAfterserviceRequestDto {
 	private String textCheckResultGoodsfacility;
 	private int agencyCode;
 	private String agencyName;
-	private String agencyBusinesstypeCode;
+	private int agencyBusinesstypeCode;
 	private String dateRequestAfterservice;
 	private String dateCompleteAfterservice;
 	
@@ -25,6 +25,9 @@ public class UnitedAfterserviceRequestDto {
 	private String stateGoods;
 	private String beforePageCode;
 	private String agencyEmployeeId;
+	
+	/* getter, setter, toString */
+	
 	public int getUnitedAfterserviceRequestCode() {
 		return unitedAfterserviceRequestCode;
 	}
@@ -103,10 +106,10 @@ public class UnitedAfterserviceRequestDto {
 	public void setAgencyName(String agencyName) {
 		this.agencyName = agencyName;
 	}
-	public String getAgencyBusinesstypeCode() {
+	public int getAgencyBusinesstypeCode() {
 		return agencyBusinesstypeCode;
 	}
-	public void setAgencyBusinesstypeCode(String agencyBusinesstypeCode) {
+	public void setAgencyBusinesstypeCode(int agencyBusinesstypeCode) {
 		this.agencyBusinesstypeCode = agencyBusinesstypeCode;
 	}
 	public String getDateRequestAfterservice() {
@@ -150,7 +153,7 @@ public class UnitedAfterserviceRequestDto {
 	}
 	public void setBeforePageCode(String beforePageCode) {
 		this.beforePageCode = beforePageCode;
-	} 
+	}
 	public String getAgencyEmployeeId() {
 		return agencyEmployeeId;
 	}
@@ -171,6 +174,4 @@ public class UnitedAfterserviceRequestDto {
 				+ goodsfacilityThreeName + ", textRegularCheck=" + textRegularCheck + ", stateGoods=" + stateGoods
 				+ ", beforePageCode=" + beforePageCode + ", agencyEmployeeId=" + agencyEmployeeId + "]";
 	}
-	
-	
 }

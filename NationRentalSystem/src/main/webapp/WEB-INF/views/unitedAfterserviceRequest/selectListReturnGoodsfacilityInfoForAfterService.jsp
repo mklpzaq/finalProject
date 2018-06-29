@@ -33,14 +33,14 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text());
+					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text() + '&adminagencyCode=' + $('#adminagencyCode').val());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchSelect = $('#selectButtonText').text();
 					searchWord = $('#searchWord').val();
-					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord);
+					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord + '&adminagencyCode=' + $('#adminagencyCode').val());
 				});
 				
 			});
@@ -51,7 +51,7 @@
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
 		
-		<div class="container-fluid" style="height:900px;">
+		<div class="container-fluid">
 			<jsp:include page="../module/top/navbar.jsp"/>
 			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
 			<div class="row" >
@@ -60,7 +60,8 @@
 				</div>
 				<div class="col-sm-8">
 					<!-- Begin Content -->
-						
+					
+					<input id="adminagencyCode" type="hidden" value="${member.adminagencyCode}">
 					<div style="margin:15px 0 0 0;" class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
@@ -147,8 +148,8 @@
 									<c:forEach var="returnGoodsfacilityInfoDto" items="${list}">
 										<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
 										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
-										<c:choose>
-											<c:when test="${returnGoodsfacilityInfoDto.adminagencyCode eq member.adminagencyCode}">
+										<%-- <c:choose>
+											<c:when test="${returnGoodsfacilityInfoDto.adminagencyCode eq member.adminagencyCode}"> --%>
 												<tr>
 													<td><strong>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</strong></td>
 													<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityRentalCode}</strong></td>
@@ -170,27 +171,27 @@
 														</c:choose>
 													</td>
 												</tr>
-											</c:when>
-										</c:choose>
+											<%-- </c:when>
+										</c:choose> --%>
 									</c:forEach>
 								</tbody>
 							</table>
 							<nav>
 								<ul class="pagination">
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+										<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
 									<li>
 										<c:choose>
 											<c:when test="${currentPage > 1}">
-												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
@@ -201,10 +202,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -213,10 +214,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -225,19 +226,19 @@
 									<li>
 										<c:choose>
 											<c:when test="${currentPage < lastPage}">
-												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+										<a href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
 									</li>

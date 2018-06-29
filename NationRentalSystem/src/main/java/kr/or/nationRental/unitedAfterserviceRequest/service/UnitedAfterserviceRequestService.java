@@ -177,7 +177,7 @@ public class UnitedAfterserviceRequestService {
 		return unitedAfterserviceRequestDto;
 	}
 	
-	public Map<String, Object> selectListReturnGoodsfacilityInfo(int currentPage, int pagePerRow, String searchSelect, String searchWord){
+	public Map<String, Object> selectListReturnGoodsfacilityInfo(int currentPage, int pagePerRow, String searchSelect, String searchWord, FunctionaryDto functionaryDto){
 		logger.debug("selectListReturnGoodsfacilityInfo UnitedAfterserviceRequestService");
 		int beginRow = (currentPage-1)*pagePerRow;
 		
@@ -188,6 +188,7 @@ public class UnitedAfterserviceRequestService {
 		logger.debug("currentPage :" + currentPage);
 		logger.debug("beginRow :" + beginRow);
 		logger.debug("pagePerRow :" + pagePerRow);
+		map.put("functionaryDto", functionaryDto);
 		
 		/* searchSignal : 1 일경우 '검색버튼'을 누른경우가 되므로 
 		 * selectAddressList() 메서드를 사용하여 list를 가져올때,

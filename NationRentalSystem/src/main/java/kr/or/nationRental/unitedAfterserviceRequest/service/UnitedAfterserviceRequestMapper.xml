@@ -412,52 +412,55 @@
 			state_goods AS stateg
 			ON
 			returngf.state_goods_code = stateg.state_goods_code
-		<if test="!searchWord.equals('')">
-			<choose>
-				<when test="searchSelect.equals('물품/시설 반납 코드')">
-					WHERE return_goodsfacility_info_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('대여 코드')">
-					WHERE goodsfacility_rental_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 코드')">
-					WHERE goodsfacility_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 분류 명')">
-					WHERE classify_goodsfacility = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('시민 ID')">
-					WHERE citizen_id = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('배달반납 유무')">
-					WHERE is_requested_to_return_as_delivery = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('연체일수')">
-					WHERE overdue_days = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('지자체 기관 코드')">
-					WHERE adminagency_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('반납확인 공무원 ID')">
-					WHERE functionary_id = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품 상태 코드')">
-					WHERE state_goods_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품 상태')">
-					WHERE state_goods = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('반납 확인 일자')">
-					WHERE date_return_check = #{searchWord}
-				</when>
-			</choose>
-		</if>
+		WHERE
+			returngf.adminagency_code = #{functionaryDto.adminagencyCode}	
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('물품/시설 반납 코드')">
+						AND return_goodsfacility_info_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('대여 코드')">
+						AND goodsfacility_rental_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 코드')">
+						AND goodsfacility_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 분류 명')">
+						AND classify_goodsfacility = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('시민 ID')">
+						AND citizen_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('배달반납 유무')">
+						AND is_requested_to_return_as_delivery = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('연체일수')">
+						AND overdue_days = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('반납확인 공무원 ID')">
+						AND functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품 상태 코드')">
+						AND state_goods_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품 상태')">
+						AND state_goods = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('반납 확인 일자')">
+						AND date_return_check = #{searchWord}
+					</when>
+				</choose>
+			</if>
 	</select>
 	
 	<select id="selectListReturnGoodsfacilityInfo"
 			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
 		SELECT
+
 			returngf.return_goodsfacility_info_code AS returGoodsfacilityInfoCode
 			,returngf.goodsfacility_rental_code AS goodsfacilityRentalCode
 			,returngf.goodsfacility_code AS goodsfacilityCode
@@ -476,48 +479,50 @@
 			state_goods AS stateg
 			ON
 			returngf.state_goods_code = stateg.state_goods_code
-		<if test="!searchWord.equals('')">
-			<choose>
-				<when test="searchSelect.equals('물품/시설 반납 코드')">
-					WHERE return_goodsfacility_info_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('대여 코드')">
-					WHERE goodsfacility_rental_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 코드')">
-					WHERE goodsfacility_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 분류 명')">
-					WHERE classify_goodsfacility = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('시민 ID')">
-					WHERE citizen_id = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('배달반납 유무')">
-					WHERE is_requested_to_return_as_delivery = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('연체일수')">
-					WHERE overdue_days = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('지자체 기관 코드')">
-					WHERE adminagency_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('반납확인 공무원 ID')">
-					WHERE functionary_id = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품 상태 코드')">
-					WHERE state_goods_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품 상태')">
-					WHERE state_goods = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('반납 확인 일자')">
-					WHERE date_return_check = #{searchWord}
-				</when>
-			</choose>
-		</if>
-		ORDER BY return_goodsfacility_info_code DESC
-		LIMIT #{beginRow}, #{pagePerRow}
+		WHERE
+			returngf.adminagency_code = #{functionaryDto.adminagencyCode}	
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('물품/시설 반납 코드')">
+						AND return_goodsfacility_info_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('대여 코드')">
+						AND goodsfacility_rental_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 코드')">
+						AND goodsfacility_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 분류 명')">
+						AND classify_goodsfacility = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('시민 ID')">
+						AND citizen_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('배달반납 유무')">
+						AND is_requested_to_return_as_delivery = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('연체일수')">
+						AND overdue_days = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('반납확인 공무원 ID')">
+						AND functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품 상태 코드')">
+						AND state_goods_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품 상태')">
+						AND state_goods = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('반납 확인 일자')">
+						AND date_return_check = #{searchWord}
+					</when>
+				</choose>
+			</if>
+			ORDER BY return_goodsfacility_info_code DESC
+			LIMIT #{beginRow}, #{pagePerRow}
 	</select>
 	
 	

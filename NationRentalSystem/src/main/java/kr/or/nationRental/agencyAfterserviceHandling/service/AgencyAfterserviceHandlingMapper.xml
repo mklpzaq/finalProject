@@ -42,8 +42,12 @@
 		FROM
 			agency_businesstype
 		WHERE
-			agency_businesstype_name = '청소'
+			agency_businesstype_name = #{agencyBusinesstypeName}
 	</select>
+	
+	
+	
+	
 	
 	<select id="selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee"
 			parameterType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto"
@@ -52,6 +56,7 @@
 			agenemp.agency_employee_id AS agencyEmployeeId
 			,agen.agency_code AS agencyCode
 			,agen.agency_name AS agencyName
+			
 		FROM
 			agency_employee AS agenemp
 			INNER JOIN
@@ -65,7 +70,14 @@
 			agennakemp.agency_code = agen.agency_code
 		WHERE
 			agenemp.agency_employee_id = #{agencyEmployeeId}
+			AND
+			agen.agency_businesstype_code = #{agencyBusinesstypeCode}
 	</select>
+	
+	
+	
+	
+	
 	
 	<select id="selectListAgencyBusinesstypeDto"
 			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto"
