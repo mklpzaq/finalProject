@@ -29,6 +29,7 @@ public class UnitedAfterserviceRequestController {
 	@RequestMapping(value="/selectListRegularCheckForAfterService", method=RequestMethod.GET)
 	public String selectListBoard(Model model
 									,HttpSession session
+									,FunctionaryDto functionaryDto
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 									,@RequestParam(value="searchSelect", defaultValue="정기점검 코드") String searchSelect
@@ -36,8 +37,8 @@ public class UnitedAfterserviceRequestController {
 		logger.debug("GET selectListRegularCheck UnitedAfterserviceRequestController");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
-		
-		Map<String, Object> map = unitedAfterserviceRequestService.selectListRegularCheck(currentPage, pagePerRow, searchSelect, searchWord);
+		logger.debug(functionaryDto.toString());
+		Map<String, Object> map = unitedAfterserviceRequestService.selectListRegularCheck(currentPage, pagePerRow, searchSelect, searchWord, functionaryDto);
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));
@@ -145,7 +146,6 @@ public class UnitedAfterserviceRequestController {
 		logger.debug("GET selectListReturnGoodsfacilityInfoForAfterService selectListReturnGoodsfacilityInfoForAfterService");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(functionaryDto.toString());
 		
 		Map<String, Object> map = unitedAfterserviceRequestService.selectListReturnGoodsfacilityInfo(currentPage, pagePerRow, searchSelect, searchWord, functionaryDto);
@@ -157,6 +157,7 @@ public class UnitedAfterserviceRequestController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchSelect", searchSelect);
 		model.addAttribute("searchWord", searchWord);
+		logger.debug("★★★★★★★★★★★★★★리스트 확인용★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug("list : "+ map.get("list"));
 		logger.debug("lastPage : "+ map.get("lastPage"));
 		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));

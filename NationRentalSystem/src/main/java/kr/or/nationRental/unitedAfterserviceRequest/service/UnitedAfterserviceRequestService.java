@@ -25,7 +25,7 @@ public class UnitedAfterserviceRequestService {
 		return unitedAfterserviceRequestDao.selectListRegularCheck();
 	}*/
 	
-	public Map<String, Object> selectListRegularCheck(int currentPage, int pagePerRow, String searchSelect, String searchWord){
+	public Map<String, Object> selectListRegularCheck(int currentPage, int pagePerRow, String searchSelect, String searchWord, FunctionaryDto functionaryDto){
 		logger.debug("selectListRegularCheck UnitedAfterserviceRequestService");
 		int beginRow = (currentPage-1)*pagePerRow;
 		
@@ -36,7 +36,7 @@ public class UnitedAfterserviceRequestService {
 		logger.debug("currentPage :" + currentPage);
 		logger.debug("beginRow :" + beginRow);
 		logger.debug("pagePerRow :" + pagePerRow);
-		
+		map.put("functionaryDto", functionaryDto);
 		/* searchSignal : 1 일경우 '검색버튼'을 누른경우가 되므로 
 		 * selectAddressList() 메서드를 사용하여 list를 가져올때,
 		 * searchWord와 일치하는 레코드 부분만 list에 저장하게 만들어 주어야 한다.
@@ -154,14 +154,17 @@ public class UnitedAfterserviceRequestService {
 	
 	public List<AgencyDto> selectListAgencyDto(String functionaryId) {
 		logger.debug("selectListAgencyDto UnitedAfterserviceRequestService");
-		/* 공무원(Functionary) 이 속한 지자체 기관 구하기 */
+		/*	// 공무원(Functionary) 이 속한 지자체 기관 구하기 
 		FunctionaryDto functionaryDto = unitedAfterserviceRequestDao.selectOneFunctionaryForListAgency(functionaryId);
 		logger.debug(functionaryDto.toString());
-		/* 공무원(Functionary) 이 속한 지자체 기관과 계약한 대행업체(agency) List 구하기 */
+		//공무원(Functionary) 이 속한 지자체 기관과 계약한 대행업체(agency) List 구하기 //
 		List<AgencyDto> list =  unitedAfterserviceRequestDao.selectListAgencyDto(functionaryDto);
 		if(!list.isEmpty()) {
 			logger.debug(list.toString());
 		}
+		return list;*/
+		int adminagencyCode = unitedAfterserviceRequestDao.getAdminagencyCode(functionaryId);
+		List<AgencyDto> list =  unitedAfterserviceRequestDao.selectListAgencyDto(adminagencyCode);
 		return list;
 	}
 	
@@ -209,7 +212,7 @@ public class UnitedAfterserviceRequestService {
 		 * (pagePerRow값이 10이면 list에 담기는 개수는 10개 레코드이다.)
 		 * */
 		List<ReturnGoodsfacilityInfoDto> list = unitedAfterserviceRequestDao.selectListReturnGoodsfacilityInfo(map);
-		logger.debug("list<BoardDto> : " + list);
+		logger.debug("list<ReturnGoodsfacilityInfoDto> : " + list);
 		/* 검색을 하였다면 검색조건에 맞는 레코드 개수가 반환되고,
 		 * 검색을 하지 않았다면 DB에 존재하는 모든 address 레코드 개수가 반환된다. 
 		 *  */

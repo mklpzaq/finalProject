@@ -64,7 +64,7 @@ public class UnitedAfterserviceRequestDao {
 		return sqlSession.selectOne(NS+"selectOneAgencyForAjax", agencyDto);
 	}
 	
-	public FunctionaryDto selectOneFunctionaryForListAgency(String functionaryId) {
+	/*public FunctionaryDto selectOneFunctionaryForListAgency(String functionaryId) {
 		logger.debug("selectOneFunctionaryForListAgency UnitedAfterserviceRequestDao");
 		return sqlSession.selectOne(NS+"selectOneFunctionaryForListAgency", functionaryId);
 	}
@@ -73,7 +73,18 @@ public class UnitedAfterserviceRequestDao {
 		logger.debug("selectListAgencyDto UnitedAfterserviceRequestDao");
 		return sqlSession.selectList(NS+"selectListAgencyDto", functionaryDto);
 		
+	}*/
+	public List<AgencyDto> selectListAgencyDto(int adminagencyCode) {
+		logger.debug("selectListAgencyDto UnitedAfterserviceRequestDao");
+		return sqlSession.selectList(NS+"selectListAgencyDto", adminagencyCode);
+		
 	}
+	public int getAdminagencyCode(String functionaryId) {
+		logger.debug("getAdminagencyCode UnitedAfterserviceRequestDao");
+		return sqlSession.selectOne(NS+"getAdminagencyCode", functionaryId);
+	}
+	
+	
 	
 	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDtoForInsert(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("selectOneUnitedAfterserviceRequestDtoForInsert UnitedAfterserviceRequestDao");

@@ -21,6 +21,10 @@ public class ReturnGoodsfacilityInfoDto {
 	private int stateGoodsCode; //물품상태코드(
 	private String stateGoods; //물품상태명
 	private String dateReturnCheck; //반납확인일
+	private String goodsfacilityStateAfterservice; //물품/시설 AS상태
+	private String goodsfacilityThreeName; //물품/시설 3차 카테고리
+	
+	/* getter, setter, toString */
 	public int getReturGoodsfacilityInfoCode() {
 		return returGoodsfacilityInfoCode;
 	}
@@ -129,6 +133,18 @@ public class ReturnGoodsfacilityInfoDto {
 	public void setDateReturnCheck(String dateReturnCheck) {
 		this.dateReturnCheck = dateReturnCheck;
 	}
+	public String getGoodsfacilityStateAfterservice() {
+		return goodsfacilityStateAfterservice;
+	}
+	public void setGoodsfacilityStateAfterservice(String goodsfacilityStateAfterservice) {
+		this.goodsfacilityStateAfterservice = goodsfacilityStateAfterservice;
+	}
+	public String getGoodsfacilityThreeName() {
+		return goodsfacilityThreeName;
+	}
+	public void setGoodsfacilityThreeName(String goodsfacilityThreeName) {
+		this.goodsfacilityThreeName = goodsfacilityThreeName;
+	}
 	@Override
 	public String toString() {
 		return "ReturnGoodsfacilityInfoDto [returGoodsfacilityInfoCode=" + returGoodsfacilityInfoCode
@@ -139,7 +155,7 @@ public class ReturnGoodsfacilityInfoDto {
 				+ goodsfacilityRentalDayEnd + ", overdueDays=" + overdueDays + ", adminagencyCode=" + adminagencyCode
 				+ ", adminagencyName=" + adminagencyName + ", functionaryId=" + functionaryId + ", functionaryName="
 				+ functionaryName + ", stateGoodsCode=" + stateGoodsCode + ", stateGoods=" + stateGoods
-				+ ", dateReturnCheck=" + dateReturnCheck + "]";
+				+ ", dateReturnCheck=" + dateReturnCheck + ", goodsfacilityStateAfterservice="
+				+ goodsfacilityStateAfterservice + ", goodsfacilityThreeName=" + goodsfacilityThreeName + "]";
 	}
-	
 }

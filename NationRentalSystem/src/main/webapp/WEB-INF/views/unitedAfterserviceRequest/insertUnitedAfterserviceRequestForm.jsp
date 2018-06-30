@@ -18,24 +18,24 @@
 					$('#addDiv').append('<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="regularCheckCode" value="${unitedAfterserviceRequestDto.regularCheckCode}" id="regularCheckCode" placeholder="정기점검 코드" readonly></div>');
 				}
 				
-				/* 첫 화면에서도 바로 적요되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
-				$.ajax({
+				/* 첫 화면에서도 바로 적용되게 ajax를 이벤트 발생전에도 실행되게 하였다. */
+				/* $.ajax({
 					type: "POST"
 					,url: "${pageContext.request.contextPath}/selectOneAgencyForAjax"
-					,data: { agencyName: $('#agencySelect > option:selected').val() }
+					,data: { agencyNameAndBusinesstypeName: $('#agencySelect > option:selected').val() }
 					,success:function( JSON ) { // result : String, XML, JSON
 						$('#agencyCode').val(JSON.agencyCode);
 						$('#agencyName').val(JSON.agencyName);
 						$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
 						$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 					}
-				});
+				}); */
 				
 				$('#agencySelect').change(function() {
 					$.ajax({
 						type: "POST"
 						,url: "${pageContext.request.contextPath}/selectOneAgencyForAjax"
-						,data: { agencyName: $('#agencySelect > option:selected').val() }
+						,data: { agencyNameAndBusinesstypeName: $('#agencySelect > option:selected').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
 							$('#agencyCode').val(JSON.agencyCode);
 							$('#agencyName').val(JSON.agencyName);
@@ -43,6 +43,16 @@
 							$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 						}
 					});
+				});
+				
+				$('#insertBtn').click(function(){
+					if( $('#agencyCode').val() === "" || $('#agencyName').val() === "" || $('#agencyBusinesstypeCode').val() === "" || $('#agencyBusinesstypeName').val() === ""){
+						alert('의뢰할 대행업체를 선택해주십시오.');
+					}else if($('#textCheckResultGoodsfacility').val() === ""){
+						alert('공무원 검수 판단을 작성하여 주십시오.');
+					}else{
+						$('#insertForm').submit();
+					}
 				});
 			});
 		</script>
@@ -147,7 +157,7 @@
 										<!-- <input type="text" class="form-control" name="agencyCode" id="agencyCode" placeholder="의뢰할 대행업체 코드"> -->
 										<select id="agencySelect" class="form-control">
 											<c:forEach var="agencyDto" items="${agencyList}">
-												<option id="agencySelectOption">${agencyDto.agencyName}</option>
+												<option id="agencySelectOption">${agencyDto.agencyName}-${agencyDto.agencyBusinesstypeName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -177,21 +187,11 @@
 									</div>
 								</div>
 								<div class="text-center">
-									<button id="insertBtn" type="submit" class="btn btn-primary">입력 완료</button>
+									<button id="insertBtn" type="button" class="btn btn-primary">입력 완료</button>
 								</div>
 							</form>
 						</div>
 					</div>
-					<!-- <script>
-						if( $('#beforePageCode').val() === '반납AS' ){
-							alert('반납');
-							$('#addDiv').append('<label for="returnGoodsfacilityInfoCode" class="col-sm-3 control-label">물품/시설 반납 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="returnGoodsfacilityInfoCode" value="${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}" id="returnGoodsfacilityInfoCode"  readonly></div>');
-						}else if( $('#beforePageCode').val() === '점검AS'){
-							$('#addDiv').append('<label for="regularCheckCode" class="col-sm-3 control-label">정기점검 코드</label><div class="col-sm-9"><input type="text" class="form-control" name="regularCheckCode" id="regularCheckCode" placeholder="정기점검 코드" readonly></div>');
-						}
-					</script> -->
-					
-					
 					
 					<!-- End Content -->
 				</div>

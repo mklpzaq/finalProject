@@ -13,7 +13,7 @@
 					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
 				});
 				$('#regularChecAfterserviceBtn').click(function(){
-					$(location).attr('href', './selectListRegularCheckForAfterService');
+					$(location).attr('href', './selectListRegularCheckForAfterService?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
 				});
 				$('#listAfterserviceRequestBtn').click(function(){
 					$(location).attr('href', './selectListUnitedAfterserviceRequest');

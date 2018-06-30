@@ -100,16 +100,16 @@
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 												<li><a href="#">물품/시설 반납 코드</a></li>
-												<li><a href="#">대여 코드</a></li>
-												<li><a href="#">물품/시설 코드</a></li>
-												<li><a href="#">물품/시설 분류 명</a></li>
-												<li><a href="#">시민 ID</a></li>
-												<li><a href="#">배달반납 유무</a></li>
-												<li><a href="#">연체일수</a></li>
 												<li><a href="#">지자체 기관 코드</a></li>
+												<li><a href="#">지자체 기관 명</a></li>
 												<li><a href="#">반납확인 공무원 ID</a></li>
-												<li><a href="#">물품 상태 코드</a></li>
+												<li><a href="#">물품/시설 코드</a></li>
+												<li><a href="#">물품/시설 분류</a></li>
+												<li><a href="#">물품/시설 카테고리</a></li>
+												<li><a href="#">물품/시설 명</a></li>
+												<!-- <li><a href="#">물품 상태 코드</a></li> -->
 												<li><a href="#">물품 상태</a></li>
+												<li><a href="#">AS 상태</a></li>
 												<li><a href="#">반납 확인 일자</a></li>
 											</ul>
 										</div>
@@ -128,51 +128,58 @@
 								<thead>
 									<tr>
 										<td><strong>물품/시설 반납 코드</strong></td>
-										<td><strong>대여 코드</strong></td>
-										<td><strong>물품/시설 코드</strong></td>
-										<td><strong>물품/시설 분류 명</strong></td>
-										<td><strong>시민 ID</strong></td>
-										<td><strong>배달반납 유무</strong></td>
-										<td><strong>연체일수</strong></td>
 										<td><strong>지자체 기관 코드</strong></td>
+										<td><strong>지자체 기관 명</strong></td>
 										<td><strong>반납확인 공무원 ID</strong></td>
-										<td><strong>물품 상태 코드</strong></td>
+										<td><strong>물품/시설 코드</strong></td>
+										<td><strong>물품/시설 분류</strong></td>
+										<td><strong>물품/시설 카테고리</strong></td>
+										<td><strong>물품/시설 명</strong></td>
+										<!-- <td><strong>물품 상태 코드</strong></td> -->
 										<td><strong>물품 상태</strong></td>
+										<td><strong>AS 상태</strong></td>
 										<td><strong>반납 확인 일자</strong></td>
 										<td><strong>AS 의뢰 신청</strong></td>
-										<!-- <td><strong>수정</strong></td>
-										<td><strong>삭제</strong></td> -->
 									</tr>
 								</thead>
 								<tbody>
+									<!--
+										현재 selectListReturnGoodsfacilityInfoForAfterService.jsp 페이지에서는,
+										(1) 현재 로그인 하고 있는 공무원 계정이 소속된 지자체 기관에 반납된 물품/시설 정보가 보인다.
+										(2) <return_goodsfacility_info>테이블에서 물품상태가 "양호"한건 DB에서 가져오지 않는다.
+										(3) <return_goodsfacility_info>테이블에서 is_finish_afterservice 속성이 "Y"인건 DB에서 가져오지 않는다.
+										(4) <goodsfacility>테이블에서 goodsfacility_state_afterservice 속성이 "일반"("AS중"(X) )인 것만 DB에서 가져온다.
+										공무원이 AS를 신청하면,
+										<goodsfacility> 테이블에서 goodsfacility_state_afterservice 속성을 "일반"-> "AS중"으로 변경해주고(AS중 으로 update)
+										동시에 goodsfacility_is_possible_rental 속성을 "Y" -> "N"으로 변경해준다.(N으로 update)
+										
+										공무원이  AS를 완료하면, <united_afterservice_request>테이블에 해당되는 FK(ForignKey)를 참조해 AS를 완료한 물품/시설의 
+										<united_afterservice_request> , <return_goodsfacility_info>, <regular_check> 테이블에 있는
+										is_finish_afterservice 속성을 "N"->"Y"로 변경해준다.
+										
+									  -->
 									<c:forEach var="returnGoodsfacilityInfoDto" items="${list}">
-										<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
-										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
-										<%-- <c:choose>
-											<c:when test="${returnGoodsfacilityInfoDto.adminagencyCode eq member.adminagencyCode}"> --%>
-												<tr>
-													<td><strong>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityRentalCode}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityCode}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.classifyGoodsfacility}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.citizenId}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.isRequestedToReturnAsDelivery}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.overdueDays}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.adminagencyCode}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.functionaryId}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.stateGoodsCode}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.stateGoods}</strong></td>
-													<td><strong>${returnGoodsfacilityInfoDto.dateReturnCheck}</strong></td>
-													<td>
-														<c:choose>
-															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
-																<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?returnGoodsfacilityInfoCode=${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}&functionaryId=${member.memberId}&beforePageCode=반납AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
-															</c:when>
-														</c:choose>
-													</td>
-												</tr>
-											<%-- </c:when>
-										</c:choose> --%>
+										<tr>
+											<td><strong>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.adminagencyCode}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.adminagencyName}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.functionaryId}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityCode}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.classifyGoodsfacility}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityThreeName}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityName}</strong></td>
+											<%-- <td><strong>${returnGoodsfacilityInfoDto.stateGoodsCode}</strong></td> --%>
+											<td><strong>${returnGoodsfacilityInfoDto.stateGoods}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.goodsfacilityStateAfterservice}</strong></td>
+											<td><strong>${returnGoodsfacilityInfoDto.dateReturnCheck}</strong></td>
+											<td>
+												<c:choose>
+													<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
+														<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?returnGoodsfacilityInfoCode=${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}&functionaryId=${member.memberId}&beforePageCode=반납AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
