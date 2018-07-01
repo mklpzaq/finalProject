@@ -157,7 +157,6 @@ public class UnitedAfterserviceRequestController {
 		model.addAttribute("pagePerRow", pagePerRow);
 		model.addAttribute("searchSelect", searchSelect);
 		model.addAttribute("searchWord", searchWord);
-		logger.debug("★★★★★★★★★★★★★★리스트 확인용★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug("list : "+ map.get("list"));
 		logger.debug("lastPage : "+ map.get("lastPage"));
 		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));

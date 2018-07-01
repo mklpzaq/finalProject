@@ -145,6 +145,7 @@ public class UnitedAfterserviceRequestService {
 	public void insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("insertUnitedAfterserviceRequest UnitedAfterserviceRequestService");
 		unitedAfterserviceRequestDao.insertUnitedAfterserviceRequest(unitedAfterserviceRequestDto);
+		unitedAfterserviceRequestDao.updateGoodsFacilityStateAfterservice(unitedAfterserviceRequestDto);
 	}
 	
 	public AgencyDto selectOneAgencyForAjax(AgencyDto agencyDto) {

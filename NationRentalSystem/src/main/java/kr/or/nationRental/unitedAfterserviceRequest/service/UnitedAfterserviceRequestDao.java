@@ -21,6 +21,9 @@ public class UnitedAfterserviceRequestDao {
 	private static final Logger logger = LoggerFactory.getLogger(UnitedAfterserviceRequestDao.class);
 	final String NS = "kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestMapper.";
 	
+	
+	
+	
 	/*public List<RegularCheckDto> selectListRegularCheck() {
 		logger.debug("selectListRegularCheck UnitedAfterserviceRequestDao");
 		return sqlSession.selectList(NS+"selectListRegularCheck");
@@ -29,7 +32,6 @@ public class UnitedAfterserviceRequestDao {
 	public UnitedAfterserviceRequestDto selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
 		logger.debug("selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS UnitedAfterserviceRequestDao");
 		unitedAfterserviceRequestDto = sqlSession.selectOne(NS+"selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS", unitedAfterserviceRequestDto);
-		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★");
 		logger.debug(unitedAfterserviceRequestDto.toString());
 		return unitedAfterserviceRequestDto;
 	}
@@ -52,6 +54,13 @@ public class UnitedAfterserviceRequestDao {
 	public List<UnitedAfterserviceRequestDto> selectListUnitedAfterserviceRequest(Map<String, Object> map) {
 		logger.debug("selectListUnitedAfterserviceRequest UnitedAfterserviceRequestDao");
 		return sqlSession.selectList(NS+"selectListUnitedAfterserviceRequest", map);
+	}
+	
+	
+	
+	public void updateGoodsFacilityStateAfterservice(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {
+		logger.debug("updateGoodsFacilityStateAfterservice UnitedAfterserviceRequestDao");
+		sqlSession.update(NS+"updateGoodsFacilityStateAfterservice", unitedAfterserviceRequestDto);
 	}
 	
 	public void insertUnitedAfterserviceRequest(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto) {

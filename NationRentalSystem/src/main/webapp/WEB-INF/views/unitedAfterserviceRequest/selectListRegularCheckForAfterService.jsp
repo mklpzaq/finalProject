@@ -99,13 +99,18 @@
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
 												<li><a href="#">정기점검 코드</a></li>
 												<li><a href="#">지자체 기관 코드</a></li>
-												<li><a href="#">물품/시설 코드</a></li>
-												<li><a href="#">물품/시설 명</a></li>
-												<li><a href="#">정기점검 결과</a></li>
+												<li><a href="#">지자체 기관 명</a></li>
 												<li><a href="#">점검 공무원 ID</a></li>
-												<li><a href="#">물품 상태 코드</a></li>
+												<li><a href="#">물품/시설 코드</a></li>
+												<li><a href="#">물품/시설 분류</a></li>
+												<!-- <li><a href="#">물품/시설 카테고리 코드</a></li> -->
+												<li><a href="#">물품/시설 카테고리</a></li>
+												<li><a href="#">물품/시설 명</a></li>
+												<!-- <li><a href="#">물품/시설 상태 코드</a></li> -->
+												<li><a href="#">물품/시설 상태</a></li>
+												<li><a href="#">정기점검 결과</a></li>
+												<li><a href="#">AS 상태</a></li>
 												<li><a href="#">정기점검 결과 날짜</a></li>
-												<li><a href="#">dateRegularCheckGoodsfacility</a></li>
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -124,11 +129,17 @@
 									<tr>
 										<td><strong>정기점검 코드</strong></td>
 										<td><strong>지자체 기관 코드</strong></td>
-										<td><strong>물품/시설 코드</strong></td>
-										<td><strong>물품/시설 명</strong></td>
-										<td><strong>정기점검 결과</strong></td>
+										<td><strong>지자체 기관 명</strong></td>
 										<td><strong>점검 공무원 ID</strong></td>
-										<td><strong>물품 상태 코드</strong></td>
+										<td><strong>물품/시설 코드</strong></td>
+										<td><strong>물품/시설 분류</strong></td>
+										<!-- <td><strong>물품/시설 카테고리 코드</strong></td> -->
+										<td><strong>물품/시설 카테고리</strong></td>
+										<td><strong>물품/시설 명</strong></td>
+										<!-- <td><strong>물품/시설 상태 코드</strong></td> -->
+										<td><strong>물품/시설 상태</strong></td>
+										<td><strong>정기점검 결과</strong></td>
+										<td><strong>AS 상태</strong></td>
 										<td><strong>정기점검 결과 날짜</strong></td>
 										<td><strong>통합 AS 신청</strong></td>
 										<!-- <td><strong>수정</strong></td>
@@ -137,29 +148,29 @@
 								</thead>
 								<tbody>
 									<c:forEach var="regularCheckDto" items="${list}">
-									<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
-										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
-										<%-- <c:choose>
-											<c:when test="${regularCheckDto.adminagencyCode eq member.adminagencyCode}"> --%>
-												<tr>
-													<td><strong>${regularCheckDto.regularCheckCode}</strong></td>
-													<td><strong>${regularCheckDto.adminagencyCode}</strong></td>
-													<td><strong>${regularCheckDto.goodsfacilityCode}</strong></td>
-													<td><strong>${regularCheckDto.goodsfacilityName}</strong></td>
-													<td><strong>${regularCheckDto.textRegularCheck}</strong></td>
-													<td><strong>${regularCheckDto.functionaryId}</strong></td>
-													<td><strong>${regularCheckDto.stateGoodsCode}</strong></td>
-													<td><strong>${regularCheckDto.dateRegularCheckGoodsfacility}</strong></td>
-													<td>
-														<c:choose>
-															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
-																<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?regularCheckCode=${regularCheckDto.regularCheckCode}&functionaryId=${member.memberId}&beforePageCode=점검AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
-															</c:when>
-														</c:choose>
-													</td>
-												</tr>
-											<%-- </c:when>
-										</c:choose> --%>
+										<tr>
+											<td><strong>${regularCheckDto.regularCheckCode}</strong></td>
+											<td><strong>${regularCheckDto.adminagencyCode}</strong></td>
+											<td><strong>${regularCheckDto.adminagencyName}</strong></td>
+											<td><strong>${regularCheckDto.functionaryId}</strong></td>
+											<td><strong>${regularCheckDto.goodsfacilityCode}</strong></td>
+											<td><strong>${regularCheckDto.goodsfacilityClassifyGoodsfacility}</strong></td>
+											<%-- <td><strong>${regularCheckDto.goodsfacilityThreeCode}</strong></td> --%>
+											<td><strong>${regularCheckDto.goodsfacilityThreeName}</strong></td>
+											<td><strong>${regularCheckDto.goodsfacilityName}</strong></td>
+											<%-- <td><strong>${regularCheckDto.stateGoodsCode}</strong></td> --%>
+											<td><strong>${regularCheckDto.stateGoods}</strong></td>
+											<td><strong>${regularCheckDto.textRegularCheck}</strong></td>
+											<td><strong>${regularCheckDto.goodsfacilityStateAfterservice}</strong></td>
+											<td><strong>${regularCheckDto.dateRegularCheckGoodsfacility}</strong></td>
+											<td>
+												<c:choose>
+													<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}">
+														<a href="${pageContext.request.contextPath}/insertUnitedAfterserviceRequest?regularCheckCode=${regularCheckDto.regularCheckCode}&functionaryId=${member.memberId}&beforePageCode=점검AS" class="btn btn-primary" role="button">AS 의뢰 신청</a>		
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>

@@ -9,7 +9,15 @@ public class RegularCheckDto {
 	private String functionaryId;
 	private int stateGoodsCode;
 	private String dateRegularCheckGoodsfacility;
+	/* 추가 맴버 변수 */
+	private String adminagencyName;
+	private String goodsfacilityClassifyGoodsfacility;
+	private int goodsfacilityThreeCode;
+	private String goodsfacilityThreeName;
+	private String stateGoods;
+	private String goodsfacilityStateAfterservice;
 	
+	/* getter, setter, toString  */
 	public int getRegularCheckCode() {
 		return regularCheckCode;
 	}
@@ -58,11 +66,54 @@ public class RegularCheckDto {
 	public void setDateRegularCheckGoodsfacility(String dateRegularCheckGoodsfacility) {
 		this.dateRegularCheckGoodsfacility = dateRegularCheckGoodsfacility;
 	}
+	public String getAdminagencyName() {
+		return adminagencyName;
+	}
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
+	}
+	public String getGoodsfacilityClassifyGoodsfacility() {
+		return goodsfacilityClassifyGoodsfacility;
+	}
+	public void setGoodsfacilityClassifyGoodsfacility(String goodsfacilityClassifyGoodsfacility) {
+		this.goodsfacilityClassifyGoodsfacility = goodsfacilityClassifyGoodsfacility;
+	}
+	public int getGoodsfacilityThreeCode() {
+		return goodsfacilityThreeCode;
+	}
+	public void setGoodsfacilityThreeCode(int goodsfacilityThreeCode) {
+		this.goodsfacilityThreeCode = goodsfacilityThreeCode;
+	}
+	public String getGoodsfacilityThreeName() {
+		return goodsfacilityThreeName;
+	}
+	public void setGoodsfacilityThreeName(String goodsfacilityThreeName) {
+		this.goodsfacilityThreeName = goodsfacilityThreeName;
+	}
+	public String getStateGoods() {
+		return stateGoods;
+	}
+	public void setStateGoods(String stateGoods) {
+		this.stateGoods = stateGoods;
+	}
+	public String getGoodsfacilityStateAfterservice() {
+		return goodsfacilityStateAfterservice;
+	}
+	public void setGoodsfacilityStateAfterservice(String goodsfacilityStateAfterservice) {
+		this.goodsfacilityStateAfterservice = goodsfacilityStateAfterservice;
+	}
 	@Override
 	public String toString() {
 		return "RegularCheckDto [regularCheckCode=" + regularCheckCode + ", adminagencyCode=" + adminagencyCode
 				+ ", goodsfacilityCode=" + goodsfacilityCode + ", goodsfacilityName=" + goodsfacilityName
 				+ ", textRegularCheck=" + textRegularCheck + ", functionaryId=" + functionaryId + ", stateGoodsCode="
-				+ stateGoodsCode + ", dateRegularCheckGoodsfacility=" + dateRegularCheckGoodsfacility + "]";
+				+ stateGoodsCode + ", dateRegularCheckGoodsfacility=" + dateRegularCheckGoodsfacility
+				+ ", adminagencyName=" + adminagencyName + ", goodsfacilityClassifyGoodsfacility="
+				+ goodsfacilityClassifyGoodsfacility + ", goodsfacilityThreeCode=" + goodsfacilityThreeCode
+				+ ", goodsfacilityThreeName=" + goodsfacilityThreeName + ", stateGoods=" + stateGoods
+				+ ", goodsfacilityStateAfterservice=" + goodsfacilityStateAfterservice + "]";
 	}
+	
+
+	
 }

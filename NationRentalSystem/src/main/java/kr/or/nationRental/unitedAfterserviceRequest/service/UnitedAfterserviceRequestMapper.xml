@@ -51,85 +51,177 @@
 		SELECT
 			COUNT(*)
 		FROM
-			regular_check
+			regular_check AS regularcheck
+			INNER JOIN
+			adminagency AS admina
+			ON
+			regularcheck.adminagency_code = admina.adminagency_code
+		
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			gf.goodsfacility_code = regularcheck.goodsfacility_code
+				
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+			
+			INNER JOIN
+			state_goods AS stateg
+			ON
+			regularcheck.state_goods_code = stateg.state_goods_code
 		WHERE
-			adminagency_code = #{functionaryDto.adminagencyCode}
-		<if test="!searchWord.equals('')">
-			<choose>
-				<when test="searchSelect.equals('정기점검 코드')">
-					AND regular_check_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('지자체 기관 코드')">
-					AND adminagency_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 코드')">
-					AND goodsfacility_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 명')">
-					AND goodsfacility_name = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('정기점검 결과')">
-					AND text_regular_check = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('점검 공무원 ID')">
-					AND functionary_id = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품 상태 코드')">
-					AND state_goods_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('정기점검 결과 날짜')">
-					AND date_regular_check_goodsfacility = #{searchWord}
-				</when>
-			</choose>
-		</if>
+			regularcheck.adminagency_code = #{functionaryDto.adminagencyCode}
+			AND
+			stateg.state_goods != '양호'
+			AND
+			regularcheck.is_finish_afterservice = 'N'
+			AND
+			gf.goodsfacility_state_afterservice = '일반'
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('정기점검 코드')">
+						AND regularcheck.regular_check_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND admina.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 명')">
+						AND admina.adminagency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('점검 공무원 ID')">
+						AND regularcheck.functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 코드')">
+						AND gf.goodsfacility_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 분류')">
+						AND gf.goodsfacility_classify_goodsfacility = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리 코드')">
+						AND gfthree.goodsfacility_three_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리')">
+						AND gfthree.goodsfacility_three_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 명')">
+						AND gf.goodsfacility_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태 코드')">
+						AND stateg.state_goods_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태')">
+						AND stateg.state_goods = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과')">
+						AND regularcheck.text_regular_check = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('AS 상태')">
+						AND gf.goodsfacility_state_afterservice = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과 날짜')">
+						AND regularcheck.date_regular_check_goodsfacility = #{searchWord}
+					</when>
+				</choose>
+			</if>
 	</select>
 
 	<select id="selectListRegularCheck"
 			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.regularCheck.service.RegularCheckDto">
-		SELECT
-			regular_check_code AS regularCheckCode
-			,adminagency_code AS adminagencyCode
-			,goodsfacility_code AS goodsfacilityCode
-			,goodsfacility_name AS goodsfacilityName
-			,text_regular_check AS textRegularCheck
-			,functionary_id AS functionaryId
-			,state_goods_code AS stateGoodsCode
-			,date_regular_check_goodsfacility AS dateRegularCheckGoodsfacility
+		SELECT 
+			regularcheck.regular_check_code AS regularCheckCode
+			,admina.adminagency_code AS adminagencyCode
+			,admina.adminagency_name AS adminagencyName
+			,regularcheck.functionary_id AS functionaryId
+			,gf.goodsfacility_code AS goodsfacilityCode
+			,gf.goodsfacility_classify_goodsfacility AS goodsfacilityClassifyGoodsfacility
+			,gfthree.goodsfacility_three_code AS goodsfacilityThreeCode
+			,gfthree.goodsfacility_three_name AS goodsfacilityThreeName
+			,gf.goodsfacility_name AS goodsfacilityName
+			,stateg.state_goods_code AS stateGoodsCode
+			,stateg.state_goods AS stateGoods
+			,regularcheck.text_regular_check AS textRegularCheck
+			,gf.goodsfacility_state_afterservice AS goodsfacilityStateAfterservice
+			,regularcheck.date_regular_check_goodsfacility AS dateRegularCheckGoodsfacility
 		FROM
-			regular_check
+			regular_check AS regularcheck
+			INNER JOIN
+			adminagency AS admina
+			ON
+			regularcheck.adminagency_code = admina.adminagency_code
+		
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			gf.goodsfacility_code = regularcheck.goodsfacility_code
+				
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+			
+			INNER JOIN
+			state_goods AS stateg
+			ON
+			regularcheck.state_goods_code = stateg.state_goods_code
 		WHERE
-			adminagency_code = #{functionaryDto.adminagencyCode}
-		<if test="!searchWord.equals('')">
-			<choose>
-				<when test="searchSelect.equals('정기점검 코드')">
-					AND regular_check_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('지자체 기관 코드')">
-					AND adminagency_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 코드')">
-					AND goodsfacility_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품/시설 명')">
-					AND goodsfacility_name = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('정기점검 결과')">
-					AND text_regular_check = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('점검 공무원 ID')">
-					AND functionary_id = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('물품 상태 코드')">
-					AND state_goods_code = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('정기점검 결과 날짜')">
-					AND date_regular_check_goodsfacility = #{searchWord}
-				</when>
-			</choose>
-		</if>
-		ORDER BY regular_check_code DESC
-		LIMIT #{beginRow}, #{pagePerRow}
+			regularcheck.adminagency_code = #{functionaryDto.adminagencyCode}
+			AND
+			stateg.state_goods != '양호'
+			AND
+			regularcheck.is_finish_afterservice = 'N'
+			AND
+			gf.goodsfacility_state_afterservice = '일반'
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('정기점검 코드')">
+						AND regularcheck.regular_check_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND admina.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 명')">
+						AND admina.adminagency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('점검 공무원 ID')">
+						AND regularcheck.functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 코드')">
+						AND gf.goodsfacility_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 분류')">
+						AND gf.goodsfacility_classify_goodsfacility = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리 코드')">
+						AND gfthree.goodsfacility_three_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리')">
+						AND gfthree.goodsfacility_three_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 명')">
+						AND gf.goodsfacility_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태 코드')">
+						AND stateg.state_goods_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태')">
+						AND stateg.state_goods = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과')">
+						AND regularcheck.text_regular_check = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('AS 상태')">
+						AND gf.goodsfacility_state_afterservice = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과 날짜')">
+						AND regularcheck.date_regular_check_goodsfacility = #{searchWord}
+					</when>
+				</choose>
+			</if>
+			ORDER BY regular_check_code DESC
+			LIMIT #{beginRow}, #{pagePerRow}
 
 	</select>
 	
@@ -265,6 +357,18 @@
 		LIMIT #{beginRow}, #{pagePerRow}
 	
 	</select>
+	
+	<update id="updateGoodsFacilityStateAfterservice"
+			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		UPDATE
+			goodsfacility
+		SET
+			goodsfacility_state_afterservice = 'AS중'
+			,goodsfacility_is_possible_rental = 'N'
+		WHERE
+			goodsfacility_code = #{goodsfacilityCode}
+	
+	</update>
 	
 	<insert id="insertUnitedAfterserviceRequest"
 			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">

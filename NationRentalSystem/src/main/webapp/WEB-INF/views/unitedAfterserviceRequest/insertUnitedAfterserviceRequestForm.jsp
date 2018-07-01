@@ -115,7 +115,7 @@
 										<input type="text" class="form-control" name="goodsfacilityThreeName" id="goodsfacilityThreeName" value="${unitedAfterserviceRequestDto.goodsfacilityThreeName}" placeholder="물품/시설 카테고리 명" readonly>
 									</div>
 								</div>
-								<div class="form-group hidden">
+								<div class="form-group">
 									<label for="goodsfacilityCode" class="col-sm-3 control-label">물품/시설 코드</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" value="${unitedAfterserviceRequestDto.goodsfacilityCode}" placeholder="물품/시설 코드" readonly>
