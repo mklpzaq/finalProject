@@ -5,6 +5,103 @@
  
 <mapper namespace="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryMapper">
 	
+	<update id="updateGoodsfacilityStateAfterService"
+			parameterType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		UPDATE
+			goodsfacility
+		SET
+			goodsfacility_state_afterservice = '배송준비중'
+			,goodsfacility_is_possible_rental = 'N'
+		WHERE
+			goodsfacility_code = #{goodsfacilityCode}
+	</update>
+	
+	<update id="updateDeliveryOrderCitizenForAccept"
+			parameterType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		UPDATE
+			delivery_order_citizen
+		SET
+			is_functionary_accept_order = 'Y'
+		WHERE
+			delivery_order_citizen_code = #{deliveryOrderCitizenCode}
+	</update>
+	
+	<insert id="insertDeliveryOrderFunctionary"
+			parameterType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		INSERT
+		INTO
+			delivery_order_functionary(
+				delivery_order_citizen_code
+				,adminagency_code
+				,agency_code
+				,agency_name
+				,functionary_id
+				,delivery_order_functionary_date
+			)
+		VALUES(
+			#{deliveryOrderCitizenCode}
+			,#{adminagencyCode}
+			,#{agencyCode}
+			,#{agencyName}
+			,#{functionaryId}
+			,NOW()
+		)
+	</insert>
+	
+	<select id="selectListAgencyNameAndBusinesstypeName"
+			parameterType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto"
+			resultType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		SELECT
+			agen.agency_name AS agencyName
+			,agenbusin.agency_businesstype_name AS agencyBusinesstypeName
+		FROM
+			agency AS agen
+			INNER JOIN
+			agency_businesstype AS agenbusin
+			ON
+			agen.agency_businesstype_code = agenbusin.agency_businesstype_code
+		WHERE
+			agen.adminagency_code = #{adminagencyCode}
+			AND
+			agenbusin.agency_businesstype_name = '배달'
+	</select>
+	
+	<select id="selectOneDeliveryOrderFunctionaryForInsertForm"
+			parameterType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto"
+			resultType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		SELECT
+			gf.goodsfacility_code AS goodsfacilityCode
+			,gf.goodsfacility_classify_goodsfacility AS goodsfacilityClassifyGoodsfacility
+			,gfthree.goodsfacility_three_name AS goodsfacilityThreeName
+			,gf.goodsfacility_name AS goodsfacilityName
+			,delivorderciti.classify_rental_state AS classifyRentalState
+			,delivorderciti.citizen_id AS citizenId
+			,delivorderciti.send_address_sido AS sendAddressSido
+			,delivorderciti.send_address_sigungu AS sendAddressSigungu
+			,delivorderciti.send_address_eupmyeon AS sendAddressEupmyeon
+			,delivorderciti.send_address_sangse AS sendAddressSangse
+			,delivorderciti.receive_address_sido AS receiveAddressSido
+			,delivorderciti.receive_address_sigungu AS receiveAddressSigungu
+			,delivorderciti.receive_address_eupmyeon AS receiveAddressEupmyeon
+			,delivorderciti.receive_address_sangse AS receiveAddressSangse
+		FROM
+			delivery_order_citizen AS delivorderciti
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			delivorderciti.goodsfacility_code = gf.goodsfacility_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+	
+		WHERE
+			delivorderciti.delivery_order_citizen_code = ${deliveryOrderCitizenCode};
+	</select>
+	
+	
+	
 	<select id="totalCountDeliveryOrderCitizenForAfterservice"
 			parameterType="java.util.Map"
 			resultType="Integer">
@@ -27,23 +124,26 @@
 			ON
 			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
 		WHERE
-			delivorderciti.adminagency_code = #{deliveryOrderCitizenDto.adminagencyCode}
+			delivorderciti.adminagency_code = 1234
 			AND
 			delivorderciti.is_canceled_delivery = 'N'
-			
+			AND
+			delivorderciti.is_functionary_accept_order = 'N'
+			AND
+			gf.goodsfacility_state_afterservice = '일반'
 			<if test="!searchWord.equals('')">
 				<choose>
-					<when test="searchSelect.equals('정기점검 코드')">
-						AND regularcheck.regular_check_code = #{searchWord}
+					<when test="searchSelect.equals('시민 배달 신청 코드')">
+						AND delivorderciti.delivery_order_citizen_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('시설/물품 대여 코드')">
+						AND delivorderciti.goodsfacility_rental_code = #{searchWord}
 					</when>
 					<when test="searchSelect.equals('지자체 기관 코드')">
 						AND admina.adminagency_code = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('지자체 기관 명')">
+					<when test="searchSelect.equals('지자체 기관명')">
 						AND admina.adminagency_name = #{searchWord}
-					</when>
-					<when test="searchSelect.equals('점검 공무원 ID')">
-						AND regularcheck.functionary_id = #{searchWord}
 					</when>
 					<when test="searchSelect.equals('물품/시설 코드')">
 						AND gf.goodsfacility_code = #{searchWord}
@@ -60,20 +160,17 @@
 					<when test="searchSelect.equals('물품/시설 명')">
 						AND gf.goodsfacility_name = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('물품/시설 상태 코드')">
-						AND stateg.state_goods_code = #{searchWord}
+					<when test="searchSelect.equals('대여/반납 상태')">
+						AND delivorderciti.classify_rental_state = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('물품/시설 상태')">
-						AND stateg.state_goods = #{searchWord}
+					<when test="searchSelect.equals('배달 요청 시민 ID')">
+						AND delivorderciti.citizen_id = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('정기점검 결과')">
-						AND regularcheck.text_regular_check = #{searchWord}
+					<when test="searchSelect.equals('배달 취소 여부')">
+						AND delivorderciti.is_canceled_delivery = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('AS 상태')">
-						AND gf.goodsfacility_state_afterservice = #{searchWord}
-					</when>
-					<when test="searchSelect.equals('정기점검 결과 날짜')">
-						AND regularcheck.date_regular_check_goodsfacility = #{searchWord}
+					<when test="searchSelect.equals('시민 배달 신청 날짜')">
+						AND delivorderciti.delivery_order_citizen_date = #{searchWord}
 					</when>
 				</choose>
 			</if>
@@ -121,23 +218,27 @@
 			ON
 			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
 		WHERE
-			delivorderciti.adminagency_code = #{deliveryOrderFunctionaryDto.adminagencyCode}
+			delivorderciti.adminagency_code = 1234
 			AND
 			delivorderciti.is_canceled_delivery = 'N'
+			AND
+			delivorderciti.is_functionary_accept_order = 'N'
+			AND
+			gf.goodsfacility_state_afterservice = '일반'
 			
 			<if test="!searchWord.equals('')">
 				<choose>
-					<when test="searchSelect.equals('정기점검 코드')">
-						AND regularcheck.regular_check_code = #{searchWord}
+					<when test="searchSelect.equals('시민 배달 신청 코드')">
+						AND delivorderciti.delivery_order_citizen_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('시설/물품 대여 코드')">
+						AND delivorderciti.goodsfacility_rental_code = #{searchWord}
 					</when>
 					<when test="searchSelect.equals('지자체 기관 코드')">
 						AND admina.adminagency_code = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('지자체 기관 명')">
+					<when test="searchSelect.equals('지자체 기관명')">
 						AND admina.adminagency_name = #{searchWord}
-					</when>
-					<when test="searchSelect.equals('점검 공무원 ID')">
-						AND regularcheck.functionary_id = #{searchWord}
 					</when>
 					<when test="searchSelect.equals('물품/시설 코드')">
 						AND gf.goodsfacility_code = #{searchWord}
@@ -154,20 +255,17 @@
 					<when test="searchSelect.equals('물품/시설 명')">
 						AND gf.goodsfacility_name = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('물품/시설 상태 코드')">
-						AND stateg.state_goods_code = #{searchWord}
+					<when test="searchSelect.equals('대여/반납 상태')">
+						AND delivorderciti.classify_rental_state = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('물품/시설 상태')">
-						AND stateg.state_goods = #{searchWord}
+					<when test="searchSelect.equals('배달 요청 시민 ID')">
+						AND delivorderciti.citizen_id = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('정기점검 결과')">
-						AND regularcheck.text_regular_check = #{searchWord}
+					<when test="searchSelect.equals('배달 취소 여부')">
+						AND delivorderciti.is_canceled_delivery = #{searchWord}
 					</when>
-					<when test="searchSelect.equals('AS 상태')">
-						AND gf.goodsfacility_state_afterservice = #{searchWord}
-					</when>
-					<when test="searchSelect.equals('정기점검 결과 날짜')">
-						AND regularcheck.date_regular_check_goodsfacility = #{searchWord}
+					<when test="searchSelect.equals('시민 배달 신청 날짜')">
+						AND delivorderciti.delivery_order_citizen_date = #{searchWord}
 					</when>
 				</choose>
 			</if>

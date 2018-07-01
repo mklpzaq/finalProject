@@ -1,5 +1,6 @@
 package kr.or.nationRental.deliveryOrderFunctionaryService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DeliveryOrderFunctionaryService {
@@ -17,6 +17,39 @@ public class DeliveryOrderFunctionaryService {
 	private DeliveryOrderFunctionaryDao deliveryOrderFunctionaryDao;
 	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderFunctionaryService.class);
 	
+	@Transactional
+	public void insertDeliveryOrderFunctionary(DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto) {
+		logger.debug("insertDeliveryOrderFunctionary DeliveryOrderFunctionaryService");
+		deliveryOrderFunctionaryDao.insertDeliveryOrderFunctionary(deliveryOrderFunctionaryDto);
+		deliveryOrderFunctionaryDao.updateDeliveryOrderCitizenForAccept(deliveryOrderFunctionaryDto);
+		deliveryOrderFunctionaryDao.updateGoodsfacilityStateAfterService(deliveryOrderFunctionaryDto);
+	}
+	
+	public List<String> selectListAgencyNameAndBusinesstypeName(DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto){
+		logger.debug("selectListAgencyNameAndBusinesstypeName DeliveryOrderFunctionaryService");
+		List<DeliveryOrderFunctionaryDto> list =  deliveryOrderFunctionaryDao.selectListAgencyNameAndBusinesstypeName(deliveryOrderFunctionaryDto);
+		List<String> ListAgencyNameAndBusinesstypeName = new ArrayList<String>();
+		if(!list.isEmpty()) {
+			for(DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDtoForBusinessType : list) {
+				ListAgencyNameAndBusinesstypeName.add(deliveryOrderFunctionaryDtoForBusinessType.getAgencyName()+"-"+deliveryOrderFunctionaryDtoForBusinessType.getAgencyBusinesstypeName());
+			}
+		}
+		return ListAgencyNameAndBusinesstypeName;
+	}
+	
+	public DeliveryOrderFunctionaryDto selectOneDeliveryOrderFunctionaryForInsertForm(DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto) {
+		logger.debug("DeliveryOrderFunctionaryDto DeliveryOrderFunctionaryService");
+		int deliveryOrderCitizenCode = deliveryOrderFunctionaryDto.getDeliveryOrderCitizenCode();
+		int adminagencyCode = deliveryOrderFunctionaryDto.getAdminagencyCode();
+		String functionaryId = deliveryOrderFunctionaryDto.getFunctionaryId();
+		deliveryOrderFunctionaryDto = deliveryOrderFunctionaryDao.selectOneDeliveryOrderFunctionaryForInsertForm(deliveryOrderFunctionaryDto);
+		deliveryOrderFunctionaryDto.setDeliveryOrderCitizenCode(deliveryOrderCitizenCode);
+		deliveryOrderFunctionaryDto.setAdminagencyCode(adminagencyCode);
+		deliveryOrderFunctionaryDto.setFunctionaryId(functionaryId);
+		
+		return deliveryOrderFunctionaryDto;
+	}
+
 	public Map<String, Object> selectListDeliveryOrderCitizenForAfterservice(int currentPage, int pagePerRow, String searchSelect, String searchWord, DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto){
 		logger.debug("selectListDeliveryOrderCitizenForAfterservice DeliveryOrderFunctionaryService");
 		int beginRow = (currentPage-1)*pagePerRow;

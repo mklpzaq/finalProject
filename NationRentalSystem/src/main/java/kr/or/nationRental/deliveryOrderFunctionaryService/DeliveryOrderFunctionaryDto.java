@@ -28,6 +28,7 @@ public class DeliveryOrderFunctionaryDto {
 	private String goodsfacilityThreeCode;
 	private String goodsfacilityThreeName;
 	private String goodsfacilityName;
+	private String agencyBusinesstypeName;
 	
 	public int getDeliveryOrderFunctionaryCode() {
 		return deliveryOrderFunctionaryCode;
@@ -185,6 +186,12 @@ public class DeliveryOrderFunctionaryDto {
 	public void setGoodsfacilityName(String goodsfacilityName) {
 		this.goodsfacilityName = goodsfacilityName;
 	}
+	public String getAgencyBusinesstypeName() {
+		return agencyBusinesstypeName;
+	}
+	public void setAgencyBusinesstypeName(String agencyBusinesstypeName) {
+		this.agencyBusinesstypeName = agencyBusinesstypeName;
+	}
 	@Override
 	public String toString() {
 		return "DeliveryOrderFunctionaryDto [deliveryOrderFunctionaryCode=" + deliveryOrderFunctionaryCode
@@ -201,6 +208,6 @@ public class DeliveryOrderFunctionaryDto {
 				+ isCanceledDelivery + ", adminagencyName=" + adminagencyName + ", goodsfacilityClassifyGoodsfacility="
 				+ goodsfacilityClassifyGoodsfacility + ", goodsfacilityThreeCode=" + goodsfacilityThreeCode
 				+ ", goodsfacilityThreeName=" + goodsfacilityThreeName + ", goodsfacilityName=" + goodsfacilityName
-				+ "]";
+				+ ", agencyBusinesstypeName=" + agencyBusinesstypeName + "]";
 	}
 }

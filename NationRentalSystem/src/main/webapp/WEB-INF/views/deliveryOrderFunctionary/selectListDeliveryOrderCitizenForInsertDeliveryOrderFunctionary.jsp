@@ -33,14 +33,14 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListBoard?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text());
+					$(location).attr('href', './selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text() + '&adminagencyCode=' + $('#adminagencyCode').val());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchSelect = $('#selectButtonText').text();
 					searchWord = $('#searchWord').val();
-					$(location).attr('href', './selectListBoard?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord);
+					$(location).attr('href', './selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord + '&adminagencyCode=' + $('#adminagencyCode').val());
 				});
 				
 			});
@@ -54,10 +54,11 @@
 				<div class="col-sm-2">
 					<jsp:include page="../module/leftUnitedAfterserviceRequest/leftUnitedAfterserviceRequest.jsp"/>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-9">
 					<!-- Begin Content -->
-						
-					<div style="margin:15px 0 0 0;" class="panel panel-default">
+					
+					<input id="adminagencyCode" type="hidden" value="${member.adminagencyCode}">
+					<div class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
 								<div class="col-md-4">
@@ -94,11 +95,21 @@
 												<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-												<li><a href="#">boardCode</a></li>
-												<li><a href="#">boardCategoryCode</a></li>
-												<li><a href="#">memberId</a></li>
-												<li><a href="#">boardName</a></li>
-												<li><a href="#">textBoardContent</a></li>
+												<li><a href="#">시민 배달 신청 코드</a></li>
+												<li><a href="#">시설/물품 대여 코드</a></li>
+												<li><a href="#">지자체 기관 코드</a></li>
+												<li><a href="#">지자체 기관명</a></li>
+												<li><a href="#">물품/시설 코드</a></li>
+												<li><a href="#">물품/시설 분류</a></li>
+												<li><a href="#">물품/시설 카테고리 코드</a></li>
+												<!-- <li><a href="#">물품/시설 카테고리</a></li> -->
+												<li><a href="#">물품/시설 명</a></li>
+												<li><a href="#">대여/반납 상태</a></li>
+												<li><a href="#">배달 요청 시민 ID</a></li>
+												<!-- <li><a href="#">보내는 주소</a></li>
+												<li><a href="#">받는 주소</a></li> -->
+												<li><a href="#">배달 취소 여부</a></li>
+												<li><a href="#">시민 배달 신청 날짜</a></li>
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -121,11 +132,11 @@
 										<td><strong>지자체 기관명</strong></td>
 										<td><strong>물품/시설 코드</strong></td>
 										<td><strong>물품/시설 분류</strong></td>
-										<td><strong>물품/시설 카테고리 코드</strong></td>
+										<!-- <td><strong>물품/시설 카테고리 코드</strong></td> -->
 										<td><strong>물품/시설 카테고리</strong></td>
 										<td><strong>물품/시설 명</strong></td>
 										<td><strong>대여/반납 상태</strong></td>
-										<td><strong>배달 요청 시민  ID</strong></td>
+										<td><strong>배달 요청 시민 ID</strong></td>
 										<td><strong>보내는 주소</strong></td>
 										<td><strong>받는 주소</strong></td>
 										<td><strong>배달 취소 여부</strong></td>
@@ -142,7 +153,7 @@
 											<td><strong>${deliveryOrderFunctionaryDto.adminagencyName}</strong></td>
 											<td><strong>${deliveryOrderFunctionaryDto.goodsfacilityCode}</strong></td>
 											<td><strong>${deliveryOrderFunctionaryDto.goodsfacilityClassifyGoodsfacility}</strong></td>
-											<td><strong>${deliveryOrderFunctionaryDto.goodsfacilityThreeCode}</strong></td>
+											<%-- <td><strong>${deliveryOrderFunctionaryDto.goodsfacilityThreeCode}</strong></td> --%>
 											<td><strong>${deliveryOrderFunctionaryDto.goodsfacilityThreeName}</strong></td>
 											<td><strong>${deliveryOrderFunctionaryDto.goodsfacilityName}</strong></td>
 											<td><strong>${deliveryOrderFunctionaryDto.classifyRentalState}</strong></td>
@@ -151,7 +162,9 @@
 											<td><strong>${deliveryOrderFunctionaryDto.receiveAddressSido} ${deliveryOrderFunctionaryDto.receiveAddressSigungu} ${deliveryOrderFunctionaryDto.receiveAddressEupmyeon} ${deliveryOrderFunctionaryDto.receiveAddressSangse}</strong></td>
 											<td><strong>${deliveryOrderFunctionaryDto.isCanceledDelivery}</strong></td>
 											<td><strong>${deliveryOrderFunctionaryDto.deliveryOrderCitizenDate}</strong></td>
-											
+											<td>
+												<a href="${pageContext.request.contextPath}/insertDeliveryOrderFunctionary?deliveryOrderCitizenCode=${deliveryOrderFunctionaryDto.deliveryOrderCitizenCode}&functionaryId=${member.memberId}&adminagencyCode=${member.adminagencyCode}" class="btn btn-primary" role="button">배달 의뢰 신청</a>
+											</td>
 											
 											
 											<!-- <td><a href="#">수정</a></td>
@@ -169,19 +182,19 @@
 							<nav>
 								<ul class="pagination">
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+										<a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
 									<li>
 										<c:choose>
 											<c:when test="${currentPage > 1}">
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
@@ -192,10 +205,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -204,10 +217,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -216,19 +229,19 @@
 									<li>
 										<c:choose>
 											<c:when test="${currentPage < lastPage}">
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListBoard?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+										<a href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
 									</li>
@@ -242,7 +255,7 @@
 					
 					<!-- End Content -->
 				</div>
-				<div class="col-sm-2"></div>
+				<div class="col-sm-1"></div>
 			</div>
 		</div>
 		<jsp:include page="../module/bottom/bottomContent.jsp"/>

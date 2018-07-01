@@ -1,5 +1,6 @@
 package kr.or.nationRental.deliveryOrderFunctionaryController;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -23,18 +24,47 @@ public class DeliveryOrderFunctionaryController {
 	private DeliveryOrderFunctionaryService deliveryOrderFunctionaryService;
 	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderFunctionaryController.class);
 	
+	@RequestMapping(value="/insertDeliveryOrderFunctionary", method=RequestMethod.GET)
+	public String insertDeliveryOrderFunctionary(Model model
+												,DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto) {
+		logger.debug("GET insertDeliveryOrderFunctionary DeliveryOrderFunctionaryController");
+		logger.debug("★★★★★★★★★★insertDeliveryOrderFunctionary★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(deliveryOrderFunctionaryDto.toString());
+		logger.debug("값넘어오는 것 확인 deliveryOrderCitizenCode, adminagencyCode, functionaryId");
+		
+		deliveryOrderFunctionaryDto = deliveryOrderFunctionaryService.selectOneDeliveryOrderFunctionaryForInsertForm(deliveryOrderFunctionaryDto);
+		model.addAttribute("deliveryOrderFunctionaryDto", deliveryOrderFunctionaryDto);
+		
+		/* 배달업체 리스트를 가져와야 함. */
+		List<String> listAgencyNameAndBusinesstypeName = deliveryOrderFunctionaryService.selectListAgencyNameAndBusinesstypeName(deliveryOrderFunctionaryDto);
+		model.addAttribute("listAgencyNameAndBusinesstypeName", listAgencyNameAndBusinesstypeName);
+		
+		return "deliveryOrderFunctionary/insertDeliveryOrderFunctionaryForm";
+	}
+	
+	@RequestMapping(value="/insertDeliveryOrderFunctionary", method=RequestMethod.POST)
+	public String insertDeliveryOrderFunctionary(DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto) {
+		logger.debug("POST insertDeliveryOrderFunctionary DeliveryOrderFunctionaryController");
+		logger.debug("★★★★★★★★★★insertDeliveryOrderFunctionary★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug(deliveryOrderFunctionaryDto.toString());
+		deliveryOrderFunctionaryService.insertDeliveryOrderFunctionary(deliveryOrderFunctionaryDto);
+		
+		
+		return "redirect:/";
+	}
+	
+	
 	@RequestMapping(value="/selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary", method=RequestMethod.GET)
 	public String selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary(Model model
 									,HttpSession session
 									,DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-									,@RequestParam(value="searchSelect", defaultValue="정기점검 코드") String searchSelect
+									,@RequestParam(value="searchSelect", defaultValue="시민 배달 신청 코드") String searchSelect
 									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary DeliveryOrderFunctionaryController");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
-		logger.debug("★★★★★★★★★★★★★deliveryOrderFunctionaryDto★★★★★★★★★★★★★★★★★★");
 		logger.debug(deliveryOrderFunctionaryDto.toString());
 		
 		Map<String, Object> map = deliveryOrderFunctionaryService.selectListDeliveryOrderCitizenForAfterservice(currentPage, pagePerRow, searchSelect, searchWord, deliveryOrderFunctionaryDto);

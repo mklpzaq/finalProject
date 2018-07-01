@@ -32,7 +32,9 @@ public class LoginService {
 			logger.debug(memberDto.toString());
 			
 			session.setAttribute("member", memberDto);
-			
+			// 세션 유지시간 1시간
+		    session.setMaxInactiveInterval(60*60) ;
+
 		}else if(1 == loginDao.loginCheckCitizen(memberDto)) {
 			logger.debug("시민 로그인 성공");
 			memberDto = loginDao.selectOneCitizenById(memberDto);
@@ -40,6 +42,8 @@ public class LoginService {
 			logger.debug(memberDto.toString());
 			
 			session.setAttribute("member", memberDto);
+			// 세션 유지시간 1시간
+		    session.setMaxInactiveInterval(60*60) ;
 			
 		}else if(1 == loginDao.loginCheckAgencyEmployee(memberDto)) {
 			/*
@@ -54,6 +58,8 @@ public class LoginService {
 			logger.debug(memberDto.toString());
 			
 			session.setAttribute("member", memberDto);
+			// 세션 유지시간 1시간
+		    session.setMaxInactiveInterval(60*60) ;
 	
 		}else if(1 == loginDao.loginCheckFunctionary(memberDto)) {
 			/*
@@ -65,6 +71,8 @@ public class LoginService {
 			logger.debug(memberDto.toString());
 			
 			session.setAttribute("member", memberDto);
+			// 세션 유지시간 1시간
+		    session.setMaxInactiveInterval(60*60) ;
 			
 		}else {
 			logger.debug("로그인 실패");
