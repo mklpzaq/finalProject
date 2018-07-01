@@ -27,7 +27,7 @@ public class UnitedAfterserviceRequestController {
 	
 	
 	@RequestMapping(value="/selectListRegularCheckForAfterService", method=RequestMethod.GET)
-	public String selectListBoard(Model model
+	public String selectListRegularCheckForAfterService(Model model
 									,HttpSession session
 									,FunctionaryDto functionaryDto
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage

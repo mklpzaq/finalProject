@@ -1,41 +1,24 @@
-package kr.or.nationRental.board.service;
+package kr.or.nationRental.deliveryOrderFunctionaryService;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.or.nationRental.login.service.MemberDto;
+import kr.or.nationRental.deliveryOrderCitizen.service.DeliveryOrderCitizenDto;
 
 @Service
-public class BoardService {
+public class DeliveryOrderFunctionaryService {
 	@Autowired
-	private BoardDao boardDao;
-	private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
+	private DeliveryOrderFunctionaryDao deliveryOrderFunctionaryDao;
+	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderFunctionaryService.class);
 	
-	public List<BoardCategoryDto> getBoardCategory() {
-		logger.debug("getBoardCategory BoardService");
-		return boardDao.getBoardCategory();
-	}
-	
-	public MemberDto setGuestId(MemberDto memberDto){
-		logger.debug("setGuestId BoardService");
-		UUID uuid = UUID.randomUUID();
-		logger.debug("uuid : " + uuid);
-		String strUuid = uuid + "";
-		strUuid = strUuid.substring(0, 8);
-		String guestId = "guest@" + strUuid;
-		memberDto.setMemberId(guestId);
-		return memberDto;
-	}
-	
-	public Map<String, Object> selectListBoard(int currentPage, int pagePerRow, String searchSelect, String searchWord){
-		logger.debug("selectListBoard BoardService");
+	public Map<String, Object> selectListDeliveryOrderCitizenForAfterservice(int currentPage, int pagePerRow, String searchSelect, String searchWord, DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto){
+		logger.debug("selectListDeliveryOrderCitizenForAfterservice DeliveryOrderFunctionaryService");
 		int beginRow = (currentPage-1)*pagePerRow;
 		
 		/*Map<String, Integer> map = new HashMap<String, Integer>();*/
@@ -45,7 +28,7 @@ public class BoardService {
 		logger.debug("currentPage :" + currentPage);
 		logger.debug("beginRow :" + beginRow);
 		logger.debug("pagePerRow :" + pagePerRow);
-		
+		map.put("deliveryOrderFunctionaryDto", deliveryOrderFunctionaryDto);
 		/* searchSignal : 1 일경우 '검색버튼'을 누른경우가 되므로 
 		 * selectAddressList() 메서드를 사용하여 list를 가져올때,
 		 * searchWord와 일치하는 레코드 부분만 list에 저장하게 만들어 주어야 한다.
@@ -64,12 +47,12 @@ public class BoardService {
 		 * SQL문의 LIMIT문에 의해 제한되어 list에 저장된다.
 		 * (pagePerRow값이 10이면 list에 담기는 개수는 10개 레코드이다.)
 		 * */
-		List<BoardDto> list = boardDao.selectListBoard(map);
-		logger.debug("list<BoardDto> : " + list);
+		List<DeliveryOrderFunctionaryDto> list = deliveryOrderFunctionaryDao.selectListDeliveryOrderCitizenForAfterservice(map);
+		logger.debug("list<DeliveryOrderCitizenDto> : " + list);
 		/* 검색을 하였다면 검색조건에 맞는 레코드 개수가 반환되고,
 		 * 검색을 하지 않았다면 DB에 존재하는 모든 address 레코드 개수가 반환된다. 
 		 *  */
-		int total = boardDao.totalCountBoard(map);
+		int total = deliveryOrderFunctionaryDao.totalCountDeliveryOrderCitizenForAfterservice(map);
 		
 		/* DB에 address 레코드 수가 1개도 존재하지 않는 경우 == 초기상태일때, 1페이지로 나오게 lastPage를 1로 초기화 한다.*/
 		int lastPage = 0;
@@ -91,4 +74,5 @@ public class BoardService {
 		
 		return returnMap;
 	}
+	
 }

@@ -12,12 +12,18 @@
 				$('#returnAfterserviceBtn').click(function(){
 					$(location).attr('href', './selectListReturnGoodsfacilityInfoForAfterService?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
 				});
-				$('#regularChecAfterserviceBtn').click(function(){
+				$('#regularCheckAfterserviceBtn').click(function(){
 					$(location).attr('href', './selectListRegularCheckForAfterService?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
 				});
 				$('#listAfterserviceRequestBtn').click(function(){
 					$(location).attr('href', './selectListUnitedAfterserviceRequest');
 				});
+				$('#DeliveryRequestBtn').click(function(){
+					$(location).attr('href', './selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
+				});
+				/* $('#listAfterserviceRequestBtn').click(function(){
+					$(location).attr('href', './selectListUnitedAfterserviceRequest');
+				}); */
 			});	
 		</script>
 	</head>
@@ -25,8 +31,10 @@
 		<input id="adminagencyCodeForLeft" type="hidden" value="${member.adminagencyCode}">
 		<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
 			<button id="returnAfterserviceBtn" type="button" class="btn btn-default" >반납 AS 신청</button>
-			<button id="regularChecAfterserviceBtn"type="button" class="btn btn-default">점검 AS 신청</button>
+			<button id="regularCheckAfterserviceBtn"type="button" class="btn btn-default">점검 AS 신청</button>
 			<button id="listAfterserviceRequestBtn" type="button" class="btn btn-default">AS 신청 List</button>
+			<button id="DeliveryRequestBtn" type="button" class="btn btn-default">배달 의뢰 신청</button>
+			<button id="" type="button" class="btn btn-default">배달 의뢰 신청 List</button>
 		</div>
 	</body>
 </html>

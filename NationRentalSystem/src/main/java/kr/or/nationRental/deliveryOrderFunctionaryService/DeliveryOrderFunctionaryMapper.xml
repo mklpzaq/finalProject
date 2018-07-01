@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryMapper">
+	
+	<select id="totalCountDeliveryOrderCitizenForAfterservice"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			delivery_order_citizen AS delivorderciti
+			INNER JOIN
+			adminagency AS admina
+			ON
+			delivorderciti.adminagency_code = admina.adminagency_code
+			
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			delivorderciti.goodsfacility_code = gf.goodsfacility_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+		WHERE
+			delivorderciti.adminagency_code = #{deliveryOrderCitizenDto.adminagencyCode}
+			AND
+			delivorderciti.is_canceled_delivery = 'N'
+			
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('정기점검 코드')">
+						AND regularcheck.regular_check_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND admina.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 명')">
+						AND admina.adminagency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('점검 공무원 ID')">
+						AND regularcheck.functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 코드')">
+						AND gf.goodsfacility_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 분류')">
+						AND gf.goodsfacility_classify_goodsfacility = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리 코드')">
+						AND gfthree.goodsfacility_three_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리')">
+						AND gfthree.goodsfacility_three_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 명')">
+						AND gf.goodsfacility_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태 코드')">
+						AND stateg.state_goods_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태')">
+						AND stateg.state_goods = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과')">
+						AND regularcheck.text_regular_check = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('AS 상태')">
+						AND gf.goodsfacility_state_afterservice = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과 날짜')">
+						AND regularcheck.date_regular_check_goodsfacility = #{searchWord}
+					</when>
+				</choose>
+			</if>
+	</select>
+	
+	<select id="selectListDeliveryOrderCitizenForAfterservice"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		SELECT
+			delivorderciti.delivery_order_citizen_code AS deliveryOrderCitizenCode
+			,delivorderciti.goodsfacility_rental_code AS goodsfacilityRentalCode
+			,admina.adminagency_code AS adminagencyCode
+			,admina.adminagency_name AS adminagencyName
+			,gf.goodsfacility_code AS goodsfacilityCode
+			,gf.goodsfacility_classify_goodsfacility AS goodsfacilityClassifyGoodsfacility
+			,gfthree.goodsfacility_three_code AS goodsfacilityThreeCode
+			,gfthree.goodsfacility_three_name AS goodsfacilityThreeName
+			,gf.goodsfacility_name AS goodsfacilityName
+			,delivorderciti.classify_rental_state AS classifyRentalState
+			,delivorderciti.citizen_id AS citizenId
+			,delivorderciti.send_address_sido AS sendAddressSido
+			,delivorderciti.send_address_sigungu AS sendAddressSigungu
+			,delivorderciti.send_address_eupmyeon AS sendAddressEupmyeon
+			,delivorderciti.send_address_sangse AS sendAddressSangse
+			,delivorderciti.receive_address_sido AS receiveAddressSido
+			,delivorderciti.receive_address_sigungu AS receiveAddressSigungu
+			,delivorderciti.receive_address_eupmyeon AS receiveAddressEupmyeon
+			,delivorderciti.receive_address_sangse AS receiveAddressSangse
+			,delivorderciti.is_canceled_delivery AS isCanceledDelivery
+			,delivorderciti.delivery_order_citizen_date AS deliveryOrderCitizenDate
+		FROM
+			delivery_order_citizen AS delivorderciti
+			INNER JOIN
+			adminagency AS admina
+			ON
+			delivorderciti.adminagency_code = admina.adminagency_code
+			
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			delivorderciti.goodsfacility_code = gf.goodsfacility_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+		WHERE
+			delivorderciti.adminagency_code = #{deliveryOrderFunctionaryDto.adminagencyCode}
+			AND
+			delivorderciti.is_canceled_delivery = 'N'
+			
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('정기점검 코드')">
+						AND regularcheck.regular_check_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND admina.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 명')">
+						AND admina.adminagency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('점검 공무원 ID')">
+						AND regularcheck.functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 코드')">
+						AND gf.goodsfacility_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 분류')">
+						AND gf.goodsfacility_classify_goodsfacility = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리 코드')">
+						AND gfthree.goodsfacility_three_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리')">
+						AND gfthree.goodsfacility_three_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 명')">
+						AND gf.goodsfacility_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태 코드')">
+						AND stateg.state_goods_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 상태')">
+						AND stateg.state_goods = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과')">
+						AND regularcheck.text_regular_check = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('AS 상태')">
+						AND gf.goodsfacility_state_afterservice = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('정기점검 결과 날짜')">
+						AND regularcheck.date_regular_check_goodsfacility = #{searchWord}
+					</when>
+				</choose>
+			</if>
+			ORDER BY delivorderciti.delivery_order_citizen_date DESC
+			LIMIT #{beginRow}, #{pagePerRow}
+	</select>
+	
+	
+	<!-- <select id="selectOneUnitedAfterserviceRequestDtoForInsertRegularCheckAS"
+			parameterType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto"
+			resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
+		SELECT
+			
+		FROM
+						
+		WHERE
+		
+			
+	</select>
+	 -->
+	
+	
+	
+</mapper>
