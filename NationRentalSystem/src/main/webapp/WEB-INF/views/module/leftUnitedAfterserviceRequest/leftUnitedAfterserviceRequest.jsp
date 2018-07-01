@@ -21,9 +21,9 @@
 				$('#DeliveryRequestBtn').click(function(){
 					$(location).attr('href', './selectListDeliveryOrderCitizenForInsertDeliveryOrderFunctionary?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
 				});
-				/* $('#listAfterserviceRequestBtn').click(function(){
-					$(location).attr('href', './selectListUnitedAfterserviceRequest');
-				}); */
+				$('#selectListDeliveryOrderFunctionaryBtn').click(function(){
+					$(location).attr('href', './selectListDeliveryOrderFunctionary?adminagencyCode=' + $('#adminagencyCodeForLeft').val());
+				});
 			});	
 		</script>
 	</head>
@@ -34,7 +34,7 @@
 			<button id="regularCheckAfterserviceBtn"type="button" class="btn btn-default">점검 AS 신청</button>
 			<button id="listAfterserviceRequestBtn" type="button" class="btn btn-default">AS 신청 List</button>
 			<button id="DeliveryRequestBtn" type="button" class="btn btn-default">배달 의뢰 신청</button>
-			<button id="" type="button" class="btn btn-default">배달 의뢰 신청 List</button>
+			<button id="selectListDeliveryOrderFunctionaryBtn" type="button" class="btn btn-default">배달 의뢰 신청 List</button>
 		</div>
 	</body>
 </html>

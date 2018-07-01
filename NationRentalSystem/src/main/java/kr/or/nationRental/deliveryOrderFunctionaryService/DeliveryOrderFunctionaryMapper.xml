@@ -5,6 +5,168 @@
  
 <mapper namespace="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryMapper">
 	
+	<select id="totalCountDeliveryOrderFunctionary"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			delivery_order_functionary AS delivorderfunc
+			INNER JOIN
+			agency AS agen
+			ON
+			delivorderfunc.agency_code = agen.agency_code
+			
+			INNER JOIN
+			delivery_order_citizen AS delivorderciti
+			ON
+			delivorderfunc.delivery_order_citizen_code = delivorderciti.delivery_order_citizen_code
+			
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			delivorderciti.goodsfacility_code = gf.goodsfacility_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+		WHERE
+			delivorderfunc.adminagency_code = ${deliveryOrderFunctionaryDto.adminagencyCode}
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('공무원 배달 의뢰 코드')">
+						AND delivorderfunc.delivery_order_functionary_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND delivorderfunc.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('의뢰 신청 공무원 ID')">
+						AND delivorderfunc.functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('대행업체 코드')">
+						AND agen.agency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('대행업체 명')">
+						AND agen.agency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('시민 배달 신청 코드')">
+						AND delivorderfunc.delivery_order_citizen_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('신청 시민 ID')">
+						AND delivorderciti.citizen_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리')">
+						AND gfthree.goodsfacility_three_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 명')">
+						AND gf.goodsfacility_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품 배송 상태')">
+						AND gf.goodsfacility_state_afterservice = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('공무원 의뢰 신청 날짜')">
+						AND delivorderfunc.delivery_order_functionary_date = #{searchWord}
+					</when>
+				</choose>
+			</if>
+	</select>
+	
+	<select id="selectListDeliveryOrderFunctionary"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
+		SELECT
+			delivorderfunc.delivery_order_functionary_code AS deliveryOrderFunctionaryCode
+			,delivorderfunc.adminagency_code AS adminagencyCode
+			,delivorderfunc.functionary_id AS functionaryId
+			,agen.agency_code AS agencyCode
+			,agen.agency_name AS agencyName
+			,delivorderfunc.delivery_order_citizen_code AS deliveryOrderCitizenCode
+			,delivorderciti.citizen_id AS citizenId
+			,gfthree.goodsfacility_three_name AS goodsfacilityThreeName
+			,gf.goodsfacility_name AS goodsfacilityName
+			,delivorderciti.send_address_sido AS sendAddressSido
+			,delivorderciti.send_address_sigungu AS sendAddressSigungu
+			,delivorderciti.send_address_eupmyeon AS sendAddressEupmyeon
+			,delivorderciti.send_address_sangse AS sendAddressSangse
+			,delivorderciti.receive_address_sido AS receiveAddressSido
+			,delivorderciti.receive_address_sigungu AS receiveAddressSigungu
+			,delivorderciti.receive_address_eupmyeon AS receiveAddressEupmyeon
+			,delivorderciti.receive_address_sangse AS receiveAddressSangse
+			,gf.goodsfacility_state_afterservice AS goodsfacilityStateAfterservice
+			,delivorderfunc.delivery_order_functionary_date AS deliveryOrderFunctionaryDate
+		FROM
+			delivery_order_functionary AS delivorderfunc
+			INNER JOIN
+			agency AS agen
+			ON
+			delivorderfunc.agency_code = agen.agency_code
+			
+			INNER JOIN
+			delivery_order_citizen AS delivorderciti
+			ON
+			delivorderfunc.delivery_order_citizen_code = delivorderciti.delivery_order_citizen_code
+			
+			INNER JOIN
+			goodsfacility AS gf
+			ON
+			delivorderciti.goodsfacility_code = gf.goodsfacility_code
+			
+			INNER JOIN
+			goodsfacility_three AS gfthree
+			ON
+			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
+		WHERE
+			delivorderfunc.adminagency_code = ${deliveryOrderFunctionaryDto.adminagencyCode}
+			<if test="!searchWord.equals('')">
+				<choose>
+					<when test="searchSelect.equals('공무원 배달 의뢰 코드')">
+						AND delivorderfunc.delivery_order_functionary_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('지자체 기관 코드')">
+						AND delivorderfunc.adminagency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('의뢰 신청 공무원 ID')">
+						AND delivorderfunc.functionary_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('대행업체 코드')">
+						AND agen.agency_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('대행업체 명')">
+						AND agen.agency_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('시민 배달 신청 코드')">
+						AND delivorderfunc.delivery_order_citizen_code = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('신청 시민 ID')">
+						AND delivorderciti.citizen_id = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 카테고리')">
+						AND gfthree.goodsfacility_three_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품/시설 명')">
+						AND gf.goodsfacility_name = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('물품 배송 상태')">
+						AND gf.goodsfacility_state_afterservice = #{searchWord}
+					</when>
+					<when test="searchSelect.equals('공무원 의뢰 신청 날짜')">
+						AND delivorderfunc.delivery_order_functionary_date = #{searchWord}
+					</when>
+				</choose>
+			</if>
+			ORDER BY delivorderfunc.delivery_order_functionary_date DESC
+			LIMIT #{beginRow}, #{pagePerRow}
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 	<update id="updateGoodsfacilityStateAfterService"
 			parameterType="kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryDto">
 		UPDATE

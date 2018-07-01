@@ -9,12 +9,28 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.regularCheck.service.RegularCheckDto;
+
 @Repository
 public class DeliveryOrderFunctionaryDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(DeliveryOrderFunctionaryDao.class);
 	final String NS = "kr.or.nationRental.deliveryOrderFunctionaryService.DeliveryOrderFunctionaryMapper.";
+	
+	public int totalCountDeliveryOrderFunctionary(Map<String, Object> map) {
+		logger.debug("totalCountDeliveryOrderFunctionary DeliveryOrderFunctionaryDao");
+		return sqlSession.selectOne(NS+"totalCountDeliveryOrderFunctionary", map);
+	}
+	
+	public List<DeliveryOrderFunctionaryDto> selectListDeliveryOrderFunctionary(Map<String, Object> map){
+		logger.debug("selectListDeliveryOrderFunctionary DeliveryOrderFunctionaryDao");
+		return sqlSession.selectList(NS+"selectListDeliveryOrderFunctionary", map);
+	}
+	
+	
+	
+	
 	
 	public void updateGoodsfacilityStateAfterService(DeliveryOrderFunctionaryDto deliveryOrderFunctionaryDto) {
 		logger.debug("updateGoodsfacilityStateAfterService DeliveryOrderFunctionaryDao");
