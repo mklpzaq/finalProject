@@ -67,7 +67,7 @@
 									<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 								</div>
 								<div class="col-md-4">
-									<h3>물품/시설 카테고리</h3>
+									<h3>3차 카테고리 목록</h3>
 								</div>
 								<div class="col-md-4">
 									<select id="selectPagePerRow" name="selectPagePerRow">

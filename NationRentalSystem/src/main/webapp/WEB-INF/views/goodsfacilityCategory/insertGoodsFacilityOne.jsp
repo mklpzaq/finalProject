@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>물품/시설 카테고리 1차분류</title>
+		<title>시설/물품 카테고리 1차 분류</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
@@ -20,7 +20,7 @@
 				<div class="col-sm-8">
 					<!-- Begin Content -->
 					<div class="text-center">
-						<h1>물품/시설 카테고리 1차분류 등록</h1>
+						<h1>시설/물품 카테고리 1차 분류 등록</h1>
 					</div>
 						<div class="panel panel-default">
 							<div class="panel-body text-center">

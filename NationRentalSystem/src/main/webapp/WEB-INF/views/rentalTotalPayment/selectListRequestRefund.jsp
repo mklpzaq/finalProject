@@ -24,7 +24,7 @@
 					<div class="panel panel-default">	
 						<div class="panel-body text-center">
 							<div class="text-center">
-								<h3>대여대관 결제리스트</h3>
+								<h3>대여대관 환불신청 리스트</h3>
 							</div>
 							<table class="table table-striped">
 								<thead>

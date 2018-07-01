@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>물품/시설 카테고리</title>
+		<title>시설/물품 카테고리</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
@@ -67,7 +67,7 @@
 									<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 								</div>
 								<div class="col-md-4">
-									<h3>물품/시설 카테고리</h3>
+									<h3>시설/물품 카테고리</h3>
 								</div>
 								<div class="col-md-4">
 									<select id="selectPagePerRow" name="selectPagePerRow">

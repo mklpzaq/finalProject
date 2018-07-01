@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>지자체 행정구역</title>
+		<title>행정기관 목록</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
@@ -65,7 +65,7 @@
 									<strong>keyword : </strong><span id="monitorKeyword">${keyword}</span><br/>						
 								</div>
 								<div class="col-md-4">
-									<h3>지자체 행정구역</h3>
+									<h3>행정기관 목록</h3>
 								</div>
 								<div class="col-md-4">
 									<select id="selectPagePerRow" name="selectPagePerRow">
