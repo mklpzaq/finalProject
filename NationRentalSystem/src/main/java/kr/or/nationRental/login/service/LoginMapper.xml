@@ -94,17 +94,27 @@
 	<select id="selectOneAgencyEmployeeById"
 			parameterType="kr.or.nationRental.login.service.MemberDto"
 			resultType="kr.or.nationRental.login.service.MemberDto">
-		SELECT
-			agency_employee_id AS memberId
-			,agency_employee_pw AS memberPw
-			,agency_employee_name AS memberName
-			,agency_employee_phone AS memberPhone
+		SELECT DISTINCT
+			agenemp.agency_employee_id AS memberId
+			,agenemp.agency_employee_pw AS memberPw
+			,agenemp.agency_employee_name AS memberName
+			,agenemp.agency_employee_phone AS memberPhone
+			,agen.adminagency_code AS adminagencyCode
 		FROM
-			agency_employee
+			agency_employee AS agenemp
+			INNER JOIN
+			agency_nakchal_employee AS agennakemp
+			ON
+			agenemp.agency_employee_id = agennakemp.agency_employee_id
+			
+			INNER JOIN
+			agency AS agen
+			ON
+			agennakemp.agency_code = agen.agency_code
 		WHERE
-			agency_employee_id = #{memberId}
+			agenemp.agency_employee_id = #{memberId}
 			AND
-			agency_employee_pw = #{memberPw}
+			agenemp.agency_employee_pw = #{memberPw}
 	</select>
 	
 	<select id="loginCheckFunctionary"

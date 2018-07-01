@@ -24,7 +24,7 @@
 					<!-- Begin Content -->
 					<div class="panel panel-default" style="margin:15px;">
 						<div class="panel-body">
-							<h3 class="text-center">AS 수락 작성</h3>
+							<h3 class="text-center">AS 수락 리스트</h3>
 							<hr/>
 							select List Agency Afterservice Handling					
 					

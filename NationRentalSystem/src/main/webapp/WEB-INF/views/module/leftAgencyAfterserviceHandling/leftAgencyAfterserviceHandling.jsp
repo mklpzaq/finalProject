@@ -10,20 +10,22 @@
 		<script>
 			$(document).ready(function(){
 				$('#selectListUnitedAfterserviceRequestForAgencyAfterserviceHandlingBtn').click(function(){
-					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling');
+					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?adminagencyCode=' + $('#adminagencyCodeForLeft').val() + '&agencyEmployeeId=' + $('#memberIdForLeft').val());
 				});
-				/* $('#insertBoardBtn').click(function(){
-					$(location).attr('href', './insertBoard?memberId=' + $('#leftBoardListmemberId').val());
-				}); */
+				$('#selectListAgencyAfterserviceHandlingBtn').click(function(){
+					$(location).attr('href', './selectListAgencyAfterserviceHandling?adminagencyCode=' + $('#adminagencyCodeForLeft').val() + '&agencyEmployeeId=' + $('#memberIdForLeft').val());
+				});
 				
 			});
 		</script>
 	</head>
 	<body>
+		<input id="memberIdForLeft" type="hidden" value="${member.memberId}">
+		<input id="adminagencyCodeForLeft" type="hidden" value="${member.adminagencyCode}">
 		<%-- <input id="leftBoardListmemberId" type="hidden" name="leftBoardListmemberId" value="${member.memberId}"> --%>
 		<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
 			<button id="selectListUnitedAfterserviceRequestForAgencyAfterserviceHandlingBtn" type="button" class="btn btn-default">AS 요청 리스트</button>
-			<button id="insertBoardBtn" type="button" class="btn btn-default" >수락 AS 리스트</button>
+			<button id="selectListAgencyAfterserviceHandlingBtn" type="button" class="btn btn-default" >수락 AS 리스트</button>
 			<button id="insertDonationBtn" type="button" class="btn btn-default">처리 AS 리스트</button>
 		</div>
 	</body>

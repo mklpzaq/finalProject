@@ -51,13 +51,13 @@ public class AgencyAfterserviceHandlingController {
 		/* 현재 로그인 되어 있는 직원이 소속된 대행업체 코드, 대행업체 이름을 가져온다. */
 		AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto = new AgencyAfterserviceHandlingDto();
 		agencyAfterserviceHandlingDto.setAgencyEmployeeId(agencyEmployeeId);
-		agencyAfterserviceHandlingDto.setAgencyBusinesstypeCode(agencyBusinesstypeCode);
+		/*agencyAfterserviceHandlingDto.setAgencyBusinesstypeCode(agencyBusinesstypeCode);*/
 		logger.debug("★★★★★★★★★★AAAAjjjjj★★★★★★★★★★★★★★★★");
 		logger.debug(agencyAfterserviceHandlingDto.toString());
-		agencyAfterserviceHandlingDto = agencyAfterserviceHandlingService.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(agencyAfterserviceHandlingDto);
+		List<AgencyAfterserviceHandlingDto> listAgencyAfterserviceHandlingDto = agencyAfterserviceHandlingService.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(agencyAfterserviceHandlingDto);
 		logger.debug("★★★★★★★★★★jjjjj★★★★★★★★★★★★★★★★");
 		logger.debug(unitedAfterserviceRequestDto.toString());
-		logger.debug(agencyAfterserviceHandlingDto.toString());
+		logger.debug(listAgencyAfterserviceHandlingDto.toString());
 		/* 대행업체 업종 리스트를 가져온다. */
 		
 		List<AgencyBusinesstypeDto> list = agencyAfterserviceHandlingService.selectListAgencyBusinesstypeDto(unitedAfterserviceRequestDto);
@@ -68,7 +68,7 @@ public class AgencyAfterserviceHandlingController {
 		
 		model.addAttribute("unitedAfterserviceRequestDto", unitedAfterserviceRequestDto);
 		model.addAttribute("listAgencyBusinesstypeDto", list);
-		model.addAttribute("agencyAfterserviceHandlingDto", agencyAfterserviceHandlingDto);
+		model.addAttribute("listAgencyAfterserviceHandlingDto", listAgencyAfterserviceHandlingDto);
 		return "agencyAfterserviceHandling/insertAgencyAfterServiceHandlingForm";
 	}
 	
@@ -76,6 +76,7 @@ public class AgencyAfterserviceHandlingController {
 	@RequestMapping(value="/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling", method=RequestMethod.GET)
 	public String selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling(Model model
 																	,HttpSession session
+																	,AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto
 																	,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 																	,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
 																	,@RequestParam(value="searchSelect", defaultValue="AS 코드") String searchSelect
@@ -83,8 +84,9 @@ public class AgencyAfterserviceHandlingController {
 		logger.debug("GET selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling AgencyAfterserviceHandlingController");
 		logger.debug("searchSelect : " + searchSelect);
 		logger.debug("searchWord : " + searchWord);
+		logger.debug(agencyAfterserviceHandlingDto.toString());
 		
-		Map<String, Object> map = agencyAfterserviceHandlingService.selectListUnitedAfterserviceRequest(currentPage, pagePerRow, searchSelect, searchWord);
+		Map<String, Object> map = agencyAfterserviceHandlingService.selectListUnitedAfterserviceRequest(currentPage, pagePerRow, searchSelect, searchWord, agencyAfterserviceHandlingDto);
 		
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("lastPage", map.get("lastPage"));

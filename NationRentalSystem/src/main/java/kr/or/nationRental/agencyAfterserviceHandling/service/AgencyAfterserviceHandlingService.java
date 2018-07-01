@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto;
 
@@ -16,10 +17,13 @@ public class AgencyAfterserviceHandlingService {
 	@Autowired
 	private AgencyAfterserviceHandlingDao agencyAfterserviceHandlingDao;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingService.class);
-
+	
+	@Transactional
 	public void insertAgencyAfterserviceHandling(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
 		logger.debug("insertAgencyAfterserviceHandling AgencyAfterserviceHandlingService");
 		agencyAfterserviceHandlingDao.insertAgencyAfterserviceHandling(agencyAfterserviceHandlingDto);
+		/* is_agencyEmployee_accept_order 를 N->Y로 업댓해야됨 */
+		agencyAfterserviceHandlingDao.updateUnitedAfterserviceRequestForAcceptOrder(agencyAfterserviceHandlingDto);
 	}
 	
 	public AgencyBusinesstypeDto selectOneAgencyBusinesstypeForAjax(AgencyBusinesstypeDto agencyBusinesstypeDto) {
@@ -32,7 +36,7 @@ public class AgencyAfterserviceHandlingService {
 	
 	
 	
-	public AgencyAfterserviceHandlingDto selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto AgencyAfterserviceHandlingDto) {
+	public List<AgencyAfterserviceHandlingDto> selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto AgencyAfterserviceHandlingDto) {
 		logger.debug("selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee AgencyAfterserviceHandlingService");
 		return agencyAfterserviceHandlingDao.selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto);
 	}
@@ -51,7 +55,7 @@ public class AgencyAfterserviceHandlingService {
 		return agencyAfterserviceHandlingDao.selectOneUnitedAfterserviceRequestDto(unitedAfterserviceRequestDto);
 	}
 	
-	public Map<String, Object> selectListUnitedAfterserviceRequest(int currentPage, int pagePerRow, String searchSelect, String searchWord){
+	public Map<String, Object> selectListUnitedAfterserviceRequest(int currentPage, int pagePerRow, String searchSelect, String searchWord, AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto){
 		logger.debug("selectListUnitedAfterserviceRequest AgencyAfterserviceHandlingService");
 		int beginRow = (currentPage-1)*pagePerRow;
 		
@@ -62,6 +66,7 @@ public class AgencyAfterserviceHandlingService {
 		logger.debug("currentPage :" + currentPage);
 		logger.debug("beginRow :" + beginRow);
 		logger.debug("pagePerRow :" + pagePerRow);
+		map.put("agencyAfterserviceHandlingDto", agencyAfterserviceHandlingDto);
 		
 		/* searchSignal : 1 일경우 '검색버튼'을 누른경우가 되므로 
 		 * selectAddressList() 메서드를 사용하여 list를 가져올때,

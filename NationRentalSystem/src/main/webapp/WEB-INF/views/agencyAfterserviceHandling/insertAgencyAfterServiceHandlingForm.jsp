@@ -10,23 +10,26 @@
 		<script>
 			$(document).ready(function(){
 				/* 첫 화면에서도 바로 적용되게 ajax를 change 이벤트 발생전에도 실행되게 하였다. */
+				
 				$.ajax({
 					type: "POST"
-					,url: "${pageContext.request.contextPath}/selectOneAgencyBusinesstypeForAjax"
-					,data: { agencyBusinesstypeName: $('#AgencyBusinesstypeDtoSelect > option:selected').val() }
+					,url: "${pageContext.request.contextPath}/selectOneAgencyForAjax"
+					,data: { agencyNameAndBusinesstypeName: $('#agencySelect > option:selected').val() }
 					,success:function( JSON ) { // result : String, XML, JSON
+						$('#agencyCode').val(JSON.agencyCode);
+						$('#agencyName').val(JSON.agencyName);
 						$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
 						$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 					}
 				});
-				
-				$('#AgencyBusinesstypeDtoSelect').change(function() {
+				$('#agencySelect').change(function() {
 					$.ajax({
 						type: "POST"
-						,url: "${pageContext.request.contextPath}/selectOneAgencyBusinesstypeForAjax"
-						,data: { agencyBusinesstypeName: $('#AgencyBusinesstypeDtoSelect > option:selected').val() }
+						,url: "${pageContext.request.contextPath}/selectOneAgencyForAjax"
+						,data: { agencyNameAndBusinesstypeName: $('#agencySelect > option:selected').val() }
 						,success:function( JSON ) { // result : String, XML, JSON
-							alert(JSON);
+							$('#agencyCode').val(JSON.agencyCode);
+							$('#agencyName').val(JSON.agencyName);
 							$('#agencyBusinesstypeCode').val(JSON.agencyBusinesstypeCode);
 							$('#agencyBusinesstypeName').val(JSON.agencyBusinesstypeName);
 						}
@@ -188,51 +191,44 @@
 								<div class="form-group">
 									<label for="agencyEmployeeId" class="col-sm-3 control-label">현재 대행업체 직원 ID</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyEmployeeId" value="${agencyAfterserviceHandlingDto.agencyEmployeeId}" id="agencyEmployeeId" placeholder="현재 대행업체 직원 ID" readonly>
+										<input type="text" class="form-control" name="agencyEmployeeId" value="${member.memberId}" id="agencyEmployeeId" placeholder="현재 대행업체 직원 ID" readonly>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="agencyCode" class="col-sm-3 control-label">직원 소속 대행업체 코드</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyCode" value="${agencyAfterserviceHandlingDto.agencyCode}" id="agencyCode" placeholder="직원 소속 대행업체 코드" readonly>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="agencyName" class="col-sm-3 control-label">직원 소속 대행업체 명</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyName" value="${agencyAfterserviceHandlingDto.agencyName}" id="agencyName" placeholder="직원 소속 대행업체 명" readonly>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label">소속 대행업체 업종 선택</label>
+									<label class="col-sm-3 control-label">의뢰할 대행업체 선택</label>
 									<div class="col-sm-9">
 										<!-- <input type="text" class="form-control" name="agencyCode" id="agencyCode" placeholder="의뢰할 대행업체 코드"> -->
-										<select id="AgencyBusinesstypeDtoSelect" class="form-control">
-											<c:forEach var="AgencyBusinesstypeDto" items="${listAgencyBusinesstypeDto}">
-												<option id="AgencyBusinesstypeDtoSelectOption">${AgencyBusinesstypeDto.agencyBusinesstypeName}</option>
+										<select id="agencySelect" class="form-control">
+											<c:forEach var="agencyAfterserviceHandlingDto" items="${listAgencyAfterserviceHandlingDto}">
+												<option id="agencySelectOption">${agencyAfterserviceHandlingDto.agencyName}-${agencyAfterserviceHandlingDto.agencyBusinesstypeName}</option>
 											</c:forEach>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="agencyBusinesstypeCode" class="col-sm-3 control-label">선택한 대행업체 업종분류 코드</label>
+									<label for="agencyCode" class="col-sm-3 control-label">의뢰할 대행업체 코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyBusinesstypeCode" id="agencyBusinesstypeCode" placeholder="선택한 대행업체 업종분류 코드" readonly>
+										<input type="text" class="form-control" name="agencyCode" id="agencyCode" placeholder="의뢰할 대행업체 코드" readonly>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="agencyBusinesstypeName" class="col-sm-3 control-label">선택한 대행업체 업종분류 명</label>
+									<label for="agencyName" class="col-sm-3 control-label">의뢰할 대행업체명</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="agencyBusinesstypeName" id="agencyBusinesstypeName" placeholder="선택한 대행업체 업종분류 명" readonly>
+										<input type="text" class="form-control" name="agencyName" id="agencyName" placeholder="의뢰할 대행업체명" readonly>
 									</div>
 								</div>
-								<div class="form-group hidden">
-									<label for="classifyAfterserviceState" class="col-sm-3 control-label">AS 처리상태 구분</label>
+								<div class="form-group">
+									<label for="agencyBusinesstypeCode" class="col-sm-3 control-label">대행업체 업종 분류 코드</label>
 									<div class="col-sm-9">
-										<input type="hidden" class="form-control" name="classifyAfterserviceState" value="AS처리중" id="classifyAfterserviceState" placeholder="AS 처리상태 구분" readonly>
+										<input type="text" class="form-control" name="agencyBusinesstypeCode" id="agencyBusinesstypeCode" placeholder="대행업체 업종 분류 코드" readonly>
 									</div>
 								</div>
-								
+								<div class="form-group">
+									<label for="agencyBusinesstypeName" class="col-sm-3 control-label">대행업체 업종 분류명</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="agencyBusinesstypeName" id="agencyBusinesstypeName" placeholder="대행업체 업종 분류명" readonly>
+									</div>
+								</div>
 								<div class="text-center">
 									<button id="insertBtn" type="submit" class="btn btn-primary">AS 요청 수락</button>
 								</div>

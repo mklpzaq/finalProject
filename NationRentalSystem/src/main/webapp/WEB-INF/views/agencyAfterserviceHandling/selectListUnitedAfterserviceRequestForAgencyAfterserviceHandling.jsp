@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<title>Select List United Afterservice Request For Agency Employee</title>
+		<title>select List United Afterservice Request For Agency Afterservice Handling</title>
 		<script>
 			$(document).ready(function() {
 				var searchSelect;
@@ -33,14 +33,14 @@
 				$('#selectPagePerRow').change(function() {
 					/* searchSelect = $('#monitorSearchSelect').text();
 					searchWord = $('#monitorSearchWord').val(); */
-					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text());
+					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?pagePerRow=' + $('#selectPagePerRow > option:selected').val() + '&searchSelect=' + $('#monitorSearchSelect').text() + '&searchWord=' + $('#monitorSearchWord').text() + '&adminagencyCode=' + $('#adminagencyCodeHidden').val());
 				});
 				
 				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchSelect, searchWord값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchSelect = $('#selectButtonText').text();
 					searchWord = $('#searchWord').val();
-					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord);
+					$(location).attr('href', './selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?searchSignal=y&searchSelect=' + searchSelect + '&searchWord=' + searchWord + '&adminagencyCode=' + $('#adminagencyCodeHidden').val());
 				});
 				
 			});
@@ -60,7 +60,7 @@
 				</div>
 				<div class="col-sm-9">
 					<!-- Begin Content -->
-					
+					<input id="adminagencyCodeHidden" type="hidden" value="${member.adminagencyCode}">
 					<div style="margin:15px 0 0 0;" class="panel panel-default">
 						<div class="panel-body text-center">
 							<div class="row">
@@ -112,7 +112,7 @@
 												<li><a href="#">대행업체 명</a></li>
 												<li><a href="#">대행업체 업종 코드</a></li>
 												<li><a href="#">AS 요청일자</a></li>
-												<li><a href="#">AS 완료일자</a></li>
+												<!-- <li><a href="#">AS 완료일자</a></li> -->
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -143,7 +143,7 @@
 										<td><strong>대행업체 명</strong></td>
 										<td><strong>대행업체 업종 코드</strong></td>
 										<td><strong>AS 요청일자</strong></td>
-										<td><strong>AS 완료일자</strong></td>
+										<!-- <td><strong>AS 완료일자</strong></td> -->
 										<td><strong>AS 요청 수락</strong></td>
 										
 										<!-- <td><strong>수정</strong></td>
@@ -152,55 +152,45 @@
 								</thead>
 								<tbody>
 									<c:forEach var="unitedAfterserviceRequestDto" items="${list}">
-										<!-- 로그인한 공무원 ID의 adminagencyCode와 리스트의 내용인 adminagencyCode가 일치하는 것만 볼 수 있다. -->
-										<!-- 일단 주석처리하고 모든 테스트가 완료되면 풀도록 하자. -->
-										<%-- <c:choose>
-											<c:when test="${unitedAfterserviceRequestDto.functionaryId eq member.memberId}"> --%>
-												<tr>
-													<td><strong>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.regularCheckCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.adminagencyCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.goodsfacilityThreeCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.goodsfacilityCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.goodsfacilityName}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.functionaryId}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.stateGoodsCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.agencyCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.agencyName}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.agencyBusinesstypeCode}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.dateRequestAfterservice}</strong></td>
-													<td><strong>${unitedAfterserviceRequestDto.dateCompleteAfterservice}</strong></td>
-													<td>
-														<%-- <c:choose>
-															<c:when test="${returnGoodsfacilityInfoDto.stateGoods ne '양호'}"> --%>
-																<a href="${pageContext.request.contextPath}/insertAgencyAfterserviceHandling?unitedAfterserviceRequestCode=${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}&agencyEmployeeId=${member.memberId}&agencyBusinesstypeCode=${unitedAfterserviceRequestDto.agencyBusinesstypeCode}" class="btn btn-primary" role="button">AS 요청 수락</a>		
-															<%-- </c:when>
-														</c:choose> --%>
-													</td>
-												</tr>
-											<%-- </c:when>
-										</c:choose> --%>
+										<tr>
+											<td><strong>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.returnGoodsfacilityInfoCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.regularCheckCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.adminagencyCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.goodsfacilityThreeCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.goodsfacilityCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.goodsfacilityName}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.functionaryId}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.stateGoodsCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.agencyCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.agencyName}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.agencyBusinesstypeCode}</strong></td>
+											<td><strong>${unitedAfterserviceRequestDto.dateRequestAfterservice}</strong></td>
+											<%-- <td><strong>${unitedAfterserviceRequestDto.dateCompleteAfterservice}</strong></td> --%>
+											<td>
+												<a href="${pageContext.request.contextPath}/insertAgencyAfterserviceHandling?unitedAfterserviceRequestCode=${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}&agencyEmployeeId=${member.memberId}" class="btn btn-primary" role="button">AS 요청 수락</a>		
+											</td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 							<nav>
 								<ul class="pagination">
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Previous">
+										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
 									<li>
 										<c:choose>
 											<c:when test="${currentPage > 1}">
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Previous">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=1&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Previous">
 													<span aria-hidden="true">&lt;</span>
 												</a>
 											</c:otherwise>
@@ -211,10 +201,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${beginPageNumForCurrentPage + 4}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -223,10 +213,10 @@
 											<c:forEach var="pageNum" begin="${beginPageNumForCurrentPage}" end="${lastPage}" step="1">
 												<c:choose>
 													<c:when test="${pageNum == currentPage}">
-														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li class="active"><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}">${pageNum}</a></li>
+														<li><a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}">${pageNum}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -235,19 +225,19 @@
 									<li>
 										<c:choose>
 											<c:when test="${currentPage < lastPage}">
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:when>
 											<c:otherwise>
-												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}"aria-label="Next">
+												<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}"aria-label="Next">
 													<span aria-hidden="true">&gt;</span>
 												</a>
 											</c:otherwise>
 										</c:choose>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}" aria-label="Next">
+										<a href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchSignal=${searchSignal}&searchSelect=${searchSelect}&searchWord=${searchWord}&adminagencyCode=${member.adminagencyCode}" aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
 									</li>

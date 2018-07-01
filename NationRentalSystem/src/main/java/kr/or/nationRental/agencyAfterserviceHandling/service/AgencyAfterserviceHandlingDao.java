@@ -18,6 +18,11 @@ public class AgencyAfterserviceHandlingDao {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingDao.class);
 	final String NS = "kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper.";
 	
+	public void updateUnitedAfterserviceRequestForAcceptOrder(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
+		logger.debug("updateUnitedAfterserviceRequestForAcceptOrder updateUnitedAfterserviceRequestForAcceptOrder");
+		sqlSession.update(NS+"updateUnitedAfterserviceRequestForAcceptOrder", agencyAfterserviceHandlingDto);
+	}
+	
 	public void insertAgencyAfterserviceHandling(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
 		logger.debug("insertAgencyAfterserviceHandling AgencyAfterserviceHandlingDao");
 		sqlSession.insert(NS+"insertAgencyAfterserviceHandling", agencyAfterserviceHandlingDto);
@@ -33,9 +38,9 @@ public class AgencyAfterserviceHandlingDao {
 	
 	
 	
-	public AgencyAfterserviceHandlingDto selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
+	public List<AgencyAfterserviceHandlingDto> selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
 		logger.debug("selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee AgencyAfterserviceHandlingDao");
-		return sqlSession.selectOne(NS+"selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee", agencyAfterserviceHandlingDto);
+		return sqlSession.selectList(NS+"selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee", agencyAfterserviceHandlingDto);
 	}
 
 	
