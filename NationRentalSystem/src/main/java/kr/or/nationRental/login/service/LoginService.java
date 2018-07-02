@@ -1,5 +1,8 @@
 package kr.or.nationRental.login.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -84,4 +87,34 @@ public class LoginService {
 		loginDao.loginCheckFunctionary(memberDto);*/
 		
 	}
+	
+	//id찾기
+		public Map <String, Object> idSelect(MemberDto memberDto) {
+			String adminId = null;
+			String agencyEmployeeId = null;
+			String citizenId = null;
+			String functionaryId = null;
+			Map <String, Object> map = new HashMap<String, Object>();
+			if(loginDao.administratorIdCheck(memberDto) == 1) {
+				 adminId = loginDao.administratorIdSelect(memberDto);
+				 map.put("adminId", adminId);
+			}
+			
+			if(loginDao.agencyEmployeeIdCheck(memberDto) == 1) {
+				 agencyEmployeeId = loginDao.agencyEmployeeIdSelect(memberDto);
+				 map.put("agencyEmployeeId", agencyEmployeeId);
+			}
+			
+			if(loginDao.citizenIdCheck(memberDto) == 1) {
+				 citizenId = loginDao.citizenIdSelect(memberDto);
+				 map.put("citizenId", citizenId);
+			}
+			
+			if(loginDao.functionaryIdCheck(memberDto) == 1) {
+				 functionaryId = loginDao.functionaryIdSelect(memberDto);
+				 map.put("functionaryId", functionaryId);
+			}
+			
+			return map;
+		}
 }

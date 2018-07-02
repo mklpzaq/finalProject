@@ -72,7 +72,7 @@
 										<strong>keyword : </strong><span id="moniterKeyword">${keyword}</span><br/>						
 									</div>
 									<div class="col-md-4">
-										<h3>공무원 리스트</h3>
+										<h3>공무원회원 리스트</h3>
 									</div>
 									<div class="col-md-4 text-rihgt">
 										<select id="selectPagePerRow" name="selectPagePerRow">

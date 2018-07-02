@@ -128,36 +128,7 @@ public class FunctionaryService {
 		functionaryDao.deleteFunctionnary(functionaryDto);
 		 
 	}
-
-	//id찾기
-	public Map <String, Object> idSelect(MemberDto memberDto) {
-		String adminId = null;
-		String agencyEmployeeId = null;
-		String citizenId = null;
-		String functionaryId = null;
-		Map <String, Object> map = new HashMap<String, Object>();
-		if(functionaryDao.administratorIdCheck(memberDto) == 1) {
-			 adminId = functionaryDao.administratorIdSelect(memberDto);
-			 map.put("adminId", adminId);
-		}
-		
-		if(functionaryDao.agencyEmployeeIdCheck(memberDto) == 1) {
-			 agencyEmployeeId = functionaryDao.agencyEmployeeIdSelect(memberDto);
-			 map.put("agencyEmployeeId", agencyEmployeeId);
-		}
-		
-		if(functionaryDao.citizenIdCheck(memberDto) == 1) {
-			 citizenId = functionaryDao.citizenIdSelect(memberDto);
-			 map.put("citizenId", citizenId);
-		}
-		
-		if(functionaryDao.functionaryIdCheck(memberDto) == 1) {
-			 functionaryId = functionaryDao.functionaryIdSelect(memberDto);
-			 map.put("functionaryId", functionaryId);
-		}
-		
-		return map;
-	}
+	
 	//공무원 업무조회
 	public Map<String, Object> selectFunctionaryWork(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryService - selectFunctionaryWork - memberId : " + functionaryDto);

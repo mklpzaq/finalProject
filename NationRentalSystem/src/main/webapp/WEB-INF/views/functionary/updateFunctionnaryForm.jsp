@@ -24,7 +24,7 @@
 								
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">회원 정보</h3>
+							<h3 class="text-center">공무원회원 정보수정</h3>
 							<hr/>
 							<form action="${pageContext.request.contextPath}/updateFunctionnary" method="post">
 								<div class="form-group">

@@ -145,43 +145,6 @@ public class FunctionaryController {
 		return "redirect:/";
 	}
 	
-	//id찾기 화면으로 이동
-	@RequestMapping(value="/idSelect", method=RequestMethod.GET)
-	public String idSelect() {
-		
-		
-		return "/signUp/idSelect";
-	}
-	
-	/*id찾기
-	 *id찾기의 프로세스
-	 *폼에서 가입된 아이디의 이름과 전화번호, 이메일을 넘겨받는다
-	 *넘겨받은 아이디와 이름, 전화번호, 이메일로
-	 */
-	@RequestMapping(value="/idSelect", method=RequestMethod.POST)
-	public String idSelect(MemberDto memberDto
-						,Model model) {
-		logger.debug("FunctionaryController - idSelect - memberDto : " + memberDto.toString());	
-		Map <String, Object> map = functionaryService.idSelect(memberDto);
-		
-		
-		model.addAttribute("map", map);
-		//logger.debug("FunctionaryController - idSelect - map : " + map.get("administratorDto").);	
-		/*if(map.get("adminId") != null) {
-		model.addAttribute("adminId", map.get("adminId"));
-		}
-		if( map.get("agencyEmployeeId") != null) {
-		model.addAttribute("agencyEmployeeId", map.get("agencyEmployeeId"));
-		}
-		if(map.get("citizenId") != null) {
-		model.addAttribute("citizenId", map.get("citizenId"));
-		}
-		if(map.get("functionaryId") != null) {
-		model.addAttribute("functionaryId", map.get("functionaryId"));
-		}*/
-		return "/functionary/checkId";
-	}
-	
 	/*공무원 업무조회
 	 * 목표
 	 * 해당 공무원이 처리한 대여물품/시설등록, 반납정보등록, AS의뢰신청, 배달의뢰신청, 기부등록, 대행업체 등록, 계약해지, 연회비/패키지 등록, 배상청구 등록등을 볼 수 있어야한다

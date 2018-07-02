@@ -297,14 +297,13 @@
 		<div style="position:fixed; z-index:-1; width:100%">
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
+		<jsp:include page="../module/top/navbar.jsp"/>
 		<div class="container-fluid">
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<jsp:include page="../module/top/mainHeader.jsp"/>
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
 				</div>
-				<div class="col-sm-8">
+				<div style="padding:15px;" class="col-sm-8">
+				
 					<!-- Begin Content -->
 		
 		
@@ -440,12 +439,13 @@
 									<button id="insertBtn" type="button" class="btn btn-default">입력 완료</button>
 								</div>
 							</form>
-				<!-- End Content -->
+						<!-- End Content -->
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-2"></div>
 			</div>
 		</div>
+		<jsp:include page="../module/bottom/bottomContent.jsp"/>
 	</body>
 </html>

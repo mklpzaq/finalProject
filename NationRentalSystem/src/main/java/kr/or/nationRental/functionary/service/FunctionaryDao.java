@@ -78,49 +78,7 @@ public class FunctionaryDao {
 	public void insertStorageFunctionary(FunctionaryDto functionaryDto) {
 		logger.debug("FunctionaryDao - insertStorageFunctionary - functionaryDto : " + functionaryDto);
 		sqlSession.insert(NS+"insertStorageFunctionary", functionaryDto);
-	}
-
-	//administratorid찾기
-	public String administratorIdSelect(MemberDto memberDto) {
-		logger.debug("FunctionaryDao - administratorIdSelect - memberDto : " + memberDto);
-		return sqlSession.selectOne(NS+"administratorIdSelect", memberDto);
-	}
-	
-	//agencyEmployeeid찾기
-	public String agencyEmployeeIdSelect(MemberDto memberDto) {
-		logger.debug("FunctionaryDao - agencyEmployeeIdSelect - memberDto : " + memberDto);
-		return sqlSession.selectOne(NS+"agencyEmployeeIdSelect", memberDto);
-	}
-	//citizenid찾기
-	public String citizenIdSelect(MemberDto memberDto) {
-		logger.debug("FunctionaryDao - citizenIdSelect - memberDto : " + memberDto);
-		return sqlSession.selectOne(NS+"citizenIdSelect", memberDto);
-	}
-	//functionaryid찾기
-	public String functionaryIdSelect(MemberDto memberDto) {
-		logger.debug("FunctionaryDao - functionaryIdSelect - memberDto : " + memberDto);
-		return sqlSession.selectOne(NS+"functionaryIdSelect", memberDto);
-	}
-
-	public int administratorIdCheck(MemberDto memberDto) {
-		
-		return sqlSession.selectOne(NS+"administratorIdCheck", memberDto);
-	}
-
-	public int agencyEmployeeIdCheck(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NS+"agencyEmployeeIdCheck", memberDto);
-	}
-
-	public int citizenIdCheck(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NS+"citizenIdCheck", memberDto);
-	}
-
-	public int functionaryIdCheck(MemberDto memberDto) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NS+"functionaryIdCheck", memberDto);
-	}
+	}	
 	
 	//공무원 대여물품/시설등록한 업무 조회
 	public List<GoodsFacilityDto> selectFunctionaryWorkGoodsfacility(Map<String, Object> map) {

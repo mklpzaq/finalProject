@@ -25,15 +25,9 @@
 								
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="text-center">회원 정보</h3>
+							<h3 class="text-center">대행업체 등록</h3>
 							<hr/>
 					
-							<div class="text-center">
-								<h1>대행업체 등록</h1>
-								<h2>Nation Integrated Reserve and Rental System</h2>
-								<P>The time on the server is ${serverTime}.</P>
-							</div>
-							
 							<form class="form-horizontal" action="${pageContext.request.contextPath}/insertAgency" id="insertAgencyForm" method="post">
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-2 control-label">낙찰번호</label>
@@ -49,11 +43,24 @@
 								</div>					
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-2 control-label">대행업체 업종분류</label>
-									<select name="agencyBusinesstypeCode">
+									&nbsp;&nbsp;&nbsp;
+									<!-- Single button -->
+									<div class="btn-group">
+									  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									    대행업체 업종등록 <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu" role="menu">
+									  	<c:forEach var="agencyBusinesstypeDto" items="${list}">
+									   		<li value="${agencyBusinesstypeDto.agencyBusinesstypeCode}"><a href="#" >${agencyBusinesstypeDto.agencyBusinesstypeName}</a></li>
+									   	</c:forEach>
+									  </ul>
+									</div>
+									
+									<%-- <select name="agencyBusinesstypeCode">
 										<c:forEach var="agencyBusinesstypeDto" items="${list}">
 											<option  value="${agencyBusinesstypeDto.agencyBusinesstypeCode}">${agencyBusinesstypeDto.agencyBusinesstypeName}</option>
 										</c:forEach>
-									</select>
+									</select> --%>
 								</div>
 										
 								<div class="form-group">

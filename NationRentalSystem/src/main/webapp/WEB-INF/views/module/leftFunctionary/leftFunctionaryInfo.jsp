@@ -23,7 +23,7 @@
 					$(location).attr('href', './deleteFunctionnary?functionaryId=' + $('#memberId').val());
 				});
 				$('#deleteNoBtn').click(function(){
-					$('#deleteAgencyEmployeeModal').hide();
+					$('#deleteFunctionaryModal').hide();
 				});
 			});
 		</script>

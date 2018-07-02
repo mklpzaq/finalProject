@@ -73,4 +73,45 @@ public class LoginDao {
 		logger.debug(memberDto.toString());
 		return memberDto;
 	}
+	
+	//관리자회원 id찾기를 위한 이름, 이메일검색
+	public int administratorIdCheck(MemberDto memberDto) {
+		
+		return sqlSession.selectOne(NS+"administratorIdCheck", memberDto);
+	}
+	//대행업체 직원회원 id찾기를 위한 이름, 이메일검색
+	public int agencyEmployeeIdCheck(MemberDto memberDto) {
+		return sqlSession.selectOne(NS+"agencyEmployeeIdCheck", memberDto);
+	}
+	//시민회원 id찾기를 위한 이름, 이메일검색
+	public int citizenIdCheck(MemberDto memberDto) {
+		return sqlSession.selectOne(NS+"citizenIdCheck", memberDto);
+	}
+	//공무원회원 id찾기를 위한 이름, 이메일검색
+	public int functionaryIdCheck(MemberDto memberDto) {
+		return sqlSession.selectOne(NS+"functionaryIdCheck", memberDto);
+	}
+	
+	//관리자회원 id찾기
+	public String administratorIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - administratorIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"administratorIdSelect", memberDto);
+	}
+	
+	//대행업체 직원회원 id찾기
+	public String agencyEmployeeIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - agencyEmployeeIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"agencyEmployeeIdSelect", memberDto);
+	}
+	//시민회원 id찾기
+	public String citizenIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - citizenIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"citizenIdSelect", memberDto);
+	}
+	//공무원회원 id찾기
+	public String functionaryIdSelect(MemberDto memberDto) {
+		logger.debug("FunctionaryDao - functionaryIdSelect - memberDto : " + memberDto);
+		return sqlSession.selectOne(NS+"functionaryIdSelect", memberDto);
+	}
+	
 }
