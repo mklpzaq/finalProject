@@ -59,7 +59,7 @@ public class GoodsFacilityController {
 	public String insertGoodsFacility(GoodsFacilityRequest goodsFacilityRequest
 										,Model model
 										,HttpSession session) {
-		
+		logger.debug("★★★★★★★★★★POST★insertGoodsFacility★★★★★★★★★★★★★★★★★★★");
 		logger.debug("POST insertGoodsFacility GoodsFacilityController : " + goodsFacilityRequest.toString());	
 		List<MultipartFile> list = goodsFacilityRequest.getMultipartfile();
 		logger.debug("list : " + list);
@@ -94,6 +94,7 @@ public class GoodsFacilityController {
 				model.addAttribute("goodsfacilityIsPossibleRental", goodsFacilityRequest.getGoodsfacilityIsPossibleRental());
 				
 				return "/rentalGoodsFacility/insertGoodsFacilityForm";
+				
 			}			
 		}
 		String path = session.getServletContext().getRealPath("/resources/image/goodsFacilityImage/");		
@@ -201,6 +202,8 @@ public class GoodsFacilityController {
 		
 		model.addAttribute("viewImageDetailOne", viewImageDetailOne);
 		model.addAttribute("GoodsFacilityFile", viewImageDetailOne.getGoodsFacilityFile());
+		logger.debug("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+		logger.debug("GoodsFacilityController viewImageDetailOne.getGoodsFacilityFile() : " + viewImageDetailOne.toString());
 		logger.debug("GoodsFacilityController viewImageDetailOne.getGoodsFacilityFile() : " + viewImageDetailOne.getGoodsFacilityFile().toString());
 		
 		return "rentalGoodsFacility/viewDetailGoodsFacility";		

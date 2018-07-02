@@ -287,10 +287,10 @@
 						
 						<div class="form-group">								
 						    <div class="col-sm-10">
-						    <label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>
-						    	<select class="form-control" name="goodsfacilityStateAfterservice">
-									
-								</select>		    		    	
+						    <label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>						    	
+								<div class="col-sm-10">
+						    		<input type="text" class="form-control" id="goodsfacilityStateAfterservice" name="goodsfacilityStateAfterservice" value="일반" readonly>
+					    		</div>										    	
 						    </div>
 						</div>
 						

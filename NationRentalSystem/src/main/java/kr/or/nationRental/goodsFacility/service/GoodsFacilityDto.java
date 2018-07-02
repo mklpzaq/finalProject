@@ -23,6 +23,7 @@ public class GoodsFacilityDto {
 	private String goodsfacilityIsPossibleDelivery;
 	private String goodsfacilityStateAfterservice;
 	private String goodsfacilityIsPossibleRental;
+	
 	private Date goodsfacilityDateRegistration;
 	private List<GoodsFacilityFile> goodsFacilityFile;
 	

@@ -71,7 +71,8 @@ public class GoodsFacilityService {
 		goodsFacilityDto.setGoodsfacilityClassifyGoodsfacility(goodsFacilityRequest.getGoodsfacilityClassifyGoodsfacility());
 		goodsFacilityDto.setGoodsfacilityClassifyDonationpurchase(goodsFacilityRequest.getGoodsfacilityClassifyDonationpurchase());
 		goodsFacilityDto.setGoodsfacilityIsExtra(goodsFacilityRequest.getGoodsfacilityIsExtra());
-		goodsFacilityDto.setGoodsfacilityIsPossibleDelivery(goodsFacilityRequest.getGoodsfacilityStateAfterservice());
+		goodsFacilityDto.setGoodsfacilityIsPossibleDelivery(goodsFacilityRequest.getGoodsfacilityIsPossibleDelivery());
+		goodsFacilityDto.setGoodsfacilityStateAfterservice(goodsFacilityRequest.getGoodsfacilityStateAfterservice());
 		goodsFacilityDto.setGoodsfacilityIsPossibleRental(goodsFacilityRequest.getGoodsfacilityIsPossibleRental());
 		
 		for(MultipartFile multipartFile : multipartFileList) {
