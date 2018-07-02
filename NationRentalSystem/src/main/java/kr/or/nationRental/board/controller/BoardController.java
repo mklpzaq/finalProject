@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.nationRental.board.service.BoardCategoryDto;
+import kr.or.nationRental.board.service.BoardDto;
 import kr.or.nationRental.board.service.BoardService;
 import kr.or.nationRental.login.service.MemberDto;
 
@@ -24,6 +26,59 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+
+	@RequestMapping(value="/updateBoard", method=RequestMethod.POST)
+	public String updateBoard(BoardDto boardDto
+							,RedirectAttributes redirectAttributes) {
+		logger.debug("POST updateBoard BoardController");
+		
+		logger.debug(boardDto.toString());
+		
+		boardService.updateBoard(boardDto);
+		
+		redirectAttributes.addAttribute("boardCode", boardDto.getBoardCode());
+		logger.debug("★★★★★★★★★★updateBoard★★★★★★★★★★★★★★★");
+		return "redirect:selectOneDetailBoard";
+	}
+	
+	@RequestMapping(value="/updateBoard", method=RequestMethod.GET)
+	public String updateBoard(Model model
+							,BoardDto boardDto) {
+		logger.debug("GET updateBoard updateBoard");
+		logger.debug(boardDto.toString());
+		boardDto = boardService.selectOneDetailBoard(boardDto);
+		model.addAttribute("boardDto", boardDto);
+		return "board/updateBoardForm";
+	}
+	
+	@RequestMapping(value="/deleteBoard", method=RequestMethod.GET)
+	public String deleteBoard(BoardDto boardDto) {
+		logger.debug("GET deleteBoard boardService");
+		logger.debug(boardDto.toString());
+		boardService.deleteBoard(boardDto);
+		
+		return "redirect:/selectListBoard";
+	}
+	
+	@RequestMapping(value="/selectOneDetailBoard", method=RequestMethod.GET)
+	public String selectOneDetailBoard(Model model
+										,BoardDto boardDto) {
+		logger.debug("GET selectOneDetailBoard BoardController");
+		logger.debug(boardDto.toString());
+		boardDto = boardService.selectOneDetailBoard(boardDto);
+		model.addAttribute("boardDto", boardDto);
+		return "board/detailBoard";
+	}
+	
+	
+	@RequestMapping(value="/insertBoard", method=RequestMethod.POST)
+	public String insertBoardForm(BoardDto boardDto) {
+		logger.debug("POST insertBoardForm BoardController");
+		logger.debug(boardDto.toString());
+		boardService.insertBoard(boardDto);
+		
+		return "redirect:/selectListBoard";
+	}
 	
 	@RequestMapping(value="/insertBoard", method=RequestMethod.GET)
 	public String insertBoardForm(Model model
@@ -49,7 +104,7 @@ public class BoardController {
 									,HttpSession session
 									,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 									,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-									,@RequestParam(value="searchSelect", defaultValue="boardCode") String searchSelect
+									,@RequestParam(value="searchSelect", defaultValue="게시글 코드") String searchSelect
 									,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListBoard BoardController");
 		logger.debug("searchSelect : " + searchSelect);

@@ -97,11 +97,10 @@
 												<span id="selectButtonText">${searchSelect}</span> <span class="caret"></span>
 											</button>
 											<ul id="dropDownMenu" class="dropdown-menu" role="menu">
-												<li><a href="#">boardCode</a></li>
-												<li><a href="#">boardCategoryCode</a></li>
-												<li><a href="#">memberId</a></li>
-												<li><a href="#">boardName</a></li>
-												<li><a href="#">textBoardContent</a></li>
+												<li><a href="#">게시글 코드</a></li>
+												<li><a href="#">카테고리 명</a></li>
+												<li><a href="#">작성자 ID</a></li>
+												<li><a href="#">글 제목</a></li>
 											</ul>
 										</div>
 										<input type="text" id="searchWord" class="form-control" placeholder="검색어 입력">
@@ -118,35 +117,25 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<td><strong>boardCode</strong></td>
-										<td><strong>boardCategoryCode</strong></td>
-										<td><strong>memberId</strong></td>
-										<td><strong>boardName</strong></td>
-										<td><strong>textBoardContent</strong></td>
-										<td><strong>dateWriteBoard</strong></td>
-										<td><strong>boardHits</strong></td>
-										<!-- <td><strong>수정</strong></td>
-										<td><strong>삭제</strong></td> -->
+										<td><strong>게시글 코드</strong></td>
+										<td><strong>카테고리 명</strong></td>
+										<td><strong>작성자 ID</strong></td>
+										<td><strong>글 제목</strong></td>
+										<!-- <td><strong>글 내용</strong></td> -->
+										<td><strong>작성일</strong></td>
+										<td><strong>조회수</strong></td>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="boardDto" items="${list}">
 										<tr>
-											<td><strong>${boardDto.boardCode}</strong></td>
-											<td><strong>${boardDto.boardCategoryCode}</strong></td>
-											<td><strong>${boardDto.memberId}</strong></td>
-											<td><strong>${boardDto.boardName}</strong></td>
-											<td><strong>${boardDto.textBoardContent}</strong></td>
-											<td><strong>${boardDto.dateWriteBoard}</strong></td>
-											<td><strong>${boardDto.boardHits}</strong></td>
-											<!-- <td><a href="#">수정</a></td>
-											<td><a href="">삭제</a></td> -->
-											<%-- <td><strong>${article.articleId}</strong></td>
-											<td>${board.boardTitle}</td>
-											<td><a href="${pageContext.request.contextPath}/getDetailArticle?sendNo=${article.articleId}">${article.articleTitle}</a></td>
-											<td>${article.articleContent}</td>
-											<td><a href="${pageContext.request.contextPath}/updateArticle?sendNo=${article.articleId}">수정</a></td>
-											<td><a href="${pageContext.request.contextPath}/deleteArticle?sendNo=${article.articleId}">삭제</a></td> --%>
+											<td>${boardDto.boardCode}</td>
+											<td>${boardDto.boardCategoryName}</td>
+											<td>${boardDto.memberId}</td>
+											<td><a href="${pageContext.request.contextPath}/selectOneDetailBoard?boardCode=${boardDto.boardCode}"><strong>${boardDto.boardName}</strong></a></td>
+											<%-- <td>${boardDto.textBoardContent}</td> --%>
+											<td>${boardDto.dateWriteBoard}</td>
+											<td>${boardDto.boardHits}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

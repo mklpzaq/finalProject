@@ -13,9 +13,12 @@
 					$(location).attr('href', './selectListBoard');
 				});
 				$('#insertBoardBtn').click(function(){
-					$(location).attr('href', './insertBoard?memberId=' + $('#leftBoardListmemberId').val());
+					if( $('#leftBoardListmemberId').val() === "" ){
+						alert('로그인 하셔야 작성 가능합니다.');
+					}else{
+						$(location).attr('href', './insertBoard?memberId=' + $('#leftBoardListmemberId').val());	
+					}
 				});
-				
 			});
 		</script>
 	</head>
@@ -24,7 +27,7 @@
 		<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
 			<button id="listBoardBtn" type="button" class="btn btn-default">게시판 전체</button>
 			<button id="insertBoardBtn" type="button" class="btn btn-default" >자유 게시물 작성</button>
-			<button id="insertDonationBtn" type="button" class="btn btn-default">총 기부 리스트</button>
+			<!-- <button id="insertDonationBtn" type="button" class="btn btn-default">총 기부 리스트</button> -->
 		</div>
 	</body>
 </html>

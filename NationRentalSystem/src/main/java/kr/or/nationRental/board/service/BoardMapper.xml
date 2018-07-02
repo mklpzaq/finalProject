@@ -5,6 +5,83 @@
   
   <mapper namespace="kr.or.nationRental.board.service.BoardMapper">
   	
+  	<update id="updateBoard"
+  			parameterType="kr.or.nationRental.board.service.BoardDto">
+  		UPDATE
+			board
+		SET
+			board_name = #{boardName}
+			,text_board_content = #{textBoardContent}
+		WHERE
+			board_code = #{boardCode}
+  	</update>
+  	
+  	<delete id="deleteBoard"
+  			parameterType="kr.or.nationRental.board.service.BoardDto">
+  		DELETE 
+	 	FROM
+	 		board
+	 	WHERE
+	 		board_code = #{boardCode}
+  	</delete>
+  	
+  	<select id="selectOneDetailBoard"
+  			parameterType="kr.or.nationRental.board.service.BoardDto"
+  			resultType="kr.or.nationRental.board.service.BoardDto">
+  		SELECT
+			boa.board_code AS boardCode
+			,boaca.board_category_code AS boardCategoryCode
+			,boaca.board_category_name AS boardCategoryName
+			,boa.member_id AS memberId
+			,boa.board_name AS boardName
+			,boa.text_board_content AS textBoardContent
+			,boa.date_write_board AS dateWriteBoard
+			,boa.board_hits AS boardHits
+		FROM
+			board AS boa
+			INNER JOIN
+			board_category AS boaca
+			ON
+			boa.board_category_code = boaca.board_category_code
+		WHERE
+			boa.board_code = #{boardCode}
+  	</select>
+  	
+  	
+  	<select id="getBoardCategoryCode"
+  			parameterType="kr.or.nationRental.board.service.BoardDto"
+  			resultType="Integer">
+  		SELECT
+			board_category_code
+		FROM
+			board_category
+		WHERE
+			board_category_name = #{boardCategoryName}
+  	
+  	</select>
+  	
+  	<insert id="insertBoard"
+  			parameterType="kr.or.nationRental.board.service.BoardDto">
+  		INSERT
+  		INTO
+  			board(
+  				board_category_code
+  				,member_id
+  				,board_name
+  				,text_board_content
+  				,date_write_board
+  				,board_hits
+  			)
+  		VALUES(
+  			#{boardCategoryCode}
+  			,#{memberId}
+  			,#{boardName}
+  			,#{textBoardContent}
+  			,NOW()
+  			,0
+  		)
+  	</insert>
+  	
   	<select id="getBoardCategory"
   			resultType="kr.or.nationRental.board.service.BoardCategoryDto">
   		SELECT
@@ -20,23 +97,25 @@
 		SELECT
 			COUNT(*)
 		FROM
-			board
+			board AS boa
+			INNER JOIN
+			board_category AS boaca
+			ON
+			boa.board_category_code = boaca.board_category_code
+		
 		<if test="!searchWord.equals('')">
 			<choose>
-				<when test="searchSelect.equals('boardCode')">
-					WHERE board_code = #{searchWord}
+				<when test="searchSelect.equals('게시글 코드')">
+					WHERE boa.board_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('boardCategoryCode')">
-					WHERE board_category_code = #{searchWord}
+				<when test="searchSelect.equals('카테고리 명')">
+					WHERE boaca.board_category_name = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('memberId')">
-					WHERE member_id = #{searchWord}
+				<when test="searchSelect.equals('작성자 ID')">
+					WHERE boa.member_id = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('boardName')">
-					WHERE board_name = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('textBoardContent')">
-					WHERE text_board_content = #{searchWord}
+				<when test="searchSelect.equals('글 제목')">
+					WHERE boa.board_name = #{searchWord}
 				</when>
 			</choose>
 		</if>
@@ -46,35 +125,37 @@
 			parameterType="java.util.Map"
 			resultType="kr.or.nationRental.board.service.BoardDto">
 		SELECT
-			board_code AS boardCode
-			,board_category_code AS boardCategoryCode
-			,member_id AS memberId
-			,board_name AS boardName
-			,text_board_content AS textBoardContent
-			,date_write_board AS dateWriteBoard
-			,board_hits AS boardHits
+			boa.board_code AS boardCode
+			,boaca.board_category_name AS boardCategoryName
+			,boa.member_id AS memberId
+			,boa.board_name AS boardName
+			,boa.text_board_content AS textBoardContent
+			,boa.date_write_board AS dateWriteBoard
+			,boa.board_hits AS boardHits
 		FROM
-			board
+			board AS boa
+			INNER JOIN
+			board_category AS boaca
+			ON
+			boa.board_category_code = boaca.board_category_code
+		
 		<if test="!searchWord.equals('')">
 			<choose>
-				<when test="searchSelect.equals('boardCode')">
-					WHERE board_code = #{searchWord}
+				<when test="searchSelect.equals('게시글 코드')">
+					WHERE boa.board_code = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('boardCategoryCode')">
-					WHERE board_category_code = #{searchWord}
+				<when test="searchSelect.equals('카테고리 명')">
+					WHERE boaca.board_category_name = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('memberId')">
-					WHERE member_id = #{searchWord}
+				<when test="searchSelect.equals('작성자 ID')">
+					WHERE boa.member_id = #{searchWord}
 				</when>
-				<when test="searchSelect.equals('boardName')">
-					WHERE board_name = #{searchWord}
-				</when>
-				<when test="searchSelect.equals('textBoardContent')">
-					WHERE text_board_content = #{searchWord}
+				<when test="searchSelect.equals('글 제목')">
+					WHERE boa.board_name = #{searchWord}
 				</when>
 			</choose>
 		</if>
-		ORDER BY board_code DESC
+		ORDER BY boa.date_write_board DESC
 		LIMIT #{beginRow}, #{pagePerRow}	
 	</select>
   	

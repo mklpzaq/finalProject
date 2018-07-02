@@ -9,7 +9,7 @@ public class BoardDto {
 	private String textBoardContent;
 	private String dateWriteBoard;
 	private int boardHits;
-	
+	private String boardCategoryName;
 	public int getBoardCode() {
 		return boardCode;
 	}
@@ -58,10 +58,17 @@ public class BoardDto {
 	public void setBoardHits(int boardHits) {
 		this.boardHits = boardHits;
 	}
+	public String getBoardCategoryName() {
+		return boardCategoryName;
+	}
+	public void setBoardCategoryName(String boardCategoryName) {
+		this.boardCategoryName = boardCategoryName;
+	}
 	@Override
 	public String toString() {
 		return "BoardDto [boardCode=" + boardCode + ", boardCategoryCode=" + boardCategoryCode + ", memberId="
 				+ memberId + ", boardPw=" + boardPw + ", boardName=" + boardName + ", textBoardContent="
-				+ textBoardContent + ", dateWriteBoard=" + dateWriteBoard + ", boardHits=" + boardHits + "]";
+				+ textBoardContent + ", dateWriteBoard=" + dateWriteBoard + ", boardHits=" + boardHits
+				+ ", boardCategoryName=" + boardCategoryName + "]";
 	}
 }

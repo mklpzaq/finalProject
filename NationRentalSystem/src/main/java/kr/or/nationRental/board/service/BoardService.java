@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.nationRental.login.service.MemberDto;
 
@@ -17,6 +18,32 @@ public class BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
+	
+	@Transactional
+	public void updateBoard(BoardDto boardDto) {
+		logger.debug("updateBoard BoardService");
+		boardDao.updateBoard(boardDto);
+	}
+	
+	@Transactional
+	public void deleteBoard(BoardDto boardDto) {
+		logger.debug("deleteBoard BoardService");
+		boardDao.deleteBoard(boardDto);
+	}
+	
+	public BoardDto selectOneDetailBoard(BoardDto boardDto) {
+		logger.debug("selectOneDetailBoard BoardService");
+		return boardDao.selectOneDetailBoard(boardDto);
+	}
+	
+	@Transactional
+	public void insertBoard(BoardDto boardDto) {
+		logger.debug("insertBoard BoardService");
+		int boardCategoryCode = boardDao.getBoardCategoryCode(boardDto);
+		boardDto.setBoardCategoryCode(boardCategoryCode);
+		
+		boardDao.insertBoard(boardDto);
+	}
 	
 	public List<BoardCategoryDto> getBoardCategory() {
 		logger.debug("getBoardCategory BoardService");
