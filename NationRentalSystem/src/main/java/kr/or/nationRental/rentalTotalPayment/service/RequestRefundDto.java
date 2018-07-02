@@ -1,12 +1,14 @@
 package kr.or.nationRental.rentalTotalPayment.service;
 
+import java.sql.Date;
+
 import com.mysql.fabric.xmlrpc.base.Data;
 
 public class RequestRefundDto {
 	private int requestRefundCode; //환불코드
 	private int rentalTotalPaymentCode; //결제코드
 	private String citizenId; //시민Id
-	private Data dateRequestRefund; //환불신청날짜
+	private Date dateRequestRefund; //환불신청날짜
 	
 	public int getRequestRefundCode() {
 		return requestRefundCode;
@@ -26,10 +28,10 @@ public class RequestRefundDto {
 	public void setCitizenId(String citizenId) {
 		this.citizenId = citizenId;
 	}
-	public Data getDateRequestRefund() {
+	public Date getDateRequestRefund() {
 		return dateRequestRefund;
 	}
-	public void setDateRequestRefund(Data dateRequestRefund) {
+	public void setDateRequestRefund(Date dateRequestRefund) {
 		this.dateRequestRefund = dateRequestRefund;
 	}
 	

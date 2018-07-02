@@ -90,7 +90,7 @@
 		FROM rental_total_payment	
 	</select>
 	
-	<!-- 결제 완료리스트 -->
+	<!-- 환불 리스트 -->
 	<select id="selectListRequestRefund" resultType="kr.or.nationRental.rentalTotalPayment.service.RequestRefundDto">
 		SELECT
 			request_refund_code as requestRefundCode
