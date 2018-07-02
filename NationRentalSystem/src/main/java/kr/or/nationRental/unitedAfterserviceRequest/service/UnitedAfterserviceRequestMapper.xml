@@ -590,7 +590,7 @@
 			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
 			
 		WHERE
-			returngf.adminagency_code = 1234
+			returngf.adminagency_code = #{functionaryDto.adminagencyCode}
 			AND
 			gf.goodsfacility_state_afterservice = '일반'
 			AND
@@ -684,7 +684,7 @@
 			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
 			
 		WHERE
-			returngf.adminagency_code = 1234
+			returngf.adminagency_code = #{functionaryDto.adminagencyCode}
 			AND
 			gf.goodsfacility_state_afterservice = '일반'
 			AND
