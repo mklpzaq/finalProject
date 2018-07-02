@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto;
 import kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingService;
 import kr.or.nationRental.agencyAfterserviceHandling.service.AgencyBusinesstypeDto;
+import kr.or.nationRental.functionary.service.FunctionaryDto;
 import kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto;
 
 @Controller
@@ -26,8 +27,37 @@ public class AgencyAfterserviceHandlingController {
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingController.class);
 	
 	@RequestMapping(value="/selectListAgencyAfterserviceHandling", method=RequestMethod.GET)
-	public String selectListAgencyAfterserviceHandling() {
+	public String selectListAgencyAfterserviceHandling(Model model
+													,HttpSession session
+													,AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto
+													,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+													,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
+													,@RequestParam(value="searchSelect", defaultValue="정기점검 코드") String searchSelect
+													,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListAgencyAfterserviceHandling AgencyAfterserviceHandlingController");
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		logger.debug(agencyAfterserviceHandlingDto.toString());
+		Map<String, Object> map = agencyAfterserviceHandlingService.selectListAgencyAfterserviceHandling(currentPage, pagePerRow, searchSelect, searchWord, agencyAfterserviceHandlingDto);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("beginPageNumForCurrentPage", map.get("beginPageNumForCurrentPage"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pagePerRow", pagePerRow);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchWord", searchWord);
+		logger.debug("list : "+ map.get("list"));
+		logger.debug("lastPage : "+ map.get("lastPage"));
+		logger.debug("beginPageNumForCurrentPage : "+ map.get("beginPageNumForCurrentPage"));
+		logger.debug("currentPage : "+ currentPage);
+		logger.debug("pagePerRow : "+ pagePerRow);
+		logger.debug("searchSelect : " + searchSelect);
+		logger.debug("searchWord : " + searchWord);
+		
+		/* 파일 저장루트 확인용 */
+		String path = session.getServletContext().getRealPath("/resources/upload/");
+		model.addAttribute("path", path);
 		
 		return "agencyAfterserviceHandling/selectListAgencyAfterserviceHandling";
 	}

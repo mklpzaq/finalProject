@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.nationRental.regularCheck.service.RegularCheckDto;
 import kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto;
 
 @Repository
@@ -17,6 +18,22 @@ public class AgencyAfterserviceHandlingDao {
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(AgencyAfterserviceHandlingDao.class);
 	final String NS = "kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper.";
+	
+	public int totalCountAgencyAfterserviceHandling(Map<String, Object> map) {
+		logger.debug("totalCountAgencyAfterserviceHandling AgencyAfterserviceHandlingDao");
+		return sqlSession.selectOne(NS+"totalCountAgencyAfterserviceHandling", map);
+	}
+	
+	public List<AgencyAfterserviceHandlingDto> selectListAgencyAfterserviceHandling(Map<String, Object> map){
+		logger.debug("selectListAgencyAfterserviceHandling AgencyAfterserviceHandlingDao");
+		return sqlSession.selectList(NS+"selectListAgencyAfterserviceHandling", map);
+	}
+	
+	
+	
+	
+	
+	
 	
 	public void updateUnitedAfterserviceRequestForAcceptOrder(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
 		logger.debug("updateUnitedAfterserviceRequestForAcceptOrder updateUnitedAfterserviceRequestForAcceptOrder");
@@ -33,21 +50,10 @@ public class AgencyAfterserviceHandlingDao {
 		return sqlSession.selectOne(NS+"selectOneAgencyBusinesstypeForAjax", agencyBusinesstypeDto);
 	}
 	
-	
-	
-	
-	
-	
 	public List<AgencyAfterserviceHandlingDto> selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee(AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto) {
 		logger.debug("selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee AgencyAfterserviceHandlingDao");
 		return sqlSession.selectList(NS+"selectOneAgencyAfterserviceHandlingDtoForAgencyEmployee", agencyAfterserviceHandlingDto);
 	}
-
-	
-	
-	
-	
-	
 	
 	public List<AgencyBusinesstypeDto> selectListAgencyBusinesstypeDto(UnitedAfterserviceRequestDto unitedAfterserviceRequestDto){
 		logger.debug("selectListAgencyBusinesstypeDto AgencyAfterserviceHandlingDao");

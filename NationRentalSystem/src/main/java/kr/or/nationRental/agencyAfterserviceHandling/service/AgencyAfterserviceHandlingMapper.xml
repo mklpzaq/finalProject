@@ -5,6 +5,29 @@
  
 <mapper namespace="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingMapper">
 	
+	
+	
+	<select id="totalCountAgencyAfterserviceHandling"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		
+	</select>
+	
+	
+	
+	
+	<select id="selectListAgencyAfterserviceHandling"
+			parameterType="java.util.Map"
+			resultType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto">
+		
+		
+	</select>
+	
+	
+	
+	
+	
+	
 	<update id="updateUnitedAfterserviceRequestForAcceptOrder"
 			parameterType="kr.or.nationRental.agencyAfterserviceHandling.service.AgencyAfterserviceHandlingDto">
 		UPDATE
