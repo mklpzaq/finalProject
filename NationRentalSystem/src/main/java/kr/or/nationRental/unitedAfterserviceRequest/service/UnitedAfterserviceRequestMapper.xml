@@ -585,7 +585,7 @@
 			returngf.functionary_id = func.functionary_id
 			
 			INNER JOIN
-			goodsfacility_three AS gfthree
+			goodsfacility_three AS gfthree 
 			ON
 			gf.goodsfacility_three_code = gfthree.goodsfacility_three_code
 			
