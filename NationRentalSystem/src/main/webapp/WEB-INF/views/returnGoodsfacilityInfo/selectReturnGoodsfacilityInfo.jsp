@@ -126,7 +126,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
+					<jsp:include page="../module/leftReturnGoodsfacility/leftReturnGoodsfacility.jsp"/>
 				</div>
 				<div style="padding:15px;" class="col-sm-8">
 					<!-- Begin Content -->
@@ -147,7 +147,7 @@
 										<h3>반납정보 리스트</h3>
 									</div>
 									<div class="col-md-4">
-										<select id="selectPagePerRow" name="selectPagePerRow">
+										<select id="selectPagePerRow" class="btn btn-danger" name="selectPagePerRow">
 											<option value="5"<c:if test="${pagePerRow == 5}">selected</c:if>>5</option>
 											<option value="10"<c:if test="${pagePerRow == 10}">selected</c:if>>10</option>
 											<option value="15"<c:if test="${pagePerRow == 15}">selected</c:if>>15</option>
@@ -155,8 +155,10 @@
 											<option value="30"<c:if test="${pagePerRow == 30}">selected</c:if>>30</option>
 											<option value="40"<c:if test="${pagePerRow == 40}">selected</c:if>>40</option>
 											<option value="50"<c:if test="${pagePerRow == 50}">selected</c:if>>50</option>
-										</select>개씩 보기
-										
+										</select>
+										<font size="3em" color="black">
+										개씩 보기
+										</font>
 									</div>
 								</div>
 								<hr/>

@@ -113,27 +113,18 @@
 	<div style="position:fixed; z-index:-1; width:100%">
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
-		
-		<div class="container-fluid" style="height:900px;">
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<%-- <jsp:include page="./module/top/mainHeader.jsp"/> --%>
-			<div class="row" >
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid" style="height:600px;">
+			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/leftHome/leftHome.jsp"/>
 				</div>
-				<div class="col-sm-8">
-					<!-- Begin Content -->
-					
-					<div style="margin:15px 0 15px 0;" class="panel panel-default">
-						<div class="panel-body text-center">
-							<h1>국가 통합 대여/예약 시스템</h1>
-							<h2>Nation Integrated Reserve and Rental System</h2>
-						</div>
-					</div>
+				<div style="padding:15px;" class="col-sm-8">
 				
-
-					<div class="panel panel-default">
-						<div class="panel-body text-center">
+					<!-- Begin Content -->					
+						<div class="panel panel-default">
+							<div class="panel-body text-center">
+							<h3 class="text-center">배달반납 주소지수정</h3>
+							<hr/>							
 							<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/updateDeliveryOrderCitizenAddress" method="post">
 								<input hidden="hidden" name="deliveryOrderCitizenCode" value="${returndeliveryOrderCitizenDto.deliveryOrderCitizenCode}">								
 								<div>
@@ -145,7 +136,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="sample6_address" class="col-sm-4 control-label">다시 찾아주세요</label>
+										<label for="sample6_address" class="col-sm-4 control-label">도로명주소로 찾으면 지번으로 입력됩니다</label>
 										<div class="col-sm-8">
 											<input type="text" style="float:left" size="40" id="sample6_address" placeholder="도로명주소">
 										</div>
@@ -162,7 +153,7 @@
 									<br>										
 								</div>
 												
-								<div>
+								<div hidden="hidden">
 									<div class="form-group">
 										<label for="sample6_postcode" class="col-sm-4 control-label">받는 사람 도로명주소</label>
 										<div class="col-sm-8">
@@ -171,7 +162,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="sample6_address" class="col-sm-4 control-label">다시 찾아주세요</label>
+										<label for="sample6_address" class="col-sm-4 control-label">도로명주소로 찾으면 지번으로 입력됩니다</label>
 										<div class="col-sm-8">
 											<input type="text" style="float:left" size="40" id="sample7_address" placeholder="도로명주소">
 										</div>
@@ -194,14 +185,13 @@
 									</div>
 								</div>
 							</form>
-						</div>
-					</div>
-					
+						</div>					
+					</div>		
 					<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
-			</div>
+			</div>			
 		</div>
-		<jsp:include page="../module/bottom/bottomContent.jsp"/>
+		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>
 	</body>
 </html>

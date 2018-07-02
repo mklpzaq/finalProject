@@ -213,9 +213,7 @@
 								</div>	
 							</div>
 							<div class="center">
-								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" id="btn" class="btn btn-primary">Sign in</button>
-								</div>
+								<button type="submit" id="btn" class="btn btn-primary">등록</button>								
 							</div>
 						</form>
 					</div>

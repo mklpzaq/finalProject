@@ -47,68 +47,63 @@
 	</head>
 	
 	<body>
-		
 		<div style="position:fixed; z-index:-1; width:100%">
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
-		
-		<div class="container-fluid" style="height:900px;">
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<%-- <jsp:include page="../module/top/mainHeader.jsp"/> --%>
-			<div class="row" >
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid">
+			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/leftHome/leftHome.jsp"/>
+					<jsp:include page="../module/leftReturnGoodsfacility/leftReturnGoodsfacility.jsp"/>
 				</div>
+				<div style="padding:15px;" class="col-sm-8">
 				
-				<div class="col-sm-8">
-					<!-- Begin Content -->
-					
-					<div style="margin:15px 0 15px 0;" class="panel panel-default">
-						<div class="panel-body text-center">
-							<h1>대여물품/시설 반납</h1>
-						</div>
-					</div>
-				
-
-					<div class="panel panel-default">
-						<div class="panel-body text-center">
+					<!-- Begin Content -->					
+						<div class="panel panel-default">
+							<div class="panel-body text-center">
+							<h3 class="text-center">반납 등록</h3>
+							<hr/>
 							<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertReturnGoodsfacilityInfoForm" method="post">
 								<div class="form-group">
 									<label for="goodsfacilityCode" class="col-sm-3 control-label">물품/시설 개별등록코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" placeholder="">
-										<button type="button" id="btn">검색</button>
+										<div class="input-group">
+											<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" placeholder="반납할 물품의 코드를 등록해주십시오">
+											<span class="input-group-btn">
+												<button type="button" id="btn" class="btn btn-default">검색</button>
+											</span>
+										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="goodsfacilityRentalCode" class="col-sm-3 control-label">시설/물품 대여/예약 신청코드</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="goodsfacilityRentalCode" id="goodsfacilityRentalCode" placeholder="">
+										<input type="text" class="form-control" name="goodsfacilityRentalCode" id="goodsfacilityRentalCode" readonly="readonly">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="classifyGoodsfacility" class="col-sm-3 control-label">물품/시설 구분</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="classifyGoodsfacility" id="classifyGoodsfacility">
+										<input type="text" class="form-control" name="classifyGoodsfacility" id="classifyGoodsfacility" readonly="readonly">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="citizenId" class="col-sm-3 control-label">시민ID</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="citizenId" id="citizenId" placeholder="">
+										<input type="text" class="form-control" name="citizenId" id="citizenId" readonly="readonly">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="isRequestedToReturnAsDelivery" class="col-sm-3 control-label">배달반납신청 유무</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="isRequestedToReturnAsDelivery" id="isRequestedToReturnAsDelivery" placeholder="">										
+										<input type="text" class="form-control" name="isRequestedToReturnAsDelivery" id="isRequestedToReturnAsDelivery">										
 									</div>
 									배달반납을 신청하고 일반 반납을 할시에는 변경을 해주시기 바랍니다								
 								</div>
 								<div class="form-group">
 									<label for="overdueDays" class="col-sm-3 control-label">연체일수</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" name="overdueDays" id="overdueDays" placeholder="">
+										<input type="text" class="form-control" name="overdueDays" id="overdueDays" readonly="readonly">
 									</div>
 								</div>
 								<div class="form-group">
@@ -119,29 +114,25 @@
 								</div>
 								<div class="form-group">
 									<label for="stateGoodsCode" class="col-sm-3 control-label">물품상태코드</label>
-									<div class="col-sm-9">
-										<select name="stateGoodsCode">
+									<div class="col-sm-9" style="text-align: left;">
+										<select class="btn btn-danger" name="stateGoodsCode">
 											<c:forEach var="stateGoodsDto" items="${list}">
 												<option value="${stateGoodsDto.stateGoodsCode}">${stateGoodsDto.stateGoods}</option>											
 											</c:forEach>
 										</select>										
 									</div>
 								</div>
-								<div class="form-group">
-								<div class="col-sm-10">
-									<button type="submit" class="form-control-static">반납등록</button>
-								</div>	
-							</div>
+								<div class="form-group" style="text-align: center;">
+									<button type="submit" class="btn btn-primary">반납등록</button>	
+								</div>
 							</form>						
-						</div>
-					</div>
-					
+						</div>					
+					</div>		
 					<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
-			</div>
+			</div>			
 		</div>
-		<jsp:include page="../module/bottom/bottomContent.jsp"/>
-	
+		<jsp:include page="/WEB-INF/views/module/bottom/bottomContent.jsp"/>	
 	</body>
 </html>

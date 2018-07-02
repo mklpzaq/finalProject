@@ -123,7 +123,7 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectGoodsFacilityList?functionaryId=${member.memberId}">물품/시설 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListRentalTotalPayment">결제/환불 목록</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertReturnGoodsfacilityInfoForm?adminagencyCode=${member.adminagencyCode}">물품/시설반납</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?adminagencyCode=${member.adminagencyCode}">반납관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizen?adminagencyCode=${member.adminagencyCode}">물품 배달 신청 확인</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?functionaryId=${member.memberId}&adminagencyCode=${member.adminagencyCode}">통합 AS 의뢰</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
