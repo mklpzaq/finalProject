@@ -127,33 +127,35 @@
 	-->
 
 	<body>
-		<div class="container-fluid">
-			<jsp:include page="/WEB-INF/views/module/top/navbar.jsp"/>
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid" style="height:600px;">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
 				</div>
-				<div class="col-sm-8">
-					<!-- Begin Content -->
-					<div class="text-center">
-						<h1>배달신청등록</h1>
-					</div>
+				<div style="padding:15px;" class="col-sm-8">
+				
+					<!-- Begin Content -->					
 						<div class="panel panel-default">
 							<div class="panel-body text-center">
+							<h3 class="text-center">배달반납신청</h3>
+							<hr/>							
 								<form id="insertDistrict" class="form-horizontal" action="${pageContext.request.contextPath}/insertDeliveryOrderCitizen" method="post">
-									<div class="form-group">
+									<div hidden="hidden" class="form-group">
 										<label for="goodsfacilityRentalCode" class="col-sm-3 control-label">시설/물품 대여/예약 신청코드</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="goodsfacilityRentalCode" id="goodsfacilityRentalCode" value="${deliveryOrderCitizenDto.goodsfacilityRentalCode}">
 										</div>
 									</div>
-									<div class="form-group">
+									<div hidden="hidden" class="form-group">
 										<label for="classifyRentalState" class="col-sm-3 control-label">대여/반납상태 구분</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="classifyRentalState" id="classifyRentalState" value="${deliveryOrderCitizenDto.classifyRentalState}">
 										</div>
 									</div>
-									<div class="form-group">
+									<div hidden="hidden" class="form-group">
 										<label for="goodsfacilityCode" class="col-sm-3 control-label">시설/물품 개별관리코드</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="goodsfacilityCode" id="goodsfacilityCode" value="${deliveryOrderCitizenDto.goodsfacilityCode}">
@@ -165,7 +167,7 @@
 											<input type="text" class="form-control" name="citizenId" id="citizenId" placeholder="(대여/반납) 상태를 입력해주세요.">
 										</div>
 									</div> -->
-									<div class="form-group">
+									<div hidden="hidden" class="form-group">
 										<label for="adminagencyCode" class="col-sm-3 control-label">행정기관코드</label>
 										<div class="col-sm-9">
 											<input type="text" class="form-control" name="adminagencyCode" id="adminagencyCode" value="${deliveryOrderCitizenDto.adminagencyCode}">

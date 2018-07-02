@@ -14,7 +14,6 @@
 				var keyword;
 				
 				/* 드롭다운 박스 클릭시 열고 닫고 이벤트 */
-				
 				$('#selectButton').click(function(){
 					if($('#selectbox').hasClass('open')){
 						$('#selectbox').removeClass('open');

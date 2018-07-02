@@ -44,6 +44,7 @@ public class AgencyController {
 		//등록된 업종리스트를 뽑는다
 		Map<String, Object> map = agencyBusinesstypeService.selectListAgencyBusinesstype(currentPage, pagePerRow, searchOption, keyword);
 		
+		logger.debug("AgencyController - insertAgency - map : " + map.toString());
 		model.addAttribute("list", map.get("list"));
 		
 		return "/agency/insertAgencyForm";
@@ -52,7 +53,7 @@ public class AgencyController {
 	//대행업체 등록
 	//소속 행정기관코드와 등록공무원명은 세션에서 가져올 예정
 	//하지만 아직 행정기관코드는 세션처리가 안됐으므로 만들것으로 가정하고 만든다 
-	@RequestMapping(value="/insertAgency", method=RequestMethod.POST)
+	@RequestMapping(value="/insertAgency", method=RequestMethod.GET)
 	public String insertAgency(AgencyDto agencyDto
 									,HttpSession session) {
 		logger.debug("AgencyController - insertAgency - agencyDto : " + agencyDto.toString());
