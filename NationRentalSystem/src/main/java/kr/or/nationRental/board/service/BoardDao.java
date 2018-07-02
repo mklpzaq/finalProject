@@ -17,6 +17,16 @@ public class BoardDao {
 	private static final Logger logger = LoggerFactory.getLogger(BoardDao.class);
 	final String NS = "kr.or.nationRental.board.service.BoardMapper.";
 	
+	public int getNowBoardHits(BoardDto boardDto) {
+		logger.debug("getNowBoardHits BoardDao");
+		return sqlSession.selectOne(NS+"getNowBoardHits", boardDto);
+	}
+	
+	public void updateBoardHits(BoardDto boardDto) {
+		logger.debug("updateBoardHits BoardDao");
+		sqlSession.update(NS+"updateBoardHits", boardDto);
+	}
+	
 	public void updateBoard(BoardDto boardDto) {
 		logger.debug("updateBoard BoardDao");
 		sqlSession.update(NS+"updateBoard", boardDto);

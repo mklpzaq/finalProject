@@ -65,7 +65,11 @@ public class BoardController {
 										,BoardDto boardDto) {
 		logger.debug("GET selectOneDetailBoard BoardController");
 		logger.debug(boardDto.toString());
+		/* 조회수 증가 */
+		boardService.updateBoardHits(boardDto);
+		/* 해당 게시글 정보 가져오기 */
 		boardDto = boardService.selectOneDetailBoard(boardDto);
+		/* model에 객체를 담아 board/detailBoard로 포워딩 */
 		model.addAttribute("boardDto", boardDto);
 		return "board/detailBoard";
 	}

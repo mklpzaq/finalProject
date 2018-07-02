@@ -5,6 +5,27 @@
   
   <mapper namespace="kr.or.nationRental.board.service.BoardMapper">
   	
+  	<select id="getNowBoardHits"
+  			parameterType="kr.or.nationRental.board.service.BoardDto"
+  			resultType="Integer">
+  		SELECT
+			board_hits
+		FROM
+			board
+		WHERE
+			board_code = #{boardCode}
+  	</select>
+  	
+  	<update id="updateBoardHits"
+  			parameterType="kr.or.nationRental.board.service.BoardDto">
+  		UPDATE
+			board
+		SET
+			board_hits = #{boardHits}
+		WHERE
+			board_code = #{boardCode}
+  	</update>
+  	
   	<update id="updateBoard"
   			parameterType="kr.or.nationRental.board.service.BoardDto">
   		UPDATE

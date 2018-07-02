@@ -20,6 +20,13 @@ public class BoardService {
 	private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
 	
 	@Transactional
+	public void updateBoardHits(BoardDto boardDto) {
+		logger.debug("updateBoardHits BoardService");
+		boardDto.setBoardHits(boardDao.getNowBoardHits(boardDto) + 1);
+		boardDao.updateBoardHits(boardDto);
+	}
+	
+	@Transactional
 	public void updateBoard(BoardDto boardDto) {
 		logger.debug("updateBoard BoardService");
 		boardDao.updateBoard(boardDto);
