@@ -13,7 +13,7 @@ public class CitizenDto {
 	private long eupmyeonCode; //읍면동코드	
 	private String eupmyeonName;
 	private String citizenAddressSangse; //상세주소
-	private int citizenPhone; //시민 전화번호
+	private String citizenPhone; //시민 전화번호
 	private String citizenEmail; //시민 이메일
 	private Date citizenDateJoin; //가입날짜
 	public String getCitizenId() {
@@ -82,10 +82,10 @@ public class CitizenDto {
 	public void setCitizenAddressSangse(String citizenAddressSangse) {
 		this.citizenAddressSangse = citizenAddressSangse;
 	}
-	public int getCitizenPhone() {
+	public String getCitizenPhone() {
 		return citizenPhone;
 	}
-	public void setCitizenPhone(int citizenPhone) {
+	public void setCitizenPhone(String citizenPhone) {
 		this.citizenPhone = citizenPhone;
 	}
 	public String getCitizenEmail() {

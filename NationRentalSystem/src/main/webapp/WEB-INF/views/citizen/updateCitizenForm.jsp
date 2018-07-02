@@ -44,7 +44,7 @@
           }
    
           //비밀번호와 비밀번호 확인 일치여부 체크
-          if ($("#CitizenPw").val() != $("#ReCitizenPW").val()) {
+          if ($("#CitizenPw").val() != $("#ReCitizenPw").val()) {
               alert("비밀번호가 일치하지 않습니다");
               $("#CitizenPw") = ""
               $("#CitizenPw").focus();
@@ -161,7 +161,7 @@
 			<!-- ========== -->
 						<div class="panel panel-default">
 						<div class="panel-body text-center">
-							<form id="insertAddr" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdministrator" id="citizenForm" method="post">
+							<form id="insertAddr" class="form-horizontal" action="${pageContext.request.contextPath}/insertAdministrator" method="post">
 								<div class="form-group">
 									<label for="sample6_postcode" class="col-sm-4 control-label">도로명주소</label>
 									<div class="col-sm-8">
@@ -195,7 +195,7 @@
 						</div>
 					</div>
 			
-			<form action="${pageContext.request.contextPath}/updateOneCitizen" method="post">
+			<form action="${pageContext.request.contextPath}/updateOneCitizen" id="citizenForm" method="post">
 				<div class="form-group">
 						<label for="ID" class="col-sm-2 control-label">회원ID</label>
 				    <div class="col-sm-10">

@@ -146,18 +146,8 @@
 						
 						
 						<!-- ========== -->			
-						<form action="${pageContext.request.contextPath}/insertGoodsFacility" method="post" enctype="multipart/form-data">			
+						<form action="${pageContext.request.contextPath}/insertGoodsFacility" method="post" enctype="multipart/form-data">						
 						
-						<%-- <div class="form-group">
-								<label for="goodsfacility" class="col-sm-2 control-label">시설 물품 카테고리 코드</label>
-						    <div class="col-sm-10">						    	
-						    <select id="selectGoodsfacilityThreeCode" class="form-control" name="goodsfacilityThreeCode">
-									<c:forEach var="goodsfacility" items="${list}"> 					
-										 <option value="${goodsfacility.goodsfacilityThreeCode}">${goodsfacility.goodsfacilityThreeCode}</option>										
-									</c:forEach>
-								</select>		    		    	
-						    </div>
-						</div> --%>
 						<div class="form-group">
 								<label for="goodsfacility" class="col-sm-2 control-label">시설 물품 카테고리 이름</label>
 						    <div class="col-sm-10">						    	
@@ -178,6 +168,13 @@
 							<label for="goodsfacilityThreeName" class="col-sm-2 control-label">시설 물품 카테고리 이름</label>
 						    <div class="col-sm-10">
 						    	<input type="text" class="form-control" id="goodsfacilityThreeName"  placeholder="시설 물품 카테고리 이름">			    	
+						    </div>
+						</div>
+						
+						<div class="form-group">
+							<label for="goodsfacility" class="col-sm-2 control-label">시설 & 물품 구분</label>
+						    <div class="col-sm-10">
+						    	<input type="text" class="form-control" id="goodsfacilityClassifyGoodsfacility" name="goodsfacilityClassifyGoodsfacility" placeholder="시설 & 물품 구분">			    	
 						    </div>
 						</div>
 												
@@ -261,8 +258,9 @@
 						<div class="form-group">								
 						    <div class="col-sm-10">
 						    <label for="goodsfacility" class="col-sm-2 control-label">기부 & 구입여부</label>
-						    	<select class="form-control" name="goodsfacilityStateAfterservice">													
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>									
+						    	<select class="form-control" name="goodsfacilityClassifyDonationpurchase">													
+									<option>기부</option>
+									<option>구입</option>									
 								</select>		    		    	
 						    </div>
 						</div>				
@@ -270,8 +268,10 @@
 						<div class="form-group">						
 						 	<div class="col-sm-10">
 						 	<label class="checkbox-inline" class="col-sm-2 control-label" >예비 & 대여 </label>
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 예비
-						 		<input type="checkbox" id="inlineCheckbox1" value="option1"> 대여
+						 		<select class="form-control" name="goodsfacilityIsExtra">													
+									<option>예비</option>
+									<option>대여</option>									
+								</select>		    	
 							</div>
 						</div>
 						
@@ -279,9 +279,8 @@
 						    <div class="col-sm-10">
 						    <label for="goodsfacility" class="col-sm-2 control-label">배달가능여부</label>	
 						    	<select class="form-control" name="goodsfacilityIsPossibleDelivery">
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
+									<option>Y</option>
+									<option>N</option>		
 								</select>		    		    	
 						    </div>
 						</div>												
@@ -290,9 +289,7 @@
 						    <div class="col-sm-10">
 						    <label for="goodsfacility" class="col-sm-2 control-label">현제 AS 상태</label>
 						    	<select class="form-control" name="goodsfacilityStateAfterservice">
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
+									
 								</select>		    		    	
 						    </div>
 						</div>
@@ -301,9 +298,8 @@
 						    <div class="col-sm-10">
 						    <label for="goodsfacility" class="col-sm-2 control-label">대여 가능 여부</label>
 						    	<select class="form-control" name="goodsfacilityIsPossibleRental">
-									<%-- <c:forEach var="sigungu" items="${districtList}"> 					
-										 <option value="${sigungu.sigunguName}">${sigungu.sigunguName}</option>										
-									</c:forEach>  --%>
+									<option>Y</option>
+									<option>N</option>
 								</select>		    		    	
 						    </div>
 						</div>

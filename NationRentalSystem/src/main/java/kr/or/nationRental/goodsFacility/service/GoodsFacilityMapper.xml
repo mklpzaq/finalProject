@@ -167,7 +167,7 @@
 					</when>					
 				</choose>
 			</if>
-				ORDER BY goodsfacility_name DESC
+				ORDER BY goodsfacility_date_registration DESC
 				LIMIT #{beginRow}, #{pagePerRow}  		  	
   	</select>
   	
