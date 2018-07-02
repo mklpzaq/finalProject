@@ -59,7 +59,11 @@
 											<td>${AgencyDto.agencyName}</td>
 											<td>${AgencyDto.agencyBusinesstypeName}</td>
 											<td>${AgencyDto.agencyDateRegistration}</td>
-											<td><a href="${pageContext.request.contextPath}/selectContractAgencyEmployee?agencyCode=${AgencyDto.agencyCode}">직원조회</a></td>
+											<td>
+												<a href="${pageContext.request.contextPath}/selectContractAgencyEmployee?agencyCode=${AgencyDto.agencyCode}">
+													<button class="btn btn-default">직원조회</button>
+												</a>
+											</td>
 											<td><button type="button" id="agencyModalBtn" value="${AgencyDto.agencyCode}" class="btn btn-default" data-toggle="modal" data-target="#agencyModal">계약해지</button></td>																						
 										</tr>
 									</tbody>

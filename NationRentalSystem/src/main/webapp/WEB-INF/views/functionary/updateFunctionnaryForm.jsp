@@ -14,7 +14,7 @@
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
 		<jsp:include page="../module/top/navbar.jsp"/>
-		<div class="container-fluid">
+		<div class="container-fluid" style="height:600px;">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
@@ -62,10 +62,8 @@
 									</div>
 								</div>	
 									<br></br>		
-								<div class="form-group">
-									<div class="col-sm-12 text-center">
-										<button type="submit" class="btn btn-default">정보수정</button>
-									</div>	
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary">정보수정</button>									
 								</div>
 							</form>
 						<!-- End Content -->

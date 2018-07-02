@@ -25,7 +25,7 @@
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
 		<jsp:include page="../module/top/navbar.jsp"/>
-		<div class="container-fluid">
+		<div class="container-fluid" style="height:600px;">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="../module/leftFunctionary/leftFunctionaryInfo.jsp"/>
@@ -73,14 +73,9 @@
 								<div class="col-sm-10">
 								<input type="text" class="form-control" name="functionaryDateJoin" value="${returnfunctionaryDto.functionaryDateJoin}" id="functionaryDateJoin" readonly>
 								</div>								
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12 text-center">
-									<button class="btn btn-default"><a href="${pageContext.request.contextPath}/updateFunctionnary?functionaryId=${returnfunctionaryDto.functionaryId}">기본정보 수정</a></button>
-								</div>
-							</div>
+							</div>							
 						</form>
-				<!-- End Content -->
+						<!-- End Content -->
 						</div>
 						<div class="col-sm-2"></div>
 					</div>
