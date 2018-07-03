@@ -81,7 +81,7 @@
 								<div class="form-group" style="text-align: center;">
 									<div class="col-sm-12">
 										<button type="submit" id="updateButton" class="btn btn-default">수정하기</button>
-										<button type="submit" id="deleteButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/approvalListDonation">목록</a></button>
+										<button type="submit" id="listButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/approvalListDonation">목록</a></button>
 									</div>
 								</div>
 				

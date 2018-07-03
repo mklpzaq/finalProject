@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class DonationService {
 	@Autowired DonationDao donationDao;
@@ -29,6 +28,18 @@ public class DonationService {
 	//회원 : 기부신청 1개 게시글 보기
 	public DonationDto viewDonation(DonationDto donationDto) {
 		return donationDao.viewDonation(donationDto);
+	}
+
+	//회원 : 기부 수정
+	public int updateDonation(DonationDto donationDto)  {	
+		logger.info("updateDonation");
+		return donationDao.updateDonation(donationDto);
+	}
+	
+	
+	//회원 : 기부 취소(삭제)
+	public void deleteDonation(DonationDto donationDto) {
+		donationDao.deleteDonation(donationDto);
 	}
 	
 	//공무원 : 기부 승인대기 리스트

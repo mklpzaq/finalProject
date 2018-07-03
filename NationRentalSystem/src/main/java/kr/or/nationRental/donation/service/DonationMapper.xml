@@ -24,6 +24,23 @@
 			, #{donationApproval}
 	)
 	</insert>
+
+	<!-- 회원 기부 수정 -->
+	<update id="updateDonation" parameterType="kr.or.nationRental.donation.service.DonationDto">
+	UPDATE donation_request
+	SET
+		donation_title = #{donationTitle}
+		, donation_content = #{donationContent}
+	WHERE 
+		donation_request_code = #{donationRequestCode}
+	</update>
+	
+	<!-- 회원 : 기부 취소(삭제) -->
+	<delete id="deleteDonation" parameterType="kr.or.nationRental.donation.service.DonationDto">
+	 DELETE FROM donation_request 
+	 WHERE 
+	 	donation_request_code=#{donationRequestCode}
+	</delete>
   		
 	<!-- 공무원 : 기부신청 리스트 -->
 	<select id="selectListDonation"

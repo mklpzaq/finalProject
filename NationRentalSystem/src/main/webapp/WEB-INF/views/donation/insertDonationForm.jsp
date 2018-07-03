@@ -51,7 +51,7 @@
 									</div>
 								</div>
 								<div id="addDiv">
-									파일추가 버튼을 누르면 여기에 파일추가할수 있는 부분이 만들어진다.
+									<!-- 파일추가 버튼을 누르면 여기에 파일추가할수 있는 부분이 만들어진다. -->
 								</div>
 								<div class="form-group">
 									<div class="col-sm-3 text-right">

@@ -24,7 +24,13 @@
 						<div class="panel-body">
 							<h3 class="text-center">기부 신청서</h3>
 							<hr/>
-							<form class="form-horizontal" enctype="multipart/form-data">
+							<form class="form-horizontal" enctype="multipart/form-data" action="${pageContext.request.contextPath}/updateDonation" method="post">
+								<div class="form-group">
+									<label for="donationRequestCode" class="col-sm-3 control-label">신청코드</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="donationRequestCode" id="donationRequestCode" value="${viewDonation.donationRequestCode}" readonly>
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="memberId" class="col-sm-3 control-label">작성자 ID</label>
 									<div class="col-sm-9">
@@ -61,16 +67,13 @@
 									</c:forEach>
 								</div> --%>
 								<!-- 첨부파일보기 종료 -->
-								<div style="text-align: center;">
-									<a href="${pageContext.request.contextPath}/updateDonation?donationRequestCode=${donationDto.donationRequestCode}">
-										[수정]
-									</a>&nbsp;&nbsp;
-									<a href="${pageContext.request.contextPath}/deleteDonation?donationRequestCode=${donationDto.donationRequestCode}">
-										[삭제]
-									</a>&nbsp;&nbsp;
-									<a href="${pageContext.request.contextPath}/selectListDonation">
-										[목록]
-									</a>
+								
+								<div class="form-group" style="text-align: center;">
+									<div class="col-sm-12">
+										<button type="submit" id="updateButton" class="btn btn-default">수정</button>
+										<button type="submit" id="deleteButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/deleteDonation?donationRequestCode=${donationDto.donationRequestCode}">삭제</a></button>
+										<button type="submit" id="listButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/selectListDonation">목록</a></button>
+									</div>
 								</div>
 							</form>
 						</div>

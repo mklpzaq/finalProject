@@ -11,10 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
-
-import kr.or.nationRental.administrator.service.AdministratorDto;
-import kr.or.nationRental.agency.service.AgencyDto;
 import kr.or.nationRental.donation.service.DonationDto;
 import kr.or.nationRental.donation.service.DonationRequest;
 import kr.or.nationRental.donation.service.DonationService;
@@ -81,9 +77,20 @@ public class DonationController {
 		return "donation/viewDonation";	
 	}
 	
-	//회원 : 기부 내용 수정
+	//회원 : 기부 내용 수정 
+	@RequestMapping(value="/updateDonation", method=RequestMethod.POST)
+	public String updateDonation(DonationDto donationDto) {
+		logger.info("---updateDonation" + donationDto);
+		int row = donationService.updateDonation(donationDto);
+		return "redirect:/selectListDonation";
+	} 
 	
 	//회원 : 기부 취소(삭제)
+	@RequestMapping(value="/deleteDonation", method=RequestMethod.GET)
+	public String deleteDonation(DonationDto donationDto) {
+		donationService.deleteDonation(donationDto);
+		return  "redirect:/selectListDonation";
+	}
 	
 	//공무원 : 기부 승인대기 리스트
 	@RequestMapping(value="/approvalListDonation", method=RequestMethod.GET)
