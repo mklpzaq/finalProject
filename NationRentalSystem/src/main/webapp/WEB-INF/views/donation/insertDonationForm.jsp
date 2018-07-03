@@ -5,13 +5,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<title>기부 신청하기</title>
-		<script>
+		<!-- <script>
 			$(document).ready(function(){
 				$('#addFileButton').click(function(){
 					$('#addDiv').append('<div class="form-group"><label for="multipartFile" class="col-sm-3 control-label">파일 업로드</label><div class="col-sm-9"><input type="file" name="multipartFile"><p class="help-block">업로드할 파일을 선택하세요</p></div></div>');
 				});
 			});
-		</script>
+		</script> -->
 	</head>
 	<body>
 		
@@ -50,15 +50,21 @@
 										<textarea id="donationContent" name="donationContent" class="form-control" rows="3" placeholder="내용을 작성해 주십시요."></textarea>
 									</div>
 								</div>
-								<div id="addDiv">
-									<!-- 파일추가 버튼을 누르면 여기에 파일추가할수 있는 부분이 만들어진다. -->
+								<div class="form-group">
+									<label for="donationFile" class="col-sm-3 control-label">첨부파일</label>
+								    <div class="col-sm-9">
+								    	<input type="file" class="form-control" id="donationFile" name="multipartfile">			    	
+								    </div>
+								</div>
+								<!-- <div id="addDiv">
+									파일추가 버튼을 누르면 여기에 파일추가할수 있는 부분이 만들어진다.
 								</div>
 								<div class="form-group">
 									<div class="col-sm-3 text-right">
 										<button class="btn btn-primary" id="addFileButton" type="button">파일추가</button>
 									</div>
 									<div class="col-sm-9"></div>
-								</div>
+								</div> -->
 								<div class="text-center">
 									<button id="insertBtn" type="submit" class="btn btn-primary">입력 완료</button>
 								</div>

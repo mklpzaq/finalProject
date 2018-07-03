@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.nationRental.administrator.service.AdministratorDto;
 import kr.or.nationRental.agency.service.AgencyDto;
@@ -28,11 +29,14 @@ public class DonationController {
 
 
 	//회원 : 기부 신청 폼 불러오기
+	//회원 : 기부 신청하기
 	@RequestMapping(value="/insertDonation", method=RequestMethod.GET)
 	public String insertDonation(Model model
 								, MemberDto memberDto
+								, DonationDto donationDto
 								, HttpSession session) {
 		logger.debug("insertDonation : " + memberDto);
+		logger.debug("insertDonation : " + donationDto);
 		logger.debug("insertDonation : " + session);
 		session.getAttribute("member");
 		model.addAttribute("member", session.getAttribute("member"));
@@ -50,6 +54,7 @@ public class DonationController {
 		return "redirect:/selectListDonation";
 	}	
 	
+	
 	//회원 : 기부신청 리스트
 	@RequestMapping(value="/selectListDonation", method=RequestMethod.GET)
 	public String selectListDonation(Model model
@@ -59,11 +64,11 @@ public class DonationController {
 		List<DonationDto> donationDtoList = donationService.selectListDonation(memberId);
 		model.addAttribute("donationDtoList", donationDtoList);
 		logger.debug("---donationDtoList" + donationDtoList);
-	
-		/* 파일 저장루트 확인용 */
-		String path = session.getServletContext().getRealPath("/resources/upload/");
-		model.addAttribute("path", path);
 		
+		String path = session.getServletContext().getRealPath("/resources/image/donationImage/");		
+		logger.debug("path : " + path);
+		model.addAttribute("path", path);
+	
 		return "donation/selectListDonation";
 	}	
 	
@@ -106,9 +111,5 @@ public class DonationController {
 		logger.debug(donationDto.toString());
 		int result = donationService.updateApprovalDonation(donationDto);
 		return "redirect:/approvalListDonation";
-	}
-
-	//기부 완료 리스트( 모든 회원이 볼 수 있음)
-	
-	
+	}	
 }

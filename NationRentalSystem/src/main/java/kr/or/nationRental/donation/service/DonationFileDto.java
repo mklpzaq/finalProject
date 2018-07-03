@@ -14,6 +14,7 @@ public class DonationFileDto {
 	private Data donationUploadFile; //기부파일 업로드날짜
 	
 	private List<DonationFileDto> donationFileDto;
+	
 	public int getDonationFileCode() {
 		return donationFileCode;
 	}

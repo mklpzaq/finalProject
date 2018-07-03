@@ -24,7 +24,7 @@
 			, #{donationApproval}
 	)
 	</insert>
-	
+  		
 	<!-- 공무원 : 기부신청 리스트 -->
 	<select id="selectListDonation"
 			parameterType="String"

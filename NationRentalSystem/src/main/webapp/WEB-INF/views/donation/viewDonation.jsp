@@ -43,24 +43,22 @@
 										<textarea id="donationContent" name="donationContent" class="form-control" rows="3" >${viewDonation.donationContent}</textarea>
 									</div>
 								</div>
-								<!-- 첨부파일보기 시작 -->
-								<%-- <div>
-									첨부파일 : <br/>
-									<c:forEach var="boardFile" items="${board.boardFile}">
-										<div> 
-											boardFileId : ${boardFile.boardFileId}<br/>
-											boardId : ${boardFile.boardId}<br/>
-											boardFileName : ${boardFile.boardFileName}<br/>
-											boardFileExt : ${boardFile.boardFileExt}<br/>
-											boardFileType : ${boardFile.boardFileType}<br/>
-											boardFileSize : ${boardFile.boardFileSize}<br/>
-											<a href="${pageContext.request.contextPath}/downloadBoardFile?sendNo=${boardFile.boardId}&fileName=${boardFile.boardFileName}&fileExt=${boardFile.boardFileExt}">파일 다운로드</a>
-											 | <a href="${pageContext.request.contextPath}/deleteBoardFile?pageCode=detail&sendNo=${boardFile.boardId}&sendFileNo=${boardFile.boardFileId}&fileName=${boardFile.boardFileName}&fileExt=${boardFile.boardFileExt}">파일 삭제</a>
-										</div>
-										<hr/>
+									<div class="form-group">
+									<label for="donationFile" class="col-sm-3 control-label">첨부사진</label>
+									<div class="col-sm-9">
+										<c:forEach var="donationFile" items="${donationDto.donationFile}">
+											<img data-src="holder.js/140x140" class="img-circle" alt="${donationFileDto.donationFileName}${donationFileDto.donationFileExt}" src="${pageContext.request.contextPath}/downloadFile?donationFileName=${DonationFileDto.donationFileName}&donationFileExt=${DonationFileDto.donationFileExt}" data-holder-rendered="true" style="width: 140px; height: 140px;">
+										</c:forEach>
+									</div>
+								</div>
+								
+						
+								<div>
+									<!-- 이미지 작업용 forEach안에서만 -->
+									<c:forEach var="donationFile" items="${donationDto.donationFile}">
+										
 									</c:forEach>
-								</div> --%>
-								<!-- 첨부파일보기 종료 -->
+								</div>
 								<div style="text-align: center;">
 									<a href="${pageContext.request.contextPath}/updateDonation?donationRequestCode=${donationDto.donationRequestCode}">
 										[수정]
