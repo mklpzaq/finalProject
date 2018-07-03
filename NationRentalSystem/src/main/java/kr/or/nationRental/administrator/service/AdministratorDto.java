@@ -4,8 +4,8 @@ import java.sql.Date;
 public class AdministratorDto {
 	private String adminId;  //관리자 ID
 	private String adminPw; //관리자 PW
-	private int functionaryNum; //공무원번호
-	private int adminPhone; //관리자 전화번호
+	private String functionaryNum; //공무원번호
+	private String adminPhone; //관리자 전화번호
 	private String adminName; //관리자명
 	private Date adminDateJoin; //가입일자
 	
@@ -21,16 +21,16 @@ public class AdministratorDto {
 	public void setAdminPw(String adminPw) {
 		this.adminPw = adminPw;
 	}
-	public int getFunctionaryNum() {
+	public String getFunctionaryNum() {
 		return functionaryNum;
 	}
-	public void setFunctionaryNum(int functionaryNum) {
+	public void setFunctionaryNum(String functionaryNum) {
 		this.functionaryNum = functionaryNum;
 	}
-	public int getAdminPhone() {
+	public String getAdminPhone() {
 		return adminPhone;
 	}
-	public void setAdminPhone(int adminPhone) {
+	public void setAdminPhone(String adminPhone) {
 		this.adminPhone = adminPhone;
 	}
 	public String getAdminName() {

@@ -32,6 +32,8 @@ public class AdministratorController {
 		return "adminstrator/injeungAdminForm";
 	}
 	
+	
+	
 	//관리자 인증 POST insertAdminForm.jsp로 이동
 	@RequestMapping(value = "/injeungAdministrator", method = RequestMethod.POST)
 	public String injeungAdministrator(InjeungDto injeungDto, Model model, HttpSession session) {
