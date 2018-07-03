@@ -80,7 +80,7 @@ public class FunctionaryController {
 		
 	//공무원 기본정보조회
 	@RequestMapping(value="/viewFunctionaryInfo", method=RequestMethod.GET)
-	public String functionaryBasicInformation(/*@RequestParam(value="functionaryId") String functionaryId*/
+	public String viewFunctionaryInfo(/*@RequestParam(value="functionaryId") String functionaryId*/
 											HttpSession session
 											,Model model) {
 		MemberDto member = (MemberDto) session.getAttribute("member");
@@ -124,7 +124,7 @@ public class FunctionaryController {
 		logger.debug("FunctionaryController - updateFunctionnary - post - functionaryDto : " + functionaryDto.toString());
 		functionaryService.updateFunctionnary(functionaryDto);
 		
-		return "redirect:/functionaryBasicInformation";
+		return "redirect:/viewFunctionaryInfo";
 	}
 	
 	

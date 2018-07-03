@@ -61,7 +61,7 @@
 					        	$.each(list , function(i){
 					        		str += '<TR class="tr">';
 					                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button type="button" id="modalAdminagencyName" class="modalAdminagencyName">' + list[i].adminagencyName + '</button></TD>';
-					                str += '</TR>';
+					                str += '</TR><br>';
 					          	});
 					        	
 								/* str이 삽입되는 위치 */
@@ -123,102 +123,92 @@
 	</head>
 
 	<body>	
-		
-	
 		<div style="position:fixed; z-index:-1; width:100%">
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
-		
-		<div class="container-fluid" style="height:900px;">
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<%-- <jsp:include page="../module/top/mainHeader.jsp"/> --%>
-			<div class="row" >
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid" style="height: 700px;">
+			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/leftHome/leftHome.jsp"/>
+					<jsp:include page="../module/leftAnnualfeePakage/leftAnnualfeePakage.jsp"/>
 				</div>
-				
-				<div class="col-sm-8">
+				<div style="padding:50px;" class="col-sm-8">				
 					<!-- Begin Content -->
-					
-					<div style="margin:15px 0 15px 0;" class="panel panel-default">
-						<div class="panel-body text-center">
-							<h1>대여물품/시설 반납</h1>
-						</div>
-					</div>
-				
-				<div class="panel panel-default">
-					<div class="panel-body text-center">
-						<form class="form-horizontal" action="${pageContext.request.contextPath}/insertAnnualfeePakage" id="insertannualfeePakageForm" method="post">
-							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">패키지/연회비 명</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakageName" name="annualfeePakageName" placeholder="패키지/연회비 명">							
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="text-center">연회비/패키지 등록</h3>
+							<hr/>				
+							<form class="form-horizontal" action="${pageContext.request.contextPath}/insertAnnualfeePakage" id="insertannualfeePakageForm" method="post">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">패키지/연회비 명</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakageName" name="annualfeePakageName" placeholder="패키지/연회비 명">							
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputPassword3" class="col-sm-2 control-label">연회비 구입금액</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakagePrice" name="annualfeePakagePrice" placeholder="연회비 구입금액">
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label">연회비 구입금액</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakagePrice" name="annualfeePakagePrice" placeholder="연회비 구입금액">
+									</div>
+								</div>					
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">상세설명</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakageTextSangse" name="annualfeePakageTextSangse" placeholder="패키지/연회비 상세설명">
+									</div>
 								</div>
-							</div>					
-							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">패키지/연회비 상세설명</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakageTextSangse" name="annualfeePakageTextSangse" placeholder="패키지/연회비 상세설명">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">할인율%</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakageDiscountRate" name="annualfeePakageDiscountRate" placeholder="할인율%">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">할인율%</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakageDiscountRate" name="annualfeePakageDiscountRate" placeholder="할인율%">
-								</div>
-							</div>
-							
-							<!-- 적용되는 행정기관코드 -->
-							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">적용되는 행정기관코드</label>								
-								<div class="col-sm-10" id="addAdminagency">							
-																
-									<!-- <div class="col-sm-10">
-										<input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드">
-										<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">
-										<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>
-									</div> -->
-									
-									<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
-												</div> 
-												<div class="modal-body">
-													<input type="text" id="checkAdminagency">
-													<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
-												</div>
-												<div class="modal-footer">
-													<table id = "adminagencyList" border = "1">
-												
-													</table>
+								
+								<!-- 적용되는 행정기관코드 -->
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">적용되는 행정기관코드</label>								
+									<div class="col-sm-10" id="addAdminagency">							
+																	
+										<!-- <div class="col-sm-10">
+											<input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드">
+											<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">
+											<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>
+										</div> -->
+										
+										<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
+													</div> 
+													<div class="modal-body">
+														<input type="text" id="checkAdminagency">
+														<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
+													</div>
+													<div class="modal-footer">
+														<table id = "adminagencyList" border = "1">
+													
+														</table>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>									
+										</div>									
+									</div>
+								</div>			
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label"></label>
+									<div style="float : left">								
+										<button type="button" id="adminagencyAdd" class="btn btn-default">행정기관추가</button>														
+									</div>	
 								</div>
-							</div>			
-							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label"></label>
-								<div style="float : left">								
-									<button type="button" id="adminagencyAdd" class="btn btn-default">행정기관추가</button>														
-								</div>	
-							</div>
-							<div class="center">
-								<button type="submit" id="btn" class="btn btn-primary">등록</button>								
-							</div>
-						</form>
+								<div class="text-center">
+									<button type="submit" id="btn" class="btn btn-primary">등록</button>								
+								</div>
+							</form>
+						<!-- End Content -->
+						</div>
 					</div>
-				</div>
-				<!-- End Content -->
 				</div>
 				<div class="col-sm-2"></div>
 			</div>

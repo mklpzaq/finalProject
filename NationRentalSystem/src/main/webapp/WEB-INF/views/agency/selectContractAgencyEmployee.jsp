@@ -15,7 +15,7 @@
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
 		<jsp:include page="../module/top/navbar.jsp"/>
-		<div class="container-fluid">
+		<div class="container-fluid" style="height: 600px;">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 					<jsp:include page="../module/lefrAgency/leftAgencyInfo.jsp"/>

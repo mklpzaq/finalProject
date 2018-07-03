@@ -84,47 +84,79 @@
 	
 	
 	<body>
+		<div style="position:fixed; z-index:-1; width:100%">
+			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
+		</div>
 		<jsp:include page="../module/top/navbar.jsp"/>
-		<div class="container-fluid">
+		<div class="container-fluid" style="height: 700px;">
 			<div class="row">
-				<div class="col-sm-2" style="padding: 15px">
-					<jsp:include page="../module/left/leftnavi.jsp"/>
+				<div class="col-sm-2" style="padding:15px;">
+					<jsp:include page="../module/leftAnnualfeePakage/leftAnnualfeePakage.jsp"/>
 				</div>
-				<div class="col-sm-8">				
-					<div class="text-center">
-						<h1>연회비/패키지조회</h1>
-						<h2>Nation Integrated Reserve and Rental System</h2>
-						<p>The time on the server is ${serverTime}.</p>
-					</div>
-					
-					<div>
+				<div style="padding:50px;" class="col-sm-8">		
+
+					<!-- Begin Content -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="text-center">연회비/패키지 수정</h3>
+							<hr/>					
 						<form action="${pageContext.request.contextPath}/updateAnnualfeePakage" method="post">
 							<input hidden="hidden" name="annualfeePakageCode" value="${returnAnnualfeePakageDto.annualfeePakageCode}"><!-- 연회비패키지코드 -->
-							<div>연회비패키지명 : <input name="annualfeePakageName" value="${returnAnnualfeePakageDto.annualfeePakageName}"></div>
-							<div>연회비패키지가격 : <input name="annualfeePakagePrice" value="${returnAnnualfeePakageDto.annualfeePakagePrice}"> </div>
-							<div><textarea name="annualfeePakageTextSangse" rows="" cols="">${returnAnnualfeePakageDto.annualfeePakageTextSangse}</textarea></div>
-							<div>연회비패키지 할인률 : <input name="annualfeePakageDiscountRate" value="${returnAnnualfeePakageDto.annualfeePakageDiscountRate}"></div>
 							<div>
-								<!-- 삭제버튼 클릭시 삭제버튼의 부모태그에 속한 value값들을 복사해서 hidden으로 숨겨놓고 해당 태그는 remove -->
-								
+								<label for="functionaryId" class="col-sm-2 control-label">등록자id</label>
+								<div class="col-sm-10">					
+									<input type="text" class="form-control" id="functionaryId" name="functionaryId" value="${returnAnnualfeePakageDto.functionaryId}">					
+								</div>
+							</div>
+							<br><br>
+							<div>
+								<label for="annualfeePakageName" class="col-sm-2 control-label">연회비패키지명</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="annualfeePakageName" name="annualfeePakageName" value="${returnAnnualfeePakageDto.annualfeePakageName}">	
+								</div>
+							</div>
+							<br><br>
+							<div>
+								<label for="annualfeePakagePrice" class="col-sm-2 control-label">연회비패키지가격</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="annualfeePakagePrice" name="annualfeePakagePrice" value="${returnAnnualfeePakageDto.annualfeePakagePrice}">	
+								</div>
+							</div>
+							<br><br>
+							<div>
+								<label for="annualfeePakageTextSangse" class="col-sm-2 control-label">상세내용</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="annualfeePakageTextSangse" name="annualfeePakageTextSangse" value="${returnAnnualfeePakageDto.annualfeePakageTextSangse}">				
+								</div>
+							</div>
+							<br><br>
+							<div>
+								<label for="annualfeePakageDiscountRate" class="col-sm-2 control-label">할인률</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="annualfeePakageDiscountRate" name="annualfeePakageDiscountRate" value="${returnAnnualfeePakageDto.annualfeePakageDiscountRate}">			
+								</div>
 							</div>		
 							<div id="addAdminagency">
 								
 							</div>
 							<div hidden="hidden" id="removeAdminagency">
 							
-							</div>							
-							<button type="submit">수정</button>										
-						</form>						
+							</div>									
+						</form>	
+						<br><br>				
 						<div>
-							<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-									<div id="deleteAnnualfeePakageAuthority">
-										<input name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}" readonly="readonly">
-										<input value="${annualfeePakageAuthority.adminagencyCode}" readonly="readonly">
+							<div>
+								<label for="adminagencyName" class="col-sm-2 control-label">적용 행정기관명</label>
+								<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
+									<div class="col-sm-3" style="text-align: right;">		
+										<input type="text" class="form-control" id="adminagencyName" name="adminagencyName"	value= "${annualfeePakageAuthority.adminagencyName}" readonly="readonly">		
+										<input hidden="hidden" name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}">
+										<input hidden="hidden" name="adminagencyCode" value="${annualfeePakageAuthority.adminagencyCode}">
 										<button class="delete" type="button">삭제</button>
 									</div>
-							</c:forEach>
-							<button type="button" id="adminagencyAdd" class="btn btn-primary btn-lg">행정기관추가</button>
+								</c:forEach>
+							</div>
+							<button type="button" id="adminagencyAdd" class="btn btn-primary">행정기관추가</button>
 						</div>
 					</div>
 					
@@ -148,8 +180,15 @@
 						</div>
 					</div>
 					
-				</div>		
+					<div class="text-center">
+						<button type="button" class="btn btn-primary">수정</button>
+					</div>
+					<!-- End Content -->					
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
 			</div>
-		</div>		
+		</div>
+		<jsp:include page="../module/bottom/bottomContent.jsp"/>			
 	</body>
 </html>

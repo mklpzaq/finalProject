@@ -33,7 +33,8 @@
 		<collection ofType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageAuthorityDto" property="annualfeePakageAuthority">
 				<id column="annualfee_pakage_authority_code" property="annualfeePakageAuthorityCode"/>
 				<result column="annualfee_pakage_code" property="annualfeePakageCode"/>
-				<result column="adminagency_code" property="adminagencyCode"/>				
+				<result column="adminagency_code" property="adminagencyCode"/>
+				<result column="adminagency_name" property="adminagencyName"/>					
 		</collection>
 	</resultMap>  	
   	
@@ -133,19 +134,22 @@
 	
 	<select id="annualfeePakageSangse" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto" resultMap="annualfeePakageDto">
 		SELECT
-			ap.annualfee_pakage_code
-			,ap.functionary_id
-			,ap.annualfee_pakage_name
-			,ap.annualfee_pakage_price
-			,ap.annualfee_pakage_text_sangse
-			,ap.annualfee_pakage_discount_rate
-			,ap.annualfee_pakage_date_registration
-			,apa.annualfee_pakage_authority_code
-			,apa.adminagency_code
-			FROM annualfee_pakage as ap
-			left join annualfee_pakage_authority as apa
-				using(annualfee_pakage_code)
-				where annualfee_pakage_code = #{annualfeePakageCode}
+			annualfee_pakage.annualfee_pakage_code
+			,annualfee_pakage.functionary_id
+			,annualfee_pakage.annualfee_pakage_name
+			,annualfee_pakage.annualfee_pakage_price
+			,annualfee_pakage.annualfee_pakage_text_sangse
+			,annualfee_pakage.annualfee_pakage_discount_rate
+			,annualfee_pakage.annualfee_pakage_date_registration
+			,annualfee_pakage_authority.annualfee_pakage_authority_code
+			,annualfee_pakage_authority.adminagency_code
+			,adminagency.adminagency_name
+		FROM annualfee_pakage
+		left join annualfee_pakage_authority
+			using(annualfee_pakage_code)
+		inner join adminagency
+			on annualfee_pakage_authority.adminagency_code = adminagency.adminagency_code
+		where annualfee_pakage_code = #{annualfeePakageCode}
 	</select>
 	
 	<delete id="deleteAnnualfeePakage" parameterType="kr.or.nationRental.annualfeePakage.service.AnnualfeePakageDto">

@@ -94,6 +94,7 @@ public class ReturnGoodsfacilityInfoController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("startDate", dateDto.getStartDate());
 		model.addAttribute("endDate", dateDto.getEndDate());
+		model.addAttribute("memberLevel", returnGoodsfacilityInfoDto.getMemberLevel());
 		return "/returnGoodsfacilityInfo/selectReturnGoodsfacilityInfo";
 	}
 }

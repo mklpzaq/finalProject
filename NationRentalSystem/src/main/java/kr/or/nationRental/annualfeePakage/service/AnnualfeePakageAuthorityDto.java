@@ -5,6 +5,7 @@ public class AnnualfeePakageAuthorityDto {
 	private int annualfeePakageAuthorityCode; //연회비/패키지권한범위코드
 	private int annualfeePakageCode; // 연회비패키지 코드
 	private int adminagencyCode; //연회비패키지 적용되는 행정기관코드
+	private String adminagencyName; //연회비패키지 적용되는 행정기관명
 	public int getAnnualfeePakageAuthorityCode() {
 		return annualfeePakageAuthorityCode;
 	}
@@ -23,12 +24,18 @@ public class AnnualfeePakageAuthorityDto {
 	public void setAdminagencyCode(int adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
 	}
+	public String getAdminagencyName() {
+		return adminagencyName;
+	}
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
+	}
 	@Override
 	public String toString() {
 		return "AnnualfeePakageAuthorityDto [annualfeePakageAuthorityCode=" + annualfeePakageAuthorityCode
-				+ ", annualfeePakageCode=" + annualfeePakageCode + ", adminagencyCode=" + adminagencyCode + "]";
+				+ ", annualfeePakageCode=" + annualfeePakageCode + ", adminagencyCode=" + adminagencyCode
+				+ ", adminagencyName=" + adminagencyName + "]";
 	}
-	
 	
 	
 }

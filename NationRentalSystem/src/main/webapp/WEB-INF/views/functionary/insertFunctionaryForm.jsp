@@ -12,10 +12,7 @@
 		<script type="text/javascript">
 		
 				
-			$(document).ready(function(){
-			
-				
-				
+			$(document).ready(function(){			
 				$("#idCheckBtn").click(function(){
 				    $.ajax({
 				        type:"POST", //통신타입 get, post
@@ -31,13 +28,10 @@
 				    });
 				});
 				
-				$('#insertBtn').click(function(){
-					
+				$('#insertBtn').click(function(){					
 					var email = $("#functionaryEmail").val();
 					console.log(email);
-					var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-					
-					
+					var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;						
 					var funtionaryForm = true;
 				  
 			        //아이디 입력여부 검사
@@ -238,9 +232,7 @@
 							,url: "${pageContext.request.contextPath}/idCheck"
 							,data: { agencyEmployeeId: $('#functionaryId').val() }
 							,success:function( JSON ) { // result : String, XML, JSON
-								if(JSON=='T'){
-									
-										     
+								if(JSON=='T'){									     
 									$('#insertfuntionaryForm').submit();
 								}else{
 									alert('중복되거나 잘못된 아이디입니다. 다시 아이디체크를 해주세요');
@@ -248,13 +240,11 @@
 							}
 						});
 					}
-				});
-			
+				});			
 				//idcheck modal 사용하지 않음
 				/* $("#useId").click(function(){
 					$('#functionaryId').val($("#checkId").val());
-				}); */
-				
+				}); */				
 				$("#adminagencyCheck").click(function(){
 				    $.ajax({
 				        type:"POST", //통신타입 get, post
@@ -267,14 +257,11 @@
 				        		str += '<div class="tr" style="width : 100%;">';
 				                str += '<div hidden="hidden">' + list[i].adminagencyCode + '</div><div><button style="width : 100%;" type="button" id="modalAdminagencyName" class="modalAdminagencyName">' + list[i].adminagencyName + '</button></div>';
 				                str += '</div><br>';
-				          	});
-				        	
-				        	$("#adminagencyList").append(str);
-				        	
+				          	});				        	
+				        	$("#adminagencyList").append(str);				        	
 				        	$("#adminagencyCheck").click(function(){
 				        		$(".tr").remove();				        		
-				        	});
-				        	
+				        	});				        	
 				        	$('.tr').click(function(){
 				        		alert('행정기관등록 완료');
 				        		$('#adminagencyCheckModal').hide();
@@ -283,8 +270,7 @@
 							});
 				        },
 				        error : function(){
-				            alert("검색어를 입력해주십시오");
-				            
+				            alert("검색어를 입력해주십시오");				            
 				        }    
 				    });
 				});
@@ -298,11 +284,11 @@
 			<img style="width:1900px;" src="${pageContext.request.contextPath}/resources/image/background/bgMain.jpg">
 		</div>
 		<jsp:include page="../module/top/navbar.jsp"/>
-		<div class="container-fluid">
+		<div class="container-fluid" style="height: 700px;">
 			<div class="row">
 				<div class="col-sm-2" style="padding:15px;">
 				</div>
-				<div style="padding:15px;" class="col-sm-8">
+				<div style="padding:50px;" class="col-sm-8">
 				
 					<!-- Begin Content -->
 		
@@ -318,7 +304,7 @@
 										<div class="input-group">
 											<input type="text" class="form-control" id="functionaryId" name="functionaryId" placeholder="아이디">
 											<span class="input-group-btn">
-												<button id="idCheckBtn" class="btn btn-default" type="button">ID 중복검사</button>
+												<button id="idCheckBtn" class="btn btn-primary" type="button">ID 중복검사</button>
 											</span>
 											
 											<!-- //Modal 
@@ -368,7 +354,7 @@
 											<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="행정기관명" readonly="readonly">
 											<!-- Button trigger modal -->
 											<span class="input-group-btn">								
-												<button type="button" id="myModalclick" class="btn btn-default" data-toggle="modal" data-target="#adminagencyCheckModal">
+												<button type="button" id="myModalclick" class="btn btn-primary" data-toggle="modal" data-target="#adminagencyCheckModal">
 												 행정기관찾기
 												</button>
 											</span>
