@@ -81,9 +81,9 @@
 										<li class="backgroundColor">
 											<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/idSelect">id찾기</a>
 										</li>
-										<li class="backgroundColor">
+										<%-- <li class="backgroundColor">
 											<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/pwSelect">pw찾기</a>
-										</li>								
+										</li> --%>								
 										<li class="backgroundColor">
 											<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/login">로그인</a>
 										</li>
