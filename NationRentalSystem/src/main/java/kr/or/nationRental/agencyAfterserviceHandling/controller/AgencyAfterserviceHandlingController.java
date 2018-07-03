@@ -32,7 +32,7 @@ public class AgencyAfterserviceHandlingController {
 													,AgencyAfterserviceHandlingDto agencyAfterserviceHandlingDto
 													,@RequestParam(value="currentPage", defaultValue="1") int currentPage
 													,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-													,@RequestParam(value="searchSelect", defaultValue="정기점검 코드") String searchSelect
+													,@RequestParam(value="searchSelect", defaultValue="직원 AS 수락 코드") String searchSelect
 													,@RequestParam(value="searchWord", defaultValue="") String searchWord) {
 		logger.debug("GET selectListAgencyAfterserviceHandling AgencyAfterserviceHandlingController");
 		logger.debug("searchSelect : " + searchSelect);

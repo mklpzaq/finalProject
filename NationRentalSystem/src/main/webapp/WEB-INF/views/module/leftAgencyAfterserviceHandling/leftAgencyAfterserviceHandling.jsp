@@ -26,7 +26,7 @@
 		<div style="width:100%;" class="btn-group-vertical btn-group-lg" role="group" aria-label="Vertical button group">
 			<button id="selectListUnitedAfterserviceRequestForAgencyAfterserviceHandlingBtn" type="button" class="btn btn-default">AS 요청 리스트</button>
 			<button id="selectListAgencyAfterserviceHandlingBtn" type="button" class="btn btn-default" >수락 AS 리스트</button>
-			<button id="insertDonationBtn" type="button" class="btn btn-default">처리 AS 리스트</button>
+			<!-- <button id="insertDonationBtn" type="button" class="btn btn-default">처리 AS 리스트</button> -->
 		</div>
 	</body>
 </html>
