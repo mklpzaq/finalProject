@@ -6,11 +6,11 @@
 		<title>Leave Member</title>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<jsp:include page="../module/top/mainHeader.jsp"/>
+		<jsp:include page="../module/backgroundImg/backgroundImg.jsp"/>
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid" style="margin:15px;">
 			<div class="row">
-				<div class="col-sm-2" style="padding:15px;">
+				<div class="col-sm-2">
 					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
 				</div>
 				<div class="col-sm-8">

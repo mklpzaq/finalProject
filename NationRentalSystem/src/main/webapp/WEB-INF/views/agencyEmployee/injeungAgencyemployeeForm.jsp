@@ -30,18 +30,20 @@
 		
 	</head>
 	<body>
-		<div class="container-fluid">
-			<jsp:include page="../module/top/navbar.jsp"/>
-			<jsp:include page="../module/top/mainHeader.jsp"/>
+		<jsp:include page="../module/backgroundImg/backgroundImg.jsp"/>
+		<jsp:include page="../module/top/navbar.jsp"/>
+		<div class="container-fluid" style="margin:15px; height:800px;">
 			<div class="row">
-				<div class="col-sm-2" style="padding:15px;">
+				<div class="col-sm-2">
 					<%-- <jsp:include page="./module/left/leftnavi.jsp"/> --%>
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
 					
 					<div class="panel panel-default">
-						<div class="panel-body">
+						<div class="panel-body text-center">
+							<h3>직원회원가입 인증번호 입력</h3>
+							<hr/>
 							<form id="injeungAgencyEmployeeForm" class="form-horizontal" action="${pageContext.request.contextPath}/getInsertAgencyEmployeeForm" method="post">
 								<div class="form-group">
 									<label for="agencyEmployeeInjeungNum" class="col-sm-3 control-label">인증번호</label>
@@ -50,8 +52,9 @@
 									</div>
 								</div>
 								<div class="text-center">
-									<button id="injeungBtn" type="button" class="btn btn-default">인증</button>
+									<button id="injeungBtn" type="button" class="btn btn-primary">인증</button>
 								</div>
+								sample : 123456
 							</form>
 						</div>
 					</div>
