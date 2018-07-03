@@ -48,17 +48,18 @@
 	
 </head>
 <body>
-<jsp:include page="../module/top/navbar.jsp"/>
+	<jsp:include page="../module/backgroundImg/backgroundImg.jsp"/>
+	<jsp:include page="../module/top/navbar.jsp"/>
 		<%-- <jsp:include page="../module/top/mainHeader.jsp"/> --%>
-		<div class="container-fluid">
+		<div class="container-fluid" style="margin:15px">
 			<div class="row">
-				<div class="col-sm-2" style="padding:15px;">
-					<jsp:include page="../module/left/leftnavi.jsp"/>
+				<div class="col-sm-2">
+					<%-- <jsp:include page="../module/left/leftnavi.jsp"/> --%>
 				</div>
 				<div class="col-sm-8">
 				<!-- Begin Content -->
 				
-				<h2>시민 대여 리스트</h2>
+				
 				
 				<div class="panel panel-default">
 							<div class="panel-body text-center">

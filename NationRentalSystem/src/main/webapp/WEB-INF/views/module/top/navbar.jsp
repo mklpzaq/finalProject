@@ -49,9 +49,9 @@
 									<a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewImageGoodsFacility">대여 시설/물품</a>
 								</li>
 								<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListBoard">게시판</a></li>
-								<li class="backgroundColor"><a style="color:#FFFFFF" href="#">통계</a></li>
+								<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">통계</a></li>
 								<li class="backgroundColor"><a style="color:#FFFFFF" href="#">시설정기점검 조회</a></li>
-								<li class="backgroundColor"><a style="color:#FFFFFF" href="#">기부리스트 조회</a></li>
+								<li class="backgroundColor"><a style="color:#FFFFFF" href="#">기부리스트 조회</a></li> -->
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li>
@@ -105,10 +105,10 @@
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListGoodsFacilityCategory">시설/물품 관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyBusinesstype">업종분류 관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getCitizenList">시민계정 조회</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li> <!-- 시설/물품관리 하위로 들어가면 좋겠다고 생각합니다 -->
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지 설정</a></li>
+						          <!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>  --><!-- 시설/물품관리 하위로 들어가면 좋겠다고 생각합니다 -->
+						          <%-- <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li> --%>
+						          <!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지 설정</a></li> -->
 						         </ul>
 						        </div>
 						       </c:when>
@@ -121,17 +121,17 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/approvalListDonation">기부관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertGoodsFacility?functionaryId=${member.memberId}">물품/시설 관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectGoodsFacilityList?functionaryId=${member.memberId}">물품/시설 리스트</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품/시설 대여/예약 승인</a></li> -->
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListRentalTotalPayment">결제/환불 목록</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo?adminagencyCode=${member.adminagencyCode}">반납관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDeliveryOrderCitizen?adminagencyCode=${member.adminagencyCode}">물품 배달 신청 확인</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?functionaryId=${member.memberId}&adminagencyCode=${member.adminagencyCode}">통합 AS 의뢰</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li> -->
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAnnualfeePakage">연회비/패키지 등록</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지 조회</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지</a></li>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지</a></li> -->
 									</ul>
 								</div>
 							</c:when>
@@ -144,10 +144,10 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListFunctionaryForAgencyEmployee?agencyEmployeeId=${member.memberId}">계약한 지자체 공무원 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyNakchalInfo?agencyEmployeeId=${member.memberId}">소속업체 낙찰정보 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListUnitedAfterserviceRequestForAgencyAfterserviceHandling?agencyEmployeeId=${member.memberId}&adminagencyCode=${member.adminagencyCode}">통합 AS 의뢰 리스트</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">배달 의뢰 리스트</a></li>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">배달 의뢰 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">의뢰 처리 현황 작성</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">의뢰 처리 현황 작성</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">의뢰 처리 완료 리스트</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">의뢰 처리 완료 리스트</a></li> -->
 									</ul>
 								</div>
 							</c:when>
@@ -157,15 +157,15 @@
 									<ul class="nav navbar-nav">
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectOneCitizen?citizenId=${member.memberId}">시민 회원관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListDonation?citizenId=${member.memberId}">기부신청</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여/예약 취소 </a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여/예약 신청/취소 리스트</a></li>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여/예약 취소 </a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여/예약 신청/취소 리스트</a></li> -->
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/viewApplicationRentForCitizen?citizenId=${member.memberId}">대여 리스트</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo">반납 리스트</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen">반납 신청</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">운송장 정보 확인</a></li>
+										<%-- <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen">반납 신청</a></li> --%>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">운송장 정보 확인</a></li> -->
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지조회</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">포인트 조회</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">배상청구 기록 조회</a></li>
+										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">포인트 조회</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">배상청구 기록 조회</a></li> -->
 									</ul>
 								</div>
 							</c:when>
