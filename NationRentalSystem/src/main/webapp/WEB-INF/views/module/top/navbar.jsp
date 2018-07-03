@@ -106,7 +106,7 @@
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyBusinesstype">업종분류 관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getCitizenList">시민계정 조회</a></li>
 						          <!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>  --><!-- 시설/물품관리 하위로 들어가면 좋겠다고 생각합니다 -->
-						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지</a></li>
 						          <!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지 설정</a></li> -->
 						         </ul>
@@ -128,8 +128,7 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListReturnGoodsfacilityInfoForAfterService?functionaryId=${member.memberId}&adminagencyCode=${member.adminagencyCode}">통합 AS 의뢰</a></li>
 										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">시설 정기점검</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 등록</a></li> -->
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertAnnualfeePakage">연회비/패키지 등록</a></li>
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지 조회</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지</a></li>
 										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지</a></li> -->
 									</ul>
@@ -163,7 +162,7 @@
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectReturnGoodsfacilityInfo">반납 리스트</a></li>
 										<%-- <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertDeliveryOrderCitizen">반납 신청</a></li> --%>
 										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">운송장 정보 확인</a></li> -->
-										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지조회</a></li>
+										<li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAnnualfeePakage">연회비/패키지</a></li>
 										<!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">포인트 조회</a></li>
 										<li class="backgroundColor"><a style="color:#FFFFFF" href="#">배상청구 기록 조회</a></li> -->
 									</ul>

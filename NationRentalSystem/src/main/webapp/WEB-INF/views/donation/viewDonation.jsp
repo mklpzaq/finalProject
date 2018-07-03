@@ -71,7 +71,7 @@
 								<div class="form-group" style="text-align: center;">
 									<div class="col-sm-12">
 										<button type="submit" id="updateButton" class="btn btn-default">수정</button>
-										<button type="submit" id="deleteButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/deleteDonation?donationRequestCode=${donationDto.donationRequestCode}">삭제</a></button>
+										<button type="submit" id="deleteButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/deleteDonation?donationRequestCode=${viewDonation.donationRequestCode}">삭제</a></button>
 										<button type="submit" id="listButton" class="btn btn-default"><a href="${pageContext.request.contextPath}/selectListDonation">목록</a></button>
 									</div>
 								</div>
