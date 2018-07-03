@@ -5,10 +5,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#deleteYesBtn').click(function(){
+					$(location).attr('href', './deleteAnnualfeePakage?annualfeePakageCode=' + $("#deleteAnnualfeePakageModalBtn").val());
+				});
+				$('#deleteNoBtn').click(function(){
+					$('#deleteAnnualfeePakageModal').hide();
+				});
+				
+				$('#insertYesBtn').click(function(){
+					$(location).attr('href', './insertAnnualfeePakageOwnership?annualfeePakageCode=' + $("#insertAnnualfeePakageOwnershipModalBtn").val());
+				});
+				$('#insertNoBtn').click(function(){
+					$('#insertAnnualfeePakageOwnershipModal').hide();
+				});	
+			});
+		</script>
 	</head>
 	<body>
 		<div style="position:fixed; z-index:-1; width:100%">
@@ -66,15 +83,19 @@
 											<input type="text" class="form-control" id="annualfeePakageDateRegistration" name="annualfeePakageDateRegistration" value="${returnAnnualfeePakageDto.annualfeePakageDateRegistration}">			
 										</div>
 									</div>									
-										<div class="group">			
-											<label for="adminagencyName" class="col-sm-2 control-label">연회비패키지명</label>
-											<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-												<div class="col-sm-10">		
-													<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" value="${annualfeePakageAuthority.adminagencyName}">		
-												</div>
-											</c:forEach>
-										</div>									
-									<div><a href="${pageContext.request.contextPath}/deleteAnnualfeePakage?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">삭제</a></div>
+									<div class="group">			
+										<label for="adminagencyName" class="col-sm-2 control-label">연회비패키지명</label>
+										<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
+											<div class="col-sm-10">		
+												<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" value="${annualfeePakageAuthority.adminagencyName}">		
+											</div>
+										</c:forEach>
+									</div>
+									<div class="text-center">								
+										<a href="${pageContext.request.contextPath}/deleteAnnualfeePakage?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">
+											<button type="button" class="btn btn-danger">삭제</button>
+										</a>
+									</div>
 								</c:when>
 								<c:when test="${member.memberLevel == '공무원'}">						
 									<div>
@@ -126,9 +147,7 @@
 											<a href="${pageContext.request.contextPath}/updateAnnualfeePakage?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">
 												<button type="button" class="btn btn-primary">수정</button>
 											</a>
-											<a href="${pageContext.request.contextPath}/deleteAnnualfeePakage?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">
-												<button type="button" class="btn btn-danger">삭제</button>
-											</a>
+											<button type="button" class="btn btn-danger" value="${returnAnnualfeePakageDto.annualfeePakageCode}" id="deleteAnnualfeePakageModalBtn" data-toggle="modal" data-target="#deleteAnnualfeePakageModal">삭제</button>
 										</c:if>
 									</div>
 								</c:when>
@@ -178,12 +197,50 @@
 										</div>									
 									<br><br>											
 									<div class="text-center">								
-										<a href="${pageContext.request.contextPath}/insertAnnualfeePakageOwnership?annualfeePakageCode=${returnAnnualfeePakageDto.annualfeePakageCode}">
-											<button type="button" class="btn btn-primary">구입</button>
-										</a>
+										<button type="button" class="btn btn-primary" id="insertAnnualfeePakageOwnershipModalBtn" value="${returnAnnualfeePakageDto.annualfeePakageCode}" data-toggle="modal" data-target="#insertAnnualfeePakageOwnershipModal">구입</button>
 									</div>	
 								</c:when>	
 							</c:choose>
+							
+							<!--Begin Modal -->
+							<div class="modal fade" id="deleteAnnualfeePakageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title text-center" id="myModalLabel">정말로 삭제하시겠습니까?</h4>
+										</div>
+										<div class="modal-body text-center">
+											<button type="button" class="btn btn-primary" id="deleteYesBtn">삭제합니다</button> &emsp; &emsp;
+											<button type="button" class="btn btn-primary" id="deleteNoBtn">아니오</button>
+										</div>
+										<div class="modal-footer">
+									
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--End Modal -->
+							
+							<!--Begin Modal -->
+							<div class="modal fade" id="insertAnnualfeePakageOwnershipModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title text-center" id="myModalLabel">구입하시겠습니까?</h4>
+										</div>
+										<div class="modal-body text-center">
+											<button type="button" class="btn btn-primary" id="insertYesBtn">구입합니다</button> &emsp; &emsp;
+											<button type="button" class="btn btn-primary" id="insertNoBtn">아니오</button>
+										</div>
+										<div class="modal-footer">
+									
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--End Modal -->
 						<!-- End Content -->
 						</div>
 					</div>

@@ -11,16 +11,21 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('#adminagencyAdd').click(function(){
-			$('#addAdminagency').append('<div class="col-sm-10">'
+		$('#adminagencyAdd').click(function(){			
+			$('#addAdminagency').append('<div id="inputAdminagencyName">'
+					+'<label for="inputAdminagencyName" class="col-sm-2 control-label">등록 행정기관명</label>'
+					+'<div class="col-sm-10 input-group"">'
 					+'<input type="hidden" class="form-control" id="adminagencyCode" name="adminagencyCode" placeholder="적용되는 행정기관코드">'
 					+'<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">'
-					+'<button type="button" id="myModalclick" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>'
-					+'<button type="button" id="del" class="btn btn-primary btn-lg">삭제</button>'
+					+'<span class="input-group-btn">'
+					+'<button type="button" id="myModalclick" class="btn btn-primary" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>'
+					+'<button type="button" id="del" class="btn btn-primary">삭제</button>'
+					+'</span>'
+					+'</div>'
 					+'</div>');
 			
 			$(document).on('click','#del',function(){
-				$(this).closest('div').remove();
+				$(this).closest('#inputAdminagencyName').remove();
 			});		
 		
 			
@@ -36,7 +41,7 @@
 				        	$.each(list , function(i){
 				        		str += '<TR class="tr">';
 				                str += '<TD hidden="hidden">' + list[i].adminagencyCode + '</TD><TD><button type="button" id="modalAdminagencyName" class="modalAdminagencyName">' + list[i].adminagencyName + '</button></TD>';
-				                str += '</TR>';
+				                str += '</TR><br>';
 				          	});
 				        	
 							/* str이 삽입되는 위치 */
@@ -72,9 +77,13 @@
 		});	
 		
 		$('.delete').click(function(){
-			$(this).parent().appendTo('#removeAdminagency');
+			$(this).parents('div#deleteDiv').appendTo('#removeAdminagency');
 			
 			//$(this).parent().remove();
+		});
+		
+		$('#updateAnnualfeePakage').click(function(){			
+			$('#updateAnnualfeePakageForm').submit();
 		});
 		
 	});
@@ -100,88 +109,93 @@
 						<div class="panel-body">
 							<h3 class="text-center">연회비/패키지 수정</h3>
 							<hr/>					
-						<form action="${pageContext.request.contextPath}/updateAnnualfeePakage" method="post">
-							<input hidden="hidden" name="annualfeePakageCode" value="${returnAnnualfeePakageDto.annualfeePakageCode}"><!-- 연회비패키지코드 -->
-							<div>
-								<label for="functionaryId" class="col-sm-2 control-label">등록자id</label>
-								<div class="col-sm-10">					
-									<input type="text" class="form-control" id="functionaryId" name="functionaryId" value="${returnAnnualfeePakageDto.functionaryId}">					
-								</div>
-							</div>
-							<br><br>
-							<div>
-								<label for="annualfeePakageName" class="col-sm-2 control-label">연회비패키지명</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakageName" name="annualfeePakageName" value="${returnAnnualfeePakageDto.annualfeePakageName}">	
-								</div>
-							</div>
-							<br><br>
-							<div>
-								<label for="annualfeePakagePrice" class="col-sm-2 control-label">연회비패키지가격</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakagePrice" name="annualfeePakagePrice" value="${returnAnnualfeePakageDto.annualfeePakagePrice}">	
-								</div>
-							</div>
-							<br><br>
-							<div>
-								<label for="annualfeePakageTextSangse" class="col-sm-2 control-label">상세내용</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakageTextSangse" name="annualfeePakageTextSangse" value="${returnAnnualfeePakageDto.annualfeePakageTextSangse}">				
-								</div>
-							</div>
-							<br><br>
-							<div>
-								<label for="annualfeePakageDiscountRate" class="col-sm-2 control-label">할인률</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="annualfeePakageDiscountRate" name="annualfeePakageDiscountRate" value="${returnAnnualfeePakageDto.annualfeePakageDiscountRate}">			
-								</div>
-							</div>		
-							<div id="addAdminagency">
-								
-							</div>
-							<div hidden="hidden" id="removeAdminagency">
-							
-							</div>									
-						</form>	
-						<br><br>				
-						<div>
-							<div>
-								<label for="adminagencyName" class="col-sm-2 control-label">적용 행정기관명</label>
-								<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">
-									<div class="col-sm-3" style="text-align: right;">		
-										<input type="text" class="form-control" id="adminagencyName" name="adminagencyName"	value= "${annualfeePakageAuthority.adminagencyName}" readonly="readonly">		
-										<input hidden="hidden" name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}">
-										<input hidden="hidden" name="adminagencyCode" value="${annualfeePakageAuthority.adminagencyCode}">
-										<button class="delete" type="button">삭제</button>
+							<form id="updateAnnualfeePakageForm" action="${pageContext.request.contextPath}/updateAnnualfeePakage" method="post">
+								<input hidden="hidden" name="annualfeePakageCode" value="${returnAnnualfeePakageDto.annualfeePakageCode}"><!-- 연회비패키지코드 -->
+								<div>
+									<label for="functionaryId" class="col-sm-2 control-label">등록자id</label>
+									<div class="col-sm-10">					
+										<input type="text" class="form-control" id="functionaryId" name="functionaryId" value="${returnAnnualfeePakageDto.functionaryId}">					
 									</div>
-								</c:forEach>
-							</div>
-							<button type="button" id="adminagencyAdd" class="btn btn-primary">행정기관추가</button>
-						</div>
-					</div>
-					
-					<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
-								</div> 
-								<div class="modal-body">
-									<input type="text" id="checkAdminagency">
-									<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
 								</div>
-								<div class="modal-footer">
-									<table id = "adminagencyList" border = "1">
+								<br><br>
+								<div>
+									<label for="annualfeePakageName" class="col-sm-2 control-label">연회비패키지명</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakageName" name="annualfeePakageName" value="${returnAnnualfeePakageDto.annualfeePakageName}">	
+									</div>
+								</div>
+								<br><br>
+								<div>
+									<label for="annualfeePakagePrice" class="col-sm-2 control-label">연회비패키지가격</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakagePrice" name="annualfeePakagePrice" value="${returnAnnualfeePakageDto.annualfeePakagePrice}">	
+									</div>
+								</div>
+								<br><br>
+								<div>
+									<label for="annualfeePakageTextSangse" class="col-sm-2 control-label">상세내용</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakageTextSangse" name="annualfeePakageTextSangse" value="${returnAnnualfeePakageDto.annualfeePakageTextSangse}">				
+									</div>
+								</div>
+								<br><br>
+								<div>
+									<label for="annualfeePakageDiscountRate" class="col-sm-2 control-label">할인률</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="annualfeePakageDiscountRate" name="annualfeePakageDiscountRate" value="${returnAnnualfeePakageDto.annualfeePakageDiscountRate}">			
+									</div>
+								</div>
+								<br><br>		
+								<div id="addAdminagency">
+										<!-- <label for="inputEmail3" class="col-sm-2 control-label">행정기관명</label>	 -->							
+										<!-- <div class="col-sm-10" id="addAdminagency">	 -->								
+								</div>
+															
+								<div hidden="hidden" id="removeAdminagency">
 								
-									</table>
+								</div>
+																
+							</form>
+							<br>			
+							<div>						
+								<c:forEach var="annualfeePakageAuthority" items="${returnAnnualfeePakageDto.annualfeePakageAuthority}">	
+									<div id="deleteDiv">								
+										<label for="adminagencyName" class="col-sm-2 control-label">현재 행정기관명</label>								
+										<div class="col-sm-10 input-group">		
+											<input type="text" class="form-control" name="adminagencyName"	value= "${annualfeePakageAuthority.adminagencyName}" readonly="readonly">		
+											<input hidden="hidden" name="annualfeePakageAuthorityCode" value="${annualfeePakageAuthority.annualfeePakageAuthorityCode}">
+											<span class="input-group-btn">
+												<button class="delete btn btn-primary" id="delete" type="button">삭제</button>
+											</span>
+										</div>																
+									</div>								
+								</c:forEach>								
+							</div>
+						</div>
+					
+						<div class="modal fade" id="adminagencyCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">행정기관 검색</h4>
+									</div> 
+									<div class="modal-body">
+										<input type="text" id="checkAdminagency">
+										<button type="button" class="btn btn-primary" id="adminagencyCheck">행정기관검색</button>
+									</div>
+									<div class="modal-footer">
+										<table id = "adminagencyList" border = "1">
+									
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 					
 					<div class="text-center">
-						<button type="button" class="btn btn-primary">수정</button>
+						<button type="button" id="adminagencyAdd" class="btn btn-danger">행정기관추가</button>
+						<button id="updateAnnualfeePakage" type="button" class="btn btn-primary">수정</button>
 					</div>
 					<!-- End Content -->					
 					</div>
