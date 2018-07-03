@@ -106,7 +106,7 @@
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/selectListAgencyBusinesstype">업종분류 관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/getCitizenList">시민계정 조회</a></li>
 						          <!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">물품 재고 파악</a></li>  --><!-- 시설/물품관리 하위로 들어가면 좋겠다고 생각합니다 -->
-						          <%-- <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li> --%>
+						          <li class="backgroundColor"><a style="color:#FFFFFF" href="${pageContext.request.contextPath}/insertannualfeePakage">연회비/패키지</a></li>
 						          <!-- <li class="backgroundColor"><a style="color:#FFFFFF" href="#">상벌관리</a></li>
 						          <li class="backgroundColor"><a style="color:#FFFFFF" href="#">대여금지 설정</a></li> -->
 						         </ul>
