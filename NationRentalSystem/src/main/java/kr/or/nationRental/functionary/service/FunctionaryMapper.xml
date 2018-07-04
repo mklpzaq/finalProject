@@ -100,15 +100,18 @@
 	
 	<select id="viewFunctionaryInfo" parameterType="String" resultType="kr.or.nationRental.functionary.service.FunctionaryDto">
 			SELECT
-				functionary_id as functionaryId
-				,adminagency_code as adminagencyCode
-				,functionary_num as functionaryNum
-				,functionary_pw as functionaryPw
-				,functionary_name as functionaryName
-				,functionary_phone as functionaryPhone
-				,functionary_email as functionaryEmail
-				,functionary_date_join as functionaryDateJoin
+				functionary.functionary_id as functionaryId
+				,adminagency.adminagency_code as adminagencyCode
+				,adminagency.adminagency_name as adminagencyName
+				,functionary.functionary_num as functionaryNum
+				,functionary.functionary_pw as functionaryPw
+				,functionary.functionary_name as functionaryName
+				,functionary.functionary_phone as functionaryPhone
+				,functionary.functionary_email as functionaryEmail
+				,functionary.functionary_date_join as functionaryDateJoin
 			FROM functionary
+			inner join adminagency
+				using(adminagency_code)
 			where functionary_id = #{functionaryId}		
 	</select>
 	
@@ -227,7 +230,7 @@
 				goodsfacility
 			INNER JOIN
 				adminagency
-				using(adminagency_code)	
+				using(adminagency_code)
 			WHERE goodsfacility.functionary_id = #{functionaryId}					
 			<choose>	      
 		        <when test="searchOption == '전체 검색'">    

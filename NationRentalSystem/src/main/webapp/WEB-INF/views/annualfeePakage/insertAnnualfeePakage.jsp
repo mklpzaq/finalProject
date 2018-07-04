@@ -36,7 +36,7 @@
 						+'<input type="text" class="form-control" id="adminagencyName" name="adminagencyName" placeholder="적용되는 행정기관명" readonly="readonly">'
 						+'<span class="input-group-btn">'
 						+'<button type="button" id="myModalclick" class="btn btn-primary" data-toggle="modal" data-target="#adminagencyCheckModal">행정기관찾기</button>'
-						+'<button type="button" id="del" class="btn btn-primary">삭제</button>'
+						+'<button type="button" id="del" class="btn btn-danger">삭제</button>'
 						+'</span>'
 						+'</div>');
 								

@@ -116,11 +116,11 @@
 									</div>
 								</div>
 								<div>
-									<button type="button" id="goodsfacilityListButton">대여물품/시설등록조회</button>
-									<button type="button" id="returnGoodsfacilityInfoListButton">반납정보등록조회</button>
-									<button type="button" id="unitedAfterserviceRequestListButton">AS의뢰신청조회</button>
-									<button type="button" id="agencyListButton">대행업체등록조회</button>
-									<button type="button" id="annualfeePakageListButton">연회비/패키지 등록 조회</button>
+									<a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?functionaryId=${list[0].functionaryId}"><button type="button" id="goodsfacilityListButton" class="btn btn-primary">대여물품/시설등록조회</button></a>
+									<a href="${pageContext.request.contextPath}/#?functionaryId=${list[0].functionaryId}"><button type="button" id="returnGoodsfacilityInfoListButton" class="btn btn-success">반납정보등록조회</button></a>
+									<a href="${pageContext.request.contextPath}/#?functionaryId=${list[0].functionaryId}"><button type="button" id="unitedAfterserviceRequestListButton" class="btn btn-info">AS의뢰신청조회</button></a>
+									<a href="${pageContext.request.contextPath}/#?functionaryId=${list[0].functionaryId}"><button type="button" id="agencyListButton" class="btn btn-warning">대행업체등록조회</button></a>
+									<a href="${pageContext.request.contextPath}/#?functionaryId=${list[0].functionaryId}"><button type="button" id="annualfeePakageListButton" class="btn btn-danger">연회비/패키지 등록 조회</button></a>
 								</div>
 								<hr/>
 								
@@ -148,24 +148,22 @@
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
-								<!-- End Search -->
-								<div id="tableckckck">							
+								<!-- End Search -->								
+								<div id="tableckckck">					
 									<table id="goodsfacilityList" class="table table-striped">
 										<thead>
 											<tr>
-												<th width="10%">시설/물품 개별관리코드</th>
-												<th width="10%">시설/물품명</th>
-												<th width="10%">행정기관명</th>
-												<th width="10%">등록일자</th>									
+												<th width="30%" class="text-center">시설/물품명</th>
+												<th width="40%" class="text-center">등록 행정기관명</th>
+												<th width="30%" class="text-center">등록일자</th>									
 											</tr>
 										</thead>
 										<tbody>									
 											<c:forEach var="goodsfacilityDto" items="${list}">
-													<tr>
-														<td>${goodsfacilityDto.goodsfacilityCode}</td>														
+													<tr>													
 														<td>${goodsfacilityDto.goodsfacilityName}</td>
-														<td>${goodsfacilityDto.goodsfacilityPurchaseprice}</td>
-														<td>${goodsfacilityDto.goodsfacilityPriceRental}</td>													
+														<td>${goodsfacilityDto.adminagencyName}</td>
+														<td>${goodsfacilityDto.goodsfacilityDateRegistration}</td>													
 													</tr>																						
 											</c:forEach>									
 										</tbody>

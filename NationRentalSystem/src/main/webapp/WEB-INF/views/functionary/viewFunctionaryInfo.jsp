@@ -47,7 +47,7 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">소속행정기관</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="adminagencyCode" value="${returnfunctionaryDto.adminagencyCode}" id="adminagencyCode" readonly>
+									<input type="text" class="form-control" name="adminagencyCode" value="${returnfunctionaryDto.adminagencyName}" id="adminagencyName" readonly>
 								</div>
 							</div>
 							<div class="form-group">

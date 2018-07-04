@@ -5,35 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoodsFacilityDto {
-	private int goodsfacilityCode;
-	private int goodsfacilityThreeCode;
-	private String goodsfacilityName;
-	private int goodsfacilityPurchaseprice;
-	private int goodsfacilityPriceRental;
-	private String goodsfacilityTextSangse;
-	private int adminagencyCode;
-	private String sigunguName;
-	private String sidoName;
-	private String eupmyeonName;
-	private String goodsfacilityAddressSangse;
-	private String functionaryId;
-	private String goodsfacilityClassifyGoodsfacility;
-	private String goodsfacilityClassifyDonationpurchase;
-	private String goodsfacilityIsExtra;
-	private String goodsfacilityIsPossibleDelivery;
-	private String goodsfacilityStateAfterservice;
-	private String goodsfacilityIsPossibleRental;
-	
-	private Date goodsfacilityDateRegistration;
+	private int goodsfacilityCode; //물품/시설코드
+	private int goodsfacilityThreeCode; //물품시설 카테고리3차 코드
+	private String goodsfacilityName; //물품/시설명
+	private int goodsfacilityPurchaseprice; //물품/시설 구입금액
+	private int goodsfacilityPriceRental; //물품시설 대여대관 금액
+	private String goodsfacilityTextSangse; //물품시설 상세설명
+	private int adminagencyCode; //행정기관코드
+	private String adminagencyName; //행정기관명
+	private String sigunguName; //시군구명
+	private String sidoName; //시도명
+	private String eupmyeonName; //읍면동명
+	private String goodsfacilityAddressSangse; //물품시설상세주소
+	private String functionaryId; //공무원 아이디
+	private String goodsfacilityClassifyGoodsfacility; //물품/시설 여부
+	private String goodsfacilityClassifyDonationpurchase; //기부/구입 여부
+	private String goodsfacilityIsExtra; //예비상태 여부
+	private String goodsfacilityIsPossibleDelivery; //배달가능 여부
+	private String goodsfacilityStateAfterservice; //현재AS상태 여부
+	private String goodsfacilityIsPossibleRental; //물품시설 대여대관 가능여부
+	private Date goodsfacilityDateRegistration; //물품시설등록일자
 	private List<GoodsFacilityFile> goodsFacilityFile;
 	
 	/* 입력받을때 필요할 내용 */
 	private String goodsfacilityThreeName;
 
-	public GoodsFacilityDto() {
-		this.goodsFacilityFile = new ArrayList<GoodsFacilityFile>();
-	}
-	
 	public int getGoodsfacilityCode() {
 		return goodsfacilityCode;
 	}
@@ -88,6 +84,14 @@ public class GoodsFacilityDto {
 
 	public void setAdminagencyCode(int adminagencyCode) {
 		this.adminagencyCode = adminagencyCode;
+	}
+
+	public String getAdminagencyName() {
+		return adminagencyName;
+	}
+
+	public void setAdminagencyName(String adminagencyName) {
+		this.adminagencyName = adminagencyName;
 	}
 
 	public String getSigunguName() {
@@ -208,15 +212,18 @@ public class GoodsFacilityDto {
 				+ goodsfacilityThreeCode + ", goodsfacilityName=" + goodsfacilityName + ", goodsfacilityPurchaseprice="
 				+ goodsfacilityPurchaseprice + ", goodsfacilityPriceRental=" + goodsfacilityPriceRental
 				+ ", goodsfacilityTextSangse=" + goodsfacilityTextSangse + ", adminagencyCode=" + adminagencyCode
-				+ ", sigunguName=" + sigunguName + ", sidoName=" + sidoName + ", eupmyeonName=" + eupmyeonName
-				+ ", goodsfacilityAddressSangse=" + goodsfacilityAddressSangse + ", functionaryId=" + functionaryId
-				+ ", goodsfacilityClassifyGoodsfacility=" + goodsfacilityClassifyGoodsfacility
-				+ ", goodsfacilityClassifyDonationpurchase=" + goodsfacilityClassifyDonationpurchase
-				+ ", goodsfacilityIsExtra=" + goodsfacilityIsExtra + ", goodsfacilityIsPossibleDelivery="
-				+ goodsfacilityIsPossibleDelivery + ", goodsfacilityStateAfterservice=" + goodsfacilityStateAfterservice
+				+ ", adminagencyName=" + adminagencyName + ", sigunguName=" + sigunguName + ", sidoName=" + sidoName
+				+ ", eupmyeonName=" + eupmyeonName + ", goodsfacilityAddressSangse=" + goodsfacilityAddressSangse
+				+ ", functionaryId=" + functionaryId + ", goodsfacilityClassifyGoodsfacility="
+				+ goodsfacilityClassifyGoodsfacility + ", goodsfacilityClassifyDonationpurchase="
+				+ goodsfacilityClassifyDonationpurchase + ", goodsfacilityIsExtra=" + goodsfacilityIsExtra
+				+ ", goodsfacilityIsPossibleDelivery=" + goodsfacilityIsPossibleDelivery
+				+ ", goodsfacilityStateAfterservice=" + goodsfacilityStateAfterservice
 				+ ", goodsfacilityIsPossibleRental=" + goodsfacilityIsPossibleRental
 				+ ", goodsfacilityDateRegistration=" + goodsfacilityDateRegistration + ", goodsFacilityFile="
 				+ goodsFacilityFile + ", goodsfacilityThreeName=" + goodsfacilityThreeName + "]";
 	}
+
+	
 	
 }
