@@ -80,22 +80,34 @@ public class FunctionaryDao {
 		sqlSession.insert(NS+"insertStorageFunctionary", functionaryDto);
 	}	
 	
-	//공무원 대여물품/시설등록한 업무 조회
-	public List<GoodsFacilityDto> selectFunctionaryWorkGoodsfacility(Map<String, Object> map) {
-		logger.debug("FunctionaryDao - selectFunctionaryWorkGoodsfacility - map : " + map.toString());
-		return sqlSession.selectList(NS+"selectFunctionaryWorkGoodsfacility", map);
+	//공무원 대여물품/시설등록한 업무조회
+	public List<GoodsFacilityDto> selectListFunctionaryWorkGoodsfacility(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - selectListFunctionaryWorkGoodsfacility - map : " + map.toString());
+		return sqlSession.selectList(NS+"selectListFunctionaryWorkGoodsfacility", map);
 	}
-	//공무원 대여물품/시설등록한 업무 조회 카운트
+	//공무원 대여물품/시설등록한 업무조회 카운트
 	public int totalCountFunctionaryWorkGoodsfacility(Map<String, Object> map) {
 		logger.debug("FunctionaryDao - totalCountFunctionaryWorkGoodsfacility - map : " + map);
 		return sqlSession.selectOne(NS+"totalCountFunctionaryWorkGoodsfacility", map);
 	}
 	
-	//공무원 반납등록업무조회
-	public List<ReturnGoodsfacilityInfoDto> selectFunctionaryWorkReturnGoodsfacilityInfo(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - selectFunctionaryWorkReturnGoodsfacilityInfo - memberId : " + functionaryDto);
-		return sqlSession.selectList(NS+"selectFunctionaryWorkReturnGoodsfacilityInfo", functionaryDto);
+	//공무원 반납등록 업무조회
+	public List<ReturnGoodsfacilityInfoDto> selectListFunctionaryWorkReturnGoodsfacilityInfo(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - selectListFunctionaryWorkReturnGoodsfacilityInfo - map : " + map);
+		return sqlSession.selectList(NS+"selectListFunctionaryWorkReturnGoodsfacilityInfo", map);
 	}
+	
+	//공무원 반납등록 업무조회 카운트
+		public int totalCountFunctionaryWorkReturnGoodsfacilityInfo(Map<String, Object> map) {
+			logger.debug("FunctionaryDao - totalCountFunctionaryWorkReturnGoodsfacilityInfo - map : " + map);
+			return sqlSession.selectOne(NS+"totalCountFunctionaryWorkReturnGoodsfacilityInfo", map);
+	}
+		
+		
+		
+		
+		
+		
 	
 	//공무원 AS의뢰신청업무조회
 	public List<UnitedAfterserviceRequestDto> selectFunctionaryWorkUnitedAfterserviceReques(FunctionaryDto functionaryDto) {

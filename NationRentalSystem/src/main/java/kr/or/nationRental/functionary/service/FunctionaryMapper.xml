@@ -191,7 +191,7 @@
 			from goodsfacility
 			inner join adminagency
 				using(adminagency_code)						
-			WHERE goodsfacility.functionary_id = #{functionaryId}					
+			WHERE goodsfacility.functionary_id = #{functionaryDto.functionaryId}					
 			<choose>	      
 		        <when test="searchOption == '전체 검색'">    
 		        	AND (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
@@ -207,10 +207,9 @@
 		        	where adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
 		        </when> -->
 	    	</choose>
-	    	and goodsfacility.functionary_id = #{functionaryId}	
 	</select>
 	
-	<select id="selectFunctionaryWorkGoodsfacility" parameterType="java.util.Map"  resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
+	<select id="selectListFunctionaryWorkGoodsfacility" parameterType="java.util.Map"  resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
 		SELECT
 			goodsfacility.goodsfacility_code as goodsfacilityCode
 			,goodsfacility.goodsfacility_name as goodsfacilityName
@@ -231,7 +230,7 @@
 			INNER JOIN
 				adminagency
 				using(adminagency_code)
-			WHERE goodsfacility.functionary_id = #{functionaryId}					
+			WHERE goodsfacility.functionary_id = #{functionaryDto.functionaryId}					
 			<choose>	      
 		        <when test="searchOption == '전체 검색'">    
 		        	AND (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
@@ -250,63 +249,91 @@
 			ORDER BY goodsfacility.goodsfacility_date_registration DESC
 			LIMIT #{beginRow}, #{pagePerRow}
 	</select>
+		
 	
-	<!-- 테스트중 -->
-	<select id="selectFunctionaryWorkGoodsfacilitytest" 
-		parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
-		resultType="kr.or.nationRental.goodsFacility.service.GoodsFacilityDto">
-		<!-- SELECT
-			goodsfacility_code as goodsfacilityCode
-			,goodsfacility_name as goodsfacilityName
-			,goodsfacility_purchaseprice as goodsfacilityPurchaseprice
-			,goodsfacility_price_rental as goodsfacilityPriceRental
-			,adminagency_code as adminagencyCode
-			,adminagency_name as adminagencyName
-			,goodsfacility_classify_goodsfacility as goodsfacilityClassifyGoodsfacility
-			,goodsfacility_classify_donationpurchase as goodsfacilityClassifyDonationpurchase
-			,goodsfacility_is_extra as goodsfacilityIsExtra
-			,goodsfacility_is_possible_delivery as goodsfacilityIsPossibleDelivery
-			,goodsfacility_state_afterservice as goodsfacilityStateAfterservice
-			,goodsfacility_is_possible_rental as goodsfacilityIsPossibleRental
-			,goodsfacility_date_registration as goodsfacilityDateRegistration
-			from goodsfacility
-			inner join adminagency
-			using(adminagency_code)
-			where functionary_id = #{functionaryId}	 -->
-		SELECT
-			goodsfacility.goodsfacility_code as goodsfacilityCode
-			,goodsfacility.goodsfacility_name as goodsfacilityName		
-			,goodsfacility.adminagency_code as adminagencyCode
-			,adminagency.adminagency_name as adminagencyName		
-			,goodsfacility.goodsfacility_date_registration as goodsfacilityDateRegistration
-		from goodsfacility
-		inner join adminagency
-			using(adminagency_code)
-			where functionary_id = #{functionaryId}	
-	</select>
-	
-	<select id="selectFunctionaryWorkReturnGoodsfacilityInfo" 
+	<select id="selectListFunctionaryWorkReturnGoodsfacilityInfo" 
 	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
 	resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
 		SELECT
-			rgi.return_goodsfacility_info_code as returnGoodsfacilityInfoCode
-			,rgi.goodsfacility_code as goodsfacilityCode
-			,rgi.classify_goodsfacility as classifyGoodsfacility
-			,rgi.citizen_id as citizenId
-			,ci.citizen_name as citizenName
-			,rgi.is_requested_to_return_as_delivery as isRequestedToReturnAsDelivery
-			,rgi.overdue_days as overdueDays
-			,rgi.adminagency_code as adminagencyCode
-			,ad.adminagency_name as adminagencyName
-			,rgi.state_goods_code as stateGoodsCode
-			,rgi.date_return_check as dateReturnCheck
-			from return_goodsfacility_info as rgi
-			inner join adminagency as ad
-			 using(adminagency_code)
-			inner join citizen as ci
+			return_goodsfacility_info.return_goodsfacility_info_code as returnGoodsfacilityInfoCode
+			,return_goodsfacility_info.goodsfacility_code as goodsfacilityCode
+			,goodsfacility.goodsfacility_name as goodsfacilityName
+			,return_goodsfacility_info.classify_goodsfacility as classifyGoodsfacility
+			,return_goodsfacility_info.citizen_id as citizenId
+			,citizen.citizen_name as citizenName
+			,return_goodsfacility_info.is_requested_to_return_as_delivery as isRequestedToReturnAsDelivery
+			,return_goodsfacility_info.overdue_days as overdueDays
+			,return_goodsfacility_info.adminagency_code as adminagencyCode
+			,adminagency.adminagency_name as adminagencyName
+			,return_goodsfacility_info.state_goods_code as stateGoodsCode
+			,return_goodsfacility_info.date_return_check as dateReturnCheck
+			from return_goodsfacility_info
+			inner join goodsfacility
+				using(goodsfacility_code)
+			inner join adminagency
+			 	on return_goodsfacility_info.adminagency_code = adminagency.adminagency_code
+			inner join citizen
 				using(citizen_id)
-			where functionary_id = #{functionaryId}
+			where return_goodsfacility_info.functionary_id = #{functionaryDto.functionaryId}
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	AND (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	OR adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')) 
+		        	OR citizen.citizen_name like CONCAT('%', #{keyword}, '%')   	        	           
+		        </when>
+		        <when test="searchOption == '시설/물품명 검색'">    
+		        	AND goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <when test="searchOption == '회원명 검색'"> 
+		        	AND citizen.citizen_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        
+	    	</choose>				
+			ORDER BY return_goodsfacility_info.date_return_check DESC
+			LIMIT #{beginRow}, #{pagePerRow}
 	</select>
+	
+	<select id="totalCountFunctionaryWorkReturnGoodsfacilityInfo"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+			from return_goodsfacility_info
+			inner join goodsfacility
+				using(goodsfacility_code)
+			inner join adminagency
+			 	on return_goodsfacility_info.adminagency_code = adminagency.adminagency_code
+			inner join citizen
+				using(citizen_id)
+			where return_goodsfacility_info.functionary_id = #{functionaryDto.functionaryId}					
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	AND (goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	OR adminagency.adminagency_name like CONCAT('%', #{keyword}, '%'))
+		        	OR citizen.citizen_name like CONCAT('%', #{keyword}, '%')     	        	           
+		        </when>
+		        <when test="searchOption == '시설/물품명 검색'">    
+		        	AND goodsfacility.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		       <when test="searchOption == '회원명 검색'"> 
+		        	AND citizen.citizen_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+	    	</choose>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<select id="selectFunctionaryWorkUnitedAfterserviceReques" 
 	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 

@@ -127,7 +127,7 @@
 									<tbody>									
 											<c:forEach var="functionaryDto" items="${list}">												
 													<tr>
-														<td><a href="${pageContext.request.contextPath}/selectFunctionaryWorkGoodsfacility?functionaryId=${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></td>														
+														<td><a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryDto.functionaryId}">${functionaryDto.functionaryName}</a></td>														
 														<td>${functionaryDto.adminagencyName}</td>
 														<td>${functionaryDto.functionaryPhone}</td>
 														<td>${functionaryDto.functionaryEmail}</td>													

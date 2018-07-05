@@ -3,7 +3,7 @@ package kr.or.nationRental.returnGoodsfacilityInfo.service;
 import java.sql.Date;
 
 public class ReturnGoodsfacilityInfoDto {
-	private int returGoodsfacilityInfoCode; //시설/물품 반납 정보 코드
+	private int returnGoodsfacilityInfoCode; //시설/물품 반납 정보 코드
 	private int goodsfacilityRentalCode; //시설/물품 대여/예약 신청코드
 	private int goodsfacilityCode; //시설/물품 개별관리코드
 	private String goodsfacilityName; //시설/물품명
@@ -25,11 +25,11 @@ public class ReturnGoodsfacilityInfoDto {
 	private String goodsfacilityThreeName; //물품/시설 3차 카테고리
 	
 	/* getter, setter, toString */
-	public int getReturGoodsfacilityInfoCode() {
-		return returGoodsfacilityInfoCode;
+	public int getReturnGoodsfacilityInfoCode() {
+		return returnGoodsfacilityInfoCode;
 	}
-	public void setReturGoodsfacilityInfoCode(int returGoodsfacilityInfoCode) {
-		this.returGoodsfacilityInfoCode = returGoodsfacilityInfoCode;
+	public void setReturnGoodsfacilityInfoCode(int returnGoodsfacilityInfoCode) {
+		this.returnGoodsfacilityInfoCode = returnGoodsfacilityInfoCode;
 	}
 	public int getGoodsfacilityRentalCode() {
 		return goodsfacilityRentalCode;
@@ -147,7 +147,7 @@ public class ReturnGoodsfacilityInfoDto {
 	}
 	@Override
 	public String toString() {
-		return "ReturnGoodsfacilityInfoDto [returGoodsfacilityInfoCode=" + returGoodsfacilityInfoCode
+		return "ReturnGoodsfacilityInfoDto [returnGoodsfacilityInfoCode=" + returnGoodsfacilityInfoCode
 				+ ", goodsfacilityRentalCode=" + goodsfacilityRentalCode + ", goodsfacilityCode=" + goodsfacilityCode
 				+ ", goodsfacilityName=" + goodsfacilityName + ", classifyGoodsfacility=" + classifyGoodsfacility
 				+ ", memberLevel=" + memberLevel + ", citizenId=" + citizenId + ", citizenName=" + citizenName
@@ -158,4 +158,7 @@ public class ReturnGoodsfacilityInfoDto {
 				+ ", dateReturnCheck=" + dateReturnCheck + ", goodsfacilityStateAfterservice="
 				+ goodsfacilityStateAfterservice + ", goodsfacilityThreeName=" + goodsfacilityThreeName + "]";
 	}
+	
+	
+	
 }

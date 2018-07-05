@@ -78,7 +78,7 @@
  	
  	<select id="selectReturnGoodsfacilityInfo" parameterType="java.util.Map" resultType="kr.or.nationRental.returnGoodsfacilityInfo.service.ReturnGoodsfacilityInfoDto">
  		select 
-			return_goodsfacility_info.return_goodsfacility_info_code as returGoodsfacilityInfoCode
+			return_goodsfacility_info.return_goodsfacility_info_code as returnGoodsfacilityInfoCode
 			,return_goodsfacility_info.goodsfacility_rental_code as goodsfacilityRentalCode
 			,return_goodsfacility_info.goodsfacility_code as goodsfacilityCode
 			,goodsfacility.goodsfacility_name as goodsfacilityName

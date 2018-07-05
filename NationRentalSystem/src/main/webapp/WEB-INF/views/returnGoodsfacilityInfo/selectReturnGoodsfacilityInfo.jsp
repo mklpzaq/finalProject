@@ -216,7 +216,7 @@
 									<tbody>									
 										<c:forEach var="returnGoodsfacilityInfoDto" items="${list}">												
 											<tr>
-												<td>${returnGoodsfacilityInfoDto.returGoodsfacilityInfoCode}</td>														
+												<td>${returnGoodsfacilityInfoDto.returnGoodsfacilityInfoCode}</td>														
 												<td>${returnGoodsfacilityInfoDto.goodsfacilityName}</td>
 												<td>${returnGoodsfacilityInfoDto.classifyGoodsfacility}</td>
 												<td>${returnGoodsfacilityInfoDto.citizenId}</td>

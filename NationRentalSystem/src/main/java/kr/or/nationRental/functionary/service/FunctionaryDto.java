@@ -15,13 +15,13 @@ public class FunctionaryDto {
 	private Date functionaryDateWorkStart; //전입날짜
 	private Date functionaryDateWorkEnd; //전출날짜
 	private String functionaryStateWork; //전입전출상태
+	//private String workType; 업무타입
 	/* 입력받기 위해 필요한 추가사항 */
 	private String sidoName;
 	private String sigunguName;
 	private String eupmyeonName;
 	private String adminagencyAddressSangse;
 	private String agencyEmployeeId;
-	
 	public String getFunctionaryId() {
 		return functionaryId;
 	}
@@ -100,6 +100,7 @@ public class FunctionaryDto {
 	public void setFunctionaryStateWork(String functionaryStateWork) {
 		this.functionaryStateWork = functionaryStateWork;
 	}
+	
 	public String getSidoName() {
 		return sidoName;
 	}
@@ -142,4 +143,8 @@ public class FunctionaryDto {
 				+ sigunguName + ", eupmyeonName=" + eupmyeonName + ", adminagencyAddressSangse="
 				+ adminagencyAddressSangse + ", agencyEmployeeId=" + agencyEmployeeId + "]";
 	}
+	
+	
+	
+	
 }
