@@ -210,7 +210,8 @@ public class FunctionaryService {
 			returnmap.put("list", list);
 			returnmap.put("lastPage", lastPage);
 			returnmap.put("startPage", startPage);
-			returnmap.put("endPage", endPage);			
+			returnmap.put("endPage", endPage);
+		//반납등록조회
 		}else if(workType.equals("반납등록")) {
 			List<ReturnGoodsfacilityInfoDto> list = functionaryDao.selectListFunctionaryWorkReturnGoodsfacilityInfo(map);
 			logger.debug("FunctionaryService - selectListFunctionaryWorkReturnGoodsfacilityInfo - list : " + list);	
@@ -231,12 +232,13 @@ public class FunctionaryService {
 			returnmap.put("list", list);
 			returnmap.put("lastPage", lastPage);
 			returnmap.put("startPage", startPage);
-			returnmap.put("endPage", endPage);	
-		}/*else if(workType == "의뢰등록") {
-			List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(map);
-			logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - goodsfacilityList : " + goodsfacilityList);
-			int total = functionaryDao.totalCountFunctionaryWorkGoodsfacility(map);
-			logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - total  : " + total);						
+			returnmap.put("endPage", endPage);
+		//의뢰등록조회
+		}else if(workType.equals("의뢰등록")) {
+			List<UnitedAfterserviceRequestDto> list = functionaryDao.selectListFunctionaryWorkUnitedAfterserviceRequest(map);
+			logger.debug("FunctionaryService - selectListFunctionaryWorkUnitedAfterserviceRequest - list : " + list);
+			int total = functionaryDao.totalCountFunctionaryWorkUnitedAfterserviceRequest(map);
+			logger.debug("FunctionaryService - totalCountFunctionaryWorkUnitedAfterserviceRequest - total  : " + total);						
 			int lastPage = 0;
 			if(total%pagePerRow == 0) {
 				lastPage = total/pagePerRow;
@@ -249,15 +251,16 @@ public class FunctionaryService {
 			if(endPage>lastPage) {
 				endPage=lastPage;
 			}			
-			returnmap.put("goodsfacilityList", goodsfacilityList);
+			returnmap.put("list", list);
 			returnmap.put("lastPage", lastPage);
 			returnmap.put("startPage", startPage);
-			returnmap.put("endPage", endPage);	
-		}else if(workType == "대행업체등록") {
-			List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(map);
-			logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - goodsfacilityList : " + goodsfacilityList);
-			int total = functionaryDao.totalCountFunctionaryWorkGoodsfacility(map);
-			logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - total  : " + total);						
+			returnmap.put("endPage", endPage);
+		//대행업체등록 조회
+		}else if(workType.equals("대행업체등록")) {
+			List<AgencyDto> list = functionaryDao.selectListFunctionaryWorkAgency(map);
+			logger.debug("FunctionaryService - selectListAgency - list : " + list);
+			int total = functionaryDao.totalCountFunctionaryWorkAgency(map);
+			logger.debug("FunctionaryService - selectListAgency - total  : " + total);						
 			int lastPage = 0;
 			if(total%pagePerRow == 0) {
 				lastPage = total/pagePerRow;
@@ -270,15 +273,16 @@ public class FunctionaryService {
 			if(endPage>lastPage) {
 				endPage=lastPage;
 			}			
-			returnmap.put("goodsfacilityList", goodsfacilityList);
+			returnmap.put("list", list);
 			returnmap.put("lastPage", lastPage);
 			returnmap.put("startPage", startPage);
-			returnmap.put("endPage", endPage);	
-		}else if(workType == "연회비등록") {
-			List<GoodsFacilityDto> goodsfacilityList = functionaryDao.selectFunctionaryWorkGoodsfacility(map);
-			logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - goodsfacilityList : " + goodsfacilityList);
-			int total = functionaryDao.totalCountFunctionaryWorkGoodsfacility(map);
-			logger.debug("FunctionaryService - selectFunctionaryWorkGoodsfacility - total  : " + total);						
+			returnmap.put("endPage", endPage);
+		//연회비등록 조회
+		}else if(workType.equals("연회비등록")) {
+			List<AnnualfeePakageDto> list = functionaryDao.selectListFunctionaryWorkAnnualfeePakage(map);
+			logger.debug("FunctionaryService - selectListFunctionaryWorkAnnualfeePakage - list : " + list);
+			int total = functionaryDao.totalCountFunctionaryWorkAnnualfeePakage(map);
+			logger.debug("FunctionaryService - selectListFunctionaryWorkAnnualfeePakage - total  : " + total);						
 			int lastPage = 0;
 			if(total%pagePerRow == 0) {
 				lastPage = total/pagePerRow;
@@ -291,11 +295,11 @@ public class FunctionaryService {
 			if(endPage>lastPage) {
 				endPage=lastPage;
 			}			
-			returnmap.put("goodsfacilityList", goodsfacilityList);
+			returnmap.put("list", list);
 			returnmap.put("lastPage", lastPage);
 			returnmap.put("startPage", startPage);
 			returnmap.put("endPage", endPage);	
-		}*/
+		}
 		return returnmap;
 	}
 	

@@ -326,16 +326,8 @@
 		        </when>
 	    	</choose>
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<select id="selectFunctionaryWorkUnitedAfterserviceReques" 
+		
+	<select id="selectListFunctionaryWorkUnitedAfterserviceRequest" 
 	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
 	resultType="kr.or.nationRental.unitedAfterserviceRequest.service.UnitedAfterserviceRequestDto">
 		SELECT
@@ -350,6 +342,7 @@
 			,united_afterservice_request.goodsfacility_code as goodsfacilityCode
 			,united_afterservice_request.goodsfacility_name as goodsfacilityName
 			,united_afterservice_request.state_goods_code as stateGoodsCode
+			,state_goods.state_goods as stateGoods
 			,united_afterservice_request.text_check_result_goodsfacility as textCheckResultGoodsfacility
 			,united_afterservice_request.agency_code as agencyCode
 			,united_afterservice_request.agency_name as agencyName
@@ -357,11 +350,79 @@
 			,united_afterservice_request.date_complete_afterservice as dateCompleteAfterservice
 		from united_afterservice_request
 		inner join adminagency
-		 using(adminagency_code)
-			where functionary_id = #{functionaryId}				
+		 	using(adminagency_code)
+		inner join state_goods
+			using(state_goods_code)
+			where united_afterservice_request.functionary_id = #{functionaryDto.functionaryId}
+		
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	AND (united_afterservice_request.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	OR adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')) 
+		        	OR united_afterservice_request.agency_name like CONCAT('%', #{keyword}, '%')   	        	           
+		        </when>
+		        <when test="searchOption == '시설/물품명 검색'">    
+		        	AND united_afterservice_request.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <when test="searchOption == '정기/반납 검색'">
+		        	<choose>
+			        	<when test="keyword == '반납'">
+			        		and return_goodsfacility_info_code > 0
+			        	</when>
+			        	<when test="keyword == '정기'">
+			        		and regular_check_code > 0
+			        	</when>
+		        	</choose>			        				        	        	           
+		        </when>
+		        <when test="searchOption == '대행업체명 검색'"> 
+		        	AND united_afterservice_request.agency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>		        
+	    	</choose>	
+    	ORDER BY united_afterservice_request.date_request_afterservice DESC
+		LIMIT #{beginRow}, #{pagePerRow}			
 	</select>
 	
-	<select id="selectFunctionaryWorkAgency" 
+	<select id="totalCountFunctionaryWorkUnitedAfterserviceRequest"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+			from united_afterservice_request
+			inner join adminagency
+		 		using(adminagency_code)
+			where united_afterservice_request.functionary_id = #{functionaryDto.functionaryId}					
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	AND (united_afterservice_request.goodsfacility_name like CONCAT('%', #{keyword}, '%')
+		        	OR adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')) 
+		        	OR united_afterservice_request.agency_name like CONCAT('%', #{keyword}, '%')   	        	           
+		        </when>
+		        <when test="searchOption == '시설/물품명 검색'">    
+		        	AND united_afterservice_request.goodsfacility_name like CONCAT('%', #{keyword}, '%')	        	        	           
+		        </when>
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>
+		        <when test="searchOption == '정기/반납 검색'">
+		        	<choose>
+			        	<when test="keyword == '반납'">
+			        		and return_goodsfacility_info_code > 0
+			        	</when>
+			        	<when test="keyword == '정기'">
+			        		and regular_check_code > 0
+			        	</when>
+		        	</choose>			        				        	        	           
+		        </when>
+		        <when test="searchOption == '대행업체명 검색'"> 
+		        	AND united_afterservice_request.agency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>		        
+	    	</choose>	
+	</select>
+	
+	<select id="selectListFunctionaryWorkAgency" 
 	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 
 	resultType="kr.or.nationRental.agency.service.AgencyDto">
 		SELECT
@@ -379,8 +440,56 @@
 		    using(functionary_name)
 		inner join adminagency
 			on agency.adminagency_code = adminagency.adminagency_code
-			where functionary.functionary_id = #{functionaryId}	
+			where functionary.functionary_id = #{functionaryDto.functionaryId}
+		<choose>	      
+	        <when test="searchOption == '전체 검색'">    
+	        	AND (adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')
+	        	OR agency.agency_name like CONCAT('%', #{keyword}, '%'))  	        	           
+	        </when>	       
+	        <when test="searchOption == '행정기관명 검색'"> 
+	        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+	        </when>	        
+	        <when test="searchOption == '대행업체명 검색'"> 
+	        	AND agency.agency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+	        </when>		        
+    	</choose>
+    	ORDER BY agency.agency_date_registration DESC
+		LIMIT #{beginRow}, #{pagePerRow}	
 	</select>
+	
+	<select id="totalCountFunctionaryWorkAgency"
+			parameterType="java.util.Map"
+			resultType="Integer">
+		SELECT
+			COUNT(*)
+			from functionary
+			inner join agency
+			    using(functionary_name)
+			inner join adminagency
+				on agency.adminagency_code = adminagency.adminagency_code
+				where functionary.functionary_id = #{functionaryDto.functionaryId}					
+			<choose>	      
+		        <when test="searchOption == '전체 검색'">    
+		        	AND (adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')
+		        	OR agency.agency_name like CONCAT('%', #{keyword}, '%'))  	        	           
+		        </when>	       
+		        <when test="searchOption == '행정기관명 검색'"> 
+		        	AND adminagency.adminagency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>	        
+		        <when test="searchOption == '대행업체명 검색'"> 
+		        	AND agency.agency_name like CONCAT('%', #{keyword}, '%')		        	        	           
+		        </when>		        
+	    	</choose>	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<select id="selectFunctionaryWorkAnnualfeePakage" 
 	parameterType="kr.or.nationRental.functionary.service.FunctionaryDto" 

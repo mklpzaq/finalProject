@@ -103,28 +103,43 @@ public class FunctionaryDao {
 			return sqlSession.selectOne(NS+"totalCountFunctionaryWorkReturnGoodsfacilityInfo", map);
 	}
 		
-		
-		
-		
-		
-		
-	
 	//공무원 AS의뢰신청업무조회
-	public List<UnitedAfterserviceRequestDto> selectFunctionaryWorkUnitedAfterserviceReques(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - selectFunctionaryWorkReturnGoodsfacilityInfo - memberId : " + functionaryDto);
-		return sqlSession.selectList(NS+"selectFunctionaryWorkUnitedAfterserviceReques", functionaryDto);
+	public List<UnitedAfterserviceRequestDto> selectListFunctionaryWorkUnitedAfterserviceRequest(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - selectListFunctionaryWorkUnitedAfterserviceRequest - map : " + map);
+		return sqlSession.selectList(NS+"selectListFunctionaryWorkUnitedAfterserviceRequest", map);
+	}
+		
+	//공무원 AS의뢰신청 업무조회 카운트
+	public int totalCountFunctionaryWorkUnitedAfterserviceRequest(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - totalCountFunctionaryWorkUnitedAfterserviceRequest - map : " + map);
+		return sqlSession.selectOne(NS+"totalCountFunctionaryWorkUnitedAfterserviceRequest", map);
+	}	
+		
+	//공무원 대행업체 등록 조회
+	public List<AgencyDto> selectListFunctionaryWorkAgency(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - selectListFunctionaryWorkAgency - map : " + map);
+		return sqlSession.selectList(NS+"selectListFunctionaryWorkAgency", map);
 	}
 	
-	//공무원 대행업체 등록 조회
-	public List<AgencyDto> selectFunctionaryWorkAgency(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - selectFunctionaryWorkAgency - memberId : " + functionaryDto);
-		return sqlSession.selectList(NS+"selectFunctionaryWorkAgency", functionaryDto);
+	//공무원 대행업체등록 업무조회 카운트
+	public int totalCountFunctionaryWorkAgency(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - totalCountFunctionaryWorkAgency - map : " + map);
+		return sqlSession.selectOne(NS+"totalCountFunctionaryWorkAgency", map);
 	}
+	
 	//공무원 연회비/패키지 등록 조회
-	public List<AnnualfeePakageDto> selectFunctionaryWorkAnnualfeePakage(FunctionaryDto functionaryDto) {
-		logger.debug("FunctionaryDao - selectFunctionaryWorkAnnualfeePakage - memberId : " + functionaryDto);
-		return sqlSession.selectList(NS+"selectFunctionaryWorkAnnualfeePakage", functionaryDto);
+	public List<AnnualfeePakageDto> selectListFunctionaryWorkAnnualfeePakage(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - selectListFunctionaryWorkAnnualfeePakage - map : " + map);
+		return sqlSession.selectList(NS+"selectListFunctionaryWorkAnnualfeePakage", map);
 	}
+	
+	//공무원 대행업체등록 업무조회 카운트
+	public int totalCountFunctionaryWorkAnnualfeePakage(Map<String, Object> map) {
+		logger.debug("FunctionaryDao - totalCountFunctionaryWorkAnnualfeePakage - map : " + map);
+		return sqlSession.selectOne(NS+"totalCountFunctionaryWorkAnnualfeePakage", map);
+	}
+	
+	
 
 	
 	

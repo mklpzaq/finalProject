@@ -44,7 +44,7 @@
 									+ '&workType=' + $("#workType").val());
 				});
 				
-				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword값을 넘긴다.*/
+				/* 검색버튼을 클릭하면 get방식으로  searchSignal, searchOption, keyword, functionaryId, workType값을 넘긴다.*/
 				$('#searchButton').click(function(){
 					searchOption = $('#selectButtonText').text();
 					keyword = $('#keyword').val();
@@ -53,30 +53,6 @@
 												+ '&functionaryId=' + $("#functionaryId").val()
 												+ '&workType=' + $("#workType").val());
 				});
-				
-				/* $("#goodsfacilityListButton").click(function(){
-					$("#goodsfacilityList").closest("#tableckckck").children().hide();
-					$("#goodsfacilityList").show();				
-				})
-				$("#returnGoodsfacilityInfoListButton").click(function(){
-					$("#returnGoodsfacilityInfoList").closest("#tableckckck").children().hide();
-					$("#returnGoodsfacilityInfoList").show();		
-								
-				})
-				$("#unitedAfterserviceRequestListButton").click(function(){
-					$("#unitedAfterserviceRequestList").closest("#tableckckck").children().hide();
-					$("#unitedAfterserviceRequestList").show();	
-								
-				})
-				$("#agencyListButton").click(function(){
-					$("#agencyList").closest("#tableckckck").children().hide();
-					$("#agencyList").show();		
-									
-				})
-				$("#annualfeePakageListButton").click(function(){
-					$("#annualfeePakageList").closest("#tableckckck").children().hide();
-					$("#annualfeePakageList").show();	
-				}) */
 				
 			});
 		</script>		
@@ -124,9 +100,9 @@
 							<div>
 								<a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryId}&workType=시설/물품등록"><button type="button" id="goodsfacilityListButton" class="btn btn-primary">대여물품/시설등록조회</button></a>
 								<a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryId}&workType=반납등록"><button type="button" id="returnGoodsfacilityListButton" class="btn btn-success">반납정보등록조회</button></a>
-								<a href="${pageContext.request.contextPath}/selectFunctionaryWorkUnitedAfterserviceRequestList?functionaryId=${functionaryId}&workType=의뢰등록"><button type="button" id="unitedAfterserviceRequestListButton" class="btn btn-info">AS의뢰신청조회</button></a>
-								<a href="${pageContext.request.contextPath}/selectFunctionaryWorkAgencyList?functionaryId=${functionaryId}&workType=대행업체등록"><button type="button" id="agencyListButton" class="btn btn-warning">대행업체등록조회</button></a>
-								<a href="${pageContext.request.contextPath}/selectFunctionaryWorkAnnualfeePakageList?functionaryId=${functionaryId}&workType=연회비등록"><button type="button" id="annualfeePakageListButton" class="btn btn-danger">연회비/패키지 등록 조회</button></a>
+								<a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryId}&workType=의뢰등록"><button type="button" id="unitedAfterserviceRequestListButton" class="btn btn-info">AS의뢰신청조회</button></a>
+								<a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryId}&workType=대행업체등록"><button type="button" id="agencyListButton" class="btn btn-warning">대행업체등록조회</button></a>
+								<a href="${pageContext.request.contextPath}/selectFunctionaryWork?functionaryId=${functionaryId}&workType=연회비등록"><button type="button" id="annualfeePakageListButton" class="btn btn-danger">연회비/패키지 등록 조회</button></a>
 							</div>
 							<hr/>
 								
@@ -178,76 +154,7 @@
 										</tbody>
 									</table>
 									<!-- End table -->
-									<!-- Begin paging -->
-									<nav style="text-align:center">
-										<ul class="pagination">
-											<li>
-												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=1&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Previous">
-													<span aria-hidden="true">&laquo;</span>
-												</a>
-											</li>
-											<li>
-												<c:choose>
-													<c:when test="${currentPage > 1}">
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Previous">
-															<span aria-hidden="true">&lt;</span>
-														</a>
-													</c:when>
-													<c:otherwise>
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=1&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Previous">
-															<span aria-hidden="true">&lt;</span>
-														</a>
-													</c:otherwise>
-												</c:choose>
-											</li>
-											<c:choose>
-												<c:when test="${lastPage > startPage + 4}">
-													<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
-														<c:choose>
-															<c:when test="${pageNum == currentPage}">
-																<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:when>
-															<c:otherwise>
-																<li><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:otherwise>
-														</c:choose>
-													</c:forEach>
-												</c:when>
-												<c:otherwise>
-													<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
-														<c:choose>
-															<c:when test="${pageNum == currentPage}">
-																<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:when>
-															<c:otherwise>
-																<li><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:otherwise>
-														</c:choose>
-													</c:forEach>
-												</c:otherwise>
-											</c:choose>
-											<li>
-												<c:choose>
-													<c:when test="${currentPage < lastPage}">
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Next">
-															<span aria-hidden="true">&gt;</span>
-														</a>
-													</c:when>
-													<c:otherwise>												
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Next">
-															<span aria-hidden="true">&gt;</span>
-														</a>
-													</c:otherwise>
-												</c:choose>
-											</li>
-											<li>
-												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
-										</ul>
-									</nav>
-									<!-- End paging -->
+									
 								</c:when>
 									
 								<c:when test="${workType == '반납등록'}">
@@ -298,136 +205,150 @@
 											</c:forEach>									
 										</tbody>
 									</table>
-									<!-- Begin paging -->
-									<nav style="text-align:center">
-										<ul class="pagination">
-											<li>
-												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=1&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Previous">
-													<span aria-hidden="true">&laquo;</span>
-												</a>
-											</li>
-											<li>
-												<c:choose>
-													<c:when test="${currentPage > 1}">
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Previous">
-															<span aria-hidden="true">&lt;</span>
-														</a>
-													</c:when>
-													<c:otherwise>
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=1&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Previous">
-															<span aria-hidden="true">&lt;</span>
-														</a>
-													</c:otherwise>
-												</c:choose>
-											</li>
-											<c:choose>
-												<c:when test="${lastPage > startPage + 4}">
-													<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
-														<c:choose>
-															<c:when test="${pageNum == currentPage}">
-																<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:when>
-															<c:otherwise>
-																<li><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:otherwise>
-														</c:choose>
-													</c:forEach>
-												</c:when>
-												<c:otherwise>
-													<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
-														<c:choose>
-															<c:when test="${pageNum == currentPage}">
-																<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:when>
-															<c:otherwise>
-																<li><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
-															</c:otherwise>
-														</c:choose>
-													</c:forEach>
-												</c:otherwise>
-											</c:choose>
-											<li>
-												<c:choose>
-													<c:when test="${currentPage < lastPage}">
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Next">
-															<span aria-hidden="true">&gt;</span>
-														</a>
-													</c:when>
-													<c:otherwise>												
-														<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Next">
-															<span aria-hidden="true">&gt;</span>
-														</a>
-													</c:otherwise>
-												</c:choose>
-											</li>
-											<li>
-												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
-										</ul>
-									</nav>
-									<!-- End paging -->
+									
 								</c:when>
-							</c:choose>
-									
-							
-									
-									
-									<%--
-									<table id="unitedAfterserviceRequestList" class="table table-striped" hidden="hidden">
+								
+								<c:when test="${workType == '의뢰등록'}">
+								<!-- Begin Search -->
+									<div class="row">
+										<h4>의뢰등록 업무조회</h4>
+										<div class="col-sm-2"></div>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<div id="selectbox" class="input-group-btn">
+													<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="#dropDownMenu">
+														<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
+													</button>
+													<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+														<li><a href="#">전체 검색</a></li>
+														<li><a href="#">시설/물품명 검색</a></li>
+														<li><a href="#">행정기관명 검색</a></li>
+														<li><a href="#">정기/반납 검색</a></li>
+														<li><a href="#">대행업체명 검색</a></li>
+														<li><a href="#">의뢰신청일</a></li>
+													</ul>
+												</div>
+												<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
+												<span class="input-group-btn">
+													<button id="searchButton" class="btn btn-default" type="button">검색</button>
+												</span>
+											</div>									
+										</div>
+										<div class="col-sm-2"></div>
+									</div>
+									<!-- End Search -->
+									<table id="unitedAfterserviceRequestList" class="table table-striped">
 										<thead>
-											<tr>
-												<th width="10%">AS의뢰신청코드</th>
-												<th width="10%">정기/반납</th>
-												<th width="10%">행정기관명</th>
-												<th width="10%">반납받은 시설/물품명</th>
-												<th width="10%">검수결과</th>
-												<th width="10%">의뢰받은 대행업체명</th>
-												<th width="10%">신청날짜</th>																		
+											<tr>												
+												<th width="15%" class="text-center">시설/물품명</th>												
+												<th width="15%" class="text-center">행정기관명</th>
+												<th width="10%" class="text-center">정기/반납</th>
+												<th width="15%" class="text-center">검수결과</th>
+												<th width="15%" class="text-center">의뢰상태명</th>
+												<th width="15%" class="text-center">의뢰받은 대행업체명</th>
+												<th width="15%" class="text-center">신청날짜</th>																		
 											</tr>
 										</thead>
 										<tbody>									
-											<c:forEach var="unitedAfterserviceRequestDto" items="${map.unitedAfterserviceRequestList}">
+											<c:forEach var="unitedAfterserviceRequestDto" items="${list}">
 													<tr>
-														<td>${unitedAfterserviceRequestDto.unitedAfterserviceRequestCode}</td>														
-														<td>${unitedAfterserviceRequestDto.requestType}</td>
-														<td>${unitedAfterserviceRequestDto.adminagencyName}</td>
-														<td>${unitedAfterserviceRequestDto.goodsfacilityName}</td>													
-														<td>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</td>	
+														
+														<td>${unitedAfterserviceRequestDto.goodsfacilityName}</td>														
+														<td>${unitedAfterserviceRequestDto.adminagencyName}</td>												
+														<td>${unitedAfterserviceRequestDto.requestType}</td>													
+														<td>${unitedAfterserviceRequestDto.textCheckResultGoodsfacility}</td>
+														<td>${unitedAfterserviceRequestDto.stateGoods}</td>	
 														<td>${unitedAfterserviceRequestDto.agencyName}</td>	
 														<td>${unitedAfterserviceRequestDto.dateRequestAfterservice}</td>	
 													</tr>																						
 											</c:forEach>									
 										</tbody>
-									</table>									
-									<table id="agencyList" class="table table-striped" hidden="hidden">
+									</table>
+									
+								</c:when>
+								
+								<c:when test="${workType == '대행업체등록'}">
+								<!-- Begin Search -->
+									<div class="row">
+										<h4>대행업체등록 업무조회</h4>
+										<div class="col-sm-2"></div>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<div id="selectbox" class="input-group-btn">
+													<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="#dropDownMenu">
+														<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
+													</button>
+													<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+														<li><a href="#">전체 검색</a></li>
+														<li><a href="#">행정기관명 검색</a></li>
+														<li><a href="#">대행업체명 검색</a></li>
+														<li><a href="#">등록날짜 검색</a></li>
+													</ul>
+												</div>
+												<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
+												<span class="input-group-btn">
+													<button id="searchButton" class="btn btn-default" type="button">검색</button>
+												</span>
+											</div>									
+										</div>
+										<div class="col-sm-2"></div>
+									</div>
+									<!-- End Search -->
+									<table id="agencyList" class="table table-striped">
 										<thead>
 											<tr>
-												<th width="10%">대행업체등록코드</th>
-												<th width="10%">행정기관명</th>
-												<th width="10%">대행업체명</th>
-												<th width="10%">등록일자</th>
+												<th width="30%" class="text-center">행정기관명</th>
+												<th width="30%" class="text-center">대행업체명</th>
+												<th width="40%" class="text-center">등록일자</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${map.agencyList}" var="agencyDto">
+											<c:forEach items="${list}" var="agencyDto">
 												<tr>
-													<td>${agencyDto.agencyCode}</td>
 													<td>${agencyDto.adminagencyName}</td>
 													<td>${agencyDto.agencyName}</td>
-													<td>${agencyDto.goodsfacilityPriceRental}</td>
+													<td>${agencyDto.agencyDateRegistration}</td>
 												</tr>
 											</c:forEach>
 										</tbody>									
 									</table>
-									<table id="annualfeePakageList" class="table table-striped" hidden="hidden">
+									
+								</c:when>
+								
+								<c:when test="${workType == '연회비등록'}">
+								<!-- Begin Search -->
+									<div class="row">
+										<h4>연회비등록 업무조회</h4>
+										<div class="col-sm-2"></div>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<div id="selectbox" class="input-group-btn">
+													<button type="button" id="selectButton" class="btn btn-default dropdown-toggle" data-toggle="#dropDownMenu">
+														<span id="selectButtonText">${searchOption}</span> <span class="caret"></span>
+													</button>
+													<ul id="dropDownMenu" class="dropdown-menu" role="menu">
+														<li><a href="#">전체 검색</a></li>
+														<li><a href="#">시설/물품명 검색</a></li>
+														<li><a href="#">행정기관명 검색</a></li>
+														<li><a href="#">회원명 검색</a></li>
+														<li><a href="#">등록날짜 검색</a></li>
+													</ul>
+												</div>
+												<input type="text" id="keyword" class="form-control" placeholder="검색어 입력">
+												<span class="input-group-btn">
+													<button id="searchButton" class="btn btn-default" type="button">검색</button>
+												</span>
+											</div>									
+										</div>
+										<div class="col-sm-2"></div>
+									</div>
+									<!-- End Search -->
+									<table id="annualfeePakageList" class="table table-striped">
 										<thead>
 											<tr>
-												<th width="10%">연회비/패키지코드</th>
-												<th width="10%">연회비/패키지명</th> 
-												<th width="10%">적용되는 행정기관명</th>
-												<th width="10%">연회비/패키지등록날짜</th>									
+												<th width="10%" class="text-center">연회비/패키지명</th> 
+												<th width="10%" class="text-center">적용되는 행정기관명</th>
+												<th width="10%" class="text-center">연회비/패키지등록날짜</th>									
 											</tr>
 										</thead>
 										<tbody>									
@@ -440,8 +361,80 @@
 													</tr>																						
 											</c:forEach>									
 										</tbody>
-									</table> --%>
-						
+									</table>									
+								</c:when>
+							</c:choose>
+							<!-- Begin paging -->
+							<nav style="text-align:center">
+								<ul class="pagination">
+									<li>
+										<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=1&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage > 1}">
+												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${currentPage-1}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=1&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Previous">
+													<span aria-hidden="true">&lt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<c:choose>
+										<c:when test="${lastPage > startPage + 4}">
+											<c:forEach var="pageNum" begin="${startPage}" end="${startPage + 4}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="pageNum" begin="${startPage}" end="${lastPage}" step="1">
+												<c:choose>
+													<c:when test="${pageNum == currentPage}">
+														<li class="active"><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${pageNum}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}">${pageNum}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+									<li>
+										<c:choose>
+											<c:when test="${currentPage < lastPage}">
+												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${currentPage+1}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:when>
+											<c:otherwise>												
+												<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}"aria-label="Next">
+													<span aria-hidden="true">&gt;</span>
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/selectFunctionaryWork?currentPage=${lastPage}&pagePerRow=${pagePerRow}&searchOption=${searchOption}&keyword=${keyword}&functionaryId=${functionaryId}&workType=${workType}" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- End paging -->						
+						</div>
 						<div class="col-sm-2"></div>
 					</div>
 				</div>

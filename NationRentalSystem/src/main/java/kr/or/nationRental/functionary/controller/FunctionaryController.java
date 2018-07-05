@@ -196,58 +196,8 @@ public class FunctionaryController {
 		model.addAttribute("functionaryId", functionaryId);
 		
 		//업무타입 하나로 한 화면에서 테이블을 따로 쓸때를 사용해보기위해
-		model.addAttribute("workType", workType);
+		model.addAttribute("workType", workType);		
 		
-		//업무타입에 따라 화면을 나눠야할 때 사용해보자
-		/*if(workType == "시설/물품등록") {	
-			String returnJsp = "/functionary/selectFunctionaryWorkGoodsfacility"
-		}else if(workType == "반납등록") {
-			
-		}else if(workType == "의뢰등록") {
-			
-		}else if(workType == "대행업체등록") {	
-			
-		}else if(workType == "연회비등록") {
-		}*/
 		return "/functionary/selectFunctionaryWorkGoodsfacility";
-	}
-	
-	/*@RequestMapping(value="/selectFunctionaryWorkReturnGoodsfacilityList", method=RequestMethod.GET)
-	public String selectFunctionaryWorkReturnGoodsfacilityList(FunctionaryDto functionaryDto
-										,Model model
-										,@RequestParam(value="currentPage", defaultValue="1") int currentPage
-										,@RequestParam(value="pagePerRow", defaultValue="10", required=true) int pagePerRow
-										,@RequestParam(value="searchOption", defaultValue="전체 검색") String searchOption
-										,@RequestParam(value="keyword", defaultValue="") String keyword) {
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - currentPage : " + currentPage);
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - pagePerRow  : " + pagePerRow);
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - searchSelect  : " + searchOption);
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - keyword  : " + keyword);
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - functionaryDto : " + functionaryDto.toString());
-		
-		//검색했을때 검색되는 정보가 하나도 없을때는 currentPage가 0이 되기 때문에 defaultValue가 적용되지도 않고 0이 들어와 계산 되는 경우를 막기 위해서
-		if(currentPage == 0) {
-			currentPage = 1;
-		}
-		String functionaryId = functionaryDto.getFunctionaryId();
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - functionaryId : " + functionaryId);
-		Map<String, Object> map = functionaryService.selectFunctionaryWorkReturnGoodsfacilityList(functionaryId
-																						,currentPage
-																						,pagePerRow
-																						,searchOption
-																						,keyword);
-		logger.debug("FunctionaryController - selectFunctionaryWorkReturnGoodsfacilityList - map : " + map.toString());
-				
-		model.addAttribute("list", map.get("goodsfacilityList"));
-		model.addAttribute("lastPage", map.get("lastPage"));
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("startPage", map.get("startPage"));
-		model.addAttribute("endPage", map.get("endPage"));
-		model.addAttribute("pagePerRow", pagePerRow);
-		model.addAttribute("searchOption", searchOption);
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("functionaryId", functionaryId);
-		
-		return "/functionary/selectFunctionaryWorkReturnGoodsfacility";
-	}*/
+	}	
 }

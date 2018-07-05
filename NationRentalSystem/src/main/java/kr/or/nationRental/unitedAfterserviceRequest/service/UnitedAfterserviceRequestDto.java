@@ -11,6 +11,7 @@ public class UnitedAfterserviceRequestDto {
 	private String goodsfacilityName;
 	private String functionaryId;
 	private int stateGoodsCode;
+	private String stateGoodsName;
 	private String textCheckResultGoodsfacility;
 	private int agencyCode;
 	private String agencyName;
